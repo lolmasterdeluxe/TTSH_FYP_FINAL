@@ -448,6 +448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chapteh: {fileID: 1397756895}
+  spawnPoint: {fileID: 6789686}
 --- !u!1 &1366750913
 GameObject:
   m_ObjectHideFlags: 0
