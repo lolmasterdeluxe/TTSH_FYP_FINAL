@@ -133,8 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6789686}
   - component: {fileID: 6789689}
-  - component: {fileID: 6789688}
   - component: {fileID: 6789687}
+  - component: {fileID: 6789688}
   m_Layer: 0
   m_Name: Player Sprite
   m_TagString: Untagged
@@ -189,7 +189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ba3f132b2914a429cde1471f760cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 0, y: 0}
+  mousePosition: {x: 0, y: 0, z: 0}
+  playerPosition: {x: 0, y: 0}
   moveSpeed: 0.5
 --- !u!212 &6789689
 SpriteRenderer:
@@ -336,7 +337,6 @@ GameObject:
   - component: {fileID: 497010448}
   - component: {fileID: 497010450}
   - component: {fileID: 497010449}
-  - component: {fileID: 497010451}
   m_Layer: 0
   m_Name: Dumb Platform
   m_TagString: Untagged
@@ -435,20 +435,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &497010451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497010447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d29537f1d7ee2b644b5c271fb355d423, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chapteh: {fileID: 1397756895}
-  spawnPoint: {fileID: 6789686}
 --- !u!1 &1366750913
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,6 +481,7 @@ GameObject:
   - component: {fileID: 1397756898}
   - component: {fileID: 1397756897}
   - component: {fileID: 1397756896}
+  - component: {fileID: 1397756899}
   m_Layer: 0
   m_Name: Dumb Chapteh
   m_TagString: Untagged
@@ -604,6 +591,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1397756899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397756894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d29537f1d7ee2b644b5c271fb355d423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chapteh: {fileID: 1397756895}
+  playerPoint: {fileID: 6789688}
+  downScaler: 0
 --- !u!1 &1879876189
 GameObject:
   m_ObjectHideFlags: 0

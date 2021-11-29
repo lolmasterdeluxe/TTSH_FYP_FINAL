@@ -6,12 +6,27 @@ public class ResetChapteh : MonoBehaviour
 {
     public Transform chapteh;
 
-    public Transform spawnPoint;
+    public MouseMovement playerPoint;
+
+    private Rigidbody2D rb;
+    public float downScaler;
+
+    private void Start()
+    {
+        rb = gameObject.GetComponent<Rigidbody2D>();
+    }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
         //chapteh.position = new Vector3(chapteh.position.x, 4.43f, chapteh.position.z);
 
-        chapteh.position = spawnPoint.position;
+        //chapteh.position = playerPoint.playerPosition;
+
+        rb.gravityScale = downScaler;
+    }
+
+    private void Update()
+    {
+        chapteh.position = playerPoint.playerPosition;
     }
 }
