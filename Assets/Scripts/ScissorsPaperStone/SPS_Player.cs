@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class SPS_Player : MonoBehaviour
 {
@@ -17,8 +18,7 @@ public class SPS_Player : MonoBehaviour
     #region Variables
 
     public PlayerChoice p_choice;
-    SPS_AttackCollision attackInstance;
-
+    SPS_LivesManager livesInstance;
     #endregion
 
     #region Unity Callbacks
@@ -26,7 +26,7 @@ public class SPS_Player : MonoBehaviour
     private void Start()
     {
         p_choice = PlayerChoice.P_NONE;
-        attackInstance = GetComponentInChildren<SPS_AttackCollision>();
+        livesInstance = FindObjectOfType<SPS_LivesManager>();
     }
 
     private void Update()
@@ -36,9 +36,12 @@ public class SPS_Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "EnemyTag")
         {
-            Debug.Log("Player goes OW");
+            Debug.Log("Player goes OW : trigger enter");
+            Destroy(other.gameObject);
+            Destroy(other.gameObject.GetComponent<Rigidbody>());
+            livesInstance.PlayerTakesDamage();
         }
     }
 
