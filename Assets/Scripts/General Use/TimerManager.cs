@@ -13,23 +13,23 @@ public class TimerManager : MonoBehaviour
     public UnityEvent e_TimerPassedThreshold;
     public UnityEvent e_TimerFinished;
 
-    public bool m_timerRun;
-    public bool m_timerActivated;
-    public bool m_thresholdPassed;
+    private bool m_timerRun;
+    private bool m_timerActivated;
+    private bool m_thresholdPassed;
 
-    public float m_timeRemaining;
-    public float m_timerThreshold;
+    private float m_timeRemaining;
+    private float m_timerThreshold;
     #endregion
 
     #region ElapsedTime Variable
     public UnityEvent e_elapsedTimeStarted;
     public UnityEvent e_elapsedTimeFinished;
 
-    public bool m_elapsedTimeRun;
-    public bool m_elapsedTimeActivated;
+    private bool m_elapsedTimeRun;
+    private bool m_elapsedTimeActivated;
 
-    public float m_elapsedTime;
-    public float m_elapsedTimeThreshold;
+    private float m_elapsedTime;
+    private float m_elapsedTimeThreshold;
 
     #endregion
 
@@ -88,6 +88,10 @@ public class TimerManager : MonoBehaviour
     }
 
     #region Timer helper functions
+    
+    // Starts the timer countdown
+    // Parameters: time = how long the countdown lasts for
+    // thresholdValue = at which point of the timer will invoke the e_TimerPassedThreshold event
     public void StartCountdown(float time, float thresholdValue = 0)
     {
         m_timerRun = true;
@@ -97,30 +101,37 @@ public class TimerManager : MonoBehaviour
         m_timerThreshold = thresholdValue;
     }
 
+    // Adds time to the timer
     public void AddCountdown(float time)
     {
         m_timeRemaining += time;
     }
 
+    // Reduces the time for the current timer
     public void ReduceCountdown(float time)
     {
         m_timeRemaining = Mathf.Clamp(m_timeRemaining - time, 0, float.MaxValue);
     }
 
+    // Pauses the timer countdown
     public void PauseCountdown()
     {
         m_timerRun = false;
     }
 
+    // Resumes the timer countdown
     public void ResumeCountdown()
     {
         m_timerRun = true;
     }
 
+    // Returns the remaining time on the countdown timer in float
     public float GetRemainingTime()
     {
         return m_timeRemaining;
     }
+
+    // Returns a string of the formatted countdown timer 59:59
     public string GetFormattedRemainingTime()
     {
         float currentTime = m_timeRemaining;
@@ -131,6 +142,7 @@ public class TimerManager : MonoBehaviour
         return string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
+    // Returns a string of the formatted countdown timer with milliseconds 59:59:99
     public string GetFormattedRemainingTimeMS()
     {
         float currentTime = m_timeRemaining;
@@ -146,6 +158,9 @@ public class TimerManager : MonoBehaviour
 
     #region Elapsed Time Functions
 
+    // Starts the elapsed time counter
+    // Parameter: thresholdValue = at the point where the timer will stop
+    // If parameter is empty, it the elapsed time will run forever
     public void StartElapsedTime(float thresholdValue = float.MaxValue)
     {
         m_elapsedTimeRun = true;
@@ -154,30 +169,37 @@ public class TimerManager : MonoBehaviour
         m_elapsedTimeThreshold = thresholdValue;
     }
 
+    // Adds time into the elapsed time
     public void AddElapsedTime(float time)
     {
         m_elapsedTime += time;
     }
 
+    // Reduces time from the elapsed time
     public void ReduceElapsedTime(float time)
     {
         m_elapsedTime = Mathf.Clamp(m_elapsedTime - time, 0, float.MaxValue);
     }
 
+    // Pauses the elapsed time
     public void PauseElapsedTime()
     {
         m_elapsedTimeRun = false;
     }
 
+    // Resumes the elapsed time
     public void ResumeElapsedTime()
     {
         m_elapsedTimeRun = true;
     }
 
+    // Returns the elapsed time in float
     public float GetElapsedTime()
     {
         return m_elapsedTime;
     }
+
+    // Returns a string of the formatted elapsed time 59:59
     public string GetFormattedElapsedTime()
     {
         float currentTime = m_elapsedTime;
@@ -188,6 +210,7 @@ public class TimerManager : MonoBehaviour
         return string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
+    // Returns a string of the formatted elapsed time 59:59:99
     public string GetFormattedElapsedTimeMS()
     {
         float currentTime = m_elapsedTime;
@@ -202,7 +225,7 @@ public class TimerManager : MonoBehaviour
     #endregion
 
 
-    // This can be removed if all scenes decide to use the same instance, but I doubt so
+    // Remove this if you want the timer manager instance to be the same throughout the whole scene
     private void OnDestroy()
     {
         if (this == _instance)
