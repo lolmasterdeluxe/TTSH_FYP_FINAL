@@ -13,6 +13,7 @@ public class SPS_AttackCollision : MonoBehaviour
     public float rangeUptime;
     SPS_Player playerChoice;
     SPS_ScoreManager scoreInstance;
+    ComboManager comboManager_instance;
 
     #endregion
 
@@ -20,6 +21,7 @@ public class SPS_AttackCollision : MonoBehaviour
     {
         playerChoice = GetComponentInParent<SPS_Player>();
         scoreInstance = FindObjectOfType<SPS_ScoreManager>();
+        comboManager_instance = FindObjectOfType<ComboManager>();
     }
 
     private void Update()
@@ -57,6 +59,8 @@ public class SPS_AttackCollision : MonoBehaviour
             Destroy(other.gameObject);
             Destroy(other.gameObject.GetComponent<Rigidbody>());
             scoreInstance.PlayerScores();
+            comboManager_instance.AddCombo();
+            
         }
         else if (playerChoice.p_choice == SPS_Player.PlayerChoice.P_PAPER
             && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_STONE)
@@ -65,6 +69,7 @@ public class SPS_AttackCollision : MonoBehaviour
             Destroy(other.gameObject);
             Destroy(other.gameObject.GetComponent<Rigidbody>());
             scoreInstance.PlayerScores();
+            comboManager_instance.AddCombo();
         }
         else if (playerChoice.p_choice == SPS_Player.PlayerChoice.P_STONE
             && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_SCISSOR)
@@ -73,6 +78,7 @@ public class SPS_AttackCollision : MonoBehaviour
             Destroy(other.gameObject);
             Destroy(other.gameObject.GetComponent<Rigidbody>());
             scoreInstance.PlayerScores();
+            comboManager_instance.AddCombo();
         }
     }
 

@@ -18,7 +18,10 @@ public class SPS_Player : MonoBehaviour
     #region Variables
 
     public PlayerChoice p_choice;
+
+    ComboManager combomanagerInstance;
     SPS_LivesManager livesInstance;
+    
     #endregion
 
     #region Unity Callbacks
@@ -27,6 +30,7 @@ public class SPS_Player : MonoBehaviour
     {
         p_choice = PlayerChoice.P_NONE;
         livesInstance = FindObjectOfType<SPS_LivesManager>();
+        combomanagerInstance = FindObjectOfType<ComboManager>();
     }
 
     private void Update()
@@ -42,6 +46,7 @@ public class SPS_Player : MonoBehaviour
             Destroy(other.gameObject);
             Destroy(other.gameObject.GetComponent<Rigidbody>());
             livesInstance.PlayerTakesDamage();
+            combomanagerInstance.BreakCombo();  
         }
     }
 
