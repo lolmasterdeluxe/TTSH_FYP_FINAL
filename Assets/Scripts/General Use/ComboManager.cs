@@ -8,7 +8,7 @@ public class ComboManager : MonoBehaviour
     private static ComboManager _instance;
     public static ComboManager Instance { get { return _instance; } }
 
-    private int m_combo;
+    private int m_combo = 1;
 
     private bool m_doesComboExpire;
     private float m_comboExpireSpeed;
@@ -33,7 +33,7 @@ public class ComboManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -71,7 +71,7 @@ public class ComboManager : MonoBehaviour
     // Adds a combo, this will also invoke combo started event if it just started and will invoke combo added event
     public void AddCombo(int combo = 1)
     {
-        if (m_combo <= 0)
+        if (m_combo <= 1)
             e_comboStarted.Invoke();
 
         if (m_doesComboExpire)
@@ -91,7 +91,7 @@ public class ComboManager : MonoBehaviour
     // Breaks the combo, this will also invoke the combo break event
     public void BreakCombo()
     {
-        m_combo = 0;
+        m_combo = 1;
         e_comboBreak.Invoke();
         e_comboChanged.Invoke();
     }
