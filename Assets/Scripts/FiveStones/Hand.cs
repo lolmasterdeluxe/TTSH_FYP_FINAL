@@ -6,8 +6,15 @@ public class Hand : MonoBehaviour
 {
     public GameObject handTrailPrefab;
     public GameObject currentHandTrail;
-    public Rigidbody2D rigidBody;
+
+    Rigidbody2D rigidBody;
+    CircleCollider2D circleCollider;
     Camera cam;
+
+    public float velocity;
+    public float cuttingVelocityThreshold = 0.0001f;
+    public Vector2 prevPosition;
+
     bool isCatching = false;
 
     // Start is called before the first frame update
@@ -18,6 +25,9 @@ public class Hand : MonoBehaviour
 
         if (cam == null)
             cam = Camera.main;
+
+        if (circleCollider == null)
+            circleCollider = GetComponent<CircleCollider2D>();
     }
 
     // Update is called once per frame
@@ -28,8 +38,7 @@ public class Hand : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
             StartCatching();
         else if (Input.GetMouseButtonUp(0))
-            StopCatching();
-            
+            StopCatching();       
     }
 
     void UpdateMouseMovement()
@@ -43,6 +52,22 @@ public class Hand : MonoBehaviour
         screenToWorldPosition.y = Mathf.Clamp(screenToWorldPosition.y, minBound.y, maxBound.y);
 
         rigidBody.position = screenToWorldPosition;
+
+        velocity = (screenToWorldPosition - prevPosition).magnitude * Time.deltaTime;
+
+        // bruh why am i doing this here
+        // it works here but not in the individual catching functions
+        if (isCatching)
+        {
+            if (velocity > 0)
+                circleCollider.enabled = true;
+            else
+                circleCollider.enabled = false;
+        }
+        else
+            circleCollider.enabled = false;
+
+        prevPosition = screenToWorldPosition;
     }
 
     void StartCatching()
@@ -56,6 +81,15 @@ public class Hand : MonoBehaviour
     {
         isCatching = false;
         Destroy(currentHandTrail);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Stone")
+        {
+            FiveStonesGameManager.Instance.StoneCaught(collision.gameObject);
+            Destroy(collision.gameObject);
+        }
     }
 
 }

@@ -31,8 +31,6 @@ public class StoneSpawner : MonoBehaviour
             Debug.LogError("spawnPointList is null or empty, make sure to initialized some points");
             return;
         }
-
-        StartCoroutine(SpawnStoneLoop());
     }
 
     // Update is called once per frame
@@ -41,7 +39,7 @@ public class StoneSpawner : MonoBehaviour
         
     }
 
-    IEnumerator SpawnStoneLoop()
+    public IEnumerator SpawnStoneLoop()
     {
         while (true)
         {

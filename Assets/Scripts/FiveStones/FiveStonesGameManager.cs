@@ -1,46 +1,58 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class FiveStonesGameManager : MonoBehaviour
 {
+    private static FiveStonesGameManager _instance;
+    public static FiveStonesGameManager Instance { get { return _instance; } }
+
+    public GameObject g_scoreText;
+    public GameObject g_comboText;
+    public GameObject g_timerText;
+    public GameObject g_objectiveText;
+
+    // using this temporary, will make a score manager later on
+    public int m_score;
+    public int baseScore = 1;
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+            Destroy(this.gameObject);
+        else
+            _instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        // First parameter is the countdown time in seconds
-        // Second parameter is a time threshold where when it passes the event e_TimerPassedThreshold gets invoked
-        // Second parameter is optional and can be empty
-        TimerManager.Instance.StartCountdown(10, 3);
-        TimerManager.Instance.StartCountdown(10);
-
-        // Attaches an action/method to the event, it will get called when event is invoked
-        TimerManager.Instance.e_TimerPassedThreshold.AddListener(AnnounceGameEndingSoon);
-        TimerManager.Instance.e_TimerFinished.AddListener(EndGame);
-
-        // Returns raw remaining time in float (seconds)
-        TimerManager.Instance.GetRemainingTime();
-
-        // Returns remaining formatted time in string -> 00:00
-        TimerManager.Instance.GetFormattedRemainingTime();
-
-        // Returns remaining formatted time in string -> 00:00:00
-        TimerManager.Instance.GetFormattedRemainingTimeMS();
-    }
-
-    public void AnnounceGameEndingSoon()
-    {
-        // Indicate that the game is ending soon etc
-        // Change timer text to red or smth
-    }
-
-    public void EndGame()
-    {
-        // Do finished game animation / logic etc
+        StartGame();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        g_scoreText.GetComponent<TMP_Text>().text = m_score.ToString();
+        g_timerText.GetComponent<TMP_Text>().text = TimerManager.Instance.GetFormattedRemainingTimeMS();
+        g_comboText.GetComponent<TMP_Text>().text = "Combo: " + ComboManager.Instance.GetCurrentCombo();
+    }
+
+    void StartGame()
+    {
+        TimerManager.Instance.StartCountdown(10);
+        StartCoroutine(GetComponent<StoneSpawner>().SpawnStoneLoop());
+    }
+    public void StoneCaught(GameObject gameObject)
+    {
+        m_score += (baseScore * ComboManager.Instance.GetCurrentCombo());
+        ComboManager.Instance.AddCombo();
+    }
+
+    private void OnDestroy()
+    {
+        if (this == _instance)
+            _instance = null;
     }
 }
