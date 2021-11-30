@@ -946,6 +946,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d01cb938b1c4dcb4c93262d180c17947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  g_scoreText: {fileID: 1643278900}
+  g_comboText: {fileID: 1704626067}
+  g_timerText: {fileID: 505455607}
+  g_objectiveText: {fileID: 1557747504}
+  m_score: 0
+  baseScore: 1
 --- !u!4 &983789000
 Transform:
   m_ObjectHideFlags: 0
@@ -1576,8 +1582,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
