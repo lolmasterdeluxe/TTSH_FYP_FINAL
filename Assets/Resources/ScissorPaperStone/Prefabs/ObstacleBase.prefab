@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 4635973183218378369}
   - component: {fileID: 4635973183218378368}
   - component: {fileID: 4635973183218378367}
-  - component: {fileID: 6972809572565600267}
+  - component: {fileID: 2328030459888176777}
   - component: {fileID: 9196770655883893898}
   m_Layer: 0
-  m_Name: Enemy
-  m_TagString: EnemyTag
+  m_Name: ObstacleBase
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,7 +112,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 6.1232336e-17}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6972809572565600267
+--- !u!114 &2328030459888176777
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,13 +121,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4635973183218378370}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18bceb2bafdaa754f9644194a16e7190, type: 3}
+  m_Script: {fileID: 11500000, guid: ae30d4e13e0d44441b3adaf7e9001ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ai_choice: 2
-  scissor: {fileID: 2100000, guid: c5622765ef7f76447ae62263cadd2bc4, type: 2}
-  paper: {fileID: 2100000, guid: f3a19fed0b8edb94cbdc386c4ffb2a5d, type: 2}
-  stone: {fileID: 2100000, guid: eddb6975139421641b9a88f1cd778050, type: 2}
+  obstacle_choice: 0
+  mountain: {fileID: 2100000, guid: e303e46982f4bf94c9a9ce94f4f256eb, type: 2}
+  log: {fileID: 2100000, guid: c448b3eeb11db9343bcba146ca4a719c, type: 2}
 --- !u!54 &9196770655883893898
 Rigidbody:
   m_ObjectHideFlags: 0

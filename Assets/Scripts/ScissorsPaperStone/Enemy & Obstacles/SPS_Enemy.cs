@@ -15,7 +15,6 @@ public class SPS_Enemy : MonoBehaviour
 
     public AIChoice ai_choice;
     public Material scissor, paper, stone;
-    Renderer enemyMat;
 
     #endregion
 

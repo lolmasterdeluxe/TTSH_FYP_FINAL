@@ -66,8 +66,8 @@ public class SPS_AttackCollision : MonoBehaviour
             && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_STONE)
         {
             Debug.Log("Enemy goes OW: trigger stay");
-            Destroy(other.gameObject);
             Destroy(other.gameObject.GetComponent<Rigidbody>());
+            Destroy(other.gameObject);
             scoreInstance.PlayerScores();
             comboManager_instance.AddCombo();
         }
@@ -75,10 +75,24 @@ public class SPS_AttackCollision : MonoBehaviour
             && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_SCISSOR)
         {
             Debug.Log("Enemy goes OW: trigger stay");
-            Destroy(other.gameObject);
             Destroy(other.gameObject.GetComponent<Rigidbody>());
+            Destroy(other.gameObject);
             scoreInstance.PlayerScores();
             comboManager_instance.AddCombo();
+        }
+        //now we also have to check if the player has jumped/slid perfectly
+        else if ((playerChoice.p_choice == SPS_Player.PlayerChoice.P_JUMP)
+            && other.GetComponent<SPS_Obstacles>().obstacle_choice == SPS_Obstacles.ObstacleChoice.OBS_MOUNTAIN)
+        {
+            Debug.Log("Jumped over perfectly");
+            /* ADD CODE HERE FOR PLAYER STUN */
+        }
+        else if ((playerChoice.p_choice == SPS_Player.PlayerChoice.P_SLIDE)
+            && other.GetComponent<SPS_Obstacles>().obstacle_choice == SPS_Obstacles.ObstacleChoice.OBS_LOG)
+        {
+            Debug.Log("Jumped over perfectly");
+            /* ADD CODE HERE FOR PLAYER STUN */
+
         }
     }
 

@@ -8,6 +8,7 @@ TagManager:
   - Platform
   - EnemyTag
   - Stone
+  - Obstacle
   layers:
   - Default
   - TransparentFX

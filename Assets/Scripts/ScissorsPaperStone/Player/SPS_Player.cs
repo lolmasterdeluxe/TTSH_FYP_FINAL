@@ -9,7 +9,7 @@ public class SPS_Player : MonoBehaviour
     #region Enumerations
     public enum PlayerChoice
     {
-        P_SCISSOR, P_PAPER, P_STONE, P_NONE
+        P_SCISSOR, P_PAPER, P_STONE, P_JUMP, P_SLIDE, P_NONE
     };
 
     #endregion
@@ -43,8 +43,8 @@ public class SPS_Player : MonoBehaviour
         if (other.gameObject.tag == "EnemyTag")
         {
             Debug.Log("Player goes OW : trigger enter");
-            Destroy(other.gameObject);
             Destroy(other.gameObject.GetComponent<Rigidbody>());
+            Destroy(other.gameObject);
             livesInstance.PlayerTakesDamage();
             combomanagerInstance.BreakCombo();  
         }
@@ -65,6 +65,16 @@ public class SPS_Player : MonoBehaviour
     public void PlayerChoosesStone()
     {
         p_choice = PlayerChoice.P_STONE;
+    }
+
+    public void PlayerJumps()
+    {
+        p_choice = PlayerChoice.P_JUMP;
+    }
+
+    public void PlayerSlides()
+    {
+        p_choice = PlayerChoice.P_SLIDE;
     }
 
     #endregion

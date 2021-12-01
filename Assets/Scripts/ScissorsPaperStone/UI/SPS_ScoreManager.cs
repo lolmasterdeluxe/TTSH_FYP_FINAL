@@ -11,6 +11,7 @@ public class SPS_ScoreManager : MonoBehaviour
     #region Variables
 
     public int playerScore;
+    int baseScore;
     public Text scoreText;
     ComboManager combomanagerInstance;
 
@@ -20,6 +21,7 @@ public class SPS_ScoreManager : MonoBehaviour
 
     private void Start()
     {
+        baseScore = 1;
         //player starts with a score of 0
         playerScore = 0;
         //add reference HERE
@@ -42,9 +44,9 @@ public class SPS_ScoreManager : MonoBehaviour
 
     public void PlayerScores()
     {
-        playerScore += 1 * combomanagerInstance.GetCurrentCombo();
-        Debug.Log("combo current:" + combomanagerInstance.GetCurrentCombo());
         combomanagerInstance.AddCombo();
+        playerScore += baseScore * combomanagerInstance.GetCurrentCombo();
+        Debug.Log("combo current:" + combomanagerInstance.GetCurrentCombo());
     }
 
     #endregion
