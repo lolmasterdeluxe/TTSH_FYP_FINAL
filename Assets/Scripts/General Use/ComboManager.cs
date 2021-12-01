@@ -8,7 +8,7 @@ public class ComboManager : MonoBehaviour
     private static ComboManager _instance;
     public static ComboManager Instance { get { return _instance; } }
 
-    private int m_combo = 1;
+    private int m_combo;
 
     private bool m_doesComboExpire;
     private float m_comboExpireSpeed;
@@ -39,15 +39,20 @@ public class ComboManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (m_comboExpiryTimer > 0 && m_doesComboExpire)
+        if (m_comboExpiryTimer > 0 && m_combo > 0 && m_doesComboExpire)
         {
-            m_comboExpiryTimer -= Time.deltaTime * m_comboExpiryTimer;
+            m_comboExpiryTimer -= Time.deltaTime * m_comboExpireSpeed;
 
             if (m_comboExpiryTimer <= 0)
             {
-                m_comboExpiryTimer = 0;
-                e_comboExpired.Invoke();
-                BreakCombo();
+                m_comboExpiryTimer = m_comboExpiryDefault;
+                m_combo--;
+
+                if (m_combo <= 0)
+                {
+                    e_comboExpired.Invoke();
+                    BreakCombo();
+                }
             }
         }
 
@@ -91,7 +96,7 @@ public class ComboManager : MonoBehaviour
     // Breaks the combo, this will also invoke the combo break event
     public void BreakCombo()
     {
-        m_combo = 1;
+        m_combo = 0;
         e_comboBreak.Invoke();
         e_comboChanged.Invoke();
     }
