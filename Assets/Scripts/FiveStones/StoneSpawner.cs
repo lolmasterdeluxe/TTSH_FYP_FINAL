@@ -44,10 +44,8 @@ public class StoneSpawner : MonoBehaviour
         while (true)
         {
             float delay = Random.Range(minSpawnDelay, maxSpawnDelay);
-            yield return new WaitForSeconds(delay);
-
             SpawnStone(Random.Range(minStone, maxStone));
-
+            yield return new WaitForSeconds(delay);
             // Add condition to break out of loop
         }
     }
@@ -61,6 +59,7 @@ public class StoneSpawner : MonoBehaviour
 
             GameObject spawnedStone = Instantiate(stonePrefab, randomPoint.position, randomPoint.rotation);
             spawnedStone.GetComponent<Rigidbody2D>().AddForce(spawnedStone.transform.up * Random.Range(minForce, maxForce), ForceMode2D.Impulse);
+            spawnedStone.GetComponent<Stone>().type = FiveStonesGameManager.GetRandomColouredObjective();
 
             Destroy(spawnedStone, 5f);
         }

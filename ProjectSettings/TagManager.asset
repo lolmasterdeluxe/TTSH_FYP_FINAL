@@ -9,6 +9,7 @@ TagManager:
   - EnemyTag
   - Stone
   - Hoop
+  - Obstacle
   layers:
   - Default
   - TransparentFX

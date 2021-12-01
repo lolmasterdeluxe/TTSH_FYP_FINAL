@@ -87,7 +87,7 @@ public class Hand : MonoBehaviour
     {
         if (collision.gameObject.tag == "Stone")
         {
-            FiveStonesGameManager.Instance.StoneCaught(collision.gameObject);
+            FiveStonesGameManager.Instance.OnStoneCaught(collision.gameObject);
             Destroy(collision.gameObject);
         }
     }

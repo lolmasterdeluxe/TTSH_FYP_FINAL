@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d71629cf22bf22d41b8ca84cb1251bd4
+guid: 6c576b375e4ed39419c1fa22fe12b65f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,15 +43,15 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 111, y: 180, z: 72, w: 185}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: 0
+  spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -86,18 +86,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -112,19 +100,7 @@ TextureImporter:
   spriteSheet:
     serializedVersion: 2
     sprites: []
-    outline:
-    - - {x: -589, y: 4}
-      - {x: -589, y: 30}
-      - {x: 111, y: 30}
-      - {x: 111, y: 4}
-    - - {x: 260, y: -272}
-      - {x: 260, y: -220}
-      - {x: 291, y: -220}
-      - {x: 291, y: -272}
-    - - {x: -416, y: 137}
-      - {x: -416, y: 148}
-      - {x: -413, y: 148}
-      - {x: -413, y: 137}
+    outline: []
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
