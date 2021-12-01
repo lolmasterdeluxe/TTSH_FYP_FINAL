@@ -11,7 +11,6 @@ public class Chapteh : MonoBehaviour
     public SpriteRenderer skyWidth, skyHeight;
     private float chaptehWidth, chaptehHeight;
 
-    private Vector3 gravityDirection;
     private Quaternion rotPos;
 
     private Vector2 lookDirection;
@@ -25,30 +24,37 @@ public class Chapteh : MonoBehaviour
         chaptehWidth = GetComponent<SpriteRenderer>().bounds.size.x / 2;
         chaptehHeight = GetComponent<SpriteRenderer>().bounds.size.y / 2;
 
+        // Set initial rotation to 0
         rotPos = transform.rotation;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // When the Chapteh is not yet launched
         if (!inPlay)
         {
+            // Sets position of Chapteh to above the player head
             transform.position = spawnPoint.position;
+            
+            LookAtMouseDirection();
         }
-
-        //LookAtMouseDirection();
 
         Kick();
 
+        // When the Chapteh is launched
         if (inPlay)
         {
+            // Clamps the Chapteh within the boundaries of the background
             transform.position = new Vector2(Mathf.Clamp(transform.position.x, skyWidth.bounds.min.x + chaptehWidth, skyWidth.bounds.max.x - chaptehWidth), 
                                              Mathf.Clamp(transform.position.y, skyHeight.bounds.min.y + chaptehHeight, skyHeight.bounds.max.y - chaptehHeight));
 
+            // Rotates the Chapteh to fall according to gravity
             rbChapteh.rotation += rbChapteh.gravityScale;
         } 
     }
 
+    // Chapteh rotates at direction of the mouse position
     void LookAtMouseDirection()
     {
         lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
@@ -62,20 +68,24 @@ public class Chapteh : MonoBehaviour
         {
             inPlay = true;
 
+            // Gets the mouse input from Screen to World Point in Vector3
             Vector3 screenToWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            // Set the mouse position in Vector2
             Vector2 mousePositionInWorld = new Vector2(screenToWorld.x, screenToWorld.y);
-
+            // Gets the player position with the mouse position
             Vector2 playerToMouseDir = (mousePositionInWorld - new Vector2(playerSprite.position.x, playerSprite.position.y)).normalized;
 
+            // Force needed to launch the Chapteh
             rbChapteh.AddForce(playerToMouseDir * speed);
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        // Player picks up and spawns the Chapteh back to the player if lands on the ground
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Ball hit the Player of the screen");
+            Debug.Log("Ball respawns to the Player of the screen");
             rbChapteh.velocity = Vector2.zero;
             transform.rotation = rotPos;
             inPlay = false;
