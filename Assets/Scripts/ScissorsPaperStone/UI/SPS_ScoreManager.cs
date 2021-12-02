@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class SPS_ScoreManager : MonoBehaviour
@@ -12,7 +13,7 @@ public class SPS_ScoreManager : MonoBehaviour
 
     public int playerScore;
     int baseScore;
-    public Text scoreText;
+    public GameObject scoretextInstance;
     ComboManager combomanagerInstance;
 
     #endregion
@@ -30,8 +31,7 @@ public class SPS_ScoreManager : MonoBehaviour
 
     private void Update()
     {
-        scoreText.text = "Score: " + playerScore.ToString();
-
+        scoretextInstance.GetComponent<TMP_Text>().text = "Score: " + playerScore;
         if (Input.GetKeyDown(KeyCode.Space))
         {
             PlayerScores();
