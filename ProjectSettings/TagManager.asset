@@ -8,8 +8,10 @@ TagManager:
   - Platform
   - EnemyTag
   - Stone
-  - Hoop
   - Obstacle
+  - BlueHoop
+  - RedHoop
+  - Undefined
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - HoopLayer
   - 
   - 
   - 

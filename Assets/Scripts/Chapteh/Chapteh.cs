@@ -90,5 +90,11 @@ public class Chapteh : MonoBehaviour
             transform.rotation = rotPos;
             inPlay = false;
         }
+
+        if (other.CompareTag("RedHoop") || other.CompareTag("BlueHoop") || other.CompareTag("GreenHoop"))
+        {
+            ChaptehGameManager.Instance.OnChaptehHit(other.gameObject);
+            Destroy(other.gameObject);
+        }
     }
 }
