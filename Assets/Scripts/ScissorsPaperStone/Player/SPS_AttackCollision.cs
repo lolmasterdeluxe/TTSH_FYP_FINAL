@@ -52,47 +52,56 @@ public class SPS_AttackCollision : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         //we now check that the matchup is correct to kill the enemy
-        if (playerChoice.p_choice == SPS_Player.PlayerChoice.P_SCISSOR
-            && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_PAPER)
+        //firstly we check to see if ANY button has been pressed
+        if (buttonPressed == true)
         {
-            Debug.Log("Enemy goes OW: trigger stay");
-            Destroy(other.gameObject);
-            Destroy(other.gameObject.GetComponent<Rigidbody>());
-            scoreInstance.PlayerScores();
-            comboManager_instance.AddCombo();
-            
-        }
-        else if (playerChoice.p_choice == SPS_Player.PlayerChoice.P_PAPER
-            && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_STONE)
-        {
-            Debug.Log("Enemy goes OW: trigger stay");
-            Destroy(other.gameObject.GetComponent<Rigidbody>());
-            Destroy(other.gameObject);
-            scoreInstance.PlayerScores();
-            comboManager_instance.AddCombo();
-        }
-        else if (playerChoice.p_choice == SPS_Player.PlayerChoice.P_STONE
-            && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_SCISSOR)
-        {
-            Debug.Log("Enemy goes OW: trigger stay");
-            Destroy(other.gameObject.GetComponent<Rigidbody>());
-            Destroy(other.gameObject);
-            scoreInstance.PlayerScores();
-            comboManager_instance.AddCombo();
-        }
-        //now we also have to check if the player has jumped/slid perfectly
-        else if ((playerChoice.p_choice == SPS_Player.PlayerChoice.P_JUMP)
-            && other.GetComponent<SPS_Obstacles>().obstacle_choice == SPS_Obstacles.ObstacleChoice.OBS_MOUNTAIN)
-        {
-            Debug.Log("Jumped over perfectly");
-            /* ADD CODE HERE FOR PLAYER STUN */
-        }
-        else if ((playerChoice.p_choice == SPS_Player.PlayerChoice.P_SLIDE)
-            && other.GetComponent<SPS_Obstacles>().obstacle_choice == SPS_Obstacles.ObstacleChoice.OBS_LOG)
-        {
-            Debug.Log("Jumped over perfectly");
-            /* ADD CODE HERE FOR PLAYER STUN */
+            //we now need to determine if the interaction is with a enemy OR an obstacle
 
+            if (other.gameObject.tag == "EnemyTag") //enemy
+            {
+                if (playerChoice.p_choice == SPS_Player.PlayerChoice.P_SCISSOR
+            && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_PAPER)
+                {
+                    Debug.Log("Enemy goes OW: trigger stay");
+                    Destroy(other.gameObject);
+                    Destroy(other.gameObject.GetComponent<Rigidbody>());
+                    scoreInstance.PlayerScores();
+                    comboManager_instance.AddCombo();
+                }
+                else if (buttonPressed == true && playerChoice.p_choice == SPS_Player.PlayerChoice.P_PAPER
+                    && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_STONE)
+                {
+                    Debug.Log("Enemy goes OW: trigger stay");
+                    Destroy(other.gameObject.GetComponent<Rigidbody>());
+                    Destroy(other.gameObject);
+                    scoreInstance.PlayerScores();
+                    comboManager_instance.AddCombo();
+                }
+                else if (buttonPressed == true && playerChoice.p_choice == SPS_Player.PlayerChoice.P_STONE
+                    && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_SCISSOR)
+                {
+                    Debug.Log("Enemy goes OW: trigger stay");
+                    Destroy(other.gameObject.GetComponent<Rigidbody>());
+                    Destroy(other.gameObject);
+                    scoreInstance.PlayerScores();
+                    comboManager_instance.AddCombo();
+                }
+            }
+            else if (other.gameObject.tag == "Obstacle")
+            {
+                if (playerChoice.p_choice == SPS_Player.PlayerChoice.P_JUMP
+                    && other.GetComponent<SPS_Obstacles>().obstacle_choice == SPS_Obstacles.ObstacleChoice.OBS_MOUNTAIN)
+                {
+                    Debug.Log("Jumped over perfectly");
+                    /* ADD CODE HERE FOR PLAYER STUN */
+                }
+                else if ((playerChoice.p_choice == SPS_Player.PlayerChoice.P_SLIDE)
+                    && other.GetComponent<SPS_Obstacles>().obstacle_choice == SPS_Obstacles.ObstacleChoice.OBS_LOG)
+                {
+                    Debug.Log("Jumped over perfectly");
+                    /* ADD CODE HERE FOR PLAYER STUN */
+                }
+            }
         }
     }
 
