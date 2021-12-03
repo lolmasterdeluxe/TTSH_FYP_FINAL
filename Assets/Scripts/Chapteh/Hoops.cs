@@ -9,6 +9,9 @@ public class Hoops : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (type == ChaptehGameManager.Objective.DEFAULT)
+            type = ChaptehGameManager.GetRandomColouredObjective();
+
         switch (type)
         {
             case ChaptehGameManager.Objective.HIT_RED_HOOPS:

@@ -11,7 +11,7 @@ TagManager:
   - Obstacle
   - BlueHoop
   - RedHoop
-  - Undefined
+  - GreenHoop
   layers:
   - Default
   - TransparentFX

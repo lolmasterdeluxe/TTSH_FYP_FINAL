@@ -107,9 +107,9 @@ public class SpawnHoops : MonoBehaviour
                             temp = Instantiate(blueHoopPrefab, spawnPos, Quaternion.identity);
                         spawnedPositions.RemoveAt(spawnedPositions.Count - 1);
                         spawnedPositions.Add(temp.transform.position);
-                        
                     }
                 }
+
             }
         }
     }

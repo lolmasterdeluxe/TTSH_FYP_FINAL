@@ -6,7 +6,7 @@ public class Chapteh : MonoBehaviour
     public bool inPlay;
     public Transform spawnPoint;
     public Transform playerSprite;
-    public float speed;
+    //public float speed;
 
     public SpriteRenderer skyWidth, skyHeight;
     private float chaptehWidth, chaptehHeight;
@@ -15,6 +15,8 @@ public class Chapteh : MonoBehaviour
 
     private Vector2 lookDirection;
     private float lookAngle;
+
+    public const float MAX_FORCE = 1100f;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +42,7 @@ public class Chapteh : MonoBehaviour
             LookAtMouseDirection();
         }
 
-        Kick();
+        //Kick();
 
         // When the Chapteh is launched
         if (inPlay)
@@ -62,9 +64,9 @@ public class Chapteh : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, lookAngle - 90f);
     }
 
-    void Kick()
+    public void Kick(float speed)
     {
-        if (Input.GetMouseButtonDown(0) && !inPlay)
+        if (/*Input.GetMouseButtonDown(0) &&*/ !inPlay)
         {
             inPlay = true;
 
