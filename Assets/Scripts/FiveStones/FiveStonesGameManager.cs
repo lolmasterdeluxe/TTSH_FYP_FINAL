@@ -7,7 +7,19 @@ using UnityEngine.UI;
 public class FiveStonesGameManager : MonoBehaviour
 {
     private static FiveStonesGameManager _instance;
-    public static FiveStonesGameManager Instance { get { return _instance; } }
+    public static FiveStonesGameManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                GameObject instance = new GameObject("GameManager");
+                instance.AddComponent<FiveStonesGameManager>();
+            }
+
+            return _instance;
+        }
+    }
 
     public enum Objective
     { 
@@ -40,7 +52,7 @@ public class FiveStonesGameManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    void Start()        
     {
         StartGame(60, 1.1f);
     }
@@ -52,6 +64,8 @@ public class FiveStonesGameManager : MonoBehaviour
         StartCoroutine(GetComponent<StoneSpawner>().SpawnStoneLoop());
         RandomizeObjective();
         StartCoroutine(ObjectiveCoroutine());
+
+        ComboManager.Instance.e_comboAdded.AddListener(AnimateComboAdd);
     }
 
     // Update is called once per frame
@@ -120,6 +134,11 @@ public class FiveStonesGameManager : MonoBehaviour
             m_score += baseScore;
             ComboManager.Instance.BreakCombo();
         }
+    }
+
+    public void AnimateComboAdd()
+    {
+
     }
 
     public static Objective GetRandomColouredObjective()

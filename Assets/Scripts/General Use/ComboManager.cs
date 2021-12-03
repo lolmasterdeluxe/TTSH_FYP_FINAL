@@ -6,7 +6,19 @@ using UnityEngine.Events;
 public class ComboManager : MonoBehaviour
 {
     private static ComboManager _instance;
-    public static ComboManager Instance { get { return _instance; } }
+    public static ComboManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                GameObject instance = new GameObject("ComboManager");
+                instance.AddComponent<ComboManager>();
+            }
+
+            return _instance;
+        }
+    }
 
     private int m_combo;
 
@@ -15,11 +27,11 @@ public class ComboManager : MonoBehaviour
     private float m_comboExpiryDefault;
     private float m_comboExpiryTimer;
 
-    public UnityEvent e_comboStarted;
-    public UnityEvent e_comboAdded;
-    public UnityEvent e_comboChanged;
-    public UnityEvent e_comboBreak;
-    public UnityEvent e_comboExpired;
+    public UnityEvent e_comboStarted = new UnityEvent();
+    public UnityEvent e_comboAdded = new UnityEvent();
+    public UnityEvent e_comboChanged = new UnityEvent();
+    public UnityEvent e_comboBreak = new UnityEvent();
+    public UnityEvent e_comboExpired = new UnityEvent();
 
     private void Awake()
     {
@@ -76,7 +88,7 @@ public class ComboManager : MonoBehaviour
     // Adds a combo, this will also invoke combo started event if it just started and will invoke combo added event
     public void AddCombo(int combo = 1)
     {
-        if (m_combo <= 1)
+        if (m_combo <= 1)  
             e_comboStarted.Invoke();
 
         if (m_doesComboExpire)

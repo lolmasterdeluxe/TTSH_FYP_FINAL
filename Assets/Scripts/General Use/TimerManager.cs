@@ -6,12 +6,24 @@ using UnityEngine.Events;
 public class TimerManager : MonoBehaviour
 {
     private static TimerManager _instance;
-    public static TimerManager Instance { get { return _instance; } }
+    public static TimerManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                GameObject instance = new GameObject("TimerManager");
+                instance.AddComponent<TimerManager>();
+            }
+
+            return _instance;
+        }
+    }
 
     #region Countdown Variable
-    public UnityEvent e_TimerStarted;
-    public UnityEvent e_TimerPassedThreshold;
-    public UnityEvent e_TimerFinished;
+    public UnityEvent e_TimerStarted = new UnityEvent();
+    public UnityEvent e_TimerPassedThreshold = new UnityEvent();
+    public UnityEvent e_TimerFinished = new UnityEvent();
 
     private bool m_timerRun;
     private bool m_timerActivated;
@@ -22,8 +34,8 @@ public class TimerManager : MonoBehaviour
     #endregion
 
     #region ElapsedTime Variable
-    public UnityEvent e_elapsedTimeStarted;
-    public UnityEvent e_elapsedTimeFinished;
+    public UnityEvent e_elapsedTimeStarted = new UnityEvent();
+    public UnityEvent e_elapsedTimeFinished = new UnityEvent();
 
     private bool m_elapsedTimeRun;
     private bool m_elapsedTimeActivated;
