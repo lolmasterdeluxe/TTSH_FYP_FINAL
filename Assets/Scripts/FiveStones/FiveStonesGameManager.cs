@@ -55,12 +55,15 @@ public class FiveStonesGameManager : MonoBehaviour
     void Start()        
     {
         StartGame(60, 1.1f);
+        ScoreManager.Instance.LoadAllScoreList();
+        ScoreManager.Instance.EndSessionConcludeScore();
     }
 
     void StartGame(float time, float difficultyMultiplier)
     {
         TimerManager.Instance.StartCountdown(time);
         ComboManager.Instance.SetComboExpiry(3f);
+        ScoreManager.Instance.LoadNewGamemode(ScoreManager.Gamemode.FIVESTONES);
         StartCoroutine(GetComponent<StoneSpawner>().SpawnStoneLoop());
         RandomizeObjective();
         StartCoroutine(ObjectiveCoroutine());
@@ -106,7 +109,7 @@ public class FiveStonesGameManager : MonoBehaviour
 
     void UpdateUI()
     {
-        g_scoreText.GetComponent<TMP_Text>().text = "Score: " + m_score.ToString();
+        g_scoreText.GetComponent<TMP_Text>().text = "Score: " + ScoreManager.Instance.GetCurrentGameScore();
         g_timerText.GetComponent<TMP_Text>().text = TimerManager.Instance.GetFormattedRemainingTime();
         g_comboText.GetComponent<TMP_Text>().text = "Combo: " + ComboManager.Instance.GetCurrentCombo() + "x";
         g_comboExpiryBarTimerText.GetComponent<TMP_Text>().text = ComboManager.Instance.GetComboExpiryTimerFormatted();
@@ -127,13 +130,18 @@ public class FiveStonesGameManager : MonoBehaviour
         if (gameObject.GetComponent<Stone>().type == m_currentObjective || m_currentObjective == Objective.CATCH_ANY_STONES)
         {
             ComboManager.Instance.AddCombo();
-            m_score += (baseScore * ComboManager.Instance.GetCurrentCombo());
+            ScoreManager.Instance.AddCurrentGameScore(baseScore * ComboManager.Instance.GetCurrentCombo());
         }
         else
         {
-            m_score += baseScore;
+            ScoreManager.Instance.AddCurrentGameScore(baseScore);
             ComboManager.Instance.BreakCombo();
         }
+    }
+    
+    public void OnGameEnd()
+    {
+        ScoreManager.Instance.EndCurrentGameScore();
     }
 
     public void AnimateComboAdd()
