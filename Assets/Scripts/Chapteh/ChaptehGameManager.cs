@@ -46,13 +46,15 @@ public class ChaptehGameManager : MonoBehaviour
     void Start()
     {
         StartGame(90);
-
+        ScoreManager.Instance.LoadAllScoreList();
+        ScoreManager.Instance.EndSessionConcludeScore();
     }
 
     void StartGame(float time)
     {
         TimerManager.Instance.StartCountdown(time);
         ComboManager.Instance.SetComboExpiry(8f);
+        ScoreManager.Instance.LoadNewGamemode(ScoreManager.Gamemode.CHAPTEH);
         RandomizeObjective();
         StartCoroutine(ObjectiveCoroutine());
     }
@@ -70,14 +72,13 @@ public class ChaptehGameManager : MonoBehaviour
         while (true)
         {
             RandomizeObjective();
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(5);
         }
     }
 
     public void RandomizeObjective()
     {
-        //m_currentObjective = (Objective)Random.Range(1, (int)Objective.TOTAL);
-        m_currentObjective = Objective.HIT_RED_HOOPS;
+        m_currentObjective = (Objective)Random.Range(1, (int)Objective.TOTAL);
 
         switch (m_currentObjective)
         {
@@ -87,9 +88,9 @@ public class ChaptehGameManager : MonoBehaviour
             case Objective.HIT_BLUE_HOOPS:
                 g_objectiveText.GetComponent<TMP_Text>().text = "Shoot into <color=blue>blue</color> Hoops!";
                 break;
-            //case Objective.HIT_GREEN_HOOPS:
-            //    g_objectiveText.GetComponent<TMP_Text>().text = "Shoot into <color=green>green</color> Hoops!";
-            //    break;
+            case Objective.HIT_GREEN_HOOPS:
+                g_objectiveText.GetComponent<TMP_Text>().text = "Shoot into <color=green>green</color> Hoops!";
+                break;
             case Objective.HIT_ANY_HOOPS:
                 g_objectiveText.GetComponent<TMP_Text>().text = "Shoot into <color=grey>any</color> Hoops!";
                 break;
@@ -98,7 +99,7 @@ public class ChaptehGameManager : MonoBehaviour
 
     private void UIUpdate()
     {
-        g_scoreText.GetComponent<TMP_Text>().text = "Score \n" + m_score.ToString();
+        g_scoreText.GetComponent<TMP_Text>().text = "Score \n" + ScoreManager.Instance.GetCurrentGameScore();
         g_timerText.GetComponent<TMP_Text>().text = TimerManager.Instance.GetFormattedRemainingTime();
         g_comboText.GetComponent<TMP_Text>().text = "Combo: " + ComboManager.Instance.GetCurrentCombo() + "x";
         g_comboExpiryBarTimerText.GetComponent<TMP_Text>().text = ComboManager.Instance.GetComboExpiryTimerFormatted();
@@ -120,28 +121,33 @@ public class ChaptehGameManager : MonoBehaviour
         if (gameObject.GetComponent<Hoops>().type == m_currentObjective && m_currentObjective == Objective.HIT_RED_HOOPS)
         {
             ComboManager.Instance.AddCombo();
-            m_score += (redbaseScore * ComboManager.Instance.GetCurrentCombo());
+            ScoreManager.Instance.AddCurrentGameScore(redbaseScore * ComboManager.Instance.GetCurrentCombo());
         }
         else if(gameObject.GetComponent<Hoops>().type == m_currentObjective && m_currentObjective == Objective.HIT_BLUE_HOOPS)
         {
             ComboManager.Instance.AddCombo();
-            m_score += (bluebaseScore * ComboManager.Instance.GetCurrentCombo());
+            ScoreManager.Instance.AddCurrentGameScore(bluebaseScore * ComboManager.Instance.GetCurrentCombo());
         }
-        //else if (gameObject.GetComponent<Hoops>().type == m_currentObjective && m_currentObjective == Objective.HIT_GREEN_HOOPS)
-        //{
-        //    ComboManager.Instance.AddCombo();
-        //    m_score += (greenbaseScore * ComboManager.Instance.GetCurrentCombo());
-        //}
+        else if (gameObject.GetComponent<Hoops>().type == m_currentObjective && m_currentObjective == Objective.HIT_GREEN_HOOPS)
+        {
+            ComboManager.Instance.AddCombo();
+            ScoreManager.Instance.AddCurrentGameScore(greenbaseScore * ComboManager.Instance.GetCurrentCombo());
+        }
         else if (gameObject.GetComponent<Hoops>().type == m_currentObjective && m_currentObjective == Objective.HIT_ANY_HOOPS)
         {
             ComboManager.Instance.AddCombo();
-            m_score += (anybaseScore * ComboManager.Instance.GetCurrentCombo());
+            ScoreManager.Instance.AddCurrentGameScore(anybaseScore * ComboManager.Instance.GetCurrentCombo());
         }
         else
         {
-            m_score += baseScore;
+            ScoreManager.Instance.AddCurrentGameScore(baseScore);
             ComboManager.Instance.BreakCombo();
         }
+    }
+
+    public void OnGameEnd()
+    {
+        ScoreManager.Instance.EndCurrentGameScore();
     }
 
     public static Objective GetRandomColouredObjective()

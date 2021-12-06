@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnHoops : MonoBehaviour
 {
-    public GameObject redHoopPrefab, blueHoopPrefab;
+    public GameObject redHoopPrefab, blueHoopPrefab, greenHoopPrefab;
     public float spawnRate = 2f;
     private float randX, randY;
     private float randOption;
@@ -13,15 +13,17 @@ public class SpawnHoops : MonoBehaviour
 
     public SpriteRenderer skySpriteWidth, skySpriteHeight;
     private List<Vector2> spawnedPositions;
-    private float hoopRadius;
+    private float redhoopRadius, bluehoopRadius, greenhoopRadius;
 
-    private int points;
+    private GameObject gameObjectHoops;
 
     // Start is called before the first frame update
     void Start()
     {
         //hoopWidth = GetComponent<SpriteRenderer>().bounds.size.x / 2;
-        hoopRadius = redHoopPrefab.GetComponent<Collider2D>().bounds.extents.x;
+        redhoopRadius = redHoopPrefab.GetComponent<Collider2D>().bounds.extents.x;
+        bluehoopRadius = blueHoopPrefab.GetComponent<Collider2D>().bounds.extents.x;
+        greenhoopRadius = greenHoopPrefab.GetComponent<Collider2D>().bounds.extents.x;
         spawnedPositions = new List<Vector2>();
     }
 
@@ -82,31 +84,55 @@ public class SpawnHoops : MonoBehaviour
         if (Time.time > nextSpawn)
         {
             nextSpawn = Time.time + spawnRate;
-            hoopRadius = redHoopPrefab.GetComponent<Collider2D>().bounds.max.x;
+            redhoopRadius = redHoopPrefab.GetComponent<Collider2D>().bounds.max.x;
+            bluehoopRadius = redHoopPrefab.GetComponent<Collider2D>().bounds.max.x;
+            greenhoopRadius = redHoopPrefab.GetComponent<Collider2D>().bounds.max.x;
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
             {
-                randX = Random.Range(skySpriteWidth.bounds.min.x, skySpriteWidth.bounds.max.x);
-                randY = Random.Range(skySpriteHeight.bounds.min.y + 3f, skySpriteHeight.bounds.max.y);
-                randOption = Random.Range(0, 2);
+                randX = Random.Range(skySpriteWidth.bounds.min.x + 0.5f, skySpriteWidth.bounds.max.x - 0.5f);
+                randY = Random.Range(skySpriteHeight.bounds.min.y + 3f, skySpriteHeight.bounds.max.y - 0.5f);
+                randOption = Random.Range(0, 3);
                 spawnPos = new Vector2(randX, randY);
 
-                Collider2D colliderWithHoop = Physics2D.OverlapCircle(spawnPos, hoopRadius, LayerMask.GetMask("HoopLayer"));
+                Collider2D colliderWithRedHoop = Physics2D.OverlapCircle(spawnPos, redhoopRadius, LayerMask.GetMask("RedHoopLayer"));
+                Collider2D colliderWithBlueHoop = Physics2D.OverlapCircle(spawnPos, bluehoopRadius, LayerMask.GetMask("BlueHoopLayer"));
+                Collider2D colliderWithGreenHoop = Physics2D.OverlapCircle(spawnPos, greenhoopRadius, LayerMask.GetMask("GreenHoopLayer"));
 
-                if (!colliderWithHoop)
+                if (!colliderWithRedHoop && !colliderWithBlueHoop && !colliderWithGreenHoop)
                     spawnedPositions.Add(spawnPos);
 
                 if (spawnedPositions[i].x != randX && spawnedPositions[i].y != randY)
                 {
-                    if (colliderWithHoop == false)
+                    if (colliderWithRedHoop == false && colliderWithBlueHoop == false && colliderWithGreenHoop == false)
                     {
                         GameObject temp;
-                        if (randOption < 1)
-                            temp = Instantiate(redHoopPrefab, spawnPos, Quaternion.identity);
-                        else
-                            temp = Instantiate(blueHoopPrefab, spawnPos, Quaternion.identity);
+                        
+                        switch(randOption)
+                        {
+                            case 0:
+                                temp = Instantiate(redHoopPrefab, spawnPos, Quaternion.identity);
+                                gameObjectHoops = temp;
+                                break;
+                            case 1:
+                                temp = Instantiate(blueHoopPrefab, spawnPos, Quaternion.identity);
+                                gameObjectHoops = temp;
+                                break;
+                            case 2:
+                                temp = Instantiate(greenHoopPrefab, spawnPos, Quaternion.identity);
+                                gameObjectHoops = temp;
+                                break;
+                        }
+
+                        //if (randOption < 1)
+                        //    temp = Instantiate(redHoopPrefab, spawnPos, Quaternion.identity);
+                        //else if (randOption < 0)
+                        //    temp = Instantiate(blueHoopPrefab, spawnPos, Quaternion.identity);
+                        //else
+                        //    temp = Instantiate(greenHoopPrefab, spawnPos, Quaternion.identity);
+
                         spawnedPositions.RemoveAt(spawnedPositions.Count - 1);
-                        spawnedPositions.Add(temp.transform.position);
+                        spawnedPositions.Add(gameObjectHoops.transform.position);
                     }
                 }
 

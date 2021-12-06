@@ -16,7 +16,7 @@ public class Chapteh : MonoBehaviour
     private Vector2 lookDirection;
     private float lookAngle;
 
-    public const float MAX_FORCE = 1100f;
+    [SerializeField] private KickChapteh kickChapteh;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +28,8 @@ public class Chapteh : MonoBehaviour
 
         // Set initial rotation to 0
         rotPos = transform.rotation;
+
+        kickChapteh = GameObject.Find("Chapteh Manager").GetComponent<KickChapteh>();
     }
 
     // Update is called once per frame
@@ -43,17 +45,9 @@ public class Chapteh : MonoBehaviour
         }
 
         //Kick();
+        kickChapteh.PowerLaunch();
 
-        // When the Chapteh is launched
-        if (inPlay)
-        {
-            // Clamps the Chapteh within the boundaries of the background
-            transform.position = new Vector2(Mathf.Clamp(transform.position.x, skyWidth.bounds.min.x + chaptehWidth, skyWidth.bounds.max.x - chaptehWidth), 
-                                             Mathf.Clamp(transform.position.y, skyHeight.bounds.min.y + chaptehHeight, skyHeight.bounds.max.y - chaptehHeight));
-
-            // Rotates the Chapteh to fall according to gravity
-            rbChapteh.rotation += rbChapteh.gravityScale;
-        } 
+        FallOnGravity(); 
     }
 
     // Chapteh rotates at direction of the mouse position
@@ -79,6 +73,20 @@ public class Chapteh : MonoBehaviour
 
             // Force needed to launch the Chapteh
             rbChapteh.AddForce(playerToMouseDir * speed);
+        }
+    }
+
+    public void FallOnGravity()
+    {
+        // When the Chapteh is launched
+        if (inPlay)
+        {
+            // Clamps the Chapteh within the boundaries of the background
+            transform.position = new Vector2(Mathf.Clamp(transform.position.x, skyWidth.bounds.min.x + chaptehWidth, skyWidth.bounds.max.x - chaptehWidth),
+                                             Mathf.Clamp(transform.position.y, skyHeight.bounds.min.y + chaptehHeight, skyHeight.bounds.max.y - chaptehHeight));
+
+            // Rotates the Chapteh to fall according to gravity
+            rbChapteh.rotation += rbChapteh.gravityScale;
         }
     }
 

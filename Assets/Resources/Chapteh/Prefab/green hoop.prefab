@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5907309835673420695}
   - component: {fileID: 6867020498603166644}
   - component: {fileID: 3042869685901455344}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: green hoop
   m_TagString: GreenHoop
   m_Icon: {fileID: 0}

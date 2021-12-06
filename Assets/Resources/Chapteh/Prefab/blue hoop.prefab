@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5615811428698999735}
   - component: {fileID: 6973762250112921461}
   - component: {fileID: 3988421086485622130}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: blue hoop
   m_TagString: BlueHoop
   m_Icon: {fileID: 0}
