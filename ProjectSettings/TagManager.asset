@@ -12,6 +12,7 @@ TagManager:
   - BlueHoop
   - RedHoop
   - GreenHoop
+  - SafeObstacle
   layers:
   - Default
   - TransparentFX

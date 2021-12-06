@@ -13,15 +13,16 @@ public class SPS_Player : MonoBehaviour
         P_SCISSOR, P_PAPER, P_STONE, P_JUMP, P_SLIDE, P_NONE
     };
 
+    public PlayerChoice p_choice;
+
     #endregion
 
     #region Variables
 
-    public PlayerChoice p_choice;
-
+    Animator ac;
     ComboManager combomanagerInstance;
     SPS_LivesManager livesInstance;
-    SPS_ObjectSpawningScript waveCheck;
+    SPS_ObjectSpawningScript objectspawningInstance;
     
     #endregion
 
@@ -30,26 +31,54 @@ public class SPS_Player : MonoBehaviour
     private void Start()
     {
         p_choice = PlayerChoice.P_NONE;
+        ac = GetComponent<Animator>();
         livesInstance = FindObjectOfType<SPS_LivesManager>();
         combomanagerInstance = FindObjectOfType<ComboManager>();
-        waveCheck = FindObjectOfType<SPS_ObjectSpawningScript>();
+        objectspawningInstance = FindObjectOfType<SPS_ObjectSpawningScript>();
     }
 
     private void Update()
     {
-
+        //if the list is empty we know that the current way is completed
+        if (objectspawningInstance.objectwaveList.Count == 0)
+        {
+            objectspawningInstance.waveCompleted = false;
+            Debug.Log("List is empty");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "EnemyTag")
         {
-            Debug.Log("Player goes OW : trigger enter");
-            waveCheck.waveCompleted = false;
+            Debug.Log("Player has collided with an enemy : trigger enter");
+
+            //we set the animation here to be stunned
+            ac.SetBool("PlayerStunned", true);
+
+            //we now delete the instance of that gameobject in the list
+            objectspawningInstance.objectwaveList.Remove(other.gameObject);
+            
+            //we now delete the object and its rigidbody from the scene
             Destroy(other.gameObject.GetComponent<Rigidbody>());
             Destroy(other.gameObject);
+
+            //we do lives and combo calculations here
             livesInstance.PlayerTakesDamage();
             combomanagerInstance.BreakCombo();  
+        }
+
+        else if (other.gameObject.tag == "Obstacle")
+        {
+            Debug.Log("Player has collided with an Obstacle: trigger enter");
+
+            //we set the animation here to be stunned
+            ac.SetBool("PlayerStunned", true);
+
+            //we do lives and combo calculations here
+            livesInstance.PlayerTakesDamage();
+            combomanagerInstance.BreakCombo();
+
         }
     }
 
@@ -60,24 +89,23 @@ public class SPS_Player : MonoBehaviour
     public void PlayerChoosesScissors()
     {
         p_choice = PlayerChoice.P_SCISSOR;
+        ac.SetBool("PlayerAttackingWithScissors", true);
     }
     public void PlayerChoosesPaper()
     {
         p_choice = PlayerChoice.P_PAPER;
+        ac.SetBool("PlayerAttackingWithPaper", true);
     }
     public void PlayerChoosesStone()
     {
         p_choice = PlayerChoice.P_STONE;
+        ac.SetBool("PlayerAttackingWithStone", true);
     }
 
     public void PlayerJumps()
     {
         p_choice = PlayerChoice.P_JUMP;
-    }
-
-    public void PlayerSlides()
-    {
-        p_choice = PlayerChoice.P_SLIDE;
+        ac.SetBool("PlayerJumped", true);
     }
 
     #endregion

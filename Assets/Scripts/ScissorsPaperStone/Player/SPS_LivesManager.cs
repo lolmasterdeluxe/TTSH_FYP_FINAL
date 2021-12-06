@@ -15,7 +15,7 @@ public class SPS_LivesManager : MonoBehaviour
 
     #region Unity Callbacks
 
-    public void Start()
+    private void Start()
     {
         //we establish the number of lives a player has at the start:
         numberofLives = 5;
@@ -23,23 +23,28 @@ public class SPS_LivesManager : MonoBehaviour
         playerisAlive = true;
     }
 
+    private void Update()
+    {
+        //when player is dead
+        if (playerisAlive == false)
+        {
+            //player is DEAD
+            ScoreManager.Instance.EndCurrentGameScore();
+        }
+    }
+
     #endregion
 
     #region Functions
-
-    public void PlayerDies()
-    {
-        playerisAlive = false;
-        Debug.Log("Player has died! Game has ended xD");
-    }
 
     public void PlayerTakesDamage()
     {
         numberofLives -= 1;
         Debug.Log("You lost a life!");
 
-        if (numberofLives < 0)
+        if (numberofLives <= 0)
         {
+            playerisAlive = false; 
             numberofLives = 0;
         }
     }

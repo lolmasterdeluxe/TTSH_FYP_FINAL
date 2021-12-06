@@ -9,7 +9,26 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
     //this handles object spawning in the scene at runtime:
     //this includes enemies and obstacles that the player will interact with
 
+    #region Enumerations
+
+    //this enumeration determines the type of enemies in a particular wave
+
+    public enum EnemyWaveType
+    { 
+        ENEMY_SINGLE_RANDOM, ENEMY_WAVE_RANDOM, 
+        ENEMY_WAVE_SCISSORS, ENEMY_WAVE_PAPER, 
+        ENEMY_WAVE_STONE
+    };
+
+    public EnemyWaveType enemywaveType;
+
+    #endregion
+
+
     #region Variables
+
+    //this list keeps track of objects being spawned
+    public List<GameObject> objectwaveList;
 
     //base prefab: material will be slapped on accordingly
     private GameObject objectInstance;
@@ -45,6 +64,7 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
 
     private void Start()
     {
+
     }
 
     private void Update()
@@ -52,25 +72,25 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
         objectspawnUptime += Time.deltaTime;
         if (objectspawnUptime >= (objectspawnUptime * objectspawnUptimeMultipier) && waveCompleted == false)
         {
-            float averageTime = Random.Range(4f, 6f);
             int randVal = Random.Range(0, 11);
-            switch (randVal % 2)
+            switch (randVal)
             {
                 case 0:
                     SpawnObject();
                     break;
                 case 1:
-                    SpawnObject();
+                    SpawnObstacle();
                     break;
 
             }
             objectspawnUptime = 0f;
         }
+
     }
 
 #endregion
 
-#region Functions
+    #region Functions
     
     //these functions spawn in enemies, obstacles and powerups
 
@@ -78,45 +98,83 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
     {
         //we now roll randomly to determine what kind of enemy wave it is
 
-        int randomVal = Random.Range(0, 1);
+        int randomVal = Random.Range(0, 3);
 
         switch (randomVal)
         {
-            case 0:
-                objectInstance = Instantiate(enemyPrefab,
-                objectstartPosition.position, objectstartPosition.rotation);
-                objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, objectSpeed * objectSpeedMultiplier);
-                objectInstance.GetComponent<Rigidbody>().DOMoveX(enemyEndPosition.transform.position.x, objectSpeed * objectSpeedMultiplier);
-                waveCompleted = true;
+            case 0: //random single
+                
+                SpawnEnemy();
+
                 break;
 
-            case 1:
+            case 1: //random wave
 
-                for (int i = 0; i < 4; i++)
+                SpawnEnemyWave();
+
+                break;
+
+            case 2: //uniform wave
+
+                int randomVal2 = Random.Range(0, 3);
+
+                switch (randomVal2)
                 {
-                    objectInstance = Instantiate(enemyPrefab,
-                    objectstartPosition.position, objectstartPosition.rotation);
-                    objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, objectSpeed * objectSpeedMultiplier);
-                    objectInstance.GetComponent<Rigidbody>().DOMoveX(enemyEndPosition.transform.position.x, objectSpeed * objectSpeedMultiplier);
-                    waveCompleted = true;
+                    case 0:
+                        enemywaveType = EnemyWaveType.ENEMY_WAVE_SCISSORS;
+                        break;
+                    case 1:
+                        enemywaveType = EnemyWaveType.ENEMY_WAVE_PAPER;
+                        break;
+                    case 2:
+                        enemywaveType = EnemyWaveType.ENEMY_WAVE_STONE;
+                        break;
                 }
+
+                SpawnEnemyWave();
+
                 break;
-
-                //objectInstance = Instantiate(obstaclePrefab,
-                //objectstartPosition.position, objectstartPosition.rotation);
-                //objectInstance.transform.DOMoveX(obstacleEndPosition.transform.position.x, averageTime);
-                //objectInstance.GetComponent<Rigidbody>().DOMoveX(obstacleEndPosition.transform.position.x, averageTime);
-
-
         }
-
-
-
-
-
-
-
     }
+
+    public void SpawnEnemy()
+    {
+        objectInstance = Instantiate(enemyPrefab,
+        objectstartPosition.position, objectstartPosition.rotation);
+        objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, objectSpeed * objectSpeedMultiplier);
+        objectInstance.GetComponent<Rigidbody>().DOMoveX(enemyEndPosition.transform.position.x, objectSpeed * objectSpeedMultiplier);
+        objectwaveList.Add(objectInstance);
+        waveCompleted = true;
+        enemywaveType = EnemyWaveType.ENEMY_SINGLE_RANDOM;
+    }
+
+    public void SpawnEnemyWave()
+    {
+        //generate a set of enemies equally spaced out
+
+        for (int val = 1; val < 5; val++)
+        {
+            objectInstance = Instantiate(enemyPrefab,
+            new Vector3(objectstartPosition.position.x + val * 2, objectstartPosition.position.y, objectstartPosition.position.z), objectstartPosition.rotation);
+            objectInstance.transform.DOMoveX(obstacleEndPosition.transform.position.x, (objectSpeed * objectSpeedMultiplier) + val);
+            objectInstance.GetComponent<Rigidbody>().DOMoveX(obstacleEndPosition.transform.position.x, (objectSpeed * objectSpeedMultiplier) + val);
+            objectwaveList.Add(objectInstance);
+            waveCompleted = true;
+        }
+    }
+
+    public void SpawnObstacle()
+    {
+        //we now randomly roll to determine the type of obstacle to be spawned
+
+        objectInstance = Instantiate(obstaclePrefab,
+        objectstartPosition.position, objectstartPosition.rotation);
+        objectInstance.transform.DOMoveX(obstacleEndPosition.transform.position.x, objectSpeed * objectSpeedMultiplier);
+        objectInstance.GetComponent<Rigidbody>().DOMoveX(obstacleEndPosition.transform.position.x, objectSpeed * objectSpeedMultiplier);
+        objectwaveList.Add(objectInstance);
+        waveCompleted = true;
+    }
+
 
     #endregion
 }

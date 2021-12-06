@@ -16,19 +16,50 @@ public class SPS_Enemy : MonoBehaviour
     public AIChoice ai_choice;
     public Material scissor, paper, stone;
 
+    SPS_ObjectSpawningScript objectspawningInstance;
+
     #endregion
 
     #region Unity Callbacks
 
     private void Start()
     {
+        objectspawningInstance = FindObjectOfType<SPS_ObjectSpawningScript>();
+
         ai_choice = AIChoice.AI_NONE;
-        RandomizeEnemyType();
+
+        RandomizeWaveFormat();
     }
 
     #endregion  
 
     #region Functions
+
+    //this determines the type of enemy wave that will be created
+    public void RandomizeWaveFormat()
+    {
+        if (objectspawningInstance.enemywaveType == SPS_ObjectSpawningScript.EnemyWaveType.ENEMY_SINGLE_RANDOM
+            || objectspawningInstance.enemywaveType == SPS_ObjectSpawningScript.EnemyWaveType.ENEMY_WAVE_RANDOM)
+        {
+            RandomizeEnemyType();
+        }
+
+        else if (objectspawningInstance.enemywaveType == SPS_ObjectSpawningScript.EnemyWaveType.ENEMY_WAVE_SCISSORS)
+        {
+            ai_choice = AIChoice.AI_SCISSOR;
+            GetComponent<Renderer>().material = scissor;
+        }
+        else if (objectspawningInstance.enemywaveType == SPS_ObjectSpawningScript.EnemyWaveType.ENEMY_WAVE_PAPER)
+        {
+            ai_choice = AIChoice.AI_PAPER;
+            GetComponent<Renderer>().material = paper;
+        }
+        else if (objectspawningInstance.enemywaveType == SPS_ObjectSpawningScript.EnemyWaveType.ENEMY_WAVE_STONE)
+        {
+            ai_choice = AIChoice.AI_STONE;
+            GetComponent<Renderer>().material = stone;
+        }
+    }
 
     public void RandomizeEnemyType()
     {

@@ -11,10 +11,12 @@ public class SPS_AttackCollision : MonoBehaviour
 
     public bool buttonPressed;
     public float rangeUptime;
+
+    Animator ac;
     SPS_Player playerChoice;
     SPS_ScoreManager scoreInstance;
-    SPS_ObjectSpawningScript waveCheck;
-    ComboManager comboManager_instance;
+    SPS_ObjectSpawningScript objectspawningInstance;
+    ComboManager combomanagerInstance;
 
     #endregion
 
@@ -22,14 +24,22 @@ public class SPS_AttackCollision : MonoBehaviour
 
     private void Start()
     {
+        ac = FindObjectOfType<SPS_Player>().GetComponent<Animator>();
         playerChoice = GetComponentInParent<SPS_Player>();
         scoreInstance = FindObjectOfType<SPS_ScoreManager>();
-        comboManager_instance = FindObjectOfType<ComboManager>();
+        combomanagerInstance = FindObjectOfType<ComboManager>();
+        objectspawningInstance = FindObjectOfType<SPS_ObjectSpawningScript>();
     }
 
     private void Update()
     {
         Timer();
+
+        //check to see if wave is completed every frame
+        if (objectspawningInstance.objectwaveList.Count == 0)
+        {
+            objectspawningInstance.waveCompleted = false;
+        }
     }
 
     #endregion
@@ -38,7 +48,7 @@ public class SPS_AttackCollision : MonoBehaviour
 
     public void ButtonPress()
     {
-        buttonPressed = true;
+        buttonPressed = true;     
     }
 
     public void Timer()
@@ -50,8 +60,13 @@ public class SPS_AttackCollision : MonoBehaviour
             {
                 rangeUptime = 0f;
                 buttonPressed = false;
-                Debug.Log("finished");
                 playerChoice.p_choice = SPS_Player.PlayerChoice.P_NONE;
+
+                //we set all the action (button )animations to be false since everything should be reset
+                ac.SetBool("PlayerAttackingWithScissors", false);
+                ac.SetBool("PlayerAttackingWithPaper", false);
+                ac.SetBool("PlayerAttackingWithStone", false);
+                ac.SetBool("PlayerJumped", false);
             }
         }
     }
@@ -59,11 +74,10 @@ public class SPS_AttackCollision : MonoBehaviour
     //call this function when the wave of enemy is completed
     public void WaveCompleted()
     {
-        waveCheck.waveCompleted = true;
+        objectspawningInstance.waveCompleted = true;
     }
 
     #endregion
-
 
     private void OnTriggerStay(Collider other)
     {
@@ -79,47 +93,64 @@ public class SPS_AttackCollision : MonoBehaviour
                     && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_PAPER)
                 {
                     Debug.Log("Enemy goes OW: trigger stay");
-                    waveCheck.waveCompleted = true;
+
+                    //we first destroy the instance of the gameObject in the list
+                    objectspawningInstance.objectwaveList.Remove(other.gameObject);
+
+                    //now remove the gameobject and its rigidbody from the scene
                     Destroy(other.gameObject);
                     Destroy(other.gameObject.GetComponent<Rigidbody>());
+
+                    //we do lives and combo calculations here
                     scoreInstance.PlayerScores();
-                    comboManager_instance.AddCombo();
+                    combomanagerInstance.AddCombo();
                 }
+
                 else if (buttonPressed == true && playerChoice.p_choice == SPS_Player.PlayerChoice.P_PAPER
                     && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_STONE)
                 {
                     Debug.Log("Enemy goes OW: trigger stay");
-                    waveCheck.waveCompleted = false;
-                    Destroy(other.gameObject.GetComponent<Rigidbody>());
+
+                    //we first destroy the instance of the gameObject in the list
+                    objectspawningInstance.objectwaveList.Remove(other.gameObject);
+
+                    //now remove the gameobject and its rigidbody from the scene
                     Destroy(other.gameObject);
+                    Destroy(other.gameObject.GetComponent<Rigidbody>());
+
+                    //we do lives and combo calculations here
                     scoreInstance.PlayerScores();
-                    comboManager_instance.AddCombo();
+                    combomanagerInstance.AddCombo();
                 }
+
                 else if (buttonPressed == true && playerChoice.p_choice == SPS_Player.PlayerChoice.P_STONE
                     && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_SCISSOR)
                 {
                     Debug.Log("Enemy goes OW: trigger stay");
-                    waveCheck.waveCompleted = false;
-                    Destroy(other.gameObject.GetComponent<Rigidbody>());
+
+                    //we first destroy the instance of the gameObject in the list
+                    objectspawningInstance.objectwaveList.Remove(other.gameObject);
+
+                    //now remove the gameobject and its rigidbody from the scene
                     Destroy(other.gameObject);
+                    Destroy(other.gameObject.GetComponent<Rigidbody>());
+
+                    //we do lives and combo calculations here
                     scoreInstance.PlayerScores();
-                    comboManager_instance.AddCombo();
+                    combomanagerInstance.AddCombo();
                 }
             }
-            else if (other.gameObject.tag == "Obstacle")
+
+            else if (other.gameObject.tag == "Obstacle") //obstacle
             {
-                if (playerChoice.p_choice == SPS_Player.PlayerChoice.P_JUMP
-                    && other.GetComponent<SPS_Obstacles>().obstacle_choice == SPS_Obstacles.ObstacleChoice.OBS_MOUNTAIN)
+                if (buttonPressed == true && playerChoice.p_choice == SPS_Player.PlayerChoice.P_JUMP
+                    && (other.GetComponent<SPS_Obstacles>().obstacle_choice == SPS_Obstacles.ObstacleChoice.OBS_MOUNTAIN || other.GetComponent<SPS_Obstacles>().obstacle_choice == SPS_Obstacles.ObstacleChoice.OBS_LOG))
                 {
-                    Debug.Log("Jumped over perfectly");
-                    /* ADD CODE HERE FOR PLAYER STUN */
+                    Debug.Log("Player Jump successful");
+
+                    other.gameObject.tag = "SafeObstacle";
                 }
-                else if ((playerChoice.p_choice == SPS_Player.PlayerChoice.P_SLIDE)
-                    && other.GetComponent<SPS_Obstacles>().obstacle_choice == SPS_Obstacles.ObstacleChoice.OBS_LOG)
-                {
-                    Debug.Log("Jumped over perfectly");
-                    /* ADD CODE HERE FOR PLAYER STUN */
-                }
+
             }
         }
     }

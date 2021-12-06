@@ -7,10 +7,36 @@ public class SPS_Despawning : MonoBehaviour
     //this helps to despawn anything that did not manage to get despawned:
     //removes it from the game scene altogether
 
+    #region Variables
+
+    SPS_ObjectSpawningScript objectspawningInstance;
+
+    #endregion
+
+    #region Unity Callbacks
+
+    private void Start()
+    {
+        objectspawningInstance = FindObjectOfType<SPS_ObjectSpawningScript>();
+    }
+
+    private void Update()
+    {
+        if (objectspawningInstance.objectwaveList.Count == 0)
+        {
+            objectspawningInstance.waveCompleted = false;
+            //Debug.Log("List is empty");
+        }
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "EnemyTag" || other.gameObject.tag == "Obstacle")
+        if (other.gameObject.tag == "EnemyTag" || other.gameObject.tag == "Obstacle" || other.gameObject.tag == "SafeObstacle")
         {
+            //remove the gameobject instance in the list
+            objectspawningInstance.objectwaveList.Remove(other.gameObject);
+
             Destroy(other.gameObject);
             //if it has a rigidbody we destroy it
             if (other.gameObject.GetComponent<Rigidbody>() != null)
@@ -25,6 +51,9 @@ public class SPS_Despawning : MonoBehaviour
     {
         if (other.gameObject.tag == "EnemyTag" || other.gameObject.tag == "Obstacle")
         {
+            //remove the gameobject instance in the list
+            objectspawningInstance.objectwaveList.Remove(other.gameObject);
+
             Destroy(other.gameObject);
             //if it has a rigidbody we destroy it
             if (other.gameObject.GetComponent<Rigidbody>() != null)
@@ -34,4 +63,8 @@ public class SPS_Despawning : MonoBehaviour
             Debug.Log("Obstacle OR Enemy has been destroyed");
         }
     }
+
+    #endregion
+
+
 }

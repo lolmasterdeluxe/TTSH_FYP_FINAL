@@ -27,15 +27,17 @@ public class SPS_ScoreManager : MonoBehaviour
         playerScore = 0;
         //add reference HERE
         combomanagerInstance = FindObjectOfType<ComboManager>();
+
+        ScoreManager.Instance.LoadAllScoreList();
+        ScoreManager.Instance.EndSessionConcludeScore();
+
+        ScoreManager.Instance.LoadNewGamemode(ScoreManager.Gamemode.SPS);
+
     }
 
     private void Update()
     {
-        scoretextInstance.GetComponent<TMP_Text>().text = "Score: " + playerScore;
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            PlayerScores();
-        }
+        scoretextInstance.GetComponent<TMP_Text>().text = "Score: " + ScoreManager.Instance.GetCurrentGameScore();
     }
 
     #endregion
@@ -45,8 +47,7 @@ public class SPS_ScoreManager : MonoBehaviour
     public void PlayerScores()
     {
         combomanagerInstance.AddCombo();
-        playerScore += baseScore * combomanagerInstance.GetCurrentCombo();
-        Debug.Log("combo current:" + combomanagerInstance.GetCurrentCombo());
+        ScoreManager.Instance.AddCurrentGameScore(baseScore * ComboManager.Instance.GetCurrentCombo());
     }
 
     #endregion
