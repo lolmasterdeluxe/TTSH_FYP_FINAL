@@ -20,10 +20,11 @@ public class SPS_Player : MonoBehaviour
     #region Variables
 
     Animator ac;
-    ComboManager combomanagerInstance;
     SPS_LivesManager livesInstance;
     SPS_ObjectSpawningScript objectspawningInstance;
-    
+
+    public bool hasPowerup;
+
     #endregion
 
     #region Unity Callbacks
@@ -31,9 +32,10 @@ public class SPS_Player : MonoBehaviour
     private void Start()
     {
         p_choice = PlayerChoice.P_NONE;
+        //hasPowerup = false;
+
         ac = GetComponent<Animator>();
         livesInstance = FindObjectOfType<SPS_LivesManager>();
-        combomanagerInstance = FindObjectOfType<ComboManager>();
         objectspawningInstance = FindObjectOfType<SPS_ObjectSpawningScript>();
     }
 
@@ -65,7 +67,7 @@ public class SPS_Player : MonoBehaviour
 
             //we do lives and combo calculations here
             livesInstance.PlayerTakesDamage();
-            combomanagerInstance.BreakCombo();  
+            ComboManager.Instance.BreakCombo();  
         }
 
         else if (other.gameObject.tag == "Obstacle")
@@ -77,9 +79,20 @@ public class SPS_Player : MonoBehaviour
 
             //we do lives and combo calculations here
             livesInstance.PlayerTakesDamage();
-            combomanagerInstance.BreakCombo();
+            ComboManager.Instance.BreakCombo();
 
         }
+
+        else if (other.gameObject.tag == "Powerup")
+        {
+            Debug.Log("Player has collected a powerup: trigger enter");
+
+            //we set the boolean to be true here
+            hasPowerup = true;
+
+
+        }
+
     }
 
     #endregion

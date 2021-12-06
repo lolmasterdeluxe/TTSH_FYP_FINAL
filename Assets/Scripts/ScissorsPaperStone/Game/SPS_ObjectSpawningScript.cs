@@ -155,7 +155,7 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
         for (int val = 1; val < 5; val++)
         {
             objectInstance = Instantiate(enemyPrefab,
-            new Vector3(objectstartPosition.position.x + val * 2, objectstartPosition.position.y, objectstartPosition.position.z), objectstartPosition.rotation);
+            new Vector3(objectstartPosition.position.x + val * 4, objectstartPosition.position.y, objectstartPosition.position.z), objectstartPosition.rotation);
             objectInstance.transform.DOMoveX(obstacleEndPosition.transform.position.x, (objectSpeed * objectSpeedMultiplier) + val);
             objectInstance.GetComponent<Rigidbody>().DOMoveX(obstacleEndPosition.transform.position.x, (objectSpeed * objectSpeedMultiplier) + val);
             objectwaveList.Add(objectInstance);

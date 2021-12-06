@@ -12,11 +12,12 @@ public class SPS_AttackCollision : MonoBehaviour
     public bool buttonPressed;
     public float rangeUptime;
 
+    public BoxCollider attackCollider;
+
     Animator ac;
-    SPS_Player playerChoice;
+    SPS_Player playerInstance;
     SPS_ScoreManager scoreInstance;
     SPS_ObjectSpawningScript objectspawningInstance;
-    ComboManager combomanagerInstance;
 
     #endregion
 
@@ -25,15 +26,16 @@ public class SPS_AttackCollision : MonoBehaviour
     private void Start()
     {
         ac = FindObjectOfType<SPS_Player>().GetComponent<Animator>();
-        playerChoice = GetComponentInParent<SPS_Player>();
+        attackCollider = GetComponent<BoxCollider>();
+        
+        playerInstance = GetComponentInParent<SPS_Player>();
         scoreInstance = FindObjectOfType<SPS_ScoreManager>();
-        combomanagerInstance = FindObjectOfType<ComboManager>();
         objectspawningInstance = FindObjectOfType<SPS_ObjectSpawningScript>();
     }
 
     private void Update()
     {
-        Timer();
+        ButtonUptime();
 
         //check to see if wave is completed every frame
         if (objectspawningInstance.objectwaveList.Count == 0)
@@ -48,10 +50,17 @@ public class SPS_AttackCollision : MonoBehaviour
 
     public void ButtonPress()
     {
-        buttonPressed = true;     
+        buttonPressed = true;
+
+        if (playerInstance.hasPowerup == true)
+        {
+            attackCollider.size = new Vector3(2.89f, attackCollider.size.y, attackCollider.size.z);
+            attackCollider.center = new Vector3(2.59f, attackCollider.center.y, attackCollider.center.z);
+        }
+
     }
 
-    public void Timer()
+    public void ButtonUptime()
     {
         if (buttonPressed == true)
         {
@@ -60,7 +69,16 @@ public class SPS_AttackCollision : MonoBehaviour
             {
                 rangeUptime = 0f;
                 buttonPressed = false;
-                playerChoice.p_choice = SPS_Player.PlayerChoice.P_NONE;
+                playerInstance.p_choice = SPS_Player.PlayerChoice.P_NONE;
+
+                //set the powerup boolean to be false
+                playerInstance.hasPowerup = false;
+
+                //set the attack collider to be the default size
+                attackCollider.size = new Vector3(1.65f, attackCollider.size.y, attackCollider.size.z);
+                attackCollider.center = new Vector3(2f, attackCollider.center.y, attackCollider.center.z);
+                Debug.Log(attackCollider.center.x + "AAAAAAA");
+
 
                 //we set all the action (button )animations to be false since everything should be reset
                 ac.SetBool("PlayerAttackingWithScissors", false);
@@ -89,7 +107,7 @@ public class SPS_AttackCollision : MonoBehaviour
 
             if (other.gameObject.tag == "EnemyTag") //enemy
             {
-                if (playerChoice.p_choice == SPS_Player.PlayerChoice.P_SCISSOR
+                if (playerInstance.p_choice == SPS_Player.PlayerChoice.P_SCISSOR
                     && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_PAPER)
                 {
                     Debug.Log("Enemy goes OW: trigger stay");
@@ -103,10 +121,10 @@ public class SPS_AttackCollision : MonoBehaviour
 
                     //we do lives and combo calculations here
                     scoreInstance.PlayerScores();
-                    combomanagerInstance.AddCombo();
+                    ComboManager.Instance.AddCombo();
                 }
 
-                else if (buttonPressed == true && playerChoice.p_choice == SPS_Player.PlayerChoice.P_PAPER
+                else if (buttonPressed == true && playerInstance.p_choice == SPS_Player.PlayerChoice.P_PAPER
                     && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_STONE)
                 {
                     Debug.Log("Enemy goes OW: trigger stay");
@@ -120,10 +138,10 @@ public class SPS_AttackCollision : MonoBehaviour
 
                     //we do lives and combo calculations here
                     scoreInstance.PlayerScores();
-                    combomanagerInstance.AddCombo();
+                    ComboManager.Instance.AddCombo();
                 }
 
-                else if (buttonPressed == true && playerChoice.p_choice == SPS_Player.PlayerChoice.P_STONE
+                else if (buttonPressed == true && playerInstance.p_choice == SPS_Player.PlayerChoice.P_STONE
                     && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_SCISSOR)
                 {
                     Debug.Log("Enemy goes OW: trigger stay");
@@ -137,20 +155,19 @@ public class SPS_AttackCollision : MonoBehaviour
 
                     //we do lives and combo calculations here
                     scoreInstance.PlayerScores();
-                    combomanagerInstance.AddCombo();
+                    ComboManager.Instance.AddCombo();
                 }
             }
 
             else if (other.gameObject.tag == "Obstacle") //obstacle
             {
-                if (buttonPressed == true && playerChoice.p_choice == SPS_Player.PlayerChoice.P_JUMP
+                if (buttonPressed == true && playerInstance.p_choice == SPS_Player.PlayerChoice.P_JUMP
                     && (other.GetComponent<SPS_Obstacles>().obstacle_choice == SPS_Obstacles.ObstacleChoice.OBS_MOUNTAIN || other.GetComponent<SPS_Obstacles>().obstacle_choice == SPS_Obstacles.ObstacleChoice.OBS_LOG))
                 {
                     Debug.Log("Player Jump successful");
 
                     other.gameObject.tag = "SafeObstacle";
                 }
-
             }
         }
     }

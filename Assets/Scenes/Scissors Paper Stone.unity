@@ -413,7 +413,7 @@ MonoBehaviour:
   objectspawnUptime: 0
   objectspawnUptimeMultipier: 0
   waveCompleted: 0
-  objectSpeed: 4
+  objectSpeed: 10
   objectSpeedMultiplier: 1
 --- !u!1 &512513176
 GameObject:
@@ -568,14 +568,14 @@ RectTransform:
   m_GameObject: {fileID: 585726834}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.1}
-  m_LocalScale: {x: 18, y: 10, z: 0}
+  m_LocalScale: {x: 50, y: 10, z: 0}
   m_Children: []
   m_Father: {fileID: 668498195}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 100, y: 100}
-  m_AnchoredPosition: {x: 0, y: 3.61}
+  m_AnchoredPosition: {x: 15.15, y: 3.61}
   m_SizeDelta: {x: 11825.953, y: -4677.5703}
   m_Pivot: {x: 0, y: 0}
 --- !u!64 &585726836
@@ -682,14 +682,14 @@ RectTransform:
   m_GameObject: {fileID: 596643100}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 18, y: 3, z: 0}
+  m_LocalScale: {x: 20, y: 4, z: 0}
   m_Children: []
   m_Father: {fileID: 668498195}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 100, y: 100}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.81}
   m_SizeDelta: {x: 11825.953, y: -4677.5703}
   m_Pivot: {x: 0, y: 0}
 --- !u!64 &596643102
@@ -2072,6 +2072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   p_choice: 0
+  hasPowerup: 1
 --- !u!65 &1340853089
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2094,7 +2095,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1451028488}
-  - component: {fileID: 1451028490}
   - component: {fileID: 1451028489}
   m_Layer: 0
   m_Name: TimerManager
@@ -2130,33 +2130,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timertext: {fileID: 1824941366}
---- !u!114 &1451028490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1451028487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 691c80bd6c8c94b4b854bfd8ac66ff98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  e_TimerStarted:
-    m_PersistentCalls:
-      m_Calls: []
-  e_TimerPassedThreshold:
-    m_PersistentCalls:
-      m_Calls: []
-  e_TimerFinished:
-    m_PersistentCalls:
-      m_Calls: []
-  e_elapsedTimeStarted:
-    m_PersistentCalls:
-      m_Calls: []
-  e_elapsedTimeFinished:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1462714310
 GameObject:
   m_ObjectHideFlags: 0
@@ -2204,6 +2177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonPressed: 0
   rangeUptime: 0
+  attackCollider: {fileID: 0}
 --- !u!54 &1462714313
 Rigidbody:
   m_ObjectHideFlags: 0

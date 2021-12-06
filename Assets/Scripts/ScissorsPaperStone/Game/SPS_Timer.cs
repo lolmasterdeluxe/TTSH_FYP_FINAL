@@ -8,8 +8,6 @@ public class SPS_Timer : MonoBehaviour
     //this handles game time, referencing from time manager
 
     #region Variables
-
-    TimerManager timermanagerInstance;
     public GameObject timertext;
 
     #endregion
@@ -18,16 +16,14 @@ public class SPS_Timer : MonoBehaviour
 
     private void Start()
     {
-        timermanagerInstance = FindObjectOfType<TimerManager>();
-        StartGame(60f);
+        StartGame(90f);
     }
 
     private void Update()
     {
         timertext.GetComponent<TMP_Text>().text 
-            = timermanagerInstance.GetFormattedRemainingTime();
+            = TimerManager.Instance.GetFormattedRemainingTime();
     }
-
 
     #endregion
 
@@ -35,7 +31,7 @@ public class SPS_Timer : MonoBehaviour
 
     public void StartGame(float gameTime)
     {
-        timermanagerInstance.StartCountdown(gameTime);
+        TimerManager.Instance.StartCountdown(gameTime);
     }
 
     #endregion
