@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class SPS_Player : MonoBehaviour
 {
+    //this script handles all things involved with the player
 
     #region Enumerations
     public enum PlayerChoice
@@ -14,13 +15,13 @@ public class SPS_Player : MonoBehaviour
 
     #endregion
 
-    //this script handles all things involved with the player
     #region Variables
 
     public PlayerChoice p_choice;
 
     ComboManager combomanagerInstance;
     SPS_LivesManager livesInstance;
+    SPS_ObjectSpawningScript waveCheck;
     
     #endregion
 
@@ -31,6 +32,7 @@ public class SPS_Player : MonoBehaviour
         p_choice = PlayerChoice.P_NONE;
         livesInstance = FindObjectOfType<SPS_LivesManager>();
         combomanagerInstance = FindObjectOfType<ComboManager>();
+        waveCheck = FindObjectOfType<SPS_ObjectSpawningScript>();
     }
 
     private void Update()
@@ -43,6 +45,7 @@ public class SPS_Player : MonoBehaviour
         if (other.gameObject.tag == "EnemyTag")
         {
             Debug.Log("Player goes OW : trigger enter");
+            waveCheck.waveCompleted = false;
             Destroy(other.gameObject.GetComponent<Rigidbody>());
             Destroy(other.gameObject);
             livesInstance.PlayerTakesDamage();

@@ -13,9 +13,12 @@ public class SPS_AttackCollision : MonoBehaviour
     public float rangeUptime;
     SPS_Player playerChoice;
     SPS_ScoreManager scoreInstance;
+    SPS_ObjectSpawningScript waveCheck;
     ComboManager comboManager_instance;
 
     #endregion
+
+    #region Unity Callbacks
 
     private void Start()
     {
@@ -28,6 +31,10 @@ public class SPS_AttackCollision : MonoBehaviour
     {
         Timer();
     }
+
+    #endregion
+
+    #region Functions
 
     public void ButtonPress()
     {
@@ -48,7 +55,16 @@ public class SPS_AttackCollision : MonoBehaviour
             }
         }
     }
-  
+
+    //call this function when the wave of enemy is completed
+    public void WaveCompleted()
+    {
+        waveCheck.waveCompleted = true;
+    }
+
+    #endregion
+
+
     private void OnTriggerStay(Collider other)
     {
         //we now check that the matchup is correct to kill the enemy
@@ -60,9 +76,10 @@ public class SPS_AttackCollision : MonoBehaviour
             if (other.gameObject.tag == "EnemyTag") //enemy
             {
                 if (playerChoice.p_choice == SPS_Player.PlayerChoice.P_SCISSOR
-            && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_PAPER)
+                    && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_PAPER)
                 {
                     Debug.Log("Enemy goes OW: trigger stay");
+                    waveCheck.waveCompleted = true;
                     Destroy(other.gameObject);
                     Destroy(other.gameObject.GetComponent<Rigidbody>());
                     scoreInstance.PlayerScores();
@@ -72,6 +89,7 @@ public class SPS_AttackCollision : MonoBehaviour
                     && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_STONE)
                 {
                     Debug.Log("Enemy goes OW: trigger stay");
+                    waveCheck.waveCompleted = false;
                     Destroy(other.gameObject.GetComponent<Rigidbody>());
                     Destroy(other.gameObject);
                     scoreInstance.PlayerScores();
@@ -81,6 +99,7 @@ public class SPS_AttackCollision : MonoBehaviour
                     && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_SCISSOR)
                 {
                     Debug.Log("Enemy goes OW: trigger stay");
+                    waveCheck.waveCompleted = false;
                     Destroy(other.gameObject.GetComponent<Rigidbody>());
                     Destroy(other.gameObject);
                     scoreInstance.PlayerScores();
