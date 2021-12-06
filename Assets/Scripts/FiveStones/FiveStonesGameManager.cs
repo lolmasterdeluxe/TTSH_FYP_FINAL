@@ -39,9 +39,11 @@ public class FiveStonesGameManager : MonoBehaviour
     public GameObject g_objectiveText;
     public Objective m_currentObjective;
 
-    // using this temporary, will make a score manager later on
-    public int m_score;
+    public float difficultyMultiplier;
     public int baseScore = 1;
+    public float minObjectiveReset;
+    public float maxObjectiveReset;
+
 
     private void Awake()
     {
@@ -54,16 +56,21 @@ public class FiveStonesGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()        
     {
-        StartGame(60, 1.1f);
-        ScoreManager.Instance.LoadAllScoreList();
-        ScoreManager.Instance.EndSessionConcludeScore();
+        StartGame(60, 0);
     }
 
+    // Difficulty scales from 
     void StartGame(float time, float difficultyMultiplier)
     {
+        minObjectiveReset = 3;
+        maxObjectiveReset = 5;
+        this.difficultyMultiplier = difficultyMultiplier;
+        GetComponent<StoneSpawner>().Configure(3, 5, 3, 5, 10, 15);
+
         TimerManager.Instance.StartCountdown(time);
         ComboManager.Instance.SetComboExpiry(3f);
         ScoreManager.Instance.LoadNewGamemode(ScoreManager.Gamemode.FIVESTONES);
+
         StartCoroutine(GetComponent<StoneSpawner>().SpawnStoneLoop());
         RandomizeObjective();
         StartCoroutine(ObjectiveCoroutine());
@@ -74,7 +81,17 @@ public class FiveStonesGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        DifficultyProgression();
         UpdateUI();
+    }
+
+    public void DifficultyProgression()
+    {
+        float completionPercentage = TimerManager.Instance.GetRemainingTime() / TimerManager.Instance.GetDefaultCountdownTime();
+
+        minObjectiveReset = 3 - (completionPercentage * difficultyMultiplier);
+        maxObjectiveReset = 5 - (completionPercentage * difficultyMultiplier);
+        GetComponent<StoneSpawner>().Configure(3 - (completionPercentage * difficultyMultiplier), 5 - (completionPercentage * difficultyMultiplier), 3 + (int)(completionPercentage * 5), 5 + (int)(completionPercentage * 5), 10, 15);
     }
 
     public IEnumerator ObjectiveCoroutine()
@@ -82,7 +99,7 @@ public class FiveStonesGameManager : MonoBehaviour
         while (true)
         {
             RandomizeObjective();
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(Random.Range(minObjectiveReset, maxObjectiveReset));
         }
     }
 

@@ -39,6 +39,16 @@ public class StoneSpawner : MonoBehaviour
         
     }
 
+    public void Configure(float minSpawnDelay, float maxSpawnDelay, int minStone, int maxStone, float minForce, float maxForce)
+    {
+        this.minSpawnDelay = minSpawnDelay;
+        this.maxSpawnDelay = maxSpawnDelay;
+        this.minStone = minStone;
+        this.maxStone = maxStone;
+        this.minForce = minForce;
+        this.maxForce = maxForce;
+    }
+
     public IEnumerator SpawnStoneLoop()
     {
         while (true)

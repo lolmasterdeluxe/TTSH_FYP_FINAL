@@ -29,6 +29,7 @@ public class TimerManager : MonoBehaviour
     private bool m_timerActivated;
     private bool m_thresholdPassed;
 
+    private float m_defaultTime;
     private float m_timeRemaining;
     private float m_timerThreshold;
     #endregion
@@ -109,6 +110,7 @@ public class TimerManager : MonoBehaviour
         m_timerRun = true;
         m_thresholdPassed = false;
 
+        m_defaultTime = time;
         m_timeRemaining = time;
         m_timerThreshold = thresholdValue;
     }
@@ -135,6 +137,12 @@ public class TimerManager : MonoBehaviour
     public void ResumeCountdown()
     {
         m_timerRun = true;
+    }
+
+    // Returns the default countdown time in float
+    public float GetDefaultCountdownTime()
+    {
+        return m_defaultTime;
     }
 
     // Returns the remaining time on the countdown timer in float
