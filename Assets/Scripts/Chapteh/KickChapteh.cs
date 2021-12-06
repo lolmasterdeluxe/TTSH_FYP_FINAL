@@ -5,7 +5,7 @@ using UnityEngine;
 public class KickChapteh : MonoBehaviour
 {
     [SerializeField] private Chapteh chapteh;
-    //[SerializeField] private Gauge gauge;
+    [SerializeField] private Gauge gauge;
 
     private const float MAX_FORCE = 1100f;
 
@@ -14,7 +14,7 @@ public class KickChapteh : MonoBehaviour
     private void Start()
     {
         chapteh = GameObject.Find("Dumb Chapteh").GetComponent<Chapteh>();
-        //gauge = GameObject.Find("Gauge Image").GetComponent<Gauge>();
+        gauge = GameObject.Find("Gauge Image").GetComponent<Gauge>();
     }
 
     // Update is called once per frame
@@ -29,7 +29,7 @@ public class KickChapteh : MonoBehaviour
         {
             holdDownStartTime = Time.time;
 
-            //gauge.SetFillBar(holdDownStartTime);
+            gauge.SetFillBar(holdDownStartTime);
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -37,7 +37,7 @@ public class KickChapteh : MonoBehaviour
             float holdDownTime = Time.time - holdDownStartTime;
             chapteh.Kick(CalculateHoldDownForce(holdDownTime));
 
-            //gauge.SetFillBar(0);
+            gauge.SetFillBar(0);
         }
     }
 

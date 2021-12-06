@@ -7,32 +7,29 @@ public class Gauge : MonoBehaviour
 {
     public Transform spawnPoint;
 
-    public Transform fullFillImage;
-    public Transform fillImage;
+    private Image gaugeImage;
 
     // Start is called before the first frame update
     void Start()
     {
+        gaugeImage = GameObject.Find("Gauge Image").GetComponent<Image>();
+
         // Default to an empty bar
-        var newScale = this.fillImage.localScale;
-        newScale.y = 0;
-        this.fillImage.localScale = newScale;
+        gaugeImage.fillAmount = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
         // Sets position of Chapteh to beside the player head
-        transform.position = spawnPoint.position + (new Vector3(5f, 0f));
+        transform.position = spawnPoint.position + (new Vector3(3f, 0f));
     }
 
-    public void SetFillBar(float fillAmount)
+    public void SetFillBar(float holdTime)
     {
-        // Make sure value is between 0 and 1
-        fillAmount = Mathf.Clamp01(fillAmount);
-        // Scale the fillImage accordingly
-        var newScale = this.fillImage.localScale;
-        newScale.y = this.fullFillImage.localScale.y * fillAmount;
-        this.fillImage.localScale = newScale;
+        for (holdTime = 0f; holdTime <= 1f; holdTime += Time.time)
+        {
+            gaugeImage.fillAmount = holdTime;
+        }
     }
 }
