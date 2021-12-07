@@ -64,7 +64,6 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
 
     private void Start()
     {
-
     }
 
     private void Update()
@@ -74,19 +73,19 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
         {
             //spawn either a enemy, obstacle or powerup
 
-            int randVal = Random.Range(0, 3);
+            int randVal = Random.Range(0, 10);
 
-            switch (2)
+            switch (randVal)
             {
-                case 0: //enemy
+                case (0 | 1 | 2 | 3 | 4 | 5)://enemy
                     SpawnEnemyObject();
                     break;
 
-                case 1: //obstacle
+                case (6 | 7 | 8): //obstacle
                     SpawnObstacleObject();
                     break;
 
-                case 2: //powerup
+                case (9 | 10): //powerup
                     SpawnPowerupObject();
                     break;
             }
@@ -147,7 +146,7 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
     public void SpawnEnemy()
     {
         objectInstance = Instantiate(enemyPrefab,
-        objectstartPosition.position, objectstartPosition.rotation);
+        new Vector3(objectstartPosition.position.x, objectstartPosition.position.y + 0.65f, objectstartPosition.position.z), objectstartPosition.rotation);
         objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, objectSpeed * objectSpeedMultiplier);
         objectInstance.GetComponent<Rigidbody>().DOMoveX(enemyEndPosition.transform.position.x, objectSpeed * objectSpeedMultiplier);
         objectwaveList.Add(objectInstance);
@@ -162,7 +161,7 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
         for (int val = 1; val < 5; val++)
         {
             objectInstance = Instantiate(enemyPrefab,
-            new Vector3(objectstartPosition.position.x + val * 4, objectstartPosition.position.y, objectstartPosition.position.z), objectstartPosition.rotation);
+            new Vector3(objectstartPosition.position.x + val * 4, objectstartPosition.position.y + 0.65f, objectstartPosition.position.z), objectstartPosition.rotation);
             objectInstance.transform.DOMoveX(obstacleEndPosition.transform.position.x, (objectSpeed * objectSpeedMultiplier) + val);
             objectInstance.GetComponent<Rigidbody>().DOMoveX(obstacleEndPosition.transform.position.x, (objectSpeed * objectSpeedMultiplier) + val);
             objectwaveList.Add(objectInstance);
@@ -188,7 +187,7 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
 
         int ranVal = Random.Range(0, 11);
 
-        switch (1)
+        switch (ranVal % 2)
         {
             case 0: //solo powerup
                 objectInstance = Instantiate(powerupPrefab,
