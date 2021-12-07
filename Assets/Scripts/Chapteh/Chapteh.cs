@@ -6,7 +6,6 @@ public class Chapteh : MonoBehaviour
     public bool inPlay;
     public Transform spawnPoint;
     public Transform playerSprite;
-    //public float speed;
 
     public SpriteRenderer skyWidth, skyHeight;
     private float chaptehWidth, chaptehHeight;
@@ -44,7 +43,6 @@ public class Chapteh : MonoBehaviour
             LookAtMouseDirection();
         }
 
-        //Kick();
         kickChapteh.PowerLaunch();
 
         FallOnGravity(); 
@@ -60,7 +58,7 @@ public class Chapteh : MonoBehaviour
 
     public void Kick(float speed)
     {
-        if (/*Input.GetMouseButtonDown(0) &&*/ !inPlay)
+        if (!inPlay)
         {
             inPlay = true;
 

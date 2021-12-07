@@ -30,6 +30,7 @@ public class Gauge : MonoBehaviour
 
     public void SetFillBar(float holdTime)
     {
+        // Sets image fill amount to duration of holding
         gaugeImage.fillAmount = holdTime;
     }
 }

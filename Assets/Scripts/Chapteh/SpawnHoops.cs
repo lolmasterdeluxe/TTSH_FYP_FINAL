@@ -81,13 +81,6 @@ public class SpawnHoops : MonoBehaviour
                                 break;
                         }
 
-                        //if (randOption < 1)
-                        //    temp = Instantiate(redHoopPrefab, spawnPos, Quaternion.identity);
-                        //else if (randOption < 0)
-                        //    temp = Instantiate(blueHoopPrefab, spawnPos, Quaternion.identity);
-                        //else
-                        //    temp = Instantiate(greenHoopPrefab, spawnPos, Quaternion.identity);
-
                         spawnedPositions.RemoveAt(spawnedPositions.Count - 1);
                         spawnedPositions.Add(gameObjectHoops.transform.position);
 

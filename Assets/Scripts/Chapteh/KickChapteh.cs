@@ -14,22 +14,15 @@ public class KickChapteh : MonoBehaviour
 
     private void Start()
     {
-        holdDownStartTime = 0f;
-
         chapteh = GameObject.Find("Dumb Chapteh").GetComponent<Chapteh>();
         gauge = GameObject.Find("Gauge Image").GetComponent<Gauge>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void PowerLaunch()
     {
         if (Input.GetMouseButton(0))
         {
+            // Fill amount increases to the hold down mouse key
             if (gauge.GetComponent<Image>().fillAmount != 1)
                 holdDownStartTime += 0.5f * Time.deltaTime;
 
@@ -39,7 +32,6 @@ public class KickChapteh : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             float holdDownTime = holdDownStartTime - Time.deltaTime;
-            //chapteh.Kick(CalculateHoldDownForce(holdDownTime));
             chapteh.Kick(CalculateHoldDownForce(holdDownTime));
 
             holdDownStartTime = 0f;
