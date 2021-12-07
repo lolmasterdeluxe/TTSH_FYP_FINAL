@@ -79,6 +79,7 @@ public class ChaptehGameManager : MonoBehaviour
     public void RandomizeObjective()
     {
         m_currentObjective = (Objective)Random.Range(1, (int)Objective.TOTAL);
+        //m_currentObjective = Objective.HIT_ANY_HOOPS;
 
         switch (m_currentObjective)
         {
