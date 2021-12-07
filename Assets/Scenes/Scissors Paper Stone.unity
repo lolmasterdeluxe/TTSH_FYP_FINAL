@@ -385,7 +385,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 359944891}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 1, z: -2.5}
+  m_LocalPosition: {x: 6.5, y: -0.4, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 565372707}
@@ -407,6 +407,7 @@ MonoBehaviour:
   objectwaveList: []
   enemyPrefab: {fileID: 4635973183218378370, guid: e4b4061f00e7a6549b2daa8c689197d1, type: 3}
   obstaclePrefab: {fileID: 4635973183218378370, guid: 86ca8db0031300b40a0cfc46184aa4b9, type: 3}
+  powerupPrefab: {fileID: 4635973183218378370, guid: 2c0e3f31a796c584fbc2fde9a7456407, type: 3}
   objectstartPosition: {fileID: 359944892}
   enemyEndPosition: {fileID: 530085982}
   obstacleEndPosition: {fileID: 1022272055}
@@ -497,7 +498,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530085981}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -376.25006, y: -210.8, z: -0.1}
+  m_LocalPosition: {x: -377.09, y: -210.8, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1164837221}
@@ -568,14 +569,14 @@ RectTransform:
   m_GameObject: {fileID: 585726834}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.1}
-  m_LocalScale: {x: 54, y: 12, z: 0}
+  m_LocalScale: {x: 58, y: 12, z: 0}
   m_Children: []
   m_Father: {fileID: 668498195}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 100, y: 100}
-  m_AnchoredPosition: {x: 17.01, y: 3.25}
+  m_AnchoredPosition: {x: 19.2, y: 4.55}
   m_SizeDelta: {x: 11825.953, y: -4677.5703}
   m_Pivot: {x: 0, y: 0}
 --- !u!64 &585726836
@@ -689,7 +690,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 100, y: 100}
-  m_AnchoredPosition: {x: 0, y: -0.81}
+  m_AnchoredPosition: {x: 0, y: 0.46}
   m_SizeDelta: {x: 11825.953, y: -4677.5703}
   m_Pivot: {x: 0, y: 0}
 --- !u!64 &596643102
@@ -919,7 +920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.79607844}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1283,7 +1284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.79607844}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1391,7 +1392,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022272054}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -384.82007, y: -210.8, z: -0.1}
+  m_LocalPosition: {x: -389.89, y: -210.8, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1164837221}
@@ -1408,7 +1409,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: 4, z: 1}
+  m_Size: {x: 4, y: 12.24, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &1022272057
 MonoBehaviour:
@@ -1857,7 +1858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.79607844}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1968,8 +1969,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1340853083}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.41, y: -1.58, z: -0.3}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: -5, y: -0.6, z: -0.3}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 1462714311}
   m_Father: {fileID: 0}
@@ -2029,7 +2030,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2596212895549472602, guid: e7767decea707604a9b0277f736887f3, type: 3}
+  m_Sprite: {fileID: 6463919588261248817, guid: e19ce34194bac2c488dfb15ac06a5fb3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2072,7 +2073,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   p_choice: 0
-  hasPowerup: 1
+  hasPowerup: 0
+  playerJumped: 0
 --- !u!65 &1340853089
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2084,8 +2086,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 0.5}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2, y: 2.5, z: 0.5}
+  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!1 &1451028487
 GameObject:
   m_ObjectHideFlags: 0
@@ -2175,7 +2177,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50244e41b58e1f2469ba221fd5e35b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPressed: 0
+  attackbuttonPressed: 0
+  jumpbuttonPressed: 0
   rangeUptime: 0
   attackCollider: {fileID: 0}
 --- !u!54 &1462714313
@@ -2253,8 +2256,6 @@ MonoBehaviour:
   componentContainer:
   - {fileID: 596643100}
   - {fileID: 585726834}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &1824941366
 GameObject:
   m_ObjectHideFlags: 0
@@ -2666,7 +2667,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1462714312}
         m_TargetAssemblyTypeName: SPS_AttackCollision, Assembly-CSharp
-        m_MethodName: ButtonPress
+        m_MethodName: AttackButtonPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

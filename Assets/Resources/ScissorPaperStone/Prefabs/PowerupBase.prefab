@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 4635973183218378368}
   - component: {fileID: 4635973183218378367}
   - component: {fileID: 9196770655883893898}
-  - component: {fileID: -5701149514365697430}
+  - component: {fileID: -679345998206244416}
   m_Layer: 0
-  m_Name: ObstacleBase
-  m_TagString: Obstacle
+  m_Name: PowerupBase
+  m_TagString: Powerup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 4635973183218378370}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.05361561, y: 0, z: -0.34758675}
-  m_LocalScale: {x: 2.6, y: 2.6, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -128,7 +128,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 124
   m_CollisionDetection: 0
---- !u!114 &-5701149514365697430
+--- !u!114 &-679345998206244416
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,8 +137,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4635973183218378370}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae30d4e13e0d44441b3adaf7e9001ca3, type: 3}
+  m_Script: {fileID: 11500000, guid: c790c741e5e96904e9e9fa854370558d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacle_choice: 0
-  log: {fileID: 2100000, guid: c448b3eeb11db9343bcba146ca4a719c, type: 2}
+  powerup_choice: 0
+  powerup_one: {fileID: 2100000, guid: 91159d839fabf1e4bab298ba9d8b29b6, type: 2}

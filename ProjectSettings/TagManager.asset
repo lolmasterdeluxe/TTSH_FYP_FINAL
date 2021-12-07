@@ -13,6 +13,7 @@ TagManager:
   - RedHoop
   - GreenHoop
   - SafeObstacle
+  - Powerup
   layers:
   - Default
   - TransparentFX

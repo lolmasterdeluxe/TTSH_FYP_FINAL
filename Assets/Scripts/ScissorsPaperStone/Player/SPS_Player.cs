@@ -22,8 +22,14 @@ public class SPS_Player : MonoBehaviour
     Animator ac;
     SPS_LivesManager livesInstance;
     SPS_ObjectSpawningScript objectspawningInstance;
+    SPS_AttackCollision attackcollisionInstance;
+
+    BoxCollider playerCollider;
+    Vector3 originalColliderSize;
 
     public bool hasPowerup;
+    public bool playerJumped;
+    float playerjumpUptime;
 
     #endregion
 
@@ -32,11 +38,18 @@ public class SPS_Player : MonoBehaviour
     private void Start()
     {
         p_choice = PlayerChoice.P_NONE;
-        //hasPowerup = false;
+        hasPowerup = false;
+        playerJumped = false;
+        playerCollider = GetComponent<BoxCollider>();
+
+        //we store the original collider size for reference
+            originalColliderSize =
+            new Vector3(playerCollider.size.x, playerCollider.size.y, playerCollider.size.z);
 
         ac = GetComponent<Animator>();
         livesInstance = FindObjectOfType<SPS_LivesManager>();
         objectspawningInstance = FindObjectOfType<SPS_ObjectSpawningScript>();
+        attackcollisionInstance = FindObjectOfType<SPS_AttackCollision>();
     }
 
     private void Update()
@@ -47,6 +60,25 @@ public class SPS_Player : MonoBehaviour
             objectspawningInstance.waveCompleted = false;
             Debug.Log("List is empty");
         }
+    
+
+        if (playerJumped == true)
+        {
+            playerjumpUptime += Time.deltaTime;
+
+            if (playerjumpUptime >= 0.75f)
+            {
+                playerCollider.size = originalColliderSize;
+                playerJumped = false;
+                playerjumpUptime = 0f;
+            }
+        }
+
+        ////we reset the collider size
+        //if (attackcollisionInstance.jumpbuttonPressed == false && playerJumped == true)
+        //{
+        //    playerCollider.size = originalColliderSize;
+        //}
     }
 
     private void OnTriggerEnter(Collider other)
@@ -81,6 +113,7 @@ public class SPS_Player : MonoBehaviour
             livesInstance.PlayerTakesDamage();
             ComboManager.Instance.BreakCombo();
 
+
         }
 
         else if (other.gameObject.tag == "Powerup")
@@ -90,6 +123,12 @@ public class SPS_Player : MonoBehaviour
             //we set the boolean to be true here
             hasPowerup = true;
 
+            //remove the instance of the powerup from the object list
+            objectspawningInstance.objectwaveList.Remove(other.gameObject);
+
+            //we destroy the powerup gameobject since it has been "collected"
+            Destroy(other.gameObject.GetComponent<Rigidbody>());
+            Destroy(other.gameObject);
 
         }
 
@@ -97,7 +136,7 @@ public class SPS_Player : MonoBehaviour
 
     #endregion
 
-    #region Functions
+    #region Player Functions
 
     public void PlayerChoosesScissors()
     {
@@ -119,6 +158,10 @@ public class SPS_Player : MonoBehaviour
     {
         p_choice = PlayerChoice.P_JUMP;
         ac.SetBool("PlayerJumped", true);
+
+        //we shift the collider up to simulate "jumping"
+        playerCollider.size = new Vector3(playerCollider.size.x, playerCollider.size.y + 1.5f, playerCollider.size.z);
+        playerJumped = true;
     }
 
     #endregion
