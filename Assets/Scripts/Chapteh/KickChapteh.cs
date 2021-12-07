@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class KickChapteh : MonoBehaviour
 {
@@ -17,26 +18,23 @@ public class KickChapteh : MonoBehaviour
         gauge = GameObject.Find("Gauge Image").GetComponent<Gauge>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void PowerLaunch()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
-            holdDownStartTime = Time.time;
+            // Fill amount increases to the hold down mouse key
+            if (gauge.GetComponent<Image>().fillAmount != 1)
+                holdDownStartTime += 0.5f * Time.deltaTime;
 
             gauge.SetFillBar(holdDownStartTime);
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            float holdDownTime = Time.time - holdDownStartTime;
+            float holdDownTime = holdDownStartTime - Time.deltaTime;
             chapteh.Kick(CalculateHoldDownForce(holdDownTime));
 
+            holdDownStartTime = 0f;
             gauge.SetFillBar(0);
         }
     }

@@ -19,11 +19,11 @@ public class BackgroundScrolling : MonoBehaviour
 
     private void Update()
     {
-        managerInstance.SetBackgroundOffsetVector(new Vector2(0.4f, 0f));
+        managerInstance.SetBackgroundOffsetVector(new Vector2(0.2f, 0f));
         managerInstance.componentContainer[0].GetComponent<Renderer>().material.mainTextureOffset
         += managerInstance.GetBackgroundOffsetVector() * Time.deltaTime;
 
-        managerInstance.SetBackgroundOffsetVector(new Vector2(0.1f, 0f));
+        managerInstance.SetBackgroundOffsetVector(new Vector2(0.05f, 0f));
         managerInstance.componentContainer[1].GetComponent<Renderer>().material.mainTextureOffset
         += managerInstance.GetBackgroundOffsetVector() * Time.deltaTime;
 

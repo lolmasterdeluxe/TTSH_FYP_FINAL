@@ -32,7 +32,7 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
 
     //base prefab: material will be slapped on accordingly
     private GameObject objectInstance;
-    public GameObject enemyPrefab, obstaclePrefab;
+    public GameObject enemyPrefab, obstaclePrefab, powerupPrefab;
 
     //these are pre-determined transform areas to be used with DOTween
     public Transform objectstartPosition;
@@ -64,7 +64,6 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
 
     private void Start()
     {
-
     }
 
     private void Update()
@@ -72,16 +71,23 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
         objectspawnUptime += Time.deltaTime;
         if (objectspawnUptime >= (objectspawnUptime * objectspawnUptimeMultipier) && waveCompleted == false)
         {
-            int randVal = Random.Range(0, 11);
+            //spawn either a enemy, obstacle or powerup
+
+            int randVal = Random.Range(0, 10);
+
             switch (randVal)
             {
-                case 0:
-                    SpawnObject();
-                    break;
-                case 1:
-                    SpawnObstacle();
+                case (0 | 1 | 2 | 3 | 4 | 5)://enemy
+                    SpawnEnemyObject();
                     break;
 
+                case (6 | 7 | 8): //obstacle
+                    SpawnObstacleObject();
+                    break;
+
+                case (9 | 10): //powerup
+                    SpawnPowerupObject();
+                    break;
             }
             objectspawnUptime = 0f;
         }
@@ -94,7 +100,7 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
     
     //these functions spawn in enemies, obstacles and powerups
 
-    public void SpawnObject()
+    public void SpawnEnemyObject()
     {
         //we now roll randomly to determine what kind of enemy wave it is
 
@@ -140,7 +146,7 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
     public void SpawnEnemy()
     {
         objectInstance = Instantiate(enemyPrefab,
-        objectstartPosition.position, objectstartPosition.rotation);
+        new Vector3(objectstartPosition.position.x, objectstartPosition.position.y + 0.65f, objectstartPosition.position.z), objectstartPosition.rotation);
         objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, objectSpeed * objectSpeedMultiplier);
         objectInstance.GetComponent<Rigidbody>().DOMoveX(enemyEndPosition.transform.position.x, objectSpeed * objectSpeedMultiplier);
         objectwaveList.Add(objectInstance);
@@ -155,7 +161,7 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
         for (int val = 1; val < 5; val++)
         {
             objectInstance = Instantiate(enemyPrefab,
-            new Vector3(objectstartPosition.position.x + val * 4, objectstartPosition.position.y, objectstartPosition.position.z), objectstartPosition.rotation);
+            new Vector3(objectstartPosition.position.x + val * 4, objectstartPosition.position.y + 0.65f, objectstartPosition.position.z), objectstartPosition.rotation);
             objectInstance.transform.DOMoveX(obstacleEndPosition.transform.position.x, (objectSpeed * objectSpeedMultiplier) + val);
             objectInstance.GetComponent<Rigidbody>().DOMoveX(obstacleEndPosition.transform.position.x, (objectSpeed * objectSpeedMultiplier) + val);
             objectwaveList.Add(objectInstance);
@@ -163,7 +169,7 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
         }
     }
 
-    public void SpawnObstacle()
+    public void SpawnObstacleObject()
     {
         //we now randomly roll to determine the type of obstacle to be spawned
 
@@ -174,6 +180,45 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
         objectwaveList.Add(objectInstance);
         waveCompleted = true;
     }
+
+    public void SpawnPowerupObject()
+    {
+        //we now randomly determine the position of the powerup
+
+        int ranVal = Random.Range(0, 11);
+
+        switch (ranVal % 2)
+        {
+            case 0: //solo powerup
+                objectInstance = Instantiate(powerupPrefab,
+                objectstartPosition.position, objectstartPosition.rotation);
+                objectInstance.transform.DOMoveX(obstacleEndPosition.transform.position.x, objectSpeed * objectSpeedMultiplier);
+                objectInstance.GetComponent<Rigidbody>().DOMoveX(obstacleEndPosition.transform.position.x, objectSpeed * objectSpeedMultiplier);
+                objectwaveList.Add(objectInstance);
+                waveCompleted = true;
+                break;
+
+            case 1: //powerup on top of obstacle
+
+                //we create the obstacle first
+                SpawnObstacleObject();
+
+                //we now create an instance of the powerup ontop of the obstacle
+                objectInstance = Instantiate(powerupPrefab,
+                 new Vector3(objectstartPosition.position.x, objectstartPosition.position.y + 2.9f, 
+                 objectstartPosition.position.z), objectstartPosition.rotation);
+
+
+                //do the movement HERE
+                objectInstance.transform.DOMoveX(obstacleEndPosition.transform.position.x, objectSpeed * objectSpeedMultiplier);
+                objectInstance.GetComponent<Rigidbody>().DOMoveX(obstacleEndPosition.transform.position.x, objectSpeed * objectSpeedMultiplier);
+
+                objectwaveList.Add(objectInstance);
+                waveCompleted = true;
+                break;      
+        }
+    }
+
 
 
     #endregion

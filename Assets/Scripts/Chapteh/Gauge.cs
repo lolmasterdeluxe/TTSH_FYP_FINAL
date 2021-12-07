@@ -22,14 +22,15 @@ public class Gauge : MonoBehaviour
     void Update()
     {
         // Sets position of Chapteh to beside the player head
-        transform.position = spawnPoint.position + (new Vector3(3f, 0f));
+        transform.position = spawnPoint.position;
+
+        // Scale down the power charge
+        transform.localScale = new Vector3(0.1f, 0.1f, 0f);
     }
 
     public void SetFillBar(float holdTime)
     {
-        for (holdTime = 0f; holdTime <= 1f; holdTime += Time.time)
-        {
-            gaugeImage.fillAmount = holdTime;
-        }
+        // Sets image fill amount to duration of holding
+        gaugeImage.fillAmount = holdTime;
     }
 }

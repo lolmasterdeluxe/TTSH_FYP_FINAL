@@ -6,7 +6,6 @@ public class Chapteh : MonoBehaviour
     public bool inPlay;
     public Transform spawnPoint;
     public Transform playerSprite;
-    //public float speed;
 
     public SpriteRenderer skyWidth, skyHeight;
     private float chaptehWidth, chaptehHeight;
@@ -44,7 +43,6 @@ public class Chapteh : MonoBehaviour
             LookAtMouseDirection();
         }
 
-        //Kick();
         kickChapteh.PowerLaunch();
 
         FallOnGravity(); 
@@ -60,7 +58,7 @@ public class Chapteh : MonoBehaviour
 
     public void Kick(float speed)
     {
-        if (/*Input.GetMouseButtonDown(0) &&*/ !inPlay)
+        if (!inPlay)
         {
             inPlay = true;
 
@@ -83,7 +81,7 @@ public class Chapteh : MonoBehaviour
         {
             // Clamps the Chapteh within the boundaries of the background
             transform.position = new Vector2(Mathf.Clamp(transform.position.x, skyWidth.bounds.min.x + chaptehWidth, skyWidth.bounds.max.x - chaptehWidth),
-                                             Mathf.Clamp(transform.position.y, skyHeight.bounds.min.y + chaptehHeight, skyHeight.bounds.max.y - chaptehHeight));
+                                             Mathf.Clamp(transform.position.y, skyHeight.bounds.min.y + chaptehHeight, (skyHeight.bounds.max.y + 2f) - chaptehHeight));
 
             // Rotates the Chapteh to fall according to gravity
             rbChapteh.rotation += rbChapteh.gravityScale;

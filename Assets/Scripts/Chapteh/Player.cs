@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
 
     private Vector3 mousePosition;
 
+    public SpriteRenderer playerT;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,9 @@ public class Player : MonoBehaviour
         // Get input from mouse control
         mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        // Calls func for player sprite to flip
+        SpriteFlip();
     }
 
     private void FixedUpdate()
@@ -37,5 +42,17 @@ public class Player : MonoBehaviour
         playerPosition = Vector2.Lerp(transform.position, mousePosition, moveSpeed * Time.deltaTime);
         // Clamp player within the boundaries of the background
         playerPosition.x = Mathf.Clamp(playerPosition.x, skyWidth.bounds.min.x + playerWidth, skyWidth.bounds.max.x - playerWidth);
+    }
+
+    private void SpriteFlip()
+    {
+        // Gets value for mouse position of x
+        float worldPosX = mousePosition.x;
+        if (worldPosX > gameObject.transform.position.x)
+            // Sets the sprite to original position
+            playerT.flipX = false;
+        else
+            // Flips the sprite to be inverted
+            playerT.flipX = true;
     }
 }
