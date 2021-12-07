@@ -17,6 +17,8 @@ public class SpawnHoops : MonoBehaviour
 
     private GameObject gameObjectHoops;
 
+    private float liveTime = 5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,63 +32,18 @@ public class SpawnHoops : MonoBehaviour
     private void Update()
     {
         RandomHoopSpawn();
+
+        //DestroyHoopsAfterTime();
     }
-
-    #region Misc
-    /*if (Time.time > nextSpawn)
-    {
-        nextSpawn = Time.time + spawnRate;
-        randX = Random.Range(skySpriteWidth.bounds.min.x, skySpriteWidth.bounds.max.x);
-        randY = Random.Range(skySpriteHeight.bounds.min.y + 3f, skySpriteHeight.bounds.max.y);
-        spawnPos = new Vector2(randX, randY);
-        int tempval = 0;
-        for (int i = 0; i < maxSpawnAttempts; i++)
-        {
-            Vector2 redHoopPosition = GetRandomSpawnPositionNear(redPosition);
-            if (tempval < 1)
-                Instantiate(redHoopPrefab, redHoopPosition, Quaternion.identity);
-
-            //Vector3 blueHoopPosition = GetRandomSpawnPositionNear(bluePosition);
-            // Check for overlaps near this position.
-            // (Assuming your wall has a 2D collider attached)
-            if (Physics2D.OverlapCircle(redHoopPrefab.transform.position, hoopWidth) == null)
-            {
-                // We found a non-overlapping spot! Slap it down & call it done. :D
-                Instantiate(redHoopPrefab, redHoopPosition, Quaternion.identity);
-                tempval += 1;
-                return;
-            }
-            // Otherwise, loop and try again with a new random point.
-        }
-
-        for (int i = 0; i < maxSpawnAttempts; i++)
-        {
-            Vector2 blueHoopPosition = GetRandomSpawnPositionNear(bluePosition);
-
-            // Check for overlaps near this position.
-            // (Assuming your wall has a 2D collider attached)
-            if (Physics2D.OverlapCircle(blueHoopPosition, hoopWidth) == null)
-            {
-                // We found a non-overlapping spot! Slap it down & call it done. :D
-                Instantiate(blueHoopPrefab, blueHoopPosition, Quaternion.identity);
-                return;
-            }
-            // Otherwise, loop and try again with a new random point.
-        }
-
-        //Instantiate(redHoopPrefab, spawnPos, Quaternion.identity);
-        //Instantiate(blueHoopPrefab, spawnPos, Quaternion.identity);
-    }*/
-    #endregion
 
     private void RandomHoopSpawn()
     {
         if (Time.time > nextSpawn)
         {
             nextSpawn = Time.time + spawnRate;
-            redhoopRadius = redHoopPrefab.GetComponent<Collider2D>().bounds.max.x;
-            bluehoopRadius = redHoopPrefab.GetComponent<Collider2D>().bounds.max.x;
-            greenhoopRadius = redHoopPrefab.GetComponent<Collider2D>().bounds.max.x;
+            redhoopRadius = redHoopPrefab.GetComponent<Collider2D>().bounds.max.x + 0.5f;
+            bluehoopRadius = redHoopPrefab.GetComponent<Collider2D>().bounds.max.x + 0.5f;
+            greenhoopRadius = redHoopPrefab.GetComponent<Collider2D>().bounds.max.x + 0.5f;
 
             for (int i = 0; i < 2; i++)
             {
@@ -107,7 +64,7 @@ public class SpawnHoops : MonoBehaviour
                     if (colliderWithRedHoop == false && colliderWithBlueHoop == false && colliderWithGreenHoop == false)
                     {
                         GameObject temp;
-                        
+
                         switch(randOption)
                         {
                             case 0:
@@ -133,9 +90,36 @@ public class SpawnHoops : MonoBehaviour
 
                         spawnedPositions.RemoveAt(spawnedPositions.Count - 1);
                         spawnedPositions.Add(gameObjectHoops.transform.position);
+
+                        Debug.Log(spawnedPositions.Count);
                     }
                 }
+            }
+        }
+    }
 
+    private void DestroyHoopsAfterTime()
+    {
+        if(spawnedPositions.Count > 10)
+        {
+            liveTime -= Time.deltaTime;
+            randOption = Random.Range(0, 3);
+            if (liveTime <= 0)
+            {
+                //Destroy(gameObjectHoops);
+
+                switch (randOption)
+                {
+                    case 0:
+                        Destroy(redHoopPrefab);
+                        break;
+                    case 1:
+                        Destroy(blueHoopPrefab);
+                        break;
+                    case 2:
+                        Destroy(greenHoopPrefab);
+                        break;
+                }
             }
         }
     }

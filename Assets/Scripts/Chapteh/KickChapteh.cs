@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class KickChapteh : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class KickChapteh : MonoBehaviour
 
     private void Start()
     {
+        holdDownStartTime = 0f;
+
         chapteh = GameObject.Find("Dumb Chapteh").GetComponent<Chapteh>();
         gauge = GameObject.Find("Gauge Image").GetComponent<Gauge>();
     }
@@ -25,18 +28,21 @@ public class KickChapteh : MonoBehaviour
 
     public void PowerLaunch()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
-            holdDownStartTime = Time.time;
+            if (gauge.GetComponent<Image>().fillAmount != 1)
+                holdDownStartTime += 0.5f * Time.deltaTime;
 
             gauge.SetFillBar(holdDownStartTime);
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            float holdDownTime = Time.time - holdDownStartTime;
+            float holdDownTime = holdDownStartTime - Time.deltaTime;
+            //chapteh.Kick(CalculateHoldDownForce(holdDownTime));
             chapteh.Kick(CalculateHoldDownForce(holdDownTime));
 
+            holdDownStartTime = 0f;
             gauge.SetFillBar(0);
         }
     }
