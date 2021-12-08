@@ -32,9 +32,9 @@ public class FiveStonesGameManager : MonoBehaviour
     }
 
     public GameObject g_scoreText;
+    public GameObject g_comboGroup;
     public GameObject g_comboText;
     public GameObject g_comboExpiryBar;
-    public GameObject g_comboExpiryBarTimerText;
     public GameObject g_timerText;
     public GameObject g_objectiveText;
     public Objective m_currentObjective;
@@ -103,6 +103,9 @@ public class FiveStonesGameManager : MonoBehaviour
     {
         while (true)
         {
+            if (TimerManager.Instance.GetRemainingTime() <= 0)
+                break;
+
             RandomizeObjective();
             yield return new WaitForSeconds(Random.Range(minObjectiveReset, maxObjectiveReset));
         }
@@ -133,19 +136,8 @@ public class FiveStonesGameManager : MonoBehaviour
     {
         g_scoreText.GetComponent<TMP_Text>().text = "Score: " + ScoreManager.Instance.GetCurrentGameScore();
         g_timerText.GetComponent<TMP_Text>().text = TimerManager.Instance.GetFormattedRemainingTime();
-        g_comboText.GetComponent<TMP_Text>().text = "Combo: " + ComboManager.Instance.GetCurrentCombo() + "x";
-        g_comboExpiryBarTimerText.GetComponent<TMP_Text>().text = ComboManager.Instance.GetComboExpiryTimerFormatted();
+        g_comboText.GetComponent<TMP_Text>().text = "Combo " + ComboManager.Instance.GetCurrentCombo() + "x";
         g_comboExpiryBar.GetComponent<Slider>().value = ComboManager.Instance.GetComboExpiryTimer() / ComboManager.Instance.GetComboExpiryTimerDefault();
-
-        // Replace this with animation for pop up combo box here or something
-        if (ComboManager.Instance.GetCurrentCombo() > 0)
-        {
-            g_comboText.SetActive(true);
-        }
-        else
-        {
-            g_comboText.SetActive(false);
-        }
     }
     public void OnStoneCaught(GameObject gameObject)
     {
@@ -168,12 +160,12 @@ public class FiveStonesGameManager : MonoBehaviour
 
     public void OnComboAdd()
     {
-
+        TweenManager.Instance.AnimateEnlargeText(g_comboText.transform, 1f, 0.25f);
     }
 
     public void OnComboBreak()
     {
-
+        TweenManager.Instance.AnimateShakeAndFade(g_comboGroup.GetComponent<CanvasGroup>(), 0.5f);
     }
 
     public static Objective GetRandomColouredObjective()

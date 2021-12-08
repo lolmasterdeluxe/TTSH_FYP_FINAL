@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -38,6 +39,26 @@ public class TweenManager : MonoBehaviour
     {
 
     }
+
+    public void AnimateEnlargeText(Transform goTransform, float strength, float duration)
+    {
+        goTransform.gameObject.SetActive(true);
+        goTransform.DORewind();
+        goTransform.DOPunchScale(new Vector3(strength, strength, strength), duration);
+    }
+
+    public void AnimateShakeAndFade(CanvasGroup goCanvasGroup, float duration)
+    {
+        goCanvasGroup.DOFade(0, duration).OnComplete(
+            () => goCanvasGroup.gameObject.SetActive(false)    
+        );
+    }
+
+    public void KillTween(GameObject gameObject)
+    {
+        
+    }
+
     // Remove this if you want the TweenManager instance to be the same throughout the whole program
     private void OnDestroy()
     {

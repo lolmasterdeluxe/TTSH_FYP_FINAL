@@ -68,6 +68,9 @@ public class StoneSpawner : MonoBehaviour
     {
         while (true)
         {
+            if (TimerManager.Instance.GetRemainingTime() <= 0)
+                break;
+
             SpawnPattern randomSpawnType = (SpawnPattern)Random.Range((int)SpawnPattern.DEFAULT, (int)SpawnPattern.TOTAL);
             float delay = Random.Range(minSpawnDelay, maxSpawnDelay);
 
