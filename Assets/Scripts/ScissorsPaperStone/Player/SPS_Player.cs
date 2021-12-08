@@ -135,7 +135,6 @@ public class SPS_Player : MonoBehaviour
             Destroy(other.gameObject);
 
         }
-
     }
 
     #endregion
