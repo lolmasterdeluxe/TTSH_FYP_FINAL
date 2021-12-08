@@ -1,0 +1,343 @@
+fileFormatVersion: 2
+guid: 362170518a7231744a38fa8b55f39d24
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6977521219607738373
+    second: scissors_ss_0
+  - first:
+      213: 3223840492855683752
+    second: scissors_ss_1
+  - first:
+      213: 1554101646418596516
+    second: scissors_ss_2
+  - first:
+      213: 2103994977121448378
+    second: scissors_ss_3
+  - first:
+      213: -6873482490685199353
+    second: scissors_ss_4
+  - first:
+      213: -5603150709207403752
+    second: scissors_ss_5
+  - first:
+      213: 207986027917169778
+    second: scissors_ss_6
+  - first:
+      213: -2113483822931673828
+    second: scissors_ss_7
+  - first:
+      213: 5353431974737424860
+    second: scissors_ss_8
+  - first:
+      213: -8843779153072801123
+    second: scissors_ss_9
+  - first:
+      213: -1334380210095688524
+    second: scissors_ss_10
+  - first:
+      213: 6023119975298792654
+    second: scissors_ss_11
+  - first:
+      213: -6138765330789450849
+    second: scissors_ss_12
+  - first:
+      213: 653748490633742844
+    second: scissors_ss_13
+  - first:
+      213: 4323567159303130483
+    second: scissors_ss_14
+  - first:
+      213: 912705402780296255
+    second: scissors_ss_15
+  - first:
+      213: 4100895339642617648
+    second: scissors_ss_16
+  - first:
+      213: -6938976854873165333
+    second: scissors_ss_17
+  - first:
+      213: -5478391767855435138
+    second: scissors_ss_18
+  - first:
+      213: 1414644782269625973
+    second: scissors_ss_19
+  - first:
+      213: -8374132076004101472
+    second: scissors_ss_20
+  - first:
+      213: 4537878788695914528
+    second: scissors_ss_21
+  - first:
+      213: -3730740502101092005
+    second: scissors_ss_22
+  - first:
+      213: -3691995674339559308
+    second: scissors_ss_23
+  - first:
+      213: 406081240533066097
+    second: scissors_ss_24
+  - first:
+      213: -3410906139642347571
+    second: scissors_ss_25
+  - first:
+      213: -2763579014808785288
+    second: scissors_ss_26
+  - first:
+      213: 3900447167980635897
+    second: scissors_ss_27
+  - first:
+      213: -5299577221310468566
+    second: scissors_ss_28
+  - first:
+      213: -2166739366012178789
+    second: scissors_ss_29
+  - first:
+      213: -1371427827175826401
+    second: scissors_ss_30
+  - first:
+      213: -244057766340452964
+    second: scissors_ss_31
+  - first:
+      213: 5827267347953904893
+    second: scissors_ss_32
+  - first:
+      213: 7239810949128709128
+    second: scissors_ss_33
+  - first:
+      213: -9001698756898408723
+    second: scissors_ss_34
+  - first:
+      213: 7143706476203602327
+    second: scissors_ss_35
+  - first:
+      213: 4750988959261375110
+    second: scissors_ss_36
+  - first:
+      213: 791908742124851841
+    second: scissors_ss_37
+  - first:
+      213: 6463588279870618821
+    second: scissors_ss_38
+  - first:
+      213: 9081359038819319061
+    second: scissors_ss_39
+  - first:
+      213: 7636655521371927618
+    second: scissors_ss_40
+  - first:
+      213: -498105342239432706
+    second: scissors_ss_41
+  - first:
+      213: 5177121271764695632
+    second: scissors_ss_42
+  - first:
+      213: -7857379717580005269
+    second: scissors_ss_43
+  - first:
+      213: 867846227153554232
+    second: scissors_ss_44
+  - first:
+      213: 4485303342726317407
+    second: scissors_ss_45
+  - first:
+      213: -7591085772316717031
+    second: scissors_ss_46
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: scissors_ss_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 360
+        height: 487
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf7c7845b6dda2f90800000000000000
+      internalID: -6977521219607738373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scissors_ss_1
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 0
+        width: 360
+        height: 487
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8aaee2df8d16dbc20800000000000000
+      internalID: 3223840492855683752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scissors_ss_2
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 0
+        width: 360
+        height: 487
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a251a3a637419510800000000000000
+      internalID: 1554101646418596516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scissors_ss_3
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 0
+        width: 360
+        height: 487
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab1b784c844e23d10800000000000000
+      internalID: 2103994977121448378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 236e96a06be99244b9eee5c9f26723f2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

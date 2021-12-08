@@ -58,8 +58,8 @@ public class SPS_AttackCollision : MonoBehaviour
         //increase the collider size for powerup
         if (playerInstance.hasPowerup == true)
         {
-            attackCollider.size = new Vector3(2.89f, attackCollider.size.y, attackCollider.size.z);
-            attackCollider.center = new Vector3(2.59f, attackCollider.center.y, attackCollider.center.z);
+            attackCollider.size = new Vector3(3.89f, attackCollider.size.y, attackCollider.size.z);
+            attackCollider.center = new Vector3(3.59f, attackCollider.center.y, attackCollider.center.z);
         }
 
     }
