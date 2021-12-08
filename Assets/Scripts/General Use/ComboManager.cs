@@ -53,7 +53,7 @@ public class ComboManager : MonoBehaviour
     {
         if (m_comboExpiryTimer > 0 && m_combo > 0 && m_doesComboExpire)
         {
-            m_comboExpiryTimer -= Time.deltaTime * m_comboExpireSpeed;
+            m_comboExpiryTimer -= Time.deltaTime * (m_comboExpireSpeed + m_combo / 10);
 
             if (m_comboExpiryTimer <= 0)
             {

@@ -5,6 +5,11 @@ using UnityEngine;
 public class Stone : MonoBehaviour
 {
     public FiveStonesGameManager.Objective type;
+    public Sprite grey_sprite;
+    public Sprite blue_sprite;
+    public Sprite yellow_sprite;
+    public Sprite red_sprite;
+
 
     // Start is called before the first frame update
     void Start()
@@ -15,13 +20,13 @@ public class Stone : MonoBehaviour
         switch (type)
         {
             case FiveStonesGameManager.Objective.CATCH_RED_STONES:
-                GetComponent<SpriteRenderer>().color = Color.red;
+                GetComponent<SpriteRenderer>().sprite = red_sprite;
                 break;
             case FiveStonesGameManager.Objective.CATCH_YELLOW_STONES:
-                GetComponent<SpriteRenderer>().color = Color.yellow;
+                GetComponent<SpriteRenderer>().sprite = yellow_sprite;
                 break;
             case FiveStonesGameManager.Objective.CATCH_BLUE_STONES:
-                GetComponent<SpriteRenderer>().color = Color.cyan;
+                GetComponent<SpriteRenderer>().sprite = blue_sprite;
                 break;
         }
     }

@@ -56,26 +56,31 @@ public class FiveStonesGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()        
     {
-        StartGame(60, 0);
+        StartGame(60, 1);
     }
 
-    // Difficulty scales from 
+    // Difficulty can be any numnber from 0 - 4f
+    // Default value would be 1
     void StartGame(float time, float difficultyMultiplier)
     {
+        // Setup managers
+        TimerManager.Instance.StartCountdown(time);
+        ComboManager.Instance.SetComboExpiry(4f - difficultyMultiplier);
+        ScoreManager.Instance.LoadNewGamemode(ScoreManager.Gamemode.FIVESTONES);
+
+        // Setup game logic
         minObjectiveReset = 3;
         maxObjectiveReset = 5;
         this.difficultyMultiplier = difficultyMultiplier;
         GetComponent<StoneSpawner>().Configure(3, 5, 3, 5, 10, 15);
-
-        TimerManager.Instance.StartCountdown(time);
-        ComboManager.Instance.SetComboExpiry(3f);
-        ScoreManager.Instance.LoadNewGamemode(ScoreManager.Gamemode.FIVESTONES);
-
         StartCoroutine(GetComponent<StoneSpawner>().SpawnStoneLoop());
         RandomizeObjective();
         StartCoroutine(ObjectiveCoroutine());
 
-        ComboManager.Instance.e_comboAdded.AddListener(AnimateComboAdd);
+        // Attach events
+        TimerManager.Instance.e_TimerFinished.AddListener(OnGameEnd);
+        ComboManager.Instance.e_comboAdded.AddListener(OnComboAdd);
+        ComboManager.Instance.e_comboBreak.AddListener(OnComboAdd);
     }
 
     // Update is called once per frame
@@ -87,11 +92,11 @@ public class FiveStonesGameManager : MonoBehaviour
 
     public void DifficultyProgression()
     {
-        float completionPercentage = TimerManager.Instance.GetRemainingTime() / TimerManager.Instance.GetDefaultCountdownTime();
+        float completionPercentage = (TimerManager.Instance.GetDefaultCountdownTime() - TimerManager.Instance.GetRemainingTime()) / TimerManager.Instance.GetDefaultCountdownTime();
 
         minObjectiveReset = 3 - (completionPercentage * difficultyMultiplier);
         maxObjectiveReset = 5 - (completionPercentage * difficultyMultiplier);
-        GetComponent<StoneSpawner>().Configure(3 - (completionPercentage * difficultyMultiplier), 5 - (completionPercentage * difficultyMultiplier), 3 + (int)(completionPercentage * 5), 5 + (int)(completionPercentage * 5), 10, 15);
+        GetComponent<StoneSpawner>().Configure(3 - (completionPercentage * difficultyMultiplier), 5 - (completionPercentage * difficultyMultiplier), 3 + (int)(completionPercentage * 5f), 5 + (int)(completionPercentage * 5f), 10, 15);
     }
 
     public IEnumerator ObjectiveCoroutine()
@@ -161,7 +166,12 @@ public class FiveStonesGameManager : MonoBehaviour
         ScoreManager.Instance.EndCurrentGameScore();
     }
 
-    public void AnimateComboAdd()
+    public void OnComboAdd()
+    {
+
+    }
+
+    public void OnComboBreak()
     {
 
     }

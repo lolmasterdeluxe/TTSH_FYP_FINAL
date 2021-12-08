@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class StoneSpawner : MonoBehaviour
 {
+    public enum SpawnPattern
+    {
+        DEFAULT,
+        NORMAL_SNAKE,
+        SNAKE,
+        CURVE,
+        CROSS,
+        TOTAL,
+    }
+
     public GameObject stonePrefab;
 
     public float minSpawnDelay;
@@ -15,7 +25,8 @@ public class StoneSpawner : MonoBehaviour
     public float minForce;
     public float maxForce;
 
-    public List<Transform> spawnPointList;
+    public GameObject spawnPointHolder;
+    public List<Transform> spawnPointList = new List<Transform>();
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +36,10 @@ public class StoneSpawner : MonoBehaviour
             Debug.LogError("stonePrefab is null");
             return;
         }
+
+        // Load spawnPointList
+        for (int i = 0; i < spawnPointHolder.transform.childCount; i++)
+            spawnPointList.Add(spawnPointHolder.transform.GetChild(i));
 
         if (spawnPointList == null || spawnPointList.Count == 0)
         {
@@ -53,19 +68,109 @@ public class StoneSpawner : MonoBehaviour
     {
         while (true)
         {
+            SpawnPattern randomSpawnType = (SpawnPattern)Random.Range((int)SpawnPattern.DEFAULT, (int)SpawnPattern.TOTAL);
             float delay = Random.Range(minSpawnDelay, maxSpawnDelay);
-            SpawnStone(Random.Range(minStone, maxStone));
+
+            switch (randomSpawnType)
+            {
+                case SpawnPattern.DEFAULT:
+                    SpawnStoneDefault(Random.Range(minStone, maxStone));
+                    break;
+                case SpawnPattern.NORMAL_SNAKE:
+                    StartCoroutine(SpawnStoneNormalSnake());
+                    break;
+                case SpawnPattern.SNAKE:
+                    StartCoroutine(SpawnStoneSnake());
+                    break;
+                case SpawnPattern.CURVE:
+                    StartCoroutine(SpawnStoneCurve());
+                    break;
+                case SpawnPattern.CROSS:
+                    StartCoroutine(SpawnStoneCross());
+                    break;
+            }
+
             yield return new WaitForSeconds(delay);
-            // Add condition to break out of loop
         }
     }
 
-    void SpawnStone(int count)
+
+    IEnumerator SpawnStoneNormalSnake()
     {
+        float randomForce = Random.Range(minForce, maxForce);
+
+        for (int i = 0; i < spawnPointList.Count; i++)
+        {
+            GameObject spawnedStone = Instantiate(stonePrefab, spawnPointList[i].position, Quaternion.identity);
+            spawnedStone.GetComponent<Rigidbody2D>().AddForce(spawnedStone.transform.up * randomForce, ForceMode2D.Impulse);
+            spawnedStone.GetComponent<Stone>().type = FiveStonesGameManager.GetRandomColouredObjective();
+
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    IEnumerator SpawnStoneSnake()
+    {
+        float randomMagnitude = Random.Range(2f, 5f);
+        float randomOffset = Random.Range(10f, 12f);
+
+        for (int i = 0; i < spawnPointList.Count; i++)
+        {
+            GameObject spawnedStone = Instantiate(stonePrefab, spawnPointList[i].position, Quaternion.identity);
+            spawnedStone.GetComponent<Rigidbody2D>().AddForce(spawnedStone.transform.up * (randomMagnitude * Mathf.Sin(spawnedStone.transform.position.x) + randomOffset), ForceMode2D.Impulse);
+            spawnedStone.GetComponent<Stone>().type = FiveStonesGameManager.GetRandomColouredObjective();
+
+            yield return null;
+        }
+    }
+
+    IEnumerator SpawnStoneCurve()
+    {
+        float randomMagnitude = Random.Range(2f, 4f);
+        float randomOffset = Random.Range(10f, 12f);
+
+        for (int i = 0; i < spawnPointList.Count; i++)
+        {
+            GameObject spawnedStone = Instantiate(stonePrefab, spawnPointList[i].position, Quaternion.identity);
+            spawnedStone.GetComponent<Rigidbody2D>().AddForce(spawnedStone.transform.up * (randomMagnitude * Mathf.Cos(0.2f * spawnedStone.transform.position.x) + randomOffset), ForceMode2D.Impulse);
+            spawnedStone.GetComponent<Stone>().type = FiveStonesGameManager.GetRandomColouredObjective();
+
+            yield return null;
+        }
+    }
+
+    IEnumerator SpawnStoneCross()
+    {
+        float randomMagnitude = Random.Range(2f, 5f);
+        float randomOffset = Random.Range(10f, 12f);
+
+        for (int i = 0; i < spawnPointList.Count; i++)
+        {
+            GameObject spawnedStone = Instantiate(stonePrefab, spawnPointList[i].position, Quaternion.identity);
+            spawnedStone.GetComponent<Rigidbody2D>().AddForce(spawnedStone.transform.up * (randomMagnitude * Mathf.Cos(3f * spawnedStone.transform.position.x) + randomOffset), ForceMode2D.Impulse);
+            spawnedStone.GetComponent<Stone>().type = FiveStonesGameManager.GetRandomColouredObjective();
+
+            yield return null;
+        }
+    }
+
+    void SpawnStoneDefault(int count)
+    {
+        List<Transform> usedSpawnPointList = new List<Transform>();
+
         for (int i = 0; i < count; i++)
         {
             int randomIndex = Random.Range(0, spawnPointList.Count - 1);
+
+            // We make sure the spawn points don't overlap if there is more than enough unique spawn points
+            if (count <= spawnPointList.Count)
+            {
+                while (usedSpawnPointList.Contains(spawnPointList[randomIndex]))
+                    randomIndex = Random.Range(0, spawnPointList.Count - 1);
+            }
+            
             Transform randomPoint = spawnPointList[randomIndex];
+            usedSpawnPointList.Add(randomPoint);
 
             GameObject spawnedStone = Instantiate(stonePrefab, randomPoint.position, randomPoint.rotation);
             spawnedStone.GetComponent<Rigidbody2D>().AddForce(spawnedStone.transform.up * Random.Range(minForce, maxForce), ForceMode2D.Impulse);
