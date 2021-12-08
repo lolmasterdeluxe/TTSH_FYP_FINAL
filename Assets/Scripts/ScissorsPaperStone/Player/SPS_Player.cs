@@ -22,7 +22,9 @@ public class SPS_Player : MonoBehaviour
     Animator playerAC, playeractionAC;
     SPS_LivesManager livesInstance;
     SPS_ObjectSpawningScript objectspawningInstance;
+    SPS_AttackCollision attackCollisionInstance;
 
+    public GameObject playerActionAnimation;
 
     BoxCollider playerCollider;
     Vector3 originalColliderSize;
@@ -42,12 +44,15 @@ public class SPS_Player : MonoBehaviour
         playerJumped = false;
         playerCollider = GetComponent<BoxCollider>();
 
+        playerActionAnimation.SetActive(false);
+
         //we store the original collider size for reference
         originalColliderSize =
         new Vector3(playerCollider.size.x, playerCollider.size.y, playerCollider.size.z);
 
         playerAC = GetComponent<Animator>();
         playeractionAC = GetComponentInChildren<Animator>();
+        attackCollisionInstance = FindObjectOfType<SPS_AttackCollision>();
         livesInstance = FindObjectOfType<SPS_LivesManager>();
         objectspawningInstance = FindObjectOfType<SPS_ObjectSpawningScript>();
 
@@ -143,16 +148,34 @@ public class SPS_Player : MonoBehaviour
     {
         p_choice = PlayerChoice.P_SCISSOR;
         playerAC.SetBool("PlayerAttackingWithScissors", true);
+        playeractionAC.SetBool("PlayerActionWithScissors", true);
+
+        //we call the AttackButtonPress function HERE
+        attackCollisionInstance.AttackButtonPress();
+
+        //we set the animation pane to be active
+        playerActionAnimation.SetActive(true);
+
     }
     public void PlayerChoosesPaper()
     {
         p_choice = PlayerChoice.P_PAPER;
         playerAC.SetBool("PlayerAttackingWithPaper", true);
+        playeractionAC.SetBool("PlayerActionWithPaper", true);
+
+        //we set the animation pane to be active
+        playerActionAnimation.SetActive(true);
+
     }
     public void PlayerChoosesStone()
     {
         p_choice = PlayerChoice.P_STONE;
         playerAC.SetBool("PlayerAttackingWithStone", true);
+        playeractionAC.SetBool("PlayerActionWithStone", true);
+
+        //we set the animation pane to be active
+        playerActionAnimation.SetActive(true);
+
     }
 
     public void PlayerJumps()

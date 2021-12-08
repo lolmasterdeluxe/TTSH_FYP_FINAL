@@ -69,33 +69,12 @@ public class SPS_AttackCollision : MonoBehaviour
         jumpbuttonPressed = true;
     }
 
-    public void JumpButtonUpTime()
-    {
-        if (jumpbuttonPressed == true)
-        {
-            rangeUptime += Time.deltaTime;
-            if (rangeUptime >= 0.5f)
-            {
-                rangeUptime = 0f;
-                playerInstance.playerJumped = false;
-                jumpbuttonPressed = false;
-                playerInstance.p_choice = SPS_Player.PlayerChoice.P_NONE;
-
-                //we set all the action (button )animations to be false since everything should be reset
-                ac.SetBool("PlayerAttackingWithScissors", false);
-                ac.SetBool("PlayerAttackingWithPaper", false);
-                ac.SetBool("PlayerAttackingWithStone", false);
-                ac.SetBool("PlayerJumped", false);
-            }
-        }
-    }
-
     public void AttackButtonUpTime()
     {
         if (attackbuttonPressed == true)
         {
             rangeUptime += Time.deltaTime;
-            if (rangeUptime >= 0.2f)
+            if (rangeUptime >= 2f)
             {
                 rangeUptime = 0f;
                 attackbuttonPressed = false;
@@ -117,9 +96,35 @@ public class SPS_AttackCollision : MonoBehaviour
                 ac.SetBool("PlayerAttackingWithPaper", false);
                 ac.SetBool("PlayerAttackingWithStone", false);
                 ac.SetBool("PlayerJumped", false);
+
+                //we set the player action animation pane to be deactivated
+                playerInstance.playerActionAnimation.SetActive(false);
+
             }
         }
     }
+
+    public void JumpButtonUpTime()
+    {
+        if (jumpbuttonPressed == true)
+        {
+            rangeUptime += Time.deltaTime;
+            if (rangeUptime >= 0.5f)
+            {
+                rangeUptime = 0f;
+                playerInstance.playerJumped = false;
+                jumpbuttonPressed = false;
+                playerInstance.p_choice = SPS_Player.PlayerChoice.P_NONE;
+
+                //we set all the action (button )animations to be false since everything should be reset
+                ac.SetBool("PlayerAttackingWithScissors", false);
+                ac.SetBool("PlayerAttackingWithPaper", false);
+                ac.SetBool("PlayerAttackingWithStone", false);
+                ac.SetBool("PlayerJumped", false);
+            }
+        }
+    }
+
 
     //call this function when the wave of enemy is completed
     public void WaveCompleted()
