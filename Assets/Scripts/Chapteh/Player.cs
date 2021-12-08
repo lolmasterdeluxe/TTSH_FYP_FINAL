@@ -12,7 +12,10 @@ public class Player : MonoBehaviour
 
     private Vector3 mousePosition;
 
-    public SpriteRenderer playerT;
+    public SpriteRenderer playerSprite;
+
+    Animator playerAnim;
+    private Chapteh chapteh;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +24,9 @@ public class Player : MonoBehaviour
 
         // Gets the size of the player width
         playerWidth = GetComponent<SpriteRenderer>().bounds.size.x / 2;
+        chapteh = GameObject.Find("Chapteh").GetComponent<Chapteh>();
+
+        playerAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -31,7 +37,9 @@ public class Player : MonoBehaviour
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
         // Calls func for player sprite to flip
-        SpriteFlip();
+        //SpriteFlip();
+
+        PlayerSpriteAnimation();
     }
 
     private void FixedUpdate()
@@ -50,9 +58,33 @@ public class Player : MonoBehaviour
         float worldPosX = mousePosition.x;
         if (worldPosX > gameObject.transform.position.x)
             // Sets the sprite to original position
-            playerT.flipX = false;
+            playerSprite.flipX = false;
         else
             // Flips the sprite to be inverted
-            playerT.flipX = true;
+            playerSprite.flipX = true;
+    }
+
+    private void PlayerSpriteAnimation()
+    {
+        if (Input.GetAxis("Mouse X") == 0 && Input.GetAxis("Mouse Y") == 0)
+        {
+            playerAnim.SetBool("PlayerIdle", true);
+            playerAnim.SetBool("PlayerRun", false);
+        }
+        else if (rb.IsAwake())
+        {
+            playerAnim.SetBool("PlayerRun", true);
+            playerAnim.SetBool("PlayerIdle", false);
+            SpriteFlip();
+        }
+
+        if (chapteh.isKicked == true)
+        {
+            playerAnim.SetBool("PlayerKick", true);
+        }
+        else
+        {
+            playerAnim.SetBool("PlayerKick", false);
+        }
     }
 }

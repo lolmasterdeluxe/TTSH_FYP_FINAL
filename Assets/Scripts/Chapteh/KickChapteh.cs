@@ -16,6 +16,7 @@ public class KickChapteh : MonoBehaviour
     {
         chapteh = GameObject.Find("Chapteh").GetComponent<Chapteh>();
         gauge = GameObject.Find("Gauge Image").GetComponent<Gauge>();
+
     }
 
     public void PowerLaunch()

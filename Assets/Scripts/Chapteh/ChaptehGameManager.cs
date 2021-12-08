@@ -32,7 +32,6 @@ public class ChaptehGameManager : MonoBehaviour
     private int bluebaseScore = 3;
     private int greenbaseScore = 5;
     private int anybaseScore = 2;
-    private int baseScore = 1;
 
     private void Awake()
     {
@@ -157,7 +156,6 @@ public class ChaptehGameManager : MonoBehaviour
                     break;
             }
 
-            //ScoreManager.Instance.AddCurrentGameScore(baseScore);
             ComboManager.Instance.BreakCombo();
         }
     }
