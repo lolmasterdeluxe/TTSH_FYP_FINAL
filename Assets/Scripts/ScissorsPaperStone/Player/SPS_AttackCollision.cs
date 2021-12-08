@@ -148,6 +148,8 @@ public class SPS_AttackCollision : MonoBehaviour
 
     #endregion
 
+    #region Trigger Functions
+
     private void OnTriggerStay(Collider other)
     {
         //we now check that the matchup is correct to kill the enemy
@@ -222,5 +224,7 @@ public class SPS_AttackCollision : MonoBehaviour
             }
         }
     }
+
+    #endregion
 
 }
