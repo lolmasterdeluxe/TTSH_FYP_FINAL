@@ -2194,7 +2194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p_choice: 0
   playerActionAnimation: {fileID: 824210120}
-  hasPowerup: 1
+  hasPowerup: 0
   playerJumped: 0
 --- !u!65 &1340853089
 BoxCollider:

@@ -56,7 +56,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: playerBodyAnimatorController
+  m_Name: Player Body Animator Controller
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: PlayerStunned
@@ -91,7 +91,7 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
-    m_Name: Base Layer
+    m_Name: Player Body Layer
     m_StateMachine: {fileID: 2288341053814311572}
     m_Mask: {fileID: 0}
     m_Motions: []
@@ -109,7 +109,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Base Layer
+  m_Name: Player Body Layer
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 5720853234434047188}
@@ -135,7 +135,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: playerBody_atk_scissors
-  m_Speed: 1
+  m_Speed: 1.15
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -3952828438386273950}
