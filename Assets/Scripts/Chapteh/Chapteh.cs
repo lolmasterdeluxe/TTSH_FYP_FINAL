@@ -80,7 +80,7 @@ public class Chapteh : MonoBehaviour
         if (inPlay)
         {
             // Clamps the Chapteh within the boundaries of the background
-            transform.position = new Vector2(Mathf.Clamp(transform.position.x, skyWidth.bounds.min.x + chaptehWidth, skyWidth.bounds.max.x - chaptehWidth),
+            transform.position = new Vector2(Mathf.Clamp(transform.position.x, (skyWidth.bounds.min.x + 0.2f) + chaptehWidth, (skyWidth.bounds.max.x - 0.2f) - chaptehWidth),
                                              Mathf.Clamp(transform.position.y, skyHeight.bounds.min.y + chaptehHeight, (skyHeight.bounds.max.y + 2f) - chaptehHeight));
 
             // Rotates the Chapteh to fall according to gravity
