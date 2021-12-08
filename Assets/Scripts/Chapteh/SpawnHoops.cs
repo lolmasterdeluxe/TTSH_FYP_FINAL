@@ -14,10 +14,9 @@ public class SpawnHoops : MonoBehaviour
     public SpriteRenderer skySpriteWidth, skySpriteHeight;
     private List<Vector2> spawnedPositions;
     private float redhoopRadius, bluehoopRadius, greenhoopRadius;
-
     private GameObject gameObjectHoops;
 
-    private float liveTime = 5f;
+    //private float liveTime = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -65,7 +64,7 @@ public class SpawnHoops : MonoBehaviour
                     {
                         GameObject temp;
 
-                        switch(randOption)
+                        switch (randOption)
                         {
                             case 0:
                                 temp = Instantiate(redHoopPrefab, spawnPos, Quaternion.identity);
@@ -84,6 +83,7 @@ public class SpawnHoops : MonoBehaviour
                         spawnedPositions.RemoveAt(spawnedPositions.Count - 1);
                         spawnedPositions.Add(gameObjectHoops.transform.position);
 
+
                         Debug.Log(spawnedPositions.Count);
                     }
                 }
@@ -93,26 +93,41 @@ public class SpawnHoops : MonoBehaviour
 
     private void DestroyHoopsAfterTime()
     {
-        if(spawnedPositions.Count > 10)
+        if(spawnedPositions.Count >= 16)
         {
-            liveTime -= Time.deltaTime;
-            randOption = Random.Range(0, 3);
-            if (liveTime <= 0)
-            {
-                //Destroy(gameObjectHoops);
+            //liveTime -= Time.deltaTime;
+            //randOption = Random.Range(0, 3);
+            //if (liveTime <= 0)
+            //{
+            //    //Destroy(gameObjectHoops);
 
-                switch (randOption)
-                {
-                    case 0:
-                        Destroy(redHoopPrefab);
-                        break;
-                    case 1:
-                        Destroy(blueHoopPrefab);
-                        break;
-                    case 2:
-                        Destroy(greenHoopPrefab);
-                        break;
-                }
+            //    switch (randOption)
+            //    {
+            //        case 0:
+            //            Destroy(redHoopPrefab);
+            //            break;
+            //        case 1:
+            //            Destroy(blueHoopPrefab);
+            //            break;
+            //        case 2:
+            //            Destroy(greenHoopPrefab);
+            //            break;
+            //    }
+            //}
+
+            randOption = Random.Range(0, 3);
+            spawnedPositions.RemoveRange(0, 6);
+            switch (randOption)
+            {
+                case 0:
+                    Destroy(redHoopPrefab);
+                    break;
+                case 1:
+                    Destroy(blueHoopPrefab);
+                    break;
+                case 2:
+                    Destroy(greenHoopPrefab);
+                    break;
             }
         }
     }
