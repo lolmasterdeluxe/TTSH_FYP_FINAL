@@ -58,8 +58,8 @@ public class SPS_AttackCollision : MonoBehaviour
         //increase the collider size for powerup
         if (playerInstance.hasPowerup == true)
         {
-            attackCollider.size = new Vector3(2.89f, attackCollider.size.y, attackCollider.size.z);
-            attackCollider.center = new Vector3(2.59f, attackCollider.center.y, attackCollider.center.z);
+            attackCollider.size = new Vector3(3.89f, attackCollider.size.y, attackCollider.size.z);
+            attackCollider.center = new Vector3(3.59f, attackCollider.center.y, attackCollider.center.z);
         }
 
     }
@@ -67,6 +67,41 @@ public class SPS_AttackCollision : MonoBehaviour
     public void JumpButtonPress()
     {
         jumpbuttonPressed = true;
+    }
+
+    public void AttackButtonUpTime()
+    {
+        if (attackbuttonPressed == true)
+        {
+            rangeUptime += Time.deltaTime;
+            if (rangeUptime >= 2f)
+            {
+                rangeUptime = 0f;
+                attackbuttonPressed = false;
+                playerInstance.p_choice = SPS_Player.PlayerChoice.P_NONE;
+
+                //if the player has the powerup
+                if (playerInstance.hasPowerup == true)
+                {
+                    //set the powerup boolean to be false
+                    playerInstance.hasPowerup = false;
+
+                    //set the attack collider to be the default size
+                    attackCollider.size = new Vector3(1.65f, attackCollider.size.y, attackCollider.size.z);
+                    attackCollider.center = new Vector3(2f, attackCollider.center.y, attackCollider.center.z);
+                }
+
+                //we set all the action (button )animations to be false since everything should be reset
+                ac.SetBool("PlayerAttackingWithScissors", false);
+                ac.SetBool("PlayerAttackingWithPaper", false);
+                ac.SetBool("PlayerAttackingWithStone", false);
+                ac.SetBool("PlayerJumped", false);
+
+                //we set the player action animation pane to be deactivated
+                playerInstance.playerActionAnimation.SetActive(false);
+
+            }
+        }
     }
 
     public void JumpButtonUpTime()
@@ -90,36 +125,6 @@ public class SPS_AttackCollision : MonoBehaviour
         }
     }
 
-    public void AttackButtonUpTime()
-    {
-        if (attackbuttonPressed == true)
-        {
-            rangeUptime += Time.deltaTime;
-            if (rangeUptime >= 0.2f)
-            {
-                rangeUptime = 0f;
-                attackbuttonPressed = false;
-                playerInstance.p_choice = SPS_Player.PlayerChoice.P_NONE;
-
-                //if the player has the powerup
-                if (playerInstance.hasPowerup == true)
-                {
-                    //set the powerup boolean to be false
-                    playerInstance.hasPowerup = false;
-
-                    //set the attack collider to be the default size
-                    attackCollider.size = new Vector3(1.65f, attackCollider.size.y, attackCollider.size.z);
-                    attackCollider.center = new Vector3(2f, attackCollider.center.y, attackCollider.center.z);
-                }
-
-                //we set all the action (button )animations to be false since everything should be reset
-                ac.SetBool("PlayerAttackingWithScissors", false);
-                ac.SetBool("PlayerAttackingWithPaper", false);
-                ac.SetBool("PlayerAttackingWithStone", false);
-                ac.SetBool("PlayerJumped", false);
-            }
-        }
-    }
 
     //call this function when the wave of enemy is completed
     public void WaveCompleted()

@@ -24,8 +24,7 @@ public class SPS_Despawning : MonoBehaviour
     {
         if (objectspawningInstance.objectwaveList.Count == 0)
         {
-            objectspawningInstance.waveCompleted = false;
-            //Debug.Log("List is empty");
+            objectspawningInstance.waveCompleted = false;;
         }
     }
 

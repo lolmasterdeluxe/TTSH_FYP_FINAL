@@ -10,7 +10,7 @@ public class SPS_Player : MonoBehaviour
     #region Enumerations
     public enum PlayerChoice
     {
-        P_SCISSOR, P_PAPER, P_STONE, P_JUMP, P_SLIDE, P_NONE
+        P_SCISSOR, P_PAPER, P_STONE, P_JUMP, P_NONE
     };
 
     public PlayerChoice p_choice;
@@ -19,10 +19,12 @@ public class SPS_Player : MonoBehaviour
 
     #region Variables
 
-    Animator ac;
+    Animator playerAC, playeractionAC;
     SPS_LivesManager livesInstance;
     SPS_ObjectSpawningScript objectspawningInstance;
-    SPS_AttackCollision attackcollisionInstance;
+    SPS_AttackCollision attackCollisionInstance;
+
+    public GameObject playerActionAnimation;
 
     BoxCollider playerCollider;
     Vector3 originalColliderSize;
@@ -42,14 +44,18 @@ public class SPS_Player : MonoBehaviour
         playerJumped = false;
         playerCollider = GetComponent<BoxCollider>();
 
-        //we store the original collider size for reference
-            originalColliderSize =
-            new Vector3(playerCollider.size.x, playerCollider.size.y, playerCollider.size.z);
+        playerActionAnimation.SetActive(false);
 
-        ac = GetComponent<Animator>();
+        //we store the original collider size for reference
+        originalColliderSize =
+        new Vector3(playerCollider.size.x, playerCollider.size.y, playerCollider.size.z);
+
+        playerAC = GetComponent<Animator>();
+        playeractionAC = GetComponentInChildren<Animator>();
+        attackCollisionInstance = FindObjectOfType<SPS_AttackCollision>();
         livesInstance = FindObjectOfType<SPS_LivesManager>();
         objectspawningInstance = FindObjectOfType<SPS_ObjectSpawningScript>();
-        attackcollisionInstance = FindObjectOfType<SPS_AttackCollision>();
+
     }
 
     private void Update()
@@ -58,10 +64,8 @@ public class SPS_Player : MonoBehaviour
         if (objectspawningInstance.objectwaveList.Count == 0)
         {
             objectspawningInstance.waveCompleted = false;
-            Debug.Log("List is empty");
         }
     
-
         if (playerJumped == true)
         {
             playerjumpUptime += Time.deltaTime;
@@ -74,11 +78,13 @@ public class SPS_Player : MonoBehaviour
             }
         }
 
-        ////we reset the collider size
-        //if (attackcollisionInstance.jumpbuttonPressed == false && playerJumped == true)
-        //{
-        //    playerCollider.size = originalColliderSize;
-        //}
+        //this is for keyboard controls to attack/jump
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            PlayerChoosesScissors();
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -88,7 +94,7 @@ public class SPS_Player : MonoBehaviour
             Debug.Log("Player has collided with an enemy : trigger enter");
 
             //we set the animation here to be stunned
-            ac.SetBool("PlayerStunned", true);
+            playerAC.SetBool("PlayerStunned", true);
 
             //we now delete the instance of that gameobject in the list
             objectspawningInstance.objectwaveList.Remove(other.gameObject);
@@ -107,7 +113,7 @@ public class SPS_Player : MonoBehaviour
             Debug.Log("Player has collided with an Obstacle: trigger enter");
 
             //we set the animation here to be stunned
-            ac.SetBool("PlayerStunned", true);
+            playerAC.SetBool("PlayerStunned", true);
 
             //we do lives and combo calculations here
             livesInstance.PlayerTakesDamage();
@@ -141,23 +147,41 @@ public class SPS_Player : MonoBehaviour
     public void PlayerChoosesScissors()
     {
         p_choice = PlayerChoice.P_SCISSOR;
-        ac.SetBool("PlayerAttackingWithScissors", true);
+        playerAC.SetBool("PlayerAttackingWithScissors", true);
+        playeractionAC.SetBool("PlayerActionWithScissors", true);
+
+        //we call the AttackButtonPress function HERE
+        attackCollisionInstance.AttackButtonPress();
+
+        //we set the animation pane to be active
+        playerActionAnimation.SetActive(true);
+
     }
     public void PlayerChoosesPaper()
     {
         p_choice = PlayerChoice.P_PAPER;
-        ac.SetBool("PlayerAttackingWithPaper", true);
+        playerAC.SetBool("PlayerAttackingWithPaper", true);
+        playeractionAC.SetBool("PlayerActionWithPaper", true);
+
+        //we set the animation pane to be active
+        playerActionAnimation.SetActive(true);
+
     }
     public void PlayerChoosesStone()
     {
         p_choice = PlayerChoice.P_STONE;
-        ac.SetBool("PlayerAttackingWithStone", true);
+        playerAC.SetBool("PlayerAttackingWithStone", true);
+        playeractionAC.SetBool("PlayerActionWithStone", true);
+
+        //we set the animation pane to be active
+        playerActionAnimation.SetActive(true);
+
     }
 
     public void PlayerJumps()
     {
         p_choice = PlayerChoice.P_JUMP;
-        ac.SetBool("PlayerJumped", true);
+        playerAC.SetBool("PlayerJumped", true);
 
         //we shift the collider up to simulate "jumping"
         playerCollider.size = new Vector3(playerCollider.size.x, playerCollider.size.y + 1.5f, playerCollider.size.z);
