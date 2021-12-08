@@ -141,7 +141,23 @@ public class ChaptehGameManager : MonoBehaviour
         }
         else
         {
-            ScoreManager.Instance.AddCurrentGameScore(baseScore);
+            switch (gameObject.GetComponent<Hoops>().type)
+            {
+                case Objective.HIT_RED_HOOPS:
+                    ScoreManager.Instance.AddCurrentGameScore(redbaseScore);
+                    break;
+                case Objective.HIT_BLUE_HOOPS:
+                    ScoreManager.Instance.AddCurrentGameScore(bluebaseScore);
+                    break;
+                case Objective.HIT_GREEN_HOOPS:
+                    ScoreManager.Instance.AddCurrentGameScore(greenbaseScore);
+                    break;
+                case Objective.HIT_ANY_HOOPS:
+                    ScoreManager.Instance.AddCurrentGameScore(anybaseScore);
+                    break;
+            }
+
+            //ScoreManager.Instance.AddCurrentGameScore(baseScore);
             ComboManager.Instance.BreakCombo();
         }
     }

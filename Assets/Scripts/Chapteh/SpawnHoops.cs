@@ -26,11 +26,16 @@ public class SpawnHoops : MonoBehaviour
         bluehoopRadius = blueHoopPrefab.GetComponent<Collider2D>().bounds.extents.x;
         greenhoopRadius = greenHoopPrefab.GetComponent<Collider2D>().bounds.extents.x;
         spawnedPositions = new List<Vector2>();
+
+        //if(spawnedPositions.Count <= 5)
+        //{
+        //    InvokeRepeating("RandomHoopSpawn", 1.0f, 2.0f);
+        //}
     }
 
     private void Update()
     {
-        RandomHoopSpawn();
+        LimitSpawnHoops();
 
         //DestroyHoopsAfterTime();
     }
@@ -88,6 +93,14 @@ public class SpawnHoops : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    private void LimitSpawnHoops()
+    {
+        if (spawnedPositions.Count <= 20)
+        {
+            RandomHoopSpawn();
         }
     }
 
