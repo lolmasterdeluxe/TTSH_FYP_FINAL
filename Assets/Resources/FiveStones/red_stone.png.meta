@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: a8e09509d66644a4ca40b1dc9d85e363
+<<<<<<< HEAD:Assets/Resources/FiveStones/red_stone.png.meta
+guid: c5581ca594d84ec4b929e84e52ee7b28
+=======
+guid: c14ecb049e62f974e849fdb0fa020c75
+>>>>>>> 74207baf69aec431e7149f91d479ce0ccd13fa70:Assets/Resources/FiveStones/grey_stone.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -50,9 +54,15 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
+<<<<<<< HEAD:Assets/Resources/FiveStones/red_stone.png.meta
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+=======
   alphaIsTransparency: 0
   spriteTessellationDetail: -1
   textureType: 0
+>>>>>>> 74207baf69aec431e7149f91d479ce0ccd13fa70:Assets/Resources/FiveStones/grey_stone.png.meta
   textureShape: 1
   singleChannelComponent: 0
   maxTextureSizeSet: 0
@@ -73,6 +83,33 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< HEAD:Assets/Resources/FiveStones/red_stone.png.meta
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+=======
+>>>>>>> 74207baf69aec431e7149f91d479ce0ccd13fa70:Assets/Resources/FiveStones/grey_stone.png.meta
   spriteSheet:
     serializedVersion: 2
     sprites: []
