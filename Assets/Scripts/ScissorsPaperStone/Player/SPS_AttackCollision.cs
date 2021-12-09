@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class SPS_AttackCollision : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class SPS_AttackCollision : MonoBehaviour
     SPS_ScoreManager scoreInstance;
     SPS_ObjectSpawningScript objectspawningInstance;
 
+    //this is for the combo text
+    public GameObject comboText;
+
     #endregion
 
     #region Unity Callbacks
@@ -33,6 +37,10 @@ public class SPS_AttackCollision : MonoBehaviour
         playerInstance = GetComponentInParent<SPS_Player>();
         scoreInstance = FindObjectOfType<SPS_ScoreManager>();
         objectspawningInstance = FindObjectOfType<SPS_ObjectSpawningScript>();
+
+        //attach events HERE
+        ComboManager.Instance.e_comboAdded.AddListener(AddedCombo);
+        ComboManager.Instance.e_comboBreak.AddListener(ComboBroken);
     }
 
     private void Update()
@@ -177,6 +185,9 @@ public class SPS_AttackCollision : MonoBehaviour
                     //we do lives and combo calculations here
                     scoreInstance.PlayerScores();
                     ComboManager.Instance.AddCombo();
+
+                    //we do combo text HERE
+                    UpdateComboScore();
                 }
 
                 else if (attackbuttonPressed == true && playerInstance.p_choice == SPS_Player.PlayerChoice.P_PAPER
@@ -194,6 +205,9 @@ public class SPS_AttackCollision : MonoBehaviour
                     //we do lives and combo calculations here
                     scoreInstance.PlayerScores();
                     ComboManager.Instance.AddCombo();
+
+                    //we do combo text HERE
+                    UpdateComboScore();
                 }
 
                 else if (attackbuttonPressed == true && playerInstance.p_choice == SPS_Player.PlayerChoice.P_STONE
@@ -211,6 +225,9 @@ public class SPS_AttackCollision : MonoBehaviour
                     //we do lives and combo calculations here
                     scoreInstance.PlayerScores();
                     ComboManager.Instance.AddCombo();
+
+                    //we do combo text HERE
+                    UpdateComboScore();
                 }
             }
 
@@ -225,6 +242,26 @@ public class SPS_AttackCollision : MonoBehaviour
                 }
             }
         }
+    }
+
+    #endregion
+
+    #region Combo Manager Functions
+
+    public void AddedCombo()
+    {
+        TweenManager.Instance.AnimateFade(comboText.GetComponent<CanvasGroup>(), 1, 0.25f);
+    }
+
+    public void ComboBroken()
+    {
+        TweenManager.Instance.AnimateShake(comboText.transform, 2, 1f);
+        TweenManager.Instance.AnimateFade(comboText.GetComponent<CanvasGroup>(), 0f, 0.5f);
+    }
+
+    public void UpdateComboScore()
+    {
+        comboText.GetComponent<TMP_Text>().text = "Combo " + ComboManager.Instance.GetCurrentCombo() + "x";
     }
 
     #endregion
