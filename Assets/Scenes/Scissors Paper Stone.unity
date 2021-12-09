@@ -1038,7 +1038,7 @@ GameObject:
   - component: {fileID: 824210125}
   - component: {fileID: 824210123}
   m_Layer: 0
-  m_Name: AttackActionAnimation
+  m_Name: ActionPaneAnimation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1052,8 +1052,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 824210120}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.825, y: 0.025, z: 1}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalPosition: {x: 0.825, y: 0.125, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 1340853084}
   m_RootOrder: 0
@@ -2295,6 +2295,7 @@ MonoBehaviour:
   jumpbuttonPressed: 0
   rangeUptime: 0
   attackCollider: {fileID: 0}
+  comboGroup: {fileID: 1265912212}
   comboText: {fileID: 1820034186}
 --- !u!54 &1462714313
 Rigidbody:

@@ -14,7 +14,9 @@ public class SPS_ScoreManager : MonoBehaviour
     public int playerScore;
     int baseScore;
     public GameObject scoretextInstance;
-    ComboManager combomanagerInstance;
+
+    //add script references HERE
+    SPS_AttackCollision attackCollisionInstance;
 
     #endregion
 
@@ -25,8 +27,6 @@ public class SPS_ScoreManager : MonoBehaviour
         baseScore = 1;
         //player starts with a score of 0
         playerScore = 0;
-        //add reference HERE
-        combomanagerInstance = FindObjectOfType<ComboManager>();
 
         ScoreManager.Instance.LoadAllScoreList();
         ScoreManager.Instance.EndSessionConcludeScore();
@@ -46,7 +46,6 @@ public class SPS_ScoreManager : MonoBehaviour
 
     public void PlayerScores()
     {
-        combomanagerInstance.AddCombo();
         ScoreManager.Instance.AddCurrentGameScore(baseScore * ComboManager.Instance.GetCurrentCombo());
     }
 

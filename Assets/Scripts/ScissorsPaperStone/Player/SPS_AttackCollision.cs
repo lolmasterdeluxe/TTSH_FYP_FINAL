@@ -14,15 +14,19 @@ public class SPS_AttackCollision : MonoBehaviour
     public bool jumpbuttonPressed;
 
     public float rangeUptime;
+    private float combotextLifetime;
 
     public BoxCollider attackCollider;
 
-    Animator ac;
+    Animator playerActionAC;
+
+    //reference scripts HERE
+
     SPS_Player playerInstance;
     SPS_ScoreManager scoreInstance;
     SPS_ObjectSpawningScript objectspawningInstance;
 
-    //this is for the combo text
+    public GameObject comboGroup;
     public GameObject comboText;
 
     #endregion
@@ -31,12 +35,19 @@ public class SPS_AttackCollision : MonoBehaviour
 
     private void Start()
     {
-        ac = FindObjectOfType<SPS_Player>().GetComponent<Animator>();
+        playerActionAC = FindObjectOfType<SPS_Player>().GetComponent<Animator>();
         attackCollider = GetComponent<BoxCollider>();
         
+        //script references HERE
         playerInstance = GetComponentInParent<SPS_Player>();
         scoreInstance = FindObjectOfType<SPS_ScoreManager>();
         objectspawningInstance = FindObjectOfType<SPS_ObjectSpawningScript>();
+
+        //set combo expiry
+        ComboManager.Instance.SetComboExpiry(4f);
+
+        //set the combo group to be alpha of 0 at start
+        TweenManager.Instance.AnimateFade(comboGroup.GetComponent<CanvasGroup>(), 0f, 0f);
 
         //attach events HERE
         ComboManager.Instance.e_comboAdded.AddListener(AddedCombo);
@@ -47,6 +58,7 @@ public class SPS_AttackCollision : MonoBehaviour
     {
         AttackButtonUpTime();
         JumpButtonUpTime();
+        UpdateComboScore();
 
         //check to see if wave is completed every frame
         if (objectspawningInstance.objectwaveList.Count == 0)
@@ -136,10 +148,10 @@ public class SPS_AttackCollision : MonoBehaviour
     public void OnPlayerBodyAnimationComplete()
     {
         //we set all the action (button )animations to be false since everything should be reset
-        ac.SetBool("PlayerAttackingWithScissors", false);
-        ac.SetBool("PlayerAttackingWithPaper", false);
-        ac.SetBool("PlayerAttackingWithStone", false);
-        ac.SetBool("PlayerJumped", false);
+        playerActionAC.SetBool("PlayerAttackingWithScissors", false);
+        playerActionAC.SetBool("PlayerAttackingWithPaper", false);
+        playerActionAC.SetBool("PlayerAttackingWithStone", false);
+        playerActionAC.SetBool("PlayerJumped", false);
     }
 
     public void OnPlayerActionAnimationComplete()
@@ -186,8 +198,6 @@ public class SPS_AttackCollision : MonoBehaviour
                     scoreInstance.PlayerScores();
                     ComboManager.Instance.AddCombo();
 
-                    //we do combo text HERE
-                    UpdateComboScore();
                 }
 
                 else if (attackbuttonPressed == true && playerInstance.p_choice == SPS_Player.PlayerChoice.P_PAPER
@@ -206,8 +216,6 @@ public class SPS_AttackCollision : MonoBehaviour
                     scoreInstance.PlayerScores();
                     ComboManager.Instance.AddCombo();
 
-                    //we do combo text HERE
-                    UpdateComboScore();
                 }
 
                 else if (attackbuttonPressed == true && playerInstance.p_choice == SPS_Player.PlayerChoice.P_STONE
@@ -226,8 +234,6 @@ public class SPS_AttackCollision : MonoBehaviour
                     scoreInstance.PlayerScores();
                     ComboManager.Instance.AddCombo();
 
-                    //we do combo text HERE
-                    UpdateComboScore();
                 }
             }
 
@@ -250,13 +256,15 @@ public class SPS_AttackCollision : MonoBehaviour
 
     public void AddedCombo()
     {
-        TweenManager.Instance.AnimateFade(comboText.GetComponent<CanvasGroup>(), 1, 0.25f);
+        TweenManager.Instance.AnimateFade(comboGroup.GetComponent<CanvasGroup>(), 1, 0.25f);
+        TweenManager.Instance.AnimateEnlargeText(comboText.transform, 
+            1f + (0.5f * ComboManager.Instance.GetCurrentCombo()), 0.25f);
     }
 
     public void ComboBroken()
     {
-        TweenManager.Instance.AnimateShake(comboText.transform, 2, 1f);
-        TweenManager.Instance.AnimateFade(comboText.GetComponent<CanvasGroup>(), 0f, 0.5f);
+        TweenManager.Instance.AnimateShake(comboText.transform, 3, 1f);
+        TweenManager.Instance.AnimateFade(comboGroup.GetComponent<CanvasGroup>(), 0f, 0.5f);
     }
 
     public void UpdateComboScore()

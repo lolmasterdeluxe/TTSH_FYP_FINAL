@@ -53,6 +53,10 @@ public class SPS_Player : MonoBehaviour
         attackCollisionInstance = FindObjectOfType<SPS_AttackCollision>();
         livesInstance = FindObjectOfType<SPS_LivesManager>();
         objectspawningInstance = FindObjectOfType<SPS_ObjectSpawningScript>();
+
+        //add event listeners HERE
+        ComboManager.Instance.e_comboBreak.AddListener(attackCollisionInstance.ComboBroken);
+
     }
 
     private void Update()
