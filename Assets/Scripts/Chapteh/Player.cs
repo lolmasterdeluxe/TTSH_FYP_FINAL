@@ -80,11 +80,7 @@ public class Player : MonoBehaviour
 
         if (chapteh.isKicked == true)
         {
-            playerAnim.SetBool("PlayerKick", true);
-        }
-        else
-        {
-            playerAnim.SetBool("PlayerKick", false);
+            playerAnim.SetTrigger("PlayerKick");
         }
     }
 }
