@@ -259,6 +259,7 @@ public class SPS_AttackCollision : MonoBehaviour
         TweenManager.Instance.AnimateFade(comboGroup.GetComponent<CanvasGroup>(), 1, 0.25f);
         TweenManager.Instance.AnimateEnlargeText(comboText.transform, 
             1f + (0.5f * ComboManager.Instance.GetCurrentCombo()), 0.25f);
+        TweenManager.Instance.AnimateFloatUp(comboText.transform, 5f, comboText.transform.position.y + 20f);
     }
 
     public void ComboBroken()

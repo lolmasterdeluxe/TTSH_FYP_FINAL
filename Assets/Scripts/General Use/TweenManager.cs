@@ -56,6 +56,12 @@ public class TweenManager : MonoBehaviour
         goTransform.DOShakePosition(duration, strength);
     }
 
+    public void AnimateFloatUp(Transform goTransform, float timeTaken, float position)
+    {
+        goTransform.DOMoveY(position, timeTaken);
+    }
+
+
     public void KillTween(GameObject gameObject)
     {
         
