@@ -53,7 +53,6 @@ public class SPS_Player : MonoBehaviour
         attackCollisionInstance = FindObjectOfType<SPS_AttackCollision>();
         livesInstance = FindObjectOfType<SPS_LivesManager>();
         objectspawningInstance = FindObjectOfType<SPS_ObjectSpawningScript>();
-
     }
 
     private void Update()
