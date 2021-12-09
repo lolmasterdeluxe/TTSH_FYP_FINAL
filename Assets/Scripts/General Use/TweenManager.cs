@@ -42,16 +42,18 @@ public class TweenManager : MonoBehaviour
 
     public void AnimateEnlargeText(Transform goTransform, float strength, float duration)
     {
-        goTransform.gameObject.SetActive(true);
         goTransform.DORewind();
         goTransform.DOPunchScale(new Vector3(strength, strength, strength), duration);
     }
 
-    public void AnimateShakeAndFade(CanvasGroup goCanvasGroup, float duration)
+    public void AnimateFade(CanvasGroup goCanvasGroup, float alpha, float duration)
     {
-        goCanvasGroup.DOFade(0, duration).OnComplete(
-            () => goCanvasGroup.gameObject.SetActive(false)    
-        );
+        goCanvasGroup.DOFade(alpha, duration);
+    }
+
+    public void AnimateShake(Transform goTransform, float strength, float duration)
+    {
+        goTransform.DOShakePosition(duration, strength);
     }
 
     public void KillTween(GameObject gameObject)

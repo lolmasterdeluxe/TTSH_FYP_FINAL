@@ -72,6 +72,7 @@ public class FiveStonesGameManager : MonoBehaviour
         minObjectiveReset = 3;
         maxObjectiveReset = 5;
         this.difficultyMultiplier = difficultyMultiplier;
+        TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 0f, 0f);
         GetComponent<StoneSpawner>().Configure(3, 5, 3, 5, 10, 15);
         StartCoroutine(GetComponent<StoneSpawner>().SpawnStoneLoop());
         RandomizeObjective();
@@ -80,7 +81,7 @@ public class FiveStonesGameManager : MonoBehaviour
         // Attach events
         TimerManager.Instance.e_TimerFinished.AddListener(OnGameEnd);
         ComboManager.Instance.e_comboAdded.AddListener(OnComboAdd);
-        ComboManager.Instance.e_comboBreak.AddListener(OnComboAdd);
+        ComboManager.Instance.e_comboBreak.AddListener(OnComboBreak);
     }
 
     // Update is called once per frame
@@ -160,12 +161,14 @@ public class FiveStonesGameManager : MonoBehaviour
 
     public void OnComboAdd()
     {
+        TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 1f, 0.25f);
         TweenManager.Instance.AnimateEnlargeText(g_comboText.transform, 1f, 0.25f);
     }
 
     public void OnComboBreak()
     {
-        TweenManager.Instance.AnimateShakeAndFade(g_comboGroup.GetComponent<CanvasGroup>(), 0.5f);
+        TweenManager.Instance.AnimateShake(g_comboText.transform, 2, 1f);
+        TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 0f, 0.5f);
     }
 
     public static Objective GetRandomColouredObjective()
