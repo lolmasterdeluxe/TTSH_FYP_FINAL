@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
             playerAnim.SetBool("PlayerIdle", true);
             playerAnim.SetBool("PlayerRun", false);
         }
-        else if (rb.IsAwake())
+        else if (Input.GetAxis("Mouse X") != 0 && Input.GetAxis("Mouse Y") != 0)
         {
             playerAnim.SetBool("PlayerRun", true);
             playerAnim.SetBool("PlayerIdle", false);
