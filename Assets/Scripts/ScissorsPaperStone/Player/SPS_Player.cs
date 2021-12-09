@@ -64,6 +64,13 @@ public class SPS_Player : MonoBehaviour
             objectspawningInstance.waveCompleted = false;
         }
     
+        //we check to see if the player has jumped
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            PlayerJumps();
+        }
+
+        //we run this to code to change collider size as player is "jumping"
         if (playerJumped == true)
         {
             playerjumpUptime += Time.deltaTime;
@@ -76,11 +83,24 @@ public class SPS_Player : MonoBehaviour
             }
         }
 
-        //this is for keyboard controls to attack/jump
+        //we check to see if the player has attacked
 
+        //attack was scissors
         if (Input.GetKeyDown(KeyCode.A))
         {
             PlayerChoosesScissors();
+        }
+
+        //attack was paper
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            PlayerChoosesPaper();
+        }
+
+        //attack was stone
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            PlayerChoosesStone();
         }
 
     }
@@ -116,8 +136,6 @@ public class SPS_Player : MonoBehaviour
             //we do lives and combo calculations here
             livesInstance.PlayerTakesDamage();
             ComboManager.Instance.BreakCombo();
-
-
         }
 
         else if (other.gameObject.tag == "Powerup")
@@ -133,7 +151,6 @@ public class SPS_Player : MonoBehaviour
             //we destroy the powerup gameobject since it has been "collected"
             Destroy(other.gameObject.GetComponent<Rigidbody>());
             Destroy(other.gameObject);
-
         }
     }
 
@@ -156,6 +173,9 @@ public class SPS_Player : MonoBehaviour
         p_choice = PlayerChoice.P_PAPER;
         playerAC.SetBool("PlayerAttackingWithPaper", true);
         playeractionAC.SetBool("PlayerActionWithPaper", true);
+
+        //we call the AttackButtonPress function HERE
+        attackCollisionInstance.AttackButtonPress();
     }
 
     public void PlayerChoosesStone()
@@ -163,6 +183,9 @@ public class SPS_Player : MonoBehaviour
         p_choice = PlayerChoice.P_STONE;
         playerAC.SetBool("PlayerAttackingWithStone", true);
         playeractionAC.SetBool("PlayerActionWithStone", true);
+
+        //we call the AttackButtonPress function HERE
+        attackCollisionInstance.AttackButtonPress();
     }
 
     public void PlayerJumps()
@@ -173,6 +196,9 @@ public class SPS_Player : MonoBehaviour
         //we shift the collider up to simulate "jumping"
         playerCollider.size = new Vector3(playerCollider.size.x, playerCollider.size.y + 1.5f, playerCollider.size.z);
         playerJumped = true;
+
+        //we call the JumpButtonPress function HERE
+        attackCollisionInstance.JumpButtonPress();
     }
 
     #endregion

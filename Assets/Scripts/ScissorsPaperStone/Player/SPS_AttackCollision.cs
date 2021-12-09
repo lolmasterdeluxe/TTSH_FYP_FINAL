@@ -74,7 +74,7 @@ public class SPS_AttackCollision : MonoBehaviour
         if (attackbuttonPressed == true)
         {
             rangeUptime += Time.deltaTime;
-            if (rangeUptime >= 0.7f)
+            if (rangeUptime >= 0.3f)
             {
                 rangeUptime = 0f;
                 attackbuttonPressed = false;
@@ -93,7 +93,9 @@ public class SPS_AttackCollision : MonoBehaviour
 
                 OnPlayerActionAnimationComplete();
 
-                if (playerInstance.playeractionAC.GetBool("PlayerActionWithScissors") == false)
+                if (playerInstance.playeractionAC.GetBool("PlayerActionWithScissors") == false 
+                    || playerInstance.playeractionAC.GetBool("PlayerActionWithPaper") == false
+                    || playerInstance.playeractionAC.GetBool("PlayerActionWithStone") == false)
                 {
                     OnPlayerBodyAnimationComplete();
                 }

@@ -1110,8 +1110,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 824210120}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.18, y: -0.1, z: 1}
-  m_LocalScale: {x: 0.75, y: 1, z: 1}
+  m_LocalPosition: {x: 0.9, y: 0.05, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 1340853084}
   m_RootOrder: 0
@@ -1178,7 +1178,7 @@ SpriteRenderer:
   m_Size: {x: 2.88, y: 3.9}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &824210125
@@ -2089,7 +2089,7 @@ Transform:
   m_GameObject: {fileID: 1340853083}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -5, y: -0.6, z: -0.3}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 824210121}
   - {fileID: 1462714311}
@@ -2158,7 +2158,7 @@ SpriteRenderer:
   m_Size: {x: 2.4, y: 2.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1340853087
@@ -2193,6 +2193,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   p_choice: 0
+  playerAC: {fileID: 0}
+  playeractionAC: {fileID: 0}
   playerActionAnimation: {fileID: 824210120}
   hasPowerup: 0
   playerJumped: 0
