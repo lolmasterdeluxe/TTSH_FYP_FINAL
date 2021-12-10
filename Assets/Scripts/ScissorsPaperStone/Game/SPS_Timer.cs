@@ -17,6 +17,9 @@ public class SPS_Timer : MonoBehaviour
     private void Start()
     {
         StartGame(90f);
+
+        //attach events HERE
+        TimerManager.Instance.e_TimerFinished.AddListener(EndGame);
     }
 
     private void Update()
@@ -32,6 +35,11 @@ public class SPS_Timer : MonoBehaviour
     public void StartGame(float gameTime)
     {
         TimerManager.Instance.StartCountdown(gameTime);
+    }
+
+    public void EndGame()
+    {
+        ScoreManager.Instance.EndCurrentGameScore();
     }
 
     #endregion
