@@ -197,6 +197,11 @@ public class SPS_Player : MonoBehaviour
 
         //we call the AttackButtonPress function HERE
         attackCollisionInstance.AttackButtonPress();
+
+        //we shift the attack animation such that it fits
+        playerActionAnimation.transform.localPosition = new Vector3(0.01f, 0.05f, 1f);
+        playerActionAnimation.transform.localScale = new Vector3(0.85f, 0.85f, 1f);
+
     }
 
     public void PlayerJumps()
