@@ -16,21 +16,13 @@ public class SpawnHoops : MonoBehaviour
     private float redhoopRadius, bluehoopRadius, greenhoopRadius;
     private GameObject gameObjectHoops;
 
-    //private float liveTime = 5f;
-
     // Start is called before the first frame update
     void Start()
     {
-        //hoopWidth = GetComponent<SpriteRenderer>().bounds.size.x / 2;
         redhoopRadius = redHoopPrefab.GetComponent<Collider2D>().bounds.extents.x;
         bluehoopRadius = blueHoopPrefab.GetComponent<Collider2D>().bounds.extents.x;
         greenhoopRadius = greenHoopPrefab.GetComponent<Collider2D>().bounds.extents.x;
         spawnedPositions = new List<Vector2>();
-
-        //if(spawnedPositions.Count <= 5)
-        //{
-        //    InvokeRepeating("RandomHoopSpawn", 1.0f, 2.0f);
-        //}
     }
 
     private void Update()
@@ -98,7 +90,7 @@ public class SpawnHoops : MonoBehaviour
 
     private void LimitSpawnHoops()
     {
-        if (spawnedPositions.Count <= 20)
+        if (spawnedPositions.Count <= 30)
         {
             RandomHoopSpawn();
         }

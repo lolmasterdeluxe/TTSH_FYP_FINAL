@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class KickChapteh : MonoBehaviour
 {
     [SerializeField] private Chapteh chapteh;
-    [SerializeField] private Gauge gauge;
+    [SerializeField] private ChargeBar chargeBar;
 
     private const float MAX_FORCE = 1100f;
 
@@ -15,7 +15,7 @@ public class KickChapteh : MonoBehaviour
     private void Start()
     {
         chapteh = GameObject.Find("Chapteh").GetComponent<Chapteh>();
-        gauge = GameObject.Find("Gauge Image").GetComponent<Gauge>();
+        chargeBar = GameObject.Find("Fill Image").GetComponent<ChargeBar>();
 
     }
 
@@ -24,10 +24,10 @@ public class KickChapteh : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             // Fill amount increases to the hold down mouse key
-            if (gauge.GetComponent<Image>().fillAmount != 1)
+            if (chargeBar.GetComponent<Image>().fillAmount != 1)
                 holdDownStartTime += 0.5f * Time.deltaTime;
 
-            gauge.SetFillBar(holdDownStartTime);
+            chargeBar.SetFillBar(holdDownStartTime);
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -36,7 +36,7 @@ public class KickChapteh : MonoBehaviour
             chapteh.Kick(CalculateHoldDownForce(holdDownTime));
 
             holdDownStartTime = 0f;
-            gauge.SetFillBar(0);
+            chargeBar.SetFillBar(0);
         }
     }
 

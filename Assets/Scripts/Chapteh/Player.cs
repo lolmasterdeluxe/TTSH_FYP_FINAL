@@ -36,9 +36,6 @@ public class Player : MonoBehaviour
         mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
-        // Calls func for player sprite to flip
-        //SpriteFlip();
-
         PlayerSpriteAnimation();
     }
 
@@ -66,15 +63,17 @@ public class Player : MonoBehaviour
 
     private void PlayerSpriteAnimation()
     {
-        if (Input.GetAxis("Mouse X") == 0 && Input.GetAxis("Mouse Y") == 0)
+        if (Input.GetAxis("Mouse X") == 0 && Input.GetAxis("Mouse Y") == 0) // If mouse input is not detected
         {
             playerAnim.SetBool("PlayerIdle", true);
             playerAnim.SetBool("PlayerRun", false);
         }
-        else if (Input.GetAxis("Mouse X") != 0 && Input.GetAxis("Mouse Y") != 0)
+        else if (Input.GetAxis("Mouse X") != 0 && Input.GetAxis("Mouse Y") != 0) // If mouse input is detected
         {
             playerAnim.SetBool("PlayerRun", true);
             playerAnim.SetBool("PlayerIdle", false);
+
+            // Calls func for player sprite to flip
             SpriteFlip();
         }
 

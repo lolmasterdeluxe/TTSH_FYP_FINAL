@@ -20,10 +20,10 @@ public class ChaptehGameManager : MonoBehaviour
     }
 
     public GameObject g_timerText;
+    public GameObject g_comboGroup;
     public GameObject g_scoreText;
     public GameObject g_comboText;
     public GameObject g_comboExpiryBar;
-    public GameObject g_comboExpiryBarTimerText;
     public GameObject g_objectiveText;
     public Objective m_currentObjective;
 
@@ -51,11 +51,19 @@ public class ChaptehGameManager : MonoBehaviour
 
     void StartGame(float time)
     {
+        // Setup managers
         TimerManager.Instance.StartCountdown(time);
         ComboManager.Instance.SetComboExpiry(8f);
         ScoreManager.Instance.LoadNewGamemode(ScoreManager.Gamemode.CHAPTEH);
+
+        // Setup game logic
         RandomizeObjective();
         StartCoroutine(ObjectiveCoroutine());
+
+        // Attach events
+        TimerManager.Instance.e_TimerFinished.AddListener(OnGameEnd);
+        ComboManager.Instance.e_comboAdded.AddListener(OnComboAdd);
+        ComboManager.Instance.e_comboBreak.AddListener(OnComboBreak);
     }
 
     // Update is called once per frame
@@ -102,7 +110,6 @@ public class ChaptehGameManager : MonoBehaviour
         g_scoreText.GetComponent<TMP_Text>().text = "Score \n" + ScoreManager.Instance.GetCurrentGameScore();
         g_timerText.GetComponent<TMP_Text>().text = TimerManager.Instance.GetFormattedRemainingTime();
         g_comboText.GetComponent<TMP_Text>().text = "Combo: " + ComboManager.Instance.GetCurrentCombo() + "x";
-        g_comboExpiryBarTimerText.GetComponent<TMP_Text>().text = ComboManager.Instance.GetComboExpiryTimerFormatted();
         g_comboExpiryBar.GetComponent<Slider>().value = ComboManager.Instance.GetComboExpiryTimer() / ComboManager.Instance.GetComboExpiryTimerDefault();
 
         // Replace this with animation for pop up combo box here or something
@@ -158,6 +165,18 @@ public class ChaptehGameManager : MonoBehaviour
 
             ComboManager.Instance.BreakCombo();
         }
+    }
+
+    public void OnComboAdd()
+    {
+        TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 1f, 0.25f);
+        TweenManager.Instance.AnimateEnlargeText(g_comboText.transform, 1f, 0.25f);
+    }
+
+    public void OnComboBreak()
+    {
+        TweenManager.Instance.AnimateShake(g_comboText.transform, 2, 1f);
+        TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 0f, 0.5f);
     }
 
     public void OnGameEnd()
