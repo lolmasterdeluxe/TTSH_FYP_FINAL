@@ -110,6 +110,8 @@ public class SPS_AttackCollision : MonoBehaviour
                     //set the attack collider to be the default size
                     attackCollider.size = new Vector3(1.65f, attackCollider.size.y, attackCollider.size.z);
                     attackCollider.center = new Vector3(2f, attackCollider.center.y, attackCollider.center.z);
+                    attackCollider.transform.position = new Vector3(attackCollider.transform.position.x - 0.8f,
+                        attackCollider.transform.position.y, attackCollider.transform.position.z);
                 }
 
                 OnPlayerActionAnimationComplete();
@@ -132,13 +134,13 @@ public class SPS_AttackCollision : MonoBehaviour
             if (rangeUptime >= 0.7f)
             {
                 rangeUptime = 0f;
-                playerInstance.playerJumped = false;
-                jumpbuttonPressed = false;
                 playerInstance.p_choice = SPS_Player.PlayerChoice.P_NONE;
 
                 OnPlayerActionAnimationComplete();
 
-                if (playerInstance.playeractionAC.GetBool("PlayerActionWithScissors") == false)
+                if (playerInstance.playeractionAC.GetBool("PlayerActionWithScissors") == false
+                    || playerInstance.playeractionAC.GetBool("PlayerActionWithPaper") == false
+                    || playerInstance.playeractionAC.GetBool("PlayerActionWithStone") == false)
                 {
                     OnPlayerBodyAnimationComplete();
                 }
@@ -235,17 +237,6 @@ public class SPS_AttackCollision : MonoBehaviour
                     scoreInstance.PlayerScores();
                     ComboManager.Instance.AddCombo();
 
-                }
-            }
-
-            else if (other.gameObject.tag == "Obstacle") //obstacle
-            {
-                if (jumpbuttonPressed == true && playerInstance.p_choice == SPS_Player.PlayerChoice.P_JUMP
-                    && other.GetComponent<SPS_Obstacles>().obstacle_choice == SPS_Obstacles.ObstacleChoice.OBS_LOG)
-                {
-                    Debug.Log("Player Jump successful");
-
-                    other.gameObject.tag = "SafeObstacle";
                 }
             }
         }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class SPS_Player : MonoBehaviour
@@ -20,21 +21,28 @@ public class SPS_Player : MonoBehaviour
     #region Variables
 
     public Animator playerAC, playeractionAC;
+
     SPS_LivesManager livesInstance;
     SPS_ObjectSpawningScript objectspawningInstance;
     SPS_AttackCollision attackCollisionInstance;
+    SPS_ButtonBehaviour buttonBehaviourInstance;
 
     public GameObject playerActionAnimation;
 
     BoxCollider playerCollider;
-    Vector3 originalColliderSize;
+    Vector3 originalBoxColliderPosition;
 
     public bool hasPowerup;
     public bool playerJumped;
+
     float playerjumpUptime;
+    float playerStunnedCountdown;
 
     public GameObject enemyEndPosition;
 
+    //for the UI buttons
+    public GameObject scissorsButton, paperButton, stoneButton;
+    public Vector3 newButtonSize, oldButtonSize;
 
     #endregion
 
@@ -48,14 +56,19 @@ public class SPS_Player : MonoBehaviour
         playerCollider = GetComponent<BoxCollider>();
 
         //we store the original collider size for reference
-        originalColliderSize =
-        new Vector3(playerCollider.size.x, playerCollider.size.y, playerCollider.size.z);
+        originalBoxColliderPosition =
+        new Vector3(0f, -0.1f, 0f);
 
         playerAC = GetComponent<Animator>();
         playeractionAC = playerActionAnimation.GetComponent<Animator>();
         attackCollisionInstance = FindObjectOfType<SPS_AttackCollision>();
         livesInstance = FindObjectOfType<SPS_LivesManager>();
         objectspawningInstance = FindObjectOfType<SPS_ObjectSpawningScript>();
+        buttonBehaviourInstance = FindObjectOfType<SPS_ButtonBehaviour>();
+
+        //we set the button sizes HERE
+        newButtonSize = new Vector3(1.25f, 1.25f, 1.25f);
+        oldButtonSize = new Vector3(1f, 1f, 1f);
 
         //add event listeners HERE
         ComboManager.Instance.e_comboBreak.AddListener(attackCollisionInstance.ComboBroken);
@@ -76,15 +89,20 @@ public class SPS_Player : MonoBehaviour
             PlayerJumps();
         }
 
-        //we run this to code to change collider size as player is "jumping"
+        //this code checks to move the player collider center 
+        //back to original position after a certain amount of time has passed
+
         if (playerJumped == true)
         {
             playerjumpUptime += Time.deltaTime;
 
-            if (playerjumpUptime >= 0.75f)
+            if (playerjumpUptime >= 1.25f)
             {
-                playerCollider.size = originalColliderSize;
+                //reset the collider position
+                playerCollider.center = originalBoxColliderPosition;
                 playerJumped = false;
+
+                //reset the time
                 playerjumpUptime = 0f;
             }
         }
@@ -95,7 +113,14 @@ public class SPS_Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             PlayerChoosesScissors();
+            buttonBehaviourInstance.ResizeButton(scissorsButton, newButtonSize);
         }
+
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            buttonBehaviourInstance.ResizeButton(scissorsButton, oldButtonSize);
+        }
+
 
         //attack was paper
         if (Input.GetKeyDown(KeyCode.S))
@@ -107,6 +132,19 @@ public class SPS_Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D))
         {
             PlayerChoosesStone();
+        }
+            
+        //this runs the countdown to reset the stunned back to false
+        if (playerAC.GetBool("PlayerStunned") == true)
+        {
+            playerStunnedCountdown += Time.deltaTime;
+
+            if (playerStunnedCountdown >= 1f)
+            {
+                playerAC.SetBool("PlayerStunned", false);
+                //reset the counter
+                playerStunnedCountdown = 0f;
+            }
         }
 
     }
@@ -209,8 +247,9 @@ public class SPS_Player : MonoBehaviour
         p_choice = PlayerChoice.P_JUMP;
         playerAC.SetBool("PlayerJumped", true);
 
-        //we shift the collider up to simulate "jumping"
-        playerCollider.size = new Vector3(playerCollider.size.x, playerCollider.size.y + 1.5f, playerCollider.size.z);
+        //shift the box collider center position UPWARDS
+        playerCollider.center = playerCollider.center + new Vector3(0f, 2f, 0f);
+
         playerJumped = true;
 
         //we call the JumpButtonPress function HERE

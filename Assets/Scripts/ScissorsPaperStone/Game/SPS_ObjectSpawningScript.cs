@@ -95,6 +95,8 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
 
             //we check to see if the player has recently gotten any powerups
 
+            SpawnObstacleObject();
+
             if (powerupCounter >= 3)
             {
                 //we run this code to make the next wave of spawn to be powerup
@@ -104,7 +106,7 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
             else
             {
                 //spawn either a enemy, obstacle or powerup by random
-                int randVal = Random.Range(0, 10);
+                int randVal = Random.Range(0, 11);
 
                 switch (randVal)
                 {
@@ -223,7 +225,6 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
 
     public void SpawnObstacleObject()
     {
-        //we now randomly roll to determine the type of obstacle to be spawned
 
         objectInstance = Instantiate(obstaclePrefab,
         objectstartPosition.position, objectstartPosition.rotation);

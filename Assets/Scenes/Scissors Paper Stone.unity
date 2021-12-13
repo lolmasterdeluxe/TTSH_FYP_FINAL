@@ -443,7 +443,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530085981}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -391.09, y: -210.8, z: -0.1}
+  m_LocalPosition: {x: -401.83, y: -210.8, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1164837221}
@@ -791,8 +791,6 @@ GameObject:
   - component: {fileID: 803090370}
   - component: {fileID: 803090369}
   - component: {fileID: 803090368}
-  - component: {fileID: 803090372}
-  - component: {fileID: 803090371}
   m_Layer: 5
   m_Name: Stone
   m_TagString: Untagged
@@ -924,63 +922,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 803090366}
   m_CullTransparentMesh: 0
---- !u!114 &803090371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 803090366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 803090372}
-          m_TargetAssemblyTypeName: SPS_ButtonHover, Assembly-CSharp
-          m_MethodName: ButtonPressEffect
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 803090372}
-          m_TargetAssemblyTypeName: SPS_ButtonHover, Assembly-CSharp
-          m_MethodName: ResetButtonSize
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &803090372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 803090366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70068e2ff23b690479d9539397fb6448, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &817983138
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,8 +1213,6 @@ GameObject:
   - component: {fileID: 965349983}
   - component: {fileID: 965349982}
   - component: {fileID: 965349981}
-  - component: {fileID: 965349985}
-  - component: {fileID: 965349984}
   m_Layer: 5
   m_Name: Paper
   m_TagString: Untagged
@@ -1405,63 +1344,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 965349979}
   m_CullTransparentMesh: 0
---- !u!114 &965349984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 965349979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 965349985}
-          m_TargetAssemblyTypeName: SPS_ButtonHover, Assembly-CSharp
-          m_MethodName: ButtonPressEffect
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 965349985}
-          m_TargetAssemblyTypeName: SPS_ButtonHover, Assembly-CSharp
-          m_MethodName: ResetButtonSize
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &965349985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 965349979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70068e2ff23b690479d9539397fb6448, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1022272054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1505,7 +1387,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: 12.24, z: 1}
+  m_Size: {x: 4, y: 12.24, z: 5.93}
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &1022272057
 MonoBehaviour:
@@ -1846,8 +1728,6 @@ GameObject:
   - component: {fileID: 1255097546}
   - component: {fileID: 1255097545}
   - component: {fileID: 1255097544}
-  - component: {fileID: 1255097548}
-  - component: {fileID: 1255097547}
   m_Layer: 5
   m_Name: Scissor
   m_TagString: Untagged
@@ -1979,63 +1859,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255097542}
   m_CullTransparentMesh: 0
---- !u!114 &1255097547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1255097542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1255097548}
-          m_TargetAssemblyTypeName: SPS_ButtonHover, Assembly-CSharp
-          m_MethodName: ButtonPressEffect
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1255097548}
-          m_TargetAssemblyTypeName: SPS_ButtonHover, Assembly-CSharp
-          m_MethodName: ResetButtonSize
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &1255097548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1255097542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70068e2ff23b690479d9539397fb6448, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1265912212
 GameObject:
   m_ObjectHideFlags: 0
@@ -2225,7 +2048,12 @@ MonoBehaviour:
   playerActionAnimation: {fileID: 824210120}
   hasPowerup: 0
   playerJumped: 0
-  enemyEndPosition: {fileID: 0}
+  enemyEndPosition: {fileID: 530085981}
+  scissorsButton: {fileID: 1255097542}
+  paperButton: {fileID: 965349979}
+  stoneButton: {fileID: 803090366}
+  newButtonSize: {x: 0, y: 0, z: 0}
+  oldButtonSize: {x: 0, y: 0, z: 0}
 --- !u!65 &1340853089
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2237,7 +2065,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2.33, z: 0.5}
+  m_Size: {x: 2, y: 2.33, z: 5.47}
   m_Center: {x: 0, y: -0.1, z: 0}
 --- !u!1 &1451028487
 GameObject:
@@ -2692,6 +2520,7 @@ GameObject:
   - component: {fileID: 1975081924}
   - component: {fileID: 1975081923}
   - component: {fileID: 1975081922}
+  - component: {fileID: 1975081926}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2782,6 +2611,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1975081926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975081921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2309bf9723c0d0145b68c286d1c4382f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1991792735
 GameObject:
   m_ObjectHideFlags: 0
@@ -2795,7 +2636,6 @@ GameObject:
   - component: {fileID: 1991792738}
   - component: {fileID: 1991792737}
   - component: {fileID: 1991792741}
-  - component: {fileID: 1991792740}
   m_Layer: 5
   m_Name: Jump
   m_TagString: Untagged
@@ -2927,18 +2767,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1991792735}
   m_CullTransparentMesh: 0
---- !u!114 &1991792740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1991792735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70068e2ff23b690479d9539397fb6448, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1991792741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2956,7 +2784,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1991792740}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: SPS_ButtonHover, Assembly-CSharp
           m_MethodName: ButtonPressEffect
           m_Mode: 1
@@ -2972,7 +2800,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1991792740}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: SPS_ButtonHover, Assembly-CSharp
           m_MethodName: ResetButtonSize
           m_Mode: 1
