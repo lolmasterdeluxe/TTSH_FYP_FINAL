@@ -5,15 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Platform
   - EnemyTag
   - Stone
   - Obstacle
-  - BlueHoop
-  - RedHoop
-  - GreenHoop
   - SafeObstacle
   - Powerup
+  - Ground
+  - RedRing
+  - YellowRing
+  - GreenRing
   layers:
   - Default
   - TransparentFX
@@ -23,9 +23,9 @@ TagManager:
   - UI
   - 
   - 
-  - RedHoopLayer
-  - BlueHoopLayer
-  - GreenHoopLayer
+  - RedRingLayer
+  - YellowRingLayer
+  - GreenRingLayer
   - 
   - 
   - 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hoops : MonoBehaviour
+public class Rings : MonoBehaviour
 {
     public ChaptehGameManager.Objective type;
 
@@ -14,14 +14,14 @@ public class Hoops : MonoBehaviour
 
         switch (type)
         {
-            case ChaptehGameManager.Objective.HIT_RED_HOOPS:
-                GetComponent<SpriteRenderer>().CompareTag("RedHoop");
+            case ChaptehGameManager.Objective.HIT_RED_RINGS:
+                GetComponentInChildren<SpriteRenderer>().CompareTag("RedRing");
                 break;
-            case ChaptehGameManager.Objective.HIT_BLUE_HOOPS:
-                GetComponent<SpriteRenderer>().CompareTag("BlueHoop");
+            case ChaptehGameManager.Objective.HIT_YELLOW_RINGS:
+                GetComponentInChildren<SpriteRenderer>().CompareTag("YellowRing");
                 break;
-            case ChaptehGameManager.Objective.HIT_GREEN_HOOPS:
-                GetComponent<SpriteRenderer>().CompareTag("GreenHoop");
+            case ChaptehGameManager.Objective.HIT_GREEN_RINGS:
+                GetComponentInChildren<SpriteRenderer>().CompareTag("GreenRing");
                 break;
         }
     }

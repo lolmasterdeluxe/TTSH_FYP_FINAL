@@ -491,7 +491,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91760436}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.12628639, y: 3.4912233, z: -9.789597}
+  m_LocalPosition: {x: 0.12628686, y: 3.4912233, z: -9.789597}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1819576642}
@@ -997,9 +997,9 @@ GameObject:
   - component: {fileID: 497010448}
   - component: {fileID: 497010450}
   - component: {fileID: 497010449}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Ground
-  m_TagString: Platform
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1413,7 +1413,7 @@ GameObject:
   - component: {fileID: 883971404}
   m_Layer: 0
   m_Name: Sand Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1447,7 +1447,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.4511404, y: -2.045}
@@ -2176,7 +2176,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1474590250}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.12628639, y: 3.4912233, z: -9.789597}
+  m_LocalPosition: {x: 0.12628686, y: 3.4912233, z: -9.789597}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1746739752}
@@ -2993,9 +2993,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b498c7cd851ccd54eb112edf23cae57e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  redHoopPrefab: {fileID: 9127140349004791907, guid: 75d6e2ae165af2f42bbe09bf1c997917, type: 3}
-  blueHoopPrefab: {fileID: 6831805207602753643, guid: 5bd3b7c05b1d4c44cb303a341671cdc1, type: 3}
-  greenHoopPrefab: {fileID: 2388648012070035657, guid: 8a9754b28d47b7c43b23bf77455bb23e, type: 3}
+  redRingPrefab: {fileID: 4782968837972072770, guid: 344ec652e47d61244b63d0a1202df8e5, type: 3}
+  yellowRingPrefab: {fileID: 7029903732878969310, guid: e462322c91fe12146851a56f6f8bdd05, type: 3}
+  greenRingPrefab: {fileID: 5908752026035912882, guid: 320d1ecd6ec434f4983103691ecb724a, type: 3}
   spawnRate: 2
   skySpriteWidth: {fileID: 1655820274}
   skySpriteHeight: {fileID: 1655820274}
@@ -3391,7 +3391,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5556708298840527361}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2, y: 0.3, z: -0.05}
+  m_LocalPosition: {x: 0.2, y: 0.3, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 1366750914}
@@ -3409,6 +3409,7 @@ GameObject:
   - component: {fileID: 5556708298840527421}
   - component: {fileID: 5556708298840527422}
   - component: {fileID: 5556708298840527423}
+  - component: {fileID: 5556708298840527363}
   - component: {fileID: 5556708298840527362}
   m_Layer: 0
   m_Name: Chapteh
@@ -3436,6 +3437,32 @@ MonoBehaviour:
   skyWidth: {fileID: 1655820274}
   skyHeight: {fileID: 1655820274}
   kickChapteh: {fileID: 1480815033}
+--- !u!61 &5556708298840527363
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5556708298840527361}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.18, y: 2.9}
+    newSize: {x: 0.2, y: 0.2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.18, y: 2.9}
+  m_EdgeRadius: 0
 --- !u!212 &5556708298840527421
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3507,7 +3534,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &5556708298840527423
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3523,4 +3550,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 1.6

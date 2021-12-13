@@ -30,6 +30,8 @@ public class Chapteh : MonoBehaviour
         rotPos = transform.rotation;
 
         kickChapteh = GameObject.Find("Chapteh Manager").GetComponent<KickChapteh>();
+
+        ComboManager.Instance.e_comboBreak.AddListener(ChaptehGameManager.Instance.OnComboBreak);
     }
 
     // Update is called once per frame
@@ -46,7 +48,7 @@ public class Chapteh : MonoBehaviour
 
         kickChapteh.PowerLaunch();
 
-        FallOnGravity(); 
+        FallOnGravity();
     }
 
     // Chapteh rotates at direction of the mouse position
@@ -99,13 +101,20 @@ public class Chapteh : MonoBehaviour
         // Player picks up and spawns the Chapteh back to the player if lands on the ground
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Ball respawns to the Player of the screen");
+            //Debug.Log("Chapteh respawns to Player");
             rbChapteh.velocity = Vector2.zero;
             transform.rotation = rotPos;
             inPlay = false;
         }
 
-        if (other.CompareTag("RedHoop") || other.CompareTag("BlueHoop") || other.CompareTag("GreenHoop"))
+        // Chapteh lands on the ground and breaks the combo
+        if (other.CompareTag("Ground"))
+        {
+            Debug.Log("Chapteh lands on ground");
+            ChaptehGameManager.Instance.OnGroundBreakCombo();
+        }
+
+        if (other.CompareTag("RedRing") || other.CompareTag("YellowRing") || other.CompareTag("GreenRing"))
         {
             ChaptehGameManager.Instance.OnChaptehHit(other.gameObject);
             Destroy(other.gameObject);

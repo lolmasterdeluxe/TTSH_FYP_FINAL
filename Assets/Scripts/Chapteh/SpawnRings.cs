@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnHoops : MonoBehaviour
+public class SpawnRings : MonoBehaviour
 {
-    public GameObject redHoopPrefab, blueHoopPrefab, greenHoopPrefab;
+    public GameObject redRingPrefab, yellowRingPrefab, greenRingPrefab;
     public float spawnRate = 2f;
     private float randX, randY;
     private float randOption;
@@ -13,33 +13,33 @@ public class SpawnHoops : MonoBehaviour
 
     public SpriteRenderer skySpriteWidth, skySpriteHeight;
     private List<Vector2> spawnedPositions;
-    private float redhoopRadius, bluehoopRadius, greenhoopRadius;
-    private GameObject gameObjectHoops;
+    private float redhoopRadius, yellowhoopRadius, greenhoopRadius;
+    private GameObject gameObjectRings;
 
     // Start is called before the first frame update
     void Start()
     {
-        redhoopRadius = redHoopPrefab.GetComponent<Collider2D>().bounds.extents.x;
-        bluehoopRadius = blueHoopPrefab.GetComponent<Collider2D>().bounds.extents.x;
-        greenhoopRadius = greenHoopPrefab.GetComponent<Collider2D>().bounds.extents.x;
+        redhoopRadius = redRingPrefab.GetComponent<Collider2D>().bounds.extents.x;
+        yellowhoopRadius = yellowRingPrefab.GetComponent<Collider2D>().bounds.extents.x;
+        greenhoopRadius = greenRingPrefab.GetComponent<Collider2D>().bounds.extents.x;
         spawnedPositions = new List<Vector2>();
     }
 
     private void Update()
     {
-        LimitSpawnHoops();
+        LimitSpawnRings();
 
-        //DestroyHoopsAfterTime();
+        //DestroyRingsAfterTime();
     }
 
-    private void RandomHoopSpawn()
+    private void RandomRingSpawn()
     {
         if (Time.time > nextSpawn)
         {
             nextSpawn = Time.time + spawnRate;
-            redhoopRadius = redHoopPrefab.GetComponent<Collider2D>().bounds.max.x + 0.5f;
-            bluehoopRadius = redHoopPrefab.GetComponent<Collider2D>().bounds.max.x + 0.5f;
-            greenhoopRadius = redHoopPrefab.GetComponent<Collider2D>().bounds.max.x + 0.5f;
+            redhoopRadius = redRingPrefab.GetComponent<Collider2D>().bounds.max.x + 0.5f;
+            yellowhoopRadius = yellowRingPrefab.GetComponent<Collider2D>().bounds.max.x + 0.5f;
+            greenhoopRadius = greenRingPrefab.GetComponent<Collider2D>().bounds.max.x + 0.5f;
 
             for (int i = 0; i < 2; i++)
             {
@@ -48,55 +48,55 @@ public class SpawnHoops : MonoBehaviour
                 randOption = Random.Range(0, 3);
                 spawnPos = new Vector2(randX, randY);
 
-                Collider2D colliderWithRedHoop = Physics2D.OverlapCircle(spawnPos, redhoopRadius, LayerMask.GetMask("RedHoopLayer"));
-                Collider2D colliderWithBlueHoop = Physics2D.OverlapCircle(spawnPos, bluehoopRadius, LayerMask.GetMask("BlueHoopLayer"));
-                Collider2D colliderWithGreenHoop = Physics2D.OverlapCircle(spawnPos, greenhoopRadius, LayerMask.GetMask("GreenHoopLayer"));
+                Collider2D colliderWithRedRing = Physics2D.OverlapCircle(spawnPos, redhoopRadius, LayerMask.GetMask("RedRingLayer"));
+                Collider2D colliderWithYellowRing = Physics2D.OverlapCircle(spawnPos, yellowhoopRadius, LayerMask.GetMask("YellowRingLayer"));
+                Collider2D colliderWithGreenRing = Physics2D.OverlapCircle(spawnPos, greenhoopRadius, LayerMask.GetMask("GreenRingLayer"));
 
-                if (!colliderWithRedHoop && !colliderWithBlueHoop && !colliderWithGreenHoop)
+                if (!colliderWithRedRing && !colliderWithYellowRing && !colliderWithGreenRing)
                     spawnedPositions.Add(spawnPos);
 
                 if (spawnedPositions[i].x != randX && spawnedPositions[i].y != randY)
                 {
-                    if (colliderWithRedHoop == false && colliderWithBlueHoop == false && colliderWithGreenHoop == false)
+                    if (colliderWithRedRing == false && colliderWithYellowRing == false && colliderWithGreenRing == false)
                     {
                         GameObject temp;
 
                         switch (randOption)
                         {
                             case 0:
-                                temp = Instantiate(redHoopPrefab, spawnPos, Quaternion.identity);
-                                gameObjectHoops = temp;
+                                temp = Instantiate(redRingPrefab, spawnPos, Quaternion.identity);
+                                gameObjectRings = temp;
                                 break;
                             case 1:
-                                temp = Instantiate(blueHoopPrefab, spawnPos, Quaternion.identity);
-                                gameObjectHoops = temp;
+                                temp = Instantiate(yellowRingPrefab, spawnPos, Quaternion.identity);
+                                gameObjectRings = temp;
                                 break;
                             case 2:
-                                temp = Instantiate(greenHoopPrefab, spawnPos, Quaternion.identity);
-                                gameObjectHoops = temp;
+                                temp = Instantiate(greenRingPrefab, spawnPos, Quaternion.identity);
+                                gameObjectRings = temp;
                                 break;
                         }
 
                         spawnedPositions.RemoveAt(spawnedPositions.Count - 1);
-                        spawnedPositions.Add(gameObjectHoops.transform.position);
+                        spawnedPositions.Add(gameObjectRings.transform.position);
 
 
-                        Debug.Log(spawnedPositions.Count);
+                        //Debug.Log(spawnedPositions.Count);
                     }
                 }
             }
         }
     }
 
-    private void LimitSpawnHoops()
+    private void LimitSpawnRings()
     {
         if (spawnedPositions.Count <= 30)
         {
-            RandomHoopSpawn();
+            RandomRingSpawn();
         }
     }
 
-    private void DestroyHoopsAfterTime()
+    private void DestroyRingsAfterTime()
     {
         if(spawnedPositions.Count >= 16)
         {
@@ -125,13 +125,13 @@ public class SpawnHoops : MonoBehaviour
             switch (randOption)
             {
                 case 0:
-                    Destroy(redHoopPrefab);
+                    Destroy(redRingPrefab);
                     break;
                 case 1:
-                    Destroy(blueHoopPrefab);
+                    Destroy(yellowRingPrefab);
                     break;
                 case 2:
-                    Destroy(greenHoopPrefab);
+                    Destroy(greenRingPrefab);
                     break;
             }
         }
