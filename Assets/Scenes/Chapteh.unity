@@ -136,7 +136,6 @@ GameObject:
   - component: {fileID: 6789687}
   - component: {fileID: 6789690}
   - component: {fileID: 6789688}
-  - component: {fileID: 6789692}
   - component: {fileID: 6789691}
   m_Layer: 0
   m_Name: Player Sprite
@@ -294,18 +293,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6789692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6789685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c19be30bd9fc7945bbc1736e18baee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &28860029
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,7 +491,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91760436}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.12628686, y: 3.4912233, z: -9.789597}
+  m_LocalPosition: {x: 0.12628639, y: 3.4912233, z: -9.789597}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1819576642}
@@ -2189,7 +2176,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1474590250}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.12628686, y: 3.4912233, z: -9.789597}
+  m_LocalPosition: {x: 0.12628639, y: 3.4912233, z: -9.789597}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1746739752}
@@ -2988,7 +2975,7 @@ GameObject:
   - component: {fileID: 1959430492}
   - component: {fileID: 1959430491}
   m_Layer: 0
-  m_Name: Hoops Spawner
+  m_Name: Rings Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3444,7 +3431,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inPlay: 0
-  isKicked: 0
   spawnPoint: {fileID: 86556887}
   playerSprite: {fileID: 6789686}
   skyWidth: {fileID: 1655820274}

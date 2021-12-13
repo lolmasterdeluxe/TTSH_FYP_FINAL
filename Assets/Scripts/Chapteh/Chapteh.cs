@@ -114,4 +114,9 @@ public class Chapteh : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+
+    private void DestroyRing()
+    {
+
+    }
 }

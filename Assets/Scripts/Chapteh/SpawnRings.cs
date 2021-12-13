@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnRings : MonoBehaviour
 {
     public GameObject redRingPrefab, yellowRingPrefab, greenRingPrefab;
-    public float spawnRate = 2f;
+    public float spawnRate;
     private float randX, randY;
     private float randOption;
     private float nextSpawn = 0f;
@@ -28,7 +28,6 @@ public class SpawnRings : MonoBehaviour
     private void Update()
     {
         LimitSpawnRings();
-
         //DestroyRingsAfterTime();
     }
 
@@ -79,9 +78,6 @@ public class SpawnRings : MonoBehaviour
 
                         spawnedPositions.RemoveAt(spawnedPositions.Count - 1);
                         spawnedPositions.Add(gameObjectRings.transform.position);
-
-
-                        //Debug.Log(spawnedPositions.Count);
                     }
                 }
             }
