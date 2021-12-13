@@ -4,7 +4,6 @@ public class Chapteh : MonoBehaviour
 {
     private Rigidbody2D rbChapteh;
     public bool inPlay;
-    public bool isKicked = false;
     public Transform spawnPoint;
     public Transform playerSprite;
 
@@ -61,7 +60,7 @@ public class Chapteh : MonoBehaviour
 
     public void Kick(float speed)
     {
-        if (!inPlay && !isKicked)
+        if (!inPlay)
         {
             inPlay = true;
 
@@ -75,11 +74,6 @@ public class Chapteh : MonoBehaviour
             // Force needed to launch the Chapteh
             rbChapteh.AddForce(playerToMouseDir * speed);
         }
-        else
-        {
-            isKicked = false;
-        }
-
     }
 
     public void FallOnGravity()

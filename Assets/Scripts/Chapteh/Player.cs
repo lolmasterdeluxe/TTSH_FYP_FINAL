@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
         playerPosition.x = Mathf.Clamp(playerPosition.x, skyWidth.bounds.min.x + playerWidth, skyWidth.bounds.max.x - playerWidth);
     }
 
-    private void SpriteFlip()
+    public void SpriteFlip()
     {
         // Gets value for mouse position of x
         float worldPosX = mousePosition.x;
@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
             SpriteFlip();
         }
 
-        if (chapteh.isKicked == true)
+        if (Input.GetMouseButtonUp(0))
         {
             playerAnim.SetTrigger("PlayerKick");
         }
