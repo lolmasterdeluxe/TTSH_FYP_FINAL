@@ -429,7 +429,7 @@ GameObject:
   m_Component:
   - component: {fileID: 530085982}
   m_Layer: 0
-  m_Name: Final Position (Enemy)
+  m_Name: Collision Position (Enemies)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -443,7 +443,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530085981}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -377.09, y: -210.8, z: -0.1}
+  m_LocalPosition: {x: -391.09, y: -210.8, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1164837221}
@@ -1474,7 +1474,7 @@ GameObject:
   - component: {fileID: 1022272056}
   - component: {fileID: 1022272057}
   m_Layer: 0
-  m_Name: Final Position (Obstacles)
+  m_Name: Final Position (Objects)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2225,6 +2225,7 @@ MonoBehaviour:
   playerActionAnimation: {fileID: 824210120}
   hasPowerup: 0
   playerJumped: 0
+  enemyEndPosition: {fileID: 0}
 --- !u!65 &1340853089
 BoxCollider:
   m_ObjectHideFlags: 0

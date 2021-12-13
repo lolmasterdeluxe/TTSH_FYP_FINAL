@@ -33,6 +33,9 @@ public class SPS_Player : MonoBehaviour
     public bool playerJumped;
     float playerjumpUptime;
 
+    public GameObject enemyEndPosition;
+
+
     #endregion
 
     #region Unity Callbacks
@@ -119,14 +122,11 @@ public class SPS_Player : MonoBehaviour
 
             //we now delete the instance of that gameobject in the list
             objectspawningInstance.objectwaveList.Remove(other.gameObject);
-            
-            //we now delete the object and its rigidbody from the scene
-            Destroy(other.gameObject.GetComponent<Rigidbody>());
-            Destroy(other.gameObject);
 
             //we do lives and combo calculations here
             livesInstance.PlayerTakesDamage();
             ComboManager.Instance.BreakCombo();  
+
         }
 
         else if (other.gameObject.tag == "Obstacle")
