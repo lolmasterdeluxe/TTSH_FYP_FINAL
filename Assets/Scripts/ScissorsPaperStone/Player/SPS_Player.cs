@@ -96,7 +96,7 @@ public class SPS_Player : MonoBehaviour
         {
             playerjumpUptime += Time.deltaTime;
 
-            if (playerjumpUptime >= 1.25f)
+            if (playerjumpUptime >= 1.75f)
             {
                 //reset the collider position
                 playerCollider.center = originalBoxColliderPosition;

@@ -95,8 +95,6 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
 
             //we check to see if the player has recently gotten any powerups
 
-            SpawnObstacleObject();
-
             if (powerupCounter >= 3)
             {
                 //we run this code to make the next wave of spawn to be powerup
