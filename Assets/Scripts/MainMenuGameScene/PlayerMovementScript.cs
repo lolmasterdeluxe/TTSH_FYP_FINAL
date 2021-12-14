@@ -62,6 +62,11 @@ public class PlayerMovementScript : MonoBehaviour
     public void PlayerAnimationFunction()
     {
         //add whatever animation-based code HERE
+        playerAC.SetFloat("Horizontal", movement.x);
+        playerAC.SetFloat("Vertical", movement.y);
+        playerAC.SetFloat("Speed", movement.sqrMagnitude);
+        playerAC.SetFloat("PreviousHorizontal", prevMovement.x);
+        playerAC.SetFloat("PreviousVertical", prevMovement.y);
     }
 
 
