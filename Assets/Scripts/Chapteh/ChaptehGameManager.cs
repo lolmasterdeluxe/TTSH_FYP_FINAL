@@ -57,13 +57,13 @@ public class ChaptehGameManager : MonoBehaviour
         ScoreManager.Instance.LoadNewGamemode(ScoreManager.Gamemode.CHAPTEH);
 
         // Setup game logic
+        TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 0f, 0f);
         RandomizeObjective();
         StartCoroutine(ObjectiveCoroutine());
 
         // Attach events
         TimerManager.Instance.e_TimerFinished.AddListener(OnGameEnd);
         ComboManager.Instance.e_comboAdded.AddListener(OnComboAdd);
-        ComboManager.Instance.e_comboBreak.AddListener(OnComboBreak);
     }
 
     // Update is called once per frame
@@ -111,16 +111,6 @@ public class ChaptehGameManager : MonoBehaviour
         g_timerText.GetComponent<TMP_Text>().text = TimerManager.Instance.GetFormattedRemainingTime();
         g_comboText.GetComponent<TMP_Text>().text = "Combo: " + ComboManager.Instance.GetCurrentCombo() + "x";
         g_comboExpiryBar.GetComponent<Slider>().value = ComboManager.Instance.GetComboExpiryTimer() / ComboManager.Instance.GetComboExpiryTimerDefault();
-
-        // Replace this with animation for pop up combo box here or something
-        if (ComboManager.Instance.GetCurrentCombo() > 0)
-        {
-            g_comboText.SetActive(true);
-        }
-        else
-        {
-            g_comboText.SetActive(false);
-        }
     }
 
     public void OnChaptehHit(GameObject gameObject)
@@ -162,8 +152,6 @@ public class ChaptehGameManager : MonoBehaviour
                     ScoreManager.Instance.AddCurrentGameScore(anybaseScore);
                     break;
             }
-
-            
         }
     }
 

@@ -105,7 +105,7 @@ public class Chapteh : MonoBehaviour
         if (other.CompareTag("Ground"))
         {
             Debug.Log("Chapteh lands on ground");
-            ChaptehGameManager.Instance.OnGroundBreakCombo();
+            ComboManager.Instance.BreakCombo();
         }
 
         if (other.CompareTag("RedRing") || other.CompareTag("YellowRing") || other.CompareTag("GreenRing"))

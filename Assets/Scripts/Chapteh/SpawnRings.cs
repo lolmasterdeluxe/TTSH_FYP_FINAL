@@ -16,18 +16,31 @@ public class SpawnRings : MonoBehaviour
     private float redhoopRadius, yellowhoopRadius, greenhoopRadius;
     private GameObject gameObjectRings;
 
+    private Vector3 posDisplacement;
+    private Vector2 posOrigin, newPos;
+    private float timePassed;
+    float randomDistance;
+
+    private Vector2 redRingPos;
+
     // Start is called before the first frame update
     void Start()
     {
+
         redhoopRadius = redRingPrefab.GetComponent<Collider2D>().bounds.extents.x;
         yellowhoopRadius = yellowRingPrefab.GetComponent<Collider2D>().bounds.extents.x;
         greenhoopRadius = greenRingPrefab.GetComponent<Collider2D>().bounds.extents.x;
         spawnedPositions = new List<Vector2>();
+
+        randomDistance = Random.Range(-6f, 6f);
+        posDisplacement = new Vector2(randomDistance, 0);
+        //posOrigin = transform.position;
     }
 
     private void Update()
     {
         LimitSpawnRings();
+        //MoveableRings();
         //DestroyRingsAfterTime();
     }
 
@@ -59,25 +72,53 @@ public class SpawnRings : MonoBehaviour
                     if (colliderWithRedRing == false && colliderWithYellowRing == false && colliderWithGreenRing == false)
                     {
                         GameObject temp;
+                        timePassed += Time.deltaTime;
 
                         switch (randOption)
                         {
                             case 0:
                                 temp = Instantiate(redRingPrefab, spawnPos, Quaternion.identity);
+                                temp.transform.position += posDisplacement;
                                 gameObjectRings = temp;
+                                posOrigin = gameObjectRings.transform.position;
+                                Debug.Log("Red1 " + posOrigin);
                                 break;
                             case 1:
                                 temp = Instantiate(yellowRingPrefab, spawnPos, Quaternion.identity);
                                 gameObjectRings = temp;
+                                posOrigin = gameObjectRings.transform.position;
+                                Debug.Log("Yellow1 " + posOrigin);
                                 break;
                             case 2:
                                 temp = Instantiate(greenRingPrefab, spawnPos, Quaternion.identity);
                                 gameObjectRings = temp;
+                                posOrigin = gameObjectRings.transform.position;
+                                Debug.Log("Green1 " + posOrigin);
                                 break;
                         }
 
                         spawnedPositions.RemoveAt(spawnedPositions.Count - 1);
                         spawnedPositions.Add(gameObjectRings.transform.position);
+
+                        //if(gameObjectRings.CompareTag("RedRing"))
+                        //{
+                        //    newPos = gameObjectRings.transform.position;
+                        //    newPos = Vector2.Lerp(posOrigin + posDisplacement, posOrigin, Mathf.PingPong(timePassed, 1));
+
+                            
+                        //}
+                        //else if(gameObjectRings.CompareTag("YellowRing"))
+                        //{
+                        //    newPos = gameObjectRings.transform.position;
+                        //    newPos = Vector2.Lerp(posOrigin + posDisplacement, posOrigin, Mathf.PingPong(timePassed, 1));
+                           
+                        //}
+                        //else if(gameObjectRings.CompareTag("GreenRing"))
+                        //{
+                        //    newPos = gameObjectRings.transform.position;
+                        //    newPos = Vector2.Lerp(posOrigin + posDisplacement, posOrigin, Mathf.PingPong(timePassed, 1));
+                            
+                        //}
                     }
                 }
             }
@@ -89,6 +130,18 @@ public class SpawnRings : MonoBehaviour
         if (spawnedPositions.Count <= 30)
         {
             RandomRingSpawn();
+        }
+    }
+
+    private void MoveableRings()
+    {
+        timePassed += Time.deltaTime;
+
+        if(redRingPrefab.CompareTag("RedRing"))
+        {
+            redRingPos = redRingPrefab.transform.position;
+            Debug.Log(redRingPos);
+            //posOrigin = Vector2.Lerp(redRingPos + posDisplacement, redRingPos, Mathf.PingPong(timePassed, 1));
         }
     }
 
