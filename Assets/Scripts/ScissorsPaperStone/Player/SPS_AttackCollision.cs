@@ -116,7 +116,7 @@ public class SPS_AttackCollision : MonoBehaviour
 
                 OnPlayerActionAnimationComplete();
 
-                if (playerInstance.playeractionAC.GetBool("PlayerActionWithScissors") == false 
+                if (playerInstance.playeractionAC.GetBool("PlayerActionWithScissors") == false
                     || playerInstance.playeractionAC.GetBool("PlayerActionWithPaper") == false
                     || playerInstance.playeractionAC.GetBool("PlayerActionWithStone") == false)
                 {
@@ -155,6 +155,7 @@ public class SPS_AttackCollision : MonoBehaviour
         playerActionAC.SetBool("PlayerAttackingWithPaper", false);
         playerActionAC.SetBool("PlayerAttackingWithStone", false);
         playerActionAC.SetBool("PlayerJumped", false);
+        playerActionAC.SetBool("PlayerStunned", false);
     }
 
     public void OnPlayerActionAnimationComplete()

@@ -114,7 +114,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerActionAnimatorController
+  m_Name: SPS_PlayerActionAnimatorController
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: PlayerActionWithScissors
