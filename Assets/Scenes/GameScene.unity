@@ -883,6 +883,55 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 18.167057, y: 0.6679015}
   m_EdgeRadius: 0
+--- !u!1 &277992580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 277992582}
+  - component: {fileID: 277992581}
+  m_Layer: 0
+  m_Name: CustomizerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &277992581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277992580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92c0e30c9476be2428578166fceaba57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_customizableList:
+  - m_name: 
+    m_bone: 0
+    m_itemType: 0
+    m_sprite: {fileID: 0}
+    m_color: {r: 0, g: 0, b: 0, a: 0}
+--- !u!4 &277992582
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277992580}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 19.355057, y: 15.119667, z: -5.9511337}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &490102149
 PrefabInstance:
   m_ObjectHideFlags: 0
