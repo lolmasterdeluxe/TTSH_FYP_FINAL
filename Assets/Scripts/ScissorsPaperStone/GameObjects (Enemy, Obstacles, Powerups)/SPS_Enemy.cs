@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class SPS_Enemy : MonoBehaviour
 {
@@ -13,10 +14,14 @@ public class SPS_Enemy : MonoBehaviour
 
     #region Variables
 
+    Animation enemyAnim;
+    Animator enemyAC;
     public AIChoice ai_choice;
-    public Material scissor, paper, stone;
 
     SPS_ObjectSpawningScript objectspawningInstance;
+
+    //store enemy animation clips HERE
+    public GameObject scissorsAnim, paperAnim, stoneAnim;
 
     #endregion
 
@@ -24,9 +29,17 @@ public class SPS_Enemy : MonoBehaviour
 
     private void Start()
     {
-        objectspawningInstance = FindObjectOfType<SPS_ObjectSpawningScript>();
 
+        enemyAnim = GetComponent<Animation>();
+        enemyAC = GetComponent<Animator>();
+
+        objectspawningInstance = FindObjectOfType<SPS_ObjectSpawningScript>();
         ai_choice = AIChoice.AI_NONE;
+
+        //at the start, find prefabs to assign values
+        scissorsAnim = GameObject.Find("ScissorsAnimation");
+        paperAnim = GameObject.Find("PaperAnimation");
+        stoneAnim = GameObject.Find("StoneAnimation");
 
         RandomizeWaveFormat();
     }
@@ -43,21 +56,19 @@ public class SPS_Enemy : MonoBehaviour
         {
             RandomizeEnemyType();
         }
-
-        else if (objectspawningInstance.enemywaveType == SPS_ObjectSpawningScript.EnemyWaveType.ENEMY_WAVE_SCISSORS)
+        if (objectspawningInstance.enemywaveType == SPS_ObjectSpawningScript.EnemyWaveType.ENEMY_WAVE_SCISSORS)
         {
             ai_choice = AIChoice.AI_SCISSOR;
-            GetComponent<Renderer>().material = scissor;
+            enemyAnim = scissorsAnim.gameObject.GetComponent<Animation>();
+            enemyAC = scissorsAnim.gameObject.GetComponent<Animator>();
         }
-        else if (objectspawningInstance.enemywaveType == SPS_ObjectSpawningScript.EnemyWaveType.ENEMY_WAVE_PAPER)
+        if (objectspawningInstance.enemywaveType == SPS_ObjectSpawningScript.EnemyWaveType.ENEMY_WAVE_PAPER)
         {
             ai_choice = AIChoice.AI_PAPER;
-            GetComponent<Renderer>().material = paper;
         }
-        else if (objectspawningInstance.enemywaveType == SPS_ObjectSpawningScript.EnemyWaveType.ENEMY_WAVE_STONE)
+        if (objectspawningInstance.enemywaveType == SPS_ObjectSpawningScript.EnemyWaveType.ENEMY_WAVE_STONE)
         {
             ai_choice = AIChoice.AI_STONE;
-            GetComponent<Renderer>().material = stone;
         }
     }
 
@@ -68,20 +79,17 @@ public class SPS_Enemy : MonoBehaviour
         {
             case 0:
                 ai_choice = AIChoice.AI_SCISSOR;
-                GetComponent<Renderer>().material = scissor;
+                enemyAnim = scissorsAnim.gameObject.GetComponent<Animation>();
+                enemyAC = scissorsAnim.gameObject.GetComponent<Animator>();
                 break;
             case 1:
                 ai_choice = AIChoice.AI_PAPER;
-                GetComponent<Renderer>().material = paper;
                 break;
             case 2:
                 ai_choice = AIChoice.AI_STONE;
-                GetComponent<Renderer>().material = stone;
                 break;
         }
-
     }
-
 
     #endregion
 }
