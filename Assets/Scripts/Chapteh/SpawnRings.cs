@@ -16,7 +16,7 @@ public class SpawnRings : MonoBehaviour
     private float redhoopRadius, yellowhoopRadius, greenhoopRadius;
     private GameObject gameObjectRings;
 
-    private Vector3 posDisplacement;
+    private Vector2 posDisplacement;
     private Vector2 posOrigin, newPos;
     private float timePassed;
     float randomDistance;
@@ -78,19 +78,30 @@ public class SpawnRings : MonoBehaviour
                         {
                             case 0:
                                 temp = Instantiate(redRingPrefab, spawnPos, Quaternion.identity);
-                                temp.transform.position += posDisplacement;
+                                
+                                // Here shld be moving the rings in the x-axis using the posDisplacement
+                                newPos = Vector2.Lerp(spawnPos + posDisplacement, spawnPos, Mathf.PingPong(timePassed, 1));
+
                                 gameObjectRings = temp;
                                 posOrigin = gameObjectRings.transform.position;
                                 Debug.Log("Red1 " + posOrigin);
                                 break;
                             case 1:
                                 temp = Instantiate(yellowRingPrefab, spawnPos, Quaternion.identity);
+
+                                // Here shld be moving the rings in the x-axis using the posDisplacement
+                                newPos = Vector2.Lerp(spawnPos + posDisplacement, spawnPos, Mathf.PingPong(timePassed, 1));
+
                                 gameObjectRings = temp;
                                 posOrigin = gameObjectRings.transform.position;
                                 Debug.Log("Yellow1 " + posOrigin);
                                 break;
                             case 2:
                                 temp = Instantiate(greenRingPrefab, spawnPos, Quaternion.identity);
+
+                                // Here shld be moving the rings in the x-axis using the posDisplacement
+                                newPos = Vector2.Lerp(spawnPos + posDisplacement, spawnPos, Mathf.PingPong(timePassed, 1));
+
                                 gameObjectRings = temp;
                                 posOrigin = gameObjectRings.transform.position;
                                 Debug.Log("Green1 " + posOrigin);
@@ -100,25 +111,26 @@ public class SpawnRings : MonoBehaviour
                         spawnedPositions.RemoveAt(spawnedPositions.Count - 1);
                         spawnedPositions.Add(gameObjectRings.transform.position);
 
-                        //if(gameObjectRings.CompareTag("RedRing"))
-                        //{
-                        //    newPos = gameObjectRings.transform.position;
-                        //    newPos = Vector2.Lerp(posOrigin + posDisplacement, posOrigin, Mathf.PingPong(timePassed, 1));
+                        // Testing code to see if works outside of switch case
+                        /*if (gameObjectRings.CompareTag("RedRing"))
+                        {
+                            newPos = gameObjectRings.transform.position;
+                            newPos = Vector2.Lerp(posOrigin + posDisplacement, posOrigin, Mathf.PingPong(timePassed, 1));
 
-                            
-                        //}
-                        //else if(gameObjectRings.CompareTag("YellowRing"))
-                        //{
-                        //    newPos = gameObjectRings.transform.position;
-                        //    newPos = Vector2.Lerp(posOrigin + posDisplacement, posOrigin, Mathf.PingPong(timePassed, 1));
-                           
-                        //}
-                        //else if(gameObjectRings.CompareTag("GreenRing"))
-                        //{
-                        //    newPos = gameObjectRings.transform.position;
-                        //    newPos = Vector2.Lerp(posOrigin + posDisplacement, posOrigin, Mathf.PingPong(timePassed, 1));
-                            
-                        //}
+
+                        }
+                        else if (gameObjectRings.CompareTag("YellowRing"))
+                        {
+                            newPos = gameObjectRings.transform.position;
+                            newPos = Vector2.Lerp(posOrigin + posDisplacement, posOrigin, Mathf.PingPong(timePassed, 1));
+
+                        }
+                        else if (gameObjectRings.CompareTag("GreenRing"))
+                        {
+                            newPos = gameObjectRings.transform.position;
+                            newPos = Vector2.Lerp(posOrigin + posDisplacement, posOrigin, Mathf.PingPong(timePassed, 1));
+
+                        }*/
                     }
                 }
             }
