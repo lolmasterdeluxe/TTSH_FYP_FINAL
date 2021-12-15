@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.Animations;
 
@@ -20,8 +21,8 @@ public class SPS_Enemy : MonoBehaviour
 
     SPS_ObjectSpawningScript objectspawningInstance;
 
-    //store enemy animation clips HERE
-    public GameObject scissorsAnim, paperAnim, stoneAnim;
+    [SerializeField]
+    private AnimatorController scissorsController, paperController, stoneController;
 
     #endregion
 
@@ -35,11 +36,6 @@ public class SPS_Enemy : MonoBehaviour
 
         objectspawningInstance = FindObjectOfType<SPS_ObjectSpawningScript>();
         ai_choice = AIChoice.AI_NONE;
-
-        //at the start, find prefabs to assign values
-        scissorsAnim = GameObject.Find("ScissorsAnimation");
-        paperAnim = GameObject.Find("PaperAnimation");
-        stoneAnim = GameObject.Find("StoneAnimation");
 
         RandomizeWaveFormat();
     }
@@ -59,16 +55,17 @@ public class SPS_Enemy : MonoBehaviour
         if (objectspawningInstance.enemywaveType == SPS_ObjectSpawningScript.EnemyWaveType.ENEMY_WAVE_SCISSORS)
         {
             ai_choice = AIChoice.AI_SCISSOR;
-            enemyAnim = scissorsAnim.gameObject.GetComponent<Animation>();
-            enemyAC = scissorsAnim.gameObject.GetComponent<Animator>();
+            enemyAC.runtimeAnimatorController = scissorsController;
         }
         if (objectspawningInstance.enemywaveType == SPS_ObjectSpawningScript.EnemyWaveType.ENEMY_WAVE_PAPER)
         {
             ai_choice = AIChoice.AI_PAPER;
+            enemyAC.runtimeAnimatorController = paperController;
         }
         if (objectspawningInstance.enemywaveType == SPS_ObjectSpawningScript.EnemyWaveType.ENEMY_WAVE_STONE)
         {
             ai_choice = AIChoice.AI_STONE;
+            enemyAC.runtimeAnimatorController = stoneController;
         }
     }
 
@@ -79,14 +76,15 @@ public class SPS_Enemy : MonoBehaviour
         {
             case 0:
                 ai_choice = AIChoice.AI_SCISSOR;
-                enemyAnim = scissorsAnim.gameObject.GetComponent<Animation>();
-                enemyAC = scissorsAnim.gameObject.GetComponent<Animator>();
+                enemyAC.runtimeAnimatorController = scissorsController;
                 break;
             case 1:
                 ai_choice = AIChoice.AI_PAPER;
+                enemyAC.runtimeAnimatorController = paperController;
                 break;
             case 2:
                 ai_choice = AIChoice.AI_STONE;
+                enemyAC.runtimeAnimatorController = stoneController;
                 break;
         }
     }

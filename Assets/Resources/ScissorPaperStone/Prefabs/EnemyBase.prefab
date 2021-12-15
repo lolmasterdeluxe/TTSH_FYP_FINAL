@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6972809572565600267}
   - component: {fileID: 9196770655883893898}
   - component: {fileID: 5486656432376273143}
-  - component: {fileID: 375060471636078671}
   - component: {fileID: -5754600011450469935}
   m_Layer: 0
   m_Name: EnemyBase
@@ -31,8 +30,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4635973183218378370}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.05361561, y: -0.2, z: -0.34758675}
-  m_LocalScale: {x: 0.85, y: 0.85, z: 0.85}
+  m_LocalPosition: {x: 0.05361561, y: -0.5, z: -0.34758675}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -77,9 +76,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ai_choice: 2
-  scissorsAnim: {fileID: 375060471636078671}
-  paperAnim: {fileID: 0}
-  stoneAnim: {fileID: 0}
+  scissorsController: {fileID: 9100000, guid: 835970a2d1ef76c43a06586a09fee5f3, type: 2}
+  paperController: {fileID: 9100000, guid: 7d5602fdb37f7c24ab69e8a5358702dd, type: 2}
+  stoneController: {fileID: 9100000, guid: b858149b27654a545a3b375e410f9fa0, type: 2}
 --- !u!54 &9196770655883893898
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -147,21 +146,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!111 &375060471636078671
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4635973183218378370}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 07b26bd0ab7fde643978409defb7861d, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!95 &-5754600011450469935
 Animator:
   serializedVersion: 3
