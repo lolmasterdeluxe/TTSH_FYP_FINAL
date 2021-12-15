@@ -8,11 +8,8 @@ public class SpriteScalingScript : MonoBehaviour
 
     #region Variables 
 
-    [Tooltip("Reference to the PlayerMovementScript")]
-    PlayerMovementScript playermovementscriptReference;
-
     [Tooltip("Smallest Scale that the player can be in the scene")]
-    Vector3 smallestPlayerScale = new Vector3(0.5f, 0.5f, 0.5f);
+    Vector3 smallestPlayerScale = new Vector3(0.75f, 0.75f, 0.75f);
     [Tooltip("Largest Scale that the player can be in the scene")]
     Vector3 originalPlayerScale;
 
@@ -36,7 +33,6 @@ public class SpriteScalingScript : MonoBehaviour
 
     private void Start()
     {
-        playermovementscriptReference = GetComponent<PlayerMovementScript>();
 
         //set the values HERE
         f_originalPlayerScale = frontPosition.transform.position.y;
