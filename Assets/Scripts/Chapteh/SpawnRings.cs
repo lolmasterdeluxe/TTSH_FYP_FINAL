@@ -12,16 +12,10 @@ public class SpawnRings : MonoBehaviour
     private Vector2 spawnPos;
 
     public SpriteRenderer skySpriteWidth, skySpriteHeight;
-    private List<Vector2> spawnedPositions;
+    public List<Vector2> spawnedPositions;
+    public List<GameObject> spawnedRings;
     private float redhoopRadius, yellowhoopRadius, greenhoopRadius;
     private GameObject gameObjectRings;
-
-    private Vector2 posDisplacement;
-    private Vector2 posOrigin, newPos;
-    private float timePassed;
-    float randomDistance;
-
-    private Vector2 redRingPos;
 
     // Start is called before the first frame update
     void Start()
@@ -31,17 +25,12 @@ public class SpawnRings : MonoBehaviour
         yellowhoopRadius = yellowRingPrefab.GetComponent<Collider2D>().bounds.extents.x;
         greenhoopRadius = greenRingPrefab.GetComponent<Collider2D>().bounds.extents.x;
         spawnedPositions = new List<Vector2>();
-
-        randomDistance = Random.Range(-6f, 6f);
-        posDisplacement = new Vector2(randomDistance, 0);
-        //posOrigin = transform.position;
+        spawnedRings = new List<GameObject>();
     }
 
     private void Update()
     {
         LimitSpawnRings();
-        //MoveableRings();
-        //DestroyRingsAfterTime();
     }
 
     private void RandomRingSpawn()
@@ -72,65 +61,28 @@ public class SpawnRings : MonoBehaviour
                     if (colliderWithRedRing == false && colliderWithYellowRing == false && colliderWithGreenRing == false)
                     {
                         GameObject temp;
-                        timePassed += Time.deltaTime;
 
                         switch (randOption)
                         {
                             case 0:
                                 temp = Instantiate(redRingPrefab, spawnPos, Quaternion.identity);
-                                
-                                // Here shld be moving the rings in the x-axis using the posDisplacement
-                                newPos = Vector2.Lerp(spawnPos + posDisplacement, spawnPos, Mathf.PingPong(timePassed, 1));
-
                                 gameObjectRings = temp;
-                                posOrigin = gameObjectRings.transform.position;
-                                Debug.Log("Red1 " + posOrigin);
+                                spawnedRings.Add(temp);
                                 break;
                             case 1:
                                 temp = Instantiate(yellowRingPrefab, spawnPos, Quaternion.identity);
-
-                                // Here shld be moving the rings in the x-axis using the posDisplacement
-                                newPos = Vector2.Lerp(spawnPos + posDisplacement, spawnPos, Mathf.PingPong(timePassed, 1));
-
                                 gameObjectRings = temp;
-                                posOrigin = gameObjectRings.transform.position;
-                                Debug.Log("Yellow1 " + posOrigin);
+                                spawnedRings.Add(temp);
                                 break;
                             case 2:
                                 temp = Instantiate(greenRingPrefab, spawnPos, Quaternion.identity);
-
-                                // Here shld be moving the rings in the x-axis using the posDisplacement
-                                newPos = Vector2.Lerp(spawnPos + posDisplacement, spawnPos, Mathf.PingPong(timePassed, 1));
-
                                 gameObjectRings = temp;
-                                posOrigin = gameObjectRings.transform.position;
-                                Debug.Log("Green1 " + posOrigin);
+                                spawnedRings.Add(temp);
                                 break;
                         }
 
                         spawnedPositions.RemoveAt(spawnedPositions.Count - 1);
                         spawnedPositions.Add(gameObjectRings.transform.position);
-
-                        // Testing code to see if works outside of switch case
-                        /*if (gameObjectRings.CompareTag("RedRing"))
-                        {
-                            newPos = gameObjectRings.transform.position;
-                            newPos = Vector2.Lerp(posOrigin + posDisplacement, posOrigin, Mathf.PingPong(timePassed, 1));
-
-
-                        }
-                        else if (gameObjectRings.CompareTag("YellowRing"))
-                        {
-                            newPos = gameObjectRings.transform.position;
-                            newPos = Vector2.Lerp(posOrigin + posDisplacement, posOrigin, Mathf.PingPong(timePassed, 1));
-
-                        }
-                        else if (gameObjectRings.CompareTag("GreenRing"))
-                        {
-                            newPos = gameObjectRings.transform.position;
-                            newPos = Vector2.Lerp(posOrigin + posDisplacement, posOrigin, Mathf.PingPong(timePassed, 1));
-
-                        }*/
                     }
                 }
             }
@@ -142,18 +94,6 @@ public class SpawnRings : MonoBehaviour
         if (spawnedPositions.Count <= 30)
         {
             RandomRingSpawn();
-        }
-    }
-
-    private void MoveableRings()
-    {
-        timePassed += Time.deltaTime;
-
-        if(redRingPrefab.CompareTag("RedRing"))
-        {
-            redRingPos = redRingPrefab.transform.position;
-            Debug.Log(redRingPos);
-            //posOrigin = Vector2.Lerp(redRingPos + posDisplacement, redRingPos, Mathf.PingPong(timePassed, 1));
         }
     }
 

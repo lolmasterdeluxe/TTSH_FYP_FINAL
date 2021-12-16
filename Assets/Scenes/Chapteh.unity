@@ -3048,6 +3048,8 @@ MonoBehaviour:
   spawnRate: 2
   skySpriteWidth: {fileID: 1655820274}
   skySpriteHeight: {fileID: 1655820274}
+  spawnedPositions: []
+  spawnedRings: []
 --- !u!4 &1959430492
 Transform:
   m_ObjectHideFlags: 0
@@ -3485,6 +3487,7 @@ MonoBehaviour:
   skyWidth: {fileID: 1655820274}
   skyHeight: {fileID: 1655820274}
   kickChapteh: {fileID: 1480815033}
+  spawnRings: {fileID: 1959430491}
 --- !u!61 &5556708298840527363
 BoxCollider2D:
   m_ObjectHideFlags: 0

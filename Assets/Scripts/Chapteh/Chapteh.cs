@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class Chapteh : MonoBehaviour
 {
@@ -15,7 +17,12 @@ public class Chapteh : MonoBehaviour
     private Vector2 lookDirection;
     private float lookAngle;
 
+    private Vector2 oldPosition;
+    private bool isDecreasing = false;
+    private int tempvalue = -1;
+    
     [SerializeField] private KickChapteh kickChapteh;
+    [SerializeField] private SpawnRings spawnRings;
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +36,11 @@ public class Chapteh : MonoBehaviour
         rotPos = transform.rotation;
 
         kickChapteh = GameObject.Find("Chapteh Manager").GetComponent<KickChapteh>();
+        spawnRings = GameObject.Find("Rings Spawner").GetComponent<SpawnRings>();
 
         ComboManager.Instance.e_comboBreak.AddListener(ChaptehGameManager.Instance.OnComboBreak);
+
+        oldPosition.y = gameObject.transform.position.y;
     }
 
     // Update is called once per frame
@@ -48,6 +58,8 @@ public class Chapteh : MonoBehaviour
         kickChapteh.PowerLaunch();
 
         FallOnGravity();
+
+        MoveRingBoxCollider();
     }
 
     // Chapteh rotates at direction of the mouse position
@@ -112,11 +124,36 @@ public class Chapteh : MonoBehaviour
         {
             ChaptehGameManager.Instance.OnChaptehHit(other.gameObject);
             Destroy(other.gameObject);
+            //other.gameObject.SetActive(false);
+            spawnRings.spawnedRings.Remove(other.gameObject);
         }
     }
 
-    private void DestroyRing()
+    private void MoveRingBoxCollider()
     {
+        if (oldPosition.y > gameObject.transform.position.y)
+        {
+            oldPosition.y = gameObject.transform.position.y;
+            isDecreasing = true;
+        }
+        if (oldPosition.y < gameObject.transform.position.y)
+        {
+            oldPosition.y = gameObject.transform.position.y;
+            isDecreasing = false;
+        }
 
+        if (isDecreasing && tempvalue != spawnRings.spawnedRings.Count && spawnRings.spawnedRings.Count != 0)
+        {
+            for (int i = 0; i < spawnRings.spawnedRings.Count - 1; i++)
+            {
+                spawnRings.spawnedRings[i].GetComponent<BoxCollider2D>().offset = new Vector2(0, -1.13f);
+            }
+        }
+        else if (!isDecreasing && tempvalue == spawnRings.spawnedRings.Count && spawnRings.spawnedRings.Count != 0)
+        {
+            for (int i = 0; i < spawnRings.spawnedPositions.Count - 1; i++)
+                spawnRings.spawnedRings[i].GetComponent<BoxCollider2D>().offset = new Vector2(0, 2.13f);
+        }
+        tempvalue = spawnRings.spawnedRings.Count;
     }
 }
