@@ -32,15 +32,20 @@ public class CustomizerManager : MonoBehaviour
     }
 
     [SerializeField]
-    public List<Customizable> m_customizableList = new List<Customizable>();
+    public List<Customizable> m_hatPool = new List<Customizable>();
+    [SerializeField]
+    public List<Customizable> m_facePool = new List<Customizable>();
+    [SerializeField]
+    public List<Customizable> m_colorPool = new List<Customizable>();
 
-    private List<Customizable> m_hatPool = new List<Customizable>();
-    private List<Customizable> m_facePool = new List<Customizable>();
-    private List<Customizable> m_colorPool = new List<Customizable>();
+    private int m_hatID = 0;
+    private int m_faceID = 0;
+    private int m_colorID = 0;
 
-    private Customizable m_hat = null;
-    private Customizable m_face = null;
-    private Customizable m_color = null;
+    public SpriteRenderer m_headSprite;
+    public SpriteRenderer m_hatSprite;
+    public SpriteRenderer m_eyeSprite;
+    public SpriteRenderer m_mouthSprite;
 
     private static CustomizerManager _instance;
     public static CustomizerManager Instance
@@ -69,19 +74,88 @@ public class CustomizerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UpdatePool();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateCosmetics();
     }
 
-    void UpdatePool()
+    public void ScrollHat(bool forward)
     {
-        m_hatPool = m_customizableList.Where(x => x.m_itemType == ItemType.HAT).ToList();
-        m_facePool = m_customizableList.Where(x => x.m_itemType == ItemType.FACE).ToList();
-        m_colorPool = m_customizableList.Where(x => x.m_itemType == ItemType.COLOR).ToList();
+        if (forward)
+        {
+            m_hatID++;
+            if (m_hatID >= m_hatPool.Count)
+                m_hatID = 0;
+        }
+        else
+        {
+            m_hatID--;
+            if (m_hatID < 0)
+                m_hatID = m_hatPool.Count - 1;
+        }
+    }
+
+    public void ScrollFace(bool forward)
+    {
+        if (forward)
+        {
+            m_faceID++;
+            if (m_faceID >= m_facePool.Count)
+                m_faceID = 0;
+        }
+        else
+        {
+            m_faceID--;
+            if (m_faceID < 0)
+                m_faceID = m_facePool.Count - 1;
+        }
+    }
+
+    public void ScrollColor(bool forward)
+    {
+        if (forward)
+        {
+            m_colorID++;
+            if (m_colorID >= m_colorPool.Count)
+                m_colorID = 0;
+        }
+        else
+        {
+            m_colorID--;
+            if (m_colorID < 0)
+                m_hatID = m_colorPool.Count - 1;
+        }
+    }
+
+    void UpdateCosmetics()
+    {
+        Customizable hatCustomizable = m_hatPool[m_hatID];
+        Customizable faceCustomizable = m_facePool[m_faceID];
+        Customizable colorCustomizable = m_colorPool[m_colorID];
+
+        if (hatCustomizable.m_bone == Bone.HAT)
+        {
+            m_hatSprite.sprite = hatCustomizable.m_sprite;
+            m_headSprite.sprite = null;
+        }
+        else if (hatCustomizable.m_bone == Bone.HEAD_BAND)
+        {
+            m_hatSprite.sprite = null;
+            m_headSprite.sprite = hatCustomizable.m_sprite;
+        }
+
+        if (faceCustomizable.m_bone == Bone.GLASSES)
+        {
+            m_eyeSprite.sprite = faceCustomizable.m_sprite;
+            m_mouthSprite.sprite = null;
+        }
+        else if (faceCustomizable.m_bone == Bone.MOUTH)
+        {
+            m_eyeSprite.sprite = null;
+            m_mouthSprite.sprite = faceCustomizable.m_sprite;
+        }
     }
 }
