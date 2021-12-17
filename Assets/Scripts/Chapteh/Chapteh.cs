@@ -19,7 +19,6 @@ public class Chapteh : MonoBehaviour
 
     private Vector2 oldPosition;
     private bool isDecreasing = false;
-    private int tempvalue = -1;
     
     [SerializeField] private KickChapteh kickChapteh;
     [SerializeField] private SpawnRings spawnRings;
@@ -56,10 +55,10 @@ public class Chapteh : MonoBehaviour
         }
 
         kickChapteh.PowerLaunch();
+        
+        MoveRingBoxCollider();
 
         FallOnGravity();
-
-        MoveRingBoxCollider();
     }
 
     // Chapteh rotates at direction of the mouse position
@@ -125,7 +124,6 @@ public class Chapteh : MonoBehaviour
             ChaptehGameManager.Instance.OnChaptehHit(other.gameObject);
             Destroy(other.gameObject);
             //other.gameObject.SetActive(false);
-            spawnRings.spawnedRings.Remove(other.gameObject);
         }
     }
 
@@ -142,18 +140,29 @@ public class Chapteh : MonoBehaviour
             isDecreasing = false;
         }
 
-        if (isDecreasing && tempvalue != spawnRings.spawnedRings.Count && spawnRings.spawnedRings.Count != 0)
+        if (isDecreasing && spawnRings.spawnedRings.Count != 0)
         {
-            for (int i = 0; i < spawnRings.spawnedRings.Count - 1; i++)
+            foreach (GameObject gameObject in spawnRings.spawnedRings)
             {
-                spawnRings.spawnedRings[i].GetComponent<BoxCollider2D>().offset = new Vector2(0, -1.13f);
+                gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(0, -1.13f);
             }
+            spawnRings.spawnedRings.Clear();
+
+            //for (int i = spawnRings.spawnedPositions.Count - 1; i < 0; i++)
+            //{
+            //    spawnRings.spawnedRings[i].GetComponent<BoxCollider2D>().offset = new Vector2(0, -1.13f);
+            //}
         }
-        else if (!isDecreasing && tempvalue == spawnRings.spawnedRings.Count && spawnRings.spawnedRings.Count != 0)
+        else if (!isDecreasing && spawnRings.spawnedRings.Count != 0)
         {
-            for (int i = 0; i < spawnRings.spawnedPositions.Count - 1; i++)
-                spawnRings.spawnedRings[i].GetComponent<BoxCollider2D>().offset = new Vector2(0, 2.13f);
+            foreach (GameObject gameObject in spawnRings.spawnedRings)
+            {
+                gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(0, 2.13f);
+            }
+            spawnRings.spawnedRings.Clear();
+
+            //for (int i = spawnRings.spawnedPositions.Count - 1; i < 0; i++)
+            //    spawnRings.spawnedRings[i].GetComponent<BoxCollider2D>().offset = new Vector2(0, 2.13f);
         }
-        tempvalue = spawnRings.spawnedRings.Count;
     }
 }

@@ -13,7 +13,7 @@ public class SpawnRings : MonoBehaviour
 
     public SpriteRenderer skySpriteWidth, skySpriteHeight;
     public List<Vector2> spawnedPositions;
-    public List<GameObject> spawnedRings;
+    public List<GameObject> spawnedRings = new List<GameObject>();
     private float redhoopRadius, yellowhoopRadius, greenhoopRadius;
     private GameObject gameObjectRings;
 
