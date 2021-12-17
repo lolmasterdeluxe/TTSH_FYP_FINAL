@@ -829,14 +829,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 468505820}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.16113384, w: 0.9869326}
+  m_LocalPosition: {x: -0.075, y: 0.103, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1716286067}
   m_Father: {fileID: 1610870952}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 18.545}
 --- !u!1 &625113920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1394,6 +1394,21 @@ MonoBehaviour:
     m_itemType: 0
     m_sprite: {fileID: 21300000, guid: a914c5cfb0a9c704fa2c22b29849ade2, type: 3}
     m_color: {r: 0, g: 0, b: 0, a: 0}
+  - m_name: Cowboy Hat
+    m_bone: 0
+    m_itemType: 0
+    m_sprite: {fileID: 21300000, guid: fac48696693f9f442b4ea7b875358d52, type: 3}
+    m_color: {r: 0, g: 0, b: 0, a: 0}
+  - m_name: Crown Hat
+    m_bone: 0
+    m_itemType: 0
+    m_sprite: {fileID: 21300000, guid: 26e7fe6f9ba46a04fa88bdec16af2d77, type: 3}
+    m_color: {r: 0, g: 0, b: 0, a: 0}
+  - m_name: Sweat Headband
+    m_bone: 3
+    m_itemType: 0
+    m_sprite: {fileID: 21300000, guid: 1889cd4ced517cd468d6b46ca842c611, type: 3}
+    m_color: {r: 0, g: 0, b: 0, a: 0}
   m_facePool:
   - m_name: Default Face
     m_bone: 1
@@ -1403,7 +1418,7 @@ MonoBehaviour:
   - m_name: Anime Glasses
     m_bone: 1
     m_itemType: 1
-    m_sprite: {fileID: 21300000, guid: 81d14c1cf2051ec438b71c565232d541, type: 3}
+    m_sprite: {fileID: 21300000, guid: cde00bbb35656104cbad9aef0dcfcb65, type: 3}
     m_color: {r: 0, g: 0, b: 0, a: 0}
   - m_name: Aviator Glasses
     m_bone: 1
@@ -1418,7 +1433,7 @@ MonoBehaviour:
   - m_name: Eye Patch
     m_bone: 1
     m_itemType: 1
-    m_sprite: {fileID: 21300000, guid: f7a99043c31fd19498ce86e0c59edec3, type: 3}
+    m_sprite: {fileID: 21300000, guid: f7a49fcc05af03f488efe6f72c8b4ae8, type: 3}
     m_color: {r: 0, g: 0, b: 0, a: 0}
   - m_name: Heart Glasses
     m_bone: 1
@@ -1434,6 +1449,21 @@ MonoBehaviour:
     m_bone: 2
     m_itemType: 1
     m_sprite: {fileID: 21300000, guid: 60a749fea630bae4880ee7a3a8bee960, type: 3}
+    m_color: {r: 0, g: 0, b: 0, a: 0}
+  - m_name: Angry Brows
+    m_bone: 1
+    m_itemType: 1
+    m_sprite: {fileID: 21300000, guid: 8af566fe4f3adc144a6b012c74d832d1, type: 3}
+    m_color: {r: 0, g: 0, b: 0, a: 0}
+  - m_name: Funny Glasses
+    m_bone: 1
+    m_itemType: 1
+    m_sprite: {fileID: 21300000, guid: da77287a63745b346914f935760bef19, type: 3}
+    m_color: {r: 0, g: 0, b: 0, a: 0}
+  - m_name: Chinese Headband
+    m_bone: 1
+    m_itemType: 1
+    m_sprite: {fileID: 21300000, guid: 6c52eb1c09806084cacd363cf466c63d, type: 3}
     m_color: {r: 0, g: 0, b: 0, a: 0}
   m_colorPool:
   - m_name: Default Colour
@@ -1628,13 +1658,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1716286066}
-  m_LocalRotation: {x: -0.010876868, y: 0.014414665, z: -0.14019385, w: 0.9899594}
-  m_LocalPosition: {x: -0.056, y: 0.344, z: -0.011}
+  m_LocalRotation: {x: -0.010744347, y: 0.014513713, z: -0.13111812, w: 0.99120224}
+  m_LocalPosition: {x: 0.164, y: 0.46, z: -0.019}
   m_LocalScale: {x: 0.63757, y: 0.63757, z: 0.63757}
   m_Children: []
   m_Father: {fileID: 468505821}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -1.002, y: 1.811, z: -16.137}
+  m_LocalEulerAnglesHint: {x: -1.002, y: 1.811, z: -15.087}
 --- !u!212 &1716286068
 SpriteRenderer:
   m_ObjectHideFlags: 0
