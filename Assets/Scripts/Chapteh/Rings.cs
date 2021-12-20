@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class Rings : MonoBehaviour
 {
+    public Light2D ringGlow;
+
     public ChaptehGameManager.Objective type;
 
     // Start is called before the first frame update

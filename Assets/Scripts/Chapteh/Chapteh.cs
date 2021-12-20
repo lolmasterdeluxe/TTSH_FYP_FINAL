@@ -23,6 +23,8 @@ public class Chapteh : MonoBehaviour
     [SerializeField] private KickChapteh kickChapteh;
     [SerializeField] private SpawnRings spawnRings;
 
+    [SerializeField] private Rings rings;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,7 +58,7 @@ public class Chapteh : MonoBehaviour
 
         kickChapteh.PowerLaunch();
         
-        MoveRingBoxCollider();
+        //MoveRingBoxCollider();
 
         FallOnGravity();
     }
@@ -122,7 +124,9 @@ public class Chapteh : MonoBehaviour
         if (other.CompareTag("RedRing") || other.CompareTag("YellowRing") || other.CompareTag("GreenRing"))
         {
             ChaptehGameManager.Instance.OnChaptehHit(other.gameObject);
-            Destroy(other.gameObject);
+            rings.ringGlow.intensity = 5.5f;
+            StartCoroutine(GlowRingsOnHit(other));
+            //Destroy(other.gameObject);
             //other.gameObject.SetActive(false);
         }
     }
@@ -164,5 +168,12 @@ public class Chapteh : MonoBehaviour
             //for (int i = spawnRings.spawnedPositions.Count - 1; i < 0; i++)
             //    spawnRings.spawnedRings[i].GetComponent<BoxCollider2D>().offset = new Vector2(0, 2.13f);
         }
+    }
+
+    private IEnumerator GlowRingsOnHit(Collider2D coll2D)
+    {
+        //rings.ringGlow.intensity = 5.5f * Time.deltaTime;
+        yield return new WaitForSeconds(2f);
+        coll2D.gameObject.SetActive(false);
     }
 }
