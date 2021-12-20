@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.Animations;
 
@@ -22,7 +21,7 @@ public class SPS_Enemy : MonoBehaviour
     SPS_ObjectSpawningScript objectspawningInstance;
 
     [SerializeField]
-    private AnimatorController scissorsController, paperController, stoneController;
+    private RuntimeAnimatorController scissorsController, paperController, stoneController;
 
     #endregion
 
