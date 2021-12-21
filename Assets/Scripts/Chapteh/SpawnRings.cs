@@ -14,16 +14,15 @@ public class SpawnRings : MonoBehaviour
     public SpriteRenderer skySpriteWidth, skySpriteHeight;
     public List<Vector2> spawnedPositions;
     public List<GameObject> spawnedRings = new List<GameObject>();
-    private float redhoopRadius, yellowhoopRadius, greenhoopRadius;
+    private float redringRadius, yellowringRadius, greenringRadius;
     private GameObject gameObjectRings;
 
     // Start is called before the first frame update
     void Start()
     {
-
-        redhoopRadius = redRingPrefab.GetComponent<Collider2D>().bounds.extents.x;
-        yellowhoopRadius = yellowRingPrefab.GetComponent<Collider2D>().bounds.extents.x;
-        greenhoopRadius = greenRingPrefab.GetComponent<Collider2D>().bounds.extents.x;
+        redringRadius = redRingPrefab.GetComponent<Collider2D>().bounds.extents.x;
+        yellowringRadius = yellowRingPrefab.GetComponent<Collider2D>().bounds.extents.x;
+        greenringRadius = greenRingPrefab.GetComponent<Collider2D>().bounds.extents.x;
         spawnedPositions = new List<Vector2>();
         spawnedRings = new List<GameObject>();
     }
@@ -38,9 +37,9 @@ public class SpawnRings : MonoBehaviour
         if (Time.time > nextSpawn)
         {
             nextSpawn = Time.time + spawnRate;
-            redhoopRadius = redRingPrefab.GetComponent<Collider2D>().bounds.max.x + 0.5f;
-            yellowhoopRadius = yellowRingPrefab.GetComponent<Collider2D>().bounds.max.x + 0.5f;
-            greenhoopRadius = greenRingPrefab.GetComponent<Collider2D>().bounds.max.x + 0.5f;
+            redringRadius = redRingPrefab.GetComponent<Collider2D>().bounds.max.x + 0.5f;
+            yellowringRadius = yellowRingPrefab.GetComponent<Collider2D>().bounds.max.x + 0.5f;
+            greenringRadius = greenRingPrefab.GetComponent<Collider2D>().bounds.max.x + 0.5f;
 
             for (int i = 0; i < 2; i++)
             {
@@ -49,9 +48,9 @@ public class SpawnRings : MonoBehaviour
                 randOption = Random.Range(0, 3);
                 spawnPos = new Vector2(randX, randY);
 
-                Collider2D colliderWithRedRing = Physics2D.OverlapCircle(spawnPos, redhoopRadius, LayerMask.GetMask("RedRingLayer"));
-                Collider2D colliderWithYellowRing = Physics2D.OverlapCircle(spawnPos, yellowhoopRadius, LayerMask.GetMask("YellowRingLayer"));
-                Collider2D colliderWithGreenRing = Physics2D.OverlapCircle(spawnPos, greenhoopRadius, LayerMask.GetMask("GreenRingLayer"));
+                Collider2D colliderWithRedRing = Physics2D.OverlapCircle(spawnPos, redringRadius, LayerMask.GetMask("RedRingLayer"));
+                Collider2D colliderWithYellowRing = Physics2D.OverlapCircle(spawnPos, yellowringRadius, LayerMask.GetMask("YellowRingLayer"));
+                Collider2D colliderWithGreenRing = Physics2D.OverlapCircle(spawnPos, greenringRadius, LayerMask.GetMask("GreenRingLayer"));
 
                 if (!colliderWithRedRing && !colliderWithYellowRing && !colliderWithGreenRing)
                     spawnedPositions.Add(spawnPos);

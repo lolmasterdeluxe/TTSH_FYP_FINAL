@@ -23,8 +23,6 @@ public class Chapteh : MonoBehaviour
     [SerializeField] private KickChapteh kickChapteh;
     [SerializeField] private SpawnRings spawnRings;
 
-    [SerializeField] private Rings rings;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -121,59 +119,59 @@ public class Chapteh : MonoBehaviour
             ComboManager.Instance.BreakCombo();
         }
 
+        // Chapteh hits the respective ring
         if (other.CompareTag("RedRing") || other.CompareTag("YellowRing") || other.CompareTag("GreenRing"))
         {
             ChaptehGameManager.Instance.OnChaptehHit(other.gameObject);
-            rings.ringGlow.intensity = 5.5f;
+            other.GetComponent<Rings>().isTriggered = true;
             StartCoroutine(GlowRingsOnHit(other));
-            //Destroy(other.gameObject);
-            //other.gameObject.SetActive(false);
         }
     }
 
     private void MoveRingBoxCollider()
     {
-        if (oldPosition.y > gameObject.transform.position.y)
-        {
-            oldPosition.y = gameObject.transform.position.y;
-            isDecreasing = true;
-        }
-        if (oldPosition.y < gameObject.transform.position.y)
-        {
-            oldPosition.y = gameObject.transform.position.y;
-            isDecreasing = false;
-        }
+        //if (oldPosition.y > gameObject.transform.position.y)
+        //{
+        //    oldPosition.y = gameObject.transform.position.y;
+        //    isDecreasing = true;
+        //}
+        //if (oldPosition.y < gameObject.transform.position.y)
+        //{
+        //    oldPosition.y = gameObject.transform.position.y;
+        //    isDecreasing = false;
+        //}
 
-        if (isDecreasing && spawnRings.spawnedRings.Count != 0)
-        {
-            foreach (GameObject gameObject in spawnRings.spawnedRings)
-            {
-                gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(0, -1.13f);
-            }
-            spawnRings.spawnedRings.Clear();
+        //if (isDecreasing && spawnRings.spawnedRings.Count != 0)
+        //{
+        //    foreach (GameObject gameObject in spawnRings.spawnedRings)
+        //    {
+        //        gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(0, -1.13f);
+        //    }
+        //    spawnRings.spawnedRings.Clear();
 
-            //for (int i = spawnRings.spawnedPositions.Count - 1; i < 0; i++)
-            //{
-            //    spawnRings.spawnedRings[i].GetComponent<BoxCollider2D>().offset = new Vector2(0, -1.13f);
-            //}
-        }
-        else if (!isDecreasing && spawnRings.spawnedRings.Count != 0)
-        {
-            foreach (GameObject gameObject in spawnRings.spawnedRings)
-            {
-                gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(0, 2.13f);
-            }
-            spawnRings.spawnedRings.Clear();
+        //    //for (int i = spawnRings.spawnedPositions.Count - 1; i < 0; i++)
+        //    //{
+        //    //    spawnRings.spawnedRings[i].GetComponent<BoxCollider2D>().offset = new Vector2(0, -1.13f);
+        //    //}
+        //}
+        //else if (!isDecreasing && spawnRings.spawnedRings.Count != 0)
+        //{
+        //    foreach (GameObject gameObject in spawnRings.spawnedRings)
+        //    {
+        //        gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(0, 2.13f);
+        //    }
+        //    spawnRings.spawnedRings.Clear();
 
-            //for (int i = spawnRings.spawnedPositions.Count - 1; i < 0; i++)
-            //    spawnRings.spawnedRings[i].GetComponent<BoxCollider2D>().offset = new Vector2(0, 2.13f);
-        }
+        //    //for (int i = spawnRings.spawnedPositions.Count - 1; i < 0; i++)
+        //    //    spawnRings.spawnedRings[i].GetComponent<BoxCollider2D>().offset = new Vector2(0, 2.13f);
+        //}
     }
 
-    private IEnumerator GlowRingsOnHit(Collider2D coll2D)
+    private IEnumerator GlowRingsOnHit(Collider2D col2D)
     {
-        //rings.ringGlow.intensity = 5.5f * Time.deltaTime;
-        yield return new WaitForSeconds(2f);
-        coll2D.gameObject.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        //col2D.gameObject.SetActive(false);
+        Destroy(col2D.gameObject);
+        col2D.GetComponent<Rings>().isTriggered = false;
     }
 }
