@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ringGlow: {fileID: 4757165701985833766}
+  isTriggered: 0
   type: 3
 --- !u!1 &5908752026160221225
 GameObject:

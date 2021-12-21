@@ -15,7 +15,6 @@ public class ChaptehGameManager : MonoBehaviour
         HIT_RED_RINGS,
         HIT_YELLOW_RINGS,
         HIT_GREEN_RINGS,
-        HIT_ANY_RINGS,
         TOTAL,
     }
 
@@ -31,7 +30,6 @@ public class ChaptehGameManager : MonoBehaviour
     private int redbaseScore = 1;
     private int yellowbaseScore = 3;
     private int greenbaseScore = 5;
-    private int anybaseScore = 2;
 
     private void Awake()
     {
@@ -86,7 +84,6 @@ public class ChaptehGameManager : MonoBehaviour
     public void RandomizeObjective()
     {
         m_currentObjective = (Objective)Random.Range(1, (int)Objective.TOTAL);
-        //m_currentObjective = Objective.HIT_ANY_RINGS;
 
         switch (m_currentObjective)
         {
@@ -98,9 +95,6 @@ public class ChaptehGameManager : MonoBehaviour
                 break;
             case Objective.HIT_GREEN_RINGS:
                 g_objectiveText.GetComponent<TMP_Text>().text = "Shoot into <color=green>green</color> Rings!";
-                break;
-            case Objective.HIT_ANY_RINGS:
-                g_objectiveText.GetComponent<TMP_Text>().text = "Shoot into <color=grey>any</color> Rings!";
                 break;
         }
     }
@@ -130,12 +124,6 @@ public class ChaptehGameManager : MonoBehaviour
             ComboManager.Instance.AddCombo();
             ScoreManager.Instance.AddCurrentGameScore(greenbaseScore * ComboManager.Instance.GetCurrentCombo());
         }
-        else if (gameObject.GetComponent<Rings>().type == m_currentObjective && m_currentObjective == Objective.HIT_ANY_RINGS)
-        {
-            ComboManager.Instance.AddCombo();
-            ScoreManager.Instance.AddCurrentGameScore(anybaseScore * ComboManager.Instance.GetCurrentCombo());
-        }
-        else
         {
             switch (gameObject.GetComponent<Rings>().type)
             {
@@ -147,9 +135,6 @@ public class ChaptehGameManager : MonoBehaviour
                     break;
                 case Objective.HIT_GREEN_RINGS:
                     ScoreManager.Instance.AddCurrentGameScore(greenbaseScore);
-                    break;
-                case Objective.HIT_ANY_RINGS:
-                    ScoreManager.Instance.AddCurrentGameScore(anybaseScore);
                     break;
             }
         }

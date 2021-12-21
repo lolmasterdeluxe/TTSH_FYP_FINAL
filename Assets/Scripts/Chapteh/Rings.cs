@@ -5,11 +5,10 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class Rings : MonoBehaviour
 {
-    private Chapteh chapteh;
     public Light2D ringGlow;
+    public bool isTriggered = false;
 
     public ChaptehGameManager.Objective type;
-    public bool isTriggered = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +28,6 @@ public class Rings : MonoBehaviour
                 GetComponentInChildren<SpriteRenderer>().CompareTag("GreenRing");
                 break;
         }
-
-        chapteh = GameObject.Find("Chapteh").GetComponent<Chapteh>();
     }
 
     // Update is called once per frame

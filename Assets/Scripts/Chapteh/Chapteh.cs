@@ -18,7 +18,7 @@ public class Chapteh : MonoBehaviour
     private float lookAngle;
 
     private Vector2 oldPosition;
-    private bool isDecreasing = false;
+    //private bool isDecreasing = false;
     
     [SerializeField] private KickChapteh kickChapteh;
     [SerializeField] private SpawnRings spawnRings;
