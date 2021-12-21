@@ -14,7 +14,6 @@ public class SPS_AttackCollision : MonoBehaviour
     public bool jumpbuttonPressed;
 
     public float rangeUptime;
-    private float combotextLifetime;
 
     public BoxCollider attackCollider;
 
@@ -25,6 +24,7 @@ public class SPS_AttackCollision : MonoBehaviour
     SPS_Player playerInstance;
     SPS_ScoreManager scoreInstance;
     SPS_ObjectSpawningScript objectspawningInstance;
+    SPS_Enemy enemyInstance;
 
     public GameObject comboGroup;
     public GameObject comboText;
@@ -43,6 +43,7 @@ public class SPS_AttackCollision : MonoBehaviour
         playerInstance = GetComponentInParent<SPS_Player>();
         scoreInstance = FindObjectOfType<SPS_ScoreManager>();
         objectspawningInstance = FindObjectOfType<SPS_ObjectSpawningScript>();
+        enemyInstance = FindObjectOfType<SPS_Enemy>();
 
         //set combo expiry
         ComboManager.Instance.SetComboExpiry(4f);
@@ -53,6 +54,9 @@ public class SPS_AttackCollision : MonoBehaviour
         //attach events HERE
         ComboManager.Instance.e_comboAdded.AddListener(AddedCombo);
         ComboManager.Instance.e_comboBreak.AddListener(ComboBroken);
+
+
+
     }
 
     private void Update()
@@ -178,14 +182,15 @@ public class SPS_AttackCollision : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+
         //we now check that the matchup is correct to kill the enemy
         //firstly we check to see if ANY button has been pressed
         if (attackbuttonPressed == true)
         {
             //we now need to determine if the interaction is with a enemy OR an obstacle
-
             if (other.gameObject.tag == "EnemyTag") //enemy
             {
+
                 if (playerInstance.p_choice == SPS_Player.PlayerChoice.P_SCISSOR
                     && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_PAPER)
                 {
@@ -194,7 +199,7 @@ public class SPS_AttackCollision : MonoBehaviour
                     //we first destroy the instance of the gameObject in the list
                     objectspawningInstance.objectwaveList.Remove(other.gameObject);
 
-                    //now remove the gameobject and its rigidbody from the scene
+                    //destroy the enemy
                     Destroy(other.gameObject);
                     Destroy(other.gameObject.GetComponent<Rigidbody>());
 
@@ -212,7 +217,7 @@ public class SPS_AttackCollision : MonoBehaviour
                     //we first destroy the instance of the gameObject in the list
                     objectspawningInstance.objectwaveList.Remove(other.gameObject);
 
-                    //now remove the gameobject and its rigidbody from the scene
+                    //destroy the enemy
                     Destroy(other.gameObject);
                     Destroy(other.gameObject.GetComponent<Rigidbody>());
 
@@ -230,7 +235,7 @@ public class SPS_AttackCollision : MonoBehaviour
                     //we first destroy the instance of the gameObject in the list
                     objectspawningInstance.objectwaveList.Remove(other.gameObject);
 
-                    //now remove the gameobject and its rigidbody from the scene
+                    //destroy the enemy
                     Destroy(other.gameObject);
                     Destroy(other.gameObject.GetComponent<Rigidbody>());
 
@@ -268,4 +273,13 @@ public class SPS_AttackCollision : MonoBehaviour
 
     #endregion
 
+
+    #region Enemy Fade Functions
+    
+    public void EnemyFade(GameObject enemy)
+    {
+        enemy.GetComponent<SpriteRenderer>().DOFade(0, 1f);
+    }
+
+    #endregion
 }

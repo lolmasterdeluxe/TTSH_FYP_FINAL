@@ -4204,7 +4204,7 @@ MonoBehaviour:
   skyHeight: {fileID: 1655820274}
   kickChapteh: {fileID: 1480815033}
   spawnRings: {fileID: 1959430491}
-  rings: {fileID: 7697272138476144515, guid: 320d1ecd6ec434f4983103691ecb724a, type: 3}
+  isTriggered: 0
 --- !u!61 &5556708298840527363
 BoxCollider2D:
   m_ObjectHideFlags: 0
