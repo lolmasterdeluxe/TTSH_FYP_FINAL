@@ -15,13 +15,12 @@ public class SPS_Enemy : MonoBehaviour
     #region Variables
 
     Animation enemyAnim;
-    Animator enemyAC;
+    public Animator enemyAC;
     public AIChoice ai_choice;
 
     SPS_ObjectSpawningScript objectspawningInstance;
 
-    [SerializeField]
-    private RuntimeAnimatorController scissorsController, paperController, stoneController;
+    public RuntimeAnimatorController scissorsController, paperController, stoneController;
 
     #endregion
 
