@@ -27,6 +27,12 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
 
     #region Variables
 
+    //reference to the attack collision Script
+    SPS_AttackCollision attackCollisionInstance;
+
+    //reference to the enemy script
+    SPS_Enemy enemyInstance;
+
     //this list keeps track of objects being spawned
     public List<GameObject> objectwaveList;
 
@@ -68,6 +74,10 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
     [Tooltip("Wave counter: check the current wave number in-game")]
     public int waveNumber;
 
+    //dead enemy object
+    private GameObject deadEnemyOBJ;
+
+
     #endregion
 
     #region Unity Callbacks
@@ -78,6 +88,10 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
         powerupCounter = 0;
         objectSpeedMultiplier = 1f;
         waveNumber = 0;
+
+        //set references HERE
+        attackCollisionInstance = FindObjectOfType<SPS_AttackCollision>();
+        enemyInstance = FindObjectOfType<SPS_Enemy>();
     }
 
     private void Update()
@@ -209,7 +223,7 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
             new Vector3(objectstartPosition.position.x + val * 4.2f, objectstartPosition.position.y + 0.65f, objectstartPosition.position.z), objectstartPosition.rotation);
 
             //do the movement HERE
-            objectInstance.transform.DOMoveX(obstacleEndPosition.transform.position.x, (objectSpeed * objectSpeedMultiplier) + val * val);
+            objectInstance.transform.DOMoveX(obstacleEndPosition.transform.position.x, (objectSpeed * objectSpeedMultiplier) + (val * 2) * val);
             objectInstance.GetComponent<Rigidbody>().DOMoveX(obstacleEndPosition.transform.position.x, (objectSpeed * objectSpeedMultiplier) + val * val);
 
             objectwaveList.Add(objectInstance);
@@ -306,5 +320,7 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
     }
 
     #endregion
+
+
 
 }

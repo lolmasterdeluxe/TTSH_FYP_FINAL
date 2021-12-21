@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: 7f3f0f521f7a7c240bc143241cec10a7
+guid: 475ad66e9916b18469c7e605324e044c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1592051320847300792
-    second: stunned_spritesheet_0
+      213: -2868118859674946830
+    second: enemydie_ss_0
   - first:
-      213: -7916997802216397504
-    second: stunned_spritesheet_1
+      213: 6683267137831296478
+    second: enemydie_ss_1
   - first:
-      213: -2821553452274435018
-    second: stunned_spritesheet_2
+      213: 214861700809121655
+    second: enemydie_ss_2
   - first:
-      213: -4441794452395688334
-    second: stunned_spritesheet_3
+      213: 4037911294704307877
+    second: enemydie_ss_3
   - first:
-      213: -2803226089910230069
-    second: stunned_spritesheet_4
+      213: 3269353350246621161
+    second: enemydie_ss_4
   - first:
-      213: 8657519471522059639
-    second: stunned_spritesheet_5
+      213: 4930821893573192013
+    second: enemydie_ss_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -119,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: stunned_spritesheet_0
+      name: enemydie_ss_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 240
-        height: 240
+        y: 396
+        width: 197
+        height: 197
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,20 +133,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84784bc32c5e7e9e0800000000000000
-      internalID: -1592051320847300792
+      spriteID: 2f2f973d7156238d0800000000000000
+      internalID: -2868118859674946830
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stunned_spritesheet_1
+      name: enemydie_ss_1
       rect:
         serializedVersion: 2
-        x: 240
-        y: 0
-        width: 240
-        height: 240
+        x: 197
+        y: 396
+        width: 197
+        height: 197
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,20 +154,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 045e757e17c212290800000000000000
-      internalID: -7916997802216397504
+      spriteID: eddd9796d0cbfbc50800000000000000
+      internalID: 6683267137831296478
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stunned_spritesheet_2
+      name: enemydie_ss_2
       rect:
         serializedVersion: 2
-        x: 480
-        y: 0
-        width: 240
-        height: 240
+        x: 0
+        y: 199
+        width: 197
+        height: 197
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,20 +175,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63cb76a9514d7d8d0800000000000000
-      internalID: -2821553452274435018
+      spriteID: 77f509814975bf200800000000000000
+      internalID: 214861700809121655
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stunned_spritesheet_3
+      name: enemydie_ss_3
       rect:
         serializedVersion: 2
-        x: 720
-        y: 0
-        width: 240
-        height: 240
+        x: 197
+        y: 199
+        width: 197
+        height: 197
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,20 +196,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27e77abaa739b52c0800000000000000
-      internalID: -4441794452395688334
+      spriteID: 5ae4363cdea890830800000000000000
+      internalID: 4037911294704307877
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stunned_spritesheet_4
+      name: enemydie_ss_4
       rect:
         serializedVersion: 2
-        x: 960
-        y: 0
-        width: 240
-        height: 240
+        x: 0
+        y: 2
+        width: 197
+        height: 197
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,20 +217,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc32bcd29b0f819d0800000000000000
-      internalID: -2803226089910230069
+      spriteID: 9efdeaedc831f5d20800000000000000
+      internalID: 3269353350246621161
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stunned_spritesheet_5
+      name: enemydie_ss_5
       rect:
         serializedVersion: 2
-        x: 1200
-        y: 0
-        width: 240
-        height: 240
+        x: 197
+        y: 2
+        width: 197
+        height: 197
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -238,8 +238,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77599100710b52870800000000000000
-      internalID: 8657519471522059639
+      spriteID: d492629336ccd6440800000000000000
+      internalID: 4930821893573192013
       vertices: []
       indices: 
       edges: []
@@ -247,7 +247,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 0b25535add01c9449842096e6ec6f907
+    spriteID: 63f3cdba154457a4199bfec54e8578f7
     internalID: 0
     vertices: []
     indices: 

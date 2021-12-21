@@ -209,8 +209,8 @@ public class SPS_Player : MonoBehaviour
         attackCollisionInstance.AttackButtonPress();
 
         //we shift the attack animation pane such that it fits
-        playerActionAnimation.transform.localPosition = new Vector3(0f, -0.5f, 1f);
-        playerActionAnimation.transform.localScale = new Vector3(1.5f, 1.5f, 1f);
+        playerActionAnimation.transform.localPosition = new Vector3(0.05f, -0.45f, 1f);
+        playerActionAnimation.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
     public void PlayerChoosesPaper()
@@ -223,8 +223,8 @@ public class SPS_Player : MonoBehaviour
         attackCollisionInstance.AttackButtonPress();
 
         //we shift the attack animation such that it fits
-        playerActionAnimation.transform.localPosition = new Vector3(1f, 0.3f, 1f);
-        playerActionAnimation.transform.localScale = new Vector3(1f, 1f, 1f);
+        playerActionAnimation.transform.localPosition = new Vector3(0.75f, 0.35f, 1f);
+        playerActionAnimation.transform.localScale = new Vector3(0.75f, 0.75f, 1f);
     }
 
     public void PlayerChoosesStone()
@@ -237,8 +237,8 @@ public class SPS_Player : MonoBehaviour
         attackCollisionInstance.AttackButtonPress();
 
         //we shift the attack animation such that it fits
-        playerActionAnimation.transform.localPosition = new Vector3(0.01f, 0f, 1f);
-        playerActionAnimation.transform.localScale = new Vector3(1.1f, 1.1f, 1f);
+        playerActionAnimation.transform.localPosition = new Vector3(0.01f, 0.1f, 1f);
+        playerActionAnimation.transform.localScale = new Vector3(0.85f, 0.85f, 1f);
 
     }
 
