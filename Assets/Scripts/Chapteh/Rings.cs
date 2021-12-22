@@ -8,6 +8,9 @@ public class Rings : MonoBehaviour
     public Light2D ringGlow;
     public bool isTriggered = false;
 
+    public ParticleSystem ps;
+    public bool particleTriggered = false;
+
     public ChaptehGameManager.Objective type;
 
     // Start is called before the first frame update
@@ -43,4 +46,15 @@ public class Rings : MonoBehaviour
                 ringGlow.intensity = 0f;
         }
     }
+
+    //private void OnParticleCollision(GameObject other)
+    //{
+    //    if(other.CompareTag("Chapteh"))
+    //    {
+    //        if(particleTriggered == true)
+    //            gameObject.GetComponent<ParticleSystem>().Play();
+    //        else
+    //            gameObject.GetComponent<ParticleSystem>().Stop();
+    //    }
+    //}
 }
