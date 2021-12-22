@@ -23,6 +23,8 @@ public class Chapteh : MonoBehaviour
     [SerializeField] private KickChapteh kickChapteh;
     [SerializeField] private SpawnRings spawnRings;
 
+    private float glowDuration = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -125,7 +127,7 @@ public class Chapteh : MonoBehaviour
             ChaptehGameManager.Instance.OnChaptehHit(other.gameObject);
             other.GetComponent<Rings>().isTriggered = true;
             StartCoroutine(GlowRingsOnHit(other));
-            //other.GetComponentInChildren<ParticleSystem>().Play();
+            other.GetComponentInChildren<ParticleSystem>().Play();
         }
     }
 
@@ -170,8 +172,8 @@ public class Chapteh : MonoBehaviour
 
     private IEnumerator GlowRingsOnHit(Collider2D col2D)
     {
-        yield return new WaitForSeconds(1f);
-        col2D.GetComponentInChildren<ParticleSystem>().Play();
+        yield return new WaitForSeconds(glowDuration);
+        //col2D.GetComponentInChildren<ParticleSystem>().Play();
         //col2D.gameObject.SetActive(false);
         Destroy(col2D.gameObject);
         col2D.GetComponent<Rings>().isTriggered = false;
