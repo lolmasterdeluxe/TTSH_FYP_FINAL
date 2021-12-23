@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     Animator playerAnim;
     private Chapteh chapteh;
 
+    public ParticleSystem sandDust;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,6 +69,8 @@ public class Player : MonoBehaviour
         {
             playerAnim.SetBool("PlayerIdle", true);
             playerAnim.SetBool("PlayerRun", false);
+
+            DisppearSandDust();
         }
         else if (Input.GetAxis("Mouse X") != 0 && Input.GetAxis("Mouse Y") != 0) // If mouse input is detected
         {
@@ -75,11 +79,36 @@ public class Player : MonoBehaviour
 
             // Calls func for player sprite to flip
             SpriteFlip();
+            FlipSandDust();
         }
 
         if (Input.GetMouseButtonUp(0))
         {
             playerAnim.SetTrigger("PlayerKick");
+        }
+    }
+
+    private void CreateSandDust()
+    {
+        sandDust.Play();
+    }
+
+    private void DisppearSandDust()
+    {
+        sandDust.Stop();
+    }
+
+    private void FlipSandDust()
+    {
+        if(playerSprite.flipX == true)
+        {
+            sandDust.transform.rotation = Quaternion.Euler(0f, 5f, 0f);
+            CreateSandDust();
+        }
+        else
+        {
+            sandDust.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            CreateSandDust();
         }
     }
 }
