@@ -174,8 +174,8 @@ public class Chapteh : MonoBehaviour
     {
         yield return new WaitForSeconds(glowDuration);
         //col2D.GetComponentInChildren<ParticleSystem>().Play();
-        //col2D.gameObject.SetActive(false);
-        Destroy(col2D.gameObject);
+        col2D.gameObject.SetActive(false);
+        //Destroy(col2D.gameObject);
         col2D.GetComponent<Rings>().isTriggered = false;
     }
 }
