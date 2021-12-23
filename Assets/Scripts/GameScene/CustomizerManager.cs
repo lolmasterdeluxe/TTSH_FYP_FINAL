@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CustomizerManager : MonoBehaviour
 {
@@ -79,6 +80,7 @@ public class CustomizerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateSpriteRendererReferences();
         UpdateCosmetics();
     }
 
@@ -157,5 +159,26 @@ public class CustomizerManager : MonoBehaviour
             m_eyeSprite.sprite = null;
             m_mouthSprite.sprite = faceCustomizable.m_sprite;
         }
+    }
+
+    // Find another way to re-reference when changing scenes, but this works for now
+    void UpdateSpriteRendererReferences()
+    {
+        if (m_headSprite == null)
+            m_headSprite = GameObject.Find("HeadSprite").GetComponent<SpriteRenderer>();
+
+        if (m_hatSprite == null)
+            m_hatSprite = GameObject.Find("HatSprite").GetComponent<SpriteRenderer>();
+
+        if (m_eyeSprite == null)
+            m_eyeSprite = GameObject.Find("EyeSprite").GetComponent<SpriteRenderer>();
+
+        if (m_mouthSprite == null)
+            m_mouthSprite = GameObject.Find("MouthSprite").GetComponent<SpriteRenderer>();
+    }
+
+    public void EnterMainScene()
+    {
+        SceneManager.LoadScene("MainMenuGameScene");
     }
 }

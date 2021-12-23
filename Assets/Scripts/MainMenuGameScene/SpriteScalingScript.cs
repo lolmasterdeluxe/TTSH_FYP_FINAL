@@ -47,7 +47,15 @@ public class SpriteScalingScript : MonoBehaviour
         float normalizedDistance = Mathf.InverseLerp(f_smallestPlayerScale, f_originalPlayerScale, _currentY);
 
         //this adjusts the sprite size to be scalable between two bounded sizes
-        transform.localScale = Vector3.Lerp(smallestPlayerScale, originalPlayerScale, normalizedDistance);
+
+        Vector3 newScale = Vector3.Lerp(smallestPlayerScale, originalPlayerScale, normalizedDistance);
+
+        PlayerMovementScript playerMovement = GetComponent<PlayerMovementScript>();
+
+        if ((playerMovement.m_isRight && newScale.x < 0) || (!playerMovement.m_isRight && newScale.x > 0))
+            newScale.x *= -1;
+
+        transform.localScale = newScale;
 
     }
     #endregion

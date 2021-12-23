@@ -12,8 +12,9 @@ public class PlayerMovementScript : MonoBehaviour
     Animator playerAC;
 
     public float playerSpeed;
-    Vector2 movement, prevMovement;
+    public Vector2 movement, prevMovement;
 
+    public bool m_isRight = true;
     #endregion
 
     #region Unity Callbacks
@@ -27,10 +28,10 @@ public class PlayerMovementScript : MonoBehaviour
         //set values HERE
         playerSpeed = 5f;
     }
-
+    
     private void Update()
     {
-        if (prevMovement.sqrMagnitude > 0)
+        if (movement.sqrMagnitude > 0)
         {
             prevMovement = movement;
         }
@@ -38,6 +39,10 @@ public class PlayerMovementScript : MonoBehaviour
         PlayerMovementFunction();
         PlayerAnimationFunction();
 
+        if (movement.x < 0 && m_isRight)
+            m_isRight = false;
+        else if (movement.x > 0 && !m_isRight)
+            m_isRight = true;
     }
 
     private void FixedUpdate()
