@@ -101,7 +101,7 @@ public class ChaptehGameManager : MonoBehaviour
 
     private void UIUpdate()
     {
-        g_scoreText.GetComponent<TMP_Text>().text = "Score \n" + ScoreManager.Instance.GetCurrentGameScore();
+        g_scoreText.GetComponent<TMP_Text>().text = "Score: " + ScoreManager.Instance.GetCurrentGameScore();
         g_timerText.GetComponent<TMP_Text>().text = TimerManager.Instance.GetFormattedRemainingTime();
         g_comboText.GetComponent<TMP_Text>().text = "Combo: " + ComboManager.Instance.GetCurrentCombo() + "x";
         g_comboExpiryBar.GetComponent<Slider>().value = ComboManager.Instance.GetComboExpiryTimer() / ComboManager.Instance.GetComboExpiryTimerDefault();
@@ -113,30 +113,31 @@ public class ChaptehGameManager : MonoBehaviour
         {
             ComboManager.Instance.AddCombo();
             ScoreManager.Instance.AddCurrentGameScore(redbaseScore * ComboManager.Instance.GetCurrentCombo());
+            g_comboText.GetComponent<TMP_Text>().color = new Color(255f, 0f, 0f, 255f);
         }
         else if(gameObject.GetComponent<Rings>().type == m_currentObjective && m_currentObjective == Objective.HIT_YELLOW_RINGS)
         {
             ComboManager.Instance.AddCombo();
             ScoreManager.Instance.AddCurrentGameScore(yellowbaseScore * ComboManager.Instance.GetCurrentCombo());
+            g_comboText.GetComponent<TMP_Text>().color = new Color(255f, 255f, 0f, 255f);
         }
         else if (gameObject.GetComponent<Rings>().type == m_currentObjective && m_currentObjective == Objective.HIT_GREEN_RINGS)
         {
             ComboManager.Instance.AddCombo();
             ScoreManager.Instance.AddCurrentGameScore(greenbaseScore * ComboManager.Instance.GetCurrentCombo());
+            g_comboText.GetComponent<TMP_Text>().color = new Color(0f, 255f, 0f, 255f);
         }
+        switch (gameObject.GetComponent<Rings>().type)
         {
-            switch (gameObject.GetComponent<Rings>().type)
-            {
-                case Objective.HIT_RED_RINGS:
-                    ScoreManager.Instance.AddCurrentGameScore(redbaseScore);
-                    break;
-                case Objective.HIT_YELLOW_RINGS:
-                    ScoreManager.Instance.AddCurrentGameScore(yellowbaseScore);
-                    break;
-                case Objective.HIT_GREEN_RINGS:
-                    ScoreManager.Instance.AddCurrentGameScore(greenbaseScore);
-                    break;
-            }
+            case Objective.HIT_RED_RINGS:
+                ScoreManager.Instance.AddCurrentGameScore(redbaseScore);
+                break;
+            case Objective.HIT_YELLOW_RINGS:
+                ScoreManager.Instance.AddCurrentGameScore(yellowbaseScore);
+                break;
+            case Objective.HIT_GREEN_RINGS:
+                ScoreManager.Instance.AddCurrentGameScore(greenbaseScore);
+                break;
         }
     }
 

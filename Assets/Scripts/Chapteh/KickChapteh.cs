@@ -16,6 +16,9 @@ public class KickChapteh : MonoBehaviour
     {
         chapteh = GameObject.Find("Chapteh").GetComponent<Chapteh>();
         chargeBar = GameObject.Find("Fill Image").GetComponent<ChargeBar>();
+
+        // For Player UI in World Space
+        chargeBar.charge.SetActive(false);
     }
 
     public void PowerLaunch()
@@ -27,6 +30,8 @@ public class KickChapteh : MonoBehaviour
                 holdDownStartTime += 0.5f * Time.deltaTime;
 
             chargeBar.SetFillBar(holdDownStartTime);
+
+            chargeBar.charge.SetActive(true);
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -36,6 +41,8 @@ public class KickChapteh : MonoBehaviour
 
             holdDownStartTime = 0f;
             chargeBar.SetFillBar(0);
+
+            chargeBar.charge.SetActive(false);
         }
     }
 

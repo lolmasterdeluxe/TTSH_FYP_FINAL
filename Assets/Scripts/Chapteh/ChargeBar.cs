@@ -5,26 +5,33 @@ using UnityEngine.UI;
 
 public class ChargeBar : MonoBehaviour
 {
-    private Image chargeBarImage;
+    public GameObject charge;
+    public Transform playerChargeBarPoint;
+    private Image chargeFillImage;
 
     // Start is called before the first frame update
     void Start()
     {
-        chargeBarImage = GameObject.Find("Fill Image").GetComponent<Image>();
+        chargeFillImage = GameObject.Find("Fill Image").GetComponent<Image>();
 
         // Default to an empty bar
-        chargeBarImage.fillAmount = 0f;
+        chargeFillImage.fillAmount = 0f;
+
+        // For Screen UI
+        //charge.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        charge.transform.position = playerChargeBarPoint.transform.position + new Vector3(-1f, 0f, 0f);
 
+        //transform.localScale = new Vector3(0.1f, 0.1f, 0f);
     }
 
     public void SetFillBar(float holdTime)
     {
         // Sets image fill amount to duration of holding
-        chargeBarImage.fillAmount = holdTime;
+        chargeFillImage.fillAmount = holdTime;
     }
 }
