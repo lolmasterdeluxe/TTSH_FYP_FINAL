@@ -31,6 +31,8 @@ public class ChaptehGameManager : MonoBehaviour
     private int yellowbaseScore = 3;
     private int greenbaseScore = 5;
 
+    public bool m_gameStarted = false;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -42,13 +44,11 @@ public class ChaptehGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartGame(90);
-        ScoreManager.Instance.LoadAllScoreList();
-        ScoreManager.Instance.EndSessionConcludeScore();
     }
 
-    void StartGame(float time)
+    public void StartGame(float time)
     {
+        m_gameStarted = true;
         // Setup managers
         TimerManager.Instance.StartCountdown(time);
         ComboManager.Instance.SetComboExpiry(8f);
@@ -67,6 +67,9 @@ public class ChaptehGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!m_gameStarted)
+            return;
+
         UIUpdate();
 
         EndGame();

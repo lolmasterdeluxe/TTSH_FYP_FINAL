@@ -28,9 +28,6 @@ public class SPS_ScoreManager : MonoBehaviour
         //player starts with a score of 0
         playerScore = 0;
 
-        ScoreManager.Instance.LoadAllScoreList();
-        ScoreManager.Instance.EndSessionConcludeScore();
-
         ScoreManager.Instance.LoadNewGamemode(ScoreManager.Gamemode.SPS);
 
     }
