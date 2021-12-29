@@ -56,6 +56,12 @@ public class TweenManager : MonoBehaviour
         goTransform.DOShakePosition(duration, strength);
     }
 
+    public void AnimateScale(Transform goTransform, float strength, float duration)
+    {
+        goTransform.DOScale(new Vector3(strength, strength, strength), duration);
+    }
+
+
     public void AnimateFloat(Transform goTransform, float timeTaken, Vector3 finalPos)
     {
         goTransform.DOMoveY(finalPos.y, timeTaken);

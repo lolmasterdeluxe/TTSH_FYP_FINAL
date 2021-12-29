@@ -22,6 +22,7 @@ public class TimerManager : MonoBehaviour
 
     #region Countdown Variable
     public UnityEvent e_TimerStarted = new UnityEvent();
+    public UnityEvent e_TimerTick = new UnityEvent();
     public UnityEvent e_TimerPassedThreshold = new UnityEvent();
     public UnityEvent e_TimerFinished = new UnityEvent();
 
@@ -32,6 +33,8 @@ public class TimerManager : MonoBehaviour
     private float m_defaultTime;
     private float m_timeRemaining;
     private float m_timerThreshold;
+
+    private int m_previousTick;
     #endregion
 
     #region ElapsedTime Variable
@@ -60,6 +63,12 @@ public class TimerManager : MonoBehaviour
         if (m_timerRun)
         {
             m_timeRemaining -= Time.deltaTime;
+
+            if (m_previousTick != (int)m_timeRemaining)
+            {
+                m_previousTick = (int)m_timeRemaining;
+                e_TimerTick.Invoke();
+            }
 
             if (!m_timerActivated)
             {
@@ -113,6 +122,7 @@ public class TimerManager : MonoBehaviour
         m_defaultTime = time;
         m_timeRemaining = time;
         m_timerThreshold = thresholdValue;
+        m_previousTick = (int)m_timeRemaining;
     }
 
     // Adds time to the timer

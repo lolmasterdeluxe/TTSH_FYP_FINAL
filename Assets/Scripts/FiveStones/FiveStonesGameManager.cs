@@ -43,6 +43,7 @@ public class FiveStonesGameManager : MonoBehaviour
     public int baseScore = 1;
     public float minObjectiveReset;
     public float maxObjectiveReset;
+    public bool m_gameStarted;
 
 
     private void Awake()
@@ -56,14 +57,14 @@ public class FiveStonesGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()        
     {
-        StartGame(60, 1);
     }
 
     // Difficulty can be any numnber from 0 - 4f
     // Default value would be 1
-    void StartGame(float time, float difficultyMultiplier)
+    public void StartGame(float time, float difficultyMultiplier)
     {
         // Setup managers
+        m_gameStarted = true;
         TimerManager.Instance.StartCountdown(time);
         ComboManager.Instance.SetComboExpiry(4f - difficultyMultiplier);
         ScoreManager.Instance.LoadNewGamemode(ScoreManager.Gamemode.FIVESTONES);
@@ -87,6 +88,9 @@ public class FiveStonesGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!m_gameStarted)
+            return;
+
         DifficultyProgression();
         UpdateUI();
     }

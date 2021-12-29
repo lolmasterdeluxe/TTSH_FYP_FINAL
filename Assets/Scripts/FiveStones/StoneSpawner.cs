@@ -64,6 +64,11 @@ public class StoneSpawner : MonoBehaviour
         this.maxForce = maxForce;
     }
 
+    public void RandomizeRotation(Transform transform)
+    {
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, Random.Range(-180, 180));
+    }
+
     public IEnumerator SpawnStoneLoop()
     {
         while (true)
@@ -107,6 +112,7 @@ public class StoneSpawner : MonoBehaviour
             GameObject spawnedStone = Instantiate(stonePrefab, spawnPointList[i].position, Quaternion.identity);
             spawnedStone.GetComponent<Rigidbody2D>().AddForce(spawnedStone.transform.up * randomForce, ForceMode2D.Impulse);
             spawnedStone.GetComponent<Stone>().type = FiveStonesGameManager.GetRandomColouredObjective();
+            RandomizeRotation(spawnedStone.transform);
 
             yield return new WaitForSeconds(0.1f);
         }
@@ -122,6 +128,7 @@ public class StoneSpawner : MonoBehaviour
             GameObject spawnedStone = Instantiate(stonePrefab, spawnPointList[i].position, Quaternion.identity);
             spawnedStone.GetComponent<Rigidbody2D>().AddForce(spawnedStone.transform.up * (randomMagnitude * Mathf.Sin(spawnedStone.transform.position.x) + randomOffset), ForceMode2D.Impulse);
             spawnedStone.GetComponent<Stone>().type = FiveStonesGameManager.GetRandomColouredObjective();
+            RandomizeRotation(spawnedStone.transform);
 
             yield return null;
         }
@@ -137,6 +144,7 @@ public class StoneSpawner : MonoBehaviour
             GameObject spawnedStone = Instantiate(stonePrefab, spawnPointList[i].position, Quaternion.identity);
             spawnedStone.GetComponent<Rigidbody2D>().AddForce(spawnedStone.transform.up * (randomMagnitude * Mathf.Cos(0.2f * spawnedStone.transform.position.x) + randomOffset), ForceMode2D.Impulse);
             spawnedStone.GetComponent<Stone>().type = FiveStonesGameManager.GetRandomColouredObjective();
+            RandomizeRotation(spawnedStone.transform);
 
             yield return null;
         }
@@ -152,6 +160,7 @@ public class StoneSpawner : MonoBehaviour
             GameObject spawnedStone = Instantiate(stonePrefab, spawnPointList[i].position, Quaternion.identity);
             spawnedStone.GetComponent<Rigidbody2D>().AddForce(spawnedStone.transform.up * (randomMagnitude * Mathf.Cos(3f * spawnedStone.transform.position.x) + randomOffset), ForceMode2D.Impulse);
             spawnedStone.GetComponent<Stone>().type = FiveStonesGameManager.GetRandomColouredObjective();
+            RandomizeRotation(spawnedStone.transform);
 
             yield return null;
         }
