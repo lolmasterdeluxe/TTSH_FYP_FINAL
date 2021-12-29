@@ -133,6 +133,10 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
                     case (9 | 10): //powerup
                         SpawnPowerupObject();
                         break;
+
+                    case 12:
+                        //this should spawn nothing
+                        break;
                 }
 
                 objectspawnUptime = 0f;

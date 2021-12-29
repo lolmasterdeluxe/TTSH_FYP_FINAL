@@ -199,6 +199,9 @@ public class SPS_AttackCollision : MonoBehaviour
                     //we first destroy the instance of the gameObject in the list
                     objectspawningInstance.objectwaveList.Remove(other.gameObject);
 
+                    //kill the animation
+                    DOTween.Kill(other.gameObject);
+
                     //destroy the enemy
                     Destroy(other.gameObject);
                     Destroy(other.gameObject.GetComponent<Rigidbody>());
@@ -217,6 +220,9 @@ public class SPS_AttackCollision : MonoBehaviour
                     //we first destroy the instance of the gameObject in the list
                     objectspawningInstance.objectwaveList.Remove(other.gameObject);
 
+                    //kill the animation
+                    DOTween.Kill(other.gameObject);
+
                     //destroy the enemy
                     Destroy(other.gameObject);
                     Destroy(other.gameObject.GetComponent<Rigidbody>());
@@ -234,6 +240,9 @@ public class SPS_AttackCollision : MonoBehaviour
 
                     //we first destroy the instance of the gameObject in the list
                     objectspawningInstance.objectwaveList.Remove(other.gameObject);
+
+                    //kill the animation
+                    DOTween.Kill(other.gameObject);
 
                     //destroy the enemy
                     Destroy(other.gameObject);
