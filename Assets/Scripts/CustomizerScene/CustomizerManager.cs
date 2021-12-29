@@ -80,8 +80,11 @@ public class CustomizerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateSpriteRendererReferences();
-        UpdateCosmetics();
+        if (SceneManager.GetActiveScene().name == "MainMenuGameScene" || SceneManager.GetActiveScene().name == "CustomizeScene")
+        {
+            UpdateSpriteRendererReferences();
+            UpdateCosmetics();
+        }
     }
 
     public void ScrollHat(bool forward)

@@ -752,6 +752,7 @@ MonoBehaviour:
   panelCanvasGroup: {fileID: 624661296}
   mainUICanvasGroup: {fileID: 1639388496}
   countdownText: {fileID: 277105197}
+  currentGamemode: 1
 --- !u!4 &319251321
 Transform:
   m_ObjectHideFlags: 0
