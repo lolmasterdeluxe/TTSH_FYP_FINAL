@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
     public SpriteRenderer playerSprite;
 
     Animator playerAnim;
-    private Chapteh chapteh;
 
     public ParticleSystem sandDust;
 
@@ -26,7 +25,6 @@ public class Player : MonoBehaviour
 
         // Gets the size of the player width
         playerWidth = GetComponent<SpriteRenderer>().bounds.size.x / 2;
-        chapteh = GameObject.Find("Chapteh").GetComponent<Chapteh>();
 
         playerAnim = GetComponent<Animator>();
     }
@@ -34,6 +32,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!ChaptehGameManager.Instance.m_gameStarted)
+            return;
+
         // Get input from mouse control
         mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);

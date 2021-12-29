@@ -29,6 +29,9 @@ public class SpawnRings : MonoBehaviour
 
     private void Update()
     {
+        if (!ChaptehGameManager.Instance.m_gameStarted)
+            return;
+
         LimitSpawnRings();
     }
 

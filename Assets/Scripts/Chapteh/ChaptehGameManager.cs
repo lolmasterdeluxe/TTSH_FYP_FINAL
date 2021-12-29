@@ -72,7 +72,7 @@ public class ChaptehGameManager : MonoBehaviour
 
         UIUpdate();
 
-        EndGame();
+        //EndGame();
     }
 
     public IEnumerator ObjectiveCoroutine()
