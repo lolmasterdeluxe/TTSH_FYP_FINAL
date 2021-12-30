@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     Animator playerAnim;
 
     public ParticleSystem sandDust;
+    private PauseMenu pauseMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,8 @@ public class Player : MonoBehaviour
         playerWidth = GetComponent<SpriteRenderer>().bounds.size.x / 2;
 
         playerAnim = GetComponent<Animator>();
+
+        pauseMenu = GameObject.Find("Pause Manager").GetComponent<PauseMenu>();
     }
 
     // Update is called once per frame
@@ -54,14 +57,17 @@ public class Player : MonoBehaviour
 
     public void SpriteFlip()
     {
-        // Gets value for mouse position of x
-        float worldPosX = mousePosition.x;
-        if (worldPosX > gameObject.transform.position.x)
-            // Sets the sprite to original position
-            playerSprite.flipX = false;
-        else
-            // Flips the sprite to be inverted
-            playerSprite.flipX = true;
+        if (!pauseMenu.isPaused)
+        {
+            // Gets value for mouse position of x
+            float worldPosX = mousePosition.x;
+            if (worldPosX > gameObject.transform.position.x)
+                // Sets the sprite to original position
+                playerSprite.flipX = false;
+            else
+                // Flips the sprite to be inverted
+                playerSprite.flipX = true;
+        }
     }
 
     private void PlayerSpriteAnimation()

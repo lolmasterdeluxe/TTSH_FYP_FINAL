@@ -4,5 +4,20 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenuGameScene.unity
+    guid: 0c143cf35988eb044a4e97802eb710bc
+  - enabled: 1
+    path: Assets/Scenes/CustomizeScene.unity
+    guid: bbe59c5c0ce984b46a2f11fbb6734776
+  - enabled: 1
+    path: Assets/Scenes/Chapteh.unity
+    guid: 6ff55b2dae7477044ae00c8e54a6e10d
+  - enabled: 1
+    path: Assets/Scenes/FiveStonesFruitNinja.unity
+    guid: c73bb0a257dbd1a4ab3594d11503edb3
+  - enabled: 1
+    path: Assets/Scenes/Scissors Paper Stone.unity
+    guid: da364c7046705ea458e03746bb9bb131
   m_configObjects: {}

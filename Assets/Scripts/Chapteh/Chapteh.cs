@@ -25,6 +25,8 @@ public class Chapteh : MonoBehaviour
 
     private float glowDuration = 1f;
 
+    private PauseMenu pauseMenu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,7 @@ public class Chapteh : MonoBehaviour
 
         kickChapteh = GameObject.Find("Chapteh Manager").GetComponent<KickChapteh>();
         spawnRings = GameObject.Find("Rings Spawner").GetComponent<SpawnRings>();
+        pauseMenu = GameObject.Find("Pause Manager").GetComponent<PauseMenu>();
 
         ComboManager.Instance.e_comboBreak.AddListener(ChaptehGameManager.Instance.OnComboBreak);
 
@@ -56,7 +59,8 @@ public class Chapteh : MonoBehaviour
             LookAtMouseDirection();
         }
 
-        kickChapteh.PowerLaunch();
+        if(!pauseMenu.isPaused)
+            kickChapteh.PowerLaunch();
         
         //MoveRingBoxCollider();
 
