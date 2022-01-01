@@ -15,6 +15,10 @@ public class Hand : MonoBehaviour
     public float cuttingVelocityThreshold = 0.0001f;
     public Vector2 prevPosition;
 
+    public Sprite closedHand;
+    public Sprite openedHand;
+    public SpriteRenderer handSpriteRenderer; 
+
     bool isCatching = false;
 
     // Start is called before the first frame update
@@ -28,6 +32,9 @@ public class Hand : MonoBehaviour
 
         if (circleCollider == null)
             circleCollider = GetComponent<CircleCollider2D>();
+
+        if (handSpriteRenderer == null)
+            handSpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -75,11 +82,13 @@ public class Hand : MonoBehaviour
         isCatching = true;
         currentHandTrail = Instantiate(handTrailPrefab, transform);
         currentHandTrail.GetComponent<TrailRenderer>().Clear();
+        handSpriteRenderer.sprite = closedHand;
     }
 
     void StopCatching()
     {
         isCatching = false;
+        handSpriteRenderer.sprite = openedHand;
         Destroy(currentHandTrail);
     }
 
