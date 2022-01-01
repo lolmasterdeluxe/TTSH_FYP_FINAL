@@ -110,6 +110,8 @@ public class StoneSpawner : MonoBehaviour
         for (int i = 0; i < spawnPointList.Count; i++)
         {
             GameObject spawnedStone = Instantiate(stonePrefab, spawnPointList[i].position, Quaternion.identity);
+            Vector3 force = spawnedStone.transform.up * randomForce;
+            force = new Vector3(force.x, force.y, 0);
             spawnedStone.GetComponent<Rigidbody2D>().AddForce(spawnedStone.transform.up * randomForce, ForceMode2D.Impulse);
             spawnedStone.GetComponent<Stone>().type = FiveStonesGameManager.GetRandomColouredObjective();
             RandomizeRotation(spawnedStone.transform);
@@ -126,7 +128,9 @@ public class StoneSpawner : MonoBehaviour
         for (int i = 0; i < spawnPointList.Count; i++)
         {
             GameObject spawnedStone = Instantiate(stonePrefab, spawnPointList[i].position, Quaternion.identity);
-            spawnedStone.GetComponent<Rigidbody2D>().AddForce(spawnedStone.transform.up * (randomMagnitude * Mathf.Sin(spawnedStone.transform.position.x) + randomOffset), ForceMode2D.Impulse);
+            Vector3 force = spawnedStone.transform.up * (randomMagnitude * Mathf.Sin(spawnedStone.transform.position.x) + randomOffset);
+            force = new Vector3(force.x, force.y, 0);
+            spawnedStone.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
             spawnedStone.GetComponent<Stone>().type = FiveStonesGameManager.GetRandomColouredObjective();
             RandomizeRotation(spawnedStone.transform);
 
@@ -142,7 +146,9 @@ public class StoneSpawner : MonoBehaviour
         for (int i = 0; i < spawnPointList.Count; i++)
         {
             GameObject spawnedStone = Instantiate(stonePrefab, spawnPointList[i].position, Quaternion.identity);
-            spawnedStone.GetComponent<Rigidbody2D>().AddForce(spawnedStone.transform.up * (randomMagnitude * Mathf.Cos(0.2f * spawnedStone.transform.position.x) + randomOffset), ForceMode2D.Impulse);
+            Vector3 force = spawnedStone.transform.up * (randomMagnitude * Mathf.Cos(0.2f * spawnedStone.transform.position.x) + randomOffset);
+            force = new Vector3(force.x, force.y, 0);
+            spawnedStone.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
             spawnedStone.GetComponent<Stone>().type = FiveStonesGameManager.GetRandomColouredObjective();
             RandomizeRotation(spawnedStone.transform);
 
@@ -158,7 +164,9 @@ public class StoneSpawner : MonoBehaviour
         for (int i = 0; i < spawnPointList.Count; i++)
         {
             GameObject spawnedStone = Instantiate(stonePrefab, spawnPointList[i].position, Quaternion.identity);
-            spawnedStone.GetComponent<Rigidbody2D>().AddForce(spawnedStone.transform.up * (randomMagnitude * Mathf.Cos(3f * spawnedStone.transform.position.x) + randomOffset), ForceMode2D.Impulse);
+            Vector3 force = spawnedStone.transform.up * (randomMagnitude * Mathf.Cos(3f * spawnedStone.transform.position.x) + randomOffset);
+            force = new Vector3(force.x, force.y, 0);
+            spawnedStone.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
             spawnedStone.GetComponent<Stone>().type = FiveStonesGameManager.GetRandomColouredObjective();
             RandomizeRotation(spawnedStone.transform);
 
@@ -185,7 +193,9 @@ public class StoneSpawner : MonoBehaviour
             usedSpawnPointList.Add(randomPoint);
 
             GameObject spawnedStone = Instantiate(stonePrefab, randomPoint.position, randomPoint.rotation);
-            spawnedStone.GetComponent<Rigidbody2D>().AddForce(spawnedStone.transform.up * Random.Range(minForce, maxForce), ForceMode2D.Impulse);
+            Vector3 force = spawnedStone.transform.up * Random.Range(minForce, maxForce);
+            force = new Vector3(force.x, force.y, 0);
+            spawnedStone.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
             spawnedStone.GetComponent<Stone>().type = FiveStonesGameManager.GetRandomColouredObjective();
 
             Destroy(spawnedStone, 5f);

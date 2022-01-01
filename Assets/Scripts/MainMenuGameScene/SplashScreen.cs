@@ -5,10 +5,18 @@ using UnityEngine;
 public class SplashScreen : MonoBehaviour
 {
     public GameObject _splashScreenGroup;
+    public static bool splashScreenToggled = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (splashScreenToggled)
+        {
+            _splashScreenGroup.SetActive(false);
+            return;
+        }
+
+        splashScreenToggled = true;
         StartCoroutine(WaitFade());
     }
 

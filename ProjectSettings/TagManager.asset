@@ -15,6 +15,7 @@ TagManager:
   - YellowRing
   - GreenRing
   - Chapteh
+  - EnvironmentObjects
   layers:
   - Default
   - TransparentFX
@@ -54,4 +55,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2320735413
+    locked: 0
+  - name: Environment
+    uniqueID: 324255139
     locked: 0

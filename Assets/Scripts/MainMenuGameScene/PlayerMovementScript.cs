@@ -12,6 +12,8 @@ public class PlayerMovementScript : MonoBehaviour
     Animator playerAC;
 
     public float playerSpeed;
+    public static bool doRollbackPosition = false;
+    public static Vector3 rollbackPosition;
     public Vector2 movement, prevMovement;
 
     public bool m_isRight = true;
@@ -21,6 +23,12 @@ public class PlayerMovementScript : MonoBehaviour
 
     private void Start()
     {
+        if (doRollbackPosition)
+        {
+            transform.position = rollbackPosition;
+            doRollbackPosition = false;
+        }
+
         //get references HERE
         playerRB = GetComponent<Rigidbody2D>();
         playerAC = GetComponent<Animator>();
@@ -74,7 +82,12 @@ public class PlayerMovementScript : MonoBehaviour
         playerAC.SetFloat("PreviousYPosition", prevMovement.y);
     }
 
-
+    public void SetRollbackPosition(Vector2 collisionPosition)
+    {
+        float rollbackBounceOffDistanceMultiplier = 1.05f;
+        doRollbackPosition = true;
+        rollbackPosition = (transform.position - new Vector3(collisionPosition.x, collisionPosition.y, transform.position.z)).normalized * rollbackBounceOffDistanceMultiplier + transform.position;
+    }
 
     #endregion
 

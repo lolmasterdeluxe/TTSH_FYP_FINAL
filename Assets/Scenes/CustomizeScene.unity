@@ -398,19 +398,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 56890269}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1536537129}
-        m_TargetAssemblyTypeName: CustomizerManager, Assembly-CSharp
-        m_MethodName: ScrollHat
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &56890269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -757,19 +745,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 163932237}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1536537129}
-        m_TargetAssemblyTypeName: CustomizerManager, Assembly-CSharp
-        m_MethodName: ScrollFace
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &163932237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -950,19 +926,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 625113923}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1536537129}
-        m_TargetAssemblyTypeName: CustomizerManager, Assembly-CSharp
-        m_MethodName: ScrollHat
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &625113923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1311,19 +1275,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1259134800}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1536537129}
-        m_TargetAssemblyTypeName: CustomizerManager, Assembly-CSharp
-        m_MethodName: ScrollFace
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1259134800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1442,19 +1394,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1290682877}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1536537129}
-        m_TargetAssemblyTypeName: CustomizerManager, Assembly-CSharp
-        m_MethodName: EnterMainScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1290682877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1639,6 +1579,12 @@ MonoBehaviour:
   m_hatSprite: {fileID: 1097437506}
   m_eyeSprite: {fileID: 114052149}
   m_mouthSprite: {fileID: 1716286068}
+  hatPreviousButton: {fileID: 0}
+  hatNextButton: {fileID: 0}
+  facePreviousButton: {fileID: 0}
+  faceNextButton: {fileID: 0}
+  nextSceneButton: {fileID: 0}
+  hasUpdatedReferences: 0
 --- !u!4 &1536537130
 Transform:
   m_ObjectHideFlags: 0

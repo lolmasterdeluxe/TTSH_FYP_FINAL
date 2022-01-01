@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CustomizerManager : MonoBehaviour
 {
@@ -48,6 +49,12 @@ public class CustomizerManager : MonoBehaviour
     public SpriteRenderer m_eyeSprite;
     public SpriteRenderer m_mouthSprite;
 
+    public Button hatPreviousButton;
+    public Button hatNextButton;
+    public Button facePreviousButton;
+    public Button faceNextButton;
+    public Button nextSceneButton;
+
     private static CustomizerManager _instance;
     public static CustomizerManager Instance
     {
@@ -82,7 +89,9 @@ public class CustomizerManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "MainMenuGameScene" || SceneManager.GetActiveScene().name == "CustomizeScene")
         {
-            UpdateSpriteRendererReferences();
+            if (SceneManager.GetActiveScene().name == "CustomizeScene")
+                UpdateButtonReferences();
+            UpdateSpriteReferences();
             UpdateCosmetics();
         }
     }
@@ -164,8 +173,41 @@ public class CustomizerManager : MonoBehaviour
         }
     }
 
+    void UpdateButtonReferences()
+    {
+        if (hatPreviousButton == null)
+            hatPreviousButton = GameObject.Find("HatPrevious").GetComponent<Button>();
+
+        if (hatNextButton == null)
+            hatNextButton = GameObject.Find("HatNext").GetComponent<Button>();
+
+        if (facePreviousButton == null)
+            facePreviousButton = GameObject.Find("FacePrevious").GetComponent<Button>();
+
+        if (faceNextButton == null)
+            faceNextButton = GameObject.Find("FaceNext").GetComponent<Button>();
+
+        if (nextSceneButton == null)
+            nextSceneButton = GameObject.Find("MainGameScene").GetComponent<Button>();
+
+        hatPreviousButton.onClick.RemoveAllListeners();
+        hatPreviousButton.onClick.AddListener(delegate { ScrollHat(false); });
+
+        hatNextButton.onClick.RemoveAllListeners();
+        hatNextButton.onClick.AddListener(delegate { ScrollHat(true); });
+
+        facePreviousButton.onClick.RemoveAllListeners();
+        facePreviousButton.onClick.AddListener(delegate { ScrollFace(false); });
+
+        faceNextButton.onClick.RemoveAllListeners();
+        faceNextButton.onClick.AddListener(delegate { ScrollFace(true); });
+
+        nextSceneButton.onClick.RemoveAllListeners();
+        nextSceneButton.onClick.AddListener(delegate { EnterMainScene(); });
+    }
+
     // Find another way to re-reference when changing scenes, but this works for now
-    void UpdateSpriteRendererReferences()
+    void UpdateSpriteReferences()
     {
         if (m_headSprite == null)
             m_headSprite = GameObject.Find("HeadSprite").GetComponent<SpriteRenderer>();

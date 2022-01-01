@@ -56,7 +56,6 @@ public class TimerManager : MonoBehaviour
         else
             _instance = this;
     }
-
     // Update is called once per frame
     void Update()
     {

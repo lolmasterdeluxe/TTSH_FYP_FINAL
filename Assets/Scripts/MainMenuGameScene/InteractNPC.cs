@@ -30,6 +30,8 @@ public class InteractNPC : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        GameObject.Find("MainCharacter").GetComponent<PlayerMovementScript>().SetRollbackPosition(new Vector2(transform.position.x, transform.position.y));
+
         switch (type)
         {
             case NPC_TYPE.CHAPTEH:
