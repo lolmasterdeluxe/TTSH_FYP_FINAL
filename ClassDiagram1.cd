@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Chapteh">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQJABAACADgAAEAAAAEAQQAEABQAAAAAEACQASAAA=</HashCode>
+      <FileName>Assets\Scripts\Chapteh\Chapteh.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChaptehGameManager">
+    <Position X="0.5" Y="6.25" Width="3" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="ChaptehGameManager.Objective">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Chapteh\ChaptehGameManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>CA4FAAIwACEAggAAAgBAADAgAYAAAAAAQAQAAAAQSGA=</HashCode>
+      <FileName>Assets\Scripts\Chapteh\ChaptehGameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChargeBar">
+    <Position X="7.75" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABAAAACAEAAAAAAAAAAAAAAAAAAAIAQAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Chapteh\ChargeBar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KickChapteh">
+    <Position X="4.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACgQCAAAAAAAAAgAAAAAAAAAAAIAAAAIAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Chapteh\KickChapteh.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player">
+    <Position X="9" Y="4.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>IAYAAAhAEiAAAAEEAAAAAAQAAAABBgAAAAQAAAAAgAA=</HashCode>
+      <FileName>Assets\Scripts\Chapteh\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rings">
+    <Position X="4" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAICAAAAAAAAAAAAAAAAAJAAAgAEAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Chapteh\Rings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpawnRings">
+    <Position X="7" Y="9.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAIAAGQRCAgQAJQEAGBAAAgAAAAAAAACAAgAAAA=</HashCode>
+      <FileName>Assets\Scripts\Chapteh\SpawnRings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

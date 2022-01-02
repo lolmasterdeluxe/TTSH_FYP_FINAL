@@ -16,12 +16,9 @@ public class Chapteh : MonoBehaviour
 
     private Vector2 lookDirection;
     private float lookAngle;
-
-    private Vector2 oldPosition;
     //private bool isDecreasing = false;
     
     [SerializeField] private KickChapteh kickChapteh;
-    [SerializeField] private SpawnRings spawnRings;
 
     private float glowDuration = 1f;
 
@@ -39,12 +36,9 @@ public class Chapteh : MonoBehaviour
         rotPos = transform.rotation;
 
         kickChapteh = GameObject.Find("Chapteh Manager").GetComponent<KickChapteh>();
-        spawnRings = GameObject.Find("Rings Spawner").GetComponent<SpawnRings>();
         pauseMenu = GameObject.Find("Pause Manager").GetComponent<PauseMenu>();
 
         ComboManager.Instance.e_comboBreak.AddListener(ChaptehGameManager.Instance.OnComboBreak);
-
-        oldPosition.y = gameObject.transform.position.y;
     }
 
     // Update is called once per frame
@@ -133,45 +127,6 @@ public class Chapteh : MonoBehaviour
             StartCoroutine(GlowRingsOnHit(other));
             other.GetComponentInChildren<ParticleSystem>().Play();
         }
-    }
-
-    private void MoveRingBoxCollider()
-    {
-        //if (oldPosition.y > gameObject.transform.position.y)
-        //{
-        //    oldPosition.y = gameObject.transform.position.y;
-        //    isDecreasing = true;
-        //}
-        //if (oldPosition.y < gameObject.transform.position.y)
-        //{
-        //    oldPosition.y = gameObject.transform.position.y;
-        //    isDecreasing = false;
-        //}
-
-        //if (isDecreasing && spawnRings.spawnedRings.Count != 0)
-        //{
-        //    foreach (GameObject gameObject in spawnRings.spawnedRings)
-        //    {
-        //        gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(0, -1.13f);
-        //    }
-        //    spawnRings.spawnedRings.Clear();
-
-        //    //for (int i = spawnRings.spawnedPositions.Count - 1; i < 0; i++)
-        //    //{
-        //    //    spawnRings.spawnedRings[i].GetComponent<BoxCollider2D>().offset = new Vector2(0, -1.13f);
-        //    //}
-        //}
-        //else if (!isDecreasing && spawnRings.spawnedRings.Count != 0)
-        //{
-        //    foreach (GameObject gameObject in spawnRings.spawnedRings)
-        //    {
-        //        gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(0, 2.13f);
-        //    }
-        //    spawnRings.spawnedRings.Clear();
-
-        //    //for (int i = spawnRings.spawnedPositions.Count - 1; i < 0; i++)
-        //    //    spawnRings.spawnedRings[i].GetComponent<BoxCollider2D>().offset = new Vector2(0, 2.13f);
-        //}
     }
 
     private IEnumerator GlowRingsOnHit(Collider2D col2D)
