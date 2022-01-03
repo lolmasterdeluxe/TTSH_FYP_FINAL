@@ -180,82 +180,82 @@ public class SPS_AttackCollision : MonoBehaviour
 
     #region Trigger Functions
 
-    private void OnTriggerStay(Collider other)
-    {
+    //private void OnTriggerStay(Collider other)
+    //{
 
-        //we now check that the matchup is correct to kill the enemy
-        //firstly we check to see if ANY button has been pressed
-        if (attackbuttonPressed == true)
-        {
-            //we now need to determine if the interaction is with a enemy OR an obstacle
-            if (other.gameObject.tag == "EnemyTag") //enemy
-            {
+    //    //we now check that the matchup is correct to kill the enemy
+    //    //firstly we check to see if ANY button has been pressed
+    //    if (attackbuttonPressed == true)
+    //    {
+    //        //we now need to determine if the interaction is with a enemy OR an obstacle
+    //        if (other.gameObject.tag == "EnemyTag") //enemy
+    //        {
 
-                if (playerInstance.p_choice == SPS_Player.PlayerChoice.P_SCISSOR
-                    && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_PAPER)
-                {
-                    Debug.Log("Enemy goes OW: trigger stay");
+    //            if (playerInstance.p_choice == SPS_Player.PlayerChoice.P_SCISSOR
+    //                && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_PAPER)
+    //            {
+    //                Debug.Log("Enemy goes OW: trigger stay");
 
-                    //we first destroy the instance of the gameObject in the list
-                    objectspawningInstance.objectwaveList.Remove(other.gameObject);
+    //                //we first destroy the instance of the gameObject in the list
+    //                objectspawningInstance.objectwaveList.Remove(other.gameObject);
 
-                    //kill the animation
-                    DOTween.Kill(other.gameObject);
+    //                //kill the animation
+    //                DOTween.Kill(other.gameObject);
 
-                    //destroy the enemy
-                    Destroy(other.gameObject);
-                    Destroy(other.gameObject.GetComponent<Rigidbody>());
+    //                //destroy the enemy
+    //                Destroy(other.gameObject);
+    //                Destroy(other.gameObject.GetComponent<Rigidbody>());
 
-                    //we do lives and combo calculations here
-                    scoreInstance.PlayerScores();
-                    ComboManager.Instance.AddCombo();
+    //                //we do lives and combo calculations here
+    //                scoreInstance.PlayerScores();
+    //                ComboManager.Instance.AddCombo();
 
-                }
+    //            }
 
-                else if (attackbuttonPressed == true && playerInstance.p_choice == SPS_Player.PlayerChoice.P_PAPER
-                    && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_STONE)
-                {
-                    Debug.Log("Enemy goes OW: trigger stay");
+    //            else if (attackbuttonPressed == true && playerInstance.p_choice == SPS_Player.PlayerChoice.P_PAPER
+    //                && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_STONE)
+    //            {
+    //                Debug.Log("Enemy goes OW: trigger stay");
 
-                    //we first destroy the instance of the gameObject in the list
-                    objectspawningInstance.objectwaveList.Remove(other.gameObject);
+    //                //we first destroy the instance of the gameObject in the list
+    //                objectspawningInstance.objectwaveList.Remove(other.gameObject);
 
-                    //kill the animation
-                    DOTween.Kill(other.gameObject);
+    //                //kill the animation
+    //                DOTween.Kill(other.gameObject);
 
-                    //destroy the enemy
-                    Destroy(other.gameObject);
-                    Destroy(other.gameObject.GetComponent<Rigidbody>());
+    //                //destroy the enemy
+    //                Destroy(other.gameObject);
+    //                Destroy(other.gameObject.GetComponent<Rigidbody>());
 
-                    //we do lives and combo calculations here
-                    scoreInstance.PlayerScores();
-                    ComboManager.Instance.AddCombo();
+    //                //we do lives and combo calculations here
+    //                scoreInstance.PlayerScores();
+    //                ComboManager.Instance.AddCombo();
 
-                }
+    //            }
 
-                else if (attackbuttonPressed == true && playerInstance.p_choice == SPS_Player.PlayerChoice.P_STONE
-                    && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_SCISSOR)
-                {
-                    Debug.Log("Enemy goes OW: trigger stay");
+    //            else if (attackbuttonPressed == true && playerInstance.p_choice == SPS_Player.PlayerChoice.P_STONE
+    //                && other.GetComponent<SPS_Enemy>().ai_choice == SPS_Enemy.AIChoice.AI_SCISSOR)
+    //            {
+    //                Debug.Log("Enemy goes OW: trigger stay");
 
-                    //we first destroy the instance of the gameObject in the list
-                    objectspawningInstance.objectwaveList.Remove(other.gameObject);
+    //                //we first destroy the instance of the gameObject in the list
+    //                objectspawningInstance.objectwaveList.Remove(other.gameObject);
 
-                    //kill the animation
-                    DOTween.Kill(other.gameObject);
+    //                //kill the animation
+    //                DOTween.Kill(other.gameObject);
 
-                    //destroy the enemy
-                    Destroy(other.gameObject);
-                    Destroy(other.gameObject.GetComponent<Rigidbody>());
+    //                //destroy the enemy
+    //                Destroy(other.gameObject);
+    //                Destroy(other.gameObject.GetComponent<Rigidbody>());
 
-                    //we do lives and combo calculations here
-                    scoreInstance.PlayerScores();
-                    ComboManager.Instance.AddCombo();
+    //                //we do lives and combo calculations here
+    //                scoreInstance.PlayerScores();
+    //                ComboManager.Instance.AddCombo();
 
-                }
-            }
-        }
-    }
+    //            }
+    //        }
+    //    }
+    //}
 
     #endregion
 

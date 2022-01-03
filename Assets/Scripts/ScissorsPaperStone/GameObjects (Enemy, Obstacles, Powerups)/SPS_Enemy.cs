@@ -7,18 +7,17 @@ public class SPS_Enemy : MonoBehaviour
 {
     //this script handles all things involved with the enemy
 
-    public enum AIChoice
+    public enum EnemyType
     {
-        AI_SCISSOR, AI_PAPER, AI_STONE, AI_NONE
+        ENEMY_SCISSORS, ENEMY_PAPER, ENEMY_STONE, ENEMY_NONE
     };
 
     #region Variables
 
-    Animation enemyAnim;
     public Animator enemyAC;
-    public AIChoice ai_choice;
+    public EnemyType enemy_type;
 
-    SPS_ObjectSpawningScript objectspawningInstance;
+    SPS_ObjectManager objectmanagerInstance;
 
     public RuntimeAnimatorController scissorsController, paperController, stoneController;
 
@@ -28,64 +27,69 @@ public class SPS_Enemy : MonoBehaviour
 
     private void Start()
     {
-
-        enemyAnim = GetComponent<Animation>();
+        //get components HERE
         enemyAC = GetComponent<Animator>();
 
-        objectspawningInstance = FindObjectOfType<SPS_ObjectSpawningScript>();
-        ai_choice = AIChoice.AI_NONE;
+        //get references HERE
+        objectmanagerInstance = FindObjectOfType<SPS_ObjectManager>();
 
-        RandomizeWaveFormat();
+        DetermineEnemyType();
     }
 
     #endregion  
 
-    #region Functions
+    #region Helper Functions
 
-    //this determines the type of enemy wave that will be created
-    public void RandomizeWaveFormat()
+    public void DetermineEnemyType()
     {
-        if (objectspawningInstance.enemywaveType == SPS_ObjectSpawningScript.EnemyWaveType.ENEMY_SINGLE_RANDOM
-            || objectspawningInstance.enemywaveType == SPS_ObjectSpawningScript.EnemyWaveType.ENEMY_WAVE_RANDOM)
-        {
-            RandomizeEnemyType();
-        }
-        if (objectspawningInstance.enemywaveType == SPS_ObjectSpawningScript.EnemyWaveType.ENEMY_WAVE_SCISSORS)
-        {
-            ai_choice = AIChoice.AI_SCISSOR;
-            enemyAC.runtimeAnimatorController = scissorsController;
-        }
-        if (objectspawningInstance.enemywaveType == SPS_ObjectSpawningScript.EnemyWaveType.ENEMY_WAVE_PAPER)
-        {
-            ai_choice = AIChoice.AI_PAPER;
-            enemyAC.runtimeAnimatorController = paperController;
-        }
-        if (objectspawningInstance.enemywaveType == SPS_ObjectSpawningScript.EnemyWaveType.ENEMY_WAVE_STONE)
-        {
-            ai_choice = AIChoice.AI_STONE;
-            enemyAC.runtimeAnimatorController = stoneController;
-        }
+        if (objectmanagerInstance.current_waveFormat == SPS_ObjectManager.WaveFormat.WAVE_MULTIPLE_RANDOM
+            || objectmanagerInstance.current_waveFormat == SPS_ObjectManager.WaveFormat.WAVE_SINGLE_RANDOM)
+            EnemyTypeIsRandom();
+        if (objectmanagerInstance.current_waveFormat == SPS_ObjectManager.WaveFormat.WAVE_MULTIPLE_SCISSORS)
+            EnemyTypeIsScissors();
+        if (objectmanagerInstance.current_waveFormat == SPS_ObjectManager.WaveFormat.WAVE_MULTIPLE_PAPER)
+            EnemyTypeIsPaper();
+        if (objectmanagerInstance.current_waveFormat == SPS_ObjectManager.WaveFormat.WAVE_MULTIPLE_STONE)
+            EnemyTypeIsStone();
     }
 
-    public void RandomizeEnemyType()
+    public void EnemyTypeIsRandom()
     {
         int randVal = Random.Range(0, 3);
         switch (randVal)
         {
             case 0:
-                ai_choice = AIChoice.AI_SCISSOR;
+                enemy_type = EnemyType.ENEMY_SCISSORS;
                 enemyAC.runtimeAnimatorController = scissorsController;
                 break;
             case 1:
-                ai_choice = AIChoice.AI_PAPER;
+                enemy_type = EnemyType.ENEMY_PAPER;
                 enemyAC.runtimeAnimatorController = paperController;
                 break;
             case 2:
-                ai_choice = AIChoice.AI_STONE;
+                enemy_type = EnemyType.ENEMY_STONE;
                 enemyAC.runtimeAnimatorController = stoneController;
                 break;
         }
     }
 
+    public void EnemyTypeIsScissors()
+    {
+        enemy_type = EnemyType.ENEMY_SCISSORS;
+        enemyAC.runtimeAnimatorController = scissorsController;
+    }
+
+    public void EnemyTypeIsPaper()
+    {
+        enemy_type = EnemyType.ENEMY_PAPER;
+        enemyAC.runtimeAnimatorController = paperController;
+    }
+    public void EnemyTypeIsStone()
+    {
+        enemy_type = EnemyType.ENEMY_STONE;
+        enemyAC.runtimeAnimatorController = stoneController;
+    }
+
     #endregion
+
 }

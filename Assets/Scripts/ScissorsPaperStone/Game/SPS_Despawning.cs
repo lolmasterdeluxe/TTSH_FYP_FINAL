@@ -9,7 +9,7 @@ public class SPS_Despawning : MonoBehaviour
 
     #region Variables
 
-    SPS_ObjectSpawningScript objectspawningInstance;
+    SPS_ObjectManager objectspawningInstance;
 
     #endregion
 
@@ -17,14 +17,14 @@ public class SPS_Despawning : MonoBehaviour
 
     private void Start()
     {
-        objectspawningInstance = FindObjectOfType<SPS_ObjectSpawningScript>();
+        objectspawningInstance = FindObjectOfType<SPS_ObjectManager>();
     }
 
     private void Update()
     {
-        if (objectspawningInstance.objectwaveList.Count == 0)
+        if (objectspawningInstance.objectWaveList.Count == 0)
         {
-            objectspawningInstance.waveCompleted = false;;
+            objectspawningInstance.b_waveCompleted = false;
         }
     }
 
@@ -32,7 +32,7 @@ public class SPS_Despawning : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //remove the gameobject instance in the list
-        objectspawningInstance.objectwaveList.Remove(other.gameObject);
+        objectspawningInstance.objectWaveList.Remove(other.gameObject);
 
         Destroy(other.gameObject);
         //if it has a rigidbody we destroy it
