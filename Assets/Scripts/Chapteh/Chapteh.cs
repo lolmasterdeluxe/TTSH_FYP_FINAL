@@ -44,6 +44,19 @@ public class Chapteh : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!ChaptehGameManager.Instance.m_gameStarted)
+        {
+            transform.position = spawnPoint.position;
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            return;
+        }
+        else if (ChaptehGameManager.Instance.m_gameEnded)
+        {
+            transform.position = spawnPoint.position;
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            return;
+        }
+
         // When the Chapteh is not yet launched
         if (!inPlay)
         {

@@ -72,16 +72,12 @@ public class ChaptehGameManager : MonoBehaviour
     {
         if (!m_gameStarted)
             return;
-
-        if (m_gameEnded)
-        {
-            GameTimesUp();
+        else if (m_gameEnded)
             return;
-        }
 
         UIUpdate();
 
-
+        GameTimesUp();
     }
 
     public IEnumerator ObjectiveCoroutine()
@@ -186,7 +182,7 @@ public class ChaptehGameManager : MonoBehaviour
         {
             m_gameEnded = true;
             TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.25f);
-            Time.timeScale = 0f;
+            StopAllCoroutines();
         }
     }
 
