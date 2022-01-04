@@ -24,14 +24,7 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
 
     #endregion
 
-
     #region Variables
-
-    //reference to the attack collision Script
-    SPS_AttackCollision attackCollisionInstance;
-
-    //reference to the enemy script
-    SPS_Enemy enemyInstance;
 
     //this list keeps track of objects being spawned
     public List<GameObject> objectwaveList;
@@ -90,8 +83,6 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
         waveNumber = 0;
 
         //set references HERE
-        attackCollisionInstance = FindObjectOfType<SPS_AttackCollision>();
-        enemyInstance = FindObjectOfType<SPS_Enemy>();
     }
 
     private void Update()
@@ -231,7 +222,10 @@ public class SPS_ObjectSpawningScript : MonoBehaviour
             objectInstance.GetComponent<Rigidbody>().DOMoveX(obstacleEndPosition.transform.position.x, (objectSpeed * objectSpeedMultiplier) + val * val);
 
             objectwaveList.Add(objectInstance);
-            waveCompleted = true;
+
+            //we only consider the wave completed after all enemies are spawned for that wave
+            if (val >= waveSize)
+                waveCompleted = true;
 
         }
 

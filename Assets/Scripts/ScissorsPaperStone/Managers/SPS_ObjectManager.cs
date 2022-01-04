@@ -20,8 +20,11 @@ public class SPS_ObjectManager : MonoBehaviour
 
     #region Variables
 
+    //check for game start
+    public bool b_allowObjectSpawning = false;
+
     //references to object scripts
-    SPS_Enemy enemyInstance;
+    SPS_UIManager uimanagerInstance;
 
     [Tooltip("This stores the objects in each wave")]
     public List<GameObject> objectWaveList;
@@ -61,120 +64,131 @@ public class SPS_ObjectManager : MonoBehaviour
 
     private void Start()
     {
-
-        enemyInstance = FindObjectOfType<SPS_Enemy>();
-
         //set these on start
         i_currentwaveCount = 0;
         i_powerupCount = 0;
         f_objectTravelSpeed = 5f;
         f_objecttravelspeedMultiplier = 1f;
+
+        //reference scripts hERE
+        uimanagerInstance = FindObjectOfType<SPS_UIManager>();
+
+
     }
 
     private void Update()
     {
-        //we increase the speed every 5 WAVES
-        if (i_currentwaveCount % 5 == 0)
-        {
-            ReduceObjectSpawnTime();
-        }
+        if (!uimanagerInstance.b_gameStart)
+            return;
 
-        f_objectspawnLifetime += Time.deltaTime;
-        if (f_objectspawnLifetime >= (f_objectspawnLifetime * f_objectLifetimeMultiplier) && b_waveCompleted == false)
+        if (b_allowObjectSpawning == true)
         {
-            Debug.Log("please");
-            //we check to see if the player has received any powerups recently
-            if (i_powerupCount >= 3)
+            //we increase the speed every 5 WAVES
+            if (i_currentwaveCount % 5 == 0)
             {
-                //we run it such that the next set of spawn HAS to be a powerup wave
-                int randVal = Random.Range(0, 11);
-
-                switch (randVal % 2)
-                {
-                    case 0: SpawnPowerupObject(); break;
-                    case 1: SpawnPowerupAndObstacleObject(); break;
-                }
-
-                f_objectspawnLifetime = 0f;
-
+                ReduceObjectSpawnTime();
             }
-            else
+
+            f_objectspawnLifetime += Time.deltaTime;
+            if (f_objectspawnLifetime >= (f_objectspawnLifetime * f_objectLifetimeMultiplier) && b_waveCompleted == false)
             {
-                //for the first 5 waves we only allow enemies to spawn
-                if (i_currentwaveCount <= 5)
+                Debug.Log("please");
+                //we check to see if the player has received any powerups recently
+                if (i_powerupCount >= 3)
                 {
-                    current_waveFormat = (WaveFormat)Random.Range(1, (int)WaveFormat.WAVE_MULTIPLE_STONE);
+                    //we run it such that the next set of spawn HAS to be a powerup wave
+                    int randVal = Random.Range(0, 11);
 
-                    switch (current_waveFormat)
+                    switch (randVal % 2)
                     {
-                        case WaveFormat.WAVE_SINGLE_RANDOM:
-                            SpawnSingleRandomEnemy();
-                            break;
-
-                        case WaveFormat.WAVE_MULTIPLE_RANDOM:
-                            SpawnMultipleRandomEnemies();
-                            break;
-
-                        case WaveFormat.WAVE_MULTIPLE_SCISSORS:
-                            SpawnMultipleRandomEnemies();
-                            break;
-
-                        case WaveFormat.WAVE_MULTIPLE_PAPER:
-                            SpawnMultipleRandomEnemies();
-                            break;
-
-                        case WaveFormat.WAVE_MULTIPLE_STONE:
-                            SpawnMultipleRandomEnemies();
-                            break;
+                        case 0: SpawnPowerupObject(); break;
+                        case 1: SpawnPowerupAndObstacleObject(); break;
                     }
-                }
 
+                    f_objectspawnLifetime = 0f;
+
+                }
                 else
                 {
-                    //randomly decide on what kind of wave format it will be
-                    current_waveFormat = (WaveFormat)Random.Range(1, (int)WaveFormat.WAVE_TOTAL);
-
-                    switch (current_waveFormat)
+                    //for the first 5 waves we only allow enemies to spawn
+                    if (i_currentwaveCount <= 5)
                     {
-                        case WaveFormat.WAVE_SINGLE_RANDOM:
-                            SpawnSingleRandomEnemy();
-                            break;
+                        current_waveFormat = (WaveFormat)Random.Range(1, (int)WaveFormat.WAVE_MULTIPLE_STONE);
 
-                        case WaveFormat.WAVE_MULTIPLE_RANDOM:
-                            SpawnMultipleRandomEnemies();
-                            break;
+                        switch (current_waveFormat)
+                        {
+                            case WaveFormat.WAVE_SINGLE_RANDOM:
+                                SpawnSingleRandomEnemy();
+                                break;
 
-                        case WaveFormat.WAVE_MULTIPLE_SCISSORS:
-                            SpawnMultipleRandomEnemies();
-                            break;
+                            case WaveFormat.WAVE_MULTIPLE_RANDOM:
+                                SpawnMultipleRandomEnemies();
+                                break;
 
-                        case WaveFormat.WAVE_MULTIPLE_PAPER:
-                            SpawnMultipleRandomEnemies();
-                            break;
+                            case WaveFormat.WAVE_MULTIPLE_SCISSORS:
+                                SpawnMultipleRandomEnemies();
+                                break;
 
-                        case WaveFormat.WAVE_MULTIPLE_STONE:
-                            SpawnMultipleRandomEnemies();
-                            break;
+                            case WaveFormat.WAVE_MULTIPLE_PAPER:
+                                SpawnMultipleRandomEnemies();
+                                break;
 
-                        case WaveFormat.WAVE_OBSTACLE:
-                            SpawnObstacleObject();
-                            break;
+                            case WaveFormat.WAVE_MULTIPLE_STONE:
+                                SpawnMultipleRandomEnemies();
+                                break;
+                        }
 
-                        case WaveFormat.WAVE_POWERUP:
-                            SpawnPowerupObject();
-                            break;
+                        f_objectspawnLifetime = 0f;
 
-                        case WaveFormat.WAVE_POWERUP_AND_OBSTACLE:
-                            SpawnPowerupAndObstacleObject();
-                            break;
+                    }
+
+                    else
+                    {
+                        //randomly decide on what kind of wave format it will be
+                        current_waveFormat = (WaveFormat)Random.Range(1, (int)WaveFormat.WAVE_TOTAL);
+
+                        switch (current_waveFormat)
+                        {
+                            case WaveFormat.WAVE_SINGLE_RANDOM:
+                                SpawnSingleRandomEnemy();
+                                break;
+
+                            case WaveFormat.WAVE_MULTIPLE_RANDOM:
+                                SpawnMultipleRandomEnemies();
+                                break;
+
+                            case WaveFormat.WAVE_MULTIPLE_SCISSORS:
+                                SpawnMultipleRandomEnemies();
+                                break;
+
+                            case WaveFormat.WAVE_MULTIPLE_PAPER:
+                                SpawnMultipleRandomEnemies();
+                                break;
+
+                            case WaveFormat.WAVE_MULTIPLE_STONE:
+                                SpawnMultipleRandomEnemies();
+                                break;
+
+                            case WaveFormat.WAVE_OBSTACLE:
+                                SpawnObstacleObject();
+                                break;
+
+                            case WaveFormat.WAVE_POWERUP:
+                                SpawnPowerupObject();
+                                break;
+
+                            case WaveFormat.WAVE_POWERUP_AND_OBSTACLE:
+                                SpawnPowerupAndObstacleObject();
+                                break;
+
+                        }
+
+                        f_objectspawnLifetime = 0f;
 
                     }
                 }
-
-                f_objectspawnLifetime = 0f;
-
             }
-        }
+        }   
     }
 
     #endregion
@@ -186,7 +200,7 @@ public class SPS_ObjectManager : MonoBehaviour
         //instantiate an enemy HERE
         g_objectInstance = Instantiate(enemyPrefab,
          new Vector3(objectStartPosition.transform.position.x, 
-         objectStartPosition.transform.position.y + 0.65f,
+         objectStartPosition.transform.position.y,
          objectStartPosition.transform.position.z), objectStartPosition.transform.rotation);
         g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier);
 
@@ -205,13 +219,13 @@ public class SPS_ObjectManager : MonoBehaviour
 
     public void SpawnMultipleRandomEnemies()
     {
-        int waveSize = Random.Range(3, 6);
+        int waveSize = Random.Range(2, 4);
 
-        for (int val = 0; val <= waveSize; val++)
+        for (int val = 1; val <= waveSize; val++)
         {
             g_objectInstance = Instantiate(enemyPrefab,
            new Vector3(objectStartPosition.transform.position.x + val * 4.5f, 
-           objectStartPosition.transform.position.y + 0.65f, 
+           objectStartPosition.transform.position.y, 
            objectStartPosition.transform.position.z), objectStartPosition.transform.rotation);
 
             //do the movement HERE
@@ -304,6 +318,5 @@ public class SPS_ObjectManager : MonoBehaviour
     }
 
     #endregion
-
 
 }

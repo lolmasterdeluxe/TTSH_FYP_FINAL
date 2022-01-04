@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;    
 
 public class SPS_PlayerManager : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class SPS_PlayerManager : MonoBehaviour
     [Tooltip("Reference to the ObjectManager")]
     SPS_ObjectManager objectManagerInstance;
 
+    [Tooltip("Reference to the UIManager")]
+    SPS_UIManager uiManagerInstance;
+
     [Tooltip("References to Animators")]
     public Animator playerAC, playeractionAC;
 
@@ -41,6 +45,8 @@ public class SPS_PlayerManager : MonoBehaviour
     //variables involving powerups
     bool b_hasPowerup;
 
+    //variables for combo
+    public GameObject g_comboGroup, g_comboText, g_comboText_finalPos;
 
     #endregion
 
@@ -48,8 +54,9 @@ public class SPS_PlayerManager : MonoBehaviour
 
     private void Start()
     {
-        //set reference to script HERE
+        //set reference to scripts HERE
         objectManagerInstance = FindObjectOfType<SPS_ObjectManager>();
+        uiManagerInstance = FindObjectOfType<SPS_UIManager>();
 
         //set player choice to be NONE
         player_choice = PlayerChoice.PLAYER_NONE;
@@ -60,13 +67,27 @@ public class SPS_PlayerManager : MonoBehaviour
         //set collider box reference HERE
         collider_player = GetComponent<BoxCollider2D>();
 
-        //store the original collider size HERE
-        v_originalcolliderposition = collider_player.transform.position;
+        //set original collider position HERE
+        v_originalcolliderposition = new Vector2(0f, 0f);
+
+        //set combo expiry HERE
+        ComboManager.Instance.SetComboExpiry(4f);
+
+        //we set the combo manager's alpha to be 0 on start
+        TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 0f, 0f);
+
+        ////attach events HERE (for combo)
+        //ComboManager.Instance.e_comboAdded.AddListener(ComboAdded);
+        //ComboManager.Instance.e_comboBreak.AddListener(ComboBroken);
 
     }
 
     private void Update()
     {
+        if (!uiManagerInstance.b_gameStart)
+            return;
+
+        uiManagerInstance.UpdateComboScore(g_comboText);
 
         #region Timers
 
@@ -90,14 +111,14 @@ public class SPS_PlayerManager : MonoBehaviour
         //for stunned
         if (playerAC.GetBool("PlayerStunned") == true)
         {
-            f_playerStunnedLifetime = Time.deltaTime;
+            f_playerStunnedLifetime += Time.deltaTime;
 
             if (f_playerStunnedLifetime >= 1f)
             {
                 playerAC.SetBool("PlayerStunned", false);
 
                 //reset the stunned timer lifetime
-                f_playerStunnedLifetime = 0;
+                f_playerStunnedLifetime = 0f;
             }
 
         }
@@ -176,7 +197,7 @@ public class SPS_PlayerManager : MonoBehaviour
     public void PlayerChoosesPaper()
     {
         //set the enum
-        player_choice = PlayerChoice.PLAYER_SCISSOR;
+        player_choice = PlayerChoice.PLAYER_PAPER;
         //set the booleans on ACs
         playerAC.SetBool("PlayerAttackingWithPaper", true);
         playeractionAC.SetBool("PlayerActionWithPaper", true);
@@ -186,7 +207,7 @@ public class SPS_PlayerManager : MonoBehaviour
     public void PlayerChoosesStone()
     {
         //set the enum
-        player_choice = PlayerChoice.PLAYER_SCISSOR;
+        player_choice = PlayerChoice.PLAYER_STONE;
         //set the booleans on ACs
         playerAC.SetBool("PlayerAttackingWithStone", true);
         playeractionAC.SetBool("PlayerActionWithStone", true);
@@ -207,13 +228,13 @@ public class SPS_PlayerManager : MonoBehaviour
             player_choice == PlayerChoice.PLAYER_STONE)
         {
             //we want to shift the collider to the RIGHT
-            collider_player.offset = collider_player.offset = new Vector2(0.9f, 0f);
+            collider_player.offset = collider_player.offset = new Vector2(1.3f, 0f);
         }
 
         if (player_choice == PlayerChoice.PLAYER_JUMP)
         {
             //we want to shift the collider box UP
-            collider_player.offset = collider_player.offset = new Vector2(0f, 0.9f);
+            collider_player.offset = collider_player.offset = new Vector2(0f, 1.185f);
             //set boolean HERE
             b_playerJumped = true;
         }
@@ -263,22 +284,100 @@ public class SPS_PlayerManager : MonoBehaviour
                     //remove the enemy from the list
                     objectManagerInstance.objectWaveList.Remove(other.gameObject);
 
+                    //add score HERE
+                    uiManagerInstance.PlayerScores();
+
+                    //add combo here
+                    ComboManager.Instance.AddCombo();
+
+                    Destroy(other.gameObject);
+                    Destroy(other.gameObject.GetComponent<Rigidbody2D>());
+
+                    Debug.Log("hit1");
+
                 }
+                else if (player_choice == PlayerChoice.PLAYER_PAPER
+                    && other.gameObject.GetComponent<SPS_Enemy>().enemy_type == SPS_Enemy.EnemyType.ENEMY_STONE)
+                {
+                    //remove the enemy from the list
+                    objectManagerInstance.objectWaveList.Remove(other.gameObject);
 
+                    //add score HERE
+                    uiManagerInstance.PlayerScores();
 
+                    //add combo here
+                    ComboManager.Instance.AddCombo();
 
+                    Destroy(other.gameObject);
+                    Destroy(other.gameObject.GetComponent<Rigidbody2D>());
+
+                    Debug.Log("hit2");
+                }
+                else if (player_choice == PlayerChoice.PLAYER_STONE
+                    && other.gameObject.GetComponent<SPS_Enemy>().enemy_type == SPS_Enemy.EnemyType.ENEMY_SCISSORS)
+                {
+                    //remove the enemy from the list
+                    objectManagerInstance.objectWaveList.Remove(other.gameObject);
+
+                    //add score HERE
+                    uiManagerInstance.PlayerScores();
+
+                    //add combo here
+                    ComboManager.Instance.AddCombo();
+
+                    Destroy(other.gameObject);
+                    Destroy(other.gameObject.GetComponent<Rigidbody2D>());
+
+                    Debug.Log("hit3");
+                }
+                //we take damage if we hit with the wrong typing
+                else
+                {
+                    //player gets stunned
+                    playerAC.SetBool("PlayerStunned", true);
+
+                    ComboManager.Instance.BreakCombo();
+                }
             }
         }
-        //player is hit/stunned HERE
+
+        //player is hit/stunned/collecting powerups HERE
         else
         {
             if (other.gameObject.tag == "EnemyTag")
             {
                 //player gets stunned
                 playerAC.SetBool("PlayerStunned", true);
+
+                //do combo calculations HERE
+                ComboManager.Instance.BreakCombo();
             }
+
+            if (other.gameObject.tag == "Obstacle")
+            {
+                //player gets stunned
+                playerAC.SetBool("PlayerStunned", true);
+
+                //do combo calculations HERE
+                ComboManager.Instance.BreakCombo();
+            }
+
+            if (other.gameObject.tag == "Powerup")
+            {
+                //set boolean to be true HERE
+                b_hasPowerup = true;
+
+                //remove the object from the list
+                objectManagerInstance.objectWaveList.Remove(other.gameObject);
+
+                //destroy it since it has been collected
+                Destroy(other.gameObject);
+                Destroy(other.gameObject.GetComponent<Rigidbody2D>());
+            }
+
         }
     }
 
     #endregion
+
 }

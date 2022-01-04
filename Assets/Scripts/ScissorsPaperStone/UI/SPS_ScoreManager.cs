@@ -15,8 +15,6 @@ public class SPS_ScoreManager : MonoBehaviour
     int baseScore;
     public GameObject scoretextInstance;
 
-    //add script references HERE
-    SPS_AttackCollision attackCollisionInstance;
 
     #endregion
 

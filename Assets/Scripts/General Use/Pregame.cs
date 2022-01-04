@@ -34,6 +34,11 @@ public class Pregame : MonoBehaviour
         switch (currentGamemode)
         {
             case GameMode.SPS:
+                m_countdownOver = true;
+                TweenManager.Instance.AnimateFade(mainUICanvasGroup, 0f, 0f);
+                TweenManager.Instance.AnimateFade(panelCanvasGroup, 1f, 0f);
+                TimerManager.Instance.StartCountdown(4);
+                TimerManager.Instance.e_TimerTick.AddListener(CountdownTick);
                 break;
             case GameMode.FIVE_STONES:
                 m_countdownOver = true;
@@ -73,6 +78,10 @@ public class Pregame : MonoBehaviour
         switch (currentGamemode)
         {
             case GameMode.SPS:
+                TweenManager.Instance.AnimateFade(mainUICanvasGroup, 1f, 1f);
+                TweenManager.Instance.AnimateFade(panelCanvasGroup, 0f, 0f);
+                countdownText.gameObject.SetActive(false);
+                SPS_UIManager.Instance.StartGame(90, 1);
                 break;
             case GameMode.FIVE_STONES:
                 m_countdownOver = false;

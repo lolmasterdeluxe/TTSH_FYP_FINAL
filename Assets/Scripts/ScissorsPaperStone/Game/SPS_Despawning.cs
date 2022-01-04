@@ -28,8 +28,7 @@ public class SPS_Despawning : MonoBehaviour
         }
     }
 
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         //remove the gameobject instance in the list
         objectspawningInstance.objectWaveList.Remove(other.gameObject);
