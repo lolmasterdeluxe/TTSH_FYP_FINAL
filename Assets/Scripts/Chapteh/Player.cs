@@ -37,10 +37,10 @@ public class Player : MonoBehaviour
     {
         if (!ChaptehGameManager.Instance.m_gameStarted)
             return;
-
-        if (ChaptehGameManager.Instance.m_gameEnded)
+        else if (ChaptehGameManager.Instance.m_gameEnded)
         {
             playerAnim.enabled = false;
+            DisppearSandDust();
             return;
         }
 

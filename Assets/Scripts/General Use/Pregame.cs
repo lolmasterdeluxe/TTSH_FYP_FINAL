@@ -96,7 +96,7 @@ public class Pregame : MonoBehaviour
                 TweenManager.Instance.AnimateFade(mainUICanvasGroup, 1f, 1f);
                 TweenManager.Instance.AnimateFade(panelCanvasGroup, 0f, 0f);
                 countdownText.gameObject.SetActive(false);
-                ChaptehGameManager.Instance.StartGame(5);
+                ChaptehGameManager.Instance.StartGame(90);
                 break;
         }
     }
