@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;    
+using TMPro;
+using DG.Tweening;
 
 public class SPS_PlayerManager : MonoBehaviour
 {
@@ -337,6 +338,9 @@ public class SPS_PlayerManager : MonoBehaviour
                     playerAC.SetBool("PlayerStunned", true);
 
                     ComboManager.Instance.BreakCombo();
+
+                    //fade out the enemy so that it looks natural
+                    other.gameObject.GetComponent<SpriteRenderer>().DOFade(0, 1f);
                 }
             }
         }
@@ -351,6 +355,9 @@ public class SPS_PlayerManager : MonoBehaviour
 
                 //do combo calculations HERE
                 ComboManager.Instance.BreakCombo();
+
+                //fade out the enemy so that it looks natural
+                other.gameObject.GetComponent<SpriteRenderer>().DOFade(0, 1f);
             }
 
             if (other.gameObject.tag == "Obstacle")
@@ -360,6 +367,9 @@ public class SPS_PlayerManager : MonoBehaviour
 
                 //do combo calculations HERE
                 ComboManager.Instance.BreakCombo();
+
+                //fade out the enemy so that it looks natural
+                other.GetComponent<SpriteRenderer>().DOFade(0, 1f);
             }
 
             if (other.gameObject.tag == "Powerup")
