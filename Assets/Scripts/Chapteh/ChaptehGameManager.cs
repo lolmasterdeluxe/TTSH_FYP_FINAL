@@ -84,6 +84,9 @@ public class ChaptehGameManager : MonoBehaviour
     {
         while (true)
         {
+            if (TimerManager.Instance.GetRemainingTime() == 0)
+                break;
+
             RandomizeObjective();
             yield return new WaitForSeconds(5);
         }
@@ -182,7 +185,6 @@ public class ChaptehGameManager : MonoBehaviour
         {
             m_gameEnded = true;
             TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.25f);
-            StopAllCoroutines();
         }
     }
 
