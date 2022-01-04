@@ -6,20 +6,29 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
+    public GameObject quitPromptMenu;
     public GameObject settingsMenu;
 
     public bool isPaused = false;
+
+    private Pregame preGame;
 
     // Start is called before the first frame update
     void Start()
     {
         pauseMenu.SetActive(false);
         settingsMenu.SetActive(false);
+        quitPromptMenu.SetActive(false);
+
+        preGame = GameObject.Find("Pregame").GetComponent<Pregame>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (preGame.m_countdownOver)
+            return;
+
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
@@ -57,6 +66,16 @@ public class PauseMenu : MonoBehaviour
     public void ExitSettings()
     {
         settingsMenu.SetActive(false);
+    }
+
+    public void LoadQuitPrompt()
+    {
+        quitPromptMenu.SetActive(true);
+    }
+
+    public void ExitQuitPrompt()
+    {
+        quitPromptMenu.SetActive(false);
     }
 
     public void QuitGame()

@@ -24,6 +24,7 @@ public class ChaptehGameManager : MonoBehaviour
     public GameObject g_comboText;
     public GameObject g_comboExpiryBar;
     public GameObject g_objectiveText;
+    public GameObject g_gameTimeUp;
     public Objective m_currentObjective;
 
     public int m_score;
@@ -32,6 +33,7 @@ public class ChaptehGameManager : MonoBehaviour
     private int greenbaseScore = 5;
 
     public bool m_gameStarted = false;
+    public bool m_gameEnded = false;
 
     private void Awake()
     {
@@ -56,6 +58,7 @@ public class ChaptehGameManager : MonoBehaviour
 
         // Setup game logic
         TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 0f, 0f);
+        TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 0f, 0f);
         RandomizeObjective();
         StartCoroutine(ObjectiveCoroutine());
 
@@ -70,9 +73,15 @@ public class ChaptehGameManager : MonoBehaviour
         if (!m_gameStarted)
             return;
 
+        if (m_gameEnded)
+        {
+            GameTimesUp();
+            return;
+        }
+
         UIUpdate();
 
-        //EndGame();
+
     }
 
     public IEnumerator ObjectiveCoroutine()
@@ -171,15 +180,13 @@ public class ChaptehGameManager : MonoBehaviour
         return (Objective)Random.Range(1, (int)Objective.TOTAL - 1);
     }
 
-    private void EndGame()
+    private void GameTimesUp()
     {
-        if(TimerManager.Instance.GetRemainingTime() == 0)
+        if (TimerManager.Instance.GetRemainingTime() == 0)
         {
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#else
-         Application.Quit();
-#endif
+            m_gameEnded = true;
+            TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.25f);
+            Time.timeScale = 0f;
         }
     }
 

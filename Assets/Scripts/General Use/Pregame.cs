@@ -26,6 +26,8 @@ public class Pregame : MonoBehaviour
 
     public GameMode currentGamemode;
 
+    public bool m_countdownOver = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,12 +36,14 @@ public class Pregame : MonoBehaviour
             case GameMode.SPS:
                 break;
             case GameMode.FIVE_STONES:
+                m_countdownOver = true;
                 TweenManager.Instance.AnimateFade(mainUICanvasGroup, 0f, 0f);
                 TweenManager.Instance.AnimateFade(panelCanvasGroup, 0f, 0f);
                 TimerManager.Instance.StartCountdown(4);
                 TimerManager.Instance.e_TimerTick.AddListener(CountdownTick);
                 break;
             case GameMode.CHAPTEH:
+                m_countdownOver = true;
                 TweenManager.Instance.AnimateFade(mainUICanvasGroup, 0f, 0f);
                 TweenManager.Instance.AnimateFade(panelCanvasGroup, 1f, 0f);
                 TimerManager.Instance.StartCountdown(4);
@@ -71,6 +75,7 @@ public class Pregame : MonoBehaviour
             case GameMode.SPS:
                 break;
             case GameMode.FIVE_STONES:
+                m_countdownOver = false;
                 TweenManager.Instance.AnimateScale(backgroundSpriteRenderer.transform, 1.5f, 1f);
                 TweenManager.Instance.AnimateFade(mainUICanvasGroup, 1f, 0.5f);
                 TweenManager.Instance.AnimateFade(panelCanvasGroup, 1f, 0.5f);
@@ -78,10 +83,11 @@ public class Pregame : MonoBehaviour
                 FiveStonesGameManager.Instance.StartGame(60, 1);
                 break;
             case GameMode.CHAPTEH:
+                m_countdownOver = false;
                 TweenManager.Instance.AnimateFade(mainUICanvasGroup, 1f, 1f);
                 TweenManager.Instance.AnimateFade(panelCanvasGroup, 0f, 0f);
                 countdownText.gameObject.SetActive(false);
-                ChaptehGameManager.Instance.StartGame(90);
+                ChaptehGameManager.Instance.StartGame(5);
                 break;
         }
     }

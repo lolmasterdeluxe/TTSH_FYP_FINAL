@@ -38,6 +38,12 @@ public class Player : MonoBehaviour
         if (!ChaptehGameManager.Instance.m_gameStarted)
             return;
 
+        if (ChaptehGameManager.Instance.m_gameEnded)
+        {
+            playerAnim.enabled = false;
+            return;
+        }
+
         // Get input from mouse control
         mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
