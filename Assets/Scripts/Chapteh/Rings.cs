@@ -39,9 +39,7 @@ public class Rings : MonoBehaviour
         if (gameObject.CompareTag("RedRing") || gameObject.CompareTag("YellowRing") || gameObject.CompareTag("GreenRing"))
         {
             if (isTriggered == true)
-            {
                 ringGlow.intensity += 5.5f * Time.deltaTime;
-            }
             else
                 ringGlow.intensity = 0f;
         }

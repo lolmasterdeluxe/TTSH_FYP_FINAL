@@ -42,15 +42,22 @@ public class SpawnRings : MonoBehaviour
         if (Time.time > nextSpawn)
         {
             nextSpawn = Time.time + spawnRate;
+
+            // Gets size of the ring colliders
             redringRadius = redRingPrefab.GetComponent<Collider2D>().bounds.max.x + 0.5f;
             yellowringRadius = yellowRingPrefab.GetComponent<Collider2D>().bounds.max.x + 0.5f;
             greenringRadius = greenRingPrefab.GetComponent<Collider2D>().bounds.max.x + 0.5f;
 
+            // Spawns every 2 rings
             for (int i = 0; i < 2; i++)
             {
                 randX = Random.Range(skySpriteWidth.bounds.min.x + 0.5f, skySpriteWidth.bounds.max.x - 0.5f);
                 randY = Random.Range(skySpriteHeight.bounds.min.y + 3f, skySpriteHeight.bounds.max.y - 0.5f);
+                
+                // Sets 3 rings to be random
                 randOption = Random.Range(0, 3);
+                
+                // Sets spawn position to be random
                 spawnPos = new Vector2(randX, randY);
 
                 Collider2D colliderWithRedRing = Physics2D.OverlapCircle(spawnPos, redringRadius, LayerMask.GetMask("RedRingLayer"));
@@ -66,6 +73,7 @@ public class SpawnRings : MonoBehaviour
                     {
                         GameObject temp;
 
+                        // Spawns the rings randomly
                         switch (randOption)
                         {
                             case 0:

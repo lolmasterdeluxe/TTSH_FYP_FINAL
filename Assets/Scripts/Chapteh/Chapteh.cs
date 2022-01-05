@@ -44,6 +44,7 @@ public class Chapteh : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Sets the chapteh to the origin position before game starts and ends
         if (!ChaptehGameManager.Instance.m_gameStarted)
         {
             transform.position = spawnPoint.position;
@@ -66,10 +67,9 @@ public class Chapteh : MonoBehaviour
             LookAtMouseDirection();
         }
 
+        // Prevents the chapteh to be charged when in Pause Menu
         if(!pauseMenu.isPaused)
             kickChapteh.PowerLaunch();
-        
-        //MoveRingBoxCollider();
 
         FallOnGravity();
     }
@@ -77,8 +77,12 @@ public class Chapteh : MonoBehaviour
     // Chapteh rotates at direction of the mouse position
     void LookAtMouseDirection()
     {
+        // Look in the direction of the mouse position
         lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        
         lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+
+        // Rotate according the mouse position
         transform.rotation = Quaternion.Euler(0f, 0f, lookAngle - 90f);
     }
 
@@ -135,9 +139,12 @@ public class Chapteh : MonoBehaviour
         // Chapteh hits the respective ring
         if (other.CompareTag("RedRing") || other.CompareTag("YellowRing") || other.CompareTag("GreenRing"))
         {
+            // Adds the score to respective ring color
             ChaptehGameManager.Instance.OnChaptehHit(other.gameObject);
             other.GetComponent<Rings>().isTriggered = true;
             StartCoroutine(GlowRingsOnHit(other));
+
+            // Plays the star particle effect on trigger
             other.GetComponentInChildren<ParticleSystem>().Play();
         }
     }
@@ -145,7 +152,6 @@ public class Chapteh : MonoBehaviour
     private IEnumerator GlowRingsOnHit(Collider2D col2D)
     {
         yield return new WaitForSeconds(glowDuration);
-        //col2D.GetComponentInChildren<ParticleSystem>().Play();
         col2D.gameObject.SetActive(false);
         //Destroy(col2D.gameObject);
         col2D.GetComponent<Rings>().isTriggered = false;
