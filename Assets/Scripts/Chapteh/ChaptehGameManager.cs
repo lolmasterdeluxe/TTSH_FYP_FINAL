@@ -84,6 +84,9 @@ public class ChaptehGameManager : MonoBehaviour
     {
         while (true)
         {
+            if (TimerManager.Instance.GetRemainingTime() == 0)
+                break;
+
             RandomizeObjective();
             yield return new WaitForSeconds(5);
         }
@@ -96,13 +99,16 @@ public class ChaptehGameManager : MonoBehaviour
         switch (m_currentObjective)
         {
             case Objective.HIT_RED_RINGS:
-                g_objectiveText.GetComponent<TMP_Text>().text = "Shoot into <color=red>red</color> Rings!";
+                // Change TMPro sprite asset to red ring
+                g_objectiveText.GetComponent<TMP_Text>().text = "Shoot <sprite=0> Rings!";
                 break;
             case Objective.HIT_YELLOW_RINGS:
-                g_objectiveText.GetComponent<TMP_Text>().text = "Shoot into <color=yellow>yellow</color> Rings!";
+                // Change TMPro sprite asset to yellow ring
+                g_objectiveText.GetComponent<TMP_Text>().text = "Shoot <sprite=2> Rings!";
                 break;
             case Objective.HIT_GREEN_RINGS:
-                g_objectiveText.GetComponent<TMP_Text>().text = "Shoot into <color=green>green</color> Rings!";
+                // Change TMPro sprite asset to green ring
+                g_objectiveText.GetComponent<TMP_Text>().text = "Shoot <sprite=1> Rings!";
                 break;
         }
     }
@@ -121,19 +127,19 @@ public class ChaptehGameManager : MonoBehaviour
         {
             ComboManager.Instance.AddCombo();
             ScoreManager.Instance.AddCurrentGameScore(redbaseScore * ComboManager.Instance.GetCurrentCombo());
-            g_comboText.GetComponent<TMP_Text>().color = new Color(255f, 0f, 0f, 255f);
+            //g_comboText.GetComponent<TMP_Text>().color = new Color(255f, 0f, 0f, 255f);
         }
         else if(gameObject.GetComponent<Rings>().type == m_currentObjective && m_currentObjective == Objective.HIT_YELLOW_RINGS)
         {
             ComboManager.Instance.AddCombo();
             ScoreManager.Instance.AddCurrentGameScore(yellowbaseScore * ComboManager.Instance.GetCurrentCombo());
-            g_comboText.GetComponent<TMP_Text>().color = new Color(255f, 255f, 0f, 255f);
+            //g_comboText.GetComponent<TMP_Text>().color = new Color(255f, 255f, 0f, 255f);
         }
         else if (gameObject.GetComponent<Rings>().type == m_currentObjective && m_currentObjective == Objective.HIT_GREEN_RINGS)
         {
             ComboManager.Instance.AddCombo();
             ScoreManager.Instance.AddCurrentGameScore(greenbaseScore * ComboManager.Instance.GetCurrentCombo());
-            g_comboText.GetComponent<TMP_Text>().color = new Color(0f, 255f, 0f, 255f);
+            //g_comboText.GetComponent<TMP_Text>().color = new Color(0f, 255f, 0f, 255f);
         }
         switch (gameObject.GetComponent<Rings>().type)
         {
@@ -182,7 +188,6 @@ public class ChaptehGameManager : MonoBehaviour
         {
             m_gameEnded = true;
             TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.25f);
-            StopAllCoroutines();
         }
     }
 

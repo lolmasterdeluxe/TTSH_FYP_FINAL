@@ -39,6 +39,17 @@ public class SPS_UIManager : MonoBehaviour
 
     public bool b_gameStart;
 
+    //for UI buttons
+
+    [Tooltip("Reference to the UI buttons")]
+    public GameObject g_scissorsButton, g_paperButton, g_stoneButton;
+
+    [Tooltip("Original Button Size")]
+    Vector3 v_originalbuttonSize;
+
+    [Tooltip("Increased Button Size")]
+    Vector3 v_increasedbuttonSize;
+
     #endregion
 
     #region Unity Callbacks
@@ -54,6 +65,10 @@ public class SPS_UIManager : MonoBehaviour
     private void Start()
     {
         objectmanagerInstance = FindObjectOfType<SPS_ObjectManager>();
+
+        //set button sizes HERE
+        v_originalbuttonSize = new Vector3(1f, 1f, 1f);
+        v_increasedbuttonSize = new Vector3(1.15f, 1.15f, 1.15f);
     }
 
     public void StartGame(float time, int score)
@@ -89,6 +104,8 @@ public class SPS_UIManager : MonoBehaviour
 
         UpdatePlayerScore();
         UpdateTimerText();
+        UpdateButtonBehaviour();
+
     }
 
     #endregion
@@ -153,5 +170,46 @@ public class SPS_UIManager : MonoBehaviour
 
     #endregion
 
+    #region Button Behaviour Functions
+    public void IncreaseButtonSize(GameObject targetButton)
+    {
+        targetButton.transform.localScale = v_increasedbuttonSize;
+    }
+
+    public void ResetButtonSIze(GameObject targetButton)
+    {
+        targetButton.transform.localScale = v_originalbuttonSize;
+    }
+
+    public void UpdateButtonBehaviour()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            IncreaseButtonSize(g_scissorsButton);
+        }
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            ResetButtonSIze(g_scissorsButton);
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            IncreaseButtonSize(g_paperButton);
+        }
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            ResetButtonSIze(g_paperButton);
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            IncreaseButtonSize(g_stoneButton);
+        }
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            ResetButtonSIze(g_stoneButton);
+        }
+    }
+
+
+    #endregion
 
 }

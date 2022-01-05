@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;    
+using TMPro;
+using DG.Tweening;
 
 public class SPS_PlayerManager : MonoBehaviour
 {
@@ -293,7 +294,6 @@ public class SPS_PlayerManager : MonoBehaviour
                     Destroy(other.gameObject);
                     Destroy(other.gameObject.GetComponent<Rigidbody2D>());
 
-                    Debug.Log("hit1");
 
                 }
                 else if (player_choice == PlayerChoice.PLAYER_PAPER
@@ -311,7 +311,6 @@ public class SPS_PlayerManager : MonoBehaviour
                     Destroy(other.gameObject);
                     Destroy(other.gameObject.GetComponent<Rigidbody2D>());
 
-                    Debug.Log("hit2");
                 }
                 else if (player_choice == PlayerChoice.PLAYER_STONE
                     && other.gameObject.GetComponent<SPS_Enemy>().enemy_type == SPS_Enemy.EnemyType.ENEMY_SCISSORS)
@@ -328,7 +327,6 @@ public class SPS_PlayerManager : MonoBehaviour
                     Destroy(other.gameObject);
                     Destroy(other.gameObject.GetComponent<Rigidbody2D>());
 
-                    Debug.Log("hit3");
                 }
                 //we take damage if we hit with the wrong typing
                 else
@@ -337,6 +335,13 @@ public class SPS_PlayerManager : MonoBehaviour
                     playerAC.SetBool("PlayerStunned", true);
 
                     ComboManager.Instance.BreakCombo();
+
+                    //fade out the enemy so that it looks natural
+                    other.gameObject.GetComponent<SpriteRenderer>().DOFade(0, 1f);
+                    GameObject sprite_attackIndicator = 
+                        other.gameObject.transform.Find("AttackIndicatorSprite").gameObject;
+                    sprite_attackIndicator.GetComponent<SpriteRenderer>().DOFade(0, 1f);
+
                 }
             }
         }
@@ -351,6 +356,13 @@ public class SPS_PlayerManager : MonoBehaviour
 
                 //do combo calculations HERE
                 ComboManager.Instance.BreakCombo();
+
+                //fade out the enemy so that it looks natural
+                other.gameObject.GetComponent<SpriteRenderer>().DOFade(0, 1f);
+                GameObject sprite_attackIndicator = 
+                    other.gameObject.transform.Find("AttackIndicatorSprite").gameObject;
+                sprite_attackIndicator.GetComponent<SpriteRenderer>().DOFade(0, 1f);
+
             }
 
             if (other.gameObject.tag == "Obstacle")
@@ -360,6 +372,9 @@ public class SPS_PlayerManager : MonoBehaviour
 
                 //do combo calculations HERE
                 ComboManager.Instance.BreakCombo();
+
+                //fade out the enemy so that it looks natural
+                other.GetComponent<SpriteRenderer>().DOFade(0, 1f);
             }
 
             if (other.gameObject.tag == "Powerup")

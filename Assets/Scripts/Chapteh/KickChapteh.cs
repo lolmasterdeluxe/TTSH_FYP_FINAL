@@ -29,6 +29,7 @@ public class KickChapteh : MonoBehaviour
             if (chargeBar.GetComponent<Image>().fillAmount != 1)
                 holdDownStartTime += 0.5f * Time.deltaTime;
 
+            // Fills the bar according to value of holdDownStartTime
             chargeBar.SetFillBar(holdDownStartTime);
 
             chargeBar.charge.SetActive(true);
@@ -39,6 +40,7 @@ public class KickChapteh : MonoBehaviour
             float holdDownTime = holdDownStartTime - Time.deltaTime;
             chapteh.Kick(CalculateHoldDownForce(holdDownTime));
 
+            // Resets the values to 0
             holdDownStartTime = 0f;
             chargeBar.SetFillBar(0);
 

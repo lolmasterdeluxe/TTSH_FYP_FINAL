@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
             return;
         else if (ChaptehGameManager.Instance.m_gameEnded)
         {
+            // Stops the animation and particle effects when game ends
             playerAnim.enabled = false;
             DisppearSandDust();
             return;
