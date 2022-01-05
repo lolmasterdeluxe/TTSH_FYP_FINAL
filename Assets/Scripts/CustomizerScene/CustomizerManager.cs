@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class CustomizerManager : MonoBehaviour
 {
@@ -40,9 +41,10 @@ public class CustomizerManager : MonoBehaviour
     [SerializeField]
     public List<Customizable> m_colorPool = new List<Customizable>();
 
-    private int m_hatID = 0;
-    private int m_faceID = 0;
-    private int m_colorID = 0;
+    private string m_name = string.Empty;
+    private int m_hatId = 0;
+    private int m_faceId = 0;
+    private int m_colorId = 0;
 
     public SpriteRenderer m_headSprite;
     public SpriteRenderer m_hatSprite;
@@ -54,6 +56,7 @@ public class CustomizerManager : MonoBehaviour
     public Button facePreviousButton;
     public Button faceNextButton;
     public Button nextSceneButton;
+    public TMP_InputField inputNameField;
 
     private static CustomizerManager _instance;
     public static CustomizerManager Instance
@@ -100,15 +103,15 @@ public class CustomizerManager : MonoBehaviour
     {
         if (forward)
         {
-            m_hatID++;
-            if (m_hatID >= m_hatPool.Count)
-                m_hatID = 0;
+            m_hatId++;
+            if (m_hatId >= m_hatPool.Count)
+                m_hatId = 0;
         }
         else
         {
-            m_hatID--;
-            if (m_hatID < 0)
-                m_hatID = m_hatPool.Count - 1;
+            m_hatId--;
+            if (m_hatId < 0)
+                m_hatId = m_hatPool.Count - 1;
         }
     }
 
@@ -116,15 +119,15 @@ public class CustomizerManager : MonoBehaviour
     {
         if (forward)
         {
-            m_faceID++;
-            if (m_faceID >= m_facePool.Count)
-                m_faceID = 0;
+            m_faceId++;
+            if (m_faceId >= m_facePool.Count)
+                m_faceId = 0;
         }
         else
         {
-            m_faceID--;
-            if (m_faceID < 0)
-                m_faceID = m_facePool.Count - 1;
+            m_faceId--;
+            if (m_faceId < 0)
+                m_faceId = m_facePool.Count - 1;
         }
     }
 
@@ -132,23 +135,30 @@ public class CustomizerManager : MonoBehaviour
     {
         if (forward)
         {
-            m_colorID++;
-            if (m_colorID >= m_colorPool.Count)
-                m_colorID = 0;
+            m_colorId++;
+            if (m_colorId >= m_colorPool.Count)
+                m_colorId = 0;
         }
         else
         {
-            m_colorID--;
-            if (m_colorID < 0)
-                m_hatID = m_colorPool.Count - 1;
+            m_colorId--;
+            if (m_colorId < 0)
+                m_hatId = m_colorPool.Count - 1;
         }
+    }
+
+    void UpdateCharacterName()
+    {
+        // Check if username exists
+
+        m_name = inputNameField.text;
     }
 
     void UpdateCosmetics()
     {
-        Customizable hatCustomizable = m_hatPool[m_hatID];
-        Customizable faceCustomizable = m_facePool[m_faceID];
-        Customizable colorCustomizable = m_colorPool[m_colorID];
+        Customizable hatCustomizable = m_hatPool[m_hatId];
+        Customizable faceCustomizable = m_facePool[m_faceId];
+        Customizable colorCustomizable = m_colorPool[m_colorId];
 
         if (hatCustomizable.m_bone == Bone.HAT)
         {
@@ -190,6 +200,9 @@ public class CustomizerManager : MonoBehaviour
         if (nextSceneButton == null)
             nextSceneButton = GameObject.Find("MainGameScene").GetComponent<Button>();
 
+        if (inputNameField == null)
+            inputNameField = GameObject.Find("NameInput").GetComponent<TMP_InputField>();
+
         hatPreviousButton.onClick.RemoveAllListeners();
         hatPreviousButton.onClick.AddListener(delegate { ScrollHat(false); });
 
@@ -204,6 +217,9 @@ public class CustomizerManager : MonoBehaviour
 
         nextSceneButton.onClick.RemoveAllListeners();
         nextSceneButton.onClick.AddListener(delegate { EnterMainScene(); });
+
+        inputNameField.onValueChanged.RemoveAllListeners();
+        inputNameField.onValueChanged.AddListener(delegate { UpdateCharacterName(); });
     }
 
     // Find another way to re-reference when changing scenes, but this works for now

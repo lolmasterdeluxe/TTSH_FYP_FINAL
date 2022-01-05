@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Data;
 using UnityEditor;
 using UnityEngine;
+using MySql.Data;
+using MySql.Data.MySqlClient;
+using System;
+using System.Reflection;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -23,6 +28,9 @@ public class ScoreManager : MonoBehaviour
         public string m_username;
         public string m_gamemode;
         public int m_score;
+        public int m_hatId;
+        public int m_faceId;
+        public int m_colourId;
 
         public Score(int userId, string username, string gamemode, int score)
         {
@@ -54,7 +62,8 @@ public class ScoreManager : MonoBehaviour
             if (_instance == null)
             {
                 GameObject instance = new GameObject("ScoreManager");
-                instance.AddComponent<ScoreManager>();
+                ScoreManager scoreManager = instance.AddComponent<ScoreManager>();
+                scoreManager.InitDatabase();
             }
 
             return _instance;
@@ -71,6 +80,54 @@ public class ScoreManager : MonoBehaviour
 
     private Gamemode m_currentGamemode;
     private int m_currentScore;
+
+    #region Data List
+
+    // SQl Connection String
+    private MySqlConnection sqlConnection = new MySqlConnection();
+    private const string hostName = "remotemysql.com";
+    private const string port = "3306";
+    private const string database = "50L1stRsGD";
+    private const string username = "50L1stRsGD";
+    private const string password = "3KTyCInq3R";
+
+    private static T GetItem<T>(DataRow dataRow)
+    {
+        if (dataRow == null)
+            return default(T);
+
+        Type temp = typeof(T);
+        T obj = Activator.CreateInstance<T>();
+
+        foreach (DataColumn column in dataRow.Table.Columns)
+        {
+            foreach (PropertyInfo property in temp.GetProperties())
+            {
+                if (property.Name == column.ColumnName)
+                    property.SetValue(obj, dataRow[column.ColumnName], null);
+                else
+                    continue;
+            }
+        }
+
+        return obj;
+    }
+
+    public static List<T> DataTableToList<T>(DataTable dataTable)
+    {
+        if (dataTable == null)
+            return null;
+
+        List<T> data = new List<T>();
+        foreach (DataRow row in dataTable.Rows)
+        {
+            T item = GetItem<T>(row);
+            data.Add(item);
+        }
+        return data;
+    }
+
+    #endregion
 
     private void Awake()
     {
@@ -93,7 +150,65 @@ public class ScoreManager : MonoBehaviour
     {
         
     }
-    
+
+    #region SQl Database
+
+    public void InitDatabase()
+    {
+        ConnectToDatabase();
+        LoadDataFromDatabase();
+    }
+
+    public DataTable Query(string query)
+    {
+        DataTable queryResult = new DataTable();
+
+        try
+        {
+            MySqlCommand command = new MySqlCommand(query, sqlConnection);
+            queryResult.Load(command.ExecuteReader());
+        }
+        catch (MySql.Data.MySqlClient.MySqlException exception)
+        {
+            //To-do: Throw error if can't receive query
+        }
+
+        return queryResult;
+    }
+
+    private void OnApplicationQuit()
+    {
+        if (sqlConnection != null)
+        {
+            if (sqlConnection.State.ToString() != "Closed")
+                sqlConnection.Close();
+
+            sqlConnection.Dispose();
+        }
+    }
+
+    public void ConnectToDatabase()
+    {
+        try
+        {
+            sqlConnection.ConnectionString = $"server ={ hostName }; port ={ port }; database ={ database }; user ={ username }; password ={ password }; pooling=True";
+            sqlConnection.Open();
+            Debug.Log("MySql State:" + sqlConnection.State);
+        }
+        catch (MySql.Data.MySqlClient.MySqlException exception)
+        {
+            //To-do: Throw error when can't connect to sql
+            // MessageBox.Show(exception.Message);
+        }
+    }
+
+    public void LoadDataFromDatabase()
+    {
+        m_allScoreList = DataTableToList<Score>(Query("SELECT * FROM Scoreboard"));
+    }
+
+    #endregion
+
     public void CreateNewUser(string username)
     {
         // Throw prompt for username already exists
