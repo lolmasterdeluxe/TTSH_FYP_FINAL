@@ -8,6 +8,8 @@ using UnityEditor;
 using UnityEngine;
 using System;
 using System.Reflection;
+using Newtonsoft.Json;
+using UnityEngine.Networking;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -78,6 +80,10 @@ public class ScoreManager : MonoBehaviour
     private Gamemode m_currentGamemode;
     private int m_currentScore;
 
+    private const string url = "https://ttsh-project.000webhostapp.com";
+    private const string api_allScore = "/scoreboard.php?all=";
+    private const string api_addScore = "/scoreboard.php";
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -113,6 +119,27 @@ public class ScoreManager : MonoBehaviour
 
         m_currentUserId = userId;
         m_currentUsername = username;
+    }
+
+    IEnumerator RequestAllScore(int count=100)
+    {
+        UnityWebRequest unityWebRequest = UnityWebRequest.Get(url + api_allScore + count);
+        yield return unityWebRequest.SendWebRequest();
+
+        if (unityWebRequest.isNetworkError)
+        {
+            Debug.Log("Error while sending web request");
+        }
+        else
+        {
+            Debug.Log("Received: " + unityWebRequest.downloadHandler.text);
+            m_allScoreList = JsonConvert.DeserializeObject<List<Score>>(unityWebRequest.downloadHandler.text);
+        }
+    }
+
+    public void LoadWebScoreList()
+    {
+        StartCoroutine(RequestAllScore());
     }
 
     public void LoadAllScoreList()

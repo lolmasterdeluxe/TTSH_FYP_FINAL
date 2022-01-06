@@ -57,6 +57,7 @@ public class FiveStonesGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()        
     {
+        ScoreManager.Instance.LoadWebScoreList();
     }
 
     // Difficulty can be any numnber from 0 - 4f
