@@ -21,7 +21,7 @@ public class PlayerMovementScript : MonoBehaviour
 
     #region Unity Callbacks
 
-    private void Start()
+    public void Start()
     {
         if (doRollbackPosition)
         {
@@ -84,7 +84,7 @@ public class PlayerMovementScript : MonoBehaviour
 
     public void SetRollbackPosition(Vector2 collisionPosition)
     {
-        float rollbackBounceOffDistanceMultiplier = 1.05f;
+        float rollbackBounceOffDistanceMultiplier = 0.5f;
         doRollbackPosition = true;
         rollbackPosition = (transform.position - new Vector3(collisionPosition.x, collisionPosition.y, transform.position.z)).normalized * rollbackBounceOffDistanceMultiplier + transform.position;
     }

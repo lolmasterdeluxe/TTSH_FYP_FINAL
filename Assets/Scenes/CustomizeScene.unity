@@ -2705,7 +2705,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1290682877}
   m_OnClick:
     m_PersistentCalls:
@@ -2890,6 +2890,9 @@ MonoBehaviour:
     m_itemType: 0
     m_sprite: {fileID: 0}
     m_color: {r: 0, g: 0, b: 0, a: 0}
+  m_hatId: 0
+  m_faceId: 0
+  m_colorId: 0
   m_headSprite: {fileID: 680256041}
   m_hatSprite: {fileID: 1097437506}
   m_eyeSprite: {fileID: 114052149}
