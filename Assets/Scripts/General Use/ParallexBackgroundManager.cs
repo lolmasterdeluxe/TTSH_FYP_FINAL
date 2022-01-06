@@ -30,6 +30,4 @@ public class ParallexBackgroundManager : MonoBehaviour
 
     #endregion
 
-
-
 }

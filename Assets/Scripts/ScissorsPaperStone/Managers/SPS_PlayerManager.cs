@@ -40,6 +40,10 @@ public class SPS_PlayerManager : MonoBehaviour
     bool b_playerJumped;
     float f_playerJumpLifetime;
 
+    //variables involving player attacking
+    bool b_playerAttacked;
+    float f_playerAttackLifetime;
+
     //variables involving player stunned
     float f_playerStunnedLifetime;
 
@@ -77,10 +81,6 @@ public class SPS_PlayerManager : MonoBehaviour
         //we set the combo manager's alpha to be 0 on start
         TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 0f, 0f);
 
-        ////attach events HERE (for combo)
-        //ComboManager.Instance.e_comboAdded.AddListener(ComboAdded);
-        //ComboManager.Instance.e_comboBreak.AddListener(ComboBroken);
-
     }
 
     private void Update()
@@ -92,15 +92,43 @@ public class SPS_PlayerManager : MonoBehaviour
 
         #region Timers
 
+        //for attacking 
+        if (b_playerAttacked == true)
+        {
+            f_playerAttackLifetime += Time.deltaTime;
+
+            if (f_playerAttackLifetime >= 0.375f)
+            {
+                //reset the animations
+                ResetAnimationsAndChoice();
+
+                //reset collider position
+                MoveBoxCollider();
+
+                //reset the boolean flag
+                b_playerAttacked = false;
+
+                //reset the jump timer lifetime
+                f_playerAttackLifetime = 0;
+            }
+        }
+
+
+
         //for jumping
         if (b_playerJumped == true)
         {
             f_playerJumpLifetime += Time.deltaTime;
 
-            if (f_playerJumpLifetime >= 1.7f)
+            if (f_playerJumpLifetime >= 0.795f)
             {
+                //reset the animations
+                ResetAnimationsAndChoice();
+
                 //reset collider position
-                collider_player.offset = v_originalcolliderposition;
+                MoveBoxCollider();
+
+                //reset the boolean flag
                 b_playerJumped = false;
 
                 //reset the jump timer lifetime
@@ -135,23 +163,11 @@ public class SPS_PlayerManager : MonoBehaviour
             g_PlayerActionSprite.transform.localScale = new Vector3(1f, 1f, 1f);
         }
 
-        if (Input.GetKeyUp(KeyCode.A))
-        {
-            ResetAnimationsAndChoice();
-            MoveBoxCollider();
-        }
-
         if (Input.GetKeyDown(KeyCode.S))
         {
             PlayerChoosesPaper();
             g_PlayerActionSprite.transform.localPosition = new Vector3(0.5f, 0.25f, 0f);
             g_PlayerActionSprite.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
-        }
-
-        if (Input.GetKeyUp(KeyCode.S))
-        {
-            ResetAnimationsAndChoice();
-            MoveBoxCollider();
         }
 
         if (Input.GetKeyDown(KeyCode.D))
@@ -161,21 +177,9 @@ public class SPS_PlayerManager : MonoBehaviour
             g_PlayerActionSprite.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
         }
 
-        if (Input.GetKeyUp(KeyCode.D))
-        {
-            ResetAnimationsAndChoice();
-            MoveBoxCollider();
-        }
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             PlayerJumps();
-        }
-
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            ResetAnimationsAndChoice();
-            MoveBoxCollider();
         }
 
         #endregion
@@ -230,6 +234,8 @@ public class SPS_PlayerManager : MonoBehaviour
         {
             //we want to shift the collider to the RIGHT
             collider_player.offset = collider_player.offset = new Vector2(1.3f, 0f);
+            //set boolean HERE
+            b_playerAttacked = true;
         }
 
         if (player_choice == PlayerChoice.PLAYER_JUMP)
