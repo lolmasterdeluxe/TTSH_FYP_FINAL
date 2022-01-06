@@ -78,6 +78,7 @@ public class Pregame : MonoBehaviour
         switch (currentGamemode)
         {
             case GameMode.SPS:
+                m_countdownOver = false;
                 TweenManager.Instance.AnimateFade(mainUICanvasGroup, 1f, 1f);
                 TweenManager.Instance.AnimateFade(panelCanvasGroup, 0f, 0f);
                 countdownText.gameObject.SetActive(false);
