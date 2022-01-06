@@ -69,8 +69,8 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    private List<Score> m_allScoreList = new List<Score>();
-    private List<Score> m_currentScoreList = new List<Score>();
+    public List<Score> m_allScoreList = new List<Score>();
+    public List<Score> m_currentScoreList = new List<Score>();
     private int m_maxUser = 1000;
 
     private int m_currentUserId;
@@ -134,6 +134,7 @@ public class ScoreManager : MonoBehaviour
         {
             Debug.Log("Received: " + unityWebRequest.downloadHandler.text);
             m_allScoreList = JsonConvert.DeserializeObject<List<Score>>(unityWebRequest.downloadHandler.text);
+
         }
     }
 

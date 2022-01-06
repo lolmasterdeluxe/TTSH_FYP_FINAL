@@ -33,6 +33,7 @@ public class FiveStonesGameManager : MonoBehaviour
 
     public GameObject g_scoreText;
     public GameObject g_comboGroup;
+    public GameObject g_gameTimeUp;
     public GameObject g_comboText;
     public GameObject g_comboExpiryBar;
     public GameObject g_timerText;
@@ -75,6 +76,7 @@ public class FiveStonesGameManager : MonoBehaviour
         maxObjectiveReset = 5;
         this.difficultyMultiplier = difficultyMultiplier;
         TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 0f, 0f);
+        TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 0f, 0f);
         GetComponent<StoneSpawner>().Configure(3, 5, 3, 5, 10, 15);
         StartCoroutine(GetComponent<StoneSpawner>().SpawnStoneLoop());
         RandomizeObjective();
@@ -161,6 +163,7 @@ public class FiveStonesGameManager : MonoBehaviour
     
     public void OnGameEnd()
     {
+        TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.25f);
         ScoreManager.Instance.EndCurrentGameScore();
     }
 
