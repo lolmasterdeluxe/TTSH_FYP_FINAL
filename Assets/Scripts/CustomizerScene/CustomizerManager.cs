@@ -42,9 +42,9 @@ public class CustomizerManager : MonoBehaviour
     public List<Customizable> m_colorPool = new List<Customizable>();
 
     private string m_name = string.Empty;
-    private int m_hatId = 0;
-    private int m_faceId = 0;
-    private int m_colorId = 0;
+    public int m_hatId = 0;
+    public int m_faceId = 0;
+    public int m_colorId = 0;
 
     public SpriteRenderer m_headSprite;
     public SpriteRenderer m_hatSprite;
@@ -149,9 +149,38 @@ public class CustomizerManager : MonoBehaviour
 
     void UpdateCharacterName()
     {
-        // Check if username exists
+        if (inputNameField.text == "")
+        {
+            nextSceneButton.interactable = false;
+            ColorBlock colorBlock = inputNameField.colors;
+            colorBlock.normalColor = new Color32(255, 255, 255, 255);
+            colorBlock.selectedColor = new Color32(255, 255, 255, 255);
+            inputNameField.colors = colorBlock;
+            return;
+        }
 
-        m_name = inputNameField.text;
+        ScoreManager.Score score = ScoreManager.Instance.m_allScoreList.Where(x => x.m_username.ToLower() == inputNameField.text).FirstOrDefault();
+
+        if (score == null)
+        {
+            nextSceneButton.interactable = true;
+            ColorBlock colorBlock = inputNameField.colors;
+            colorBlock.normalColor = new Color32(222, 255, 201, 255);
+            colorBlock.selectedColor = new Color32(222, 255, 201, 255);
+            inputNameField.colors = colorBlock;
+        }
+        else
+        {
+            nextSceneButton.interactable = false;
+            ColorBlock colorBlock = inputNameField.colors;
+            colorBlock.normalColor = new Color32(255, 198, 198, 255);
+            colorBlock.selectedColor = new Color32(255, 198, 198, 255);
+            inputNameField.colors = colorBlock;
+            return;
+        }
+
+
+        ScoreManager.Instance.m_currentUsername = inputNameField.text;
     }
 
     void UpdateCosmetics()
@@ -240,6 +269,7 @@ public class CustomizerManager : MonoBehaviour
 
     public void EnterMainScene()
     {
+        ScoreManager.Instance.UpdateCurrentUserTotalScore();
         SceneManager.LoadScene("MainMenuGameScene");
     }
 }

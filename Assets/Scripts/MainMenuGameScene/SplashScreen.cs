@@ -16,6 +16,7 @@ public class SplashScreen : MonoBehaviour
             return;
         }
 
+        ScoreManager.Instance.LoadWebScoreList();
         splashScreenToggled = true;
         StartCoroutine(WaitFade());
     }

@@ -12,7 +12,8 @@ public class InteractNPC : MonoBehaviour
         FIVE_STONES,
         SPS,
         CHAPTEH,
-        CUSTOMIZER
+        CUSTOMIZER,
+        LEADERBOARD
     }
 
     public NPC_TYPE type;
@@ -45,6 +46,10 @@ public class InteractNPC : MonoBehaviour
                 break;
             case NPC_TYPE.CUSTOMIZER:
                 SceneManager.LoadScene("CustomizeScene");
+                break;
+            case NPC_TYPE.LEADERBOARD:
+                // Recode this later on
+                Resources.FindObjectsOfTypeAll<LeaderboardManager>()[0].gameObject.SetActive(true);
                 break;
         }
     }
