@@ -45,7 +45,7 @@ public class FiveStonesGameManager : MonoBehaviour
     public float minObjectiveReset;
     public float maxObjectiveReset;
     public bool m_gameStarted;
-
+    public bool m_gameEnded = false;
 
     private void Awake()
     {
@@ -95,6 +95,8 @@ public class FiveStonesGameManager : MonoBehaviour
 
         DifficultyProgression();
         UpdateUI();
+
+        StartCoroutine(OnLeaderboardLoad());
     }
 
     public void DifficultyProgression()
@@ -162,6 +164,7 @@ public class FiveStonesGameManager : MonoBehaviour
     
     public void OnGameEnd()
     {
+        m_gameEnded = true;
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.25f);
         ScoreManager.Instance.EndCurrentGameScore();
     }
@@ -181,6 +184,16 @@ public class FiveStonesGameManager : MonoBehaviour
     public static Objective GetRandomColouredObjective()
     {
         return (Objective)Random.Range(1, (int)Objective.TOTAL - 1);
+    }
+
+    public IEnumerator OnLeaderboardLoad()
+    {
+        if (m_gameEnded)
+        {
+            yield return new WaitForSeconds(3);
+
+            Resources.FindObjectsOfTypeAll<LeaderboardManager>()[0].gameObject.SetActive(true);
+        }
     }
 
     private void OnDestroy()
