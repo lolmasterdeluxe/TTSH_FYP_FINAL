@@ -11,6 +11,9 @@ public class SPS_ObjectDespawningManager : MonoBehaviour
     [Tooltip("Reference to Object Manager Script")]
     SPS_ObjectManager objectspawningInstance;
 
+    [Tooltip("Reference to UI Manager Script")]
+    SPS_UIManager uimanagerInstance;
+
     #endregion
 
     #region Unity Callbacks
@@ -19,10 +22,29 @@ public class SPS_ObjectDespawningManager : MonoBehaviour
     {
         //add instance of object manager HERE
         objectspawningInstance = FindObjectOfType<SPS_ObjectManager>();
+
+        //add instance of UI manager HERE
+        uimanagerInstance = FindObjectOfType<SPS_UIManager>();
     }
 
     private void Update()
     {
+        if (uimanagerInstance.b_gameEnded == true)
+        {
+            foreach (GameObject a in objectspawningInstance.objectWaveList)
+            {
+                Destroy(a);
+                if (a.gameObject.GetComponent<Rigidbody2D>() != null)
+                {
+                    Destroy(a.gameObject.GetComponent<Rigidbody2D>());
+                }
+                Debug.Log("destroying enemies");
+            }
+        }
+
+        if (uimanagerInstance.b_gameEnded)
+            return;
+
         //we set the wave completed to be false when the list is empty
         //this starts the NEXT wave
         if (objectspawningInstance.objectWaveList.Count == 0)

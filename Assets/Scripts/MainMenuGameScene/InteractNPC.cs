@@ -17,16 +17,23 @@ public class InteractNPC : MonoBehaviour
     }
 
     public NPC_TYPE type;
+    TutorialScreenManager tutorialscreenmanagerInstance;
 
     void Start()
     {
-
+        tutorialscreenmanagerInstance = TutorialScreenManager.instance;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            //close all the screens
+            tutorialscreenmanagerInstance.TutorialScreenClosed(TutorialScreenManager.TutorialScreenType.SPS);
+            tutorialscreenmanagerInstance.TutorialScreenClosed(TutorialScreenManager.TutorialScreenType.FIVESTONES);
+            tutorialscreenmanagerInstance.TutorialScreenClosed(TutorialScreenManager.TutorialScreenType.CHAPTEH);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -35,14 +42,17 @@ public class InteractNPC : MonoBehaviour
 
         switch (type)
         {
-            case NPC_TYPE.CHAPTEH:
-                SceneManager.LoadScene("Chapteh");
+            case NPC_TYPE.SPS:
+                tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.SPS);
+                //SceneManager.LoadScene("Scissors Paper Stone");
                 break;
             case NPC_TYPE.FIVE_STONES:
-                SceneManager.LoadScene("FiveStonesFruitNinja");
+                tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.FIVESTONES);
+                //SceneManager.LoadScene("FiveStonesFruitNinja");
                 break;
-            case NPC_TYPE.SPS:
-                SceneManager.LoadScene("Scissors Paper Stone");
+            case NPC_TYPE.CHAPTEH:
+                tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.CHAPTEH);
+                //SceneManager.LoadScene("Chapteh");
                 break;
             case NPC_TYPE.CUSTOMIZER:
                 SceneManager.LoadScene("CustomizeScene");

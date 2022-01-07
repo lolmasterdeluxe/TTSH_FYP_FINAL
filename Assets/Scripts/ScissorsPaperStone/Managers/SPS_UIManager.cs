@@ -53,6 +53,7 @@ public class SPS_UIManager : MonoBehaviour
     // for game end
 
     public GameObject g_gameTimeUp;
+    public bool b_gameEnded;
 
     #endregion
 
@@ -78,6 +79,7 @@ public class SPS_UIManager : MonoBehaviour
     public void StartGame(float time, int score)
     {
         b_gameStart = true;
+        b_gameEnded = false;
 
         //start the coroutine that allows spawning
         objectmanagerInstance.b_allowObjectSpawning = true;
@@ -104,7 +106,7 @@ public class SPS_UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (!b_gameStart)
+        if (!b_gameStart || b_gameEnded)
             return;
 
         UpdatePlayerScore();
@@ -149,6 +151,7 @@ public class SPS_UIManager : MonoBehaviour
     {
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.25f);
         ScoreManager.Instance.EndCurrentGameScore();
+        b_gameEnded = true;
     }
 
     public void UpdateTimerText()

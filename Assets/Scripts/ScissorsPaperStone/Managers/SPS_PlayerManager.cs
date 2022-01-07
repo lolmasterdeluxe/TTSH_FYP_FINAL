@@ -53,12 +53,17 @@ public class SPS_PlayerManager : MonoBehaviour
     //variables for combo
     public GameObject g_comboGroup, g_comboText, g_comboText_finalPos;
 
+    //variables for player idle character (endgame)
+    public GameObject current_player_sprite, end_player_sprite;
+
+
     #endregion
 
     #region Unity Callbacks
 
     private void Start()
     {
+
         //set reference to scripts HERE
         objectManagerInstance = FindObjectOfType<SPS_ObjectManager>();
         uiManagerInstance = FindObjectOfType<SPS_UIManager>();
@@ -85,7 +90,14 @@ public class SPS_PlayerManager : MonoBehaviour
 
     private void Update()
     {
-        if (!uiManagerInstance.b_gameStart)
+        if (uiManagerInstance.b_gameEnded == true)
+        {
+            ResetAnimationsAndChoice();
+            current_player_sprite.SetActive(false);
+            end_player_sprite.SetActive(true);
+        }
+
+        if (!uiManagerInstance.b_gameStart || uiManagerInstance.b_gameEnded)
             return;
 
         uiManagerInstance.UpdateComboScore(g_comboText);
