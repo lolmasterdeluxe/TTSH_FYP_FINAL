@@ -106,13 +106,14 @@ public class SPS_UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (!b_gameStart || b_gameEnded)
+        if (!b_gameStart)
             return;
 
         UpdatePlayerScore();
         UpdateTimerText();
         UpdateButtonBehaviour();
 
+        StartCoroutine(OnLeaderboardLoad());
     }
 
     #endregion
@@ -149,9 +150,9 @@ public class SPS_UIManager : MonoBehaviour
 
     public void EndGame()
     {
+        b_gameEnded = true;
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.25f);
         ScoreManager.Instance.EndCurrentGameScore();
-        b_gameEnded = true;
     }
 
     public void UpdateTimerText()
@@ -221,4 +222,17 @@ public class SPS_UIManager : MonoBehaviour
 
     #endregion
 
+    #region LeaderBoard Functions
+
+    public IEnumerator OnLeaderboardLoad()
+    {
+        if (b_gameEnded)
+        {
+            yield return new WaitForSeconds(3);
+
+            Resources.FindObjectsOfTypeAll<LeaderboardManager>()[0].gameObject.SetActive(true);
+        }
+    }
+
+    #endregion
 }

@@ -25,7 +25,6 @@ public class ChaptehGameManager : MonoBehaviour
     public GameObject g_comboExpiryBar;
     public GameObject g_objectiveText;
     public GameObject g_gameTimeUp;
-    //public GameObject g_gameLeaderboard;
     public Objective m_currentObjective;
 
     public int m_score;
@@ -184,7 +183,6 @@ public class ChaptehGameManager : MonoBehaviour
         {
             yield return new WaitForSeconds(3);
 
-            //g_gameLeaderboard.SetActive(true);
             Resources.FindObjectsOfTypeAll<LeaderboardManager>()[0].gameObject.SetActive(true);
         }
     }
