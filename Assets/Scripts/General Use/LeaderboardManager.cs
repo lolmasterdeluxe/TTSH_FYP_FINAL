@@ -116,5 +116,9 @@ public class LeaderboardManager : MonoBehaviour
             GameObject.Find("MainCharacter").GetComponent<PlayerMovementScript>().Start();
             gameObject.SetActive(false);
         }
+        else
+        {
+            SceneManager.LoadScene("MainMenuGameScene");
+        }
     }
 }

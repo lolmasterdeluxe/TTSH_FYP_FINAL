@@ -2084,8 +2084,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sps_tutorialScreen: {fileID: 161171776}
-  fivestones_tutorialScreen: {fileID: 1244249511}
-  chapteh_tutorialScreen: {fileID: 1033274762}
+  fivestones_tutorialScreen: {fileID: 1033274762}
+  chapteh_tutorialScreen: {fileID: 1244249511}
 --- !u!1 &933027766
 GameObject:
   m_ObjectHideFlags: 0
