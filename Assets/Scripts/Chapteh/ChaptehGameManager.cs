@@ -72,12 +72,8 @@ public class ChaptehGameManager : MonoBehaviour
     {
         if (!m_gameStarted)
             return;
-        else if (m_gameEnded)
-            return;
 
         UIUpdate();
-
-        GameTimesUp();
     }
 
     public IEnumerator ObjectiveCoroutine()
@@ -174,21 +170,14 @@ public class ChaptehGameManager : MonoBehaviour
 
     public void OnGameEnd()
     {
+        m_gameEnded = true;
+        TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.25f);
         ScoreManager.Instance.EndCurrentGameScore();
     }
 
     public static Objective GetRandomColouredObjective()
     {
         return (Objective)Random.Range(1, (int)Objective.TOTAL - 1);
-    }
-
-    private void GameTimesUp()
-    {
-        if (TimerManager.Instance.GetRemainingTime() == 0)
-        {
-            m_gameEnded = true;
-            TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.25f);
-        }
     }
 
     private void OnDestroy()

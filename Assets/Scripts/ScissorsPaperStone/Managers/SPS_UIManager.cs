@@ -50,6 +50,10 @@ public class SPS_UIManager : MonoBehaviour
     [Tooltip("Increased Button Size")]
     Vector3 v_increasedbuttonSize;
 
+    // for game end
+
+    public GameObject g_gameTimeUp;
+
     #endregion
 
     #region Unity Callbacks
@@ -88,6 +92,7 @@ public class SPS_UIManager : MonoBehaviour
         ScoreManager.Instance.LoadNewGamemode(ScoreManager.Gamemode.SPS);
         //we set the combo manager's alpha to be 0 on start
         TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 0f, 0f);
+        TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 0f, 0f);
 
         //attach events HERE
         ComboManager.Instance.e_comboAdded.AddListener(ComboAdded);
@@ -142,6 +147,7 @@ public class SPS_UIManager : MonoBehaviour
 
     public void EndGame()
     {
+        TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.25f);
         ScoreManager.Instance.EndCurrentGameScore();
     }
 
