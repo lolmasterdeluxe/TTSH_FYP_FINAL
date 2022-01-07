@@ -25,6 +25,7 @@ public class ChaptehGameManager : MonoBehaviour
     public GameObject g_comboExpiryBar;
     public GameObject g_objectiveText;
     public GameObject g_gameTimeUp;
+    //public GameObject g_gameLeaderboard;
     public Objective m_currentObjective;
 
     public int m_score;
@@ -74,6 +75,8 @@ public class ChaptehGameManager : MonoBehaviour
             return;
 
         UIUpdate();
+
+        StartCoroutine(OnLeaderboardLoad());
     }
 
     public IEnumerator ObjectiveCoroutine()
@@ -173,6 +176,17 @@ public class ChaptehGameManager : MonoBehaviour
         m_gameEnded = true;
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.25f);
         ScoreManager.Instance.EndCurrentGameScore();
+    }
+
+    public IEnumerator OnLeaderboardLoad()
+    {
+        if (m_gameEnded)
+        {
+            yield return new WaitForSeconds(3);
+
+            //g_gameLeaderboard.SetActive(true);
+            Resources.FindObjectsOfTypeAll<LeaderboardManager>()[0].gameObject.SetActive(true);
+        }
     }
 
     public static Objective GetRandomColouredObjective()
