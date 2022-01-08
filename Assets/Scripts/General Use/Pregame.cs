@@ -90,14 +90,14 @@ public class Pregame : MonoBehaviour
                 TweenManager.Instance.AnimateFade(mainUICanvasGroup, 1f, 0.5f);
                 TweenManager.Instance.AnimateFade(panelCanvasGroup, 1f, 0.5f);
                 countdownText.gameObject.SetActive(false);
-                FiveStonesGameManager.Instance.StartGame(60, 1);
+                FiveStonesGameManager.Instance.StartGame(3, 1);
                 break;
             case GameMode.CHAPTEH:
                 m_countdownOver = false;
                 TweenManager.Instance.AnimateFade(mainUICanvasGroup, 1f, 1f);
                 TweenManager.Instance.AnimateFade(panelCanvasGroup, 0f, 0f);
                 countdownText.gameObject.SetActive(false);
-                ChaptehGameManager.Instance.StartGame(90);
+                ChaptehGameManager.Instance.StartGame(3);
                 break;
         }
     }

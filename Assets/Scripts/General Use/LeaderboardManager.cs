@@ -53,20 +53,29 @@ public class LeaderboardManager : MonoBehaviour
         ScoreManager.Score currentScore = sortedScoreList.Where(x => x.m_username == ScoreManager.Instance.m_currentUsername).FirstOrDefault();
         UpdateSlider(currentScore.m_score, sortedScoreList[0].m_score);
 
-        UpdateAvatar(rankOneSlot.transform.GetChild(0).gameObject, sortedScoreList[0]);
-        rankOneSlot.transform.GetChild(1).GetComponent<TMP_Text>().text = sortedScoreList[0].m_username;
-        rankOneSlot.transform.GetChild(2).GetComponent<TMP_Text>().text = sortedScoreList[0].m_score.ToString();
+        if (sortedScoreList.ElementAtOrDefault(0) != null)
+        {
+            UpdateAvatar(rankOneSlot.transform.GetChild(0).gameObject, sortedScoreList[0]);
+            rankOneSlot.transform.GetChild(1).GetComponent<TMP_Text>().text = sortedScoreList[0].m_username;
+            rankOneSlot.transform.GetChild(2).GetComponent<TMP_Text>().text = sortedScoreList[0].m_score.ToString();
+        }
 
-        UpdateAvatar(rankTwoSlot.transform.GetChild(0).gameObject, sortedScoreList[1]);
-        rankTwoSlot.transform.GetChild(1).GetComponent<TMP_Text>().text = sortedScoreList[1].m_username;
-        rankTwoSlot.transform.GetChild(2).GetComponent<TMP_Text>().text = sortedScoreList[1].m_score.ToString();
+        if (sortedScoreList.ElementAtOrDefault(1) != null)
+        {
+            UpdateAvatar(rankTwoSlot.transform.GetChild(0).gameObject, sortedScoreList[1]);
+            rankTwoSlot.transform.GetChild(1).GetComponent<TMP_Text>().text = sortedScoreList[1].m_username;
+            rankTwoSlot.transform.GetChild(2).GetComponent<TMP_Text>().text = sortedScoreList[1].m_score.ToString();
+        }
 
-        UpdateAvatar(rankThreeSlot.transform.GetChild(0).gameObject, sortedScoreList[2]);
-        rankThreeSlot.transform.GetChild(1).GetComponent<TMP_Text>().text = sortedScoreList[2].m_username;
-        rankThreeSlot.transform.GetChild(2).GetComponent<TMP_Text>().text = sortedScoreList[2].m_score.ToString();
+        if (sortedScoreList.ElementAtOrDefault(2) != null)
+        {
+            UpdateAvatar(rankThreeSlot.transform.GetChild(0).gameObject, sortedScoreList[2]);
+            rankThreeSlot.transform.GetChild(1).GetComponent<TMP_Text>().text = sortedScoreList[2].m_username;
+            rankThreeSlot.transform.GetChild(2).GetComponent<TMP_Text>().text = sortedScoreList[2].m_score.ToString();
+        }
 
         UpdateAvatar(currentRankSlot.transform.GetChild(1).gameObject, currentScore);
-        currentRankSlot.transform.GetChild(0).GetComponent<TMP_Text>().text = (sortedScoreList.FindIndex(x => x.m_username == ScoreManager.Instance.m_currentUsername) + 1).ToString();
+        currentRankSlot.transform.GetChild(0).GetComponent<TMP_Text>().text = (sortedScoreList.IndexOf(currentScore) + 1).ToString();
         currentRankSlot.transform.GetChild(3).GetComponent<TMP_Text>().text = currentScore.m_score.ToString();
     }
 
@@ -79,23 +88,23 @@ public class LeaderboardManager : MonoBehaviour
         for (int i = 1; i < avatar.transform.childCount; i++)
             avatar.transform.GetChild(i).GetComponent<Image>().enabled = false;
 
-        if (hatCustomizable.m_bone == CustomizerManager.Bone.HAT)
+        if (hatCustomizable.m_bone == CustomizerManager.Bone.HAT && hatCustomizable.m_sprite != null)
         {
             avatar.transform.GetChild(2).GetComponent<Image>().enabled = true;
             avatar.transform.GetChild(2).GetComponent<Image>().sprite = hatCustomizable.m_sprite;
         }
-        else if (hatCustomizable.m_bone == CustomizerManager.Bone.HEAD_BAND)
+        else if (hatCustomizable.m_bone == CustomizerManager.Bone.HEAD_BAND && hatCustomizable.m_sprite != null)
         {
             avatar.transform.GetChild(3).GetComponent<Image>().enabled = true;
             avatar.transform.GetChild(3).GetComponent<Image>().sprite = hatCustomizable.m_sprite;
         }
 
-        if (faceCustomizable.m_bone == CustomizerManager.Bone.GLASSES)
+        if (faceCustomizable.m_bone == CustomizerManager.Bone.GLASSES && faceCustomizable.m_sprite != null)
         {
             avatar.transform.GetChild(4).GetComponent<Image>().enabled = true;
             avatar.transform.GetChild(4).GetComponent<Image>().sprite = faceCustomizable.m_sprite;
         }
-        else if (faceCustomizable.m_bone == CustomizerManager.Bone.MOUTH)
+        else if (faceCustomizable.m_bone == CustomizerManager.Bone.MOUTH && faceCustomizable.m_sprite != null)
         {
             avatar.transform.GetChild(1).GetComponent<Image>().enabled = true;
             avatar.transform.GetChild(1).GetComponent<Image>().sprite = faceCustomizable.m_sprite;

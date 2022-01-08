@@ -167,6 +167,7 @@ public class FiveStonesGameManager : MonoBehaviour
         m_gameEnded = true;
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.25f);
         ScoreManager.Instance.EndCurrentGameScore();
+        Resources.FindObjectsOfTypeAll<LeaderboardManager>()[0].gameObject.SetActive(true);
     }
 
     public void OnComboAdd()
