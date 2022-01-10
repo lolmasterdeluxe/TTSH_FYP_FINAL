@@ -2086,6 +2086,9 @@ MonoBehaviour:
   sps_tutorialScreen: {fileID: 161171776}
   fivestones_tutorialScreen: {fileID: 1033274762}
   chapteh_tutorialScreen: {fileID: 1244249511}
+  sps_npc: {fileID: 401072022}
+  fivestones_npc: {fileID: 1511389521}
+  chapteh_npc: {fileID: 383633382}
 --- !u!1 &933027766
 GameObject:
   m_ObjectHideFlags: 0

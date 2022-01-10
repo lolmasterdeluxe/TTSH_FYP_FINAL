@@ -37,7 +37,6 @@ public class SPS_UIManager : MonoBehaviour
 
     public GameObject g_comboGroup, g_comboText, g_comboText_finalPos;
 
-    public bool b_gameStart;
 
     //for UI buttons
 
@@ -50,9 +49,10 @@ public class SPS_UIManager : MonoBehaviour
     [Tooltip("Increased Button Size")]
     Vector3 v_increasedbuttonSize;
 
-    // for game end
+    // for game start and end
 
     public GameObject g_gameTimeUp;
+    public bool b_gameStart;
     public bool b_gameEnded;
 
     #endregion

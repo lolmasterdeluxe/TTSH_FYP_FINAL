@@ -15,6 +15,7 @@ public class TutorialScreenManager : MonoBehaviour
     };
 
     public GameObject sps_tutorialScreen, fivestones_tutorialScreen, chapteh_tutorialScreen;
+    public GameObject sps_npc, fivestones_npc, chapteh_npc;
 
     public static TutorialScreenManager instance;
     #endregion
@@ -70,12 +71,15 @@ public class TutorialScreenManager : MonoBehaviour
         {
             case 0:
                 SceneManager.LoadScene("Scissors Paper Stone");
+                Destroy(sps_npc.GetComponent<CapsuleCollider2D>());
                 break;
             case 1:
                 SceneManager.LoadScene("FiveStonesFruitNinja");
+                Destroy(fivestones_npc.GetComponent<CapsuleCollider2D>());
                 break;
             case 2:
                 SceneManager.LoadScene("Chapteh");
+                Destroy(chapteh_npc.GetComponent<CapsuleCollider2D>());
                 break;
         }
 
