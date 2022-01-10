@@ -70,16 +70,16 @@ public class TutorialScreenManager : MonoBehaviour
         switch (gameType)
         {
             case 0:
-                SceneManager.LoadScene("Scissors Paper Stone");
                 Destroy(sps_npc.GetComponent<CapsuleCollider2D>());
+                SceneManager.LoadScene("Scissors Paper Stone");
                 break;
             case 1:
-                SceneManager.LoadScene("FiveStonesFruitNinja");
                 Destroy(fivestones_npc.GetComponent<CapsuleCollider2D>());
+                SceneManager.LoadScene("FiveStonesFruitNinja");
                 break;
             case 2:
-                SceneManager.LoadScene("Chapteh");
                 Destroy(chapteh_npc.GetComponent<CapsuleCollider2D>());
+                SceneManager.LoadScene("Chapteh");
                 break;
         }
 
