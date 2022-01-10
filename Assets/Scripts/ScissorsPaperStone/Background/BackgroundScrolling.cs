@@ -22,8 +22,6 @@ public class BackgroundScrolling : MonoBehaviour
         //get reference to other scripts HERE
         uimanagerInstance = FindObjectOfType<SPS_UIManager>();
 
-        
-
     }
 
     private void Update()
@@ -36,7 +34,6 @@ public class BackgroundScrolling : MonoBehaviour
             gameObject.transform.localPosition = new Vector3(Screen.currentResolution.width, transform.localPosition.y, transform.localPosition.z);
         else if (secondobject.transform.localPosition.x <= -Screen.currentResolution.width)
             secondobject.transform.localPosition = new Vector3(Screen.currentResolution.width, transform.localPosition.y, transform.localPosition.z);
-        //gameObject.GetComponent<RawImage>().ShiftPixelsHorizontally(speed);
     }
    
     #endregion
