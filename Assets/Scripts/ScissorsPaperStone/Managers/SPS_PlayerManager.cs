@@ -234,6 +234,8 @@ public class SPS_PlayerManager : MonoBehaviour
     public void PlayerJumps()
     {
         player_choice = PlayerChoice.PLAYER_JUMP;
+        this.gameObject.transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
+        this.gameObject.transform.localPosition = new Vector3(-5.76f, 0.22f, -1f);
         playerAC.SetBool("PlayerJumped", true);
         MoveBoxCollider();
     }
@@ -262,6 +264,9 @@ public class SPS_PlayerManager : MonoBehaviour
         {
             //we want to shift the collider back to the original position
             collider_player.offset = v_originalcolliderposition;
+            //set the player size and everything back to normal
+            this.gameObject.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
+            this.gameObject.transform.localPosition = new Vector3(-5.76f, -0.9f, -1f);
         }
     }
 
@@ -350,7 +355,11 @@ public class SPS_PlayerManager : MonoBehaviour
                 else
                 {
                     //player gets stunned
+                    this.gameObject.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
+                    this.gameObject.transform.localPosition = new Vector3(-5.76f, -0.9f, -1f);
+
                     playerAC.SetBool("PlayerStunned", true);
+
 
                     ComboManager.Instance.BreakCombo();
 
@@ -369,6 +378,9 @@ public class SPS_PlayerManager : MonoBehaviour
         {
             if (other.gameObject.tag == "EnemyTag")
             {
+                this.gameObject.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
+                this.gameObject.transform.localPosition = new Vector3(-5.76f, -0.9f, -1f);
+
                 //player gets stunned
                 playerAC.SetBool("PlayerStunned", true);
 
@@ -385,6 +397,9 @@ public class SPS_PlayerManager : MonoBehaviour
 
             if (other.gameObject.tag == "Obstacle")
             {
+                this.gameObject.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
+                this.gameObject.transform.localPosition = new Vector3(-5.76f, -0.9f, -1f);
+
                 //player gets stunned
                 playerAC.SetBool("PlayerStunned", true);
 
