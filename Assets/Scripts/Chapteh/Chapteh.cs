@@ -16,7 +16,6 @@ public class Chapteh : MonoBehaviour
 
     private Vector2 lookDirection;
     private float lookAngle;
-    //private bool isDecreasing = false;
     
     [SerializeField] private KickChapteh kickChapteh;
 
@@ -123,7 +122,6 @@ public class Chapteh : MonoBehaviour
         // Player picks up and spawns the Chapteh back to the player if lands on the ground
         if (other.CompareTag("Player"))
         {
-            //Debug.Log("Chapteh respawns to Player");
             rbChapteh.velocity = Vector2.zero;
             transform.rotation = rotPos;
             inPlay = false;
@@ -132,7 +130,6 @@ public class Chapteh : MonoBehaviour
         // Chapteh lands on the ground and breaks the combo
         if (other.CompareTag("Ground"))
         {
-            Debug.Log("Chapteh lands on ground");
             ComboManager.Instance.BreakCombo();
         }
 

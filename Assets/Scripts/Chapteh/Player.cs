@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
 
     public ParticleSystem sandDust;
     private PauseMenu pauseMenu;
+    private Chapteh chapteh;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class Player : MonoBehaviour
         playerAnim = GetComponent<Animator>();
 
         pauseMenu = GameObject.Find("Pause Manager").GetComponent<PauseMenu>();
+        chapteh = GameObject.Find("Chapteh").GetComponent<Chapteh>();
     }
 
     // Update is called once per frame
@@ -96,9 +98,14 @@ public class Player : MonoBehaviour
             FlipSandDust();
         }
 
-        if (Input.GetMouseButtonUp(0))
+        // When chapteh is in the air, do nothing
+        if (chapteh.inPlay)
+            return;
+        else
         {
-            playerAnim.SetTrigger("PlayerKick");
+            // When chapteh is at the player, play kick animation
+            if (Input.GetMouseButtonUp(0))
+                playerAnim.SetTrigger("PlayerKick");
         }
     }
 

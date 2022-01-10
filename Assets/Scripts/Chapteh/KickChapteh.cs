@@ -23,28 +23,35 @@ public class KickChapteh : MonoBehaviour
 
     public void PowerLaunch()
     {
-        if (Input.GetMouseButton(0))
+        // When chapteh is in the air, do nothing
+        if (chapteh.inPlay)
+            return;
+        else
         {
-            // Fill amount increases to the hold down mouse key
-            if (chargeBar.GetComponent<Image>().fillAmount != 1)
-                holdDownStartTime += 0.5f * Time.deltaTime;
+            // When chapteh is at the player, charge up to launch it.
+            if (Input.GetMouseButton(0))
+            {
+                // Fill amount increases to the hold down mouse key
+                if (chargeBar.GetComponent<Image>().fillAmount != 1)
+                    holdDownStartTime += 0.5f * Time.deltaTime;
 
-            // Fills the bar according to value of holdDownStartTime
-            chargeBar.SetFillBar(holdDownStartTime);
+                // Fills the bar according to value of holdDownStartTime
+                chargeBar.SetFillBar(holdDownStartTime);
 
-            chargeBar.charge.SetActive(true);
-        }
+                chargeBar.charge.SetActive(true);
+            }
 
-        if (Input.GetMouseButtonUp(0))
-        {
-            float holdDownTime = holdDownStartTime - Time.deltaTime;
-            chapteh.Kick(CalculateHoldDownForce(holdDownTime));
+            if (Input.GetMouseButtonUp(0))
+            {
+                float holdDownTime = holdDownStartTime - Time.deltaTime;
+                chapteh.Kick(CalculateHoldDownForce(holdDownTime));
 
-            // Resets the values to 0
-            holdDownStartTime = 0f;
-            chargeBar.SetFillBar(0);
+                // Resets the values to 0
+                holdDownStartTime = 0f;
+                chargeBar.SetFillBar(0);
 
-            chargeBar.charge.SetActive(false);
+                chargeBar.charge.SetActive(false);
+            }
         }
     }
 
