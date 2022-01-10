@@ -82,7 +82,7 @@ public class Pregame : MonoBehaviour
                 TweenManager.Instance.AnimateFade(mainUICanvasGroup, 1f, 1f);
                 TweenManager.Instance.AnimateFade(panelCanvasGroup, 0f, 0f);
                 countdownText.gameObject.SetActive(false);
-                SPS_UIManager.Instance.StartGame(5, 1);
+                SPS_UIManager.Instance.StartGame(10, 1);
                 break;
             case GameMode.FIVE_STONES:
                 m_countdownOver = false;
@@ -90,14 +90,14 @@ public class Pregame : MonoBehaviour
                 TweenManager.Instance.AnimateFade(mainUICanvasGroup, 1f, 0.5f);
                 TweenManager.Instance.AnimateFade(panelCanvasGroup, 1f, 0.5f);
                 countdownText.gameObject.SetActive(false);
-                FiveStonesGameManager.Instance.StartGame(3, 1);
+                FiveStonesGameManager.Instance.StartGame(10, 1);
                 break;
             case GameMode.CHAPTEH:
                 m_countdownOver = false;
                 TweenManager.Instance.AnimateFade(mainUICanvasGroup, 1f, 1f);
                 TweenManager.Instance.AnimateFade(panelCanvasGroup, 0f, 0f);
                 countdownText.gameObject.SetActive(false);
-                ChaptehGameManager.Instance.StartGame(3);
+                ChaptehGameManager.Instance.StartGame(10);
                 break;
         }
     }
