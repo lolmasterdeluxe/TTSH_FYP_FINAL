@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerMovementScript : MonoBehaviour
 {
@@ -17,6 +18,12 @@ public class PlayerMovementScript : MonoBehaviour
     public Vector2 movement, prevMovement;
 
     public bool m_isRight = true;
+
+    //for mobile touch
+    [Tooltip("Touch Position of Finger")]
+    public Vector2 touchedPosition;
+    private Touch touch;
+
     #endregion
 
     #region Unity Callbacks
@@ -27,6 +34,19 @@ public class PlayerMovementScript : MonoBehaviour
         {
             transform.position = rollbackPosition;
             doRollbackPosition = false;
+        }
+
+        //for mobile touch input
+        if (Input.touchCount > 0)
+        {
+            touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began)
+            {
+                //we want to move the position of the player to the touched area
+                touchedPosition = touch.position;
+                this.gameObject.transform.DOMove(touchedPosition, playerSpeed);
+                this.gameObject.transform.GetComponent<Rigidbody2D>().DOMove(touchedPosition, playerSpeed);
+            }
         }
 
         //get references HERE
@@ -46,6 +66,8 @@ public class PlayerMovementScript : MonoBehaviour
 
         PlayerMovementFunction();
         PlayerAnimationFunction();
+
+        
 
         if (movement.x < 0 && m_isRight)
             m_isRight = false;
@@ -88,6 +110,12 @@ public class PlayerMovementScript : MonoBehaviour
         doRollbackPosition = true;
         rollbackPosition = (transform.position - new Vector3(collisionPosition.x, collisionPosition.y, transform.position.z)).normalized * rollbackBounceOffDistanceMultiplier + transform.position;
     }
+
+    //these functions for mobile
+
+
+
+
 
     #endregion
 
