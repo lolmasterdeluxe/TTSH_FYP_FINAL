@@ -19,6 +19,8 @@ public class KickChapteh : MonoBehaviour
 
         // For Player UI in World Space
         chargeBar.charge.SetActive(false);
+
+        holdDownStartTime = 0f;
     }
 
     public void PowerLaunch()

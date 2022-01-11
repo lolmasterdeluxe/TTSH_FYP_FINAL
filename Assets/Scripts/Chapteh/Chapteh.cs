@@ -82,7 +82,7 @@ public class Chapteh : MonoBehaviour
         lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
 
         // Rotate according the mouse position
-        transform.rotation = Quaternion.Euler(0f, 0f, lookAngle - 90f);
+        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, lookAngle - 90f));
     }
 
     public void Kick(float speed)
