@@ -31,6 +31,10 @@ public class EnvironmentManager : MonoBehaviour
     private void Start()
     {
         parallexbackgroundmanagerInstance = FindObjectOfType<ParallexBackgroundManager>();
+        f_currentTime = 2f;
+        //set everthing to night FIRST
+        OnStartRun();
+
     }
 
     private void Update()
@@ -38,7 +42,9 @@ public class EnvironmentManager : MonoBehaviour
 
         #region Time
 
-        f_currentTime += Time.deltaTime;
+        f_currentTime += Time.deltaTime * 1.2f;
+
+        //one day cycle has been completed, reset it
         if (f_currentTime >= 24f)
         {
             f_currentTime = 0f;
@@ -46,27 +52,26 @@ public class EnvironmentManager : MonoBehaviour
         }
 
         //switching to morning
-        if (f_currentTime >= 7f)
+        if (f_currentTime >= 9f)
         {
-
+            ItIsDay();
         }
 
         //switching to night
         if (f_currentTime >= 19f)
         {
-
+            ItIsNight();
         }
 
 
 
         #endregion
 
-
-
         #region Background Scrolling 
 
-        //sky gradient
-        parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(0f, -0.024f));
+        //for background
+
+        parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(0f, -0.048f));
         parallexbackgroundmanagerInstance.componentContainer[0].GetComponent<MeshRenderer>().material.mainTextureOffset
         += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * Time.deltaTime;
 
@@ -88,5 +93,27 @@ public class EnvironmentManager : MonoBehaviour
 
     #endregion
 
+    #region Helper Functions
+
+    public void ItIsDay()
+    {
+        g_morningPlatform.transform.GetComponent<SpriteRenderer>().DOFade(1f, 7f);
+        g_nightPlatform.transform.GetComponent<SpriteRenderer>().DOFade(0f, 7f);
+    }
+
+    public void ItIsNight()
+    {
+        g_morningPlatform.transform.GetComponent<SpriteRenderer>().DOFade(0f, 7f);
+        g_nightPlatform.transform.GetComponent<SpriteRenderer>().DOFade(1f, 7f);
+    }
+
+    public void OnStartRun()
+    {
+        g_morningPlatform.transform.GetComponent<SpriteRenderer>().DOFade(0f, 0f);
+        g_nightPlatform.transform.GetComponent<SpriteRenderer>().DOFade(1f, 0f);
+    }
+
+
+    #endregion
 
 }
