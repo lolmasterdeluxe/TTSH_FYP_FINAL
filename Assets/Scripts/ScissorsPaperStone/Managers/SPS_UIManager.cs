@@ -122,12 +122,10 @@ public class SPS_UIManager : MonoBehaviour
 
     public void PlayerScores()
     {
-        if(ComboManager.Instance.GetCurrentCombo() == 0)
-        {
-            ScoreManager.Instance.AddCurrentGameScore(i_baseScore);
-        }
-        else
+        if(ComboManager.Instance.GetCurrentCombo() != 0)
             ScoreManager.Instance.AddCurrentGameScore(i_baseScore * ComboManager.Instance.GetCurrentCombo());
+        else
+            ScoreManager.Instance.AddCurrentGameScore(i_baseScore);
     }
 
     public void UpdatePlayerScore()

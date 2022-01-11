@@ -125,19 +125,16 @@ public class ChaptehGameManager : MonoBehaviour
         {
             ComboManager.Instance.AddCombo();
             ScoreManager.Instance.AddCurrentGameScore(redbaseScore * ComboManager.Instance.GetCurrentCombo());
-            //g_comboText.GetComponent<TMP_Text>().color = new Color(255f, 0f, 0f, 255f);
         }
         else if(gameObject.GetComponent<Rings>().type == m_currentObjective && m_currentObjective == Objective.HIT_YELLOW_RINGS)
         {
             ComboManager.Instance.AddCombo();
             ScoreManager.Instance.AddCurrentGameScore(yellowbaseScore * ComboManager.Instance.GetCurrentCombo());
-            //g_comboText.GetComponent<TMP_Text>().color = new Color(255f, 255f, 0f, 255f);
         }
         else if (gameObject.GetComponent<Rings>().type == m_currentObjective && m_currentObjective == Objective.HIT_GREEN_RINGS)
         {
             ComboManager.Instance.AddCombo();
             ScoreManager.Instance.AddCurrentGameScore(greenbaseScore * ComboManager.Instance.GetCurrentCombo());
-            //g_comboText.GetComponent<TMP_Text>().color = new Color(0f, 255f, 0f, 255f);
         }
         switch (gameObject.GetComponent<Rings>().type)
         {
