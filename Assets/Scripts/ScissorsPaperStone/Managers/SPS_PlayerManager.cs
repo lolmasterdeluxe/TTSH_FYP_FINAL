@@ -102,6 +102,14 @@ public class SPS_PlayerManager : MonoBehaviour
 
         uiManagerInstance.UpdateComboScore(g_comboText);
 
+        if (playerAC.GetBool("PlayerJumped") == false)
+        {
+            //set everything back to normal
+            this.gameObject.transform.localPosition = new Vector3(-5.76f, -0.9f, -1f);
+            this.gameObject.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
+        }
+
+
         #region Timers
 
         //for attacking 
@@ -256,6 +264,13 @@ public class SPS_PlayerManager : MonoBehaviour
         {
             //we want to shift the collider box UP
             collider_player.offset = collider_player.offset = new Vector2(0f, 1.185f);
+
+            //set the player size to be larger
+            this.gameObject.transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
+
+            //set the position of the player to be different
+            this.gameObject.transform.localPosition = new Vector3(-5.76f, 0.22f, -1f);
+
             //set boolean HERE
             b_playerJumped = true;
         }
