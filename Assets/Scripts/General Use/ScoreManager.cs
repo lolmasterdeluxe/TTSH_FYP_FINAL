@@ -191,8 +191,18 @@ public class ScoreManager : MonoBehaviour
 
     public void EndCurrentGameScore()
     {
-        Score score = new Score(m_currentUsername, m_currentGamemode.ToString(), m_currentScore);
-        m_allScoreList.Add(score);
+        Score score = m_allScoreList.Where(x => x.m_username == m_currentUsername && x.m_gamemode == m_currentGamemode.ToString()).FirstOrDefault();
+
+        if (score == null)
+        {
+            score = new Score(m_currentUsername, m_currentGamemode.ToString(), m_currentScore);
+            m_allScoreList.Add(score);
+        }
+        else
+        {
+            score.m_score = m_currentScore;
+        }
+
         UpdateCurrentUserTotalScore();
     }
 
