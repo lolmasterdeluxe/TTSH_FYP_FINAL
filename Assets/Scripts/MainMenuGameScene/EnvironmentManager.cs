@@ -51,17 +51,31 @@ public class EnvironmentManager : MonoBehaviour
             Debug.Log("cycle once");
         }
 
-        //switching to morning
-        if (f_currentTime >= 9f)
+        //switching to morning (clouds)
+        if (f_currentTime >= 7f)
         {
-            ItIsDay();
+            CloudSwitchToDay();
         }
 
-        //switching to night
+        //switching to morning (floor)
+        if (f_currentTime >= 9f)
+        {
+            FloorSwitchToDay();
+        }
+
+        //switching to night (clouds)
+        if (f_currentTime >= 18f)
+        {
+            CloudSwitchToNight();
+        }
+
+        //switching to night (floor)
         if (f_currentTime >= 19f)
         {
-            ItIsNight();
+            FloorSwitchToNight();
         }
+
+
 
 
 
@@ -95,22 +109,36 @@ public class EnvironmentManager : MonoBehaviour
 
     #region Helper Functions
 
-    public void ItIsDay()
+    public void CloudSwitchToDay()
+    {
+        g_morningCloud.transform.GetComponent<MeshRenderer>().material.DOFade(1f, 4f);
+        g_nightCloud.transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
+    }
+    public void FloorSwitchToDay()
     {
         g_morningPlatform.transform.GetComponent<SpriteRenderer>().DOFade(1f, 7f);
         g_nightPlatform.transform.GetComponent<SpriteRenderer>().DOFade(0f, 7f);
     }
 
-    public void ItIsNight()
+    public void CloudSwitchToNight()
+    {
+        g_morningCloud.transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
+        g_nightCloud.transform.GetComponent<MeshRenderer>().material.DOFade(1f, 4f);
+    }
+
+    public void FloorSwitchToNight()
     {
         g_morningPlatform.transform.GetComponent<SpriteRenderer>().DOFade(0f, 7f);
         g_nightPlatform.transform.GetComponent<SpriteRenderer>().DOFade(1f, 7f);
     }
 
+
     public void OnStartRun()
     {
         g_morningPlatform.transform.GetComponent<SpriteRenderer>().DOFade(0f, 0f);
         g_nightPlatform.transform.GetComponent<SpriteRenderer>().DOFade(1f, 0f);
+        g_morningCloud.transform.GetComponent<MeshRenderer>().material.DOFade(0f, 0f);
+        g_nightCloud.transform.GetComponent<MeshRenderer>().material.DOFade(1f, 0f);
     }
 
 
