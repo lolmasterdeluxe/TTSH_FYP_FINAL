@@ -15,8 +15,9 @@ public class Chapteh : MonoBehaviour
     private Quaternion rotPos;
 
     private Vector2 lookDirection;
-    private float lookAngle;
-    
+    private float lookAngle = 0f;
+    private float clampedAngle = 0f;
+
     [SerializeField] private KickChapteh kickChapteh;
 
     private float glowDuration = 1f;
@@ -81,8 +82,10 @@ public class Chapteh : MonoBehaviour
         
         lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
 
+        clampedAngle = Mathf.Clamp(lookAngle, 45f, 135f);
+
         // Rotate according the mouse position
-        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, lookAngle - 90f));
+        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, clampedAngle - 90f));
     }
 
     public void Kick(float speed)
