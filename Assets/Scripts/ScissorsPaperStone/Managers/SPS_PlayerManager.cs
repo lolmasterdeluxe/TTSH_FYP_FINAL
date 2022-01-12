@@ -427,8 +427,8 @@ public class SPS_PlayerManager : MonoBehaviour
 
             if (other.gameObject.tag == "Powerup")
             {
-                //set boolean to be true HERE
-                b_hasPowerup = true;
+                //add to the objective value
+                uiManagerInstance.UpdatePlayerObjectiveValue();
 
                 //remove the object from the list
                 objectManagerInstance.objectWaveList.Remove(other.gameObject);

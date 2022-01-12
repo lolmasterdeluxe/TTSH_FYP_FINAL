@@ -19,9 +19,6 @@ public class SPS_UIManager : MonoBehaviour
 
     //for score
 
-    [Tooltip("Player Score")]
-    public int current_playerScore;
-
     [Tooltip("Base score that each game session starts on")]
     int i_baseScore;
     
@@ -37,6 +34,13 @@ public class SPS_UIManager : MonoBehaviour
 
     public GameObject g_comboGroup, g_comboText, g_comboText_finalPos;
 
+    //for objective (formely powerups)
+
+    [Tooltip("Bonus objective value that adds at end of game")]
+    int i_objectiveValue;
+
+    [SerializeField]
+    GameObject g_objectiveText;
 
     //for UI buttons
 
@@ -88,6 +92,8 @@ public class SPS_UIManager : MonoBehaviour
 
         i_baseScore = score;
 
+        i_objectiveValue = 0;
+
         //set combo expiry HERE
         ComboManager.Instance.SetComboExpiry(4f);
         //set up scores HERE
@@ -112,6 +118,7 @@ public class SPS_UIManager : MonoBehaviour
         UpdatePlayerScore();
         UpdateTimerText();
         UpdateButtonBehaviour();
+        UpdatePlayerObjectiveValue();
 
         StartCoroutine(OnLeaderboardLoad());
     }
@@ -164,6 +171,21 @@ public class SPS_UIManager : MonoBehaviour
     }
 
     #endregion
+
+    #region Objective Text Functions
+
+    public void AddObjectiveValue()
+    {
+        i_objectiveValue += 1;
+    }
+
+    public void UpdatePlayerObjectiveValue()
+    {
+        g_objectiveText.GetComponent<TMP_Text>().text = "collected: " + i_objectiveValue;
+    }
+
+    #endregion
+
 
     #region Combo Manager Functions
 
