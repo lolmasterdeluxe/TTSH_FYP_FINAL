@@ -102,14 +102,6 @@ public class SPS_PlayerManager : MonoBehaviour
 
         uiManagerInstance.UpdateComboScore(g_comboText);
 
-        if (playerAC.GetBool("PlayerJumped") == false)
-        {
-            //set everything back to normal
-            this.gameObject.transform.localPosition = new Vector3(-5.76f, -0.9f, -1f);
-            this.gameObject.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
-        }
-
-
         #region Timers
 
         //for attacking 
@@ -140,7 +132,7 @@ public class SPS_PlayerManager : MonoBehaviour
         {
             f_playerJumpLifetime += Time.deltaTime;
 
-            if (f_playerJumpLifetime >= 0.795f)
+            if (f_playerJumpLifetime >= 0.2f)
             {
                 //reset the animations
                 ResetAnimationsAndChoice();
@@ -179,22 +171,22 @@ public class SPS_PlayerManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             PlayerChoosesScissors();
-            g_PlayerActionSprite.transform.localPosition = new Vector3(0.1f, -0.15f, 0f);
-            g_PlayerActionSprite.transform.localScale = new Vector3(1f, 1f, 1f);
+            g_PlayerActionSprite.transform.localPosition = new Vector3(0.5f, -0.25f, 0f);
+            g_PlayerActionSprite.transform.localScale = new Vector3(2f, 2f, 2f);
         }
 
         if (Input.GetKeyDown(KeyCode.S))
         {
             PlayerChoosesPaper();
-            g_PlayerActionSprite.transform.localPosition = new Vector3(0.5f, 0.25f, 0f);
-            g_PlayerActionSprite.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+            g_PlayerActionSprite.transform.localPosition = new Vector3(1.5f, 0.75f, 0f);
+            g_PlayerActionSprite.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         }
 
         if (Input.GetKeyDown(KeyCode.D))
         {
             PlayerChoosesStone();
             g_PlayerActionSprite.transform.localPosition = new Vector3(0.03f, 0f, 0f);
-            g_PlayerActionSprite.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+            g_PlayerActionSprite.transform.localScale = new Vector3(1.75f, 1.75f, 1.75f);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -242,8 +234,6 @@ public class SPS_PlayerManager : MonoBehaviour
     public void PlayerJumps()
     {
         player_choice = PlayerChoice.PLAYER_JUMP;
-        this.gameObject.transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
-        this.gameObject.transform.localPosition = new Vector3(-5.76f, 0.22f, -1f);
         playerAC.SetBool("PlayerJumped", true);
         MoveBoxCollider();
     }
@@ -263,13 +253,7 @@ public class SPS_PlayerManager : MonoBehaviour
         if (player_choice == PlayerChoice.PLAYER_JUMP)
         {
             //we want to shift the collider box UP
-            collider_player.offset = collider_player.offset = new Vector2(0f, 1.185f);
-
-            //set the player size to be larger
-            this.gameObject.transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
-
-            //set the position of the player to be different
-            this.gameObject.transform.localPosition = new Vector3(-5.76f, 0.22f, -1f);
+            collider_player.offset = collider_player.offset = new Vector2(0f, 2.25f);
 
             //set boolean HERE
             b_playerJumped = true;
@@ -279,9 +263,6 @@ public class SPS_PlayerManager : MonoBehaviour
         {
             //we want to shift the collider back to the original position
             collider_player.offset = v_originalcolliderposition;
-            //set the player size and everything back to normal
-            this.gameObject.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
-            this.gameObject.transform.localPosition = new Vector3(-5.76f, -0.9f, -1f);
         }
     }
 
@@ -370,11 +351,8 @@ public class SPS_PlayerManager : MonoBehaviour
                 else
                 {
                     //player gets stunned
-                    this.gameObject.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
-                    this.gameObject.transform.localPosition = new Vector3(-5.76f, -0.9f, -1f);
 
                     playerAC.SetBool("PlayerStunned", true);
-
 
                     ComboManager.Instance.BreakCombo();
 
@@ -393,8 +371,6 @@ public class SPS_PlayerManager : MonoBehaviour
         {
             if (other.gameObject.tag == "EnemyTag")
             {
-                this.gameObject.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
-                this.gameObject.transform.localPosition = new Vector3(-5.76f, -0.9f, -1f);
 
                 //player gets stunned
                 playerAC.SetBool("PlayerStunned", true);
@@ -412,8 +388,6 @@ public class SPS_PlayerManager : MonoBehaviour
 
             if (other.gameObject.tag == "Obstacle")
             {
-                this.gameObject.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
-                this.gameObject.transform.localPosition = new Vector3(-5.76f, -0.9f, -1f);
 
                 //player gets stunned
                 playerAC.SetBool("PlayerStunned", true);

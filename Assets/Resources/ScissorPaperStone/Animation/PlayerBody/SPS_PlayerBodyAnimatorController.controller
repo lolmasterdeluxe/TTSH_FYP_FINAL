@@ -279,9 +279,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.33881763
-  m_TransitionOffset: 0.004718439
-  m_ExitTime: 0.051810533
+  m_TransitionDuration: 0.3970957
+  m_TransitionOffset: 0.19145682
+  m_ExitTime: 0.33885908
   m_HasExitTime: 0
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
@@ -384,7 +384,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: player_jumping
-  m_Speed: 0.85
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -5868401489300948028}
