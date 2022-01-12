@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: nightcloud_material
+  m_Name: nooncloud_material
   m_Shader: {fileID: 4800000, guid: fccb7d8d4bf6a9f418babd13630a0696, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -28,7 +28,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: a449ef4f7838c5744940c67ded56bd9e, type: 3}
+        m_Texture: {fileID: 2800000, guid: db927c788159bbe4eaa95abea9d71f11, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:

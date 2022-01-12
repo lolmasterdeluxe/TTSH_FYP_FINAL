@@ -18,11 +18,16 @@ public class EnvironmentManager : MonoBehaviour
 
     [Tooltip("Reference to the cloud GameObjects")]
     [SerializeField]
-    GameObject g_morningCloud, g_nightCloud;
+    GameObject g_morningCloud, g_noonCloud, g_nightCloud;
 
     [Tooltip("Reference to the platform GameObjects")]
     [SerializeField]
-    GameObject g_morningPlatform, g_nightPlatform;
+    GameObject g_morningPlatform, g_noonPlatform, g_nightPlatform;
+
+    [Tooltip("Reference to the Dragon Slide GameObjects")]
+    [SerializeField]
+    GameObject g_morningDragon, g_noonDragon, g_nightDragon;
+
 
     #endregion
 
@@ -31,8 +36,8 @@ public class EnvironmentManager : MonoBehaviour
     private void Start()
     {
         parallexbackgroundmanagerInstance = FindObjectOfType<ParallexBackgroundManager>();
-        f_currentTime = 2f;
-        //set everthing to night FIRST
+        f_currentTime = 8f;
+        //set everthing to morning FIRST
         OnStartRun();
 
     }
@@ -40,108 +45,117 @@ public class EnvironmentManager : MonoBehaviour
     private void Update()
     {
 
-        #region Time
+        //update time HERE
+        f_currentTime += Time.deltaTime * 0.5f;
+        Debug.Log("Time:" + f_currentTime);
 
-        f_currentTime += Time.deltaTime * 1.2f;
 
+        //run the cycles base on the time
+        if (f_currentTime > 6.5f && f_currentTime <= 12.5f)
+        {
+            g_morningCloud.transform.GetComponent<MeshRenderer>().material.DOFade(1f, 4f);
+            g_morningPlatform.transform.GetComponent<SpriteRenderer>().DOFade(1f, 4f);
+            g_morningDragon.transform.GetComponent<SpriteRenderer>().DOFade(1f, 2f);
+            g_noonCloud.transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
+            g_noonPlatform.transform.GetComponent<SpriteRenderer>().DOFade(0f, 4f);
+            g_noonDragon.transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            g_nightCloud.transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
+            g_nightPlatform.transform.GetComponent<SpriteRenderer>().DOFade(0f, 4f);
+            g_nightDragon.transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+        }
+        if (f_currentTime > 12.5f && f_currentTime <= 19f)
+        {
+            g_morningCloud.transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
+            g_morningPlatform.transform.GetComponent<SpriteRenderer>().DOFade(0f, 4f);
+            g_morningDragon.transform.GetComponent<SpriteRenderer>().DOFade(0f, 2f);
+            g_noonCloud.transform.GetComponent<MeshRenderer>().material.DOFade(1f, 4f);
+            g_noonPlatform.transform.GetComponent<SpriteRenderer>().DOFade(1f, 4f);
+            g_noonDragon.transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
+            g_nightCloud.transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
+            g_nightPlatform.transform.GetComponent<SpriteRenderer>().DOFade(0f, 4f);
+            g_nightDragon.transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+        }
+        if (f_currentTime > 19f && f_currentTime <= 24f)
+        {
+            g_morningCloud.transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
+            g_morningPlatform.transform.GetComponent<SpriteRenderer>().DOFade(0f, 4f);
+            g_morningDragon.transform.GetComponent<SpriteRenderer>().DOFade(0f, 2f);
+            g_noonCloud.transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
+            g_noonPlatform.transform.GetComponent<SpriteRenderer>().DOFade(0f, 4f);
+            g_noonDragon.transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            g_nightCloud.transform.GetComponent<MeshRenderer>().material.DOFade(1f, 4f);
+            g_nightPlatform.transform.GetComponent<SpriteRenderer>().DOFade(1f, 4f);
+            g_nightDragon.transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
+        }
+
+        DO24Hours();
+
+        //for background
+        DOBackgroundScrolling();
+
+    }
+
+    #endregion
+
+    #region Background Scrolling
+
+    public void DOBackgroundScrolling()
+    {
+        //for background
+        parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(0f, -0.025f));
+        parallexbackgroundmanagerInstance.componentContainer[0].GetComponent<MeshRenderer>().material.mainTextureOffset
+        += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * Time.deltaTime;
+
+        //morning cloud
+        parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(0.04f, 0f));
+        parallexbackgroundmanagerInstance.componentContainer[1].GetComponent<MeshRenderer>().material.mainTextureOffset
+        += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * Time.deltaTime;
+
+        //noon cloud
+        parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(0.04f, 0f));
+        parallexbackgroundmanagerInstance.componentContainer[2].GetComponent<MeshRenderer>().material.mainTextureOffset
+        += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * Time.deltaTime;
+
+
+        //night cloud
+        parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(0.04f, 0f));
+        parallexbackgroundmanagerInstance.componentContainer[3].GetComponent<MeshRenderer>().material.mainTextureOffset
+        += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * Time.deltaTime;
+    }
+
+    #endregion
+
+    #region Time Cycling
+
+    public void DO24Hours()
+    {
         //one day cycle has been completed, reset it
         if (f_currentTime >= 24f)
         {
             f_currentTime = 0f;
             Debug.Log("cycle once");
         }
-
-        //switching to morning (clouds)
-        if (f_currentTime >= 7f)
-        {
-            CloudSwitchToDay();
-        }
-
-        //switching to morning (floor)
-        if (f_currentTime >= 9f)
-        {
-            FloorSwitchToDay();
-        }
-
-        //switching to night (clouds)
-        if (f_currentTime >= 18f)
-        {
-            CloudSwitchToNight();
-        }
-
-        //switching to night (floor)
-        if (f_currentTime >= 19f)
-        {
-            FloorSwitchToNight();
-        }
-
-
-
-
-
-        #endregion
-
-        #region Background Scrolling 
-
-        //for background
-
-        parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(0f, -0.048f));
-        parallexbackgroundmanagerInstance.componentContainer[0].GetComponent<MeshRenderer>().material.mainTextureOffset
-        += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * Time.deltaTime;
-
-        //for clouds
-
-        //morning cloud
-        parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(0.08f, 0f));
-        parallexbackgroundmanagerInstance.componentContainer[1].GetComponent<MeshRenderer>().material.mainTextureOffset
-        += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * Time.deltaTime;
-
-        //night cloud
-        parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(0.08f, 0f));
-        parallexbackgroundmanagerInstance.componentContainer[2].GetComponent<MeshRenderer>().material.mainTextureOffset
-        += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * Time.deltaTime;
-
-        #endregion
-
     }
 
     #endregion
 
-    #region Helper Functions
-
-    public void CloudSwitchToDay()
+    public void OnStartRun() //set to morning on START
     {
-        g_morningCloud.transform.GetComponent<MeshRenderer>().material.DOFade(1f, 4f);
-        g_nightCloud.transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
+
+        //platform
+        g_morningPlatform.transform.GetComponent<SpriteRenderer>().DOFade(1f, 0f);
+        g_noonPlatform.transform.GetComponent<SpriteRenderer>().DOFade(0f, 0f);
+        g_nightPlatform.transform.GetComponent<SpriteRenderer>().DOFade(0f, 0f);
+
+        //clouds
+        g_morningCloud.transform.GetComponent<MeshRenderer>().material.DOFade(1f, 0f);
+        g_noonCloud.transform.GetComponent<MeshRenderer>().material.DOFade(0f, 0f);
+        g_nightCloud.transform.GetComponent<MeshRenderer>().material.DOFade(0f, 0f);
+
+        //dragon
+        g_morningDragon.transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 0f);
+        g_noonDragon.transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 0f);
+        g_nightDragon.transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 0f);
     }
-    public void FloorSwitchToDay()
-    {
-        g_morningPlatform.transform.GetComponent<SpriteRenderer>().DOFade(1f, 7f);
-        g_nightPlatform.transform.GetComponent<SpriteRenderer>().DOFade(0f, 7f);
-    }
-
-    public void CloudSwitchToNight()
-    {
-        g_morningCloud.transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
-        g_nightCloud.transform.GetComponent<MeshRenderer>().material.DOFade(1f, 4f);
-    }
-
-    public void FloorSwitchToNight()
-    {
-        g_morningPlatform.transform.GetComponent<SpriteRenderer>().DOFade(0f, 7f);
-        g_nightPlatform.transform.GetComponent<SpriteRenderer>().DOFade(1f, 7f);
-    }
-
-
-    public void OnStartRun()
-    {
-        g_morningPlatform.transform.GetComponent<SpriteRenderer>().DOFade(0f, 0f);
-        g_nightPlatform.transform.GetComponent<SpriteRenderer>().DOFade(1f, 0f);
-        g_morningCloud.transform.GetComponent<MeshRenderer>().material.DOFade(0f, 0f);
-        g_nightCloud.transform.GetComponent<MeshRenderer>().material.DOFade(1f, 0f);
-    }
-
-
-    #endregion
 
 }
