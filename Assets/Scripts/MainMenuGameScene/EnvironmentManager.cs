@@ -17,16 +17,13 @@ public class EnvironmentManager : MonoBehaviour
     float f_currentTime;
 
     [Tooltip("Reference to the cloud GameObjects")]
-    [SerializeField]
-    GameObject g_morningCloud, g_noonCloud, g_nightCloud;
+    public GameObject g_morningCloud, g_noonCloud, g_nightCloud;
 
     [Tooltip("Reference to the platform GameObjects")]
-    [SerializeField]
-    GameObject g_morningPlatform, g_noonPlatform, g_nightPlatform;
+    public GameObject g_morningPlatform, g_noonPlatform, g_nightPlatform;
 
     [Tooltip("Reference to the Dragon Slide GameObjects")]
-    [SerializeField]
-    GameObject g_morningDragon, g_noonDragon, g_nightDragon;
+    public GameObject g_morningDragon, g_noonDragon, g_nightDragon;
 
 
     #endregion

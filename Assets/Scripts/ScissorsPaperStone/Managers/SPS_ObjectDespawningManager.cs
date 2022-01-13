@@ -58,6 +58,8 @@ public class SPS_ObjectDespawningManager : MonoBehaviour
         //remove the gameobject instance from the list
         objectspawningInstance.objectWaveList.Remove(other.gameObject);
 
+        Debug.Log(other.gameObject);
+
         //we now destroy it
         Destroy(other.gameObject);
         //if it has a rigidbody2d, we destroy it as well

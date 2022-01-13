@@ -12,7 +12,7 @@ public class SPS_ObjectManager : MonoBehaviour
 
     public enum WaveFormat 
     { WAVE_SINGLE_RANDOM, WAVE_MULTIPLE_RANDOM, WAVE_MULTIPLE_SCISSORS, 
-        WAVE_MULTIPLE_PAPER, WAVE_MULTIPLE_STONE, WAVE_OBSTACLE, WAVE_POWERUP, WAVE_POWERUP_AND_OBSTACLE, 
+        WAVE_MULTIPLE_PAPER, WAVE_MULTIPLE_STONE, WAVE_OBSTACLE, WAVE_POWERUP, 
         WAVE_TOTAL};
     public WaveFormat current_waveFormat;
 
@@ -73,7 +73,6 @@ public class SPS_ObjectManager : MonoBehaviour
         //reference scripts hERE
         uimanagerInstance = FindObjectOfType<SPS_UIManager>();
 
-
     }
 
     private void Update()
@@ -110,8 +109,8 @@ public class SPS_ObjectManager : MonoBehaviour
                 }
                 else
                 {
-                    //for the first 5 waves we only allow enemies to spawn
-                    if (i_currentwaveCount <= 5)
+                    //for the first 3 waves we only allow enemies to spawn
+                    if (i_currentwaveCount <= 3)
                     {
                         current_waveFormat = (WaveFormat)Random.Range(1, (int)WaveFormat.WAVE_MULTIPLE_STONE);
 
@@ -177,9 +176,9 @@ public class SPS_ObjectManager : MonoBehaviour
                                 SpawnPowerupObject();
                                 break;
 
-                            case WaveFormat.WAVE_POWERUP_AND_OBSTACLE:
-                                SpawnPowerupAndObstacleObject();
-                                break;
+                            //case WaveFormat.WAVE_POWERUP_AND_OBSTACLE:
+                            //    SpawnPowerupAndObstacleObject();
+                            //    break;
 
                         }
 
@@ -202,10 +201,10 @@ public class SPS_ObjectManager : MonoBehaviour
          new Vector3(objectStartPosition.transform.position.x, 
          objectStartPosition.transform.position.y,
          objectStartPosition.transform.position.z), objectStartPosition.transform.rotation);
-        g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier);
+        g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 3f);
 
         //do the movement HERE
-        g_objectInstance.GetComponent<Rigidbody>().DOMoveX(enemyEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier);
+        g_objectInstance.GetComponent<Rigidbody2D>().DOMoveX(enemyEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 3f);
         
         //add this object to the list of objects spawned
         objectWaveList.Add(g_objectInstance);
@@ -230,7 +229,7 @@ public class SPS_ObjectManager : MonoBehaviour
 
             //do the movement HERE
             g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, (f_objectTravelSpeed * f_objectTravelSpeed));
-            g_objectInstance.GetComponent<Rigidbody>().DOMoveX(enemyEndPosition.transform.position.x, (f_objectTravelSpeed * f_objectTravelSpeed));
+            g_objectInstance.GetComponent<Rigidbody2D>().DOMoveX(enemyEndPosition.transform.position.x, (f_objectTravelSpeed * f_objectTravelSpeed));
 
             //add objects to the list of objects spawned
             objectWaveList.Add(g_objectInstance);
@@ -245,12 +244,13 @@ public class SPS_ObjectManager : MonoBehaviour
 
     public void SpawnObstacleObject()
     {
-        g_objectInstance = Instantiate(obstaclePrefab,
-        objectStartPosition.transform.position, objectStartPosition.transform.rotation);
+        g_objectInstance = Instantiate(obstaclePrefab, 
+            new Vector3(objectStartPosition.transform.position.x, 
+            -1.1f, objectStartPosition.transform.position.z), objectStartPosition.transform.rotation);
 
         //do the movement HERE
-        g_objectInstance.transform.DOMoveX(obstacleEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier);
-        g_objectInstance.GetComponent<Rigidbody>().DOMoveX(obstacleEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier);
+        g_objectInstance.transform.DOMoveX(obstacleEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 3f);
+        g_objectInstance.GetComponent<Rigidbody2D>().DOMoveX(obstacleEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 3f);
 
         objectWaveList.Add(g_objectInstance);
         b_waveCompleted = true;
@@ -262,11 +262,12 @@ public class SPS_ObjectManager : MonoBehaviour
     public void SpawnPowerupObject()
     {
         g_objectInstance = Instantiate(powerupPrefab,
-       objectStartPosition.transform.position, objectStartPosition.transform.rotation);
+            new Vector3(objectStartPosition.transform.position.x,
+            -1.25f, objectStartPosition.transform.position.z), objectStartPosition.transform.rotation);
 
         //do the movement HERE
-        g_objectInstance.transform.DOMoveX(obstacleEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier);
-        g_objectInstance.GetComponent<Rigidbody>().DOMoveX(obstacleEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier);
+        g_objectInstance.transform.DOMoveX(obstacleEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 3f);
+        g_objectInstance.GetComponent<Rigidbody2D>().DOMoveX(obstacleEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 3f);
 
         objectWaveList.Add(g_objectInstance);
         b_waveCompleted = true;
@@ -282,12 +283,12 @@ public class SPS_ObjectManager : MonoBehaviour
 
         //we now create an instance of the powerup ontop of the obstacle
         g_objectInstance = Instantiate(powerupPrefab,
-         new Vector3(objectStartPosition.transform.position.x, objectStartPosition.transform.position.y + 2.9f,
-         objectStartPosition.transform.position.z), objectStartPosition.transform.rotation);
+            new Vector3(objectStartPosition.transform.position.x,
+            1f, objectStartPosition.transform.position.z), objectStartPosition.transform.rotation);
 
         //do the movement HERE
-        g_objectInstance.transform.DOMoveX(obstacleEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier);
-        g_objectInstance.GetComponent<Rigidbody>().DOMoveX(obstacleEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier);
+        g_objectInstance.transform.DOMoveX(obstacleEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 3f);
+        g_objectInstance.GetComponent<Rigidbody2D>().DOMoveX(obstacleEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 3f);
 
         objectWaveList.Add(g_objectInstance);
         b_waveCompleted = true;

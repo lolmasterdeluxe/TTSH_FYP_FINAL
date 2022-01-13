@@ -36,9 +36,11 @@ public class SPS_PlayerManager : MonoBehaviour
 
     //variables involving player jumping
     BoxCollider2D collider_player;
-    Vector2 v_originalcolliderposition;
+    Vector2 v_originalcolliderOffset;
     bool b_playerJumped;
     float f_playerJumpLifetime;
+    Vector3 v_finalJumpPosition;
+    Vector3 v_playerOriginalPosition;
 
     //variables involving player attacking
     bool b_playerAttacked;
@@ -47,14 +49,12 @@ public class SPS_PlayerManager : MonoBehaviour
     //variables involving player stunned
     float f_playerStunnedLifetime;
 
-    //variables involving powerups
-    bool b_hasPowerup;
-
     //variables for combo
     public GameObject g_comboGroup, g_comboText, g_comboText_finalPos;
 
     //variables for player idle character (endgame)
     public GameObject current_player_sprite, end_player_sprite;
+
 
 
     #endregion
@@ -72,13 +72,19 @@ public class SPS_PlayerManager : MonoBehaviour
         player_choice = PlayerChoice.PLAYER_NONE;
 
         //set boolean flags to be FALSE on start
-        b_hasPowerup = false; b_playerJumped = false;
+        b_playerJumped = false;
 
         //set collider box reference HERE
         collider_player = GetComponent<BoxCollider2D>();
 
         //set original collider position HERE
-        v_originalcolliderposition = new Vector2(0f, 0f);
+        v_originalcolliderOffset = new Vector2(0f, 0f);
+
+        //set jump position HERE
+        v_finalJumpPosition = new Vector3(-5.76f, 1.7f, -1f);
+
+        //set original player sprite position HERE
+        v_playerOriginalPosition = new Vector3(-5.76f, -0.7f, -1f);
 
         //set combo expiry HERE
         ComboManager.Instance.SetComboExpiry(4f);
@@ -125,15 +131,19 @@ public class SPS_PlayerManager : MonoBehaviour
             }
         }
 
-
-
         //for jumping
         if (b_playerJumped == true)
         {
             f_playerJumpLifetime += Time.deltaTime;
 
-            if (f_playerJumpLifetime >= 0.2f)
+            //set the player's position higher
+            this.gameObject.transform.DOMove(v_finalJumpPosition, 0.4f);
+
+            if (f_playerJumpLifetime >= 0.6f)
             {
+                //reset the player's position back to the original
+                this.gameObject.transform.DOMove(v_playerOriginalPosition, 0.4f);
+
                 //reset the animations
                 ResetAnimationsAndChoice();
 
@@ -154,7 +164,7 @@ public class SPS_PlayerManager : MonoBehaviour
         {
             f_playerStunnedLifetime += Time.deltaTime;
 
-            if (f_playerStunnedLifetime >= 1f)
+            if (f_playerStunnedLifetime >= 0.9f)
             {
                 playerAC.SetBool("PlayerStunned", false);
 
@@ -245,7 +255,7 @@ public class SPS_PlayerManager : MonoBehaviour
             player_choice == PlayerChoice.PLAYER_STONE)
         {
             //we want to shift the collider to the RIGHT
-            collider_player.offset = collider_player.offset = new Vector2(1.3f, 0f);
+            collider_player.offset = collider_player.offset = new Vector2(2.75f, 0f);
             //set boolean HERE
             b_playerAttacked = true;
         }
@@ -253,7 +263,7 @@ public class SPS_PlayerManager : MonoBehaviour
         if (player_choice == PlayerChoice.PLAYER_JUMP)
         {
             //we want to shift the collider box UP
-            collider_player.offset = collider_player.offset = new Vector2(0f, 2.25f);
+            collider_player.offset = collider_player.offset = new Vector2(0f, 1f);
 
             //set boolean HERE
             b_playerJumped = true;
@@ -262,7 +272,7 @@ public class SPS_PlayerManager : MonoBehaviour
         if (player_choice == PlayerChoice.PLAYER_NONE)
         {
             //we want to shift the collider back to the original position
-            collider_player.offset = v_originalcolliderposition;
+            collider_player.offset = v_originalcolliderOffset;
         }
     }
 
@@ -293,7 +303,7 @@ public class SPS_PlayerManager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         //player is attacking HERE
-        if (collider_player.transform.position.x != v_originalcolliderposition.x)
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || (Input.GetKey(KeyCode.Space)))
         {
             if (other.gameObject.tag == "EnemyTag")
             {
@@ -347,6 +357,21 @@ public class SPS_PlayerManager : MonoBehaviour
                     Destroy(other.gameObject.GetComponent<Rigidbody2D>());
 
                 }
+                else if (other.gameObject.tag == "Powerup")
+                {
+                    //add to the objective value
+                    uiManagerInstance.UpdatePlayerObjectiveValue();
+
+                    //remove the object from the list
+                    objectManagerInstance.objectWaveList.Remove(other.gameObject);
+
+                    //add the value HERE
+                    uiManagerInstance.AddObjectiveValue();
+
+                    //destroy it since it has been collected
+                    Destroy(other.gameObject);
+                    Destroy(other.gameObject.GetComponent<Rigidbody2D>());
+                }
                 //we take damage if we hit with the wrong typing
                 else
                 {
@@ -371,7 +396,6 @@ public class SPS_PlayerManager : MonoBehaviour
         {
             if (other.gameObject.tag == "EnemyTag")
             {
-
                 //player gets stunned
                 playerAC.SetBool("PlayerStunned", true);
 
@@ -386,9 +410,8 @@ public class SPS_PlayerManager : MonoBehaviour
 
             }
 
-            if (other.gameObject.tag == "Obstacle")
+            else if (other.gameObject.tag == "Obstacle")
             {
-
                 //player gets stunned
                 playerAC.SetBool("PlayerStunned", true);
 
@@ -396,13 +419,14 @@ public class SPS_PlayerManager : MonoBehaviour
                 ComboManager.Instance.BreakCombo();
 
                 //fade out the enemy so that it looks natural
-                other.GetComponent<SpriteRenderer>().DOFade(0, 1f);
+                other.gameObject.GetComponent<SpriteRenderer>().DOFade(0, 1f);
+
             }
 
-            if (other.gameObject.tag == "Powerup")
+            else if (other.gameObject.tag == "Powerup")
             {
                 //add to the objective value
-                uiManagerInstance.UpdatePlayerObjectiveValue();
+                uiManagerInstance.AddObjectiveValue();
 
                 //remove the object from the list
                 objectManagerInstance.objectWaveList.Remove(other.gameObject);
@@ -411,7 +435,6 @@ public class SPS_PlayerManager : MonoBehaviour
                 Destroy(other.gameObject);
                 Destroy(other.gameObject.GetComponent<Rigidbody2D>());
             }
-
         }
     }
 
