@@ -19,6 +19,9 @@ public class InteractNPC : MonoBehaviour
     public NPC_TYPE type;
     TutorialScreenManager tutorialscreenmanagerInstance;
 
+    //for interact HUD
+    public GameObject interactPrefab;
+
     void Start()
     {
         tutorialscreenmanagerInstance = TutorialScreenManager.instance;
