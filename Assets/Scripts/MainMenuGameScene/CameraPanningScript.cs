@@ -30,7 +30,6 @@ public class CameraPanningScript : MonoBehaviour
 
     #endregion
 
-
     #region Helper Functions
     
     public void PanCameraToLeft()
