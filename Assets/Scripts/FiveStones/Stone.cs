@@ -5,6 +5,8 @@ using UnityEngine;
 public class Stone : MonoBehaviour
 {
     public FiveStonesGameManager.Objective type;
+    public RuntimeAnimatorController bomb_animator_controller;
+    public RuntimeAnimatorController rainbow_animator_controller;
     public Sprite grey_sprite;
     public Sprite blue_sprite;
     public Sprite yellow_sprite;
@@ -27,6 +29,12 @@ public class Stone : MonoBehaviour
                 break;
             case FiveStonesGameManager.Objective.CATCH_BLUE_STONES:
                 GetComponent<SpriteRenderer>().sprite = blue_sprite;
+                break;
+            case FiveStonesGameManager.Objective.CATCH_ANY_STONES:
+                GetComponent<Animator>().runtimeAnimatorController = rainbow_animator_controller;
+                break;
+            case FiveStonesGameManager.Objective.BOMB_STONES:
+                GetComponent<Animator>().runtimeAnimatorController = bomb_animator_controller;
                 break;
         }
     }

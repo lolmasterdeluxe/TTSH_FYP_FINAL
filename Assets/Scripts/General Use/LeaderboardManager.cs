@@ -19,6 +19,14 @@ public class LeaderboardManager : MonoBehaviour
     public TMP_Text currentScorebarText;
     public Slider scoreBarSlider;
 
+    public TMP_Text scorebarText;
+
+    public Image background;
+    public Sprite chaptehBg;
+    public Sprite fiveStonesBg;
+    public Sprite spsBg;
+    public Sprite totalBg;
+
 
     // Start is called before the first frame update
 
@@ -44,7 +52,21 @@ public class LeaderboardManager : MonoBehaviour
     }
     void UpdateBackground()
     {
-
+        switch (leaderboardType)
+        {
+            case ScoreManager.Gamemode.CHAPTEH:
+                background.sprite = chaptehBg;
+                break;
+            case ScoreManager.Gamemode.FIVESTONES:
+                background.sprite = fiveStonesBg;
+                break;
+            case ScoreManager.Gamemode.SPS:
+                background.sprite = spsBg;
+                break;
+            case ScoreManager.Gamemode.TOTAL:
+                background.sprite = totalBg;
+                break;
+        }
     }
 
     void UpdateRank()

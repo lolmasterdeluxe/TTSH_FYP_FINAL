@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4640628553649700412}
   - component: {fileID: -101093423854919734}
   - component: {fileID: 5822303155187032104}
+  - component: {fileID: 6730322685140232850}
   m_Layer: 0
   m_Name: Stone
   m_TagString: Stone
@@ -119,6 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  bomb_animator_controller: {fileID: 9100000, guid: 9aa47b1b64deb2a4c8d1f5c259d7699f, type: 2}
+  rainbow_animator_controller: {fileID: 9100000, guid: bb0cb3c8a48fbb541b876d4927a7ec3c, type: 2}
   grey_sprite: {fileID: 21300000, guid: 1a5492bb893f9ae4aaabd105ec000f52, type: 3}
   blue_sprite: {fileID: 21300000, guid: 042417b3a48304847b32e7ee05dbc68a, type: 3}
   yellow_sprite: {fileID: 21300000, guid: b28bd2df1b023204daadfd73e29b2b70, type: 3}
@@ -223,3 +226,22 @@ PolygonCollider2D:
       - {x: 0.02, y: -2.11}
       - {x: 0.14999999, y: -2.09}
       - {x: 0.32999998, y: -2.06}
+--- !u!95 &6730322685140232850
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4640628553649700418}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -27,6 +27,7 @@ public class FiveStonesGameManager : MonoBehaviour
         CATCH_RED_STONES,
         CATCH_YELLOW_STONES,
         CATCH_BLUE_STONES,
+        BOMB_STONES,
         CATCH_ANY_STONES,
         TOTAL,
     }
@@ -150,15 +151,25 @@ public class FiveStonesGameManager : MonoBehaviour
     }
     public void OnStoneCaught(GameObject gameObject)
     {
-        if (gameObject.GetComponent<Stone>().type == m_currentObjective || m_currentObjective == Objective.CATCH_ANY_STONES)
+        if (gameObject.GetComponent<Stone>().type == Objective.BOMB_STONES)
+        {
+            ComboManager.Instance.BreakCombo();
+            ScoreManager.Instance.ReduceCurrentGameScore(baseScore);
+        }
+        else if (gameObject.GetComponent<Stone>().type == Objective.CATCH_ANY_STONES)
+        {
+            ComboManager.Instance.AddCombo();
+            ScoreManager.Instance.AddCurrentGameScore(baseScore * ComboManager.Instance.GetCurrentCombo() * 2);
+        }
+        else if (gameObject.GetComponent<Stone>().type == m_currentObjective || m_currentObjective == Objective.CATCH_ANY_STONES)
         {
             ComboManager.Instance.AddCombo();
             ScoreManager.Instance.AddCurrentGameScore(baseScore * ComboManager.Instance.GetCurrentCombo());
         }
         else
         {
-            ScoreManager.Instance.AddCurrentGameScore(baseScore);
             ComboManager.Instance.BreakCombo();
+            ScoreManager.Instance.AddCurrentGameScore(baseScore);
         }
     }
     
@@ -183,7 +194,7 @@ public class FiveStonesGameManager : MonoBehaviour
 
     public static Objective GetRandomColouredObjective()
     {
-        return (Objective)Random.Range(1, (int)Objective.TOTAL - 1);
+        return (Objective)Random.Range(1, (int)Objective.TOTAL);
     }
 
     public IEnumerator OnLeaderboardLoad()

@@ -865,7 +865,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -895,6 +895,12 @@ MonoBehaviour:
   highestScorebarText: {fileID: 2913985093566407627}
   currentScorebarText: {fileID: 2913985091967764697}
   scoreBarSlider: {fileID: 2913985093314414930}
+  scorebarText: {fileID: 2913985093566407627}
+  background: {fileID: 2913985092655380875}
+  chaptehBg: {fileID: 21300000, guid: fcbaae46edc1b144495fdddd42d3d7f9, type: 3}
+  fiveStonesBg: {fileID: 21300000, guid: 3b130709cb62bf04ea872152ac596328, type: 3}
+  spsBg: {fileID: 21300000, guid: 2558c351152736442aae8206262823d4, type: 3}
+  totalBg: {fileID: 21300000, guid: 3a182e4e461bbd04d87e741e2aa09753, type: 3}
 --- !u!1 &2913985091876297747
 GameObject:
   m_ObjectHideFlags: 0
@@ -1520,7 +1526,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f5bd0bedd92f2a149875bfdff5f927ab, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
