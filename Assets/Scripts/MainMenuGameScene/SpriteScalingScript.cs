@@ -50,9 +50,9 @@ public class SpriteScalingScript : MonoBehaviour
 
         Vector3 newScale = Vector3.Lerp(smallestPlayerScale, originalPlayerScale, normalizedDistance);
 
-        PlayerMovementScript playerMovement = GetComponent<PlayerMovementScript>();
+        PlayerKeyboardMovement playerMovement = GetComponent<PlayerKeyboardMovement>();
 
-        if ((playerMovement.m_isRight && newScale.x < 0) || (!playerMovement.m_isRight && newScale.x > 0))
+        if ((playerMovement.b_playerisRight && newScale.x < 0) || (!playerMovement.b_playerisRight && newScale.x > 0))
             newScale.x *= -1;
 
         transform.localScale = newScale;
