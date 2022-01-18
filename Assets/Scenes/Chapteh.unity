@@ -741,7 +741,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91760436}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.068839006, y: 4.2799997, z: -9.808769}
+  m_LocalPosition: {x: 0.06883996, y: 4.2799997, z: -9.808769}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1819576642}
@@ -1874,6 +1874,10 @@ MonoBehaviour:
   g_gameTimeUp: {fileID: 2127709132}
   m_currentObjective: 0
   m_score: 0
+  redCount: 0
+  yellowCount: 0
+  greenCount: 0
+  totalCount: 0
   m_gameStarted: 0
   m_gameEnded: 0
 --- !u!1 &402180534
@@ -2137,6 +2141,14 @@ PrefabInstance:
     - target: {fileID: 2913985093047236487, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515607142861987860, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7982358899529325967, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}

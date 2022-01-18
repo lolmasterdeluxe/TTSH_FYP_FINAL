@@ -131,13 +131,13 @@ public class FiveStonesGameManager : MonoBehaviour
         switch (m_currentObjective)
         {
             case Objective.CATCH_RED_STONES:
-                g_objectiveText.GetComponent<TMP_Text>().text = "Catch <color=red>red</color> stones!";
+                g_objectiveText.GetComponent<TMP_Text>().text = "Catch <sprite=2> stones!";
                 break;
             case Objective.CATCH_YELLOW_STONES:
-                g_objectiveText.GetComponent<TMP_Text>().text = "Catch <color=yellow>yellow</color> stones!";
+                g_objectiveText.GetComponent<TMP_Text>().text = "Catch <sprite=0> stones!";
                 break;
             case Objective.CATCH_BLUE_STONES:
-                g_objectiveText.GetComponent<TMP_Text>().text = "Catch <color=blue>blue</color> stones!";
+                g_objectiveText.GetComponent<TMP_Text>().text = "Catch <sprite=1> stones!";
                 break;
             case Objective.CATCH_ANY_STONES:
                 g_objectiveText.GetComponent<TMP_Text>().text = "Catch <color=grey>any</color> stones!";
