@@ -76,6 +76,7 @@ public class LeaderboardManager : MonoBehaviour
 
     public void UpdateEndScreen()
     {
+        TweenManager.Instance.AnimateFade(endScreenCanvasGroup, 1, 0);
         TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 0, 0);
 
         switch (leaderboardType)

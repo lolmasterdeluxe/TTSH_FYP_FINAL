@@ -99,8 +99,6 @@ public class FiveStonesGameManager : MonoBehaviour
 
         DifficultyProgression();
         UpdateUI();
-
-        StartCoroutine(OnLeaderboardLoad());
     }
 
     public void DifficultyProgression()
@@ -184,6 +182,7 @@ public class FiveStonesGameManager : MonoBehaviour
         m_gameEnded = true;
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.25f);
         ScoreManager.Instance.EndCurrentGameScore();
+        StartCoroutine(OnLeaderboardLoad());
     }
 
     public void OnComboAdd()
