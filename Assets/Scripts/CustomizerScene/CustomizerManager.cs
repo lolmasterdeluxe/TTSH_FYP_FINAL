@@ -191,24 +191,28 @@ public class CustomizerManager : MonoBehaviour
 
         if (hatCustomizable.m_bone == Bone.HAT)
         {
-            m_hatSprite.sprite = hatCustomizable.m_sprite;
             m_headSprite.sprite = null;
+            m_hatSprite.sprite = hatCustomizable.m_sprite;
+            m_hatSprite.sortingOrder = 4;
         }
         else if (hatCustomizable.m_bone == Bone.HEAD_BAND)
         {
             m_hatSprite.sprite = null;
             m_headSprite.sprite = hatCustomizable.m_sprite;
+            m_headSprite.sortingOrder = 4;
         }
 
         if (faceCustomizable.m_bone == Bone.GLASSES)
         {
-            m_eyeSprite.sprite = faceCustomizable.m_sprite;
             m_mouthSprite.sprite = null;
+            m_eyeSprite.sprite = faceCustomizable.m_sprite;
+            m_eyeSprite.sortingOrder = 4;
         }
         else if (faceCustomizable.m_bone == Bone.MOUTH)
         {
             m_eyeSprite.sprite = null;
             m_mouthSprite.sprite = faceCustomizable.m_sprite;
+            m_mouthSprite.sortingOrder = 4;
         }
     }
 

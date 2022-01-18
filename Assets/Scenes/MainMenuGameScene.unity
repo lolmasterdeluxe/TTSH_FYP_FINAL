@@ -353,7 +353,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &161171777
 RectTransform:
   m_ObjectHideFlags: 0
@@ -969,6 +969,10 @@ PrefabInstance:
     - target: {fileID: 5706286237396609857, guid: faa34543aeda4534c91849853da2bf3f, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706286237396609858, guid: faa34543aeda4534c91849853da2bf3f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: faa34543aeda4534c91849853da2bf3f, type: 3}
@@ -2075,7 +2079,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 3
   m_Sprite: {fileID: 4395096620690891390, guid: 454d1e1334904fb498e6e6b31f5672ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2609,9 +2613,9 @@ MonoBehaviour:
   sps_tutorialScreen: {fileID: 161171776}
   fivestones_tutorialScreen: {fileID: 1033274762}
   chapteh_tutorialScreen: {fileID: 1244249511}
-  sps_npc: {fileID: 0}
-  fivestones_npc: {fileID: 0}
-  chapteh_npc: {fileID: 0}
+  sps_npc: {fileID: 1916850517}
+  fivestones_npc: {fileID: 1747751236}
+  chapteh_npc: {fileID: 1666401147}
 --- !u!1 &915090111
 GameObject:
   m_ObjectHideFlags: 0
@@ -3460,6 +3464,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChaptehPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6447340824655781295, guid: 2816f94a659f0dd43a9d06845a692dd2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2816f94a659f0dd43a9d06845a692dd2, type: 3}
 --- !u!4 &1272334443 stripped
@@ -3918,6 +3926,11 @@ Transform:
   m_Father: {fileID: 1670425350}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1666401147 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6447340824655781281, guid: 2816f94a659f0dd43a9d06845a692dd2, type: 3}
+  m_PrefabInstance: {fileID: 1272334442}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1670425349
 GameObject:
   m_ObjectHideFlags: 0
@@ -4015,6 +4028,11 @@ Transform:
   m_Father: {fileID: 1551422102}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1747751236 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9096211418544285440, guid: 15b76dab1427ab54f959c8776267968b, type: 3}
+  m_PrefabInstance: {fileID: 2008644248}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1834382671
 GameObject:
   m_ObjectHideFlags: 0
@@ -4503,6 +4521,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.75
       objectReference: {fileID: 0}
+    - target: {fileID: 7421242270649084542, guid: d187fdb16eab505459c3de300035e142, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d187fdb16eab505459c3de300035e142, type: 3}
 --- !u!4 &1881161304 stripped
@@ -4585,6 +4607,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1896171069}
   m_CullTransparentMesh: 0
+--- !u!1 &1916850517 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7421242270649084528, guid: d187fdb16eab505459c3de300035e142, type: 3}
+  m_PrefabInstance: {fileID: 1881161303}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1974370421
 GameObject:
   m_ObjectHideFlags: 0
@@ -4752,6 +4779,10 @@ PrefabInstance:
     - target: {fileID: 9096211418544285440, guid: 15b76dab1427ab54f959c8776267968b, type: 3}
       propertyPath: m_Name
       value: FiveStonePrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096211418544285442, guid: 15b76dab1427ab54f959c8776267968b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9096211418544285443, guid: 15b76dab1427ab54f959c8776267968b, type: 3}
       propertyPath: m_LocalPosition.x
