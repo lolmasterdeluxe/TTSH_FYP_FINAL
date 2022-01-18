@@ -9,6 +9,9 @@ public class SPS_PlayerManager : MonoBehaviour
 {
     //this manager handles EVERYTHING related to the player
 
+    private static SPS_PlayerManager _instance;
+    public static SPS_PlayerManager Instance { get { return _instance; } }
+
     #region Enumerations
 
     //Player's Choice
@@ -55,7 +58,9 @@ public class SPS_PlayerManager : MonoBehaviour
     //variables for player idle character (endgame)
     public GameObject current_player_sprite, end_player_sprite;
 
-
+    //variables for data HERE
+    public int enemyCount;
+    public int sweetCount;
 
     #endregion
 
@@ -323,7 +328,7 @@ public class SPS_PlayerManager : MonoBehaviour
                     Destroy(other.gameObject);
                     Destroy(other.gameObject.GetComponent<Rigidbody2D>());
 
-
+                    enemyCount += 1;
                 }
                 else if (player_choice == PlayerChoice.PLAYER_PAPER
                     && other.gameObject.GetComponent<SPS_Enemy>().enemy_type == SPS_Enemy.EnemyType.ENEMY_STONE)
@@ -339,6 +344,8 @@ public class SPS_PlayerManager : MonoBehaviour
 
                     Destroy(other.gameObject);
                     Destroy(other.gameObject.GetComponent<Rigidbody2D>());
+
+                    enemyCount += 1;
 
                 }
                 else if (player_choice == PlayerChoice.PLAYER_STONE
@@ -356,6 +363,8 @@ public class SPS_PlayerManager : MonoBehaviour
                     Destroy(other.gameObject);
                     Destroy(other.gameObject.GetComponent<Rigidbody2D>());
 
+                    enemyCount += 1;
+
                 }
                 else if (other.gameObject.tag == "Powerup")
                 {
@@ -371,6 +380,8 @@ public class SPS_PlayerManager : MonoBehaviour
                     //destroy it since it has been collected
                     Destroy(other.gameObject);
                     Destroy(other.gameObject.GetComponent<Rigidbody2D>());
+
+                    sweetCount += 1;
                 }
                 //we take damage if we hit with the wrong typing
                 else
@@ -434,6 +445,8 @@ public class SPS_PlayerManager : MonoBehaviour
                 //destroy it since it has been collected
                 Destroy(other.gameObject);
                 Destroy(other.gameObject.GetComponent<Rigidbody2D>());
+
+                sweetCount += 1;
             }
         }
     }

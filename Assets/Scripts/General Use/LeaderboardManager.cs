@@ -100,8 +100,8 @@ public class LeaderboardManager : MonoBehaviour
                 fiveStonesGroup.SetActive(false);
                 overallGroup.SetActive(false);
 
-                powerUpsPicked.text = "1";
-                enemiesKilled.text = "2";
+                powerUpsPicked.text = SPS_PlayerManager.Instance.sweetCount.ToString();
+                enemiesKilled.text = SPS_PlayerManager.Instance.enemyCount.ToString();
                 break;
             case ScoreManager.Gamemode.TOTAL:
                 chaptehGroup.SetActive(false);
