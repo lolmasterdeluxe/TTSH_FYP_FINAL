@@ -59,6 +59,10 @@ public class SPS_UIManager : MonoBehaviour
     public bool b_gameStart;
     public bool b_gameEnded;
 
+    //variables for data HERE
+    public int enemyCount;
+    public int sweetCount;
+
     #endregion
 
     #region Unity Callbacks
@@ -129,7 +133,8 @@ public class SPS_UIManager : MonoBehaviour
 
     public void PlayerScores()
     {
-        if(ComboManager.Instance.GetCurrentCombo() != 0)
+        enemyCount++;
+        if (ComboManager.Instance.GetCurrentCombo() != 0)
             ScoreManager.Instance.AddCurrentGameScore(i_baseScore * ComboManager.Instance.GetCurrentCombo());
         else
             ScoreManager.Instance.AddCurrentGameScore(i_baseScore);
@@ -177,6 +182,7 @@ public class SPS_UIManager : MonoBehaviour
     public void AddObjectiveValue()
     {
         i_objectiveValue += 1;
+        sweetCount++;
     }
 
     public void UpdatePlayerObjectiveValue()

@@ -5619,6 +5619,8 @@ MonoBehaviour:
   g_comboText_finalPos: {fileID: 655529308}
   current_player_sprite: {fileID: 1443686468}
   end_player_sprite: {fileID: 252828374}
+  enemyCount: 0
+  sweetCount: 0
 --- !u!212 &1443686471
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7534,6 +7536,8 @@ MonoBehaviour:
   g_gameTimeUp: {fileID: 1750275637}
   b_gameStart: 0
   b_gameEnded: 0
+  enemyCount: 0
+  sweetCount: 0
 --- !u!1 &1945734119
 GameObject:
   m_ObjectHideFlags: 0
