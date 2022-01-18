@@ -32,6 +32,11 @@ public class ChaptehGameManager : MonoBehaviour
     private int yellowbaseScore = 3;
     private int greenbaseScore = 5;
 
+    public int redCount;
+    public int yellowCount;
+    public int greenCount;
+    public int totalCount;
+
     public bool m_gameStarted = false;
     public bool m_gameEnded = false;
 
@@ -98,15 +103,15 @@ public class ChaptehGameManager : MonoBehaviour
         {
             case Objective.HIT_RED_RINGS:
                 // Change TMPro sprite asset to red ring
-                g_objectiveText.GetComponent<TMP_Text>().text = "Shoot <sprite=0> Rings!";
+                g_objectiveText.GetComponent<TMP_Text>().text = "Shoot <sprite=4> Rings!";
                 break;
             case Objective.HIT_YELLOW_RINGS:
                 // Change TMPro sprite asset to yellow ring
-                g_objectiveText.GetComponent<TMP_Text>().text = "Shoot <sprite=2> Rings!";
+                g_objectiveText.GetComponent<TMP_Text>().text = "Shoot <sprite=6> Rings!";
                 break;
             case Objective.HIT_GREEN_RINGS:
                 // Change TMPro sprite asset to green ring
-                g_objectiveText.GetComponent<TMP_Text>().text = "Shoot <sprite=1> Rings!";
+                g_objectiveText.GetComponent<TMP_Text>().text = "Shoot <sprite=5> Rings!";
                 break;
         }
     }
@@ -172,6 +177,8 @@ public class ChaptehGameManager : MonoBehaviour
         m_gameEnded = true;
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.25f);
         ScoreManager.Instance.EndCurrentGameScore();
+
+        totalCount = redCount + yellowCount + greenCount;
     }
 
     public IEnumerator OnLeaderboardLoad()
