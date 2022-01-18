@@ -10,6 +10,9 @@ public class LeaderboardManager : MonoBehaviour
 {
     public ScoreManager.Gamemode leaderboardType;
 
+    List<ScoreManager.Score> sortedScoreList;
+    ScoreManager.Score currentScore;
+
     public GameObject rankOneSlot;
     public GameObject rankTwoSlot;
     public GameObject rankThreeSlot;
@@ -64,6 +67,8 @@ public class LeaderboardManager : MonoBehaviour
 
     private void OnEnable()
     {
+        sortedScoreList = ScoreManager.Instance.m_allScoreList.Where(x => x.m_gamemode == leaderboardType.ToString()).OrderByDescending(x => x.m_score).ToList();
+        currentScore = sortedScoreList.Where(x => x.m_username == ScoreManager.Instance.m_currentUsername).FirstOrDefault();
         UpdateBackground();
         UpdateEndScreen();
         UpdateLeaderboard();
@@ -114,9 +119,10 @@ public class LeaderboardManager : MonoBehaviour
                 totalChaptehScore.text = scoreList.Where(x => x.m_gamemode == ScoreManager.Gamemode.CHAPTEH.ToString()).FirstOrDefault().m_score.ToString();
                 totalFiveStonesScore.text = scoreList.Where(x => x.m_gamemode == ScoreManager.Gamemode.FIVESTONES.ToString()).FirstOrDefault().m_score.ToString();
                 totalScissorsPaperStoneScore.text = scoreList.Where(x => x.m_gamemode == ScoreManager.Gamemode.SPS.ToString()).FirstOrDefault().m_score.ToString();
-                overallScoreText.text = scoreList.Where(x => x.m_gamemode == ScoreManager.Gamemode.TOTAL.ToString()).FirstOrDefault().m_score.ToString();
                 break;
         }
+
+        overallScoreText.text = currentScore.m_score.ToString();
 
         StartCoroutine(ShowLeaderboard());
     }
@@ -154,8 +160,6 @@ public class LeaderboardManager : MonoBehaviour
 
     void UpdateRank()
     {
-        List<ScoreManager.Score> sortedScoreList = ScoreManager.Instance.m_allScoreList.Where(x => x.m_gamemode == leaderboardType.ToString()).OrderByDescending(x => x.m_score).ToList();
-        ScoreManager.Score currentScore = sortedScoreList.Where(x => x.m_username == ScoreManager.Instance.m_currentUsername).FirstOrDefault();
         UpdateSlider(currentScore.m_score, sortedScoreList[0].m_score);
 
         if (sortedScoreList.ElementAtOrDefault(0) != null)
