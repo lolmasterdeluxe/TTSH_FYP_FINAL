@@ -81,9 +81,9 @@ public class LeaderboardManager : MonoBehaviour
                 fiveStonesGroup.SetActive(false);
                 overallGroup.SetActive(false);
 
-                redHoopsHit.text = "1";
-                greenHoopsHit.text = "2";
-                yellowHoopsHit.text = "3";
+                redHoopsHit.text = ChaptehGameManager.Instance.redCount.ToString();
+                greenHoopsHit.text = ChaptehGameManager.Instance.greenCount.ToString();
+                yellowHoopsHit.text = ChaptehGameManager.Instance.yellowCount.ToString();
                 break;
             case ScoreManager.Gamemode.FIVESTONES:
                 chaptehGroup.SetActive(false);

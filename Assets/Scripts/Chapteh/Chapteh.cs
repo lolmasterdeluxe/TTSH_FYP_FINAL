@@ -137,7 +137,7 @@ public class Chapteh : MonoBehaviour
         }
 
         // Chapteh hits the respective ring
-        if (other.CompareTag("RedRing"))
+        if (other.CompareTag("RedRing") || other.CompareTag("YellowRing") || other.CompareTag("GreenRing"))
         {
             // Adds the score to respective ring color
             ChaptehGameManager.Instance.OnChaptehHit(other.gameObject);
@@ -146,32 +146,6 @@ public class Chapteh : MonoBehaviour
 
             // Plays the star particle effect on trigger
             other.GetComponentInChildren<ParticleSystem>().Play();
-
-            ChaptehGameManager.Instance.redCount++;
-        }
-        else if(other.CompareTag("YellowRing"))
-        {
-            // Adds the score to respective ring color
-            ChaptehGameManager.Instance.OnChaptehHit(other.gameObject);
-            other.GetComponent<Rings>().isTriggered = true;
-            StartCoroutine(GlowRingsOnHit(other));
-
-            // Plays the star particle effect on trigger
-            other.GetComponentInChildren<ParticleSystem>().Play();
-
-            ChaptehGameManager.Instance.yellowCount++;
-        }
-        else if(other.CompareTag("GreenRing"))
-        {
-            // Adds the score to respective ring color
-            ChaptehGameManager.Instance.OnChaptehHit(other.gameObject);
-            other.GetComponent<Rings>().isTriggered = true;
-            StartCoroutine(GlowRingsOnHit(other));
-
-            // Plays the star particle effect on trigger
-            other.GetComponentInChildren<ParticleSystem>().Play();
-
-            ChaptehGameManager.Instance.greenCount++;
         }
     }
 
