@@ -27,6 +27,28 @@ public class LeaderboardManager : MonoBehaviour
     public Sprite spsBg;
     public Sprite totalBg;
 
+    public CanvasGroup leaderboardCanvasGroup;
+    public CanvasGroup endScreenCanvasGroup;
+
+    public GameObject fiveStonesGroup;
+    public TMP_Text fiveStonesTotalCaughtText;
+    public TMP_Text rainbowCaughtText;
+
+    public GameObject chaptehGroup;
+    public TMP_Text redHoopsHit;
+    public TMP_Text greenHoopsHit;
+    public TMP_Text yellowHoopsHit;
+
+    public GameObject scissorsPaperStoneGroup;
+    public TMP_Text powerUpsPicked;
+    public TMP_Text enemiesKilled;
+
+    public GameObject overallGroup;
+    public TMP_Text totalChaptehScore;
+    public TMP_Text totalScissorsPaperStoneScore;
+    public TMP_Text totalFiveStonesScore;
+
+    public TMP_Text overallScoreText;
 
     // Start is called before the first frame update
 
@@ -42,7 +64,68 @@ public class LeaderboardManager : MonoBehaviour
 
     private void OnEnable()
     {
+        UpdateBackground();
+        UpdateEndScreen();
         UpdateLeaderboard();
+    }
+
+    public void UpdateEndScreen()
+    {
+        TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 0, 0);
+
+        switch (leaderboardType)
+        {
+            case ScoreManager.Gamemode.CHAPTEH:
+                chaptehGroup.SetActive(true);
+                scissorsPaperStoneGroup.SetActive(false);
+                fiveStonesGroup.SetActive(false);
+                overallGroup.SetActive(false);
+
+                redHoopsHit.text = "1";
+                greenHoopsHit.text = "2";
+                yellowHoopsHit.text = "3";
+                break;
+            case ScoreManager.Gamemode.FIVESTONES:
+                chaptehGroup.SetActive(false);
+                scissorsPaperStoneGroup.SetActive(false);
+                fiveStonesGroup.SetActive(true);
+                overallGroup.SetActive(false);
+
+                fiveStonesTotalCaughtText.text = FiveStonesGameManager.Instance.m_totalCaught.ToString();
+                rainbowCaughtText.text = FiveStonesGameManager.Instance.m_totalRainbowCaught.ToString();
+                break;
+            case ScoreManager.Gamemode.SPS:
+                chaptehGroup.SetActive(false);
+                scissorsPaperStoneGroup.SetActive(true);
+                fiveStonesGroup.SetActive(false);
+                overallGroup.SetActive(false);
+
+                powerUpsPicked.text = "1";
+                enemiesKilled.text = "2";
+                break;
+            case ScoreManager.Gamemode.TOTAL:
+                chaptehGroup.SetActive(false);
+                scissorsPaperStoneGroup.SetActive(false);
+                fiveStonesGroup.SetActive(false);
+                overallGroup.SetActive(true);
+
+                List<ScoreManager.Score> scoreList = ScoreManager.Instance.m_allScoreList.Where(x => x.m_username == ScoreManager.Instance.m_currentUsername).ToList();
+
+                totalChaptehScore.text = scoreList.Where(x => x.m_gamemode == ScoreManager.Gamemode.CHAPTEH.ToString()).FirstOrDefault().m_score.ToString();
+                totalFiveStonesScore.text = scoreList.Where(x => x.m_gamemode == ScoreManager.Gamemode.FIVESTONES.ToString()).FirstOrDefault().m_score.ToString();
+                totalScissorsPaperStoneScore.text = scoreList.Where(x => x.m_gamemode == ScoreManager.Gamemode.SPS.ToString()).FirstOrDefault().m_score.ToString();
+                overallScoreText.text = scoreList.Where(x => x.m_gamemode == ScoreManager.Gamemode.TOTAL.ToString()).FirstOrDefault().m_score.ToString();
+                break;
+        }
+
+        StartCoroutine(ShowLeaderboard());
+    }
+
+    public IEnumerator ShowLeaderboard()
+    {
+        yield return new WaitForSeconds(3);
+        TweenManager.Instance.AnimateFade(endScreenCanvasGroup, 0, 1);
+        TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 1, 1);
     }
 
     public void UpdateLeaderboard()

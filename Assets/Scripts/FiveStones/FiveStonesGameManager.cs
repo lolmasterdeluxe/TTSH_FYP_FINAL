@@ -48,6 +48,9 @@ public class FiveStonesGameManager : MonoBehaviour
     public bool m_gameStarted;
     public bool m_gameEnded = false;
 
+    public int m_totalCaught = 0;
+    public int m_totalRainbowCaught = 0;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -151,6 +154,8 @@ public class FiveStonesGameManager : MonoBehaviour
     }
     public void OnStoneCaught(GameObject gameObject)
     {
+        m_totalCaught++;
+
         if (gameObject.GetComponent<Stone>().type == Objective.BOMB_STONES)
         {
             ComboManager.Instance.BreakCombo();
@@ -158,6 +163,7 @@ public class FiveStonesGameManager : MonoBehaviour
         }
         else if (gameObject.GetComponent<Stone>().type == Objective.CATCH_ANY_STONES)
         {
+            m_totalRainbowCaught++;
             ComboManager.Instance.AddCombo();
             ScoreManager.Instance.AddCurrentGameScore(baseScore * ComboManager.Instance.GetCurrentCombo() * 2);
         }
