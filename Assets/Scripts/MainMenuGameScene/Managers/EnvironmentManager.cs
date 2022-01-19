@@ -98,10 +98,16 @@ public class EnvironmentManager : MonoBehaviour
 
     public void DOBackgroundScrolling()
     {
-        //for background
+        #region Background
+
+        //for sky background
         parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(0f, -0.025f));
         parallexbackgroundmanagerInstance.componentContainer[0].GetComponent<MeshRenderer>().material.mainTextureOffset
         += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * Time.deltaTime;
+
+        #endregion
+
+        #region Clouds
 
         //morning cloud
         parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(0.04f, 0f));
@@ -113,11 +119,13 @@ public class EnvironmentManager : MonoBehaviour
         parallexbackgroundmanagerInstance.componentContainer[2].GetComponent<MeshRenderer>().material.mainTextureOffset
         += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * Time.deltaTime;
 
-
         //night cloud
         parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(0.04f, 0f));
         parallexbackgroundmanagerInstance.componentContainer[3].GetComponent<MeshRenderer>().material.mainTextureOffset
         += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * Time.deltaTime;
+
+        #endregion
+
     }
 
     #endregion
