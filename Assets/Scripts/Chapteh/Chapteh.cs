@@ -19,6 +19,7 @@ public class Chapteh : MonoBehaviour
     private float clampedAngle = 0f;
 
     [SerializeField] private KickChapteh kickChapteh;
+    [SerializeField] private Player player;
 
     private float glowDuration = 1f;
 
@@ -35,6 +36,7 @@ public class Chapteh : MonoBehaviour
         // Set initial rotation to 0
         rotPos = transform.rotation;
 
+        player = GameObject.Find("Player Sprite").GetComponent<Player>();
         kickChapteh = GameObject.Find("Chapteh Manager").GetComponent<KickChapteh>();
         pauseMenu = GameObject.Find("Pause Manager").GetComponent<PauseMenu>();
 
@@ -102,7 +104,10 @@ public class Chapteh : MonoBehaviour
             Vector2 playerToMouseDir = (mousePositionInWorld - new Vector2(playerSprite.position.x, playerSprite.position.y)).normalized;
 
             // Force needed to launch the Chapteh
-            rbChapteh.AddForce(playerToMouseDir * speed);
+            if (player.isRunning == true)
+                rbChapteh.AddForce(playerToMouseDir * (speed * 0.5f));
+            else
+                rbChapteh.AddForce(playerToMouseDir * speed);
         }
     }
 

@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     private PauseMenu pauseMenu;
     private Chapteh chapteh;
 
+    public bool isRunning = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,6 +85,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetAxis("Mouse X") == 0 && Input.GetAxis("Mouse Y") == 0) // If mouse input is not detected
         {
+            isRunning = false;
             playerAnim.SetBool("PlayerIdle", true);
             playerAnim.SetBool("PlayerRun", false);
 
@@ -90,6 +93,7 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetAxis("Mouse X") != 0 && Input.GetAxis("Mouse Y") != 0) // If mouse input is detected
         {
+            isRunning = true;
             playerAnim.SetBool("PlayerRun", true);
             playerAnim.SetBool("PlayerIdle", false);
 
