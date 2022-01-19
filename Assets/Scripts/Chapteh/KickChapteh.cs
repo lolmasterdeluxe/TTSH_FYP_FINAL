@@ -8,7 +8,7 @@ public class KickChapteh : MonoBehaviour
     [SerializeField] private Chapteh chapteh;
     [SerializeField] private ChargeBar chargeBar;
 
-    private const float MAX_FORCE = 1400f;
+    private const float MAX_FORCE = 1200f;
 
     private float holdDownStartTime;
 
@@ -35,7 +35,7 @@ public class KickChapteh : MonoBehaviour
             {
                 // Fill amount increases to the hold down mouse key
                 if (chargeBar.GetComponent<Image>().fillAmount != 1)
-                    holdDownStartTime += 0.5f * Time.deltaTime;
+                    holdDownStartTime += Time.deltaTime;
 
                 // Fills the bar according to value of holdDownStartTime
                 chargeBar.SetFillBar(holdDownStartTime);

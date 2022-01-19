@@ -742,7 +742,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91760436}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.06883996, y: 4.2799997, z: -9.808769}
+  m_LocalPosition: {x: 0.068839006, y: 4.2799997, z: -9.808769}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1819576642}
@@ -1878,7 +1878,6 @@ MonoBehaviour:
   redCount: 0
   yellowCount: 0
   greenCount: 0
-  totalCount: 0
   m_gameStarted: 0
   m_gameEnded: 0
 --- !u!1 &402180534
@@ -11875,7 +11874,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chapteh: {fileID: 5556708298840527362}
   chargeBar: {fileID: 1927627639}
-  player: {fileID: 0}
 --- !u!1 &1482431583
 GameObject:
   m_ObjectHideFlags: 0
@@ -15442,6 +15440,7 @@ MonoBehaviour:
   skyWidth: {fileID: 1655820274}
   skyHeight: {fileID: 1655820274}
   kickChapteh: {fileID: 1480815033}
+  player: {fileID: 0}
 --- !u!61 &5556708298840527363
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15534,7 +15533,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.7
+  m_GravityScale: 0.8
   m_Material: {fileID: 6200000, guid: cde39eee74a4c5d4ab8eebf03a7acbf3, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
