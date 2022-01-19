@@ -8,7 +8,7 @@ public class KickChapteh : MonoBehaviour
     [SerializeField] private Chapteh chapteh;
     [SerializeField] private ChargeBar chargeBar;
 
-    private const float MAX_FORCE = 1100f;
+    private const float MAX_FORCE = 1400f;
 
     private float holdDownStartTime;
 
