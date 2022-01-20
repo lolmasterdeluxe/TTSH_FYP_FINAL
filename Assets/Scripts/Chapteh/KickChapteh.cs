@@ -12,6 +12,9 @@ public class KickChapteh : MonoBehaviour
 
     private float holdDownStartTime;
 
+    public bool isFull = false;
+    public bool isEmpty = true;
+
     private void Start()
     {
         chapteh = GameObject.Find("Chapteh").GetComponent<Chapteh>();
@@ -33,16 +36,21 @@ public class KickChapteh : MonoBehaviour
             // When chapteh is at the player, charge up to launch it.
             if (Input.GetMouseButton(0))
             {
-                
-                if (chargeBar.GetComponent<Image>().fillAmount != 1)
+                if (isEmpty && !isFull)
                 {
-                    holdDownStartTime += Time.deltaTime;
+                    if (chargeBar.GetComponent<Image>().fillAmount != 1)
+                    {
+                        holdDownStartTime += Time.deltaTime;
+                    }
                 }
-                //if (chargeBar.GetComponent<Image>().fillAmount == 1)
-                //{
-                //    holdDownStartTime -= Time.deltaTime;
-                //}
-                
+                else if (!isEmpty && isFull)
+                {
+                    if (chargeBar.GetComponent<Image>().fillAmount == 1)
+                    {
+                        holdDownStartTime -= Time.deltaTime;
+                    }
+                }
+
                 // Fills the bar according to value of holdDownStartTime
                 chargeBar.SetFillBar(holdDownStartTime);
 
