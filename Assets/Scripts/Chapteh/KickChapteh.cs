@@ -12,8 +12,10 @@ public class KickChapteh : MonoBehaviour
 
     private float holdDownStartTime;
 
-    public bool isFull = false;
-    public bool isEmpty = true;
+    /* public bool isFull = false;
+     public bool isEmpty = true;*/
+
+    public bool m_isIncrease = true;
 
     private void Start()
     {
@@ -36,7 +38,32 @@ public class KickChapteh : MonoBehaviour
             // When chapteh is at the player, charge up to launch it.
             if (Input.GetMouseButton(0))
             {
-                if (isEmpty && !isFull)
+                chargeBar.charge.SetActive(true);
+
+                if (m_isIncrease)
+                {
+                    holdDownStartTime += Time.deltaTime;
+
+                    if (holdDownStartTime >= 1)
+                    {
+                        holdDownStartTime = 1;
+                        m_isIncrease = false;
+                    }
+                }
+                else
+                {
+                    holdDownStartTime -= Time.deltaTime;
+
+                    if (holdDownStartTime <= 0)
+                    {
+                        holdDownStartTime = 0;
+                        m_isIncrease = true;
+                    }
+                }
+
+                chargeBar.SetFillBar(holdDownStartTime);
+
+/*                if (isEmpty && !isFull)
                 {
                     if (chargeBar.GetComponent<Image>().fillAmount != 1)
                     {
@@ -49,18 +76,14 @@ public class KickChapteh : MonoBehaviour
                     {
                         holdDownStartTime -= Time.deltaTime;
                     }
-                }
+                }*/
 
-                // Fills the bar according to value of holdDownStartTime
-                chargeBar.SetFillBar(holdDownStartTime);
-
-                chargeBar.charge.SetActive(true);
             }
 
             if (Input.GetMouseButtonUp(0))
             {
-                float holdDownTime = holdDownStartTime - Time.deltaTime;
-                chapteh.Kick(CalculateHoldDownForce(holdDownTime));
+                //float holdDownTime = holdDownStartTime - Time.deltaTime;
+                chapteh.Kick(CalculateHoldDownForce(holdDownStartTime));
 
                 // Resets the values to 0
                 holdDownStartTime = 0f;
