@@ -12,6 +12,11 @@ public class KickChapteh : MonoBehaviour
 
     private float holdDownStartTime;
 
+    /* public bool isFull = false;
+     public bool isEmpty = true;*/
+
+    public bool m_isIncrease = true;
+
     private void Start()
     {
         chapteh = GameObject.Find("Chapteh").GetComponent<Chapteh>();
@@ -33,20 +38,52 @@ public class KickChapteh : MonoBehaviour
             // When chapteh is at the player, charge up to launch it.
             if (Input.GetMouseButton(0))
             {
-                // Fill amount increases to the hold down mouse key
-                if (chargeBar.GetComponent<Image>().fillAmount != 1)
+                chargeBar.charge.SetActive(true);
+
+                if (m_isIncrease)
+                {
                     holdDownStartTime += Time.deltaTime;
 
-                // Fills the bar according to value of holdDownStartTime
+                    if (holdDownStartTime >= 1)
+                    {
+                        holdDownStartTime = 1;
+                        m_isIncrease = false;
+                    }
+                }
+                else
+                {
+                    holdDownStartTime -= Time.deltaTime;
+
+                    if (holdDownStartTime <= 0)
+                    {
+                        holdDownStartTime = 0;
+                        m_isIncrease = true;
+                    }
+                }
+
                 chargeBar.SetFillBar(holdDownStartTime);
 
-                chargeBar.charge.SetActive(true);
+/*                if (isEmpty && !isFull)
+                {
+                    if (chargeBar.GetComponent<Image>().fillAmount != 1)
+                    {
+                        holdDownStartTime += Time.deltaTime;
+                    }
+                }
+                else if (!isEmpty && isFull)
+                {
+                    if (chargeBar.GetComponent<Image>().fillAmount == 1)
+                    {
+                        holdDownStartTime -= Time.deltaTime;
+                    }
+                }*/
+
             }
 
             if (Input.GetMouseButtonUp(0))
             {
-                float holdDownTime = holdDownStartTime - Time.deltaTime;
-                chapteh.Kick(CalculateHoldDownForce(holdDownTime));
+                //float holdDownTime = holdDownStartTime - Time.deltaTime;
+                chapteh.Kick(CalculateHoldDownForce(holdDownStartTime));
 
                 // Resets the values to 0
                 holdDownStartTime = 0f;
@@ -64,5 +101,21 @@ public class KickChapteh : MonoBehaviour
         float force = holdTimeNormalized * MAX_FORCE;
 
         return force;
+    }
+
+    private void FillIncrease()
+    {
+        if (chargeBar.GetComponent<Image>().fillAmount != 1)
+        {
+            holdDownStartTime += Time.deltaTime;
+        }
+    }
+
+    private void FillDecrease()
+    {
+        if(chargeBar.GetComponent<Image>().fillAmount == 1)
+        {
+            holdDownStartTime -= Time.deltaTime;
+        }
     }
 }
