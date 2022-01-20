@@ -7,8 +7,8 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
     private float playerWidth;
     public SpriteRenderer skyWidth;
-    public Vector2 playerPosition = new Vector2(0f, 0f);
-    public float moveSpeed = 0.1f;
+    private Vector2 playerPosition = new Vector2(0f, 0f);
+    public float moveSpeed;
 
     private Vector3 mousePosition;
 

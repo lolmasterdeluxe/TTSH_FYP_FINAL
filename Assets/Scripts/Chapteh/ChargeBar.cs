@@ -15,7 +15,7 @@ public class ChargeBar : MonoBehaviour
         chargeFillImage = GameObject.Find("Fill Image").GetComponent<Image>();
 
         // Default to an empty bar
-        chargeFillImage.fillAmount = 0f;
+        chargeFillImage.fillAmount = 1f;
 
         // For Screen UI
         //charge.SetActive(false);

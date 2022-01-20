@@ -33,10 +33,16 @@ public class KickChapteh : MonoBehaviour
             // When chapteh is at the player, charge up to launch it.
             if (Input.GetMouseButton(0))
             {
-                // Fill amount increases to the hold down mouse key
+                
                 if (chargeBar.GetComponent<Image>().fillAmount != 1)
+                {
                     holdDownStartTime += Time.deltaTime;
-
+                }
+                //if (chargeBar.GetComponent<Image>().fillAmount == 1)
+                //{
+                //    holdDownStartTime -= Time.deltaTime;
+                //}
+                
                 // Fills the bar according to value of holdDownStartTime
                 chargeBar.SetFillBar(holdDownStartTime);
 
@@ -64,5 +70,21 @@ public class KickChapteh : MonoBehaviour
         float force = holdTimeNormalized * MAX_FORCE;
 
         return force;
+    }
+
+    private void FillIncrease()
+    {
+        if (chargeBar.GetComponent<Image>().fillAmount != 1)
+        {
+            holdDownStartTime += Time.deltaTime;
+        }
+    }
+
+    private void FillDecrease()
+    {
+        if(chargeBar.GetComponent<Image>().fillAmount == 1)
+        {
+            holdDownStartTime -= Time.deltaTime;
+        }
     }
 }
