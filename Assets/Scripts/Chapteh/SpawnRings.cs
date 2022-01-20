@@ -8,8 +8,9 @@ public class SpawnRings : MonoBehaviour
     public float spawnRate;
     private float randX, randY;
     private float randOption;
-    private float nextSpawn = 0f;
+    private float nextSpawn;
     private Vector2 spawnPos;
+    public bool spawnRingsStart = true;
 
     public SpriteRenderer skySpriteWidth, skySpriteHeight;
     public List<Vector2> spawnedPositions;
@@ -43,7 +44,7 @@ public class SpawnRings : MonoBehaviour
         LimitSpawnRings();
     }
 
-    private void RingSpawn(int ringNum)
+    public void RingSpawn(int ringNum)
     {
         // Gets size of the ring colliders of x-axis
         redringRadiusX = redRingPrefab.GetComponent<Collider2D>().bounds.max.x + 0.5f;
@@ -55,7 +56,7 @@ public class SpawnRings : MonoBehaviour
         yellowringRadiusY = yellowRingPrefab.GetComponent<Collider2D>().bounds.max.y + 0.5f;
         greenringRadiusY = greenRingPrefab.GetComponent<Collider2D>().bounds.max.y + 0.5f;
 
-        // Spawns 6 rings
+        // Spawns number rings
         for (int i = 0; i < ringNum; i++)
         {
             randX = Random.Range(skySpriteWidth.bounds.min.x + 0.5f, skySpriteWidth.bounds.max.x - 0.5f);
@@ -109,11 +110,19 @@ public class SpawnRings : MonoBehaviour
 
     private void RandomRingSpawn()
     {
-        if (Time.time > nextSpawn)
+        if (spawnRingsStart)
         {
-            nextSpawn = Time.time + spawnRate;
+            RingSpawn(8);
+            spawnRingsStart = false;
+        }
+        else
+        {
+            if (Time.time > nextSpawn)
+            {
+                nextSpawn = Time.time + spawnRate;
 
-            RingSpawn(4);
+                RingSpawn(4);
+            }
         }
     }
 

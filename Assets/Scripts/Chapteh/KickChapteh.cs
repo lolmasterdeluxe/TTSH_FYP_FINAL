@@ -12,9 +12,6 @@ public class KickChapteh : MonoBehaviour
 
     private float holdDownStartTime;
 
-    /* public bool isFull = false;
-     public bool isEmpty = true;*/
-
     public bool m_isIncrease = true;
 
     private void Start()
@@ -62,27 +59,10 @@ public class KickChapteh : MonoBehaviour
                 }
 
                 chargeBar.SetFillBar(holdDownStartTime);
-
-/*                if (isEmpty && !isFull)
-                {
-                    if (chargeBar.GetComponent<Image>().fillAmount != 1)
-                    {
-                        holdDownStartTime += Time.deltaTime;
-                    }
-                }
-                else if (!isEmpty && isFull)
-                {
-                    if (chargeBar.GetComponent<Image>().fillAmount == 1)
-                    {
-                        holdDownStartTime -= Time.deltaTime;
-                    }
-                }*/
-
             }
 
             if (Input.GetMouseButtonUp(0))
             {
-                //float holdDownTime = holdDownStartTime - Time.deltaTime;
                 chapteh.Kick(CalculateHoldDownForce(holdDownStartTime));
 
                 // Resets the values to 0
