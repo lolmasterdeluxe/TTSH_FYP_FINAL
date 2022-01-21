@@ -44,7 +44,49 @@ public class SpawnRings : MonoBehaviour
         LimitSpawnRings();
     }
 
-    public void RingSpawn(int ringNum)
+    private void SpawnRingOnStartGame(int ringNum)
+    {
+        for (int i = 0; i < ringNum; i++)
+        {
+            randX = Random.Range(skySpriteWidth.bounds.min.x + 0.5f, skySpriteWidth.bounds.max.x - 0.5f);
+            randY = Random.Range(skySpriteHeight.bounds.min.y + 3f, skySpriteHeight.bounds.max.y - 0.5f);
+
+            randOption = Random.Range(0, 3);
+
+            spawnPos = new Vector2(randX, randY);
+
+            Collider2D colliderWithRedRing = Physics2D.OverlapCircle(spawnPos, redringRadiusX + redringRadiusY, LayerMask.GetMask("RedRingLayer"));
+            Collider2D colliderWithYellowRing = Physics2D.OverlapCircle(spawnPos, yellowringRadiusX + yellowringRadiusY, LayerMask.GetMask("YellowRingLayer"));
+            Collider2D colliderWithGreenRing = Physics2D.OverlapCircle(spawnPos, greenringRadiusX + greenringRadiusY, LayerMask.GetMask("GreenRingLayer"));
+
+            if (colliderWithRedRing == false && colliderWithYellowRing == false && colliderWithGreenRing == false)
+            {
+                GameObject temp;
+
+                switch (randOption)
+                {
+                    case 0:
+                        temp = Instantiate(redRingPrefab, spawnPos, Quaternion.identity);
+                        gameObjectRings = temp;
+                        spawnedRings.Add(temp);
+                        break;
+                    case 1:
+                        temp = Instantiate(yellowRingPrefab, spawnPos, Quaternion.identity);
+                        gameObjectRings = temp;
+                        spawnedRings.Add(temp);
+                        break;
+                    case 2:
+                        temp = Instantiate(greenRingPrefab, spawnPos, Quaternion.identity);
+                        gameObjectRings = temp;
+                        spawnedRings.Add(temp);
+                        break;
+                }
+                spawnedPositions.Add(gameObjectRings.transform.position);
+            }
+        }
+    }
+
+    private void RingSpawn(int ringNum)
     {
         // Gets size of the ring colliders of x-axis
         redringRadiusX = redRingPrefab.GetComponent<Collider2D>().bounds.max.x + 0.5f;
@@ -112,7 +154,8 @@ public class SpawnRings : MonoBehaviour
     {
         if (spawnRingsStart)
         {
-            RingSpawn(8);
+            SpawnRingOnStartGame(8);
+
             spawnRingsStart = false;
         }
         else
