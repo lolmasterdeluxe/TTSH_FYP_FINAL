@@ -27,15 +27,11 @@ public class EnvironmentManager : MonoBehaviour
     [Tooltip("Container for Dragon Slide GameObjects")]
     public List<GameObject> dragonslideGameObjectList;
 
-    [Tooltip("Reference to the cloud GameObjects")]
-    public GameObject g_morningCloud, g_noonCloud, g_nightCloud;
+    [Tooltip("Container for Lamp GameObjects")]
+    public List<GameObject> lampGameObjectList;
 
-    [Tooltip("Reference to the platform GameObjects")]
-    public GameObject g_morningPlatform, g_noonPlatform, g_nightPlatform;
-
-    [Tooltip("Reference to the Dragon Slide GameObjects")]
-    public GameObject g_morningDragon, g_noonDragon, g_nightDragon;
-
+    [Tooltip("Container for Building Background GameObjects")]
+    public List<GameObject> buildingGameObjectList;
 
     #endregion
 
@@ -121,61 +117,160 @@ public class EnvironmentManager : MonoBehaviour
         //run the cycles base on the time
         if (f_currentTime > 6.5f && f_currentTime <= 12.5f)
         {
-            g_morningCloud.transform.GetComponent<MeshRenderer>().material.DOFade(1f, 4f);
-            g_morningPlatform.transform.GetComponent<SpriteRenderer>().DOFade(1f, 4f);
-            g_morningDragon.transform.GetComponent<SpriteRenderer>().DOFade(1f, 2f);
-            g_noonCloud.transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
-            g_noonPlatform.transform.GetComponent<SpriteRenderer>().DOFade(0f, 4f);
-            g_noonDragon.transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
-            g_nightCloud.transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
-            g_nightPlatform.transform.GetComponent<SpriteRenderer>().DOFade(0f, 4f);
-            g_nightDragon.transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            //clouds
+            cloudGameObjectList[0].transform.GetComponent<MeshRenderer>().material.DOFade(1f, 4f);
+            cloudGameObjectList[1].transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
+            cloudGameObjectList[2].transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
+
+            //platforms
+            platformGameObjectList[0].transform.GetComponent<SpriteRenderer>().DOFade(1f, 4f);
+            platformGameObjectList[1].transform.GetComponent<SpriteRenderer>().DOFade(0f, 4f);
+            platformGameObjectList[2].transform.GetComponent<SpriteRenderer>().DOFade(0f, 4f);
+            
+            //dragon slide
+            dragonslideGameObjectList[0].transform.GetComponent<SpriteRenderer>().DOFade(1f, 2f);
+            dragonslideGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            dragonslideGameObjectList[2].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+
+            //lamp posts
+            lampGameObjectList[0].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
+            lampGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            lampGameObjectList[2].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            lampGameObjectList[3].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+
+            lampGameObjectList[4].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
+            lampGameObjectList[5].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            lampGameObjectList[6].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            lampGameObjectList[7].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+
+            lampGameObjectList[8].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
+            lampGameObjectList[9].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            lampGameObjectList[10].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            lampGameObjectList[11].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+
+            //building
+            buildingGameObjectList[0].transform.GetComponent<MeshRenderer>().material.DOFade(1f, 4f);
+            buildingGameObjectList[1].transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
+            buildingGameObjectList[2].transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
         }
+
         if (f_currentTime > 12.5f && f_currentTime <= 19f)
         {
-            g_morningCloud.transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
-            g_morningPlatform.transform.GetComponent<SpriteRenderer>().DOFade(0f, 4f);
-            g_morningDragon.transform.GetComponent<SpriteRenderer>().DOFade(0f, 2f);
-            g_noonCloud.transform.GetComponent<MeshRenderer>().material.DOFade(1f, 4f);
-            g_noonPlatform.transform.GetComponent<SpriteRenderer>().DOFade(1f, 4f);
-            g_noonDragon.transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
-            g_nightCloud.transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
-            g_nightPlatform.transform.GetComponent<SpriteRenderer>().DOFade(0f, 4f);
-            g_nightDragon.transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            //clouds
+            cloudGameObjectList[0].transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
+            cloudGameObjectList[1].transform.GetComponent<MeshRenderer>().material.DOFade(1f, 4f);
+            cloudGameObjectList[2].transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
+            
+            //platforms
+            platformGameObjectList[0].transform.GetComponent<SpriteRenderer>().DOFade(0f, 4f);
+            platformGameObjectList[1].transform.GetComponent<SpriteRenderer>().DOFade(1f, 4f);
+            platformGameObjectList[2].transform.GetComponent<SpriteRenderer>().DOFade(0f, 4f);
+            
+            //dragon slide
+            dragonslideGameObjectList[0].transform.GetComponent<SpriteRenderer>().DOFade(0f, 2f);
+            dragonslideGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
+            dragonslideGameObjectList[2].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+
+            //lamp posts
+            lampGameObjectList[0].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            lampGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
+            lampGameObjectList[2].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            lampGameObjectList[3].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+
+            lampGameObjectList[4].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            lampGameObjectList[5].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
+            lampGameObjectList[6].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            lampGameObjectList[7].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+
+            lampGameObjectList[8].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            lampGameObjectList[9].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
+            lampGameObjectList[10].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            lampGameObjectList[11].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+
+            //building
+            buildingGameObjectList[0].transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
+            buildingGameObjectList[1].transform.GetComponent<MeshRenderer>().material.DOFade(1f, 4f);
+            buildingGameObjectList[2].transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
         }
+
         if (f_currentTime > 19f && f_currentTime <= 24f)
         {
-            g_morningCloud.transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
-            g_morningPlatform.transform.GetComponent<SpriteRenderer>().DOFade(0f, 4f);
-            g_morningDragon.transform.GetComponent<SpriteRenderer>().DOFade(0f, 2f);
-            g_noonCloud.transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
-            g_noonPlatform.transform.GetComponent<SpriteRenderer>().DOFade(0f, 4f);
-            g_noonDragon.transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
-            g_nightCloud.transform.GetComponent<MeshRenderer>().material.DOFade(1f, 4f);
-            g_nightPlatform.transform.GetComponent<SpriteRenderer>().DOFade(1f, 4f);
-            g_nightDragon.transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
+            //clouds
+            cloudGameObjectList[0].transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
+            cloudGameObjectList[1].transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
+            cloudGameObjectList[2].transform.GetComponent<MeshRenderer>().material.DOFade(1f, 4f);
+
+            //platforms
+            platformGameObjectList[0].transform.GetComponent<SpriteRenderer>().DOFade(0f, 4f);
+            platformGameObjectList[1].transform.GetComponent<SpriteRenderer>().DOFade(0f, 4f);
+            platformGameObjectList[2].transform.GetComponent<SpriteRenderer>().DOFade(1f, 4f);
+            
+            //dragon slide
+            dragonslideGameObjectList[0].transform.GetComponent<SpriteRenderer>().DOFade(0f, 2f);
+            dragonslideGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            dragonslideGameObjectList[2].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
+
+            //lamp posts
+            lampGameObjectList[0].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            lampGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            lampGameObjectList[2].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
+            lampGameObjectList[3].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
+
+            lampGameObjectList[4].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            lampGameObjectList[5].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            lampGameObjectList[6].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
+            lampGameObjectList[7].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
+
+            lampGameObjectList[8].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            lampGameObjectList[9].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            lampGameObjectList[10].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
+            lampGameObjectList[11].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
+            
+            //building
+            buildingGameObjectList[0].transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
+            buildingGameObjectList[1].transform.GetComponent<MeshRenderer>().material.DOFade(0f, 4f);
+            buildingGameObjectList[2].transform.GetComponent<MeshRenderer>().material.DOFade(1f, 4f);
         }
     }
-
 
     #endregion
 
     public void OnStartRun() //set to morning on START
     {
-        //platform
-        g_morningPlatform.transform.GetComponent<SpriteRenderer>().DOFade(1f, 0f);
-        g_noonPlatform.transform.GetComponent<SpriteRenderer>().DOFade(0f, 0f);
-        g_nightPlatform.transform.GetComponent<SpriteRenderer>().DOFade(0f, 0f);
-
         //clouds
-        g_morningCloud.transform.GetComponent<MeshRenderer>().material.DOFade(1f, 0f);
-        g_noonCloud.transform.GetComponent<MeshRenderer>().material.DOFade(0f, 0f);
-        g_nightCloud.transform.GetComponent<MeshRenderer>().material.DOFade(0f, 0f);
+        cloudGameObjectList[0].transform.GetComponent<MeshRenderer>().material.DOFade(1f, 0f);
+        cloudGameObjectList[1].transform.GetComponent<MeshRenderer>().material.DOFade(0f, 0f);
+        cloudGameObjectList[2].transform.GetComponent<MeshRenderer>().material.DOFade(0f, 0f);
+
+        //platform
+        platformGameObjectList[0].transform.GetComponent<SpriteRenderer>().DOFade(1f, 0f);
+        platformGameObjectList[1].transform.GetComponent<SpriteRenderer>().DOFade(0f, 0f);
+        platformGameObjectList[2].transform.GetComponent<SpriteRenderer>().DOFade(0f, 0f);
 
         //dragon
-        g_morningDragon.transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 0f);
-        g_noonDragon.transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 0f);
-        g_nightDragon.transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 0f);
+        dragonslideGameObjectList[0].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 0f);
+        dragonslideGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 0f);
+        dragonslideGameObjectList[2].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 0f);
+
+        //lamp posts
+        lampGameObjectList[0].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 0f);
+        lampGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 0f);
+        lampGameObjectList[2].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 0f);
+        lampGameObjectList[3].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 0f);
+        lampGameObjectList[4].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 0f);
+        lampGameObjectList[5].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 0f);
+        lampGameObjectList[6].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 0f);
+        lampGameObjectList[7].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 0f);
+        lampGameObjectList[8].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 0f);
+        lampGameObjectList[9].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 0f);
+        lampGameObjectList[10].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 0f);
+        lampGameObjectList[11].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 0f);
+
+        //building
+        buildingGameObjectList[0].transform.GetComponent<MeshRenderer>().material.DOFade(1f, 0f);
+        buildingGameObjectList[1].transform.GetComponent<MeshRenderer>().material.DOFade(0f, 0f);
+        buildingGameObjectList[2].transform.GetComponent<MeshRenderer>().material.DOFade(0f, 0f);
+
     }
 
 }
