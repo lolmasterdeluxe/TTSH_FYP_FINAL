@@ -8,23 +8,34 @@ public class Indicator : MonoBehaviour
     #region CodeMonkey
     //[SerializeField] private Camera uiCamera;
     //[SerializeField] private Sprite arrowSprite;
-    //[SerializeField] private Sprite crossSprite;
+    //[SerializeField] private Sprite starSprite;
 
     //private Chapteh chapteh;
     //private Vector3 targetPosition;
     //private RectTransform pointerRectTransform;
     //private Image pointerImage;
+
+    //Vector3 targetPositionScreenPoint;
+    //float borderSize;
+    //bool isOffScreen;
     #endregion
 
+    #region So Called Working
     public GameObject Pointer;
     public GameObject Target;
 
     Renderer rd;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
     {
         //chapteh = GameObject.Find("Chapteh").GetComponent<Chapteh>();
+
+        //float borderSize = 20f;
+        //targetPositionScreenPoint = Camera.main.WorldToScreenPoint(chapteh.transform.position);
+        //isOffScreen = targetPositionScreenPoint.x <= borderSize || targetPositionScreenPoint.x >= Screen.width - borderSize ||
+        //              targetPositionScreenPoint.y <= borderSize || targetPositionScreenPoint.y >= Screen.height - borderSize;
 
         rd = GetComponent<Renderer>();
     }
@@ -32,8 +43,9 @@ public class Indicator : MonoBehaviour
     private void Awake()
     {
         #region CodeMonkey
-        //pointerRectTransform = transform.Find("Indicator").GetComponent<RectTransform>();
-        //pointerImage = transform.Find("Indicator").GetComponent<Image>();
+        //chapteh.transform.position = GameObject.Find("Chapteh").transform.position;
+        //pointerRectTransform = transform.Find("Pointer1").GetComponent<RectTransform>();
+        //pointerImage = transform.Find("Pointer1").GetComponent<Image>();
 
         //Hide();
         #endregion
@@ -43,25 +55,15 @@ public class Indicator : MonoBehaviour
     void Update()
     {
         #region CodeMonkey
-        //float borderSize = 100f;
-        //Vector3 targetPositionScreenPoint = Camera.main.WorldToScreenPoint(targetPosition);
-        //bool isOffScreen = targetPositionScreenPoint.x <= borderSize || targetPositionScreenPoint.x >= Screen.width - borderSize ||
-        //                   targetPositionScreenPoint.y <= borderSize || targetPositionScreenPoint.y >= Screen.height - borderSize;
 
-        //if(isOffScreen)
+        //if (isOffScreen)
         //{
         //    RotatePointerTowardsTargetPosition();
 
         //    pointerImage.sprite = arrowSprite;
         //    Vector3 cappedTargetScreenPosition = targetPositionScreenPoint;
-        //    if (cappedTargetScreenPosition.x <= borderSize)
-        //        cappedTargetScreenPosition.x = borderSize;
-        //    if (cappedTargetScreenPosition.x >= Screen.width - borderSize)
-        //        cappedTargetScreenPosition.x = Screen.width - borderSize;
-        //    if (cappedTargetScreenPosition.y <= borderSize)
-        //        cappedTargetScreenPosition.y = borderSize;
-        //    if (cappedTargetScreenPosition.y >= Screen.height - borderSize)
-        //        cappedTargetScreenPosition.y = Screen.height - borderSize;
+        //    cappedTargetScreenPosition.x = Mathf.Clamp(cappedTargetScreenPosition.x, borderSize, Screen.width - borderSize);
+        //    cappedTargetScreenPosition.y = Mathf.Clamp(cappedTargetScreenPosition.y, borderSize, Screen.height - borderSize);
 
         //    Vector3 pointerWorldPosition = uiCamera.ScreenToWorldPoint(cappedTargetScreenPosition);
         //    pointerRectTransform.position = pointerWorldPosition;
@@ -69,7 +71,7 @@ public class Indicator : MonoBehaviour
         //}
         //else
         //{
-        //    pointerImage.sprite = crossSprite;
+        //    pointerImage.sprite = starSprite;
         //    Vector3 pointerWorldPosition = uiCamera.ScreenToWorldPoint(targetPositionScreenPoint);
         //    pointerRectTransform.position = pointerWorldPosition;
         //    pointerRectTransform.localPosition = new Vector3(pointerRectTransform.localPosition.x, pointerRectTransform.localPosition.y, 0f);
@@ -78,9 +80,10 @@ public class Indicator : MonoBehaviour
         //}
         #endregion
 
+        #region So Called Working
         if (rd.isVisible == false)
         {
-            if(Pointer.activeSelf == false)
+            if (Pointer.activeSelf == false)
             {
                 Pointer.SetActive(true);
             }
@@ -89,7 +92,7 @@ public class Indicator : MonoBehaviour
 
             RaycastHit2D ray = Physics2D.Raycast(transform.position, direction);
 
-            if(ray.collider != null)
+            if (ray.collider != null)
             {
                 Pointer.transform.position = ray.point;
             }
@@ -101,12 +104,13 @@ public class Indicator : MonoBehaviour
                 Pointer.SetActive(false);
             }
         }
+        #endregion
     }
 
     #region CodeMonkey
     //private void RotatePointerTowardsTargetPosition()
     //{
-    //    Vector3 toPosition = targetPosition;
+    //    Vector3 toPosition = chapteh.transform.position;
     //    Vector3 fromPosition = Camera.main.transform.position;
     //    fromPosition.z = 0f;
 
@@ -123,7 +127,7 @@ public class Indicator : MonoBehaviour
     //public void Show(Vector3 targetPosition)
     //{
     //    gameObject.SetActive(true);
-    //    this.targetPosition = targetPosition;
+    //    chapteh.transform.position = targetPosition;
     //}
     #endregion
 }
