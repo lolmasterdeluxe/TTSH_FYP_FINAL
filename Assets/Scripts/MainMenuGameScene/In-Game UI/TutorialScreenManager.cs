@@ -64,7 +64,6 @@ public class TutorialScreenManager : MonoBehaviour
                 chapteh_tutorialScreen.SetActive(true);
                 break;
         }
-
     }
 
     public void TutorialScreenClosed(TutorialScreenType selectedScreen)
@@ -160,8 +159,6 @@ public class TutorialScreenManager : MonoBehaviour
         }
     }
 
-
     #endregion
-
 
 }
