@@ -50,7 +50,6 @@ public class EnvironmentManager : MonoBehaviour
     {
         //update time HERE
         f_currentTime += Time.deltaTime * 0.5f;
-        Debug.Log("Time:" + f_currentTime);
 
         //for object fading
         DOObjectFading();
