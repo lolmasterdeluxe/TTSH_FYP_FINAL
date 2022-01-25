@@ -1,97 +1,19 @@
 fileFormatVersion: 2
-guid: f78ede9b006e56740b32b0c0600b19b8
+guid: 6bc2cdd355ed14842a0ad7339ac565ce
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6463919588261248817
-    second: RUNANIsheet_0
+      213: 2449024071763358018
+    second: SPRITESHEET_idle_0
   - first:
-      213: -574002032342479563
-    second: RUNANIsheet_1
+      213: -6441965082365425765
+    second: SPRITESHEET_idle_1
   - first:
-      213: 2253404408101360444
-    second: RUNANIsheet_2
+      213: -8442679947648476749
+    second: SPRITESHEET_idle_2
   - first:
-      213: -7773777306168506316
-    second: RUNANIsheet_3
-  - first:
-      213: -3439579544330594985
-    second: RUNANIsheet_4
-  - first:
-      213: -2112907351213775899
-    second: RUNANIsheet_5
-  - first:
-      213: 2722206301197595698
-    second: RUNANIsheet_6
-  - first:
-      213: -2625827754527210354
-    second: RUNANIsheet_7
-  - first:
-      213: -21621849681611620
-    second: RUNANIsheet_8
-  - first:
-      213: 3964483805580769859
-    second: RUNANIsheet_9
-  - first:
-      213: 3316683029057306292
-    second: RUNANIsheet_10
-  - first:
-      213: -4233990742155894760
-    second: RUNANIsheet_11
-  - first:
-      213: 4330421526414824177
-    second: RUNANIsheet_12
-  - first:
-      213: -7180327378486976291
-    second: RUNANIsheet_13
-  - first:
-      213: 6102829631288812157
-    second: RUNANIsheet_14
-  - first:
-      213: -2981233856571906943
-    second: RUNANIsheet_15
-  - first:
-      213: -2673278065996709722
-    second: RUNANIsheet_16
-  - first:
-      213: 7249700514517994471
-    second: RUNANIsheet_17
-  - first:
-      213: 9055374320034727856
-    second: RUNANIsheet_18
-  - first:
-      213: -4899368371748808328
-    second: RUNANIsheet_19
-  - first:
-      213: -7777943134851110402
-    second: RUNANIsheet_20
-  - first:
-      213: 8290719478024907391
-    second: RUNANIsheet_21
-  - first:
-      213: -5720232132745573262
-    second: RUNANIsheet_22
-  - first:
-      213: 4727570749783668061
-    second: RUNANIsheet_23
-  - first:
-      213: -6759673443516065944
-    second: RUNANIsheet_0
-  - first:
-      213: -5736319004285838526
-    second: RUNANIsheet_1
-  - first:
-      213: -7415952767337149020
-    second: RUNANIsheet_2
-  - first:
-      213: 3957691576627020122
-    second: RUNANIsheet_3
-  - first:
-      213: -8193366246283307277
-    second: RUNANIsheet_4
-  - first:
-      213: -7765216720365493837
-    second: RUNANIsheet_5
+      213: 7028917789916505640
+    second: SPRITESHEET_idle_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,7 +49,7 @@ TextureImporter:
     mipBias: -100
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -191,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RUNANIsheet_0
+      name: SPRITESHEET_idle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 240
-        height: 240
+        width: 250
+        height: 250
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,20 +127,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 867559141d0d032a0800000000000000
-      internalID: -6759673443516065944
+      spriteID: 241f5d3fa6eacf120800000000000000
+      internalID: 2449024071763358018
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RUNANIsheet_1
+      name: SPRITESHEET_idle_1
       rect:
         serializedVersion: 2
-        x: 240
+        x: 250
         y: 0
-        width: 240
-        height: 240
+        width: 250
+        height: 250
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,20 +148,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24b583702408460b0800000000000000
-      internalID: -5736319004285838526
+      spriteID: b97832a73ea8996a0800000000000000
+      internalID: -6441965082365425765
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RUNANIsheet_2
+      name: SPRITESHEET_idle_2
       rect:
         serializedVersion: 2
-        x: 480
+        x: 500
         y: 0
-        width: 240
-        height: 240
+        width: 250
+        height: 250
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,20 +169,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ad4bcfdf3e351990800000000000000
-      internalID: -7415952767337149020
+      spriteID: 3b95910a15395da80800000000000000
+      internalID: -8442679947648476749
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RUNANIsheet_3
+      name: SPRITESHEET_idle_3
       rect:
         serializedVersion: 2
-        x: 720
+        x: 750
         y: 0
-        width: 240
-        height: 240
+        width: 250
+        height: 250
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,50 +190,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a51c86b258b8ce630800000000000000
-      internalID: 3957691576627020122
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RUNANIsheet_4
-      rect:
-        serializedVersion: 2
-        x: 960
-        y: 0
-        width: 240
-        height: 240
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3f69b9f2fc05b4e80800000000000000
-      internalID: -8193366246283307277
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RUNANIsheet_5
-      rect:
-        serializedVersion: 2
-        x: 1200
-        y: 0
-        width: 240
-        height: 240
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3b1e0b2e8886c3490800000000000000
-      internalID: -7765216720365493837
+      spriteID: 826a5673d7bbb8160800000000000000
+      internalID: 7028917789916505640
       vertices: []
       indices: 
       edges: []
@@ -319,7 +199,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 8e96728d061545446b64afab808af26f
     internalID: 0
     vertices: []
     indices: 
