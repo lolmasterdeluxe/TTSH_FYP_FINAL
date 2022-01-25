@@ -82,20 +82,4 @@ public class KickChapteh : MonoBehaviour
 
         return force;
     }
-
-    private void FillIncrease()
-    {
-        if (chargeBar.GetComponent<Image>().fillAmount != 1)
-        {
-            holdDownStartTime += Time.deltaTime;
-        }
-    }
-
-    private void FillDecrease()
-    {
-        if(chargeBar.GetComponent<Image>().fillAmount == 1)
-        {
-            holdDownStartTime -= Time.deltaTime;
-        }
-    }
 }

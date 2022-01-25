@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: 435504b959a02c946a8f249da97cd8a0
+guid: f64ca51ac3b34de488d62b4626525714
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2514684019934737245
-    second: chaptehSPRITESHEET_kick_0
+      213: 3833837945000875951
+    second: SPRITESHEET_kick_0
   - first:
-      213: -4280423604108449003
-    second: chaptehSPRITESHEET_kick_1
+      213: -7359942297838011474
+    second: SPRITESHEET_kick_1
   - first:
-      213: -6121246841747290157
-    second: chaptehSPRITESHEET_kick_2
+      213: 3614432435468903006
+    second: SPRITESHEET_kick_2
   - first:
-      213: 2531879026717170597
-    second: chaptehSPRITESHEET_kick_3
+      213: -8906023572100314398
+    second: SPRITESHEET_kick_3
   - first:
-      213: 3120994226265255310
-    second: chaptehSPRITESHEET_kick_4
+      213: -3832749913591149864
+    second: SPRITESHEET_kick_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -48,7 +48,7 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -100
     wrapU: 1
     wrapV: 1
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chaptehSPRITESHEET_kick_0
+      name: SPRITESHEET_kick_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 288
-        height: 268
+        width: 250
+        height: 250
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ac407d053c0a1dd0800000000000000
-      internalID: -2514684019934737245
+      spriteID: fa7d0366c47843530800000000000000
+      internalID: 3833837945000875951
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chaptehSPRITESHEET_kick_1
+      name: SPRITESHEET_kick_1
       rect:
         serializedVersion: 2
-        x: 288
+        x: 250
         y: 0
-        width: 288
-        height: 268
+        width: 250
+        height: 250
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +151,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51b2be42961e894c0800000000000000
-      internalID: -4280423604108449003
+      spriteID: eab3ef9897b3cd990800000000000000
+      internalID: -7359942297838011474
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chaptehSPRITESHEET_kick_2
+      name: SPRITESHEET_kick_2
       rect:
         serializedVersion: 2
-        x: 576
+        x: 500
         y: 0
-        width: 288
-        height: 268
+        width: 250
+        height: 250
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +172,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d7cb2fdd66fc0ba0800000000000000
-      internalID: -6121246841747290157
+      spriteID: e5226c4662b092230800000000000000
+      internalID: 3614432435468903006
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chaptehSPRITESHEET_kick_3
+      name: SPRITESHEET_kick_3
       rect:
         serializedVersion: 2
-        x: 864
+        x: 750
         y: 0
-        width: 288
-        height: 268
+        width: 250
+        height: 250
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,20 +193,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ab1db17f8a032320800000000000000
-      internalID: 2531879026717170597
+      spriteID: 2ea84bf4fb2776480800000000000000
+      internalID: -8906023572100314398
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chaptehSPRITESHEET_kick_4
+      name: SPRITESHEET_kick_4
       rect:
         serializedVersion: 2
-        x: 1152
+        x: 1000
         y: 0
-        width: 288
-        height: 268
+        width: 250
+        height: 250
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,8 +214,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8de59a86bfff4b20800000000000000
-      internalID: 3120994226265255310
+      spriteID: 8da8d77a2465fcac0800000000000000
+      internalID: -3832749913591149864
       vertices: []
       indices: 
       edges: []
@@ -223,7 +223,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: d866640dad1ad784d84d79a6a28de6e5
+    spriteID: 18b6ce8048d93944d99b4510e4f6d7c7
     internalID: 0
     vertices: []
     indices: 
