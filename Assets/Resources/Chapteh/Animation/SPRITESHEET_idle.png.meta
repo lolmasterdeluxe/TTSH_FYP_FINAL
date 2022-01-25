@@ -1,31 +1,19 @@
 fileFormatVersion: 2
-guid: 454d1e1334904fb498e6e6b31f5672ce
+guid: 6bc2cdd355ed14842a0ad7339ac565ce
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6710374227780294761
-    second: chaptehSPRITESHEET_idle_0
+      213: 2449024071763358018
+    second: SPRITESHEET_idle_0
   - first:
-      213: -5557533846618029571
-    second: chaptehSPRITESHEET_idle_1
+      213: -6441965082365425765
+    second: SPRITESHEET_idle_1
   - first:
-      213: 6630825799687221620
-    second: chaptehSPRITESHEET_idle_2
+      213: -8442679947648476749
+    second: SPRITESHEET_idle_2
   - first:
-      213: 4395096620690891390
-    second: chaptehSPRITESHEET_idle_3
-  - first:
-      213: 2600848291549508498
-    second: chaptehSPRITESHEET_idle_0
-  - first:
-      213: -22379016164900362
-    second: chaptehSPRITESHEET_idle_1
-  - first:
-      213: 1833195113798447661
-    second: chaptehSPRITESHEET_idle_2
-  - first:
-      213: -320453423707684577
-    second: chaptehSPRITESHEET_idle_3
+      213: 7028917789916505640
+    second: SPRITESHEET_idle_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -56,7 +44,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -125,12 +113,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chaptehSPRITESHEET_idle_0
+      name: SPRITESHEET_idle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 360
+        width: 250
         height: 250
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -139,19 +127,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2937d74cdb1181420800000000000000
-      internalID: 2600848291549508498
+      spriteID: 241f5d3fa6eacf120800000000000000
+      internalID: 2449024071763358018
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chaptehSPRITESHEET_idle_1
+      name: SPRITESHEET_idle_1
       rect:
         serializedVersion: 2
-        x: 360
+        x: 250
         y: 0
-        width: 360
+        width: 250
         height: 250
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -160,19 +148,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f18113476e70bff0800000000000000
-      internalID: -22379016164900362
+      spriteID: b97832a73ea8996a0800000000000000
+      internalID: -6441965082365425765
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chaptehSPRITESHEET_idle_2
+      name: SPRITESHEET_idle_2
       rect:
         serializedVersion: 2
-        x: 720
+        x: 500
         y: 0
-        width: 360
+        width: 250
         height: 250
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -181,19 +169,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2230f94e31d07910800000000000000
-      internalID: 1833195113798447661
+      spriteID: 3b95910a15395da80800000000000000
+      internalID: -8442679947648476749
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chaptehSPRITESHEET_idle_3
+      name: SPRITESHEET_idle_3
       rect:
         serializedVersion: 2
-        x: 1080
+        x: 750
         y: 0
-        width: 360
+        width: 250
         height: 250
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -202,8 +190,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f1188d81f458d8bf0800000000000000
-      internalID: -320453423707684577
+      spriteID: 826a5673d7bbb8160800000000000000
+      internalID: 7028917789916505640
       vertices: []
       indices: 
       edges: []
@@ -211,7 +199,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: df91370fea217864da0ab347d143485c
+    spriteID: 8e96728d061545446b64afab808af26f
     internalID: 0
     vertices: []
     indices: 
