@@ -19,18 +19,18 @@ public class CameraTrackingScript : MonoBehaviour
     {
         #region Player Movement
 
-        this.transform.position = new Vector3(playerPosition.position.x, 0, -1f);
+        this.transform.position = new Vector3(playerPosition.position.x, -0.45f, -1f);
 
-        if (this.transform.position.x <= -9f)
+        if (this.transform.position.x <= -9.95f)
         {
             //clamp the x-position
-            this.transform.position = new Vector3(-9f, 0, -1f);
+            this.transform.position = new Vector3(-9.95f, -0.45f, -1f);
         }
 
-        if (this.transform.position.x >= 9f)
+        if (this.transform.position.x >= 9.95f)
         {
             //clamp the x-position
-            this.transform.position = new Vector3(9f, 0, -1f);
+            this.transform.position = new Vector3(9.95f, -0.45f, -1f);
         }
 
         #endregion

@@ -50,7 +50,6 @@ public class EnvironmentManager : MonoBehaviour
     {
         //update time HERE
         f_currentTime += Time.deltaTime * 0.5f;
-        Debug.Log("Time:" + f_currentTime);
 
         //for object fading
         DOObjectFading();
@@ -81,17 +80,17 @@ public class EnvironmentManager : MonoBehaviour
         #region Clouds
 
         //morning cloud
-        parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(0.04f, 0f));
+        parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(0.01f, 0f));
         parallexbackgroundmanagerInstance.componentContainer[1].GetComponent<MeshRenderer>().material.mainTextureOffset
         += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * Time.deltaTime;
 
         //noon cloud
-        parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(0.04f, 0f));
+        parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(0.01f, 0f));
         parallexbackgroundmanagerInstance.componentContainer[2].GetComponent<MeshRenderer>().material.mainTextureOffset
         += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * Time.deltaTime;
 
         //night cloud
-        parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(0.04f, 0f));
+        parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(0.01f, 0f));
         parallexbackgroundmanagerInstance.componentContainer[3].GetComponent<MeshRenderer>().material.mainTextureOffset
         += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * Time.deltaTime;
 

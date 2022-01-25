@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TutorialScreenManager : MonoBehaviour
 {
@@ -14,13 +15,27 @@ public class TutorialScreenManager : MonoBehaviour
         SPS, CHAPTEH, FIVESTONES
     };
 
+    [Tooltip("Reference to Tutorial Screen Manager script")]
+    public static TutorialScreenManager instance;
+
+    [Tooltip("GameObject that stores the tutorial screens for each game")]
     public GameObject sps_tutorialScreen, fivestones_tutorialScreen, chapteh_tutorialScreen;
+
+    [Tooltip("NPC GameObjects")]
     public GameObject sps_npc, fivestones_npc, chapteh_npc;
 
-    public GameObject testPanel;
+    [Tooltip("Sprite Containers for each game tutorial")]
+    public List<Sprite> sps_tutorialContainer, fivestones_tutorialContainer, chapteh_tutorialContainer;
 
+    [Tooltip("Tutorial Base Image for the games")]
+    public Image sps_tutorialBase, fivestones_tutorialBase, chapteh_tutorialBase;
 
-    public static TutorialScreenManager instance;
+    [Tooltip("Int value: to keep track of which page of the tutorial is on")]
+    public int screenNumber = 0;
+
+    [Tooltip("Boolean variable: to stop player from doing any movements on a tutorial screen")]
+    public bool b_tutorialScreenOpen;
+
     #endregion
 
     #region Unity Callbacks
@@ -32,21 +47,10 @@ public class TutorialScreenManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            testPanel.SetActive(true);
-        }
-        
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            testPanel.SetActive(false);
-        }
     }
 
 
-
     #endregion
-
 
     #region Helper Functions
 
@@ -56,12 +60,18 @@ public class TutorialScreenManager : MonoBehaviour
         {
             case TutorialScreenType.SPS:
                 sps_tutorialScreen.SetActive(true);
+                sps_tutorialBase.sprite = sps_tutorialContainer[0];
+                b_tutorialScreenOpen = true;
                 break;
             case TutorialScreenType.FIVESTONES:
                 fivestones_tutorialScreen.SetActive(true);
+                fivestones_tutorialBase.sprite = fivestones_tutorialContainer[0];
+                b_tutorialScreenOpen = true;
                 break;
             case TutorialScreenType.CHAPTEH:
                 chapteh_tutorialScreen.SetActive(true);
+                chapteh_tutorialBase.sprite = chapteh_tutorialContainer[0];
+                b_tutorialScreenOpen = true;
                 break;
         }
     }
@@ -72,12 +82,15 @@ public class TutorialScreenManager : MonoBehaviour
         {
             case TutorialScreenType.SPS:
                 sps_tutorialScreen.SetActive(false);
+                b_tutorialScreenOpen = false;
                 break;
             case TutorialScreenType.FIVESTONES:
                 fivestones_tutorialScreen.SetActive(false);
+                b_tutorialScreenOpen = false;
                 break;
             case TutorialScreenType.CHAPTEH:
                 chapteh_tutorialScreen.SetActive(false);
+                b_tutorialScreenOpen = false;
                 break;
         }
     }
@@ -120,44 +133,163 @@ public class TutorialScreenManager : MonoBehaviour
         selectedScreen.SetActive(false);
     }
 
-    //this should setactive only the current val of the screen type
-    public void ScrollToNextScreen(List<GameObject> selectedGame, int val)
+    //scroll between tutorial screens
+    public void ScrollToNextScreen(int gameType)
     {
-        val += 1;
+        screenNumber += 1;
 
-        //do wrapping HERE
+        //warparound the screenNumber
 
-        foreach(GameObject a in selectedGame)
+        if (screenNumber > 4)
+            screenNumber = 0;
+
+        switch (gameType)
         {
-            if (selectedGame.IndexOf(a) == val)
-            {
-                a.SetActive(true);
-            }
-            else
-            {
-                a.SetActive(false);
-            }
-        }     
+            case 0: //sps
+                switch (screenNumber) 
+                {
+                    case 0:
+                        sps_tutorialBase.sprite = sps_tutorialContainer[0];
+                        break;
+                    case 1:
+                        sps_tutorialBase.sprite = sps_tutorialContainer[1];
+                        break;
+                    case 2:
+                        sps_tutorialBase.sprite = sps_tutorialContainer[2];
+                        break;
+                    case 3:
+                        sps_tutorialBase.sprite = sps_tutorialContainer[3];
+                        break;
+                    case 4:
+                        sps_tutorialBase.sprite = sps_tutorialContainer[4];
+                        break;
+                }
+                break;
+            case 1: //five stones
+                switch (screenNumber)
+                {
+                    case 0:
+                        fivestones_tutorialBase.sprite = fivestones_tutorialContainer[0];
+                        break;
+                    case 1:
+                        fivestones_tutorialBase.sprite = fivestones_tutorialContainer[1];
+                        break;
+                    case 2:
+                        fivestones_tutorialBase.sprite = fivestones_tutorialContainer[2];
+                        break;
+                    case 3:
+                        fivestones_tutorialBase.sprite = fivestones_tutorialContainer[3];
+                        break;
+                    case 4:
+                        fivestones_tutorialBase.sprite = fivestones_tutorialContainer[4];
+                        break;
+                }
+                break;
+            case 2: //chapteh
+                switch (screenNumber)
+                {
+                    case 0:
+                        chapteh_tutorialBase.sprite = chapteh_tutorialContainer[0];
+                        break;
+                    case 1:
+                        chapteh_tutorialBase.sprite = chapteh_tutorialContainer[1];
+                        break;
+                    case 2:
+                        chapteh_tutorialBase.sprite = chapteh_tutorialContainer[2];
+                        break;
+                    case 3:
+                        chapteh_tutorialBase.sprite = chapteh_tutorialContainer[3];
+                        break;
+                    case 4:
+                        chapteh_tutorialBase.sprite = chapteh_tutorialContainer[4];
+                        break;
+                }
+                break;
+        }
+
     }
 
-    public void ScrollToPreviousScreen(List<GameObject> selectedGame, int val)
+    //scroll between tutorial screens
+    public void ScrollToPreviousScreen(int gameType)
     {
-        val -= 1;
+        screenNumber -= 1;
 
-        //do wrapping HERE
+        //warparound the screenNumber
 
-        foreach (GameObject a in selectedGame)
+        if (screenNumber < 0)
+            screenNumber = 4;
+
+        switch (gameType)
         {
-            if (selectedGame.IndexOf(a) == val)
-            {
-                a.SetActive(true);
-            }
-            else
-            {
-                a.SetActive(false);
-            }
+            case 0: //sps
+                switch (screenNumber)
+                {
+                    case 0:
+                        sps_tutorialBase.sprite = sps_tutorialContainer[0];
+                        break;
+                    case 1:
+                        sps_tutorialBase.sprite = sps_tutorialContainer[1];
+                        break;
+                    case 2:
+                        sps_tutorialBase.sprite = sps_tutorialContainer[2];
+                        break;
+                    case 3:
+                        sps_tutorialBase.sprite = sps_tutorialContainer[3];
+                        break;
+                    case 4:
+                        sps_tutorialBase.sprite = sps_tutorialContainer[4];
+                        break;
+                }
+                break;
+            case 1: //five stones
+                switch (screenNumber)
+                {
+                    case 0:
+                        fivestones_tutorialBase.sprite = fivestones_tutorialContainer[0];
+                        break;
+                    case 1:
+                        fivestones_tutorialBase.sprite = fivestones_tutorialContainer[1];
+                        break;
+                    case 2:
+                        fivestones_tutorialBase.sprite = fivestones_tutorialContainer[2];
+                        break;
+                    case 3:
+                        fivestones_tutorialBase.sprite = fivestones_tutorialContainer[3];
+                        break;
+                    case 4:
+                        fivestones_tutorialBase.sprite = fivestones_tutorialContainer[4];
+                        break;
+                }
+                break;
+            case 2: //chapteh
+                switch (screenNumber)
+                {
+                    case 0:
+                        chapteh_tutorialBase.sprite = chapteh_tutorialContainer[0];
+                        break;
+                    case 1:
+                        chapteh_tutorialBase.sprite = chapteh_tutorialContainer[1];
+                        break;
+                    case 2:
+                        chapteh_tutorialBase.sprite = chapteh_tutorialContainer[2];
+                        break;
+                    case 3:
+                        chapteh_tutorialBase.sprite = chapteh_tutorialContainer[3];
+                        break;
+                    case 4:
+                        chapteh_tutorialBase.sprite = chapteh_tutorialContainer[4];
+                        break;
+                }
+                break;
         }
     }
+
+    //allow player to move again
+    public void ResetPlayerMovement()
+    {
+        b_tutorialScreenOpen = false;
+    }
+
 
     #endregion
 

@@ -15,6 +15,9 @@ public class PlayerKeyboardMovement : MonoBehaviour
     [Tooltip("Reference to the Animator attached to the Player")]
     Animator playerAC;
 
+    [Tooltip("Reference to the Tutorial Screen Manager script")]
+    TutorialScreenManager tutorialscreenmanagerInstance;
+
     //player speed
     public float f_player2DSpeed;
 
@@ -43,6 +46,9 @@ public class PlayerKeyboardMovement : MonoBehaviour
         playerRB2D = GetComponent<Rigidbody2D>();
         playerAC = GetComponent<Animator>();
 
+        //get script references HERE
+        tutorialscreenmanagerInstance = FindObjectOfType<TutorialScreenManager>();
+
         //set the player speed on START
         f_player2DSpeed = 5f;
 
@@ -50,6 +56,9 @@ public class PlayerKeyboardMovement : MonoBehaviour
 
     private void Update()
     {
+        if (tutorialscreenmanagerInstance.b_tutorialScreenOpen == true)
+            return;
+
         if (v2_playerMovement.sqrMagnitude > 0)
         {
             v2_playerPrevMovement = v2_playerMovement;

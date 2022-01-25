@@ -38,30 +38,43 @@ public class InteractNPC : MonoBehaviour
             tutorialscreenmanagerInstance.TutorialScreenClosed(TutorialScreenManager.TutorialScreenType.SPS);
             tutorialscreenmanagerInstance.TutorialScreenClosed(TutorialScreenManager.TutorialScreenType.FIVESTONES);
             tutorialscreenmanagerInstance.TutorialScreenClosed(TutorialScreenManager.TutorialScreenType.CHAPTEH);
+
+            //reset the screen number to be 0
+            tutorialscreenmanagerInstance.screenNumber = 0;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameObject.Find("MainCharacter").GetComponent<PlayerMovementScript>().SetRollbackPosition(new Vector2(transform.position.x, transform.position.y));
+        GameObject.Find("MainCharacter").GetComponent<PlayerKeyboardMovement>().SetRollbackPosition(new Vector2(transform.position.x, transform.position.y));
 
         switch (type)
         {
             case NPC_TYPE.SPS:
                 interactPrefab.transform.GetComponent<SpriteRenderer>().DOFade(1f, 1.25f);
+                if (Input.GetKeyDown(KeyCode.F))
+                    tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.SPS);
                 break;
             case NPC_TYPE.FIVE_STONES:
                 interactPrefab.transform.GetComponent<SpriteRenderer>().DOFade(1f, 1.25f);
+                if (Input.GetKeyDown(KeyCode.F))
+                    tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.FIVESTONES);
                 break;
             case NPC_TYPE.CHAPTEH:
                 interactPrefab.transform.GetComponent<SpriteRenderer>().DOFade(1f, 1.25f);
+                if (Input.GetKeyDown(KeyCode.F))
+                    tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.CHAPTEH);
                 break;
             case NPC_TYPE.CUSTOMIZER:
                 interactPrefab.transform.GetComponent<SpriteRenderer>().DOFade(1f, 1.25f);
+                if (Input.GetKeyDown(KeyCode.F))
+                    SceneManager.LoadScene("CustomizeScene");
                 break;
             case NPC_TYPE.LEADERBOARD:
                 // Recode this later on
                 interactPrefab.transform.GetComponent<SpriteRenderer>().DOFade(1f, 1.25f);
+                if (Input.GetKeyDown(KeyCode.F))
+                    Resources.FindObjectsOfTypeAll<LeaderboardManager>()[0].gameObject.SetActive(true);
                 break;
         }
     }
@@ -69,7 +82,7 @@ public class InteractNPC : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        GameObject.Find("MainCharacter").GetComponent<PlayerMovementScript>().SetRollbackPosition(new Vector2(transform.position.x, transform.position.y));
+        GameObject.Find("MainCharacter").GetComponent<PlayerKeyboardMovement>().SetRollbackPosition(new Vector2(transform.position.x, transform.position.y));
 
         switch (type)
         {
