@@ -156,8 +156,8 @@ public class FiveStonesGameManager : MonoBehaviour
 
         if (gameObject.GetComponent<Stone>().type == Objective.BOMB_STONES)
         {
+            ScoreManager.Instance.ReduceCurrentGameScore(baseScore * ComboManager.Instance.GetCurrentCombo());
             ComboManager.Instance.BreakCombo();
-            ScoreManager.Instance.ReduceCurrentGameScore(baseScore);
         }
         else if (gameObject.GetComponent<Stone>().type == Objective.CATCH_ANY_STONES)
         {
