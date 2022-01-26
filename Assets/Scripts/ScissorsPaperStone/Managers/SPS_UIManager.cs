@@ -142,7 +142,7 @@ public class SPS_UIManager : MonoBehaviour
 
     public void UpdatePlayerScore()
     {
-        g_scoreText.GetComponent<TMP_Text>().text = "Score: " + ScoreManager.Instance.GetCurrentGameScore();
+        g_scoreText.GetComponent<TMP_Text>().text = ScoreManager.Instance.GetCurrentGameScore().ToString();
     }
 
     #endregion

@@ -102,22 +102,22 @@ public class ChaptehGameManager : MonoBehaviour
         {
             case Objective.HIT_RED_RINGS:
                 // Change TMPro sprite asset to red ring
-                g_objectiveText.GetComponent<TMP_Text>().text = "Shoot <sprite=4> Rings!";
+                g_objectiveText.GetComponent<TMP_Text>().text = "<sprite=4>";
                 break;
             case Objective.HIT_YELLOW_RINGS:
                 // Change TMPro sprite asset to yellow ring
-                g_objectiveText.GetComponent<TMP_Text>().text = "Shoot <sprite=6> Rings!";
+                g_objectiveText.GetComponent<TMP_Text>().text = "<sprite=6>";
                 break;
             case Objective.HIT_GREEN_RINGS:
                 // Change TMPro sprite asset to green ring
-                g_objectiveText.GetComponent<TMP_Text>().text = "Shoot <sprite=5> Rings!";
+                g_objectiveText.GetComponent<TMP_Text>().text = "<sprite=5>";
                 break;
         }
     }
 
     private void UIUpdate()
     {
-        g_scoreText.GetComponent<TMP_Text>().text = "Score: " + ScoreManager.Instance.GetCurrentGameScore();
+        g_scoreText.GetComponent<TMP_Text>().text = ScoreManager.Instance.GetCurrentGameScore().ToString();
         g_timerText.GetComponent<TMP_Text>().text = TimerManager.Instance.GetFormattedRemainingTime();
         g_comboText.GetComponent<TMP_Text>().text = "Combo: " + ComboManager.Instance.GetCurrentCombo() + "x";
         g_comboExpiryBar.GetComponent<Slider>().value = ComboManager.Instance.GetComboExpiryTimer() / ComboManager.Instance.GetComboExpiryTimerDefault();

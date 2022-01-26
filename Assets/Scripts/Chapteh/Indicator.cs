@@ -31,7 +31,7 @@ public class Indicator : MonoBehaviour
 
                 float angle = Mathf.Atan2(dir.y, dir.x);
 
-                transform.position = screenCenter + new Vector3(Mathf.Cos(angle) * screenCenter.x * 0.9f,
+                transform.position = screenCenter + new Vector3(Mathf.Cos(angle) * screenCenter.x * 0.95f,
                                                                 Mathf.Sin(angle) * screenCenter.y * 0.9f, 0);
 
                 transform.rotation = Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg);

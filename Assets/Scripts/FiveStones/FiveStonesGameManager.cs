@@ -129,13 +129,13 @@ public class FiveStonesGameManager : MonoBehaviour
         switch (m_currentObjective)
         {
             case Objective.CATCH_RED_STONES:
-                g_objectiveText.GetComponent<TMP_Text>().text = "Catch <sprite=2> stones!";
+                g_objectiveText.GetComponent<TMP_Text>().text = "<sprite=2>";
                 break;
             case Objective.CATCH_YELLOW_STONES:
-                g_objectiveText.GetComponent<TMP_Text>().text = "Catch <sprite=0> stones!";
+                g_objectiveText.GetComponent<TMP_Text>().text = "<sprite=0>";
                 break;
             case Objective.CATCH_BLUE_STONES:
-                g_objectiveText.GetComponent<TMP_Text>().text = "Catch <sprite=1> stones!";
+                g_objectiveText.GetComponent<TMP_Text>().text = "<sprite=1>";
                 break;
             case Objective.CATCH_ANY_STONES:
                 g_objectiveText.GetComponent<TMP_Text>().text = "Catch <color=grey>any</color> stones!";
@@ -145,7 +145,7 @@ public class FiveStonesGameManager : MonoBehaviour
 
     void UpdateUI()
     {
-        g_scoreText.GetComponent<TMP_Text>().text = "Score: " + ScoreManager.Instance.GetCurrentGameScore();
+        g_scoreText.GetComponent<TMP_Text>().text = ScoreManager.Instance.GetCurrentGameScore().ToString();
         g_timerText.GetComponent<TMP_Text>().text = TimerManager.Instance.GetFormattedRemainingTime();
         g_comboText.GetComponent<TMP_Text>().text = "Combo " + ComboManager.Instance.GetCurrentCombo() + "x";
         g_comboExpiryBar.GetComponent<Slider>().value = ComboManager.Instance.GetComboExpiryTimer() / ComboManager.Instance.GetComboExpiryTimerDefault();
