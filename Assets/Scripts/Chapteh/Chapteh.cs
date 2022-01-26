@@ -8,7 +8,6 @@ public class Chapteh : MonoBehaviour
     public bool inPlay;
     public Transform spawnPoint;
     public Transform playerSprite;
-    //public Transform arrowPoint;
     public GameObject arrowIndicator;
 
     public SpriteRenderer skyWidth, skyHeight;
@@ -68,8 +67,6 @@ public class Chapteh : MonoBehaviour
             // Sets position of Chapteh to above the player head
             transform.position = spawnPoint.position;
         }
-
-        //arrowIndicator.transform.position = arrowPoint.transform.position; 
 
         LookAtMouseDirection();
 

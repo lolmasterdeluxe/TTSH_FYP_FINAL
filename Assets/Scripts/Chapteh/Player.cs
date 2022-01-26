@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
         // Moves player with deltaTime
         playerPosition = Vector2.Lerp(transform.position, mousePosition, moveSpeed * Time.deltaTime);
         // Clamp player within the boundaries of the background
-        playerPosition.x = Mathf.Clamp(playerPosition.x, skyWidth.bounds.min.x + playerWidth, skyWidth.bounds.max.x - playerWidth);
+        playerPosition.x = Mathf.Clamp(playerPosition.x, skyWidth.bounds.min.x + playerWidth - 0.6f, skyWidth.bounds.max.x - playerWidth + 0.6f);
     }
 
     public void SpriteFlip()
