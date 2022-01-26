@@ -117,9 +117,21 @@ public class LeaderboardManager : MonoBehaviour
 
                 List<ScoreManager.Score> scoreList = ScoreManager.Instance.m_allScoreList.Where(x => x.m_username == ScoreManager.Instance.m_currentUsername).ToList();
 
-                totalChaptehScore.text = scoreList.Where(x => x.m_gamemode == ScoreManager.Gamemode.CHAPTEH.ToString()).FirstOrDefault().m_score.ToString();
-                totalFiveStonesScore.text = scoreList.Where(x => x.m_gamemode == ScoreManager.Gamemode.FIVESTONES.ToString()).FirstOrDefault().m_score.ToString();
-                totalScissorsPaperStoneScore.text = scoreList.Where(x => x.m_gamemode == ScoreManager.Gamemode.SPS.ToString()).FirstOrDefault().m_score.ToString();
+                ScoreManager.Score score = scoreList.Where(x => x.m_gamemode == ScoreManager.Gamemode.CHAPTEH.ToString()).FirstOrDefault();
+
+                if (score != null)
+                    totalChaptehScore.text = score.m_score.ToString();
+
+                score = scoreList.Where(x => x.m_gamemode == ScoreManager.Gamemode.FIVESTONES.ToString()).FirstOrDefault();
+
+                if (score != null)
+                    totalFiveStonesScore.text = score.m_score.ToString();
+
+                score = scoreList.Where(x => x.m_gamemode == ScoreManager.Gamemode.SPS.ToString()).FirstOrDefault();
+
+                if (score != null)
+                    totalScissorsPaperStoneScore.text = score.m_score.ToString();
+
                 break;
         }
 
@@ -161,10 +173,9 @@ public class LeaderboardManager : MonoBehaviour
 
     void UpdateRank()
     {
-        UpdateSlider(currentScore.m_score, sortedScoreList[0].m_score);
-
         if (sortedScoreList.ElementAtOrDefault(0) != null)
         {
+            UpdateSlider(currentScore.m_score, sortedScoreList[0].m_score);
             UpdateAvatar(rankOneSlot.transform.GetChild(0).gameObject, sortedScoreList[0]);
             rankOneSlot.transform.GetChild(1).GetComponent<TMP_Text>().text = sortedScoreList[0].m_username;
             rankOneSlot.transform.GetChild(2).GetComponent<TMP_Text>().text = sortedScoreList[0].m_score.ToString();

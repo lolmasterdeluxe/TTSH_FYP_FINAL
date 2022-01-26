@@ -36,6 +36,10 @@ public class SPS_ObjectManager : MonoBehaviour
     //these pre-determined positions are to be used with DOTween
     public GameObject objectStartPosition, enemyEndPosition, obstacleEndPosition;
 
+    //tween references HERE
+    public Tween enemymovementTween;
+
+
     //spawning speed variables
     [Tooltip("Uptime for each object spawn")]
     float f_objectspawnLifetime;
@@ -101,7 +105,7 @@ public class SPS_ObjectManager : MonoBehaviour
                     switch (randVal % 2)
                     {
                         case 0: SpawnPowerupObject(); break;
-                        case 1: SpawnPowerupAndObstacleObject(); break;
+                        case 1: SpawnPowerupObject(); break;
                     }
 
                     f_objectspawnLifetime = 0f;
@@ -112,30 +116,34 @@ public class SPS_ObjectManager : MonoBehaviour
                     //for the first 3 waves we only allow enemies to spawn
                     if (i_currentwaveCount <= 3)
                     {
-                        current_waveFormat = (WaveFormat)Random.Range(1, (int)WaveFormat.WAVE_MULTIPLE_STONE);
+                        SpawnSingleRandomEnemy();
 
-                        switch (current_waveFormat)
-                        {
-                            case WaveFormat.WAVE_SINGLE_RANDOM:
-                                SpawnSingleRandomEnemy();
-                                break;
 
-                            case WaveFormat.WAVE_MULTIPLE_RANDOM:
-                                SpawnMultipleRandomEnemies();
-                                break;
 
-                            case WaveFormat.WAVE_MULTIPLE_SCISSORS:
-                                SpawnMultipleRandomEnemies();
-                                break;
+                        //current_waveFormat = (WaveFormat)Random.Range(1, (int)WaveFormat.WAVE_MULTIPLE_STONE);
 
-                            case WaveFormat.WAVE_MULTIPLE_PAPER:
-                                SpawnMultipleRandomEnemies();
-                                break;
+                        //switch (current_waveFormat)
+                        //{
+                        //    case WaveFormat.WAVE_SINGLE_RANDOM:
+                        //        SpawnSingleRandomEnemy();
+                        //        break;
 
-                            case WaveFormat.WAVE_MULTIPLE_STONE:
-                                SpawnMultipleRandomEnemies();
-                                break;
-                        }
+                        //    case WaveFormat.WAVE_MULTIPLE_RANDOM:
+                        //        SpawnMultipleRandomEnemies();
+                        //        break;
+
+                        //    case WaveFormat.WAVE_MULTIPLE_SCISSORS:
+                        //        SpawnMultipleRandomEnemies();
+                        //        break;
+
+                        //    case WaveFormat.WAVE_MULTIPLE_PAPER:
+                        //        SpawnMultipleRandomEnemies();
+                        //        break;
+
+                        //    case WaveFormat.WAVE_MULTIPLE_STONE:
+                        //        SpawnMultipleRandomEnemies();
+                        //        break;
+                        //}
 
                         f_objectspawnLifetime = 0f;
 
@@ -201,10 +209,10 @@ public class SPS_ObjectManager : MonoBehaviour
          new Vector3(objectStartPosition.transform.position.x, 
          objectStartPosition.transform.position.y,
          objectStartPosition.transform.position.z), objectStartPosition.transform.rotation);
-        g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 3f);
 
         //do the movement HERE
-        g_objectInstance.GetComponent<Rigidbody2D>().DOMoveX(enemyEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 3f);
+        enemymovementTween = g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 3f);
+        enemymovementTween = g_objectInstance.GetComponent<Rigidbody2D>().DOMoveX(enemyEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 3f);
         
         //add this object to the list of objects spawned
         objectWaveList.Add(g_objectInstance);
@@ -319,5 +327,29 @@ public class SPS_ObjectManager : MonoBehaviour
     }
 
     #endregion
+
+    #region Coroutines
+
+    public IEnumerator EndsEnemy(Animator enemyAnimator, GameObject targetedEnemy)
+    {
+        //end the movement
+        DOTween.Kill(enemymovementTween);
+
+        //change the animation
+        enemyAnimator.SetBool("e_died", true);
+
+        //fade out the animation
+        targetedEnemy.transform.GetComponent<SpriteRenderer>().DOFade(0f, 0.5f);
+        yield return enemymovementTween.WaitForCompletion();
+        //destroy the gameObject and its rigidbody
+        Destroy(targetedEnemy);
+        Destroy(targetedEnemy.GetComponent<Rigidbody2D>());
+        Debug.Log("Completed deletion");
+    }
+
+
+
+    #endregion
+
 
 }

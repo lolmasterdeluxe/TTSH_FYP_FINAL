@@ -7,8 +7,8 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
     private float playerWidth;
     public SpriteRenderer skyWidth;
-    public Vector2 playerPosition = new Vector2(0f, 0f);
-    public float moveSpeed = 0.1f;
+    private Vector2 playerPosition = new Vector2(0f, 0f);
+    public float moveSpeed;
 
     private Vector3 mousePosition;
 
@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     public ParticleSystem sandDust;
     private PauseMenu pauseMenu;
     private Chapteh chapteh;
+
+    public bool isRunning = false;
 
     // Start is called before the first frame update
     void Start()
@@ -83,6 +85,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetAxis("Mouse X") == 0 && Input.GetAxis("Mouse Y") == 0) // If mouse input is not detected
         {
+            isRunning = false;
             playerAnim.SetBool("PlayerIdle", true);
             playerAnim.SetBool("PlayerRun", false);
 
@@ -90,6 +93,7 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetAxis("Mouse X") != 0 && Input.GetAxis("Mouse Y") != 0) // If mouse input is detected
         {
+            isRunning = true;
             playerAnim.SetBool("PlayerRun", true);
             playerAnim.SetBool("PlayerIdle", false);
 

@@ -8,9 +8,11 @@ public class KickChapteh : MonoBehaviour
     [SerializeField] private Chapteh chapteh;
     [SerializeField] private ChargeBar chargeBar;
 
-    private const float MAX_FORCE = 1100f;
+    private const float MAX_FORCE = 1200f;
 
     private float holdDownStartTime;
+
+    public bool m_isIncrease = true;
 
     private void Start()
     {
@@ -33,20 +35,35 @@ public class KickChapteh : MonoBehaviour
             // When chapteh is at the player, charge up to launch it.
             if (Input.GetMouseButton(0))
             {
-                // Fill amount increases to the hold down mouse key
-                if (chargeBar.GetComponent<Image>().fillAmount != 1)
-                    holdDownStartTime += 0.5f * Time.deltaTime;
-
-                // Fills the bar according to value of holdDownStartTime
-                chargeBar.SetFillBar(holdDownStartTime);
-
                 chargeBar.charge.SetActive(true);
+
+                if (m_isIncrease)
+                {
+                    holdDownStartTime += Time.deltaTime;
+
+                    if (holdDownStartTime >= 1)
+                    {
+                        holdDownStartTime = 1;
+                        m_isIncrease = false;
+                    }
+                }
+                else
+                {
+                    holdDownStartTime -= Time.deltaTime;
+
+                    if (holdDownStartTime <= 0)
+                    {
+                        holdDownStartTime = 0;
+                        m_isIncrease = true;
+                    }
+                }
+
+                chargeBar.SetFillBar(holdDownStartTime);
             }
 
             if (Input.GetMouseButtonUp(0))
             {
-                float holdDownTime = holdDownStartTime - Time.deltaTime;
-                chapteh.Kick(CalculateHoldDownForce(holdDownTime));
+                chapteh.Kick(CalculateHoldDownForce(holdDownStartTime));
 
                 // Resets the values to 0
                 holdDownStartTime = 0f;

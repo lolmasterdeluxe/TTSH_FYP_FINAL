@@ -8,6 +8,8 @@ public class Chapteh : MonoBehaviour
     public bool inPlay;
     public Transform spawnPoint;
     public Transform playerSprite;
+    //public Transform arrowPoint;
+    public GameObject arrowIndicator;
 
     public SpriteRenderer skyWidth, skyHeight;
     private float chaptehWidth, chaptehHeight;
@@ -19,6 +21,7 @@ public class Chapteh : MonoBehaviour
     private float clampedAngle = 0f;
 
     [SerializeField] private KickChapteh kickChapteh;
+    [SerializeField] private Player player;
 
     private float glowDuration = 1f;
 
@@ -35,6 +38,7 @@ public class Chapteh : MonoBehaviour
         // Set initial rotation to 0
         rotPos = transform.rotation;
 
+        player = GameObject.Find("Player Sprite").GetComponent<Player>();
         kickChapteh = GameObject.Find("Chapteh Manager").GetComponent<KickChapteh>();
         pauseMenu = GameObject.Find("Pause Manager").GetComponent<PauseMenu>();
 
@@ -63,9 +67,11 @@ public class Chapteh : MonoBehaviour
         {
             // Sets position of Chapteh to above the player head
             transform.position = spawnPoint.position;
-            
-            LookAtMouseDirection();
         }
+
+        //arrowIndicator.transform.position = arrowPoint.transform.position; 
+
+        LookAtMouseDirection();
 
         // Prevents the chapteh to be charged when in Pause Menu
         if(!pauseMenu.isPaused)
@@ -78,14 +84,14 @@ public class Chapteh : MonoBehaviour
     void LookAtMouseDirection()
     {
         // Look in the direction of the mouse position
-        lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - arrowIndicator.transform.position;
         
         lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
 
         clampedAngle = Mathf.Clamp(lookAngle, 45f, 135f);
 
         // Rotate according the mouse position
-        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, clampedAngle - 90f));
+        arrowIndicator.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, clampedAngle - 90f));
     }
 
     public void Kick(float speed)
@@ -102,7 +108,10 @@ public class Chapteh : MonoBehaviour
             Vector2 playerToMouseDir = (mousePositionInWorld - new Vector2(playerSprite.position.x, playerSprite.position.y)).normalized;
 
             // Force needed to launch the Chapteh
-            rbChapteh.AddForce(playerToMouseDir * speed);
+            if (player.isRunning == true)
+                rbChapteh.AddForce(playerToMouseDir * (speed * 0.5f));
+            else
+                rbChapteh.AddForce(playerToMouseDir * speed);
         }
     }
 

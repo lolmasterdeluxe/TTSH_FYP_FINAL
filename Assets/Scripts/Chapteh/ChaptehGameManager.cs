@@ -35,7 +35,6 @@ public class ChaptehGameManager : MonoBehaviour
     public int redCount;
     public int yellowCount;
     public int greenCount;
-    public int totalCount;
 
     public bool m_gameStarted = false;
     public bool m_gameEnded = false;
@@ -180,8 +179,6 @@ public class ChaptehGameManager : MonoBehaviour
         m_gameEnded = true;
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.25f);
         ScoreManager.Instance.EndCurrentGameScore();
-
-        totalCount = redCount + yellowCount + greenCount;
     }
 
     public IEnumerator OnLeaderboardLoad()

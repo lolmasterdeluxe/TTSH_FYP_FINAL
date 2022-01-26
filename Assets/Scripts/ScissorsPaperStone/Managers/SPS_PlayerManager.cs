@@ -138,12 +138,12 @@ public class SPS_PlayerManager : MonoBehaviour
             f_playerJumpLifetime += Time.deltaTime;
 
             //set the player's position higher
-            this.gameObject.transform.DOMove(v_finalJumpPosition, 0.4f);
+            this.gameObject.transform.DOMove(v_finalJumpPosition, 0.25f);
 
-            if (f_playerJumpLifetime >= 0.6f)
+            if (f_playerJumpLifetime >= 0.25f)
             {
                 //reset the player's position back to the original
-                this.gameObject.transform.DOMove(v_playerOriginalPosition, 0.4f);
+                this.gameObject.transform.DOMove(v_playerOriginalPosition, 0.25f);
 
                 //reset the animations
                 ResetAnimationsAndChoice();
@@ -296,7 +296,6 @@ public class SPS_PlayerManager : MonoBehaviour
         player_choice = PlayerChoice.PLAYER_NONE;
     }
 
-
     #endregion
 
     #region Trigger Callbacks
@@ -323,6 +322,29 @@ public class SPS_PlayerManager : MonoBehaviour
 
                     Destroy(other.gameObject);
                     Destroy(other.gameObject.GetComponent<Rigidbody2D>());
+
+                    #region Unused
+
+                    //////call the coroutine HERE
+                    ////StartCoroutine(objectManagerInstance.EndsEnemy(other.GetComponent<Animator>(), other.gameObject));
+
+                    ////handle enemy anims HERE
+                    //Tween myTween = other.gameObject.GetComponent<SpriteRenderer>().DOFade(0f, 0.25f);
+                    //bool isComplete = myTween.IsComplete();
+                    //if (isComplete == true)
+                    //{
+                    //    other.gameObject.GetComponent<Animator>().SetBool("e_died", true);
+                    //}
+
+                    ////handle enemy killing HERE
+                    //if (other.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("enemy_paper_defeated"))
+                    //{
+                    //    Destroy(other.gameObject);
+                    //    Destroy(other.gameObject.GetComponent<Rigidbody2D>());
+                    //}
+
+                    #endregion
+
                 }
                 else if (player_choice == PlayerChoice.PLAYER_PAPER
                     && other.gameObject.GetComponent<SPS_Enemy>().enemy_type == SPS_Enemy.EnemyType.ENEMY_STONE)
@@ -336,8 +358,29 @@ public class SPS_PlayerManager : MonoBehaviour
                     //add combo here
                     ComboManager.Instance.AddCombo();
 
+
                     Destroy(other.gameObject);
                     Destroy(other.gameObject.GetComponent<Rigidbody2D>());
+
+                    #region Unused
+                    ////call the coroutine HERE
+                    //StartCoroutine(objectManagerInstance.EndsEnemy(other.GetComponent<Animator>(), other.gameObject));
+
+                    //handle enemy anims HERE
+                    Tween myTween = other.gameObject.GetComponent<SpriteRenderer>().DOFade(0f, 0.25f);
+                    bool isComplete = myTween.IsComplete();
+                    if (isComplete == true)
+                    {
+                        other.gameObject.GetComponent<Animator>().SetBool("e_died", true);
+                    }
+
+                    //handle enemy killing HERE
+                    if (other.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("enemy_stone_defeated"))
+                    {
+                        Destroy(other.gameObject);
+                        Destroy(other.gameObject.GetComponent<Rigidbody2D>());
+                    }
+                    #endregion
 
                 }
                 else if (player_choice == PlayerChoice.PLAYER_STONE
@@ -354,6 +397,28 @@ public class SPS_PlayerManager : MonoBehaviour
 
                     Destroy(other.gameObject);
                     Destroy(other.gameObject.GetComponent<Rigidbody2D>());
+
+                    #region Unused
+
+                    ////call the coroutine HERE
+                    //StartCoroutine(objectManagerInstance.EndsEnemy(other.GetComponent<Animator>(), other.gameObject));
+
+                    //handle enemy anims HERE
+                    Tween myTween = other.gameObject.GetComponent<SpriteRenderer>().DOFade(0f, 0.25f);
+                    bool isComplete = myTween.IsComplete();
+                    if (isComplete == true)
+                    {
+                        other.gameObject.GetComponent<Animator>().SetBool("e_died", true);
+                    }
+
+                    //handle enemy killing HERE
+                    if (other.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("enemy_scissors_defeated"))
+                    {
+                        Destroy(other.gameObject);
+                        Destroy(other.gameObject.GetComponent<Rigidbody2D>());
+                    }
+
+                    #endregion
 
                 }
                 else if (other.gameObject.tag == "Powerup")

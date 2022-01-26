@@ -65,7 +65,7 @@ public class ScoreManager : MonoBehaviour
     private int m_currentScore;
     public Gamemode m_currentGamemode;
 
-    private const string url = "https://ttsh-project.000webhostapp.com";
+    private const string url = "https://ttshnursesday.com";
     private const string api_allScore = "/scoreboard.php?all=";
     private const string api_addScore = "/scoreboard.php";
 
