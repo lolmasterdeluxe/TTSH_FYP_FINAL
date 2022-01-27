@@ -12,7 +12,7 @@ public class SPS_NPCBehavior : MonoBehaviour
 
     public enum NPCChoice
     { 
-        CHOICE_IDLE, CHOICE_SCISSORS, CHOICE_PAPER, CHOICE_STONE, CHOICE_TOTAL;
+        CHOICE_IDLE, CHOICE_SCISSORS, CHOICE_PAPER, CHOICE_STONE, CHOICE_TOTAL
     };
 
     #endregion
@@ -55,9 +55,6 @@ public class SPS_NPCBehavior : MonoBehaviour
 
         }
     }
-
-
-
 
     #endregion
 

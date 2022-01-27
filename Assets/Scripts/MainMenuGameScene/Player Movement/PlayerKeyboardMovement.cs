@@ -28,6 +28,7 @@ public class PlayerKeyboardMovement : MonoBehaviour
     //bool variables
     public static bool b_doRollbackPosition = false;
     public bool b_playerisRight = true;
+    bool playerisBehind;
 
     #endregion
 
@@ -87,7 +88,15 @@ public class PlayerKeyboardMovement : MonoBehaviour
     public void DOPlayerMovement()
     {
         v2_playerMovement.x = Input.GetAxisRaw("Horizontal");
-        v2_playerMovement.y = Input.GetAxisRaw("Vertical");
+
+        if (playerisBehind == true)
+        {
+            v2_playerMovement.y = 0f;
+        }
+        else
+        {
+            v2_playerMovement.y = Input.GetAxisRaw("Vertical");
+        }
     }
 
     public void DOPlayerAnimation()
@@ -108,6 +117,64 @@ public class PlayerKeyboardMovement : MonoBehaviour
 
     #endregion
 
+    #region Trigger Collider Functions
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        //firstly, we check the tag of the collided gameObject
+        if (other.gameObject.tag == "NPC")
+        {
+            //we do a distance check between the player and the collided gameObject
+            float distance = this.gameObject.transform.localPosition.y - other.gameObject.transform.localPosition.y;
+
+            if (distance >= 0.015f && distance <= 0.025f) //player is behind
+            {
+                playerisBehind = true;
+            }
+
+            Debug.Log("Distance: " + distance);
+
+            if ((distance >= 0.015f && distance <= 0.025f)) //player is behind
+            {
+                playerisBehind = true;
+            }
+            else if (distance <= -0.33f)
+            {
+                playerisBehind = true;
+            }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        //firstly, we check the tag of the collided gameObject
+        if (other.gameObject.tag == "NPC")
+        {
+            //we do a distance check between the player and the collided gameObject
+            float distance = this.gameObject.transform.localPosition.y - other.gameObject.transform.localPosition.y;
+
+            Debug.Log("Distance: " + distance);
+
+            if ((distance >= 0.015f && distance <= 0.025f)) //player is behind
+            {
+                playerisBehind = true;
+            }
+            else if (distance <= -0.33f)
+            {
+                playerisBehind = true;
+            }
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "NPC")
+        {
+            playerisBehind = false;
+        }
+    }
+
+
+    #endregion
 
 }

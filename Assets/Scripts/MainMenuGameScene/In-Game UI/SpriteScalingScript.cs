@@ -9,7 +9,7 @@ public class SpriteScalingScript : MonoBehaviour
     #region Variables 
 
     [Tooltip("Smallest Scale that the player can be in the scene")]
-    Vector3 smallestPlayerScale = new Vector3(0.85f, 0.85f, 0.85f);
+    Vector3 smallestPlayerScale = new Vector3(1.25f, 1.25f, 1.25f);
     [Tooltip("Largest Scale that the player can be in the scene")]
     Vector3 originalPlayerScale;
 

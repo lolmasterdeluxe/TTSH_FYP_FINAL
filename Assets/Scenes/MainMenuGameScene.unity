@@ -1562,6 +1562,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeaderboardPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 5706286237396609856, guid: faa34543aeda4534c91849853da2bf3f, type: 3}
+      propertyPath: m_TagString
+      value: NPC
+      objectReference: {fileID: 0}
     - target: {fileID: 5706286237396609857, guid: faa34543aeda4534c91849853da2bf3f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.2
@@ -2004,7 +2008,7 @@ GameObject:
   - component: {fileID: 264564768}
   m_Layer: 0
   m_Name: FiveStonesNPC
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2259,7 +2263,7 @@ GameObject:
   - component: {fileID: 279406324}
   m_Layer: 0
   m_Name: ChaptehNPC
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3782,7 +3786,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 4395096620690891390, guid: 454d1e1334904fb498e6e6b31f5672ce, type: 3}
+  m_Sprite: {fileID: 2355347035391227374, guid: 045ac28246eace7498750256312d987b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3842,7 +3846,7 @@ Transform:
   m_GameObject: {fileID: 558953926}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.5, y: -3.3, z: 3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 1067093419}
   - {fileID: 71877370}
@@ -5084,7 +5088,7 @@ GameObject:
   - component: {fileID: 901892750}
   m_Layer: 0
   m_Name: SPSNPC
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5951,7 +5955,7 @@ GameObject:
   - component: {fileID: 1044125017}
   m_Layer: 0
   m_Name: CosmeticsNPC
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6307,7 +6311,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1060231342}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.88, y: 2.53, z: 0}
+  m_LocalPosition: {x: 6.88, y: 3.15, z: 0}
   m_LocalScale: {x: 7.32941, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1873970052}
@@ -6765,6 +6769,10 @@ PrefabInstance:
     - target: {fileID: 6447340824655781281, guid: 2816f94a659f0dd43a9d06845a692dd2, type: 3}
       propertyPath: m_Name
       value: ChaptehPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447340824655781281, guid: 2816f94a659f0dd43a9d06845a692dd2, type: 3}
+      propertyPath: m_TagString
+      value: NPC
       objectReference: {fileID: 0}
     - target: {fileID: 6447340824655781295, guid: 2816f94a659f0dd43a9d06845a692dd2, type: 3}
       propertyPath: m_SortingOrder
@@ -9503,6 +9511,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SPSPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 7421242270649084528, guid: d187fdb16eab505459c3de300035e142, type: 3}
+      propertyPath: m_TagString
+      value: NPC
+      objectReference: {fileID: 0}
     - target: {fileID: 7421242270649084529, guid: d187fdb16eab505459c3de300035e142, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.26
@@ -9738,7 +9750,7 @@ GameObject:
   - component: {fileID: 1926783018}
   m_Layer: 0
   m_Name: LeaderboardNPC
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10077,6 +10089,10 @@ PrefabInstance:
     - target: {fileID: 9096211418544285440, guid: 15b76dab1427ab54f959c8776267968b, type: 3}
       propertyPath: m_Name
       value: FiveStonePrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096211418544285440, guid: 15b76dab1427ab54f959c8776267968b, type: 3}
+      propertyPath: m_TagString
+      value: NPC
       objectReference: {fileID: 0}
     - target: {fileID: 9096211418544285442, guid: 15b76dab1427ab54f959c8776267968b, type: 3}
       propertyPath: m_SortingOrder
