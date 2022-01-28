@@ -88,7 +88,7 @@ public class InteractNPC : MonoBehaviour
         {
             case NPC_TYPE.SPS:
                 if (Input.GetKeyDown(KeyCode.F))
-                tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.SPS);
+                    tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.SPS);
                 break;
             case NPC_TYPE.FIVE_STONES:
                 if (Input.GetKeyDown(KeyCode.F))
