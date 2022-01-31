@@ -132,13 +132,13 @@ public class FiveStonesGameManager : MonoBehaviour
                 g_objectiveText.GetComponent<TMP_Text>().text = "<sprite=2>";
                 break;
             case Objective.CATCH_YELLOW_STONES:
-                g_objectiveText.GetComponent<TMP_Text>().text = "<sprite=0>";
-                break;
-            case Objective.CATCH_BLUE_STONES:
                 g_objectiveText.GetComponent<TMP_Text>().text = "<sprite=1>";
                 break;
+            case Objective.CATCH_BLUE_STONES:
+                g_objectiveText.GetComponent<TMP_Text>().text = "<sprite=0>";
+                break;
             case Objective.CATCH_ANY_STONES:
-                g_objectiveText.GetComponent<TMP_Text>().text = "Catch <color=grey>any</color> stones!";
+                g_objectiveText.GetComponent<TMP_Text>().text = "ANY";
                 break;
         }
     }
