@@ -187,7 +187,7 @@ public class SPS_UIManager : MonoBehaviour
 
     public void UpdatePlayerObjectiveValue()
     {
-        g_objectiveText.GetComponent<TMP_Text>().text = "collected: " + i_objectiveValue;
+        g_objectiveText.GetComponent<TMP_Text>().text = i_objectiveValue.ToString();
     }
 
     #endregion
