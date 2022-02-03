@@ -27,6 +27,15 @@ public class EnvironmentManager : MonoBehaviour
     [Tooltip("Container for Dragon Slide GameObjects")]
     public List<GameObject> dragonslideGameObjectList;
 
+    [Tooltip("Container for Horse GameObjects")]
+    public List<GameObject> horseGameObjectList;
+
+    [Tooltip("Container for See-Saw GameObjects")]
+    public List<GameObject> seesawGameObjectList;
+
+    [Tooltip("Container for Spinner GameObjects")]
+    public List<GameObject> spinnerGameObjectList;
+
     [Tooltip("Container for Lamp GameObjects")]
     public List<GameObject> lampGameObjectList;
 
@@ -131,6 +140,21 @@ public class EnvironmentManager : MonoBehaviour
             dragonslideGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
             dragonslideGameObjectList[2].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
 
+            //horse
+            horseGameObjectList[0].transform.GetComponent<SpriteRenderer>().DOFade(1f, 2f);
+            horseGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            horseGameObjectList[2].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+
+            //see-saw
+            seesawGameObjectList[0].transform.GetComponent<SpriteRenderer>().DOFade(1f, 2f);
+            seesawGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            seesawGameObjectList[2].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+
+            //spinner
+            spinnerGameObjectList[0].transform.GetComponent<SpriteRenderer>().DOFade(1f, 2f);
+            spinnerGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            spinnerGameObjectList[2].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+
             //lamp posts
             lampGameObjectList[0].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
             lampGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
@@ -170,6 +194,21 @@ public class EnvironmentManager : MonoBehaviour
             dragonslideGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
             dragonslideGameObjectList[2].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
 
+            //horse
+            horseGameObjectList[0].transform.GetComponent<SpriteRenderer>().DOFade(0f, 2f);
+            horseGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
+            horseGameObjectList[2].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+
+            //see-saw
+            seesawGameObjectList[0].transform.GetComponent<SpriteRenderer>().DOFade(0f, 2f);
+            seesawGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
+            seesawGameObjectList[2].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+
+            //spinner
+            spinnerGameObjectList[0].transform.GetComponent<SpriteRenderer>().DOFade(0f, 2f);
+            spinnerGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
+            spinnerGameObjectList[2].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+
             //lamp posts
             lampGameObjectList[0].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
             lampGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
@@ -208,6 +247,21 @@ public class EnvironmentManager : MonoBehaviour
             dragonslideGameObjectList[0].transform.GetComponent<SpriteRenderer>().DOFade(0f, 2f);
             dragonslideGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
             dragonslideGameObjectList[2].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
+
+            //horse
+            horseGameObjectList[0].transform.GetComponent<SpriteRenderer>().DOFade(0f, 2f);
+            horseGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            horseGameObjectList[2].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
+
+            //see-saw
+            seesawGameObjectList[0].transform.GetComponent<SpriteRenderer>().DOFade(0f, 2f);
+            seesawGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            seesawGameObjectList[2].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
+
+            //spinner
+            spinnerGameObjectList[0].transform.GetComponent<SpriteRenderer>().DOFade(0f, 2f);
+            spinnerGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
+            spinnerGameObjectList[2].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 2f);
 
             //lamp posts
             lampGameObjectList[0].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 2f);
@@ -250,6 +304,21 @@ public class EnvironmentManager : MonoBehaviour
         dragonslideGameObjectList[0].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 0f);
         dragonslideGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 0f);
         dragonslideGameObjectList[2].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 0f);
+
+        //horse
+        horseGameObjectList[0].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 0f);
+        horseGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 0f);
+        horseGameObjectList[2].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 0f);
+
+        //see-saw
+        seesawGameObjectList[0].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 0f);
+        seesawGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 0f);
+        seesawGameObjectList[2].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 0f);
+
+        //spinner
+        spinnerGameObjectList[0].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 0f);
+        spinnerGameObjectList[1].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 0f);
+        spinnerGameObjectList[2].transform.GetComponent<SpriteRenderer>().material.DOFade(0f, 0f);
 
         //lamp posts
         lampGameObjectList[0].transform.GetComponent<SpriteRenderer>().material.DOFade(1f, 0f);
