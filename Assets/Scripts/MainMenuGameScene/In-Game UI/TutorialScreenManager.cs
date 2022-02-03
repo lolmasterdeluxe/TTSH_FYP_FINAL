@@ -39,6 +39,17 @@ public class TutorialScreenManager : MonoBehaviour
     [Tooltip("Int value: to reference to other script")]
     public int gametype_referenceNumber;
 
+    [Tooltip("Sprite List for each pages of 5 Stones tutorial")]
+    public Image fivestones_Image;
+    public Sprite[] fivestones_Page2, fivestones_Page5;
+
+    [Tooltip("Sprite List for each pages of SPS tutorial")]
+    public Image sps_Image;
+    public Sprite[] sps_Page3, sps_Page4, sps_Page5;
+
+    [Tooltip("Sprite List for each pages of Chapteh tutorial")]
+    public Image chapteh_Image;
+    public Sprite[] chapteh_Page3;
 
     #endregion
 
@@ -47,6 +58,31 @@ public class TutorialScreenManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+
+    private void Update()
+    {
+        if (gametype_referenceNumber == 0) // SPS
+        {
+            if (screenNumber == 2)
+                sps_Image.sprite = sps_Page3[(int)(Time.time * 3) % sps_Page3.Length];
+            if (screenNumber == 3)
+                sps_Image.sprite = sps_Page4[(int)(Time.time * 3) % sps_Page4.Length];
+            if (screenNumber == 4)
+                sps_Image.sprite = sps_Page5[(int)(Time.time * 3) % sps_Page5.Length];
+        }
+        else if (gametype_referenceNumber == 1) // 5 Stones
+        {
+            if (screenNumber == 1)
+                fivestones_Image.sprite = fivestones_Page2[(int)(Time.time * 4) % fivestones_Page2.Length];
+            if (screenNumber == 4)
+                fivestones_Image.sprite = fivestones_Page5[(int)(Time.time * 2) % fivestones_Page5.Length];
+        }
+        else if (gametype_referenceNumber == 2) // Chapteh
+        {
+            if (screenNumber == 2)
+                chapteh_Image.sprite = chapteh_Page3[(int)(Time.time * 3) % chapteh_Page3.Length];
+        }
     }
 
     #endregion

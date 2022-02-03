@@ -662,6 +662,7 @@ GameObject:
   - component: {fileID: 85048745}
   - component: {fileID: 85048744}
   - component: {fileID: 85048743}
+  - component: {fileID: 85048746}
   m_Layer: 5
   m_Name: PreviousButton
   m_TagString: Untagged
@@ -781,6 +782,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 85048741}
   m_CullTransparentMesh: 0
+--- !u!114 &85048746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85048741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 888401250}
+          m_TargetAssemblyTypeName: TutorialScreenManager, Assembly-CSharp
+          m_MethodName: ButtonHover
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 85048741}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 888401250}
+          m_TargetAssemblyTypeName: TutorialScreenManager, Assembly-CSharp
+          m_MethodName: ButtonHoverReset
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 85048741}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &118750457
 GameObject:
   m_ObjectHideFlags: 0
@@ -2206,11 +2252,35 @@ MonoBehaviour:
   - eventID: 0
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 888401250}
+          m_TargetAssemblyTypeName: TutorialScreenManager, Assembly-CSharp
+          m_MethodName: ButtonHover
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 277615275}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 888401250}
+          m_TargetAssemblyTypeName: TutorialScreenManager, Assembly-CSharp
+          m_MethodName: ButtonHoverReset
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 277615275}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &279406322 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5713333696753253545, guid: 96a32b2c078314b40b70e027cd6829a0, type: 3}
@@ -2622,6 +2692,7 @@ GameObject:
   - component: {fileID: 366753107}
   - component: {fileID: 366753106}
   - component: {fileID: 366753105}
+  - component: {fileID: 366753108}
   m_Layer: 5
   m_Name: PreviousButton
   m_TagString: Untagged
@@ -2741,6 +2812,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 366753103}
   m_CullTransparentMesh: 0
+--- !u!114 &366753108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366753103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 888401250}
+          m_TargetAssemblyTypeName: TutorialScreenManager, Assembly-CSharp
+          m_MethodName: ButtonHover
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 366753103}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 888401250}
+          m_TargetAssemblyTypeName: TutorialScreenManager, Assembly-CSharp
+          m_MethodName: ButtonHoverReset
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 366753103}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &381106679
 GameObject:
   m_ObjectHideFlags: 0
@@ -4126,11 +4242,35 @@ MonoBehaviour:
   - eventID: 0
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 888401250}
+          m_TargetAssemblyTypeName: TutorialScreenManager, Assembly-CSharp
+          m_MethodName: ButtonHover
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 645835621}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 888401250}
+          m_TargetAssemblyTypeName: TutorialScreenManager, Assembly-CSharp
+          m_MethodName: ButtonHoverReset
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 645835621}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &645835624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4279,11 +4419,35 @@ MonoBehaviour:
   - eventID: 0
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 888401250}
+          m_TargetAssemblyTypeName: TutorialScreenManager, Assembly-CSharp
+          m_MethodName: ButtonHover
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 665666966}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 888401250}
+          m_TargetAssemblyTypeName: TutorialScreenManager, Assembly-CSharp
+          m_MethodName: ButtonHoverReset
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 665666966}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &665666969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4697,7 +4861,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &729840084
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5018,29 +5182,56 @@ MonoBehaviour:
   fivestones_npc: {fileID: 1747751236}
   chapteh_npc: {fileID: 1666401147}
   sps_tutorialContainer:
-  - {fileID: 21300000, guid: b45a1c2c572682c4e928f5b52708cd81, type: 3}
-  - {fileID: 21300000, guid: ca14ed09883d9924dbb8602bb735455e, type: 3}
+  - {fileID: 21300000, guid: 6bc2874e814e1ef458a1e0a259508a90, type: 3}
+  - {fileID: 21300000, guid: b4abb0f704004f14eb3b328c615ddc07, type: 3}
   - {fileID: 21300000, guid: de5018ad990bf5244b2e5adf1178c823, type: 3}
   - {fileID: 21300000, guid: 5ac1aff54a6e4f747ad915fd65447b5f, type: 3}
   - {fileID: 21300000, guid: 110ceeceb70cf0a488c9e6b2592f7d89, type: 3}
   fivestones_tutorialContainer:
-  - {fileID: 21300000, guid: 48fc6496b1758674ca4ae21da118bbee, type: 3}
+  - {fileID: 21300000, guid: 3784572f6b8bdc1458c4185d516d7186, type: 3}
   - {fileID: 21300000, guid: 52e9d3f8eb09d2b44823a33cccf8beac, type: 3}
-  - {fileID: 21300000, guid: 5d6bced0c5a99424d97e9fef21c6fc98, type: 3}
-  - {fileID: 21300000, guid: 5bcf0610d109b9041acf2ce42ba4695e, type: 3}
+  - {fileID: 21300000, guid: e31d4be5494277a44b9b8d11ea376627, type: 3}
+  - {fileID: 21300000, guid: 9d76f74d6c9b934418508338254c4347, type: 3}
   - {fileID: 21300000, guid: 70be6ed517143e34f9de84f6b8550c8e, type: 3}
   chapteh_tutorialContainer:
-  - {fileID: 21300000, guid: ed85bb44d9aee7a4cae2c4d7d2a2968b, type: 3}
+  - {fileID: 21300000, guid: 52e422d23939c2540b5621c1879f9fb0, type: 3}
   - {fileID: 21300000, guid: 76d84cb027c11b84382e4374fc93f3d0, type: 3}
   - {fileID: 21300000, guid: 002e266dccb9bac46992edcc5b5ca88c, type: 3}
-  - {fileID: 21300000, guid: 639de3f24c96c1b48ac3e3cb3ecdeb24, type: 3}
-  - {fileID: 21300000, guid: ef165bdcb2547ce4593982969b5b80f6, type: 3}
+  - {fileID: 21300000, guid: 4e870d41dcaeed44e93d3e482f67f9ce, type: 3}
+  - {fileID: 21300000, guid: 9795e09398061bc4dae8b103bc8a950a, type: 3}
   sps_tutorialBase: {fileID: 432762314}
   fivestones_tutorialBase: {fileID: 1050758000}
   chapteh_tutorialBase: {fileID: 1455314710}
   screenNumber: 0
   b_tutorialScreenOpen: 0
   gametype_referenceNumber: 0
+  fivestones_Image: {fileID: 1050758000}
+  fivestones_Page2:
+  - {fileID: 21300000, guid: 6ce90446c2321664396094daa77ea0fb, type: 3}
+  - {fileID: 21300000, guid: 133145b3bf35f004bb0734c48426b5c6, type: 3}
+  - {fileID: 21300000, guid: 375482d28807aa74b901707f92af0144, type: 3}
+  - {fileID: 21300000, guid: e8debeb66f7285644aa21f23839fcf8d, type: 3}
+  fivestones_Page5:
+  - {fileID: 21300000, guid: 0e0f1816dd703c14b813e1e98fd61d4b, type: 3}
+  - {fileID: 21300000, guid: 5ff82e2fb69249949ae78648b23ff522, type: 3}
+  - {fileID: 21300000, guid: ab0ecb567ce32da41b53a125d444ee56, type: 3}
+  sps_Image: {fileID: 432762314}
+  sps_Page3:
+  - {fileID: 21300000, guid: 8cc242e6a7bea3945b58feb64e2ae678, type: 3}
+  - {fileID: 21300000, guid: c57b6394c0f41d6409258f830d40656b, type: 3}
+  sps_Page4:
+  - {fileID: 21300000, guid: 55d10668b368728478e6da35a378afc7, type: 3}
+  - {fileID: 21300000, guid: ded2ef5a2987f4147b40b9a901bde4e4, type: 3}
+  sps_Page5:
+  - {fileID: 21300000, guid: 5d720682dd04da44f850891518f6a4d9, type: 3}
+  - {fileID: 21300000, guid: cfbd6ece6cfc595459f3de362009eedc, type: 3}
+  chapteh_Image: {fileID: 1455314710}
+  chapteh_Page3:
+  - {fileID: 21300000, guid: 28845ce6cbf0d124d912277ceb80b822, type: 3}
+  - {fileID: 21300000, guid: cef69453debb63344b68bff730f7261e, type: 3}
+  - {fileID: 21300000, guid: ea6e4cad0fce45d43af3bbde44a497fe, type: 3}
+  - {fileID: 21300000, guid: c8670520ca065fc4bbe21ca8ad6dd933, type: 3}
+  - {fileID: 21300000, guid: 72b9e97464075f44eb12ea974d2236a3, type: 3}
 --- !u!1 &901892748
 GameObject:
   m_ObjectHideFlags: 0
@@ -5312,6 +5503,7 @@ GameObject:
   - component: {fileID: 984697508}
   - component: {fileID: 984697507}
   - component: {fileID: 984697506}
+  - component: {fileID: 984697509}
   m_Layer: 5
   m_Name: PreviousButton
   m_TagString: Untagged
@@ -5431,6 +5623,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 984697504}
   m_CullTransparentMesh: 0
+--- !u!114 &984697509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984697504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 888401250}
+          m_TargetAssemblyTypeName: TutorialScreenManager, Assembly-CSharp
+          m_MethodName: ButtonHover
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 984697504}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 888401250}
+          m_TargetAssemblyTypeName: TutorialScreenManager, Assembly-CSharp
+          m_MethodName: ButtonHoverReset
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 984697504}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1008568202
 GameObject:
   m_ObjectHideFlags: 0
@@ -6067,7 +6304,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 48fc6496b1758674ca4ae21da118bbee, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6623,7 +6860,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1222392957
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10098,7 +10335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2010806361
 RectTransform:
   m_ObjectHideFlags: 0
