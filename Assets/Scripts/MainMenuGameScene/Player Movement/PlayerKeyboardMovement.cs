@@ -127,14 +127,9 @@ public class PlayerKeyboardMovement : MonoBehaviour
             //we do a distance check between the player and the collided gameObject
             float distance = this.gameObject.transform.localPosition.y - other.gameObject.transform.localPosition.y;
 
-            if (distance >= 0.015f && distance <= 0.025f) //player is behind
-            {
-                playerisBehind = true;
-            }
+            Debug.Log("Distance Enter: " + distance);
 
-            Debug.Log("Distance: " + distance);
-
-            if ((distance >= 0.015f && distance <= 0.025f)) //player is behind
+            if ((distance >= 0.15f && distance <= 0.25f)) //player is behind
             {
                 playerisBehind = true;
             }
@@ -153,9 +148,9 @@ public class PlayerKeyboardMovement : MonoBehaviour
             //we do a distance check between the player and the collided gameObject
             float distance = this.gameObject.transform.localPosition.y - other.gameObject.transform.localPosition.y;
 
-            Debug.Log("Distance: " + distance);
+            Debug.Log("Distance Stay: " + distance);
 
-            if ((distance >= 0.015f && distance <= 0.025f)) //player is behind
+            if ((distance >= 0.15f && distance <= 0.25f)) //player is behind
             {
                 playerisBehind = true;
             }
