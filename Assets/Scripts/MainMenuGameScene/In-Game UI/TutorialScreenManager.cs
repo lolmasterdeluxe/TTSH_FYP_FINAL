@@ -36,6 +36,10 @@ public class TutorialScreenManager : MonoBehaviour
     [Tooltip("Boolean variable: to stop player from doing any movements on a tutorial screen")]
     public bool b_tutorialScreenOpen;
 
+    [Tooltip("Int value: to reference to other script")]
+    public int gametype_referenceNumber;
+
+
     #endregion
 
     #region Unity Callbacks
@@ -44,11 +48,6 @@ public class TutorialScreenManager : MonoBehaviour
     {
         instance = this;
     }
-
-    private void Update()
-    {
-    }
-
 
     #endregion
 
@@ -137,6 +136,7 @@ public class TutorialScreenManager : MonoBehaviour
     public void ScrollToNextScreen(int gameType)
     {
         screenNumber += 1;
+        gametype_referenceNumber = gameType;
 
         //warparound the screenNumber
 
@@ -213,6 +213,7 @@ public class TutorialScreenManager : MonoBehaviour
     public void ScrollToPreviousScreen(int gameType)
     {
         screenNumber -= 1;
+        gametype_referenceNumber = gameType;
 
         //warparound the screenNumber
 

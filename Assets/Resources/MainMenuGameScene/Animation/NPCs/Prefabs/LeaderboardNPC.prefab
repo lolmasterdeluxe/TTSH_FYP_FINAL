@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5807695594933361174}
   - component: {fileID: 5807695594933361172}
   - component: {fileID: 5807695594933361173}
+  - component: {fileID: 4655442272364133325}
+  - component: {fileID: 1151446772878747460}
   m_Layer: 0
   m_Name: LeaderboardNPC
   m_TagString: NPC
@@ -103,6 +105,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4655442272364133325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5807695594933361175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec5b617358f0afe4891c1720bcce6295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 4
+  interactPrefab: {fileID: 7071436463509899614}
+--- !u!70 &1151446772878747460
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5807695594933361175}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.003, y: -0.45}
+  m_Size: {x: 1.25, y: 0.75}
+  m_Direction: 0
 --- !u!1 &7071436463509899614
 GameObject:
   m_ObjectHideFlags: 0
