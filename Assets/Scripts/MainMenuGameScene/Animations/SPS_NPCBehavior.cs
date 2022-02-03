@@ -4,35 +4,25 @@ using UnityEngine;
 
 public class SPS_NPCBehavior : MonoBehaviour
 {
-    //this script handles the SPS NPC Behavior in Main Menu
-    //we attach this script to only one of the two NPCs
-    //based on the choice of this NPC, we use this script to handle the animations of the OTHER gameobject
+    //this script handles npc behavior: SPS NPC
 
     #region Enumerations
 
     public enum NPCChoice
-    { 
-        CHOICE_IDLE, CHOICE_SCISSORS, CHOICE_PAPER, CHOICE_STONE, CHOICE_TOTAL
-    };
+    { SCISSORS, PAPER, STONE, TOTAL };
 
     #endregion
 
     #region Variables
 
-    [Tooltip("Reference to the Animators attached to the NPCs")]
-    Animator npc1_ac, npc2_ac;
+    Animator ac;
 
-    [Tooltip("Enum Variable of NPCs Choice")]
-    public NPCChoice npc1Choice, npc2Choice;
+    [SerializeField]
+    RuntimeAnimatorController npcScissors, npcPaper, npcStone;
 
-    [Tooltip("Reference to the NPC gameObjects")] [SerializeField]
-    GameObject g_npc1, g_npc2;
+    NPCChoice npc_choice;
 
-    [Tooltip("Float variable: checks execute time for NPC action")]
     float executeTimer;
-
-    bool stop = false;
-
 
     #endregion
 
@@ -40,73 +30,39 @@ public class SPS_NPCBehavior : MonoBehaviour
 
     private void Start()
     {
-        npc1_ac = g_npc1.GetComponent<Animator>();
-        npc2_ac = g_npc2.GetComponent<Animator>();
-        Debug.Log(npc1_ac);
-        Debug.Log(npc2_ac);
+        ac = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        //we want to run an action only once
-        executeTimer += Time.deltaTime;
-
-        if (executeTimer >= 4f && stop == false)
+        if (ac.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f)
         {
-            DO_NPC1Action();
-            DO_NPC2Action();
-            stop = true;
+            DO_NPCChoice();
         }
-
-
     }
 
     #endregion
 
-    #region Helper Functions
-
-    public void DO_NPC1Action()
+    public void DO_NPCChoice()
     {
-        npc1Choice = (NPCChoice)(Random.Range(1, (int)NPCChoice.CHOICE_TOTAL));
+        npc_choice = (NPCChoice)Random.Range(0, (int)NPCChoice.TOTAL);
 
-        Debug.Log(npc1Choice);
-
-        switch (npc1Choice)
+        switch (npc_choice)
         {
-            case NPCChoice.CHOICE_SCISSORS:
-                npc1_ac.SetBool("DO_SCISSORS", true);
+            case NPCChoice.SCISSORS:
+                ac.runtimeAnimatorController = npcScissors;
                 break;
-            case NPCChoice.CHOICE_PAPER:
-                npc1_ac.SetBool("DO_PAPER", true);
+
+            case NPCChoice.PAPER:
+                ac.runtimeAnimatorController = npcPaper;
                 break;
-            case NPCChoice.CHOICE_STONE:
-                npc1_ac.SetBool("DO_STONE", true);
+
+            case NPCChoice.STONE:
+                ac.runtimeAnimatorController = npcStone;
                 break;
+
         }
     }
-
-    public void DO_NPC2Action()
-    {
-        npc2Choice = (NPCChoice)(Random.Range(1, (int)NPCChoice.CHOICE_TOTAL));
-
-        Debug.Log(npc2Choice);
-
-        switch (npc2Choice)
-        {
-            case NPCChoice.CHOICE_SCISSORS:
-                npc2_ac.SetBool("DO_SCISSORS", true);
-                break;
-            case NPCChoice.CHOICE_PAPER:
-                npc2_ac.SetBool("DO_PAPER", true);
-                break;
-            case NPCChoice.CHOICE_STONE:
-                npc2_ac.SetBool("DO_STONE", true);
-                break;
-        }
-    }
-
-
-    #endregion
 
 
 
