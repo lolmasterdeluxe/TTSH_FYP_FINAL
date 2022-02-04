@@ -44,12 +44,12 @@ public class TutorialScreenManager : MonoBehaviour
     public Sprite[] fivestones_Page2, fivestones_Page5;
 
     [Tooltip("Sprite List for each pages of SPS tutorial")]
-    public Image sps_Image;
-    public Sprite[] sps_Page3, sps_Page4, sps_Page5;
+    public Image sps_Page1Run, sps_Image;
+    public Sprite[] sps_Page1, sps_Page3, sps_Page4, sps_Page5;
 
     [Tooltip("Sprite List for each pages of Chapteh tutorial")]
-    public Image chapteh_Image;
-    public Sprite[] chapteh_Page3;
+    public Image chapteh_Page1Idle, chapteh_Image;
+    public Sprite[] chapteh_Page1, chapteh_Page3;
 
     #endregion
 
@@ -64,22 +64,49 @@ public class TutorialScreenManager : MonoBehaviour
     {
         if (gametype_referenceNumber == 0) // SPS
         {
+            // Page 1
+            if (screenNumber == 0)
+            {
+                // When it's on page 1, set active to true
+                sps_Page1Run.gameObject.SetActive(true);
+                // Time taken to render next sprite
+                sps_Page1Run.sprite = sps_Page1[(int)(Time.time * 10) % sps_Page1.Length];
+            }
+            else
+                // When it's not on page 1, set active to false
+                sps_Page1Run.gameObject.SetActive(false);
+
+            // Page 3
             if (screenNumber == 2)
                 sps_Image.sprite = sps_Page3[(int)(Time.time * 3) % sps_Page3.Length];
+            // Page 4
             if (screenNumber == 3)
                 sps_Image.sprite = sps_Page4[(int)(Time.time * 3) % sps_Page4.Length];
+            // Page 5
             if (screenNumber == 4)
                 sps_Image.sprite = sps_Page5[(int)(Time.time * 3) % sps_Page5.Length];
         }
         else if (gametype_referenceNumber == 1) // 5 Stones
         {
+            // Page 2
             if (screenNumber == 1)
                 fivestones_Image.sprite = fivestones_Page2[(int)(Time.time * 4) % fivestones_Page2.Length];
+            // Page 5
             if (screenNumber == 4)
                 fivestones_Image.sprite = fivestones_Page5[(int)(Time.time * 2) % fivestones_Page5.Length];
         }
         else if (gametype_referenceNumber == 2) // Chapteh
         {
+            // Page 1
+            if (screenNumber == 0)
+            {
+                chapteh_Page1Idle.gameObject.SetActive(true);
+                chapteh_Page1Idle.sprite = chapteh_Page1[(int)(Time.time * 10) % chapteh_Page1.Length];
+            }
+            else
+                chapteh_Page1Idle.gameObject.SetActive(false);
+
+            // Page 3
             if (screenNumber == 2)
                 chapteh_Image.sprite = chapteh_Page3[(int)(Time.time * 3) % chapteh_Page3.Length];
         }
