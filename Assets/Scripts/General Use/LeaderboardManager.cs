@@ -202,33 +202,23 @@ public class LeaderboardManager : MonoBehaviour
 
     void UpdateAvatar(GameObject avatar, ScoreManager.Score score)
     {
-        CustomizerManager.Customizable hatCustomizable = CustomizerManager.Instance.m_hatPool[score.m_hatId];
-        CustomizerManager.Customizable faceCustomizable = CustomizerManager.Instance.m_facePool[score.m_faceId];
-        CustomizerManager.Customizable colorCustomizable = CustomizerManager.Instance.m_colorPool[score.m_colourId];
+        CustomizerManager.Customizable hatCustomizable = CustomizerManager.Instance.m_hatPool.ElementAtOrDefault(score.m_hatId);
+        CustomizerManager.Customizable faceCustomizable = CustomizerManager.Instance.m_facePool.ElementAtOrDefault(score.m_faceId);
+        CustomizerManager.Customizable colorCustomizable = CustomizerManager.Instance.m_colorPool.ElementAtOrDefault(score.m_colourId);
 
         for (int i = 1; i < avatar.transform.childCount; i++)
             avatar.transform.GetChild(i).GetComponent<Image>().enabled = false;
 
-        if (hatCustomizable.m_bone == CustomizerManager.Bone.HAT && hatCustomizable.m_sprite != null)
-        {
-            avatar.transform.GetChild(2).GetComponent<Image>().enabled = true;
-            avatar.transform.GetChild(2).GetComponent<Image>().sprite = hatCustomizable.m_sprite;
-        }
-        else if (hatCustomizable.m_bone == CustomizerManager.Bone.HEAD_BAND && hatCustomizable.m_sprite != null)
-        {
-            avatar.transform.GetChild(3).GetComponent<Image>().enabled = true;
-            avatar.transform.GetChild(3).GetComponent<Image>().sprite = hatCustomizable.m_sprite;
-        }
-
-        if (faceCustomizable.m_bone == CustomizerManager.Bone.GLASSES && faceCustomizable.m_sprite != null)
-        {
-            avatar.transform.GetChild(4).GetComponent<Image>().enabled = true;
-            avatar.transform.GetChild(4).GetComponent<Image>().sprite = faceCustomizable.m_sprite;
-        }
-        else if (faceCustomizable.m_bone == CustomizerManager.Bone.MOUTH && faceCustomizable.m_sprite != null)
+        if (hatCustomizable != null)
         {
             avatar.transform.GetChild(1).GetComponent<Image>().enabled = true;
-            avatar.transform.GetChild(1).GetComponent<Image>().sprite = faceCustomizable.m_sprite;
+            avatar.transform.GetChild(1).GetComponent<Image>().sprite = hatCustomizable.m_sprite;
+        }
+
+        if (faceCustomizable != null)
+        {
+            avatar.transform.GetChild(2).GetComponent<Image>().enabled = true;
+            avatar.transform.GetChild(2).GetComponent<Image>().sprite = faceCustomizable.m_sprite;
         }
     }
 
@@ -243,7 +233,7 @@ public class LeaderboardManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "MainMenuGameScene")
         {
-            GameObject.Find("MainCharacter").GetComponent<PlayerMovementScript>().Start();
+            //GameObject.Find("MainCharacter").GetComponent<PlayerKeyboardMovement>().Start();
             gameObject.SetActive(false);
         }
         else

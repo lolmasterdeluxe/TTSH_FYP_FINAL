@@ -34,7 +34,7 @@ public class PlayerKeyboardMovement : MonoBehaviour
 
     #region Unity Callbacks
 
-    private void Start()
+    public void Start()
     {
         if (b_doRollbackPosition)
         {
@@ -148,7 +148,7 @@ public class PlayerKeyboardMovement : MonoBehaviour
             //we do a distance check between the player and the collided gameObject
             float distance = this.gameObject.transform.localPosition.y - other.gameObject.transform.localPosition.y;
 
-            Debug.Log("Distance Stay: " + distance);
+            //Debug.Log("Distance Stay: " + distance);
 
             if ((distance >= 0.15f && distance <= 0.25f)) //player is behind
             {

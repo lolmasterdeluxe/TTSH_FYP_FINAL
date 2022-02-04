@@ -9,14 +9,6 @@ using TMPro;
 
 public class CustomizerManager : MonoBehaviour
 {
-    public enum Bone
-    {
-        HAT,
-        GLASSES,
-        MOUTH,
-        HEAD_BAND,
-    }
-
     public enum ItemType
     {
         HAT,
@@ -28,7 +20,6 @@ public class CustomizerManager : MonoBehaviour
     public class Customizable
     {
         public string m_name;
-        public Bone m_bone;
         public ItemType m_itemType;
         public Sprite m_sprite;
         public Color m_color;
@@ -46,10 +37,8 @@ public class CustomizerManager : MonoBehaviour
     public int m_faceId = 0;
     public int m_colorId = 0;
 
-    public SpriteRenderer m_headSprite;
     public SpriteRenderer m_hatSprite;
     public SpriteRenderer m_eyeSprite;
-    public SpriteRenderer m_mouthSprite;
 
     public Button hatPreviousButton;
     public Button hatNextButton;
@@ -185,35 +174,25 @@ public class CustomizerManager : MonoBehaviour
 
     void UpdateCosmetics()
     {
-        Customizable hatCustomizable = m_hatPool[m_hatId];
-        Customizable faceCustomizable = m_facePool[m_faceId];
-        Customizable colorCustomizable = m_colorPool[m_colorId];
+        Customizable hatCustomizable = m_hatPool.ElementAtOrDefault(m_hatId);
+        Customizable faceCustomizable = m_facePool.ElementAtOrDefault(m_faceId);
+        Customizable colorCustomizable = m_colorPool.ElementAtOrDefault(m_colorId);
 
-        if (hatCustomizable.m_bone == Bone.HAT)
+        m_hatSprite.sprite = null;
+        m_eyeSprite.sprite = null;
+
+        if (hatCustomizable.m_itemType == ItemType.HAT)
         {
-            m_headSprite.sprite = null;
             m_hatSprite.sprite = hatCustomizable.m_sprite;
             m_hatSprite.sortingOrder = 4;
         }
-        else if (hatCustomizable.m_bone == Bone.HEAD_BAND)
-        {
-            m_hatSprite.sprite = null;
-            m_headSprite.sprite = hatCustomizable.m_sprite;
-            m_headSprite.sortingOrder = 4;
-        }
 
-        if (faceCustomizable.m_bone == Bone.GLASSES)
+        if (faceCustomizable.m_itemType == ItemType.FACE)
         {
-            m_mouthSprite.sprite = null;
             m_eyeSprite.sprite = faceCustomizable.m_sprite;
             m_eyeSprite.sortingOrder = 4;
         }
-        else if (faceCustomizable.m_bone == Bone.MOUTH)
-        {
-            m_eyeSprite.sprite = null;
-            m_mouthSprite.sprite = faceCustomizable.m_sprite;
-            m_mouthSprite.sortingOrder = 4;
-        }
+
     }
 
     void UpdateButtonReferences()
@@ -258,17 +237,11 @@ public class CustomizerManager : MonoBehaviour
     // Find another way to re-reference when changing scenes, but this works for now
     void UpdateSpriteReferences()
     {
-        if (m_headSprite == null)
-            m_headSprite = GameObject.Find("HeadSprite").GetComponent<SpriteRenderer>();
-
         if (m_hatSprite == null)
             m_hatSprite = GameObject.Find("HatSprite").GetComponent<SpriteRenderer>();
 
         if (m_eyeSprite == null)
             m_eyeSprite = GameObject.Find("EyeSprite").GetComponent<SpriteRenderer>();
-
-        if (m_mouthSprite == null)
-            m_mouthSprite = GameObject.Find("MouthSprite").GetComponent<SpriteRenderer>();
     }
 
     public void EnterMainScene()
