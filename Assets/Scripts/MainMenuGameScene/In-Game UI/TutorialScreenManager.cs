@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class TutorialScreenManager : MonoBehaviour
 {
@@ -48,12 +49,18 @@ public class TutorialScreenManager : MonoBehaviour
     public Sprite[] sps_Page1, sps_Page3, sps_Page4, sps_Page5;
 
     [Tooltip("Sprite List for each pages of Chapteh tutorial")]
-    public Image chapteh_Page1Idle, chapteh_Image;
-    public Sprite[] chapteh_Page1, chapteh_Page3;
+    public Image chapteh_Page1Idle, chapteh_Page2Run, chapteh_Page2Mouse, chapteh_Image;
+    public Sprite[] chapteh_Page1, chapteh_Page2, chapteh_Page3;
 
     #endregion
 
     #region Unity Callbacks
+
+    private void Start()
+    {
+        chapteh_Page2Mouse.gameObject.SetActive(false);
+        chapteh_Page2Run.gameObject.SetActive(false);
+    }
 
     private void Awake()
     {
@@ -105,6 +112,28 @@ public class TutorialScreenManager : MonoBehaviour
             }
             else
                 chapteh_Page1Idle.gameObject.SetActive(false);
+
+            // Page 2
+            if(screenNumber == 1)
+            {
+                chapteh_Page2Mouse.gameObject.SetActive(true);
+                chapteh_Page2Run.gameObject.SetActive(true);
+
+                chapteh_Page2Mouse.transform
+                    .DOLocalMove(new Vector3(-400f, -150f, 0), 0.5f)
+                    .SetEase(Ease.Linear)
+                    .SetLoops(-1, LoopType.Yoyo);
+
+                chapteh_Page2Run.transform
+                    .DOLocalMove(new Vector3(-400f, 90f, 0), 0.5f)
+                    .SetEase(Ease.Linear)
+                    .SetLoops(-1, LoopType.Yoyo);
+            }
+            else
+            {
+                chapteh_Page2Mouse.gameObject.SetActive(false);
+                chapteh_Page2Run.gameObject.SetActive(false);
+            }
 
             // Page 3
             if (screenNumber == 2)
