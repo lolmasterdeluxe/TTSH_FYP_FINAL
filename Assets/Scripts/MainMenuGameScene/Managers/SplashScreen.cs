@@ -5,19 +5,12 @@ using UnityEngine;
 public class SplashScreen : MonoBehaviour
 {
     public GameObject _splashScreenGroup;
-    public static bool splashScreenToggled = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (splashScreenToggled)
-        {
-            _splashScreenGroup.SetActive(false);
-            return;
-        }
-
         ScoreManager.Instance.LoadWebScoreList();
-        splashScreenToggled = true;
+        ScoreManager.Instance.ResetUser();
         StartCoroutine(WaitFade());
     }
 

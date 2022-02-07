@@ -53,6 +53,14 @@ public class LeaderboardManager : MonoBehaviour
 
     public TMP_Text overallScoreText;
 
+
+    public GameObject exitButton;
+    public GameObject splashScreenButton;
+    public CanvasGroup thanksScreenCanvasGroup;
+    public CanvasGroup goodJobScreenCanvasGroup;
+
+    public bool m_isFinalGame;
+
     // Start is called before the first frame update
 
     void Start()
@@ -69,15 +77,29 @@ public class LeaderboardManager : MonoBehaviour
     {
         sortedScoreList = ScoreManager.Instance.m_allScoreList.Where(x => x.m_gamemode == leaderboardType.ToString()).OrderByDescending(x => x.m_score).ToList();
         currentScore = sortedScoreList.Where(x => x.m_username == ScoreManager.Instance.m_currentUsername).FirstOrDefault();
+        m_isFinalGame = false;
+        splashScreenButton.SetActive(false);
+
+        if (ScoreManager.Instance.GetCurrentSavedScoreCount() >= 4)
+        {
+            ScoreManager.Instance.ConcludeGameScore();
+            exitButton.SetActive(false);
+            splashScreenButton.SetActive(true);
+            m_isFinalGame = true;
+        }
+
         UpdateBackground();
         UpdateEndScreen();
         UpdateLeaderboard();
+        
     }
 
     public void UpdateEndScreen()
     {
         TweenManager.Instance.AnimateFade(endScreenCanvasGroup, 1, 0);
         TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 0, 0);
+        TweenManager.Instance.AnimateFade(goodJobScreenCanvasGroup, 0, 0);
+        TweenManager.Instance.AnimateFade(thanksScreenCanvasGroup, 0, 0);
 
         switch (leaderboardType)
         {
@@ -142,9 +164,23 @@ public class LeaderboardManager : MonoBehaviour
 
     public IEnumerator ShowLeaderboard()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         TweenManager.Instance.AnimateFade(endScreenCanvasGroup, 0, 1);
         TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 1, 1);
+        
+        if (m_isFinalGame)
+            StartCoroutine(ShowFinishScreen());
+    }
+
+    public IEnumerator ShowFinishScreen()
+    {
+        yield return new WaitForSeconds(3);
+        TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 0, 1);
+        TweenManager.Instance.AnimateFade(goodJobScreenCanvasGroup, 1, 1);
+
+        yield return new WaitForSeconds(2);
+        TweenManager.Instance.AnimateFade(goodJobScreenCanvasGroup, 0, 1);
+        TweenManager.Instance.AnimateFade(thanksScreenCanvasGroup, 1, 1);
     }
 
     public void UpdateLeaderboard()
@@ -209,13 +245,13 @@ public class LeaderboardManager : MonoBehaviour
         for (int i = 1; i < avatar.transform.childCount; i++)
             avatar.transform.GetChild(i).GetComponent<Image>().enabled = false;
 
-        if (hatCustomizable != null)
+        if (hatCustomizable != null && score.m_hatId != 0)
         {
             avatar.transform.GetChild(1).GetComponent<Image>().enabled = true;
             avatar.transform.GetChild(1).GetComponent<Image>().sprite = hatCustomizable.m_sprite;
         }
 
-        if (faceCustomizable != null)
+        if (faceCustomizable != null && score.m_faceId != 0)
         {
             avatar.transform.GetChild(2).GetComponent<Image>().enabled = true;
             avatar.transform.GetChild(2).GetComponent<Image>().sprite = faceCustomizable.m_sprite;
@@ -229,8 +265,14 @@ public class LeaderboardManager : MonoBehaviour
         scoreBarSlider.value = (float)currentScore / (float)highestScore;
     }
 
+    public void ReturnSplashScreen()
+    {
+        SceneManager.LoadScene("CustomizeScene");
+    }
+
     public void ExitLeaderboard()
     {
+        Debug.Log("exit leaderboard");
         if (SceneManager.GetActiveScene().name == "MainMenuGameScene")
         {
             //GameObject.Find("MainCharacter").GetComponent<PlayerKeyboardMovement>().Start();

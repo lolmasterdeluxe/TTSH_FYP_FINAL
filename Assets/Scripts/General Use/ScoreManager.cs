@@ -121,7 +121,18 @@ public class ScoreManager : MonoBehaviour
         form.AddField("m_faceId", score.m_faceId);
         form.AddField("m_colourId", score.m_colourId);
 
-        UnityWebRequest unityWebRequest = UnityWebRequest.Post(url + api_allScore, form);
+        List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
+        formData.Add(new MultipartFormDataSection("m_username=" + score.m_username +
+                                                  "&m_gamemode=" + score.m_gamemode +
+                                                  "&m_score=" + score.m_score +
+                                                  "&m_hatId=" + score.m_hatId +
+                                                  "&m_faceId=" + score.m_faceId +
+                                                  "&m_colourId=" + score.m_colourId));
+
+
+        UnityWebRequest unityWebRequest = UnityWebRequest.Post(url + api_addScore, formData);
+        unityWebRequest.chunkedTransfer = false;
+        //unityWebRequest.SetRequestHeader("Content-Type", "multipart/form-data");
         yield return unityWebRequest.SendWebRequest();
 
         if (unityWebRequest.isNetworkError)
@@ -134,9 +145,23 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    public void ResetUser()
+    {
+        m_currentUsername = "";
+        m_currentScore = 0;
+        CustomizerManager.Instance.m_hatId = 0;
+        CustomizerManager.Instance.m_colorId = 0;
+        CustomizerManager.Instance.m_faceId = 0;
+    }
+
     public void LoadWebScoreList()
     {
         StartCoroutine(RequestAllScore());
+    }
+
+    public int GetCurrentSavedScoreCount()
+    {
+        return m_allScoreList.Where(x => x.m_username == m_currentUsername).ToList().Count();
     }
 
     public void LoadNewGamemode(Gamemode gamemode)
