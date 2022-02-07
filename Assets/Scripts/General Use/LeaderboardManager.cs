@@ -80,7 +80,7 @@ public class LeaderboardManager : MonoBehaviour
         m_isFinalGame = false;
         splashScreenButton.SetActive(false);
 
-        if (ScoreManager.Instance.GetCurrentSavedScoreCount() >= 4)
+        if (ScoreManager.Instance.GetCurrentSavedScoreCount() >= 4 || m_isFinalGame)
         {
             ScoreManager.Instance.ConcludeGameScore();
             exitButton.SetActive(false);
@@ -100,6 +100,7 @@ public class LeaderboardManager : MonoBehaviour
         TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 0, 0);
         TweenManager.Instance.AnimateFade(goodJobScreenCanvasGroup, 0, 0);
         TweenManager.Instance.AnimateFade(thanksScreenCanvasGroup, 0, 0);
+        thanksScreenCanvasGroup.gameObject.SetActive(false);
 
         switch (leaderboardType)
         {
@@ -179,6 +180,8 @@ public class LeaderboardManager : MonoBehaviour
         TweenManager.Instance.AnimateFade(goodJobScreenCanvasGroup, 1, 1);
 
         yield return new WaitForSeconds(2);
+        leaderboardCanvasGroup.gameObject.SetActive(false);
+        thanksScreenCanvasGroup.gameObject.SetActive(true);
         TweenManager.Instance.AnimateFade(goodJobScreenCanvasGroup, 0, 1);
         TweenManager.Instance.AnimateFade(thanksScreenCanvasGroup, 1, 1);
     }
