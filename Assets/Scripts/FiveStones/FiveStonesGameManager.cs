@@ -51,6 +51,8 @@ public class FiveStonesGameManager : MonoBehaviour
     public int m_totalCaught = 0;
     public int m_totalRainbowCaught = 0;
 
+    public AudioSource[] audioSources;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -85,6 +87,7 @@ public class FiveStonesGameManager : MonoBehaviour
         RandomizeObjective();
         StartCoroutine(ObjectiveCoroutine());
 
+        audioSources[0].Play();
         // Attach events
         TimerManager.Instance.e_TimerFinished.AddListener(OnGameEnd);
         ComboManager.Instance.e_comboAdded.AddListener(OnComboAdd);
@@ -156,22 +159,26 @@ public class FiveStonesGameManager : MonoBehaviour
 
         if (gameObject.GetComponent<Stone>().type == Objective.BOMB_STONES)
         {
+            audioSources[1].Play();
             ScoreManager.Instance.ReduceCurrentGameScore(baseScore * ComboManager.Instance.GetCurrentCombo());
             ComboManager.Instance.BreakCombo();
         }
         else if (gameObject.GetComponent<Stone>().type == Objective.CATCH_ANY_STONES)
         {
+            audioSources[4].Play();
             m_totalRainbowCaught++;
             ComboManager.Instance.AddCombo();
             ScoreManager.Instance.AddCurrentGameScore(baseScore * ComboManager.Instance.GetCurrentCombo() * 2);
         }
         else if (gameObject.GetComponent<Stone>().type == m_currentObjective || m_currentObjective == Objective.CATCH_ANY_STONES)
         {
+            audioSources[5].Play();
             ComboManager.Instance.AddCombo();
             ScoreManager.Instance.AddCurrentGameScore(baseScore * ComboManager.Instance.GetCurrentCombo());
         }
         else
         {
+            audioSources[5].Play();
             ComboManager.Instance.BreakCombo();
             ScoreManager.Instance.AddCurrentGameScore(baseScore);
         }

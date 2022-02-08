@@ -79,6 +79,7 @@ public class Hand : MonoBehaviour
 
     void StartCatching()
     {
+        FiveStonesGameManager.Instance.audioSources[3].Play();
         isCatching = true;
         currentHandTrail = Instantiate(handTrailPrefab, transform);
         currentHandTrail.GetComponent<TrailRenderer>().Clear();

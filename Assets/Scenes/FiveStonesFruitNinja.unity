@@ -1043,6 +1043,9 @@ MonoBehaviour:
   countdownText: {fileID: 277105197}
   currentGamemode: 1
   m_countdownOver: 0
+  countdownSource:
+  - {fileID: 439028112}
+  - {fileID: 439028111}
 --- !u!4 &319251321
 Transform:
   m_ObjectHideFlags: 0
@@ -1266,6 +1269,118 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405970135}
   m_CullTransparentMesh: 0
+--- !u!1001 &439028101
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1067763110260787556, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 537.69775
+      objectReference: {fileID: 0}
+    - target: {fileID: 1067763110260787556, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 238.49652
+      objectReference: {fileID: 0}
+    - target: {fileID: 1067763110260787556, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -17.023504
+      objectReference: {fileID: 0}
+    - target: {fileID: 1067763110260787556, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1067763110260787556, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1067763110260787556, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1067763110260787556, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1067763110260787556, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1067763110260787556, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1067763110260787556, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1067763110260787556, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1067763110260787558, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+--- !u!82 &439028102 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1166257774, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+  m_PrefabInstance: {fileID: 439028101}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &439028103 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1067763110721779019, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+  m_PrefabInstance: {fileID: 439028101}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &439028104 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1067763111383850783, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+  m_PrefabInstance: {fileID: 439028101}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &439028105 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1067763109511360385, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+  m_PrefabInstance: {fileID: 439028101}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &439028106 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1894976065, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+  m_PrefabInstance: {fileID: 439028101}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &439028107 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1325888550, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+  m_PrefabInstance: {fileID: 439028101}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &439028108 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 667776764, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+  m_PrefabInstance: {fileID: 439028101}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &439028109 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1050588571, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+  m_PrefabInstance: {fileID: 439028101}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &439028110 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 78088646, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+  m_PrefabInstance: {fileID: 439028101}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &439028111 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1532651771213101559, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+  m_PrefabInstance: {fileID: 439028101}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &439028112 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1445572309369574415, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+  m_PrefabInstance: {fileID: 439028101}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &441014169
 GameObject:
   m_ObjectHideFlags: 0
@@ -1856,6 +1971,10 @@ MonoBehaviour:
   quitPromptMenu: {fileID: 1942954693}
   settingsMenu: {fileID: 1009653779}
   isPaused: 0
+  pauseMenuSound:
+  - {fileID: 439028105}
+  - {fileID: 439028104}
+  - {fileID: 439028103}
 --- !u!4 &537723538
 Transform:
   m_ObjectHideFlags: 0
@@ -1882,6 +2001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648f5c57d8c12024ba26b54b08b95c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentGamemode: 0
   masterVolSlider: {fileID: 802867580}
   masterVolText: {fileID: 65991767}
   musicVolSlider: {fileID: 515792544}
@@ -3479,6 +3599,13 @@ MonoBehaviour:
   m_gameEnded: 0
   m_totalCaught: 0
   m_totalRainbowCaught: 0
+  audioSources:
+  - {fileID: 439028110}
+  - {fileID: 439028109}
+  - {fileID: 439028108}
+  - {fileID: 439028107}
+  - {fileID: 439028106}
+  - {fileID: 439028102}
 --- !u!4 &983789000
 Transform:
   m_ObjectHideFlags: 0
