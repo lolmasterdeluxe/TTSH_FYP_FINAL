@@ -1324,6 +1324,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7920588432255613963, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
 --- !u!82 &439028102 stripped
@@ -1881,9 +1885,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1745749639}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
-  m_WholeNumbers: 1
-  m_Value: 0
+  m_MaxValue: 1
+  m_WholeNumbers: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -2001,7 +2005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648f5c57d8c12024ba26b54b08b95c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentGamemode: 0
+  currentGamemode: 1
   masterVolSlider: {fileID: 802867580}
   masterVolText: {fileID: 65991767}
   musicVolSlider: {fileID: 515792544}
@@ -2952,9 +2956,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 839210192}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
-  m_WholeNumbers: 1
-  m_Value: 0
+  m_MaxValue: 1
+  m_WholeNumbers: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -7751,9 +7755,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2111007150}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
-  m_WholeNumbers: 1
-  m_Value: 0
+  m_MaxValue: 1
+  m_WholeNumbers: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

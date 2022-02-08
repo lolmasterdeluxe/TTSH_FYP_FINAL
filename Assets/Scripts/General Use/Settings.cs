@@ -38,8 +38,8 @@ public class Settings : MonoBehaviour
         musicVolText.text = "100";
         sfxVolText.text = "100";
 
-        chapteh = GameObject.Find("Chapteh").GetComponent<Chapteh>();
-        kickChapteh = GameObject.Find("Chapteh Manager").GetComponent<KickChapteh>();
+        //chapteh = GameObject.Find("Chapteh").GetComponent<Chapteh>();
+        //kickChapteh = GameObject.Find("Chapteh Manager").GetComponent<KickChapteh>();
     }
 
     // Update is called once per frame
@@ -73,14 +73,19 @@ public class Settings : MonoBehaviour
                 // BGM volume adjuster
                 ChaptehGameManager.Instance.audioSources[0].volume = masterVolSlider.value;
                 // On Ring Hit audio volume adjuster
-                chapteh.onRingHitSource.volume = masterVolSlider.value;
+                chapteh.GetComponent<Chapteh>().onRingHitSource.volume = masterVolSlider.value;
                 // Kick Chapteh audio volume adjuster
-                kickChapteh.audioSources[0].volume = masterVolSlider.value;
+                kickChapteh.GetComponent<KickChapteh>().audioSources[0].volume = masterVolSlider.value;
                 // Charge Bar audio volume adjuster 
-                kickChapteh.audioSources[0].volume = masterVolSlider.value;
+                kickChapteh.audioSources[1].volume = masterVolSlider.value;
                 masterVolText.text = Mathf.RoundToInt(masterVolSlider.value * 100).ToString();
                 break;
             case GameMode.FIVE_STONES:
+                for(int i = 0; i < 6; i++)
+                {
+                    FiveStonesGameManager.Instance.audioSources[i].volume = masterVolSlider.value;
+                    masterVolText.text = Mathf.RoundToInt(masterVolSlider.value * 100).ToString();
+                }
                 break;
         }
     }
@@ -100,6 +105,9 @@ public class Settings : MonoBehaviour
                 musicVolText.text = Mathf.RoundToInt(musicVolSlider.value * 100).ToString();
                 break;
             case GameMode.FIVE_STONES:
+                // BGM volume adjuster
+                FiveStonesGameManager.Instance.audioSources[0].volume = musicVolSlider.value;
+                musicVolText.text = Mathf.RoundToInt(musicVolSlider.value * 100).ToString();
                 break;
         }
     }
@@ -129,10 +137,15 @@ public class Settings : MonoBehaviour
                 // Kick Chapteh audio volume adjuster
                 kickChapteh.audioSources[0].volume = sfxVolSlider.value;
                 // Charge Bar audio volume adjuster 
-                kickChapteh.audioSources[0].volume = sfxVolSlider.value;
+                kickChapteh.audioSources[1].volume = sfxVolSlider.value;
                 sfxVolText.text = Mathf.RoundToInt(sfxVolSlider.value * 100).ToString();
                 break;
             case GameMode.FIVE_STONES:
+                for (int i = 1; i < 6; i++)
+                {
+                    FiveStonesGameManager.Instance.audioSources[i].volume = sfxVolSlider.value;
+                    sfxVolText.text = Mathf.RoundToInt(sfxVolSlider.value * 100).ToString();
+                }
                 break;
         }
         
