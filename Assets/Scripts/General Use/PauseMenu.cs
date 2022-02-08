@@ -49,7 +49,7 @@ public class PauseMenu : MonoBehaviour
         // Pause sound
         pauseMenuSound[1].Play();
 
-        ChaptehGameManager.Instance.bgmSource.Pause();
+        ChaptehGameManager.Instance.audioSources[0].Pause();
     }
 
     public void ResumeGame()
@@ -63,7 +63,7 @@ public class PauseMenu : MonoBehaviour
         // Button Press sound
         pauseMenuSound[0].Play();
 
-        ChaptehGameManager.Instance.bgmSource.UnPause();
+        ChaptehGameManager.Instance.audioSources[0].UnPause();
     }
 
     public void LoadMainMenu()
