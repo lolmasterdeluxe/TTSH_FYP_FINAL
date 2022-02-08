@@ -2,10 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 using TMPro;
 
 public class Settings : MonoBehaviour
 {
+    public enum GameMode
+    {
+        SPS,
+        FIVE_STONES,
+        CHAPTEH,
+    }
+
+    public GameMode currentGamemode;
+
     // Master Volume
     public Slider masterVolSlider;
     public TMP_Text masterVolText;
@@ -18,32 +28,113 @@ public class Settings : MonoBehaviour
     public Slider sfxVolSlider;
     public TMP_Text sfxVolText;
 
+    private Chapteh chapteh;
+    private KickChapteh kickChapteh;
+
     // Start is called before the first frame update
     void Start()
     {
-        masterVolText.text = "0";
-        musicVolText.text = "0";
-        sfxVolText.text = "0";
+        masterVolText.text = "100";
+        musicVolText.text = "100";
+        sfxVolText.text = "100";
+
+        chapteh = GameObject.Find("Chapteh").GetComponent<Chapteh>();
+        kickChapteh = GameObject.Find("Chapteh Manager").GetComponent<KickChapteh>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
     }
     
+    // Adjusts all volumes in the scene
     public void MasterVolume()
     {
-        masterVolText.text = Mathf.RoundToInt(masterVolSlider.value * 1).ToString();
+        switch (currentGamemode)
+        {
+            case GameMode.SPS:
+                // BGM volume adjuster
+                SPS_UIManager.Instance.bgmSource.volume = masterVolSlider.value;
+                // Jump audio volume adjuster
+                SPS_PlayerManager.Instance.jumpSFX.volume = masterVolSlider.value;
+                // Stunned audio volmme adjuster
+                SPS_PlayerManager.Instance.stunnedSFX.volume = masterVolSlider.value;
+                // Scissors Atk audio volmme adjuster
+                SPS_PlayerManager.Instance.scissorsAtkSFX.volume = masterVolSlider.value;
+                // Paper Atk audio volume adjuster
+                SPS_PlayerManager.Instance.paperAtkSFX.volume = masterVolSlider.value;
+                // Stone Atk audio volume adjuster
+                SPS_PlayerManager.Instance.stoneAtkSFX.volume = masterVolSlider.value;
+                // Power Up audio volume adjuster
+                SPS_PlayerManager.Instance.powerupSFX.volume = masterVolSlider.value;
+                masterVolText.text = Mathf.RoundToInt(masterVolSlider.value * 100).ToString();
+                break;
+            case GameMode.CHAPTEH:
+                // BGM volume adjuster
+                ChaptehGameManager.Instance.audioSources[0].volume = masterVolSlider.value;
+                // On Ring Hit audio volume adjuster
+                chapteh.onRingHitSource.volume = masterVolSlider.value;
+                // Kick Chapteh audio volume adjuster
+                kickChapteh.audioSources[0].volume = masterVolSlider.value;
+                // Charge Bar audio volume adjuster 
+                kickChapteh.audioSources[0].volume = masterVolSlider.value;
+                masterVolText.text = Mathf.RoundToInt(masterVolSlider.value * 100).ToString();
+                break;
+            case GameMode.FIVE_STONES:
+                break;
+        }
     }
 
     public void MusicVolume()
     {
-        musicVolText.text = Mathf.RoundToInt(musicVolSlider.value * 1).ToString();
+        switch(currentGamemode)
+        {
+            case GameMode.SPS:
+                // BGM volume adjuster
+                SPS_UIManager.Instance.bgmSource.volume = musicVolSlider.value;
+                musicVolText.text = Mathf.RoundToInt(musicVolSlider.value * 100).ToString();
+                break;
+            case GameMode.CHAPTEH:
+                // BGM volume adjuster
+                ChaptehGameManager.Instance.audioSources[0].volume = musicVolSlider.value;
+                musicVolText.text = Mathf.RoundToInt(musicVolSlider.value * 100).ToString();
+                break;
+            case GameMode.FIVE_STONES:
+                break;
+        }
     }
 
     public void SFXVolume()
     {
-        sfxVolText.text = Mathf.RoundToInt(sfxVolSlider.value * 1).ToString();
+        switch (currentGamemode)
+        {
+            case GameMode.SPS:
+                // Jump audio volume adjuster
+                SPS_PlayerManager.Instance.jumpSFX.volume = sfxVolSlider.value;
+                // Stunned audio volume adjuster
+                SPS_PlayerManager.Instance.stunnedSFX.volume = sfxVolSlider.value;
+                // Scissors Atk audio volume adjuster
+                SPS_PlayerManager.Instance.scissorsAtkSFX.volume = sfxVolSlider.value;
+                // Paper Atk audio volume adjuster
+                SPS_PlayerManager.Instance.paperAtkSFX.volume = sfxVolSlider.value;
+                // Stone Atk audio volume adjuster
+                SPS_PlayerManager.Instance.stoneAtkSFX.volume = sfxVolSlider.value;
+                // Power Up audio volume adjuster
+                SPS_PlayerManager.Instance.powerupSFX.volume = sfxVolSlider.value;
+                sfxVolText.text = Mathf.RoundToInt(sfxVolSlider.value * 100).ToString();
+                break;
+            case GameMode.CHAPTEH:
+                // On Ring Hit audio volume adjuster
+                chapteh.onRingHitSource.volume = sfxVolSlider.value;
+                // Kick Chapteh audio volume adjuster
+                kickChapteh.audioSources[0].volume = sfxVolSlider.value;
+                // Charge Bar audio volume adjuster 
+                kickChapteh.audioSources[0].volume = sfxVolSlider.value;
+                sfxVolText.text = Mathf.RoundToInt(sfxVolSlider.value * 100).ToString();
+                break;
+            case GameMode.FIVE_STONES:
+                break;
+        }
+        
     }
 }
