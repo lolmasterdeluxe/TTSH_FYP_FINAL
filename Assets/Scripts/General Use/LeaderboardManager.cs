@@ -53,11 +53,13 @@ public class LeaderboardManager : MonoBehaviour
 
     public TMP_Text overallScoreText;
 
-
     public GameObject exitButton;
+
     public GameObject splashScreenButton;
     public CanvasGroup thanksScreenCanvasGroup;
     public CanvasGroup goodJobScreenCanvasGroup;
+    public CanvasGroup creditsScreenCanvasGroup;
+    public CanvasGroup musicCreditsCanvasGroup;
 
     public bool m_isFinalGame;
 
@@ -75,9 +77,7 @@ public class LeaderboardManager : MonoBehaviour
 
     private void OnEnable()
     {
-        sortedScoreList = ScoreManager.Instance.m_allScoreList.Where(x => x.m_gamemode == leaderboardType.ToString()).OrderByDescending(x => x.m_score).ToList();
-        currentScore = sortedScoreList.Where(x => x.m_username == ScoreManager.Instance.m_currentUsername).FirstOrDefault();
-        m_isFinalGame = false;
+        m_isFinalGame = true;
         splashScreenButton.SetActive(false);
 
         if (ScoreManager.Instance.GetCurrentSavedScoreCount() >= 4 || m_isFinalGame)
@@ -88,19 +88,31 @@ public class LeaderboardManager : MonoBehaviour
             m_isFinalGame = true;
         }
 
+        UpdateAllLeaderboardUIData();
+        TweenManager.Instance.AnimateFade(endScreenCanvasGroup, 1, 1);
+        StartCoroutine(ShowLeaderboard());
+    }
+
+    public void UpdateAllLeaderboardUIData()
+    {
+        TweenManager.Instance.AnimateFade(endScreenCanvasGroup, 0, 0);
+        TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 0, 0);
+        TweenManager.Instance.AnimateFade(goodJobScreenCanvasGroup, 0, 0);
+        TweenManager.Instance.AnimateFade(thanksScreenCanvasGroup, 0, 0);
+        TweenManager.Instance.AnimateFade(musicCreditsCanvasGroup, 0, 0);
+        TweenManager.Instance.AnimateFade(creditsScreenCanvasGroup, 0, 0);
+        thanksScreenCanvasGroup.gameObject.SetActive(false);
+
+        sortedScoreList = ScoreManager.Instance.m_allScoreList.Where(x => x.m_gamemode == leaderboardType.ToString()).OrderByDescending(x => x.m_score).ToList();
+        currentScore = sortedScoreList.Where(x => x.m_username == ScoreManager.Instance.m_currentUsername).FirstOrDefault();
+
         UpdateBackground();
         UpdateEndScreen();
         UpdateLeaderboard();
-        
     }
 
     public void UpdateEndScreen()
     {
-        TweenManager.Instance.AnimateFade(endScreenCanvasGroup, 1, 0);
-        TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 0, 0);
-        TweenManager.Instance.AnimateFade(goodJobScreenCanvasGroup, 0, 0);
-        TweenManager.Instance.AnimateFade(thanksScreenCanvasGroup, 0, 0);
-        thanksScreenCanvasGroup.gameObject.SetActive(false);
 
         switch (leaderboardType)
         {
@@ -159,8 +171,6 @@ public class LeaderboardManager : MonoBehaviour
         }
 
         overallScoreText.text = currentScore.m_score.ToString();
-
-        StartCoroutine(ShowLeaderboard());
     }
 
     public IEnumerator ShowLeaderboard()
@@ -170,19 +180,38 @@ public class LeaderboardManager : MonoBehaviour
         TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 1, 1);
         
         if (m_isFinalGame)
-            StartCoroutine(ShowFinishScreen());
+            StartCoroutine(ShowFinalGameAnimation());
     }
 
-    public IEnumerator ShowFinishScreen()
+    public IEnumerator ShowFinalGameAnimation()
     {
+        // Display goodjob
         yield return new WaitForSeconds(3);
         TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 0, 1);
         TweenManager.Instance.AnimateFade(goodJobScreenCanvasGroup, 1, 1);
 
+        // Display overall leaderboard
+        ScoreManager.Instance.m_currentGamemode = ScoreManager.Gamemode.TOTAL;
+        UpdateAllLeaderboardUIData();
         yield return new WaitForSeconds(2);
-        leaderboardCanvasGroup.gameObject.SetActive(false);
-        thanksScreenCanvasGroup.gameObject.SetActive(true);
         TweenManager.Instance.AnimateFade(goodJobScreenCanvasGroup, 0, 1);
+        TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 1, 1);
+
+        // Display credits screen
+        yield return new WaitForSeconds(4);
+        TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 0, 1);
+        TweenManager.Instance.AnimateFade(creditsScreenCanvasGroup, 1, 1);
+
+        // Display music credits screen
+        yield return new WaitForSeconds(2);
+        TweenManager.Instance.AnimateFade(creditsScreenCanvasGroup, 0, 1);
+        TweenManager.Instance.AnimateFade(musicCreditsCanvasGroup, 1, 1);
+
+        // Display thanks for playing screen
+        yield return new WaitForSeconds(2);
+        thanksScreenCanvasGroup.gameObject.SetActive(true);
+        leaderboardCanvasGroup.gameObject.SetActive(false);
+        TweenManager.Instance.AnimateFade(musicCreditsCanvasGroup, 0, 1);
         TweenManager.Instance.AnimateFade(thanksScreenCanvasGroup, 1, 1);
     }
 
