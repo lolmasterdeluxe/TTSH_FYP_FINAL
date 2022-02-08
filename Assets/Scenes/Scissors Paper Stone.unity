@@ -4794,6 +4794,9 @@ MonoBehaviour:
   countdownText: {fileID: 1081767975}
   currentGamemode: 0
   m_countdownOver: 0
+  countdownSource:
+  - {fileID: 1749568693}
+  - {fileID: 1749568692}
 --- !u!1 &1164837220
 GameObject:
   m_ObjectHideFlags: 0
@@ -7593,9 +7596,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1951245367033496593, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+      propertyPath: m_Volume
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657863790818300930, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+      propertyPath: m_Volume
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 4014438317519697698, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+      propertyPath: m_Volume
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442975882354151787, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+      propertyPath: m_Volume
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 6538327156688952311, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7232926267823829359, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+      propertyPath: m_Volume
+      value: 0.09
+      objectReference: {fileID: 0}
     - target: {fileID: 7920588432255613963, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8779904298043968882, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+      propertyPath: m_Volume
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 8993550661921789260, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
       propertyPath: m_IsActive
@@ -7606,6 +7637,16 @@ PrefabInstance:
 --- !u!4 &1749568691 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1067763110260787556, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+  m_PrefabInstance: {fileID: 1749568690}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1749568692 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1532651771213101559, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+  m_PrefabInstance: {fileID: 1749568690}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1749568693 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1445572309369574415, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
   m_PrefabInstance: {fileID: 1749568690}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1750275637
