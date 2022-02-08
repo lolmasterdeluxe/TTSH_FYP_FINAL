@@ -28,7 +28,7 @@ public class Pregame : MonoBehaviour
 
     public bool m_countdownOver = false;
 
-    public AudioSource countdownSource;
+    public AudioSource[] countdownSource;
 
     // Start is called before the first frame update
     void Start()
@@ -74,16 +74,21 @@ public class Pregame : MonoBehaviour
         countdownText.text = ((int)TimerManager.Instance.GetRemainingTime()).ToString();
         TweenManager.Instance.AnimateEnlargeText(countdownText.transform, 1f, 0.25f);
 
-        //----- Need fixing, audio will play 1 more time after 0 seconds -----//
-        //if ((int)TimerManager.Instance.GetRemainingTime() == 3)
-        //    countdownSource.Play();
-        //else if ((int)TimerManager.Instance.GetRemainingTime() == 2)
-        //    countdownSource.Play();
-        //else if ((int)TimerManager.Instance.GetRemainingTime() == 1)
-        //    countdownSource.Play();
-        //else if ((int)TimerManager.Instance.GetRemainingTime() == 0)
-        //    countdownSource.Play();
-
+        if (m_countdownOver)
+        {
+            if ((int)TimerManager.Instance.GetRemainingTime() == 3)
+                // Countdown sound
+                countdownSource[0].Play();
+            else if ((int)TimerManager.Instance.GetRemainingTime() == 2)
+                // Countdown sound
+                countdownSource[0].Play();
+            else if ((int)TimerManager.Instance.GetRemainingTime() == 1)
+                // Countdown sound
+                countdownSource[0].Play();
+            else if ((int)TimerManager.Instance.GetRemainingTime() == 0)
+                // Countdown when at 0 sound
+                countdownSource[1].Play();
+        }
     }
 
     void GameStart()

@@ -84,15 +84,22 @@ public class Chapteh : MonoBehaviour
     // Chapteh rotates at direction of the mouse position
     void LookAtMouseDirection()
     {
-        // Look in the direction of the mouse position
-        lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - arrowIndicator.transform.position;
-        
-        lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+        if (!inPlay)
+        {
+            arrowIndicator.SetActive(true);
 
-        clampedAngle = Mathf.Clamp(lookAngle, 45f, 135f);
+            // Look in the direction of the mouse position
+            lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - arrowIndicator.transform.position;
 
-        // Rotate according the mouse position
-        arrowIndicator.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, clampedAngle - 90f));
+            lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+
+            clampedAngle = Mathf.Clamp(lookAngle, 45f, 135f);
+
+            // Rotate according the mouse position
+            arrowIndicator.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, clampedAngle));
+        }
+        else
+            arrowIndicator.SetActive(false);
     }
 
     public void Kick(float speed)
