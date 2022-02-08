@@ -3966,7 +3966,10 @@ MonoBehaviour:
   quitPromptMenu: {fileID: 1692723975}
   settingsMenu: {fileID: 879068270}
   isPaused: 0
-  pauseMenuSound: []
+  pauseMenuSound:
+  - {fileID: 2034324044}
+  - {fileID: 1696836818}
+  - {fileID: 1242243529}
 --- !u!1 &982583646
 GameObject:
   m_ObjectHideFlags: 0
@@ -5491,6 +5494,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1228042028}
   m_CullTransparentMesh: 0
+--- !u!82 &1242243529 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1067763110721779019, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+  m_PrefabInstance: {fileID: 1749568690}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1287876601
 GameObject:
   m_ObjectHideFlags: 0
@@ -6432,6 +6440,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24eb5ca0dd41fb444adfc98fc269047b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1518161264 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6538327156688952311, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+  m_PrefabInstance: {fileID: 1749568690}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1573076072
 GameObject:
   m_ObjectHideFlags: 0
@@ -7386,6 +7399,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1692723975}
   m_CullTransparentMesh: 0
+--- !u!82 &1696836818 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1067763111383850783, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+  m_PrefabInstance: {fileID: 1749568690}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1711261428
 GameObject:
   m_ObjectHideFlags: 0
@@ -7574,6 +7592,14 @@ PrefabInstance:
     - target: {fileID: 1067763110260787558, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
       propertyPath: m_Name
       value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920588432255613963, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993550661921789260, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
@@ -8219,6 +8245,7 @@ MonoBehaviour:
   b_gameEnded: 0
   enemyCount: 0
   sweetCount: 0
+  bgmSource: {fileID: 1518161264}
 --- !u!82 &1863970787 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 5442975882354151787, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
@@ -8630,6 +8657,11 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!82 &2034324044 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1067763109511360385, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
+  m_PrefabInstance: {fileID: 1749568690}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2036119647
 GameObject:
   m_ObjectHideFlags: 0

@@ -63,6 +63,10 @@ public class SPS_UIManager : MonoBehaviour
     public int enemyCount;
     public int sweetCount;
 
+    //for audio source
+    public AudioSource bgmSource;
+
+
     #endregion
 
     #region Unity Callbacks
@@ -82,10 +86,16 @@ public class SPS_UIManager : MonoBehaviour
         //set button sizes HERE
         v_originalbuttonSize = new Vector3(1f, 1f, 1f);
         v_increasedbuttonSize = new Vector3(1.15f, 1.15f, 1.15f);
+
+        //pause audio here: for countdown
+        bgmSource.Stop();
     }
 
     public void StartGame(float time, int score)
     {
+        //start audio HERE
+        bgmSource.Play();
+
         b_gameStart = true;
         b_gameEnded = false;
 
