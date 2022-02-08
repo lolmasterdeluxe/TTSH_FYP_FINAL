@@ -210,7 +210,7 @@ public class CustomizerManager : MonoBehaviour
             faceNextButton = GameObject.Find("FaceNext").GetComponent<Button>();
 
         if (nextSceneButton == null)
-            nextSceneButton = GameObject.Find("MainGameScene").GetComponent<Button>();
+            nextSceneButton = GameObject.Find("MainGameButton").GetComponent<Button>();
 
         if (inputNameField == null)
             inputNameField = GameObject.Find("NameInput").GetComponent<TMP_InputField>();
