@@ -49,7 +49,7 @@ public class TutorialScreenManager : MonoBehaviour
     public Sprite[] sps_Page1, sps_Page3, sps_Page4, sps_Page5;
 
     [Tooltip("Sprite List for each pages of Chapteh tutorial")]
-    public Image chapteh_Page1Idle, chapteh_Page2Run, chapteh_Page2Mouse, chapteh_Image;
+    public Image chapteh_Page1Idle, chapteh_Page2Run, chapteh_Page2Mouse, chapteh_Page2LeftArrow, chapteh_Page2RightArrow, chapteh_Image;
     public Sprite[] chapteh_Page1, chapteh_Page2, chapteh_Page3;
 
     #endregion
@@ -60,6 +60,8 @@ public class TutorialScreenManager : MonoBehaviour
     {
         chapteh_Page2Mouse.gameObject.SetActive(false);
         chapteh_Page2Run.gameObject.SetActive(false);
+        chapteh_Page2RightArrow.gameObject.SetActive(false);
+        chapteh_Page2LeftArrow.gameObject.SetActive(false);
     }
 
     private void Awake()
@@ -119,20 +121,16 @@ public class TutorialScreenManager : MonoBehaviour
                 chapteh_Page2Mouse.gameObject.SetActive(true);
                 chapteh_Page2Run.gameObject.SetActive(true);
 
-                chapteh_Page2Mouse.transform
-                    .DOLocalMove(new Vector3(-400f, -150f, 0), 0.5f)
-                    .SetEase(Ease.Linear)
-                    .SetLoops(-1, LoopType.Yoyo);
-
-                chapteh_Page2Run.transform
-                    .DOLocalMove(new Vector3(-400f, 90f, 0), 0.5f)
-                    .SetEase(Ease.Linear)
-                    .SetLoops(-1, LoopType.Yoyo);
+                chapteh_Page2RightArrow.gameObject.SetActive(true);
+                chapteh_Page2LeftArrow.gameObject.SetActive(true);
             }
             else
             {
                 chapteh_Page2Mouse.gameObject.SetActive(false);
                 chapteh_Page2Run.gameObject.SetActive(false);
+
+                chapteh_Page2RightArrow.gameObject.SetActive(false);
+                chapteh_Page2LeftArrow.gameObject.SetActive(false);
             }
 
             // Page 3
