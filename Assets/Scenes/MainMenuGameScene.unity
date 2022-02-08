@@ -357,23 +357,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.03, y: -0.45}
   m_Size: {x: 1.25, y: 0.75}
   m_Direction: 0
---- !u!114 &7410352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7410350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec5b617358f0afe4891c1720bcce6295, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 4
-  interactPrefab: {fileID: 1683030999}
-  interactSFX: {fileID: 0}
-  hoverSFX: {fileID: 0}
-  BGM: {fileID: 0}
 --- !u!1 &50011716
 GameObject:
   m_ObjectHideFlags: 0
@@ -9629,11 +9612,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1683030999 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7071436463509899614, guid: 7aa48157ed35ea345bab945cdd1e0e6a, type: 3}
-  m_PrefabInstance: {fileID: 5807695596773112383}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1724900841
 GameObject:
   m_ObjectHideFlags: 0
