@@ -39,7 +39,7 @@ public class ChaptehGameManager : MonoBehaviour
     public bool m_gameStarted = false;
     public bool m_gameEnded = false;
 
-    public AudioSource bgmSource;
+    public AudioSource[] audioSources;
 
     private void Awake()
     {
@@ -69,7 +69,7 @@ public class ChaptehGameManager : MonoBehaviour
         StartCoroutine(ObjectiveCoroutine());
 
         // Plays background music after countdown
-        bgmSource.Play();
+        audioSources[0].Play();
 
         // Attach events
         TimerManager.Instance.e_TimerFinished.AddListener(OnGameEnd);
@@ -183,6 +183,13 @@ public class ChaptehGameManager : MonoBehaviour
     {
         m_gameEnded = true;
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.25f);
+        
+        // Stops playing bgm audio
+        audioSources[0].Stop();
+
+        // Plays time's up audio
+        audioSources[1].Play();
+
         ScoreManager.Instance.EndCurrentGameScore();
     }
 
