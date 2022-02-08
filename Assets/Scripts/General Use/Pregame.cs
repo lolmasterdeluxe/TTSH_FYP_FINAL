@@ -105,7 +105,7 @@ public class Pregame : MonoBehaviour
                 TweenManager.Instance.AnimateFade(mainUICanvasGroup, 1f, 0.5f);
                 TweenManager.Instance.AnimateFade(panelCanvasGroup, 1f, 0.5f);
                 countdownText.gameObject.SetActive(false);
-                FiveStonesGameManager.Instance.StartGame(60, 1);
+                FiveStonesGameManager.Instance.StartGame(3, 1);
                 break;
             case GameMode.CHAPTEH:
                 m_countdownOver = false;
