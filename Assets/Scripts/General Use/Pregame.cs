@@ -73,18 +73,16 @@ public class Pregame : MonoBehaviour
     {
         countdownText.text = ((int)TimerManager.Instance.GetRemainingTime()).ToString();
         TweenManager.Instance.AnimateEnlargeText(countdownText.transform, 1f, 0.25f);
-        if ((int)TimerManager.Instance.GetRemainingTime() == 3)
-            countdownSource.Play();
-        else if ((int)TimerManager.Instance.GetRemainingTime() == 2)
-            countdownSource.Play();
-        else if ((int)TimerManager.Instance.GetRemainingTime() == 1)
-            countdownSource.Play();
-        else if ((int)TimerManager.Instance.GetRemainingTime() == 0)
-        {
-            countdownSource.Play();
-        }
-        else
-            countdownSource.volume = 0f;
+
+        //----- Need fixing, audio will play 1 more time after 0 seconds -----//
+        //if ((int)TimerManager.Instance.GetRemainingTime() == 3)
+        //    countdownSource.Play();
+        //else if ((int)TimerManager.Instance.GetRemainingTime() == 2)
+        //    countdownSource.Play();
+        //else if ((int)TimerManager.Instance.GetRemainingTime() == 1)
+        //    countdownSource.Play();
+        //else if ((int)TimerManager.Instance.GetRemainingTime() == 0)
+        //    countdownSource.Play();
 
     }
 
@@ -112,7 +110,7 @@ public class Pregame : MonoBehaviour
                 TweenManager.Instance.AnimateFade(mainUICanvasGroup, 1f, 1f);
                 TweenManager.Instance.AnimateFade(panelCanvasGroup, 0f, 0f);
                 countdownText.gameObject.SetActive(false);
-                ChaptehGameManager.Instance.StartGame(3);
+                ChaptehGameManager.Instance.StartGame(60);
                 break;
         }
     }
