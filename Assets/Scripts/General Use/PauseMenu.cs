@@ -11,6 +11,8 @@ public class PauseMenu : MonoBehaviour
 
     public bool isPaused = false;
 
+    public AudioSource[] pauseMenuSound;
+
     private Pregame preGame;
 
     // Start is called before the first frame update
@@ -21,6 +23,11 @@ public class PauseMenu : MonoBehaviour
         quitPromptMenu.SetActive(false);
 
         preGame = GameObject.Find("Pregame").GetComponent<Pregame>();
+
+        for(int i = 0; i < pauseMenuSound.Length; i++)
+        {
+            pauseMenuSound[i].Stop();
+        }
     }
 
     // Update is called once per frame
@@ -43,6 +50,9 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
+
+        // Pause sound
+        pauseMenuSound[1].Play();
     }
 
     public void ResumeGame()
@@ -52,32 +62,50 @@ public class PauseMenu : MonoBehaviour
         quitPromptMenu.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
+
+        // Button Press sound
+        pauseMenuSound[0].Play();
     }
 
     public void LoadMainMenu()
     {
         SceneManager.LoadScene("MainMenuGameScene");
         Time.timeScale = 1f;
+
+        // Button Press sound
+        pauseMenuSound[0].Play();
     }
 
     public void LoadSettings()
     {
         settingsMenu.SetActive(true);
+
+        // Button Press sound
+        pauseMenuSound[0].Play();
     }
 
     public void ExitSettings()
     {
         settingsMenu.SetActive(false);
+
+        // Back button sound
+        pauseMenuSound[2].Play();
     }
 
     public void LoadQuitPrompt()
     {
         quitPromptMenu.SetActive(true);
+
+        // Button Press sound
+        pauseMenuSound[0].Play();
     }
 
     public void ExitQuitPrompt()
     {
         quitPromptMenu.SetActive(false);
+
+        // Back button sound
+        pauseMenuSound[2].Play();
     }
 
     public void QuitGame()
