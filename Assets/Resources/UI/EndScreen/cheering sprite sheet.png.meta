@@ -1,0 +1,889 @@
+fileFormatVersion: 2
+guid: c69a15d61eeecbf4db6f7d4b6253c480
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8788677186199304634
+    second: cheering sprite sheet_0
+  - first:
+      213: 5301070189184420871
+    second: cheering sprite sheet_1
+  - first:
+      213: -1791084712124149156
+    second: cheering sprite sheet_2
+  - first:
+      213: -6780286154104666101
+    second: cheering sprite sheet_3
+  - first:
+      213: 7488649516411675931
+    second: cheering sprite sheet_4
+  - first:
+      213: 2652860954895819657
+    second: cheering sprite sheet_5
+  - first:
+      213: -3755554869467545617
+    second: cheering sprite sheet_6
+  - first:
+      213: 7675436216426271302
+    second: cheering sprite sheet_7
+  - first:
+      213: 945230464271553275
+    second: cheering sprite sheet_8
+  - first:
+      213: 3042475142549389300
+    second: cheering sprite sheet_9
+  - first:
+      213: 1403244912964373137
+    second: cheering sprite sheet_10
+  - first:
+      213: -5372699689143593807
+    second: cheering sprite sheet_11
+  - first:
+      213: 6346562517330766677
+    second: cheering sprite sheet_12
+  - first:
+      213: -3746847613582027103
+    second: cheering sprite sheet_13
+  - first:
+      213: 6301333331542305449
+    second: cheering sprite sheet_14
+  - first:
+      213: 647838221019087326
+    second: cheering sprite sheet_15
+  - first:
+      213: -5953051220036513900
+    second: cheering sprite sheet_16
+  - first:
+      213: 9112402758373051814
+    second: cheering sprite sheet_17
+  - first:
+      213: 5536721007542606921
+    second: cheering sprite sheet_18
+  - first:
+      213: 7399118057269681902
+    second: cheering sprite sheet_19
+  - first:
+      213: 3113637445289110445
+    second: cheering sprite sheet_20
+  - first:
+      213: 7945160874458820136
+    second: cheering sprite sheet_21
+  - first:
+      213: -3591371294888243325
+    second: cheering sprite sheet_22
+  - first:
+      213: -168743925091371563
+    second: cheering sprite sheet_0
+  - first:
+      213: 3545175979505116419
+    second: cheering sprite sheet_1
+  - first:
+      213: 3030279408161397054
+    second: cheering sprite sheet_2
+  - first:
+      213: 2396190057728298510
+    second: cheering sprite sheet_3
+  - first:
+      213: 2206680609407217985
+    second: cheering sprite sheet_4
+  - first:
+      213: 2303427887885798021
+    second: cheering sprite sheet_5
+  - first:
+      213: -5760350215847447694
+    second: cheering sprite sheet_6
+  - first:
+      213: 8005405612656223932
+    second: cheering sprite sheet_7
+  - first:
+      213: 2110395655012314255
+    second: cheering sprite sheet_8
+  - first:
+      213: -200131005032883202
+    second: cheering sprite sheet_9
+  - first:
+      213: 1507379732240066541
+    second: cheering sprite sheet_10
+  - first:
+      213: -4822975193383728922
+    second: cheering sprite sheet_11
+  - first:
+      213: 4772818738498585392
+    second: cheering sprite sheet_12
+  - first:
+      213: -2314456687973258058
+    second: cheering sprite sheet_13
+  - first:
+      213: 251902950270592226
+    second: cheering sprite sheet_14
+  - first:
+      213: -3544680598528716946
+    second: cheering sprite sheet_15
+  - first:
+      213: -2775813779201766581
+    second: cheering sprite sheet_16
+  - first:
+      213: 5401221606047756960
+    second: cheering sprite sheet_17
+  - first:
+      213: 8133260305964600874
+    second: cheering sprite sheet_18
+  - first:
+      213: -5488716001629665187
+    second: cheering sprite sheet_19
+  - first:
+      213: 4954480403207469294
+    second: cheering sprite sheet_20
+  - first:
+      213: 6592626977092808107
+    second: cheering sprite sheet_21
+  - first:
+      213: -2997187327754218727
+    second: cheering sprite sheet_22
+  - first:
+      213: 8982240725217549473
+    second: cheering sprite sheet_23
+  - first:
+      213: -2629047554358790033
+    second: cheering sprite sheet_24
+  - first:
+      213: 4762835507817430060
+    second: cheering sprite sheet_25
+  - first:
+      213: -4012807682775443375
+    second: cheering sprite sheet_26
+  - first:
+      213: -6042715580859292687
+    second: cheering sprite sheet_27
+  - first:
+      213: -7349190315483708644
+    second: cheering sprite sheet_28
+  - first:
+      213: -11927828388009404
+    second: cheering sprite sheet_29
+  - first:
+      213: 6170751379631417316
+    second: cheering sprite sheet_30
+  - first:
+      213: -4208652991214027021
+    second: cheering sprite sheet_31
+  - first:
+      213: -1457982011733011859
+    second: cheering sprite sheet_32
+  - first:
+      213: 7802047380725779318
+    second: cheering sprite sheet_33
+  - first:
+      213: 4901225894695302403
+    second: cheering sprite sheet_34
+  - first:
+      213: 7780116448318142200
+    second: cheering sprite sheet_35
+  - first:
+      213: 1073414712542399416
+    second: cheering sprite sheet_36
+  - first:
+      213: 257152649032160269
+    second: cheering sprite sheet_37
+  - first:
+      213: 5057115083883135473
+    second: cheering sprite sheet_38
+  - first:
+      213: 6067869513678616997
+    second: cheering sprite sheet_39
+  - first:
+      213: -486784437057902939
+    second: cheering sprite sheet_40
+  - first:
+      213: 2187147674880302783
+    second: cheering sprite sheet_41
+  - first:
+      213: 6656705018048985098
+    second: cheering sprite sheet_42
+  - first:
+      213: -7435157804571067537
+    second: cheering sprite sheet_43
+  - first:
+      213: 5074530342906342636
+    second: cheering sprite sheet_44
+  - first:
+      213: -1406656703477938109
+    second: cheering sprite sheet_45
+  - first:
+      213: 7998004788077899869
+    second: cheering sprite sheet_46
+  - first:
+      213: 3121132474380829092
+    second: cheering sprite sheet_47
+  - first:
+      213: 3678329252354119929
+    second: cheering sprite sheet_48
+  - first:
+      213: 2306953582339507686
+    second: cheering sprite sheet_49
+  - first:
+      213: -2832594671747776272
+    second: cheering sprite sheet_50
+  - first:
+      213: -6439922969882021762
+    second: cheering sprite sheet_51
+  - first:
+      213: 4648841165591681031
+    second: cheering sprite sheet_52
+  - first:
+      213: 7051655353989228771
+    second: cheering sprite sheet_53
+  - first:
+      213: -3694965060272292676
+    second: cheering sprite sheet_54
+  - first:
+      213: -6464082849975220459
+    second: cheering sprite sheet_55
+  - first:
+      213: 1212790355944065477
+    second: cheering sprite sheet_56
+  - first:
+      213: -8312322626070553556
+    second: cheering sprite sheet_57
+  - first:
+      213: 6829895991570345404
+    second: cheering sprite sheet_58
+  - first:
+      213: -3449507171379261556
+    second: cheering sprite sheet_59
+  - first:
+      213: -2308041515618568259
+    second: cheering sprite sheet_60
+  - first:
+      213: 4583316761614751528
+    second: cheering sprite sheet_61
+  - first:
+      213: -5961735673533939554
+    second: cheering sprite sheet_62
+  - first:
+      213: 4220162459928325827
+    second: cheering sprite sheet_63
+  - first:
+      213: -3705267149551396562
+    second: cheering sprite sheet_64
+  - first:
+      213: 1372568330679931596
+    second: cheering sprite sheet_65
+  - first:
+      213: 149013135475852481
+    second: cheering sprite sheet_66
+  - first:
+      213: 2748686788793283851
+    second: cheering sprite sheet_67
+  - first:
+      213: -1531956446904782256
+    second: cheering sprite sheet_68
+  - first:
+      213: -651407665817091313
+    second: cheering sprite sheet_69
+  - first:
+      213: 9029872635498183495
+    second: cheering sprite sheet_70
+  - first:
+      213: -2376984755486839458
+    second: cheering sprite sheet_71
+  - first:
+      213: 2196301553508356079
+    second: cheering sprite sheet_72
+  - first:
+      213: -6853458886235921559
+    second: cheering sprite sheet_73
+  - first:
+      213: -4987903992264880878
+    second: cheering sprite sheet_74
+  - first:
+      213: 7730287064426313849
+    second: cheering sprite sheet_75
+  - first:
+      213: 8254590648389356127
+    second: cheering sprite sheet_76
+  - first:
+      213: -69524368446890196
+    second: cheering sprite sheet_77
+  - first:
+      213: -314573276773099153
+    second: cheering sprite sheet_78
+  - first:
+      213: -5256728126863844256
+    second: cheering sprite sheet_79
+  - first:
+      213: -7496339721808448585
+    second: cheering sprite sheet_80
+  - first:
+      213: 5880663683554258855
+    second: cheering sprite sheet_81
+  - first:
+      213: -5435327623507843962
+    second: cheering sprite sheet_82
+  - first:
+      213: -1192978869841627643
+    second: cheering sprite sheet_83
+  - first:
+      213: 5825499739399958154
+    second: cheering sprite sheet_84
+  - first:
+      213: -5360524468897729135
+    second: cheering sprite sheet_85
+  - first:
+      213: 3512911018028789809
+    second: cheering sprite sheet_86
+  - first:
+      213: 3329343112013407090
+    second: cheering sprite sheet_87
+  - first:
+      213: -5538519806819298361
+    second: cheering sprite sheet_88
+  - first:
+      213: -3841476038816976919
+    second: cheering sprite sheet_89
+  - first:
+      213: 6373578728848167616
+    second: cheering sprite sheet_90
+  - first:
+      213: -8770150534060541626
+    second: cheering sprite sheet_91
+  - first:
+      213: -7637665569667971284
+    second: cheering sprite sheet_92
+  - first:
+      213: 1086329315135612991
+    second: cheering sprite sheet_93
+  - first:
+      213: -3145456494749194679
+    second: cheering sprite sheet_94
+  - first:
+      213: -4398419647968037008
+    second: cheering sprite sheet_95
+  - first:
+      213: 28106452017305364
+    second: cheering sprite sheet_96
+  - first:
+      213: 1601935959124593821
+    second: cheering sprite sheet_97
+  - first:
+      213: -3525858168884369426
+    second: cheering sprite sheet_98
+  - first:
+      213: -6402788866715840903
+    second: cheering sprite sheet_99
+  - first:
+      213: 6861133645172006372
+    second: cheering sprite sheet_100
+  - first:
+      213: 175246125822480273
+    second: cheering sprite sheet_101
+  - first:
+      213: 8459291607388816511
+    second: cheering sprite sheet_102
+  - first:
+      213: 7272895209198915202
+    second: cheering sprite sheet_103
+  - first:
+      213: -3988351407970694531
+    second: cheering sprite sheet_104
+  - first:
+      213: 3931185253036114256
+    second: cheering sprite sheet_105
+  - first:
+      213: -5311148047740282089
+    second: cheering sprite sheet_106
+  - first:
+      213: -6051674792332780098
+    second: cheering sprite sheet_107
+  - first:
+      213: -851248209227478506
+    second: cheering sprite sheet_108
+  - first:
+      213: -3125806049747983392
+    second: cheering sprite sheet_109
+  - first:
+      213: 2505681645666296705
+    second: cheering sprite sheet_110
+  - first:
+      213: -4159836466467055311
+    second: cheering sprite sheet_111
+  - first:
+      213: 7297780216645931499
+    second: cheering sprite sheet_112
+  - first:
+      213: 633550364878121154
+    second: cheering sprite sheet_113
+  - first:
+      213: -1041255566322723273
+    second: cheering sprite sheet_114
+  - first:
+      213: -5567434110579600315
+    second: cheering sprite sheet_115
+  - first:
+      213: -3857343355147753176
+    second: cheering sprite sheet_116
+  - first:
+      213: 6632359428845244528
+    second: cheering sprite sheet_117
+  - first:
+      213: 7728861342593389600
+    second: cheering sprite sheet_118
+  - first:
+      213: 5492565894031455331
+    second: cheering sprite sheet_119
+  - first:
+      213: -3039190049453064473
+    second: cheering sprite sheet_120
+  - first:
+      213: -3569306972984030977
+    second: cheering sprite sheet_121
+  - first:
+      213: 2192803541491235120
+    second: cheering sprite sheet_122
+  - first:
+      213: -5813563583491871354
+    second: cheering sprite sheet_123
+  - first:
+      213: -8995052328557915355
+    second: cheering sprite sheet_124
+  - first:
+      213: 6511892201820625811
+    second: cheering sprite sheet_125
+  - first:
+      213: -3154968253378024374
+    second: cheering sprite sheet_126
+  - first:
+      213: -8654830226724582038
+    second: cheering sprite sheet_127
+  - first:
+      213: -8248930003478960529
+    second: cheering sprite sheet_128
+  - first:
+      213: 1806498711037856619
+    second: cheering sprite sheet_129
+  - first:
+      213: 1830095023170276448
+    second: cheering sprite sheet_130
+  - first:
+      213: -2794561452583510683
+    second: cheering sprite sheet_131
+  - first:
+      213: -3247760671472665372
+    second: cheering sprite sheet_132
+  - first:
+      213: 8721489475193813187
+    second: cheering sprite sheet_133
+  - first:
+      213: 5492342852620877901
+    second: cheering sprite sheet_134
+  - first:
+      213: -4448803556780805599
+    second: cheering sprite sheet_135
+  - first:
+      213: 6873300952959859451
+    second: cheering sprite sheet_136
+  - first:
+      213: 1834124576176339423
+    second: cheering sprite sheet_137
+  - first:
+      213: -497622441567229894
+    second: cheering sprite sheet_138
+  - first:
+      213: -859823395180114310
+    second: cheering sprite sheet_139
+  - first:
+      213: 1818987654603834608
+    second: cheering sprite sheet_140
+  - first:
+      213: 4852564530653618950
+    second: cheering sprite sheet_141
+  - first:
+      213: 644346549214000157
+    second: cheering sprite sheet_142
+  - first:
+      213: -1725366227772476713
+    second: cheering sprite sheet_143
+  - first:
+      213: -3173907310217650873
+    second: cheering sprite sheet_144
+  - first:
+      213: 6133575417758765149
+    second: cheering sprite sheet_145
+  - first:
+      213: -8752145045026746029
+    second: cheering sprite sheet_146
+  - first:
+      213: 434641284378528786
+    second: cheering sprite sheet_147
+  - first:
+      213: 4638751221833864380
+    second: cheering sprite sheet_148
+  - first:
+      213: -2168183257614892568
+    second: cheering sprite sheet_149
+  - first:
+      213: 4915916758194654523
+    second: cheering sprite sheet_150
+  - first:
+      213: -6991678385461361158
+    second: cheering sprite sheet_151
+  - first:
+      213: 2881886461579155425
+    second: cheering sprite sheet_152
+  - first:
+      213: 4623416810041628834
+    second: cheering sprite sheet_153
+  - first:
+      213: -646158522621500233
+    second: cheering sprite sheet_154
+  - first:
+      213: -5864457618899733148
+    second: cheering sprite sheet_155
+  - first:
+      213: -4677574666594512458
+    second: cheering sprite sheet_156
+  - first:
+      213: -3219934443471780033
+    second: cheering sprite sheet_157
+  - first:
+      213: -175545311600643625
+    second: cheering sprite sheet_158
+  - first:
+      213: -2669865608441252964
+    second: cheering sprite sheet_159
+  - first:
+      213: -561809685752345021
+    second: cheering sprite sheet_160
+  - first:
+      213: 4662114364288972480
+    second: cheering sprite sheet_161
+  - first:
+      213: -2533335524415557655
+    second: cheering sprite sheet_162
+  - first:
+      213: -6626262534802072662
+    second: cheering sprite sheet_163
+  - first:
+      213: -6686718707691163164
+    second: cheering sprite sheet_164
+  - first:
+      213: 5560286587786441323
+    second: cheering sprite sheet_165
+  - first:
+      213: 8053806912605562564
+    second: cheering sprite sheet_166
+  - first:
+      213: -6626746103166977541
+    second: cheering sprite sheet_167
+  - first:
+      213: 5926617565288991209
+    second: cheering sprite sheet_168
+  - first:
+      213: -3673520846575428527
+    second: cheering sprite sheet_169
+  - first:
+      213: -5072526328937384116
+    second: cheering sprite sheet_170
+  - first:
+      213: 3013962206224414687
+    second: cheering sprite sheet_171
+  - first:
+      213: 5786766169778759595
+    second: cheering sprite sheet_172
+  - first:
+      213: 2373408156572076635
+    second: cheering sprite sheet_173
+  - first:
+      213: -3192574208589113142
+    second: cheering sprite sheet_174
+  - first:
+      213: -9077793692843810871
+    second: cheering sprite sheet_175
+  - first:
+      213: -4693249921559524621
+    second: cheering sprite sheet_176
+  - first:
+      213: 3188547488417346475
+    second: cheering sprite sheet_177
+  - first:
+      213: 5280428762540085240
+    second: cheering sprite sheet_178
+  - first:
+      213: -5992538607505654704
+    second: cheering sprite sheet_179
+  - first:
+      213: -8713682734829187402
+    second: cheering sprite sheet_180
+  - first:
+      213: 643546543396798102
+    second: cheering sprite sheet_181
+  - first:
+      213: -6517367697951537964
+    second: cheering sprite sheet_182
+  - first:
+      213: 2632012725423185752
+    second: cheering sprite sheet_183
+  - first:
+      213: -2992458137779932555
+    second: cheering sprite sheet_184
+  - first:
+      213: 1375882717784950310
+    second: cheering sprite sheet_185
+  - first:
+      213: 4805343706759508308
+    second: cheering sprite sheet_186
+  - first:
+      213: -5277071421791067086
+    second: cheering sprite sheet_187
+  - first:
+      213: -1012102661530482103
+    second: cheering sprite sheet_188
+  - first:
+      213: -527561622807387267
+    second: cheering sprite sheet_189
+  - first:
+      213: -5713414088829047502
+    second: cheering sprite sheet_190
+  - first:
+      213: 2319685428580775151
+    second: cheering sprite sheet_191
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: cheering sprite sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 480
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d57cee4b4088adf0800000000000000
+      internalID: -168743925091371563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cheering sprite sheet_1
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 480
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30566ac25cef23130800000000000000
+      internalID: 3545175979505116419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cheering sprite sheet_2
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 480
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3914ad0117bd0a20800000000000000
+      internalID: 3030279408161397054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cheering sprite sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 0
+        width: 480
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0ec735792af04120800000000000000
+      internalID: 2396190057728298510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cheering sprite sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 480
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 141b570a254bf9e10800000000000000
+      internalID: 2206680609407217985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cheering sprite sheet_5
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 0
+        width: 480
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58a492fb57b67ff10800000000000000
+      internalID: 2303427887885798021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

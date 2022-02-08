@@ -52,6 +52,7 @@ public class LeaderboardManager : MonoBehaviour
     public TMP_Text totalFiveStonesScore;
 
     public TMP_Text overallScoreText;
+    public TMP_Text standardGameScoreText;
 
     public GameObject exitButton;
 
@@ -60,6 +61,8 @@ public class LeaderboardManager : MonoBehaviour
     public CanvasGroup goodJobScreenCanvasGroup;
     public CanvasGroup creditsScreenCanvasGroup;
     public CanvasGroup musicCreditsCanvasGroup;
+
+    public GameObject Animations;
 
     public bool m_isFinalGame;
 
@@ -77,7 +80,7 @@ public class LeaderboardManager : MonoBehaviour
 
     private void OnEnable()
     {
-        m_isFinalGame = true;
+        m_isFinalGame = false;
         splashScreenButton.SetActive(false);
 
         if (ScoreManager.Instance.GetCurrentSavedScoreCount() >= 4 || m_isFinalGame)
@@ -117,38 +120,46 @@ public class LeaderboardManager : MonoBehaviour
         switch (leaderboardType)
         {
             case ScoreManager.Gamemode.CHAPTEH:
+                Animations.SetActive(true);
                 chaptehGroup.SetActive(true);
                 scissorsPaperStoneGroup.SetActive(false);
                 fiveStonesGroup.SetActive(false);
                 overallGroup.SetActive(false);
+                standardGameScoreText.transform.parent.transform.parent.gameObject.SetActive(true);
 
                 redHoopsHit.text = ChaptehGameManager.Instance.redCount.ToString();
                 greenHoopsHit.text = ChaptehGameManager.Instance.greenCount.ToString();
                 yellowHoopsHit.text = ChaptehGameManager.Instance.yellowCount.ToString();
                 break;
             case ScoreManager.Gamemode.FIVESTONES:
+                Animations.SetActive(true);
                 chaptehGroup.SetActive(false);
                 scissorsPaperStoneGroup.SetActive(false);
                 fiveStonesGroup.SetActive(true);
                 overallGroup.SetActive(false);
+                standardGameScoreText.transform.parent.transform.parent.gameObject.SetActive(true);
 
                 fiveStonesTotalCaughtText.text = FiveStonesGameManager.Instance.m_totalCaught.ToString();
                 rainbowCaughtText.text = FiveStonesGameManager.Instance.m_totalRainbowCaught.ToString();
                 break;
             case ScoreManager.Gamemode.SPS:
+                Animations.SetActive(true);
                 chaptehGroup.SetActive(false);
                 scissorsPaperStoneGroup.SetActive(true);
                 fiveStonesGroup.SetActive(false);
                 overallGroup.SetActive(false);
+                standardGameScoreText.transform.parent.transform.parent.gameObject.SetActive(true);
 
                 powerUpsPicked.text = SPS_UIManager.Instance.sweetCount.ToString();
                 enemiesKilled.text = SPS_UIManager.Instance.enemyCount.ToString();
                 break;
             case ScoreManager.Gamemode.TOTAL:
+                Animations.SetActive(false);
                 chaptehGroup.SetActive(false);
                 scissorsPaperStoneGroup.SetActive(false);
                 fiveStonesGroup.SetActive(false);
                 overallGroup.SetActive(true);
+                standardGameScoreText.transform.parent.transform.parent.gameObject.SetActive(false);
 
                 List<ScoreManager.Score> scoreList = ScoreManager.Instance.m_allScoreList.Where(x => x.m_username == ScoreManager.Instance.m_currentUsername).ToList();
 
@@ -171,11 +182,12 @@ public class LeaderboardManager : MonoBehaviour
         }
 
         overallScoreText.text = currentScore.m_score.ToString();
+        standardGameScoreText.text = currentScore.m_score.ToString();
     }
 
     public IEnumerator ShowLeaderboard()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         TweenManager.Instance.AnimateFade(endScreenCanvasGroup, 0, 1);
         TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 1, 1);
         
@@ -193,22 +205,22 @@ public class LeaderboardManager : MonoBehaviour
         // Display overall leaderboard
         ScoreManager.Instance.m_currentGamemode = ScoreManager.Gamemode.TOTAL;
         UpdateAllLeaderboardUIData();
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         TweenManager.Instance.AnimateFade(goodJobScreenCanvasGroup, 0, 1);
         TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 1, 1);
 
         // Display credits screen
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3);
         TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 0, 1);
         TweenManager.Instance.AnimateFade(creditsScreenCanvasGroup, 1, 1);
 
         // Display music credits screen
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         TweenManager.Instance.AnimateFade(creditsScreenCanvasGroup, 0, 1);
         TweenManager.Instance.AnimateFade(musicCreditsCanvasGroup, 1, 1);
 
         // Display thanks for playing screen
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         thanksScreenCanvasGroup.gameObject.SetActive(true);
         leaderboardCanvasGroup.gameObject.SetActive(false);
         TweenManager.Instance.AnimateFade(musicCreditsCanvasGroup, 0, 1);
