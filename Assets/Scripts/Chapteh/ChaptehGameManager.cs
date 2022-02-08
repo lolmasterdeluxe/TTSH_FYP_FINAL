@@ -52,7 +52,6 @@ public class ChaptehGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bgmSource.Stop();
     }
 
     public void StartGame(float time)
@@ -69,6 +68,7 @@ public class ChaptehGameManager : MonoBehaviour
         RandomizeObjective();
         StartCoroutine(ObjectiveCoroutine());
 
+        // Plays background music after countdown
         bgmSource.Play();
 
         // Attach events

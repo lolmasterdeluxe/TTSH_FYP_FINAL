@@ -25,11 +25,6 @@ public class KickChapteh : MonoBehaviour
         chargeBar.charge.SetActive(false);
 
         holdDownStartTime = 0f;
-
-        for (int i = 0; i < audioSources.Length; i++)
-        {
-            audioSources[i].Stop();
-        }
     }
 
     public void PowerLaunch()

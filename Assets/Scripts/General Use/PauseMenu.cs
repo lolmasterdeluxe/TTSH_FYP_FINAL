@@ -23,11 +23,6 @@ public class PauseMenu : MonoBehaviour
         quitPromptMenu.SetActive(false);
 
         preGame = GameObject.Find("Pregame").GetComponent<Pregame>();
-
-        for(int i = 0; i < pauseMenuSound.Length; i++)
-        {
-            pauseMenuSound[i].Stop();
-        }
     }
 
     // Update is called once per frame
