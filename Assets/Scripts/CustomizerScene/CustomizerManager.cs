@@ -181,13 +181,13 @@ public class CustomizerManager : MonoBehaviour
         m_hatSprite.sprite = null;
         m_eyeSprite.sprite = null;
 
-        if (hatCustomizable.m_itemType == ItemType.HAT)
+        if (hatCustomizable != null && hatCustomizable.m_itemType == ItemType.HAT)
         {
             m_hatSprite.sprite = hatCustomizable.m_sprite;
             m_hatSprite.sortingOrder = 4;
         }
 
-        if (faceCustomizable.m_itemType == ItemType.FACE)
+        if (faceCustomizable != null && faceCustomizable.m_itemType == ItemType.FACE)
         {
             m_eyeSprite.sprite = faceCustomizable.m_sprite;
             m_eyeSprite.sortingOrder = 4;
