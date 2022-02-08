@@ -39,6 +39,8 @@ public class ChaptehGameManager : MonoBehaviour
     public bool m_gameStarted = false;
     public bool m_gameEnded = false;
 
+    public AudioSource bgmSource;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -50,6 +52,7 @@ public class ChaptehGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bgmSource.Stop();
     }
 
     public void StartGame(float time)
@@ -65,6 +68,8 @@ public class ChaptehGameManager : MonoBehaviour
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 0f, 0f);
         RandomizeObjective();
         StartCoroutine(ObjectiveCoroutine());
+
+        bgmSource.Play();
 
         // Attach events
         TimerManager.Instance.e_TimerFinished.AddListener(OnGameEnd);

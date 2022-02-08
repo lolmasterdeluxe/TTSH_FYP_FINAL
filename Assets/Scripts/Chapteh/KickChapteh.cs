@@ -14,6 +14,8 @@ public class KickChapteh : MonoBehaviour
 
     public bool m_isIncrease = true;
 
+    public AudioSource[] audioSources;
+
     private void Start()
     {
         chapteh = GameObject.Find("Chapteh").GetComponent<Chapteh>();
@@ -23,6 +25,11 @@ public class KickChapteh : MonoBehaviour
         chargeBar.charge.SetActive(false);
 
         holdDownStartTime = 0f;
+
+        for (int i = 0; i < audioSources.Length; i++)
+        {
+            audioSources[i].Stop();
+        }
     }
 
     public void PowerLaunch()
@@ -36,6 +43,12 @@ public class KickChapteh : MonoBehaviour
             if (Input.GetMouseButton(0))
             {
                 chargeBar.charge.SetActive(true);
+
+                if (holdDownStartTime == 0)
+                {
+                    // Charge bar sound
+                    audioSources[1].Play();
+                }
 
                 if (m_isIncrease)
                 {
@@ -55,6 +68,9 @@ public class KickChapteh : MonoBehaviour
                     {
                         holdDownStartTime = 0;
                         m_isIncrease = true;
+
+                        // Charge bar sound
+                        audioSources[1].Play();
                     }
                 }
 
@@ -70,6 +86,9 @@ public class KickChapteh : MonoBehaviour
                 chargeBar.SetFillBar(0);
 
                 chargeBar.charge.SetActive(false);
+
+                // Kick chapteh sound
+                audioSources[0].Play();
             }
         }
     }

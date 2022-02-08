@@ -26,6 +26,8 @@ public class Chapteh : MonoBehaviour
 
     private PauseMenu pauseMenu;
 
+    public AudioSource onRingHitSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +44,8 @@ public class Chapteh : MonoBehaviour
         pauseMenu = GameObject.Find("Pause Manager").GetComponent<PauseMenu>();
 
         ComboManager.Instance.e_comboBreak.AddListener(ChaptehGameManager.Instance.OnComboBreak);
+
+        onRingHitSource.Stop();
     }
 
     // Update is called once per frame
@@ -152,6 +156,8 @@ public class Chapteh : MonoBehaviour
 
             // Plays the star particle effect on trigger
             other.GetComponentInChildren<ParticleSystem>().Play();
+
+            onRingHitSource.Play();
         }
     }
 

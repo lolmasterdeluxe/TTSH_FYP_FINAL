@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
 
     public bool isRunning = false;
 
+    //public AudioSource runningSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,8 @@ public class Player : MonoBehaviour
 
         pauseMenu = GameObject.Find("Pause Manager").GetComponent<PauseMenu>();
         chapteh = GameObject.Find("Chapteh").GetComponent<Chapteh>();
+
+        //runningSource.Stop();
     }
 
     // Update is called once per frame
@@ -90,6 +94,8 @@ public class Player : MonoBehaviour
             playerAnim.SetBool("PlayerRun", false);
 
             DisppearSandDust();
+
+            //runningSource.Stop();
         }
         else if (Input.GetAxis("Mouse X") != 0 && Input.GetAxis("Mouse Y") != 0) // If mouse input is detected
         {
@@ -100,6 +106,8 @@ public class Player : MonoBehaviour
             // Calls func for player sprite to flip
             SpriteFlip();
             FlipSandDust();
+
+            //runningSource.Play();
         }
 
         // When chapteh is in the air, do nothing
