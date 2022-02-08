@@ -23,6 +23,10 @@ public class InteractNPC : MonoBehaviour
     //for interact HUD
     public GameObject interactPrefab;
 
+    //audioSource variables
+    public AudioSource interactSFX, hoverSFX;
+    public AudioSource BGM;
+
     void Start()
     {
         tutorialscreenmanagerInstance = TutorialScreenManager.instance;
@@ -41,6 +45,9 @@ public class InteractNPC : MonoBehaviour
 
             //reset the screen number to be 0
             tutorialscreenmanagerInstance.screenNumber = 0;
+
+            //reset audio volume
+            BGM.volume = 0.2f;
         }
     }
 
@@ -52,29 +59,34 @@ public class InteractNPC : MonoBehaviour
         {
             case NPC_TYPE.SPS:
                 interactPrefab.transform.GetComponent<SpriteRenderer>().DOFade(1f, 1.25f);
+                hoverSFX.Play();
                 if (Input.GetKeyDown(KeyCode.F))
                     tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.SPS);
                 break;
             case NPC_TYPE.FIVE_STONES:
                 interactPrefab.transform.GetComponent<SpriteRenderer>().DOFade(1f, 1.25f);
+                hoverSFX.Play();
                 if (Input.GetKeyDown(KeyCode.F))
-                    tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.FIVESTONES);
+                tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.FIVESTONES);
                 break;
             case NPC_TYPE.CHAPTEH:
                 interactPrefab.transform.GetComponent<SpriteRenderer>().DOFade(1f, 1.25f);
+                hoverSFX.Play();
                 if (Input.GetKeyDown(KeyCode.F))
-                    tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.CHAPTEH);
+                tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.CHAPTEH);
                 break;
             case NPC_TYPE.CUSTOMIZER:
                 interactPrefab.transform.GetComponent<SpriteRenderer>().DOFade(1f, 1.25f);
+                hoverSFX.Play();
                 if (Input.GetKeyDown(KeyCode.F))
-                    SceneManager.LoadScene("CustomizeScene");
+                SceneManager.LoadScene("CustomizeScene");
                 break;
             case NPC_TYPE.LEADERBOARD:
                 // Recode this later on
                 interactPrefab.transform.GetComponent<SpriteRenderer>().DOFade(1f, 1.25f);
+                hoverSFX.Play();
                 if (Input.GetKeyDown(KeyCode.F))
-                    Resources.FindObjectsOfTypeAll<LeaderboardManager>()[0].gameObject.SetActive(true);
+                Resources.FindObjectsOfTypeAll<LeaderboardManager>()[0].gameObject.SetActive(true);
                 break;
         }
     }
@@ -88,24 +100,44 @@ public class InteractNPC : MonoBehaviour
         {
             case NPC_TYPE.SPS:
                 if (Input.GetKeyDown(KeyCode.F))
+                {
+                    interactSFX.Play();
+                    BGM.volume = 0.05f;
                     tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.SPS);
-                break;
+                }
+                    break;
             case NPC_TYPE.FIVE_STONES:
                 if (Input.GetKeyDown(KeyCode.F))
+                {
+                    interactSFX.Play();
+                    BGM.volume = 0.05f;
                     tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.FIVESTONES);
-                break;
+                }
+                    break;
             case NPC_TYPE.CHAPTEH:
                 if (Input.GetKeyDown(KeyCode.F))
+                {
+                    interactSFX.Play();
+                    BGM.volume = 0.05f;
                     tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.CHAPTEH);
-                break;
+                }   
+                    break;
             case NPC_TYPE.CUSTOMIZER:
                 if (Input.GetKeyDown(KeyCode.F))
+                {
+                    interactSFX.Play();
+                    BGM.volume = 0.05f;
                     SceneManager.LoadScene("CustomizeScene");
+                }
                 break;
             case NPC_TYPE.LEADERBOARD:
                 // Recode this later on
                 if (Input.GetKeyDown(KeyCode.F))
+                {
+                    interactSFX.Play();
+                    BGM.volume = 0.05f;
                     Resources.FindObjectsOfTypeAll<LeaderboardManager>()[0].gameObject.SetActive(true);
+                }
                 break;
         }
     }

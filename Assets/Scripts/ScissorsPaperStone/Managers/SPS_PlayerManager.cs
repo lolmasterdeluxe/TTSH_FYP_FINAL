@@ -58,6 +58,10 @@ public class SPS_PlayerManager : MonoBehaviour
     //variables for player idle character (endgame)
     public GameObject current_player_sprite, end_player_sprite;
 
+    //Audio Source: for player-related Sounds
+    public AudioSource jumpSFX, stunnedSFX, scissorsAtkSFX, paperAtkSFX, stoneAtkSFX, powerupSFX;
+
+
     #endregion
 
     #region Unity Callbacks
@@ -220,6 +224,8 @@ public class SPS_PlayerManager : MonoBehaviour
         playerAC.SetBool("PlayerAttackingWithScissors", true);
         playeractionAC.SetBool("PlayerActionWithScissors", true);
         MoveBoxCollider();
+        //play sounds HERE
+        scissorsAtkSFX.Play();
     }
 
     public void PlayerChoosesPaper()
@@ -230,6 +236,8 @@ public class SPS_PlayerManager : MonoBehaviour
         playerAC.SetBool("PlayerAttackingWithPaper", true);
         playeractionAC.SetBool("PlayerActionWithPaper", true);
         MoveBoxCollider();
+        //play sounds HERE
+        paperAtkSFX.Play();
     }
 
     public void PlayerChoosesStone()
@@ -240,6 +248,8 @@ public class SPS_PlayerManager : MonoBehaviour
         playerAC.SetBool("PlayerAttackingWithStone", true);
         playeractionAC.SetBool("PlayerActionWithStone", true);
         MoveBoxCollider();
+        //play sounds HERE
+        stoneAtkSFX.Play();
     }
 
     public void PlayerJumps()
@@ -247,6 +257,8 @@ public class SPS_PlayerManager : MonoBehaviour
         player_choice = PlayerChoice.PLAYER_JUMP;
         playerAC.SetBool("PlayerJumped", true);
         MoveBoxCollider();
+        //play sounds HERE
+        jumpSFX.Play();
     }
 
     public void MoveBoxCollider()
@@ -435,6 +447,10 @@ public class SPS_PlayerManager : MonoBehaviour
                     //destroy it since it has been collected
                     Destroy(other.gameObject);
                     Destroy(other.gameObject.GetComponent<Rigidbody2D>());
+
+                    //play sounds HERE
+                    powerupSFX.Play();
+
                 }
                 //we take damage if we hit with the wrong typing
                 else
@@ -450,6 +466,10 @@ public class SPS_PlayerManager : MonoBehaviour
                     GameObject sprite_attackIndicator = 
                         other.gameObject.transform.Find("AttackIndicatorSprite").gameObject;
                     sprite_attackIndicator.GetComponent<SpriteRenderer>().DOFade(0, 1f);
+
+                    //play sounds HERE
+                    stunnedSFX.Play();
+
 
                 }
             }
@@ -472,6 +492,9 @@ public class SPS_PlayerManager : MonoBehaviour
                     other.gameObject.transform.Find("AttackIndicatorSprite").gameObject;
                 sprite_attackIndicator.GetComponent<SpriteRenderer>().DOFade(0, 1f);
 
+                //play sounds HERE
+                stunnedSFX.Play();
+
             }
 
             else if (other.gameObject.tag == "Obstacle")
@@ -484,6 +507,9 @@ public class SPS_PlayerManager : MonoBehaviour
 
                 //fade out the enemy so that it looks natural
                 other.gameObject.GetComponent<SpriteRenderer>().DOFade(0, 1f);
+
+                //play sounds HERE
+                stunnedSFX.Play();
 
             }
 
@@ -498,6 +524,9 @@ public class SPS_PlayerManager : MonoBehaviour
                 //destroy it since it has been collected
                 Destroy(other.gameObject);
                 Destroy(other.gameObject.GetComponent<Rigidbody2D>());
+
+                //play sounds HERE
+                powerupSFX.Play();
             }
         }
     }

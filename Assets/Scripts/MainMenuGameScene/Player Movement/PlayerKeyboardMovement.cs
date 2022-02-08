@@ -30,6 +30,9 @@ public class PlayerKeyboardMovement : MonoBehaviour
     public bool b_playerisRight = true;
     bool playerisBehind;
 
+    //AudioSource variables
+    public AudioSource footstepsSFX;
+
     #endregion
 
     #region Unity Callbacks
@@ -73,6 +76,22 @@ public class PlayerKeyboardMovement : MonoBehaviour
             b_playerisRight = false;
         else if (v2_playerMovement.x > 0 && !b_playerisRight) //set bool to be true
             b_playerisRight = true;
+
+        //we use this to check for sound UPDATES
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) 
+            || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+        {
+            //we activate the audio sound
+            footstepsSFX.volume = 0.75f;
+        }
+
+        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A)
+            || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D))
+        {
+            //we mute the audio sound
+            footstepsSFX.volume = 0f;
+        }
+
     }
 
     private void FixedUpdate()
