@@ -2,10 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro;
 
 public class CustomizerManager : MonoBehaviour
 {
@@ -39,11 +39,14 @@ public class CustomizerManager : MonoBehaviour
 
     public SpriteRenderer m_hatSprite;
     public SpriteRenderer m_eyeSprite;
+    public SpriteRenderer m_colorSprite;
 
     public Button hatPreviousButton;
     public Button hatNextButton;
     public Button facePreviousButton;
     public Button faceNextButton;
+    public Button colorPreviousButton;
+    public Button colorNextButton;
     public Button nextSceneButton;
     public TMP_InputField inputNameField;
 
@@ -132,7 +135,7 @@ public class CustomizerManager : MonoBehaviour
         {
             m_colorId--;
             if (m_colorId < 0)
-                m_hatId = m_colorPool.Count - 1;
+                m_colorId = m_colorPool.Count - 1;
         }
     }
 
@@ -180,6 +183,7 @@ public class CustomizerManager : MonoBehaviour
 
         m_hatSprite.sprite = null;
         m_eyeSprite.sprite = null;
+        m_colorSprite.sprite = null;
 
         if (hatCustomizable != null && hatCustomizable.m_itemType == ItemType.HAT)
         {
@@ -191,6 +195,12 @@ public class CustomizerManager : MonoBehaviour
         {
             m_eyeSprite.sprite = faceCustomizable.m_sprite;
             m_eyeSprite.sortingOrder = 4;
+        }
+
+        if (colorCustomizable != null && colorCustomizable.m_itemType == ItemType.COLOR)
+        {
+            GameObject.Find("MainCharacter").GetComponent<SpriteRenderer>().color = colorCustomizable.m_color;
+            m_colorSprite.sortingOrder = 3;
         }
 
     }
@@ -208,6 +218,12 @@ public class CustomizerManager : MonoBehaviour
 
         if (faceNextButton == null)
             faceNextButton = GameObject.Find("FaceNext").GetComponent<Button>();
+
+        if (colorPreviousButton == null)
+            colorPreviousButton = GameObject.Find("ColourPrevious").GetComponent<Button>();
+
+        if (colorNextButton == null)
+            colorNextButton = GameObject.Find("ColourNext").GetComponent<Button>();
 
         if (nextSceneButton == null)
             nextSceneButton = GameObject.Find("MainGameButton").GetComponent<Button>();
@@ -227,6 +243,12 @@ public class CustomizerManager : MonoBehaviour
         faceNextButton.onClick.RemoveAllListeners();
         faceNextButton.onClick.AddListener(delegate { ScrollFace(true); });
 
+        colorPreviousButton.onClick.RemoveAllListeners();
+        colorPreviousButton.onClick.AddListener(delegate { ScrollColor(false); });
+
+        colorNextButton.onClick.RemoveAllListeners();
+        colorNextButton.onClick.AddListener(delegate { ScrollColor(true); });
+
         nextSceneButton.onClick.RemoveAllListeners();
         nextSceneButton.onClick.AddListener(delegate { EnterMainScene(); });
 
@@ -242,6 +264,9 @@ public class CustomizerManager : MonoBehaviour
 
         if (m_eyeSprite == null)
             m_eyeSprite = GameObject.Find("EyeSprite").GetComponent<SpriteRenderer>();
+
+        if (m_colorSprite == null)
+            m_colorSprite = GameObject.Find("MainCharacter").GetComponent<SpriteRenderer>();
     }
 
     public void EnterMainScene()
