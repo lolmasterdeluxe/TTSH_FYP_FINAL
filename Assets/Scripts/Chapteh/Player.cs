@@ -87,7 +87,7 @@ public class Player : MonoBehaviour
             // Gets value for mouse position of x
             //float worldPosX = mousePosition.x;
             //if (worldPosX > gameObject.transform.position.x) 
-            if(playermove.x > 0)
+            if (playermove.x > 0)
                 // Sets the sprite to original position
                 playerSprite.flipX = false;
             else
@@ -103,9 +103,9 @@ public class Player : MonoBehaviour
             isRunning = false;
             playerAnim.SetBool("PlayerIdle", true);
             playerAnim.SetBool("PlayerRun", false);
-        
+
             DisppearSandDust();
-        
+
             //runningSource.Stop();
         }
         //else if (Input.GetAxis("Mouse X") != 0 && Input.GetAxis("Mouse Y") != 0) // If mouse input is detected
@@ -145,7 +145,7 @@ public class Player : MonoBehaviour
 
     private void FlipSandDust()
     {
-        if(playerSprite.flipX == true)
+        if (playerSprite.flipX == true)
         {
             sandDust.transform.rotation = Quaternion.Euler(0f, 5f, 0f);
             CreateSandDust();

@@ -117,7 +117,7 @@ public class Chapteh : MonoBehaviour
 
             // Force needed to launch the Chapteh
             if (player.isRunning == true)
-                rbChapteh.AddForce(playerToMouseDir * (speed /** 0.5f*/));
+                rbChapteh.AddForce(playerToMouseDir * speed);
             else
                 rbChapteh.AddForce(playerToMouseDir * speed);
         }
@@ -170,6 +170,7 @@ public class Chapteh : MonoBehaviour
 
     private IEnumerator GlowRingsOnHit(Collider2D col2D)
     {
+        col2D.enabled = false;
         yield return new WaitForSeconds(glowDuration);
         col2D.gameObject.SetActive(false);
         //Destroy(col2D.gameObject);
