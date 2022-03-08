@@ -117,7 +117,7 @@ public class Chapteh : MonoBehaviour
 
             // Force needed to launch the Chapteh
             if (player.isRunning == true)
-                rbChapteh.AddForce(playerToMouseDir * (speed * 0.5f));
+                rbChapteh.AddForce(playerToMouseDir * (speed /** 0.5f*/));
             else
                 rbChapteh.AddForce(playerToMouseDir * speed);
         }
