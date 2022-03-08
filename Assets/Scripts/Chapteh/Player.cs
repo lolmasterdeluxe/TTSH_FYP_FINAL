@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
 
     public bool isRunning = false;
 
+    Vector2 playermove;
     //public AudioSource runningSource;
 
     // Start is called before the first frame update
@@ -57,6 +58,10 @@ public class Player : MonoBehaviour
         mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
+        playermove.x = Input.GetAxisRaw("Horizontal");
+        playermove.y = Input.GetAxisRaw("Vertical");
+
+
         PlayerSpriteAnimation();
     }
 
@@ -64,8 +69,13 @@ public class Player : MonoBehaviour
     {
         rb.MovePosition(playerPosition);
 
+
         // Moves player with deltaTime
-        playerPosition = Vector2.Lerp(transform.position, mousePosition, moveSpeed * Time.deltaTime);
+        //rb.MovePosition(;
+        //playerPosition = Vector2.Lerp(transform.position, mousePosition, moveSpeed * Time.deltaTime);
+        // playerPosition.x = x +( moveSpeed * Time.deltaTime *10 );   
+        playerPosition += playermove * moveSpeed * Time.fixedDeltaTime;
+
         // Clamp player within the boundaries of the background
         playerPosition.x = Mathf.Clamp(playerPosition.x, skyWidth.bounds.min.x + playerWidth - 0.6f, skyWidth.bounds.max.x - playerWidth + 0.6f);
     }
@@ -75,8 +85,9 @@ public class Player : MonoBehaviour
         if (!pauseMenu.isPaused)
         {
             // Gets value for mouse position of x
-            float worldPosX = mousePosition.x;
-            if (worldPosX > gameObject.transform.position.x)
+            //float worldPosX = mousePosition.x;
+            //if (worldPosX > gameObject.transform.position.x) 
+            if (playermove.x > 0)
                 // Sets the sprite to original position
                 playerSprite.flipX = false;
             else
@@ -87,7 +98,7 @@ public class Player : MonoBehaviour
 
     private void PlayerSpriteAnimation()
     {
-        if (Input.GetAxis("Mouse X") == 0 && Input.GetAxis("Mouse Y") == 0) // If mouse input is not detected
+        if (playermove.x == 0 && playermove.y == 0) // If mouse input is not detected
         {
             isRunning = false;
             playerAnim.SetBool("PlayerIdle", true);
@@ -97,7 +108,8 @@ public class Player : MonoBehaviour
 
             //runningSource.Stop();
         }
-        else if (Input.GetAxis("Mouse X") != 0 && Input.GetAxis("Mouse Y") != 0) // If mouse input is detected
+        //else if (Input.GetAxis("Mouse X") != 0 && Input.GetAxis("Mouse Y") != 0) // If mouse input is detected
+        else if (playermove.x != 0)
         {
             isRunning = true;
             playerAnim.SetBool("PlayerRun", true);
@@ -133,7 +145,7 @@ public class Player : MonoBehaviour
 
     private void FlipSandDust()
     {
-        if(playerSprite.flipX == true)
+        if (playerSprite.flipX == true)
         {
             sandDust.transform.rotation = Quaternion.Euler(0f, 5f, 0f);
             CreateSandDust();
