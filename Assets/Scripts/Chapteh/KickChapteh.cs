@@ -7,6 +7,7 @@ public class KickChapteh : MonoBehaviour
 {
     [SerializeField] private Chapteh chapteh;
     [SerializeField] private ChargeBar chargeBar;
+    [SerializeField] private float MinimumForce = 100;
 
     private const float MAX_FORCE = 1200f;
 
@@ -94,6 +95,8 @@ public class KickChapteh : MonoBehaviour
         float holdTimeNormalized = Mathf.Clamp01(holdTime / maxForceHoldDownTime);
         float force = holdTimeNormalized * MAX_FORCE;
 
+        if (force < MinimumForce)
+            force = MinimumForce;
         return force;
     }
 }

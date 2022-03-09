@@ -3133,7 +3133,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &614313277
 Canvas:
   m_ObjectHideFlags: 0
@@ -10551,11 +10551,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!82 &1129945058 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 7585626199142221697, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
-  m_PrefabInstance: {fileID: 1067763110532333571}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1131917875
 GameObject:
   m_ObjectHideFlags: 0
@@ -12367,6 +12362,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!82 &1468363935 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1782660882242971060, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+  m_PrefabInstance: {fileID: 444009078}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1469346801
 GameObject:
   m_ObjectHideFlags: 0
@@ -12571,11 +12571,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chapteh: {fileID: 5556708298840527362}
-  chargeBar: {fileID: 1927627639}
+  chargeBar: {fileID: 1134812047}
+  MinimumForce: 100
   m_isIncrease: 1
   audioSources:
-  - {fileID: 1129945058}
-  - {fileID: 1856958662}
+  - {fileID: 1505541062}
+  - {fileID: 1468363935}
 --- !u!1 &1482431583
 GameObject:
   m_ObjectHideFlags: 0
@@ -12612,6 +12613,11 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!82 &1505541062 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6681585163813934746, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+  m_PrefabInstance: {fileID: 444009078}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1506675054
 GameObject:
   m_ObjectHideFlags: 0
@@ -14038,7 +14044,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1779048814
 Canvas:
   m_ObjectHideFlags: 0
@@ -14446,11 +14452,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1838308173}
   m_CullTransparentMesh: 0
---- !u!82 &1856958662 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 3260892246013195439, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
-  m_PrefabInstance: {fileID: 1067763110532333571}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1877475613
 GameObject:
   m_ObjectHideFlags: 0

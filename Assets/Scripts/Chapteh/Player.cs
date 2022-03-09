@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     public ParticleSystem sandDust;
     private PauseMenu pauseMenu;
     private Chapteh chapteh;
+    private float kickTime;
 
     public bool isRunning = false;
 
@@ -60,7 +61,7 @@ public class Player : MonoBehaviour
 
         playermove.x = Input.GetAxisRaw("Horizontal");
         playermove.y = Input.GetAxisRaw("Vertical");
-
+        kickTime -= Time.deltaTime;
 
         PlayerSpriteAnimation();
     }
@@ -68,7 +69,6 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         rb.MovePosition(playerPosition);
-
 
         // Moves player with deltaTime
         //rb.MovePosition(;
@@ -100,10 +100,10 @@ public class Player : MonoBehaviour
     {
         if (playermove.x == 0 && playermove.y == 0) // If mouse input is not detected
         {
-            isRunning = false;
             playerAnim.SetBool("PlayerIdle", true);
             playerAnim.SetBool("PlayerRun", false);
 
+            isRunning = false;
             DisppearSandDust();
 
             //runningSource.Stop();
@@ -111,26 +111,37 @@ public class Player : MonoBehaviour
         //else if (Input.GetAxis("Mouse X") != 0 && Input.GetAxis("Mouse Y") != 0) // If mouse input is detected
         else if (playermove.x != 0)
         {
-            isRunning = true;
-            playerAnim.SetBool("PlayerRun", true);
-            playerAnim.SetBool("PlayerIdle", false);
+            if (!isRunning)
+            {
+                playerAnim.SetBool("PlayerRun", true);
+                playerAnim.SetBool("PlayerIdle", false);
+                isRunning = true;
+            }
 
             // Calls func for player sprite to flip
             SpriteFlip();
             FlipSandDust();
-
             //runningSource.Play();
         }
 
         // When chapteh is in the air, do nothing
         if (chapteh.inPlay)
+        {
+            if (!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("player_kick_new") && kickTime < 0)
+                playerAnim.SetBool("PlayerRun", true);
             return;
+        }
         else
         {
             // When chapteh is at the player, play kick animation
             if (Input.GetMouseButtonUp(0))
+            {
+                playerAnim.SetBool("PlayerRun", false);
                 playerAnim.SetTrigger("PlayerKick");
+                kickTime = 0.25f;
+            }
         }
+
     }
 
     private void CreateSandDust()

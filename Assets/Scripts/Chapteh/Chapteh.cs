@@ -75,7 +75,7 @@ public class Chapteh : MonoBehaviour
         LookAtMouseDirection();
 
         // Prevents the chapteh to be charged when in Pause Menu
-        if(!pauseMenu.isPaused)
+        if (!pauseMenu.isPaused)
             kickChapteh.PowerLaunch();
 
         FallOnGravity();
@@ -122,6 +122,7 @@ public class Chapteh : MonoBehaviour
                 rbChapteh.AddForce(playerToMouseDir * speed);
         }
     }
+
 
     public void FallOnGravity()
     {
