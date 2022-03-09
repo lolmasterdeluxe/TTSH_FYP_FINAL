@@ -33,12 +33,15 @@ public class SPS_ObjectDespawningManager : MonoBehaviour
         {
             foreach (GameObject a in objectspawningInstance.objectWaveList)
             {
-                Destroy(a);
-                if (a.gameObject.GetComponent<Rigidbody2D>() != null)
+                if (a != null)
                 {
-                    Destroy(a.gameObject.GetComponent<Rigidbody2D>());
+                    Destroy(a);
+                    if (a.gameObject.GetComponent<Rigidbody2D>() != null)
+                    {
+                        Destroy(a.gameObject.GetComponent<Rigidbody2D>());
+                    }
+                    Debug.Log("destroying enemies");
                 }
-                Debug.Log("destroying enemies");
             }
         }
 
