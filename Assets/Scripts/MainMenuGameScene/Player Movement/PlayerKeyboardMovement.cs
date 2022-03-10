@@ -12,23 +12,20 @@ public class PlayerKeyboardMovement : MonoBehaviour
     [Tooltip("Reference to the Player's Rigidbody")]
     Rigidbody2D playerRB2D;
 
-    [Tooltip("Reference to the Animator attached to the Player")]
-    Animator playerAC;
-
     [Tooltip("Reference to the Tutorial Screen Manager script")]
-    TutorialScreenManager tutorialscreenmanagerInstance;
+    TutorialScreenManager tutorialScreenmanagerInstance;
 
     //player speed
-    public float f_player2DSpeed;
+    [SerializeField] private float playerSpeed;
 
     //vector variables
-    public Vector2 v2_playerMovement, v2_playerPrevMovement;
+    public Vector2 playerMovement;
     public static Vector3 v3_playerRollbackPosition;
 
     //bool variables
     public static bool b_doRollbackPosition = false;
-    public bool b_playerisRight = true;
-    bool playerisBehind;
+    [HideInInspector] public bool b_playerisRight = true;
+    private bool playerCollides;
 
     //AudioSource variables
     public AudioSource footstepsSFX;
@@ -48,33 +45,26 @@ public class PlayerKeyboardMovement : MonoBehaviour
 
         //get references HERE
         playerRB2D = GetComponent<Rigidbody2D>();
-        playerAC = GetComponent<Animator>();
 
         //get script references HERE
-        tutorialscreenmanagerInstance = FindObjectOfType<TutorialScreenManager>();
+        tutorialScreenmanagerInstance = FindObjectOfType<TutorialScreenManager>();
 
         //set the player speed on START
-        f_player2DSpeed = 5f;
+        playerSpeed = 5f;
 
     }
 
     private void Update()
     {
-        if (tutorialscreenmanagerInstance.b_tutorialScreenOpen == true)
+        if (tutorialScreenmanagerInstance.b_tutorialScreenOpen == true)
             return;
 
-        if (v2_playerMovement.sqrMagnitude > 0)
-        {
-            v2_playerPrevMovement = v2_playerMovement;
-        }
-
         //call functions HERE
-        DOPlayerMovement();
-        DOPlayerAnimation();
+        PlayerMovement();
 
-        if (v2_playerMovement.x < 0 && b_playerisRight) //set bool to be false
+        if (playerMovement.x < 0 && b_playerisRight) //set bool to be false
             b_playerisRight = false;
-        else if (v2_playerMovement.x > 0 && !b_playerisRight) //set bool to be true
+        else if (playerMovement.x > 0 && !b_playerisRight) //set bool to be true
             b_playerisRight = true;
 
         //we use this to check for sound UPDATES
@@ -97,34 +87,17 @@ public class PlayerKeyboardMovement : MonoBehaviour
     private void FixedUpdate()
     {
         //update player movement HERE
-        playerRB2D.MovePosition(playerRB2D.position + v2_playerMovement * f_player2DSpeed * Time.fixedDeltaTime);
+        playerRB2D.MovePosition(playerRB2D.position + playerMovement * playerSpeed * Time.fixedDeltaTime);
     }
 
     #endregion
 
     #region Functions
 
-    public void DOPlayerMovement()
+    public void PlayerMovement()
     {
-        v2_playerMovement.x = Input.GetAxisRaw("Horizontal");
-
-        if (playerisBehind == true)
-        {
-            v2_playerMovement.y = 0f;
-        }
-        else
-        {
-            v2_playerMovement.y = Input.GetAxisRaw("Vertical");
-        }
-    }
-
-    public void DOPlayerAnimation()
-    {
-        playerAC.SetFloat("XPosition", v2_playerMovement.x);
-        playerAC.SetFloat("YPosition", v2_playerMovement.y);
-        playerAC.SetFloat("PlayerSpeed", v2_playerMovement.sqrMagnitude);
-        playerAC.SetFloat("PreviousXPosition", v2_playerMovement.x);
-        playerAC.SetFloat("PreviousYPosition", v2_playerMovement.y);
+        playerMovement.x = Input.GetAxisRaw("Horizontal");
+        playerMovement.y = Input.GetAxisRaw("Vertical");
     }
 
     public void SetRollbackPosition(Vector2 collisionPosition)
@@ -133,61 +106,6 @@ public class PlayerKeyboardMovement : MonoBehaviour
         b_doRollbackPosition = true;
         v3_playerRollbackPosition = (transform.position - new Vector3(collisionPosition.x, collisionPosition.y, transform.position.z)).normalized * rollbackBounceOffDistanceMultiplier + transform.position;
     }
-
-    #endregion
-
-    #region Trigger Collider Functions
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        //firstly, we check the tag of the collided gameObject
-        if (other.gameObject.tag == "NPC")
-        {
-            //we do a distance check between the player and the collided gameObject
-            float distance = this.gameObject.transform.localPosition.y - other.gameObject.transform.localPosition.y;
-
-            Debug.Log("Distance Enter: " + distance);
-
-            if ((distance >= 0.15f && distance <= 0.25f)) //player is behind
-            {
-                playerisBehind = true;
-            }
-            else if (distance <= -0.33f)
-            {
-                playerisBehind = true;
-            }
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        //firstly, we check the tag of the collided gameObject
-        if (other.gameObject.tag == "NPC")
-        {
-            //we do a distance check between the player and the collided gameObject
-            float distance = this.gameObject.transform.localPosition.y - other.gameObject.transform.localPosition.y;
-
-            //Debug.Log("Distance Stay: " + distance);
-
-            if ((distance >= 0.15f && distance <= 0.25f)) //player is behind
-            {
-                playerisBehind = true;
-            }
-            else if (distance <= -0.33f)
-            {
-                playerisBehind = true;
-            }
-        }
-    }
-
-    public void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "NPC")
-        {
-            playerisBehind = false;
-        }
-    }
-
 
     #endregion
 
