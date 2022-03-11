@@ -82,11 +82,6 @@ public class SPS_ObjectManager : MonoBehaviour
     {
         if (!uimanagerInstance.b_gameStart)
             return;
-       //if (g_objectInstance.transform.position.x == enemyEndPosition.transform.position.x)
-       //{
-       //    g_objectInstance.transform.position = new Vector2(objectStartPosition.transform.position.x, //objectStartPosition.transform.position.y);
-       //}
-       // g_objectInstance.transform.position = Vector2.Lerp(new Vector2(enemyEndPosition.transform.position.x,enemyEndPosition.transform.position.y), new Vector2(objectStartPosition.transform.position.x,objectStartPosition.transform.position.y), f_objectTravelSpeed * f_objecttravelspeedMultiplier);
         if (b_allowObjectSpawning == true)
         {
             //we increase the speed every 5 WAVES
@@ -216,8 +211,8 @@ public class SPS_ObjectManager : MonoBehaviour
             //Debug.Log("not running");
             g_objectInstance.SetActive(true);
             g_objectInstance.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
-            g_objectInstance.transform.rotation = objectStartPosition.transform.rotation;
             g_objectInstance.transform.position = objectStartPosition.transform.position; 
+            g_objectInstance.transform.rotation = objectStartPosition.transform.rotation;
             //new Vector3(objectStartPosition.transform.position.x, objectStartPosition.transform.position.y, objectStartPosition.transform.position.z);
         }
 
@@ -251,6 +246,7 @@ public class SPS_ObjectManager : MonoBehaviour
             {
                 //Debug.Log("help");
                 g_objectInstance.SetActive(true);
+                g_objectInstance.GetComponent<SPS_Enemy>().DetermineEnemyType();
                 g_objectInstance.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
                 g_objectInstance.transform.position = new Vector3(objectStartPosition.transform.position.x + val * 4.5f, objectStartPosition.transform.position.y, objectStartPosition.transform.position.z);
                 g_objectInstance.transform.rotation = objectStartPosition.transform.rotation;

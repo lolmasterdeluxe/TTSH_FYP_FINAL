@@ -45,12 +45,22 @@ public class SPS_Enemy : MonoBehaviour
         if (objectmanagerInstance.current_waveFormat == SPS_ObjectManager.WaveFormat.WAVE_MULTIPLE_RANDOM
             || objectmanagerInstance.current_waveFormat == SPS_ObjectManager.WaveFormat.WAVE_SINGLE_RANDOM)
             EnemyTypeIsRandom();
+            
         if (objectmanagerInstance.current_waveFormat == SPS_ObjectManager.WaveFormat.WAVE_MULTIPLE_SCISSORS)
+        {
             EnemyTypeIsScissors();
+            Debug.Log("Scissors");
+        }
         if (objectmanagerInstance.current_waveFormat == SPS_ObjectManager.WaveFormat.WAVE_MULTIPLE_PAPER)
+        {
             EnemyTypeIsPaper();
+            Debug.Log("paper");
+        }
         if (objectmanagerInstance.current_waveFormat == SPS_ObjectManager.WaveFormat.WAVE_MULTIPLE_STONE)
+        {
+            Debug.Log("Stone");
             EnemyTypeIsStone();
+        }
     }
 
     public void EnemyTypeIsRandom()
@@ -61,14 +71,17 @@ public class SPS_Enemy : MonoBehaviour
             case 0:
                 enemy_type = EnemyType.ENEMY_SCISSORS;
                 enemyAC.runtimeAnimatorController = scissorsController;
+                Debug.Log("Scissors Made");
                 break;
             case 1:
                 enemy_type = EnemyType.ENEMY_PAPER;
                 enemyAC.runtimeAnimatorController = paperController;
+                Debug.Log("Paper Made");
                 break;
             case 2:
                 enemy_type = EnemyType.ENEMY_STONE;
                 enemyAC.runtimeAnimatorController = stoneController;
+                Debug.Log("STone Made");
                 break;
         }
     }

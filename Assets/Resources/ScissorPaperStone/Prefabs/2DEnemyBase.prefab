@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAC: {fileID: 0}
-  enemy_type: 0
+  enemy_type: 3
   scissorsController: {fileID: 9100000, guid: 835970a2d1ef76c43a06586a09fee5f3, type: 2}
   paperController: {fileID: 9100000, guid: 7d5602fdb37f7c24ab69e8a5358702dd, type: 2}
   stoneController: {fileID: 9100000, guid: b858149b27654a545a3b375e410f9fa0, type: 2}
