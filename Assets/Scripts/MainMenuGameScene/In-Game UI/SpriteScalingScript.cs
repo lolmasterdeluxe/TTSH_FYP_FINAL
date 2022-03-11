@@ -13,6 +13,10 @@ public class SpriteScalingScript : MonoBehaviour
     [Tooltip("Largest Scale that the player can be in the scene")]
     Vector3 originalPlayerScale;
 
+    [Tooltip("Reference to the Animator attached to the Player")]
+    private Animator playerAnim;
+    private Rigidbody2D rb;
+
     [Tooltip("Float values that hold the player scale value")]
     float f_originalPlayerScale, f_smallestPlayerScale;
 
@@ -22,6 +26,13 @@ public class SpriteScalingScript : MonoBehaviour
     [Tooltip("To find normalised distance")]
     float _currentY;
 
+    [HideInInspector] public bool playerCollides;
+
+    PlayerKeyboardMovement playerMovement;
+    PlayerJoystickMovement playerMovement2;
+    PlayerDpadMovement playerMovement3;
+    PlayerTouchMovement playerMovement4;
+
     #endregion
 
     #region Unity Callbacks
@@ -29,19 +40,25 @@ public class SpriteScalingScript : MonoBehaviour
     private void Awake()
     {
         originalPlayerScale = transform.localScale;
+        playerAnim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
     {
-
         //set the values HERE
         f_originalPlayerScale = frontPosition.transform.position.y;
         f_smallestPlayerScale = furthestPosition.transform.position.y;
-
+        playerMovement = GetComponent<PlayerKeyboardMovement>();
+        playerMovement2 = GetComponent<PlayerJoystickMovement>();
+        playerMovement3 = GetComponent<PlayerDpadMovement>();
+        playerMovement4 = GetComponent<PlayerTouchMovement>();
     }
 
     private void Update()
     {
+        PlayerAnimationFunction();
+
         _currentY = transform.position.y;
   
         float normalizedDistance = Mathf.InverseLerp(f_smallestPlayerScale, f_originalPlayerScale, _currentY);
@@ -50,13 +67,49 @@ public class SpriteScalingScript : MonoBehaviour
 
         Vector3 newScale = Vector3.Lerp(smallestPlayerScale, originalPlayerScale, normalizedDistance);
 
-        PlayerKeyboardMovement playerMovement = GetComponent<PlayerKeyboardMovement>();
-
-        if ((playerMovement.b_playerisRight && newScale.x < 0) || (!playerMovement.b_playerisRight && newScale.x > 0))
-            newScale.x *= -1;
+        if (playerMovement.enabled)
+        {
+            if ((playerMovement.b_playerisRight && newScale.x < 0) || (!playerMovement.b_playerisRight && newScale.x > 0))
+                newScale.x *= -1;
+        }
+        if (playerMovement2.enabled)
+        {
+            if ((playerMovement2.b_playerisRight && newScale.x < 0) || (!playerMovement2.b_playerisRight && newScale.x > 0))
+                newScale.x *= -1;
+        }
+        if (playerMovement3.enabled)
+        {
+            if ((playerMovement3.b_playerisRight && newScale.x < 0) || (!playerMovement3.b_playerisRight && newScale.x > 0))
+                newScale.x *= -1;
+        }
+        if (playerMovement4.enabled)
+        {
+            if ((playerMovement4.b_playerisRight && newScale.x < 0) || (!playerMovement4.b_playerisRight && newScale.x > 0))
+                newScale.x *= -1;
+        }
 
         transform.localScale = newScale;
+    }
 
+    public void PlayerAnimationFunction()
+    {
+        if (playerMovement4.isMoving || playerMovement2.movementJoystick.joystickVec.y != 0 || playerMovement3.movement.sqrMagnitude > 1)
+            playerAnim.SetBool("isRunning", true);
+        else
+            playerAnim.SetBool("isRunning", false);
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        //firstly, we check the tag of the collided gameObject
+        if (other.gameObject.tag == "Boundary" || other.gameObject.tag == "EnvironmentObjects")
+            playerCollides = true;
+    }
+
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Boundary" || other.gameObject.tag == "EnvironmentObjects")
+            playerCollides = false;
     }
     #endregion
 }

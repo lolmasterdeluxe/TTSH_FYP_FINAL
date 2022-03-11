@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pauseMenu;
-    public GameObject quitPromptMenu;
-    public GameObject settingsMenu;
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject quitPromptMenu;
+    [SerializeField] private GameObject settingsMenu;
 
     public bool isPaused = false;
 
-    public AudioSource[] pauseMenuSound;
+    [SerializeField] private AudioSource[] pauseMenuSound;
 
     private Pregame preGame;
 
@@ -22,14 +22,18 @@ public class PauseMenu : MonoBehaviour
         settingsMenu.SetActive(false);
         quitPromptMenu.SetActive(false);
 
-        preGame = GameObject.Find("Pregame").GetComponent<Pregame>();
+        if (SceneManager.GetActiveScene().name != "MainMenuGameScene")
+            preGame = GameObject.Find("Pregame").GetComponent<Pregame>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (preGame.m_countdownOver)
-            return;
+        if (SceneManager.GetActiveScene().name != "MainMenuGameScene")
+        {
+            if (preGame.m_countdownOver)
+                return;
+        }
 
         if(Input.GetKeyDown(KeyCode.Escape))
         {

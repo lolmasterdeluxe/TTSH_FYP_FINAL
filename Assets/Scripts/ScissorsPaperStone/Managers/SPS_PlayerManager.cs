@@ -101,6 +101,7 @@ public class SPS_PlayerManager : MonoBehaviour
 
     private void Update()
     {
+
         if (uiManagerInstance.b_gameEnded == true)
         {
             ResetAnimationsAndChoice();
@@ -314,6 +315,7 @@ public class SPS_PlayerManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        //Debug.Log("Ah lim mee pok");
         //player is attacking HERE
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || (Input.GetKey(KeyCode.Space)))
         {
@@ -332,9 +334,12 @@ public class SPS_PlayerManager : MonoBehaviour
                     //add combo here
                     ComboManager.Instance.AddCombo();
 
-                    Destroy(other.gameObject);
-                    Destroy(other.gameObject.GetComponent<Rigidbody2D>());
-
+                    //Destroy(other.gameObject);
+                    //Destroy(other.gameObject.GetComponent<Rigidbody2D>());
+                    other.transform.position = objectManagerInstance.objectStartPosition.transform.position;
+                    other.gameObject.transform.DOKill(true);
+                    other.gameObject.SetActive(false);
+                    Debug.Log("Paper Beaten");
                     #region Unused
 
                     //////call the coroutine HERE
@@ -371,27 +376,31 @@ public class SPS_PlayerManager : MonoBehaviour
                     ComboManager.Instance.AddCombo();
 
 
-                    Destroy(other.gameObject);
-                    Destroy(other.gameObject.GetComponent<Rigidbody2D>());
+                    //Destroy(other.gameObject);
+                    //Destroy(other.gameObject.GetComponent<Rigidbody2D>());
+                    other.transform.position = objectManagerInstance.objectStartPosition.transform.position;
+                    other.gameObject.transform.DOKill(true);
+                    other.gameObject.SetActive(false);
+                    Debug.Log("Rock Beaten");
 
                     #region Unused
                     ////call the coroutine HERE
                     //StartCoroutine(objectManagerInstance.EndsEnemy(other.GetComponent<Animator>(), other.gameObject));
 
                     //handle enemy anims HERE
-                    Tween myTween = other.gameObject.GetComponent<SpriteRenderer>().DOFade(0f, 0.25f);
-                    bool isComplete = myTween.IsComplete();
-                    if (isComplete == true)
-                    {
-                        other.gameObject.GetComponent<Animator>().SetBool("e_died", true);
-                    }
-
-                    //handle enemy killing HERE
-                    if (other.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("enemy_stone_defeated"))
-                    {
-                        Destroy(other.gameObject);
-                        Destroy(other.gameObject.GetComponent<Rigidbody2D>());
-                    }
+                    //Tween myTween = other.gameObject.GetComponent<SpriteRenderer>().DOFade(0f, 0.25f);
+                    //bool isComplete = myTween.IsComplete();
+                    //if (isComplete == true)
+                    //{
+                    //    other.gameObject.GetComponent<Animator>().SetBool("e_died", true);
+                    //}
+                    //
+                    ////handle enemy killing HERE
+                    //if (other.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName//("enemy_stone_defeated"))
+                    //{
+                    //    Destroy(other.gameObject);
+                    //    Destroy(other.gameObject.GetComponent<Rigidbody2D>());
+                    //}
                     #endregion
 
                 }
@@ -407,29 +416,32 @@ public class SPS_PlayerManager : MonoBehaviour
                     //add combo here
                     ComboManager.Instance.AddCombo();
 
-                    Destroy(other.gameObject);
-                    Destroy(other.gameObject.GetComponent<Rigidbody2D>());
-
+                    //Destroy(other.gameObject);
+                    //Destroy(other.gameObject.GetComponent<Rigidbody2D>());
+                    other.transform.position = objectManagerInstance.objectStartPosition.transform.position;
+                    other.gameObject.transform.DOKill(true);
+                    other.gameObject.SetActive(false);
+                    Debug.Log("Scissors Beaten");
                     #region Unused
 
                     ////call the coroutine HERE
                     //StartCoroutine(objectManagerInstance.EndsEnemy(other.GetComponent<Animator>(), other.gameObject));
 
                     //handle enemy anims HERE
-                    Tween myTween = other.gameObject.GetComponent<SpriteRenderer>().DOFade(0f, 0.25f);
-                    bool isComplete = myTween.IsComplete();
-                    if (isComplete == true)
-                    {
-                        other.gameObject.GetComponent<Animator>().SetBool("e_died", true);
-                    }
-
-                    //handle enemy killing HERE
-                    if (other.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("enemy_scissors_defeated"))
-                    {
-                        Destroy(other.gameObject);
-                        Destroy(other.gameObject.GetComponent<Rigidbody2D>());
-                    }
-
+                    //Tween myTween = other.gameObject.GetComponent<SpriteRenderer>().DOFade(0f, 0.25f);
+                    //bool isComplete = myTween.IsComplete();
+                    //if (isComplete == true)
+                    //{
+                    //    other.gameObject.GetComponent<Animator>().SetBool("e_died", true);
+                    //}
+                    //
+                    ////handle enemy killing HERE
+                    //if (other.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName//("enemy_scissors_defeated"))
+                    //{
+                    //    Destroy(other.gameObject);
+                    //    Destroy(other.gameObject.GetComponent<Rigidbody2D>());
+                    //}
+                    //
                     #endregion
 
                 }
@@ -445,9 +457,10 @@ public class SPS_PlayerManager : MonoBehaviour
                     uiManagerInstance.AddObjectiveValue();
 
                     //destroy it since it has been collected
-                    Destroy(other.gameObject);
-                    Destroy(other.gameObject.GetComponent<Rigidbody2D>());
-
+                    //Destroy(other.gameObject);
+                    //Destroy(other.gameObject.GetComponent<Rigidbody2D>());
+                    other.gameObject.SetActive(false);
+                    Debug.Log("Powerup Falsed");
                     //play sounds HERE
                     powerupSFX.Play();
 

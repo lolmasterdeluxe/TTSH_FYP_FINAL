@@ -9,6 +9,7 @@ public class Settings : MonoBehaviour
 {
     public enum GameMode
     {
+        MAINMENU,
         SPS,
         FIVE_STONES,
         CHAPTEH,
@@ -42,16 +43,18 @@ public class Settings : MonoBehaviour
         //kickChapteh = GameObject.Find("Chapteh Manager").GetComponent<KickChapteh>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-    
     // Adjusts all volumes in the scene
     public void MasterVolume()
     {
         switch (currentGamemode)
         {
+            case GameMode.MAINMENU:
+                GameObject.Find("BGM").GetComponent<AudioSource>().volume = masterVolSlider.value;
+                GameObject.Find("FootstepsSFX").GetComponent<AudioSource>().volume = masterVolSlider.value;
+                GameObject.Find("InteractSFX").GetComponent<AudioSource>().volume = masterVolSlider.value;
+                GameObject.Find("HoverSFX").GetComponent<AudioSource>().volume = masterVolSlider.value;
+                masterVolText.text = Mathf.RoundToInt(masterVolSlider.value * 100).ToString();
+                break;
             case GameMode.SPS:
                 // BGM volume adjuster
                 SPS_UIManager.Instance.bgmSource.volume = masterVolSlider.value;
@@ -94,6 +97,11 @@ public class Settings : MonoBehaviour
     {
         switch(currentGamemode)
         {
+            case GameMode.MAINMENU:
+                // BGM volume adjuster
+                GameObject.Find("BGM").GetComponent<AudioSource>().volume = musicVolSlider.value;
+                musicVolText.text = Mathf.RoundToInt(musicVolSlider.value * 100).ToString();
+                break;
             case GameMode.SPS:
                 // BGM volume adjuster
                 SPS_UIManager.Instance.bgmSource.volume = musicVolSlider.value;
@@ -116,6 +124,13 @@ public class Settings : MonoBehaviour
     {
         switch (currentGamemode)
         {
+            case GameMode.MAINMENU:
+                // BGM volume adjuster
+                GameObject.Find("FootstepsSFX").GetComponent<AudioSource>().volume = sfxVolSlider.value;
+                GameObject.Find("InteractSFX").GetComponent<AudioSource>().volume = sfxVolSlider.value;
+                GameObject.Find("HoverSFX").GetComponent<AudioSource>().volume = sfxVolSlider.value;
+                sfxVolText.text = Mathf.RoundToInt(sfxVolSlider.value * 100).ToString();
+                break;
             case GameMode.SPS:
                 // Jump audio volume adjuster
                 SPS_PlayerManager.Instance.jumpSFX.volume = sfxVolSlider.value;

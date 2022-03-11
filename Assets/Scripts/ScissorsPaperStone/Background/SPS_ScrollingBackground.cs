@@ -9,22 +9,16 @@ public class SPS_ScrollingBackground : MonoBehaviour
     #region Variables
 
     [Tooltip("Reference to the Parallex Background Manager")]
-    ParallexBackgroundManager parallexbackgroundmanagerInstance;
+    [SerializeField] private ParallexBackgroundManager parallexbackgroundmanagerInstance;
 
 
     #endregion
 
     #region Unity Callbacks
 
-    private void Start()
-    {
-        parallexbackgroundmanagerInstance = FindObjectOfType<ParallexBackgroundManager>();
-    }
-
-
     private void Update()
     {
-        if (SPS_UIManager.Instance.b_gameEnded == true)
+        if (SPS_UIManager.Instance.b_gameEnded)
             return;
 
         //ground
