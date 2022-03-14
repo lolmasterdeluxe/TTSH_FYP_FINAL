@@ -87,10 +87,10 @@ public class Player : MonoBehaviour
             // Gets value for mouse position of x
             //float worldPosX = mousePosition.x;
             //if (worldPosX > gameObject.transform.position.x) 
-            if (playermove.x > 0)
+            if (Input.GetKeyDown("d"))
                 // Sets the sprite to original position
                 playerSprite.flipX = false;
-            else
+            else if (Input.GetKeyDown("a"))
                 // Flips the sprite to be inverted
                 playerSprite.flipX = true;
         }
@@ -98,50 +98,53 @@ public class Player : MonoBehaviour
 
     private void PlayerSpriteAnimation()
     {
-        if (playermove.x == 0 && playermove.y == 0) // If mouse input is not detected
+        if (!chapteh.inPlay)
         {
-            playerAnim.SetBool("PlayerIdle", true);
-            playerAnim.SetBool("PlayerRun", false);
-
-            isRunning = false;
-            DisppearSandDust();
-
-            //runningSource.Stop();
-        }
-        //else if (Input.GetAxis("Mouse X") != 0 && Input.GetAxis("Mouse Y") != 0) // If mouse input is detected
-        else if (playermove.x != 0)
-        {
-            if (!isRunning)
-            {
-                playerAnim.SetBool("PlayerRun", true);
-                playerAnim.SetBool("PlayerIdle", false);
-                isRunning = true;
-            }
-
-            // Calls func for player sprite to flip
-            SpriteFlip();
-            FlipSandDust();
-            //runningSource.Play();
-        }
-
-        // When chapteh is in the air, do nothing
-        if (chapteh.inPlay)
-        {
-            if (!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("player_kick_new") && kickTime < 0)
-                playerAnim.SetBool("PlayerRun", true);
-            return;
-        }
-        else
-        {
-            // When chapteh is at the player, play kick animation
             if (Input.GetMouseButtonUp(0))
             {
                 playerAnim.SetBool("PlayerRun", false);
                 playerAnim.SetTrigger("PlayerKick");
                 kickTime = 0.25f;
             }
+            else if (playermove.magnitude == 0 && kickTime <= 0) // If mouse input is not detected
+            {
+                playerAnim.SetBool("PlayerRun", false);
+                isRunning = false;
+                DisppearSandDust();
+
+                //runningSource.Stop();
+            }
+            //else if (Input.GetAxis("Mouse X") != 0 && Input.GetAxis("Mouse Y") != 0) // If mouse input is detected
+            else if (playermove.magnitude != 0 && kickTime <= 0)
+            {
+                if (!isRunning)
+                {
+                    playerAnim.SetBool("PlayerRun", true);
+                    isRunning = true;
+                    FlipSandDust();
+                }
+
+                // Calls func for player sprite to flip
+                //runningSource.Play();
+            }
+
+        }
+        // When chapteh is in the air, do nothing
+        if (chapteh.inPlay && kickTime <= 0)
+        {
+            if (playermove.magnitude != 0)
+            {
+                playerAnim.SetBool("PlayerRun", true);
+                FlipSandDust();
+            }
+            else
+            {
+                playerAnim.SetBool("PlayerRun", false);
+                DisppearSandDust();
+            }
         }
 
+        SpriteFlip();
     }
 
     private void CreateSandDust()
@@ -156,7 +159,7 @@ public class Player : MonoBehaviour
 
     private void FlipSandDust()
     {
-        if (playerSprite.flipX == true)
+        if (playerSprite.flipX)
         {
             sandDust.transform.rotation = Quaternion.Euler(0f, 5f, 0f);
             CreateSandDust();

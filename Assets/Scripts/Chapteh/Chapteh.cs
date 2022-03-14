@@ -5,63 +5,44 @@ using UnityEngine;
 public class Chapteh : MonoBehaviour
 {
     private Rigidbody2D rbChapteh;
-    public bool inPlay;
-    public Transform spawnPoint;
-    public Transform playerSprite;
-    public GameObject arrowIndicator;
+    [HideInInspector] public bool inPlay;
+    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private Transform playerSprite;
 
-    public SpriteRenderer skyWidth, skyHeight;
-    private float chaptehWidth, chaptehHeight;
-
-    private Quaternion rotPos;
-
-    private Vector2 lookDirection;
-    private float lookAngle = 0f;
+    private Vector2 lookDirection, force;
     private float clampedAngle = 0f;
 
-    [SerializeField] private KickChapteh kickChapteh;
+    //[SerializeField] private KickChapteh kickChapteh;
     [SerializeField] private Player player;
+    [SerializeField] private PauseMenu pauseMenu;
 
     private float glowDuration = 1f;
-
-    private PauseMenu pauseMenu;
-
     public AudioSource onRingHitSource;
 
     // Start is called before the first frame update
     void Start()
     {
         rbChapteh = GetComponent<Rigidbody2D>();
-
-        chaptehWidth = GetComponent<SpriteRenderer>().bounds.size.x / 2;
-        chaptehHeight = GetComponent<SpriteRenderer>().bounds.size.y / 2;
-
-        // Set initial rotation to 0
-        rotPos = transform.rotation;
-
-        player = GameObject.Find("Player Sprite").GetComponent<Player>();
-        kickChapteh = GameObject.Find("Chapteh Manager").GetComponent<KickChapteh>();
-        pauseMenu = GameObject.Find("Pause Manager").GetComponent<PauseMenu>();
-
         ComboManager.Instance.e_comboBreak.AddListener(ChaptehGameManager.Instance.OnComboBreak);
-
         onRingHitSource.Stop();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (pauseMenu.isPaused)
+            return;
         // Sets the chapteh to the origin position before game starts and ends
         if (!ChaptehGameManager.Instance.m_gameStarted)
         {
             transform.position = spawnPoint.position;
-            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            transform.rotation = Quaternion.Euler(0f, 0f, -90f);
             return;
         }
         else if (ChaptehGameManager.Instance.m_gameEnded)
         {
-            transform.position = spawnPoint.position;
-            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            transform.position = spawnPoint.position;   
+            transform.rotation = Quaternion.Euler(0f, 0f, -90f);
             return;
         }
 
@@ -70,19 +51,14 @@ public class Chapteh : MonoBehaviour
         {
             // Sets position of Chapteh to above the player head
             transform.position = spawnPoint.position;
+            transform.rotation = Quaternion.Euler(0f, 0f, -90f);
         }
-
-        LookAtMouseDirection();
-
-        // Prevents the chapteh to be charged when in Pause Menu
-        if (!pauseMenu.isPaused)
-            kickChapteh.PowerLaunch();
-
+        //LookAtMouseDirection();
         FallOnGravity();
     }
 
     // Chapteh rotates at direction of the mouse position
-    void LookAtMouseDirection()
+/*    void LookAtMouseDirection()
     {
         if (!inPlay)
         {
@@ -93,14 +69,14 @@ public class Chapteh : MonoBehaviour
 
             lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
 
-            clampedAngle = Mathf.Clamp(lookAngle, 45f, 135f);
+            //clampedAngle = Mathf.Clamp(lookAngle, 45f, 135f);
 
             // Rotate according the mouse position
             arrowIndicator.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, clampedAngle));
         }
         else
             arrowIndicator.SetActive(false);
-    }
+    }*/
 
     public void Kick(float speed)
     {
@@ -123,34 +99,38 @@ public class Chapteh : MonoBehaviour
         }
     }
 
+    public void Kick(Vector2 force)
+    {
+        if (!inPlay)
+        {
+            inPlay = true;
+            // Force needed to launch the Chapteh
+            Debug.Log("Power: " + force);
+            rbChapteh.AddForce(force, ForceMode2D.Impulse);
+            this.force = force;
+        }
+    }
+
 
     public void FallOnGravity()
     {
         // When the Chapteh is launched
         if (inPlay)
         {
-            // Clamps the Chapteh within the boundaries of the background
-            transform.position = new Vector2(Mathf.Clamp(transform.position.x, (skyWidth.bounds.min.x + 0.2f) + chaptehWidth, (skyWidth.bounds.max.x - 0.2f) - chaptehWidth),
-                                             Mathf.Clamp(transform.position.y, skyHeight.bounds.min.y + chaptehHeight, (skyHeight.bounds.max.y + 2f) - chaptehHeight));
-
             // Rotates the Chapteh to fall according to gravity
-            rbChapteh.rotation += rbChapteh.gravityScale;
+            Vector2 dir = rbChapteh.velocity;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            //rbChapteh.rotation += rbChapteh.gravityScale;
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Player picks up and spawns the Chapteh back to the player if lands on the ground
-        if (other.CompareTag("Player"))
-        {
-            rbChapteh.velocity = Vector2.zero;
-            transform.rotation = rotPos;
-            inPlay = false;
-        }
-
         // Chapteh lands on the ground and breaks the combo
         if (other.CompareTag("Ground"))
         {
+            inPlay = false;
             ComboManager.Instance.BreakCombo();
         }
 
@@ -166,6 +146,21 @@ public class Chapteh : MonoBehaviour
             other.GetComponentInChildren<ParticleSystem>().Play();
 
             onRingHitSource.Play();
+        }
+        
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        // Player picks up and spawns the Chapteh back to the player if lands on the ground
+        if (inPlay && (other.gameObject.CompareTag("Player")))
+        {
+            Vector2 Normal = other.contacts[0].normal;
+            Vector3 m_dir = Vector2.Reflect(rbChapteh.velocity, Normal).normalized;
+            m_dir.x = Mathf.Clamp(m_dir.x, -0.25f, 0.25f);
+            m_dir.y = 1f;
+            Debug.Log("Force * m_dir: " + (force * m_dir));
+            rbChapteh.velocity = force * m_dir;
         }
     }
 
