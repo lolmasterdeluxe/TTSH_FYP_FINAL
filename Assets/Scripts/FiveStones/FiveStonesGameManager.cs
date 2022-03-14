@@ -82,7 +82,7 @@ public class FiveStonesGameManager : MonoBehaviour
         this.difficultyMultiplier = difficultyMultiplier;
         TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 0f, 0f);
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 0f, 0f);
-        GetComponent<StoneSpawner>().Configure(3, 5, 3, 5, 10, 15);
+        GetComponent<StoneSpawner>().Configure(3, 5, 4, 6, 10, 15);
         StartCoroutine(GetComponent<StoneSpawner>().SpawnStoneLoop());
         RandomizeObjective();
         StartCoroutine(ObjectiveCoroutine());
