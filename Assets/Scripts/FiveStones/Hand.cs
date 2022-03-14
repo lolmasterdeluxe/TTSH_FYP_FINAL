@@ -98,7 +98,11 @@ public class Hand : MonoBehaviour
         if (collision.gameObject.tag == "Stone")
         {
             FiveStonesGameManager.Instance.OnStoneCaught(collision.gameObject);
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
+            collision.gameObject.GetComponent<Rigidbody2D>().angularVelocity = 0;
+
+           // Destroy(collision.gameObject);
         }
     }
 

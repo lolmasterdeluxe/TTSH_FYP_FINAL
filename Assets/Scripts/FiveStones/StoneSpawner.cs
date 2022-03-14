@@ -28,6 +28,7 @@ public class StoneSpawner : MonoBehaviour
     public GameObject spawnPointHolder;
     public List<Transform> spawnPointList = new List<Transform>();
 
+    private GameObject spawnedStone;
     // Start is called before the first frame update
     void Start()
     {
@@ -106,16 +107,22 @@ public class StoneSpawner : MonoBehaviour
     IEnumerator SpawnStoneNormalSnake()
     {
         float randomForce = Random.Range(minForce, maxForce);
-
+        Debug.Log("NormalSnake?");
         for (int i = 0; i < spawnPointList.Count; i++)
         {
-            GameObject spawnedStone = Instantiate(stonePrefab, spawnPointList[i].position, Quaternion.identity);
-            Vector3 force = spawnedStone.transform.up * randomForce;
-            force = new Vector3(force.x, force.y, 0);
-            spawnedStone.GetComponent<Rigidbody2D>().AddForce(spawnedStone.transform.up * randomForce, ForceMode2D.Impulse);
-            spawnedStone.GetComponent<Stone>().type = FiveStonesGameManager.GetRandomColouredObjective();
-            RandomizeRotation(spawnedStone.transform);
-
+            //GameObject spawnedStone = Instantiate(stonePrefab, spawnPointList[i].position, Quaternion.identity);
+            spawnedStone = ObjectPooling.SharedInstance.GetPooledObject();
+            if (spawnedStone != null)
+            {
+                spawnedStone.SetActive(true);
+                spawnedStone.transform.position = spawnPointList[i].position;
+                spawnedStone.transform.rotation = Quaternion.identity;
+                Vector3 force = spawnedStone.transform.up * randomForce;
+                force = new Vector3(force.x, force.y, 0);
+                spawnedStone.GetComponent<Rigidbody2D>().AddForce(spawnedStone.transform.up * randomForce, ForceMode2D.Impulse);
+                spawnedStone.GetComponent<Stone>().type = FiveStonesGameManager.GetRandomColouredObjective();
+                RandomizeRotation(spawnedStone.transform);
+            }
             yield return new WaitForSeconds(0.1f);
         }
     }
@@ -124,16 +131,22 @@ public class StoneSpawner : MonoBehaviour
     {
         float randomMagnitude = Random.Range(2f, 5f);
         float randomOffset = Random.Range(10f, 12f);
-
+        Debug.Log("SNAKE");
         for (int i = 0; i < spawnPointList.Count; i++)
         {
-            GameObject spawnedStone = Instantiate(stonePrefab, spawnPointList[i].position, Quaternion.identity);
-            Vector3 force = spawnedStone.transform.up * (randomMagnitude * Mathf.Sin(spawnedStone.transform.position.x) + randomOffset);
-            force = new Vector3(force.x, force.y, 0);
-            spawnedStone.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
-            spawnedStone.GetComponent<Stone>().type = FiveStonesGameManager.GetRandomColouredObjective();
-            RandomizeRotation(spawnedStone.transform);
-
+            //GameObject spawnedStone = Instantiate(stonePrefab, spawnPointList[i].position, Quaternion.identity);
+            spawnedStone = ObjectPooling.SharedInstance.GetPooledObject();
+            if (spawnedStone != null)
+            {
+                spawnedStone.SetActive(true);
+                spawnedStone.transform.position = spawnPointList[i].position;
+                spawnedStone.transform.rotation = Quaternion.identity;
+                Vector3 force = spawnedStone.transform.up * (randomMagnitude * Mathf.Sin(spawnedStone.transform.position.x) + randomOffset);
+                force = new Vector3(force.x, force.y, 0);
+                spawnedStone.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
+                spawnedStone.GetComponent<Stone>().type = FiveStonesGameManager.GetRandomColouredObjective();
+                RandomizeRotation(spawnedStone.transform);
+            }
             yield return null;
         }
     }
@@ -142,16 +155,22 @@ public class StoneSpawner : MonoBehaviour
     {
         float randomMagnitude = Random.Range(2f, 4f);
         float randomOffset = Random.Range(10f, 12f);
-
+        Debug.Log("CURVE");
         for (int i = 0; i < spawnPointList.Count; i++)
         {
-            GameObject spawnedStone = Instantiate(stonePrefab, spawnPointList[i].position, Quaternion.identity);
-            Vector3 force = spawnedStone.transform.up * (randomMagnitude * Mathf.Cos(0.2f * spawnedStone.transform.position.x) + randomOffset);
-            force = new Vector3(force.x, force.y, 0);
-            spawnedStone.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
-            spawnedStone.GetComponent<Stone>().type = FiveStonesGameManager.GetRandomColouredObjective();
-            RandomizeRotation(spawnedStone.transform);
-
+            //GameObject spawnedStone = Instantiate(stonePrefab, spawnPointList[i].position, Quaternion.identity);
+            spawnedStone = ObjectPooling.SharedInstance.GetPooledObject();
+            if (spawnedStone != null)
+            {
+                spawnedStone.SetActive(true);
+                spawnedStone.transform.position = spawnPointList[i].position;
+                spawnedStone.transform.rotation = Quaternion.identity;
+                Vector3 force = spawnedStone.transform.up * (randomMagnitude * Mathf.Cos(0.2f * spawnedStone.transform.position.x) + randomOffset);
+                force = new Vector3(force.x, force.y, 0);
+                spawnedStone.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
+                spawnedStone.GetComponent<Stone>().type = FiveStonesGameManager.GetRandomColouredObjective();
+                RandomizeRotation(spawnedStone.transform);
+            }
             yield return null;
         }
     }
@@ -160,16 +179,22 @@ public class StoneSpawner : MonoBehaviour
     {
         float randomMagnitude = Random.Range(2f, 5f);
         float randomOffset = Random.Range(10f, 12f);
-
+        Debug.Log("ACROSS");
         for (int i = 0; i < spawnPointList.Count; i++)
         {
-            GameObject spawnedStone = Instantiate(stonePrefab, spawnPointList[i].position, Quaternion.identity);
-            Vector3 force = spawnedStone.transform.up * (randomMagnitude * Mathf.Cos(3f * spawnedStone.transform.position.x) + randomOffset);
-            force = new Vector3(force.x, force.y, 0);
-            spawnedStone.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
-            spawnedStone.GetComponent<Stone>().type = FiveStonesGameManager.GetRandomColouredObjective();
-            RandomizeRotation(spawnedStone.transform);
-
+            //GameObject spawnedStone = Instantiate(stonePrefab, spawnPointList[i].position, Quaternion.identity);
+            spawnedStone = ObjectPooling.SharedInstance.GetPooledObject();
+            if (spawnedStone != null)
+            {
+                spawnedStone.SetActive(true);
+                spawnedStone.transform.position = spawnPointList[i].position;
+                spawnedStone.transform.rotation = Quaternion.identity;
+                Vector3 force = spawnedStone.transform.up * (randomMagnitude * Mathf.Cos(3f * spawnedStone.transform.position.x) + randomOffset);
+                force = new Vector3(force.x, force.y, 0);
+                spawnedStone.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
+                spawnedStone.GetComponent<Stone>().type = FiveStonesGameManager.GetRandomColouredObjective();
+                RandomizeRotation(spawnedStone.transform);
+            }
             yield return null;
         }
     }
@@ -177,7 +202,7 @@ public class StoneSpawner : MonoBehaviour
     void SpawnStoneDefault(int count)
     {
         List<Transform> usedSpawnPointList = new List<Transform>();
-
+        Debug.Log("Default?");
         for (int i = 0; i < count; i++)
         {
             int randomIndex = Random.Range(0, spawnPointList.Count - 1);
@@ -192,13 +217,19 @@ public class StoneSpawner : MonoBehaviour
             Transform randomPoint = spawnPointList[randomIndex];
             usedSpawnPointList.Add(randomPoint);
 
-            GameObject spawnedStone = Instantiate(stonePrefab, randomPoint.position, randomPoint.rotation);
-            Vector3 force = spawnedStone.transform.up * Random.Range(minForce, maxForce);
-            force = new Vector3(force.x, force.y, 0);
-            spawnedStone.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
-            spawnedStone.GetComponent<Stone>().type = FiveStonesGameManager.GetRandomColouredObjective();
-
-            Destroy(spawnedStone, 5f);
+            //GameObject spawnedStone = Instantiate(stonePrefab, randomPoint.position, randomPoint.rotation);
+            spawnedStone = ObjectPooling.SharedInstance.GetPooledObject();
+            if (spawnedStone != null)
+            {
+                spawnedStone.SetActive(true);
+                spawnedStone.transform.position = randomPoint.position;
+                spawnedStone.transform.rotation = randomPoint.rotation;
+                Vector3 force = spawnedStone.transform.up * Random.Range(minForce, maxForce);
+                force = new Vector3(force.x, force.y, 0);
+                spawnedStone.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
+                spawnedStone.GetComponent<Stone>().type = FiveStonesGameManager.GetRandomColouredObjective();
+            }
+            //Destroy(spawnedStone, 5f);
         }
     }
 }
