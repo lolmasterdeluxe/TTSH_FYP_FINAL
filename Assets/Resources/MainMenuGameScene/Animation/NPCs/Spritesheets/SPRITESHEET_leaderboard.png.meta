@@ -60,6 +60,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -68,12 +69,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -91,6 +92,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -410,6 +413,19 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      SPRITESHEET_leaderboard_11: -233441259560297106
+      SPRITESHEET_leaderboard_2: -4212700094859502351
+      SPRITESHEET_leaderboard_7: 161529978917061037
+      SPRITESHEET_leaderboard_3: 1625526032703926687
+      SPRITESHEET_leaderboard_9: 2062977849356273199
+      SPRITESHEET_leaderboard_5: 5286193930526868877
+      SPRITESHEET_leaderboard_4: 5621408631282342156
+      SPRITESHEET_leaderboard_1: 245720261185113417
+      SPRITESHEET_leaderboard_8: -6616958429274967026
+      SPRITESHEET_leaderboard_6: -2561120858678123678
+      SPRITESHEET_leaderboard_0: -1151090922716233558
+      SPRITESHEET_leaderboard_10: -2383016575318583782
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

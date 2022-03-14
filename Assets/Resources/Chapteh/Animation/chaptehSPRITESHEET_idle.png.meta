@@ -48,6 +48,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -57,11 +58,11 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -79,6 +80,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -140,7 +143,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 2937d74cdb1181420800000000000000
-      internalID: 2600848291549508498
+      internalID: 6710374227780294761
       vertices: []
       indices: 
       edges: []
@@ -161,7 +164,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 6f18113476e70bff0800000000000000
-      internalID: -22379016164900362
+      internalID: -5557533846618029571
       vertices: []
       indices: 
       edges: []
@@ -182,7 +185,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: d2230f94e31d07910800000000000000
-      internalID: 1833195113798447661
+      internalID: 6630825799687221620
       vertices: []
       indices: 
       edges: []
@@ -203,7 +206,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: f1188d81f458d8bf0800000000000000
-      internalID: -320453423707684577
+      internalID: 4395096620690891390
       vertices: []
       indices: 
       edges: []
@@ -218,6 +221,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      chaptehSPRITESHEET_idle_0: 6710374227780294761
+      chaptehSPRITESHEET_idle_2: 6630825799687221620
+      chaptehSPRITESHEET_idle_3: 4395096620690891390
+      chaptehSPRITESHEET_idle_1: -5557533846618029571
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -55,6 +55,7 @@ public class LeaderboardManager : MonoBehaviour
     public TMP_Text standardGameScoreText;
 
     public GameObject exitButton;
+    public GameObject leaderButton;
 
     public GameObject splashScreenButton;
     public CanvasGroup thanksScreenCanvasGroup;
@@ -78,6 +79,26 @@ public class LeaderboardManager : MonoBehaviour
     {
     }
 
+    public void ShowLeaderBoard()
+    {
+        print("AIUWHDSAIODWJd");
+        TweenManager.Instance.AnimateFade(endScreenCanvasGroup, 0, 1);
+        TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 1, 1);
+
+        if (m_isFinalGame)
+            StartCoroutine(ShowFinalGameAnimation());
+    }
+
+    private IEnumerator ITransitionToLeaderBoard()
+    {
+        yield return new WaitForSeconds(0);
+        TweenManager.Instance.AnimateFade(endScreenCanvasGroup, 0, 1);
+        TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 1, 1);
+
+        //StartCoroutine(ShowFinalGameAnimation());
+        print("Enter liao");
+    }
+
     private void OnEnable()
     {
         m_isFinalGame = false;
@@ -93,7 +114,7 @@ public class LeaderboardManager : MonoBehaviour
 
         UpdateAllLeaderboardUIData();
         TweenManager.Instance.AnimateFade(endScreenCanvasGroup, 1, 1);
-        StartCoroutine(ShowLeaderboard());
+        //StartCoroutine(ShowLeaderboard());
     }
 
     public void UpdateAllLeaderboardUIData()
@@ -327,4 +348,6 @@ public class LeaderboardManager : MonoBehaviour
             SceneManager.LoadScene("MainMenuGameScene");
         }
     }
+
+    
 }

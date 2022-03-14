@@ -108,6 +108,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -116,12 +117,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -139,6 +140,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -794,6 +797,35 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      updated_player_spritesheet_23: 2685953135466170591
+      updated_player_spritesheet_5: -3774041415337469214
+      updated_player_spritesheet_9: 8631490895921325903
+      updated_player_spritesheet_3: -5238963948440604487
+      updated_player_spritesheet_22: 7331444994541618421
+      updated_player_spritesheet_10: -2681661629909883981
+      updated_player_spritesheet_25: -2276091855360032306
+      updated_player_spritesheet_16: 3910852982057940026
+      updated_player_spritesheet_0: -7581620140503578489
+      updated_player_spritesheet_11: -3516003457344716811
+      updated_player_spritesheet_7: -4296103251595036496
+      updated_player_spritesheet_15: 2145502164762470151
+      updated_player_spritesheet_26: 931332752557471335
+      updated_player_spritesheet_21: 8356964611399271086
+      updated_player_spritesheet_12: 8524107436711578342
+      updated_player_spritesheet_4: -2191429129508642368
+      updated_player_spritesheet_14: 419208995555883529
+      updated_player_spritesheet_13: -8252381367116225524
+      updated_player_spritesheet_27: 5740435730274977865
+      updated_player_spritesheet_18: -8907401273808568583
+      updated_player_spritesheet_1: 6182245428586374839
+      updated_player_spritesheet_6: 4191924876420719074
+      updated_player_spritesheet_8: -445914403366580287
+      updated_player_spritesheet_17: -2241153349965722148
+      updated_player_spritesheet_2: 5887334282340573166
+      updated_player_spritesheet_20: 2239996781595218005
+      updated_player_spritesheet_19: 4579038078359063559
+      updated_player_spritesheet_24: 7130894515607570224
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
