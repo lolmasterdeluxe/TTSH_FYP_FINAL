@@ -4,8 +4,8 @@ using UnityEngine;
 
 
 public class Rings : MonoBehaviour
-{
-    public UnityEngine.Rendering.Universal.Light2D ringGlow;
+{   
+    public UnityEngine.Experimental.Rendering.Universal.Light2D ringGlow;
     public bool isTriggered = false;
 
     public ParticleSystem ps;
