@@ -130,8 +130,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7913923793753976924}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -50, y: -0.65, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children:
   - {fileID: 2430953695706954940}
@@ -179,7 +179,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_Sprite: {fileID: 29963508549127569, guid: 9d980289fab1a8141971856b36834a13, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 255, g: 255, b: 255, a: 255}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAC: {fileID: 0}
-  enemy_type: 0
+  enemy_type: 3
   scissorsController: {fileID: 9100000, guid: 835970a2d1ef76c43a06586a09fee5f3, type: 2}
   paperController: {fileID: 9100000, guid: 7d5602fdb37f7c24ab69e8a5358702dd, type: 2}
   stoneController: {fileID: 9100000, guid: b858149b27654a545a3b375e410f9fa0, type: 2}

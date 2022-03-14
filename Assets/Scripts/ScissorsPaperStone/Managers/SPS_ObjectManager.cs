@@ -39,7 +39,6 @@ public class SPS_ObjectManager : MonoBehaviour
     //tween references HERE
     public Tween enemymovementTween;
 
-
     //spawning speed variables
     [Tooltip("Uptime for each object spawn")]
     float f_objectspawnLifetime;
@@ -83,7 +82,6 @@ public class SPS_ObjectManager : MonoBehaviour
     {
         if (!uimanagerInstance.b_gameStart)
             return;
-
         if (b_allowObjectSpawning == true)
         {
             //we increase the speed every 5 WAVES
@@ -95,7 +93,7 @@ public class SPS_ObjectManager : MonoBehaviour
             f_objectspawnLifetime += Time.deltaTime;
             if (f_objectspawnLifetime >= (f_objectspawnLifetime * f_objectLifetimeMultiplier) && b_waveCompleted == false)
             {
-                Debug.Log("please");
+                //Debug.Log("please");
                 //we check to see if the player has received any powerups recently
                 if (i_powerupCount >= 3)
                 {
@@ -117,8 +115,6 @@ public class SPS_ObjectManager : MonoBehaviour
                     if (i_currentwaveCount <= 3)
                     {
                         SpawnSingleRandomEnemy();
-
-
 
                         //current_waveFormat = (WaveFormat)Random.Range(1, (int)WaveFormat.WAVE_MULTIPLE_STONE);
 
@@ -205,14 +201,25 @@ public class SPS_ObjectManager : MonoBehaviour
     public void SpawnSingleRandomEnemy()
     {
         //instantiate an enemy HERE
-        g_objectInstance = Instantiate(enemyPrefab,
-         new Vector3(objectStartPosition.transform.position.x, 
-         objectStartPosition.transform.position.y,
-         objectStartPosition.transform.position.z), objectStartPosition.transform.rotation);
+        //g_objectInstance = Instantiate(enemyPrefab,
+        // new Vector3(objectStartPosition.transform.position.x, 
+        // objectStartPosition.transform.position.y,
+        // objectStartPosition.transform.position.z), objectStartPosition.transform.rotation);
+        g_objectInstance = ObjectPooling.SharedInstance.GetPooledObject();
+        if (g_objectInstance != null)
+        {
+            //Debug.Log("not running");
+            g_objectInstance.SetActive(true);
+            g_objectInstance.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
+            g_objectInstance.transform.position = objectStartPosition.transform.position; 
+            g_objectInstance.transform.rotation = objectStartPosition.transform.rotation;
+            //new Vector3(objectStartPosition.transform.position.x, objectStartPosition.transform.position.y, objectStartPosition.transform.position.z);
+        }
+
 
         //do the movement HERE
         enemymovementTween = g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 3f);
-        enemymovementTween = g_objectInstance.GetComponent<Rigidbody2D>().DOMoveX(enemyEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 3f);
+        //enemymovementTween = g_objectInstance.GetComponent<Rigidbody2D>().DOMoveX(enemyEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 3f);
         
         //add this object to the list of objects spawned
         objectWaveList.Add(g_objectInstance);
@@ -230,14 +237,24 @@ public class SPS_ObjectManager : MonoBehaviour
 
         for (int val = 1; val <= waveSize; val++)
         {
-            g_objectInstance = Instantiate(enemyPrefab,
-           new Vector3(objectStartPosition.transform.position.x + val * 4.5f, 
-           objectStartPosition.transform.position.y, 
-           objectStartPosition.transform.position.z), objectStartPosition.transform.rotation);
+            // g_objectInstance = Instantiate(enemyPrefab,
+            //new Vector3(objectStartPosition.transform.position.x + val * 4.5f, 
+            //objectStartPosition.transform.position.y, 
+            //objectStartPosition.transform.position.z), objectStartPosition.transform.rotation);
+            g_objectInstance = ObjectPooling.SharedInstance.GetPooledObject();
+            if (g_objectInstance != null)
+            {
+                //Debug.Log("help");
+                g_objectInstance.SetActive(true);
+                g_objectInstance.GetComponent<SPS_Enemy>().DetermineEnemyType();
+                g_objectInstance.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
+                g_objectInstance.transform.position = new Vector3(objectStartPosition.transform.position.x + val * 4.5f, objectStartPosition.transform.position.y, objectStartPosition.transform.position.z);
+                g_objectInstance.transform.rotation = objectStartPosition.transform.rotation;
+            }
 
             //do the movement HERE
             g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, (f_objectTravelSpeed * f_objectTravelSpeed));
-            g_objectInstance.GetComponent<Rigidbody2D>().DOMoveX(enemyEndPosition.transform.position.x, (f_objectTravelSpeed * f_objectTravelSpeed));
+           //g_objectInstance.GetComponent<Rigidbody2D>().DOMoveX(enemyEndPosition.transform.position.x, (f_objectTravelSpeed * f_objectTravelSpeed));
 
             //add objects to the list of objects spawned
             objectWaveList.Add(g_objectInstance);
@@ -288,7 +305,7 @@ public class SPS_ObjectManager : MonoBehaviour
     {
         //we create the obstacle first
         SpawnObstacleObject();
-
+        
         //we now create an instance of the powerup ontop of the obstacle
         g_objectInstance = Instantiate(powerupPrefab,
             new Vector3(objectStartPosition.transform.position.x,
@@ -342,8 +359,9 @@ public class SPS_ObjectManager : MonoBehaviour
         targetedEnemy.transform.GetComponent<SpriteRenderer>().DOFade(0f, 0.5f);
         yield return enemymovementTween.WaitForCompletion();
         //destroy the gameObject and its rigidbody
-        Destroy(targetedEnemy);
-        Destroy(targetedEnemy.GetComponent<Rigidbody2D>());
+        //Destroy(targetedEnemy);
+        //Destroy(targetedEnemy.GetComponent<Rigidbody2D>());
+        targetedEnemy.SetActive(false);
         Debug.Log("Completed deletion");
     }
 
