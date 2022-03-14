@@ -19,6 +19,7 @@ TagManager:
   - Background
   - NPC
   - Boundary
+  - ChaptehLaunch
   layers:
   - Default
   - TransparentFX

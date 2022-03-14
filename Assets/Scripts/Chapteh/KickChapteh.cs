@@ -21,10 +21,6 @@ public class KickChapteh : MonoBehaviour
     {
         chapteh = GameObject.Find("Chapteh").GetComponent<Chapteh>();
         chargeBar = GameObject.Find("Fill Image").GetComponent<ChargeBar>();
-
-        // For Player UI in World Space
-        chargeBar.charge.SetActive(false);
-
         holdDownStartTime = 0f;
     }
 
@@ -37,9 +33,7 @@ public class KickChapteh : MonoBehaviour
         {
             // When chapteh is at the player, charge up to launch it.
             if (Input.GetMouseButton(0))
-            {
-                chargeBar.charge.SetActive(true);
-
+            { 
                 if (holdDownStartTime == 0)
                 {
                     // Charge bar sound
@@ -80,8 +74,6 @@ public class KickChapteh : MonoBehaviour
                 // Resets the values to 0
                 holdDownStartTime = 0f;
                 chargeBar.SetFillBar(0);
-
-                chargeBar.charge.SetActive(false);
 
                 // Kick chapteh sound
                 audioSources[0].Play();
