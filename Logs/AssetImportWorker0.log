@@ -138,3 +138,255 @@ Received Import Request.
   path: Assets/Scripts/Chapteh/Chapteh.cs
   artifactKey: Guid(d29537f1d7ee2b644b5c271fb355d423) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Scripts/Chapteh/Chapteh.cs using Guid(d29537f1d7ee2b644b5c271fb355d423) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b36fc677b307a5323c50cd8066df005e') in 0.030372 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1648.056681 seconds.
+  path: Assets/Plugins/GitHub/Editor/GitHub.Logging.dll
+  artifactKey: Guid(15ca2bebf173f2d4484686a03a45b56d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/GitHub/Editor/GitHub.Logging.dll using Guid(15ca2bebf173f2d4484686a03a45b56d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '753b7c5617d1cfe00336661ecee09ed7') in 0.011382 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.105799 seconds.
+  path: Assets/Scripts/General Use/PauseMenu.cs
+  artifactKey: Guid(483cdc41d10e9024bab2d6dcac48031c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/General Use/PauseMenu.cs using Guid(483cdc41d10e9024bab2d6dcac48031c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd07b28a0e8edf6d8eec65728945d4f28') in 0.006364 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.017363 seconds.
+  path: Assets/Scripts/ScissorsPaperStone/GameObjects (Enemy, Obstacles, Powerups)/SPS_Powerup.cs
+  artifactKey: Guid(c790c741e5e96904e9e9fa854370558d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/ScissorsPaperStone/GameObjects (Enemy, Obstacles, Powerups)/SPS_Powerup.cs using Guid(c790c741e5e96904e9e9fa854370558d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd515eb1091e221d20cab2ddf7e3444ea') in 0.005759 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.084039 seconds.
+  path: Assets/Plugins/GitHub/Editor/ReadOnlyCollectionsInterfaces.dll
+  artifactKey: Guid(48c22d5d7479fcb49ab3be0cdd2ccec0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/GitHub/Editor/ReadOnlyCollectionsInterfaces.dll using Guid(48c22d5d7479fcb49ab3be0cdd2ccec0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a8565fa1dc9e21e0db16775f6f39970') in 0.005235 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.038771 seconds.
+  path: Assets/Plugins/GitHub/Editor/Mono.Posix.dll
+  artifactKey: Guid(ddb8611e748af425a82a497ac5a98c0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/GitHub/Editor/Mono.Posix.dll using Guid(ddb8611e748af425a82a497ac5a98c0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '05deeb554650d67bab32b464e5f9ba9f') in 0.005745 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.004649 seconds.
+  path: Assets/Scripts/FiveStones/Stone.cs
+  artifactKey: Guid(5b5de22e3119bab4897e56c22d93548a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/FiveStones/Stone.cs using Guid(5b5de22e3119bab4897e56c22d93548a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ecb446377b265fcb458ff2fa7bcfb01c') in 0.015105 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.008248 seconds.
+  path: Assets/Plugins/GitHub/Editor/UnityAPIWrapper.cs
+  artifactKey: Guid(555cd6f54c03341b1970d950df1a5ee5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/GitHub/Editor/UnityAPIWrapper.cs using Guid(555cd6f54c03341b1970d950df1a5ee5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '737b1ab7458a0d140aa1d436683dd51e') in 0.005075 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.008996 seconds.
+  path: Assets/Scripts/FiveStones/StoneSpawner.cs
+  artifactKey: Guid(305a643665a54d4448f9659be125118f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/FiveStones/StoneSpawner.cs using Guid(305a643665a54d4448f9659be125118f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60a43e97d755bcea6a2a66c31b8f80fb') in 0.005076 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.038593 seconds.
+  path: Assets/Plugins/GitHub/Editor/GitHub.Api.dll
+  artifactKey: Guid(c743ae24ee231884887054d20ccdd0ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/GitHub/Editor/GitHub.Api.dll using Guid(c743ae24ee231884887054d20ccdd0ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2eeb2727ae40a2c4569707f8594e7def') in 0.005215 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.004854 seconds.
+  path: Assets/Plugins/GitHub/Editor/GitHub.Unity.45.dll
+  artifactKey: Guid(68c7e4565cde54155bb78d8e935f1ddb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/GitHub/Editor/GitHub.Unity.45.dll using Guid(68c7e4565cde54155bb78d8e935f1ddb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0bfe8a616175c030853cda80c2cda655') in 0.004949 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.004770 seconds.
+  path: Assets/Scripts/General Use/TimerManager.cs
+  artifactKey: Guid(691c80bd6c8c94b4b854bfd8ac66ff98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/General Use/TimerManager.cs using Guid(691c80bd6c8c94b4b854bfd8ac66ff98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60ac050780c5d2163656d030734e0674') in 0.005733 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.004600 seconds.
+  path: Assets/Scripts/FiveStones/Hand.cs
+  artifactKey: Guid(08a1fe79a49481640885c171ae0f6434) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/FiveStones/Hand.cs using Guid(08a1fe79a49481640885c171ae0f6434) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c1d0fcd667d6593a20b39b7a410c84c9') in 0.006123 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.005466 seconds.
+  path: Assets/Plugins/Demigiant/DOTween/DOTween.dll
+  artifactKey: Guid(a811bde74b26b53498b4f6d872b09b6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Demigiant/DOTween/DOTween.dll using Guid(a811bde74b26b53498b4f6d872b09b6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a72625819a4c0015a929c2345e80957f') in 0.004726 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.012537 seconds.
+  path: Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUnityVersion.cs
+  artifactKey: Guid(63c02322328255542995bd02b47b0457) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUnityVersion.cs using Guid(63c02322328255542995bd02b47b0457) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0bccdafcbd215266ee0fba041a45d81a') in 0.004961 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.004561 seconds.
+  path: Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModulePhysics.cs
+  artifactKey: Guid(dae9aa560b4242648a3affa2bfabc365) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModulePhysics.cs using Guid(dae9aa560b4242648a3affa2bfabc365) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec19acfe2fe712f4c46630dc3cf2e7f2') in 0.006135 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.008374 seconds.
+  path: Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUI.cs
+  artifactKey: Guid(a060394c03331a64392db53a10e7f2d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUI.cs using Guid(a060394c03331a64392db53a10e7f2d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f4353761dad5af6ed62766ad5e3f5130') in 0.004906 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.040778 seconds.
+  path: Assets/Plugins/GitHub/Editor/System.Threading.dll
+  artifactKey: Guid(790749ba7e4b18141953e39cb13f1b79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/GitHub/Editor/System.Threading.dll using Guid(790749ba7e4b18141953e39cb13f1b79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e6117b43dd86d29e7d68b9d41147d17') in 0.005223 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.005852 seconds.
+  path: Assets/Scripts/General Use/ScoreManager.cs
+  artifactKey: Guid(4faa42869e3b4c24eb000edfdcdc5629) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/General Use/ScoreManager.cs using Guid(4faa42869e3b4c24eb000edfdcdc5629) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b2311d2feeaf059ab43c65f2ebc739a') in 0.005390 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.004641 seconds.
+  path: Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleEPOOutline.cs
+  artifactKey: Guid(e944529dcaee98f4e9498d80e541d93e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleEPOOutline.cs using Guid(e944529dcaee98f4e9498d80e541d93e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4af55b3045caa6ef0358097b86325a60') in 0.005703 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.027020 seconds.
+  path: Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModulePhysics2D.cs
+  artifactKey: Guid(230fe34542e175245ba74b4659dae700) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModulePhysics2D.cs using Guid(230fe34542e175245ba74b4659dae700) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac59e9e33e2835b3af4a12accdd162c2') in 0.004380 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.004501 seconds.
+  path: Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleSprite.cs
+  artifactKey: Guid(188918ab119d93148aa0de59ccf5286b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleSprite.cs using Guid(188918ab119d93148aa0de59ccf5286b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd5396f1370ee688a7cc3a2315d41371') in 0.004753 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.004372 seconds.
+  path: Assets/Scripts/ScissorsPaperStone/Managers/SPS_ObjectDespawningManager.cs
+  artifactKey: Guid(176cb020779b30b4d9fa26f59dae4c2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/ScissorsPaperStone/Managers/SPS_ObjectDespawningManager.cs using Guid(176cb020779b30b4d9fa26f59dae4c2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5742b7d9ea413220e730d22247d6b962') in 0.004559 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.004354 seconds.
+  path: Assets/Scripts/General Use/TweenManager.cs
+  artifactKey: Guid(a9ae6cafae218824eb3c291dd7448b70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/General Use/TweenManager.cs using Guid(a9ae6cafae218824eb3c291dd7448b70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd37e7d1fc0a11ad676b1e1809ebea154') in 0.004621 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.004545 seconds.
+  path: Assets/Scripts/ScissorsPaperStone/Managers/SPS_PlayerManager.cs
+  artifactKey: Guid(432cc2e39cec6bf47b47261a3eb9f59b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/ScissorsPaperStone/Managers/SPS_PlayerManager.cs using Guid(432cc2e39cec6bf47b47261a3eb9f59b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4fe6939846665d04a07b977064eee052') in 0.004877 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.005734 seconds.
+  path: Assets/Scripts/ScissorsPaperStone/Background/SPS_ScrollingBackground.cs
+  artifactKey: Guid(24eb5ca0dd41fb444adfc98fc269047b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/ScissorsPaperStone/Background/SPS_ScrollingBackground.cs using Guid(24eb5ca0dd41fb444adfc98fc269047b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8647e331410779fba0d13a4c539925e4') in 0.032775 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.012718 seconds.
+  path: Assets/Scripts/ScissorsPaperStone/GameObjects (Enemy, Obstacles, Powerups)/SPS_Enemy.cs
+  artifactKey: Guid(18bceb2bafdaa754f9644194a16e7190) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/ScissorsPaperStone/GameObjects (Enemy, Obstacles, Powerups)/SPS_Enemy.cs using Guid(18bceb2bafdaa754f9644194a16e7190) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5302a9e70c8e01efe96845ae3fb7533b') in 0.004929 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.004638 seconds.
+  path: Assets/Scripts/General Use/Settings.cs
+  artifactKey: Guid(648f5c57d8c12024ba26b54b08b95c3c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/General Use/Settings.cs using Guid(648f5c57d8c12024ba26b54b08b95c3c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6781280e4f4c14ca3ae66582b2ed10fe') in 0.005536 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.004627 seconds.
+  path: Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.dll
+  artifactKey: Guid(45d5034162d6cf04dbe46da84fc7d074) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.dll using Guid(45d5034162d6cf04dbe46da84fc7d074) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e802d96f67efd4eb53dfb2e7f68f069') in 0.005266 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.004856 seconds.
+  path: Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleAudio.cs
+  artifactKey: Guid(b766d08851589514b97afb23c6f30a70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleAudio.cs using Guid(b766d08851589514b97afb23c6f30a70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6dc88aa38f0c5b768bd37ac44b473226') in 0.004885 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.005115 seconds.
+  path: Assets/Plugins/GitHub/Editor/sfw.net.dll
+  artifactKey: Guid(f9fc9b08ecd899944adf9860b4abd6b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/GitHub/Editor/sfw.net.dll using Guid(f9fc9b08ecd899944adf9860b4abd6b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a479c4c9ebf14f7fc6a263b3d326f0e') in 0.004931 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.004615 seconds.
+  path: Assets/Scripts/FiveStones/FiveStonesGameManager.cs
+  artifactKey: Guid(d01cb938b1c4dcb4c93262d180c17947) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/FiveStones/FiveStonesGameManager.cs using Guid(d01cb938b1c4dcb4c93262d180c17947) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6629f9dc3eebcc20dd5bcc9422701b1a') in 0.004841 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.029043 seconds.
+  path: Assets/Scripts/Chapteh/ChargeBar.cs
+  artifactKey: Guid(823c1c111bf6ae241b0073223db45143) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Chapteh/ChargeBar.cs using Guid(823c1c111bf6ae241b0073223db45143) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '244ae0a2825465910cb5afa874cfbcc6') in 0.005013 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.015719 seconds.
+  path: Assets/Plugins/GitHub/Editor/AsyncBridge.Net35.dll
+  artifactKey: Guid(d516f2a1bec6a9645a084ef8c9237132) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/GitHub/Editor/AsyncBridge.Net35.dll using Guid(d516f2a1bec6a9645a084ef8c9237132) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff1ed0c2b70dd2eb469493c9ef6caba0') in 0.005736 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.008873 seconds.
+  path: Assets/Scripts/Chapteh/DragNShoot.cs
+  artifactKey: Guid(cc958d0263118914ca1bf39ee8f0c0c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Chapteh/DragNShoot.cs using Guid(cc958d0263118914ca1bf39ee8f0c0c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b7ee4c1162c3cd18beeaf72cdb81bc7') in 0.004955 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.004385 seconds.
+  path: Assets/Scripts/ScissorsPaperStone/GameObjects (Enemy, Obstacles, Powerups)/SPS_Obstacles.cs
+  artifactKey: Guid(ae30d4e13e0d44441b3adaf7e9001ca3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/ScissorsPaperStone/GameObjects (Enemy, Obstacles, Powerups)/SPS_Obstacles.cs using Guid(ae30d4e13e0d44441b3adaf7e9001ca3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b70731c007511aa8b7c891643c84678') in 0.004921 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.005758 seconds.
+  path: Assets/Scripts/ScissorsPaperStone/Background/BackgroundScrolling.cs
+  artifactKey: Guid(e272b30bc7e57a6408c81779412c9a8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/ScissorsPaperStone/Background/BackgroundScrolling.cs using Guid(e272b30bc7e57a6408c81779412c9a8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '763002d062cd631bc243e7c51904055d') in 0.005107 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.005021 seconds.
+  path: Assets/Plugins/GitHub/Editor/GitHub.UnityShim.dll
+  artifactKey: Guid(863e1b9976c4e46d29bf83928b3a8ab2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/GitHub/Editor/GitHub.UnityShim.dll using Guid(863e1b9976c4e46d29bf83928b3a8ab2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ab6b5bdf0bee99c8788f5642223047b4') in 0.004916 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.025074 seconds.
+  path: Assets/Plugins/GitHub/Editor/GitHub.Api.45.dll
+  artifactKey: Guid(c743ae24ee231884887054d20ccdd0ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/GitHub/Editor/GitHub.Api.45.dll using Guid(c743ae24ee231884887054d20ccdd0ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7964a4ccb3edfd94729585c38ea22a22') in 0.006758 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.013887 seconds.
+  path: Assets/Scripts/General Use/Pregame.cs
+  artifactKey: Guid(620d70109745c0c42a7da9b8b8070e66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/General Use/Pregame.cs using Guid(620d70109745c0c42a7da9b8b8070e66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6b7fecc2efe02a310930719a3576c03') in 0.005008 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.008781 seconds.
+  path: Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUtils.cs
+  artifactKey: Guid(7bcaf917d9cf5b84090421a5a2abe42e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUtils.cs using Guid(7bcaf917d9cf5b84090421a5a2abe42e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1e1d1a135864fea2aaf50888280af579') in 0.004698 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.040104 seconds.
+  path: Assets/Plugins/GitHub/Editor/GitHub.Unity.dll
+  artifactKey: Guid(68c7e4565cde54155bb78d8e935f1dd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/GitHub/Editor/GitHub.Unity.dll using Guid(68c7e4565cde54155bb78d8e935f1dd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c1d25d24fc1f6f15f351e12d287c8df') in 0.005302 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.009302 seconds.
+  path: Assets/Plugins/GitHub/Editor/ExtensionLoader.cs
+  artifactKey: Guid(dae2ecee8a704dd59797e26554ff8606) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/GitHub/Editor/ExtensionLoader.cs using Guid(dae2ecee8a704dd59797e26554ff8606) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85aa4ad85c1a73c12f38db23f38b46db') in 0.005093 seconds 
