@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 
 public class Rings : MonoBehaviour
 {
-    public Light2D ringGlow;
+    public UnityEngine.Rendering.Universal.Light2D ringGlow;
     public bool isTriggered = false;
 
     public ParticleSystem ps;

@@ -63,6 +63,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -71,12 +72,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -94,6 +95,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -434,6 +437,20 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      SPRITESHEET_chapteh 3250x250_3: 1655392451043553033
+      SPRITESHEET_chapteh 3250x250_9: 5909733284025699656
+      SPRITESHEET_chapteh 3250x250_2: 1734128914247364678
+      SPRITESHEET_chapteh 3250x250_1: -7590863089390075637
+      SPRITESHEET_chapteh 3250x250_4: 4302421313057927758
+      SPRITESHEET_chapteh 3250x250_12: 5628947376823188560
+      SPRITESHEET_chapteh 3250x250_11: -597320782922590666
+      SPRITESHEET_chapteh 3250x250_7: 4247546526513827847
+      SPRITESHEET_chapteh 3250x250_8: 8854080626100207490
+      SPRITESHEET_chapteh 3250x250_6: -6874530362936398292
+      SPRITESHEET_chapteh 3250x250_0: 8182207697768857569
+      SPRITESHEET_chapteh 3250x250_5: -3371005350958744911
+      SPRITESHEET_chapteh 3250x250_10: 3296227452719297757
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

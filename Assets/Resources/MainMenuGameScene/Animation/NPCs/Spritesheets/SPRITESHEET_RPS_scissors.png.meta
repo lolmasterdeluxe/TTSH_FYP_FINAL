@@ -69,6 +69,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -77,12 +78,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -100,6 +101,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -482,6 +485,22 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      SPRITESHEET_RPS_scissors_14: 8487064480496387386
+      SPRITESHEET_RPS_scissors_8: -18989479920744588
+      SPRITESHEET_RPS_scissors_9: -5283485092444702511
+      SPRITESHEET_RPS_scissors_2: 6209127092128388550
+      SPRITESHEET_RPS_scissors_11: -8138279029429483420
+      SPRITESHEET_RPS_scissors_10: -135548928613357505
+      SPRITESHEET_RPS_scissors_13: -9106210883320636451
+      SPRITESHEET_RPS_scissors_7: -366598198439898488
+      SPRITESHEET_RPS_scissors_3: 1530904263870221572
+      SPRITESHEET_RPS_scissors_4: -5582742034601542343
+      SPRITESHEET_RPS_scissors_6: -478384163805203202
+      SPRITESHEET_RPS_scissors_1: 4814035965350498969
+      SPRITESHEET_RPS_scissors_5: -2784844530163075930
+      SPRITESHEET_RPS_scissors_0: -8355278423890229440
+      SPRITESHEET_RPS_scissors_12: -4317170792533927627
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
