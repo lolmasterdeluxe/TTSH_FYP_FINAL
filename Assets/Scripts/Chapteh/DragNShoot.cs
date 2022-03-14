@@ -55,7 +55,7 @@ public class DragNShoot : MonoBehaviour
                 Vector3 currentPoint = (startPoint - inputOffset);
                 currentPoint.z = 15;
                 audioSources[0].Play();
-                chargeBar.SetFillBar(inputOffset.magnitude / 4);
+                chargeBar.SetFillBar(inputOffset.magnitude);
                 TrajectoryLine.RenderLine(startPoint, currentPoint);
             }
 

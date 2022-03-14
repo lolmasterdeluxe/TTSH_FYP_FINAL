@@ -9,12 +9,14 @@ public class Chapteh : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private Transform playerSprite;
 
-    private Vector2 lookDirection, force;
+    private Vector2 lookDirection, force, finalVelocity;
     private float clampedAngle = 0f;
 
     //[SerializeField] private KickChapteh kickChapteh;
     [SerializeField] private Player player;
     [SerializeField] private PauseMenu pauseMenu;
+    [SerializeField] private ChargeBar chargeBar;
+    [SerializeField] private float power;
 
     private float glowDuration = 1f;
     public AudioSource onRingHitSource;
@@ -145,7 +147,7 @@ public class Chapteh : MonoBehaviour
             // Plays the star particle effect on trigger
             other.GetComponentInChildren<ParticleSystem>().Play();
 
-            onRingHitSource.Play();
+            onRingHitSource.Play(); 
         }
         
     }
@@ -157,11 +159,25 @@ public class Chapteh : MonoBehaviour
         {
             Vector2 Normal = other.contacts[0].normal;
             Vector3 m_dir = Vector2.Reflect(rbChapteh.velocity, Normal).normalized;
-            m_dir.x = Mathf.Clamp(m_dir.x, -0.25f, 0.25f);
-            m_dir.y = 1f;
-            Debug.Log("Force * m_dir: " + (force * m_dir));
-            rbChapteh.velocity = force * m_dir;
+
+            m_dir.x = Random.Range(-5f, 5f);
+            m_dir.y = 0.5f;
+            //Debug.Log("Force * m_dir: " + (force * m_dir));
+            force.Set(chargeBar.GetFillAmt() * power, chargeBar.GetFillAmt() * power);
+            finalVelocity = force * m_dir;
+            finalVelocity.Set(Mathf.Clamp(finalVelocity.x, -7.5f, 7.5f), finalVelocity.y);
+            rbChapteh.velocity = finalVelocity;
         }
+        if (inPlay && (other.gameObject.CompareTag("Boundary")))
+        {
+            Vector2 Normal = other.contacts[0].normal;
+            Vector3 m_dir = Vector2.Reflect(rbChapteh.velocity, Normal).normalized;
+            m_dir.x = Random.Range(-1f, -0.5f);
+            m_dir.y = 0.5f;
+            rbChapteh.velocity = force / 5 * m_dir;
+            //Debug.Log("Normal: " + other.contacts[0].normal);
+        }
+        //Debug.Log("Collided object: " + other.gameObject.name);
     }
 
     private IEnumerator GlowRingsOnHit(Collider2D col2D)
