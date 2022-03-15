@@ -2282,7 +2282,7 @@ RectTransform:
   m_GameObject: {fileID: 555495406}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.32, y: 2.05, z: 1}
   m_Children: []
   m_Father: {fileID: 1753883789}
   m_RootOrder: 1
@@ -2312,7 +2312,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: nice
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 133a23702965d6b469d73e545daa87a8, type: 2}
   m_sharedMaterial: {fileID: 3248231507860505574, guid: 133a23702965d6b469d73e545daa87a8, type: 2}
@@ -2804,7 +2804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2913985091809142621, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2913985091809142621, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3024,7 +3024,7 @@ GameObject:
   - component: {fileID: 725327645}
   - component: {fileID: 725327646}
   m_Layer: 5
-  m_Name: Combo Expiry Bar
+  m_Name: popup Expiry Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3933,6 +3933,7 @@ MonoBehaviour:
   g_comboText: {fileID: 1060396511}
   g_popupText: {fileID: 555495406}
   g_comboExpiryBar: {fileID: 1335432978}
+  g_PopupExpiry: {fileID: 725327644}
   g_timerText: {fileID: 1920644013}
   g_objectiveText: {fileID: 1278334163}
   m_currentObjective: 0
@@ -3977,8 +3978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef74029ed217d5542a5aa3c86a50039f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToPool: {fileID: 4640628553649700418, guid: f43148e37d990404bab31067be89b323, type: 3}
-  amountToPool: 15
+  itemToPool: []
 --- !u!1 &1009653779
 GameObject:
   m_ObjectHideFlags: 0
@@ -6836,8 +6836,8 @@ RectTransform:
   - {fileID: 1009653780}
   - {fileID: 1241384286}
   - {fileID: 1942954694}
-  - {fileID: 2019499425}
   - {fileID: 1753883789}
+  - {fileID: 2019499425}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7440,7 +7440,7 @@ RectTransform:
   - {fileID: 725327645}
   - {fileID: 555495407}
   m_Father: {fileID: 1639388495}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
