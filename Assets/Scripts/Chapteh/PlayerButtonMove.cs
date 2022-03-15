@@ -13,7 +13,7 @@ public class PlayerButtonMove : MonoBehaviour
     //AudioSource variables
     [SerializeField] private AudioSource footstepsSFX;
 
-    [SerializeField] private float playerSpeed;
+    [SerializeField] private float playerSpeed = 5;
     [Tooltip("Reference to the Dpad buttons")]
     [SerializeField] private GameObject Left, Right;
     [HideInInspector] public Vector2 movement;
@@ -25,7 +25,7 @@ public class PlayerButtonMove : MonoBehaviour
     [SerializeField] private Chapteh chapteh;
 
     private Animator playerAnim;
-    private float kickTime;
+    private float kickTime = 0;
 
     public bool isRunning = false;
     #endregion
@@ -37,8 +37,7 @@ public class PlayerButtonMove : MonoBehaviour
         //get references HERE
         rb = GetComponent<Rigidbody2D>();
         //set values HERE
-        playerSpeed = 5f;
-
+        kickTime = 0;
         playerAnim = GetComponent<Animator>();
     }
 
@@ -53,7 +52,7 @@ public class PlayerButtonMove : MonoBehaviour
             DisppearSandDust();
             return;
         }
-
+        kickTime -= Time.deltaTime;
         PlayerSpriteAnimation();
     }
 
@@ -124,30 +123,29 @@ public class PlayerButtonMove : MonoBehaviour
                 playerAnim.SetBool("PlayerRun", true);
                 isRunning = true;
             }
-
+            kickTime = 0.1f;
             // Calls func for player sprite to flip
             SpriteFlip();
             FlipSandDust();
         }
 
         // When chapteh is in the air, do nothing
-        if (chapteh.inPlay)
+        if (chapteh.inPlay && isRunning)
         {
-            if (!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("player_kick_new") && kickTime < 0)
+            if (!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("player_kick_new"))
                 playerAnim.SetBool("PlayerRun", true);
             return;
         }
         else
         {
             // When chapteh is at the player, play kick animation
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(0) && kickTime < 0)
             {
                 playerAnim.SetBool("PlayerRun", false);
                 playerAnim.SetTrigger("PlayerKick");
                 kickTime = 0.25f;
             }
         }
-
     }
 
     private void CreateSandDust()

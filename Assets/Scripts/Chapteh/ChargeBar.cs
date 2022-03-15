@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ChargeBar : MonoBehaviour
 {
+    [SerializeField] private GameObject handle;
     [SerializeField] private Slider _slider;
     public void SetFillBar(float fillAmt)
     {
@@ -15,5 +16,10 @@ public class ChargeBar : MonoBehaviour
     public float GetFillAmt()
     {
         return _slider.value;
+    }
+
+    public void SetHandleActive(bool isActive)
+    {
+        handle.SetActive(isActive);
     }
 }

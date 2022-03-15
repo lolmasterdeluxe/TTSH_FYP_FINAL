@@ -190,7 +190,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6789685}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23ba3f132b2914a429cde1471f760cb2, type: 3}
   m_Name: 
@@ -277,13 +277,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6789685}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72d5332bc386a0242bd80db8d7f2c11b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   footstepsSFX: {fileID: 444009079}
-  playerSpeed: 5
+  playerSpeed: 8
   Left: {fileID: 1979913397}
   Right: {fileID: 769981134}
   movement: {x: 0, y: 0}
@@ -491,7 +491,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91760436}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.06999809, y: 4.2799993, z: -9.85}
+  m_LocalPosition: {x: 0.06999905, y: 4.2799993, z: -9.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1819576642}
@@ -2003,7 +2003,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2913985091809142621, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2913985091809142621, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2695,7 +2695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &606224613
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2785,7 +2785,7 @@ RectTransform:
   m_Children:
   - {fileID: 736962033}
   m_Father: {fileID: 1809922008}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3497,6 +3497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 823c1c111bf6ae241b0073223db45143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  handle: {fileID: 606224612}
   _slider: {fileID: 736962034}
 --- !u!1 &744127045
 GameObject:
@@ -12782,7 +12783,7 @@ RectTransform:
   m_Children:
   - {fileID: 1977518197}
   m_Father: {fileID: 1809922008}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -14221,9 +14222,9 @@ RectTransform:
   - {fileID: 167560829}
   - {fileID: 2004870186}
   - {fileID: 2127709133}
-  - {fileID: 263867246}
   - {fileID: 1530680374}
   - {fileID: 614313274}
+  - {fileID: 263867246}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14311,7 +14312,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -535, y: 380}
+  m_AnchoredPosition: {x: 344.50003, y: -100}
   m_SizeDelta: {x: 200, y: 103}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1838308175
@@ -14870,6 +14871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 823c1c111bf6ae241b0073223db45143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  handle: {fileID: 0}
   _slider: {fileID: 0}
 --- !u!114 &1927627640
 MonoBehaviour:
