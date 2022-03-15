@@ -28,7 +28,7 @@ public class PlayerKeyboardMovement : MonoBehaviour
     private bool playerCollides;
 
     //AudioSource variables
-    public AudioSource footstepsSFX;
+    [SerializeField] private AudioSource footstepsSFX;
 
     #endregion
 
