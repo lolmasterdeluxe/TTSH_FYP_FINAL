@@ -17,6 +17,7 @@ public class Chapteh : MonoBehaviour
     [SerializeField] private PauseMenu pauseMenu;
     [SerializeField] private ChargeBar chargeBar;
     [SerializeField] private float power;
+    private Animator playerAnim;
 
     private float glowDuration = 1f;
     public AudioSource onRingHitSource;
@@ -27,6 +28,7 @@ public class Chapteh : MonoBehaviour
         rbChapteh = GetComponent<Rigidbody2D>();
         ComboManager.Instance.e_comboBreak.AddListener(ChaptehGameManager.Instance.OnComboBreak);
         onRingHitSource.Stop();
+        playerAnim = playerSprite.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -85,7 +87,7 @@ public class Chapteh : MonoBehaviour
         if (!inPlay)
         {
             inPlay = true;
-
+            chargeBar.SetHandleActive(true);
             // Gets the mouse input from Screen to World Point in Vector3
             Vector3 screenToWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             // Set the mouse position in Vector2
@@ -106,6 +108,7 @@ public class Chapteh : MonoBehaviour
         if (!inPlay)
         {
             inPlay = true;
+            chargeBar.SetHandleActive(true);
             // Force needed to launch the Chapteh
             Debug.Log("Power: " + force);
             rbChapteh.AddForce(force, ForceMode2D.Impulse);
@@ -133,6 +136,7 @@ public class Chapteh : MonoBehaviour
         if (other.CompareTag("Ground"))
         {
             inPlay = false;
+            chargeBar.SetHandleActive(false);
             ComboManager.Instance.BreakCombo();
         }
 
@@ -167,14 +171,18 @@ public class Chapteh : MonoBehaviour
             finalVelocity = force * m_dir;
             finalVelocity.Set(Mathf.Clamp(finalVelocity.x, -7.5f, 7.5f), finalVelocity.y);
             rbChapteh.velocity = finalVelocity;
+            playerAnim.SetTrigger("PlayerKick");
         }
         if (inPlay && (other.gameObject.CompareTag("Boundary")))
         {
             Vector2 Normal = other.contacts[0].normal;
             Vector3 m_dir = Vector2.Reflect(rbChapteh.velocity, Normal).normalized;
-            m_dir.x = Random.Range(-1f, -0.5f);
+            if (Normal.x == -1.0f)
+                m_dir.x = Random.Range(-1f, -0.5f);
+            else if (Normal.x == 1.0f)
+                m_dir.x = Random.Range(-1f, -0.5f);
             m_dir.y = 0.5f;
-            rbChapteh.velocity = force / 5 * m_dir;
+            rbChapteh.velocity = force / 3 * m_dir;
             //Debug.Log("Normal: " + other.contacts[0].normal);
         }
         //Debug.Log("Collided object: " + other.gameObject.name);
