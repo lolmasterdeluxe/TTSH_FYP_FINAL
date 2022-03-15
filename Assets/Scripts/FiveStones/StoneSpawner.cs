@@ -111,7 +111,7 @@ public class StoneSpawner : MonoBehaviour
         for (int i = 0; i < spawnPointList.Count; i++)
         {
             //GameObject spawnedStone = Instantiate(stonePrefab, spawnPointList[i].position, Quaternion.identity);
-            spawnedStone = ObjectPooling.SharedInstance.GetPooledObject();
+            spawnedStone = ObjectPooling.SharedInstance.GetPooledObject("Stone");
             if (spawnedStone != null)
             {
                 spawnedStone.SetActive(true);
@@ -135,7 +135,7 @@ public class StoneSpawner : MonoBehaviour
         for (int i = 0; i < spawnPointList.Count; i++)
         {
             //GameObject spawnedStone = Instantiate(stonePrefab, spawnPointList[i].position, Quaternion.identity);
-            spawnedStone = ObjectPooling.SharedInstance.GetPooledObject();
+            spawnedStone = ObjectPooling.SharedInstance.GetPooledObject("Stone");
             if (spawnedStone != null)
             {
                 spawnedStone.SetActive(true);
@@ -159,7 +159,7 @@ public class StoneSpawner : MonoBehaviour
         for (int i = 0; i < spawnPointList.Count; i++)
         {
             //GameObject spawnedStone = Instantiate(stonePrefab, spawnPointList[i].position, Quaternion.identity);
-            spawnedStone = ObjectPooling.SharedInstance.GetPooledObject();
+            spawnedStone = ObjectPooling.SharedInstance.GetPooledObject("Stone");
             if (spawnedStone != null)
             {
                 spawnedStone.SetActive(true);
@@ -183,7 +183,7 @@ public class StoneSpawner : MonoBehaviour
         for (int i = 0; i < spawnPointList.Count; i++)
         {
             //GameObject spawnedStone = Instantiate(stonePrefab, spawnPointList[i].position, Quaternion.identity);
-            spawnedStone = ObjectPooling.SharedInstance.GetPooledObject();
+            spawnedStone = ObjectPooling.SharedInstance.GetPooledObject("Stone");
             if (spawnedStone != null)
             {
                 spawnedStone.SetActive(true);
@@ -218,7 +218,7 @@ public class StoneSpawner : MonoBehaviour
             usedSpawnPointList.Add(randomPoint);
 
             //GameObject spawnedStone = Instantiate(stonePrefab, randomPoint.position, randomPoint.rotation);
-            spawnedStone = ObjectPooling.SharedInstance.GetPooledObject();
+            spawnedStone = ObjectPooling.SharedInstance.GetPooledObject("Stone");
             if (spawnedStone != null)
             {
                 spawnedStone.SetActive(true);

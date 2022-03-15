@@ -205,7 +205,7 @@ public class SPS_ObjectManager : MonoBehaviour
         // new Vector3(objectStartPosition.transform.position.x, 
         // objectStartPosition.transform.position.y,
         // objectStartPosition.transform.position.z), objectStartPosition.transform.rotation);
-        g_objectInstance = ObjectPooling.SharedInstance.GetPooledObject();
+        g_objectInstance = ObjectPooling.SharedInstance.GetPooledObject("EnemyTag");
         if (g_objectInstance != null)
         {
             //Debug.Log("not running");
@@ -241,7 +241,7 @@ public class SPS_ObjectManager : MonoBehaviour
             //new Vector3(objectStartPosition.transform.position.x + val * 4.5f, 
             //objectStartPosition.transform.position.y, 
             //objectStartPosition.transform.position.z), objectStartPosition.transform.rotation);
-            g_objectInstance = ObjectPooling.SharedInstance.GetPooledObject();
+            g_objectInstance = ObjectPooling.SharedInstance.GetPooledObject("EnemyTag");
             if (g_objectInstance != null)
             {
                 //Debug.Log("help");

@@ -23,6 +23,7 @@ public class SpawnRings : MonoBehaviour
     void Start()
     {
         redringRadiusX = redRingPrefab.GetComponent<Collider2D>().bounds.extents.x;
+        //redringRadiusX = ObjectPooling.SharedInstance.GetPooledObject("RedRing").GetComponent<Collider2D>().bounds.extents.x;
         yellowringRadiusX = yellowRingPrefab.GetComponent<Collider2D>().bounds.extents.x;
         greenringRadiusX = greenRingPrefab.GetComponent<Collider2D>().bounds.extents.x;
 
@@ -66,17 +67,29 @@ public class SpawnRings : MonoBehaviour
                 switch (randOption)
                 {
                     case 0:
-                        temp = Instantiate(redRingPrefab, spawnPos, Quaternion.identity);
+                        //temp = Instantiate(redRingPrefab, spawnPos, Quaternion.identity);
+                        temp = ObjectPooling.SharedInstance.GetPooledObject("RedRing");
+                        temp.transform.position = spawnPos;
+                        temp.transform.rotation = Quaternion.identity;
+                        temp.SetActive(true);
                         gameObjectRings = temp;
                         spawnedRings.Add(temp);
                         break;
                     case 1:
-                        temp = Instantiate(yellowRingPrefab, spawnPos, Quaternion.identity);
+                        //temp = Instantiate(yellowRingPrefab, spawnPos, Quaternion.identity);
+                        temp = ObjectPooling.SharedInstance.GetPooledObject("YellowRing");
+                        temp.transform.position = spawnPos;
+                        temp.transform.rotation = Quaternion.identity;
+                        temp.SetActive(true);
                         gameObjectRings = temp;
                         spawnedRings.Add(temp);
                         break;
                     case 2:
-                        temp = Instantiate(greenRingPrefab, spawnPos, Quaternion.identity);
+                        //temp = Instantiate(greenRingPrefab, spawnPos, Quaternion.identity);
+                        temp = ObjectPooling.SharedInstance.GetPooledObject("GreenRing");
+                        temp.transform.position = spawnPos;
+                        temp.transform.rotation = Quaternion.identity;
+                        temp.SetActive(true);
                         gameObjectRings = temp;
                         spawnedRings.Add(temp);
                         break;
@@ -127,17 +140,29 @@ public class SpawnRings : MonoBehaviour
                     switch (randOption)
                     {
                         case 0:
-                            temp = Instantiate(redRingPrefab, spawnPos, Quaternion.identity);
+                            //temp = Instantiate(redRingPrefab, spawnPos, Quaternion.identity);
+                            temp = ObjectPooling.SharedInstance.GetPooledObject("RedRing");
+                            temp.transform.position = spawnPos;
+                            temp.transform.rotation = Quaternion.identity;
+                            temp.SetActive(true);
                             gameObjectRings = temp;
                             spawnedRings.Add(temp);
                             break;
                         case 1:
-                            temp = Instantiate(yellowRingPrefab, spawnPos, Quaternion.identity);
+                            //temp = Instantiate(yellowRingPrefab, spawnPos, Quaternion.identity);
+                            temp = ObjectPooling.SharedInstance.GetPooledObject("YellowRing");
+                            temp.transform.position = spawnPos;
+                            temp.transform.rotation = Quaternion.identity;
+                            temp.SetActive(true);
                             gameObjectRings = temp;
                             spawnedRings.Add(temp);
                             break;
                         case 2:
-                            temp = Instantiate(greenRingPrefab, spawnPos, Quaternion.identity);
+                            //temp = Instantiate(greenRingPrefab, spawnPos, Quaternion.identity);
+                            temp = ObjectPooling.SharedInstance.GetPooledObject("GreenRing");
+                            temp.transform.position = spawnPos;
+                            temp.transform.rotation = Quaternion.identity;
+                            temp.SetActive(true);
                             gameObjectRings = temp;
                             spawnedRings.Add(temp);
                             break;
