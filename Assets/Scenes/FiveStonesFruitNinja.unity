@@ -3715,8 +3715,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef74029ed217d5542a5aa3c86a50039f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToPool: {fileID: 4640628553649700418, guid: f43148e37d990404bab31067be89b323, type: 3}
-  amountToPool: 15
+  itemToPool:
+  - amountToPool: 18
+    objectToPool: {fileID: 4640628553649700418, guid: f43148e37d990404bab31067be89b323, type: 3}
+    shouldExpand: 0
 --- !u!1 &1009653779
 GameObject:
   m_ObjectHideFlags: 0
