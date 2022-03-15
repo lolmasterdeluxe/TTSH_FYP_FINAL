@@ -12,7 +12,7 @@ public class Hand : MonoBehaviour
     Camera cam;
 
     public float velocity;
-    public float cuttingVelocityThreshold = 0.0000000001f;
+    public float cuttingVelocityThreshold = 0.0001f;
     public Vector2 prevPosition;
 
     public Sprite closedHand;

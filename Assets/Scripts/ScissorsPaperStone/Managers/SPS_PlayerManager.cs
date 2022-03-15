@@ -46,7 +46,7 @@ public class SPS_PlayerManager : MonoBehaviour
     Vector3 v_playerOriginalPosition;
 
     //variables involving player attacking
-    bool b_playerAttacked;
+    bool b_playerAttacked, b_playerAttacking;
     float f_playerAttackLifetime;
 
     //variables involving player stunned
@@ -78,6 +78,7 @@ public class SPS_PlayerManager : MonoBehaviour
 
         //set boolean flags to be FALSE on start
         b_playerJumped = false;
+        b_playerAttacking = false;
 
         //set collider box reference HERE
         collider_player = GetComponent<BoxCollider2D>();
@@ -145,7 +146,7 @@ public class SPS_PlayerManager : MonoBehaviour
             //set the player's position higher
             this.gameObject.transform.DOMove(v_finalJumpPosition, 0.25f);
 
-            if (f_playerJumpLifetime >= 0.25f)
+            if (f_playerJumpLifetime >= 0.5f)
             {
                 //reset the player's position back to the original
                 this.gameObject.transform.DOMove(v_playerOriginalPosition, 0.25f);
@@ -185,30 +186,16 @@ public class SPS_PlayerManager : MonoBehaviour
         #region Key Button Actions
 
         if (Input.GetKeyDown(KeyCode.A))
-        {
             PlayerChoosesScissors();
-            g_PlayerActionSprite.transform.localPosition = new Vector3(0.5f, -0.25f, 0f);
-            g_PlayerActionSprite.transform.localScale = new Vector3(2f, 2f, 2f);
-        }
 
         if (Input.GetKeyDown(KeyCode.S))
-        {
             PlayerChoosesPaper();
-            g_PlayerActionSprite.transform.localPosition = new Vector3(1.5f, 0.75f, 0f);
-            g_PlayerActionSprite.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-        }
 
         if (Input.GetKeyDown(KeyCode.D))
-        {
             PlayerChoosesStone();
-            g_PlayerActionSprite.transform.localPosition = new Vector3(0.03f, 0f, 0f);
-            g_PlayerActionSprite.transform.localScale = new Vector3(1.75f, 1.75f, 1.75f);
-        }
 
         if (Input.GetKeyDown(KeyCode.Space))
-        {
             PlayerJumps();
-        }
 
         #endregion
     }
@@ -221,36 +208,45 @@ public class SPS_PlayerManager : MonoBehaviour
     {
         //set the enum
         player_choice = PlayerChoice.PLAYER_SCISSOR;
+        g_PlayerActionSprite.transform.localPosition = new Vector3(0.5f, -0.25f, 0f);
+        g_PlayerActionSprite.transform.localScale = new Vector3(2f, 2f, 2f);
         //set the booleans on ACs
         playerAC.SetBool("PlayerAttackingWithScissors", true);
         playeractionAC.SetBool("PlayerActionWithScissors", true);
         MoveBoxCollider();
         //play sounds HERE
         scissorsAtkSFX.Play();
+        b_playerAttacking = true;
     }
 
     public void PlayerChoosesPaper()
     {
         //set the enum
         player_choice = PlayerChoice.PLAYER_PAPER;
+        g_PlayerActionSprite.transform.localPosition = new Vector3(1.5f, 0.75f, 0f);
+        g_PlayerActionSprite.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         //set the booleans on ACs
         playerAC.SetBool("PlayerAttackingWithPaper", true);
         playeractionAC.SetBool("PlayerActionWithPaper", true);
         MoveBoxCollider();
         //play sounds HERE
         paperAtkSFX.Play();
+        b_playerAttacking = true;
     }
 
     public void PlayerChoosesStone()
     {
         //set the enum
         player_choice = PlayerChoice.PLAYER_STONE;
+        g_PlayerActionSprite.transform.localPosition = new Vector3(0.03f, 0f, 0f);
+        g_PlayerActionSprite.transform.localScale = new Vector3(1.75f, 1.75f, 1.75f);
         //set the booleans on ACs
         playerAC.SetBool("PlayerAttackingWithStone", true);
         playeractionAC.SetBool("PlayerActionWithStone", true);
         MoveBoxCollider();
         //play sounds HERE
         stoneAtkSFX.Play();
+        b_playerAttacking = true;
     }
 
     public void PlayerJumps()
@@ -260,6 +256,7 @@ public class SPS_PlayerManager : MonoBehaviour
         MoveBoxCollider();
         //play sounds HERE
         jumpSFX.Play();
+        b_playerAttacking = true;
     }
 
     public void MoveBoxCollider()
@@ -313,11 +310,11 @@ public class SPS_PlayerManager : MonoBehaviour
 
     #region Trigger Callbacks
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         //Debug.Log("Ah lim mee pok");
         //player is attacking HERE
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || (Input.GetKey(KeyCode.Space)))
+        if (b_playerAttacking)
         {
             if (other.gameObject.tag == "EnemyTag")
             {
@@ -486,8 +483,8 @@ public class SPS_PlayerManager : MonoBehaviour
 
                 }
             }
+            b_playerAttacking = false;
         }
-
         //player is hit/stunned/collecting powerups HERE
         else
         {
