@@ -9,8 +9,7 @@ public class PlayerTouchMovement : MonoBehaviour
 
     #region Variables
 
-    Rigidbody2D playerRB;
-    Animator playerAC;
+    private Rigidbody2D playerRB;
 
     [Tooltip("Reference to the Tutorial Screen Manager script")]
     [SerializeField] private TutorialScreenManager tutorialScreenmanagerInstance;
@@ -38,7 +37,6 @@ public class PlayerTouchMovement : MonoBehaviour
     {
         //get references HERE
         playerRB = GetComponent<Rigidbody2D>();
-        playerAC = GetComponent<Animator>();
 
         //set values HERE
         playerSpeed = 5f;
@@ -51,7 +49,6 @@ public class PlayerTouchMovement : MonoBehaviour
 
         //PlayerMovementFunction();
         TouchAndGo();
-        PlayerAnimationFunction();
     }
 
     private void FixedUpdate()
@@ -64,13 +61,6 @@ public class PlayerTouchMovement : MonoBehaviour
     #endregion
 
     #region Functions
-
-
-    public void PlayerAnimationFunction()
-    {
-        //add whatever animation-based code HERE
-        playerAC.SetFloat("PlayerSpeed", playerRB.velocity.sqrMagnitude);
-    }
 
     public void SetTouch(bool move)
     {

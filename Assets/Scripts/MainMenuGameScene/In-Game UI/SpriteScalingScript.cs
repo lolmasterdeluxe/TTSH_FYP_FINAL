@@ -93,7 +93,7 @@ public class SpriteScalingScript : MonoBehaviour
 
     public void PlayerAnimationFunction()
     {
-        if (playerMovement4.isMoving || playerMovement2.movementJoystick.joystickVec.y != 0 || playerMovement3.movement.sqrMagnitude > 1)
+        if (playerMovement2.movementJoystick.joystickVec.y != 0 || playerMovement3.movement.sqrMagnitude != 0 || playerMovement4.isMoving)
             playerAnim.SetBool("isRunning", true);
         else
             playerAnim.SetBool("isRunning", false);
