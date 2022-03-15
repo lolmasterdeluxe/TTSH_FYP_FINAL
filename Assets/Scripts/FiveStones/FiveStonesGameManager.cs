@@ -34,9 +34,12 @@ public class FiveStonesGameManager : MonoBehaviour
 
     public GameObject g_scoreText;
     public GameObject g_comboGroup;
+    public GameObject g_popupTextGroup;
     public GameObject g_gameTimeUp;
     public GameObject g_comboText;
+    public GameObject g_popupText;
     public GameObject g_comboExpiryBar;
+    public GameObject g_PopupExpiry;
     public GameObject g_timerText;
     public GameObject g_objectiveText;
     public Objective m_currentObjective;
@@ -81,6 +84,7 @@ public class FiveStonesGameManager : MonoBehaviour
         maxObjectiveReset = 5;
         this.difficultyMultiplier = difficultyMultiplier;
         TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 0f, 0f);
+        TweenManager.Instance.AnimateFade(g_popupTextGroup.GetComponent<CanvasGroup>(), 0f, 0f);
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 0f, 0f);
         GetComponent<StoneSpawner>().Configure(3, 5, 4, 6, 10, 15);
         StartCoroutine(GetComponent<StoneSpawner>().SpawnStoneLoop());
@@ -92,6 +96,7 @@ public class FiveStonesGameManager : MonoBehaviour
         TimerManager.Instance.e_TimerFinished.AddListener(OnGameEnd);
         ComboManager.Instance.e_comboAdded.AddListener(OnComboAdd);
         ComboManager.Instance.e_comboBreak.AddListener(OnComboBreak);
+        ComboManager.Instance.e_comboAdded.AddListener(OnPopUp);
     }
 
     // Update is called once per frame
@@ -146,12 +151,40 @@ public class FiveStonesGameManager : MonoBehaviour
         }
     }
 
+    public void changePopups()
+    {
+        int currcom = ComboManager.Instance.GetCurrentCombo();
+
+        if (currcom == 1)
+        {
+            g_popupText.GetComponent<TMP_Text>().text = "Nice";
+        }
+        else if (currcom == 2)
+        {
+            g_popupText.GetComponent<TMP_Text>().text = "Good";
+        }
+        else if (currcom == 3)
+        {
+            g_popupText.GetComponent<TMP_Text>().text = "Cool";
+        }
+        else if(currcom == 4)
+        {
+            g_popupText.GetComponent<TMP_Text>().text = "Awesome";
+        }
+        else if (currcom >= 5)
+        {
+            g_popupText.GetComponent<TMP_Text>().text = "Amazing!";
+        }
+    }
+
     void UpdateUI()
     {
         g_scoreText.GetComponent<TMP_Text>().text = ScoreManager.Instance.GetCurrentGameScore().ToString();
         g_timerText.GetComponent<TMP_Text>().text = TimerManager.Instance.GetFormattedRemainingTime();
         g_comboText.GetComponent<TMP_Text>().text = "Combo " + ComboManager.Instance.GetCurrentCombo() + "x";
+        changePopups();
         g_comboExpiryBar.GetComponent<Slider>().value = ComboManager.Instance.GetComboExpiryTimer() / ComboManager.Instance.GetComboExpiryTimerDefault();
+        g_PopupExpiry.GetComponent<Slider>().value = ComboManager.Instance.GetComboExpiryTimer() / ComboManager.Instance.GetComboExpiryTimerDefault();
     }
     public void OnStoneCaught(GameObject gameObject)
     {
@@ -198,11 +231,20 @@ public class FiveStonesGameManager : MonoBehaviour
         TweenManager.Instance.AnimateEnlargeText(g_comboText.transform, 1f, 0.25f);
     }
 
+    public void OnPopUp()
+    {
+        TweenManager.Instance.AnimateFade(g_popupTextGroup.GetComponent<CanvasGroup>(), 1f, 0.25f);
+        //TweenManager.Instance.AnimateEnlargeText(g_popupText.transform,1f,0.25f);
+    }
+
     public void OnComboBreak()
     {
         TweenManager.Instance.AnimateShake(g_comboText.transform, 2, 1f);
         TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 0f, 0.5f);
+        TweenManager.Instance.AnimateFade(g_popupTextGroup.GetComponent<CanvasGroup>(), 0, 0.5f);
     }
+
+    
 
     public static Objective GetRandomColouredObjective()
     {
