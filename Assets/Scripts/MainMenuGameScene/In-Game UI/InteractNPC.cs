@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class InteractNPC : MonoBehaviour
@@ -30,7 +31,7 @@ public class InteractNPC : MonoBehaviour
     void Start()
     {
         tutorialscreenmanagerInstance = TutorialScreenManager.instance;
-        interactPrefab.transform.GetComponent<SpriteRenderer>().DOFade(0f, 0f);
+        interactPrefab.transform.GetComponent<Image>().DOFade(0f, 0f);
     }
 
     // Update is called once per frame
@@ -53,37 +54,35 @@ public class InteractNPC : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameObject.Find("MainCharacter").GetComponent<PlayerKeyboardMovement>().SetRollbackPosition(new Vector2(transform.position.x, transform.position.y));
-
         switch (type)
         {
             case NPC_TYPE.SPS:
-                interactPrefab.transform.GetComponent<SpriteRenderer>().DOFade(1f, 1.25f);
+                interactPrefab.transform.GetComponent<Image>().DOFade(1f, 1.25f);
                 hoverSFX.Play();
                 if (Input.GetKeyDown(KeyCode.F))
                     tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.SPS);
                 break;
             case NPC_TYPE.FIVE_STONES:
-                interactPrefab.transform.GetComponent<SpriteRenderer>().DOFade(1f, 1.25f);
+                interactPrefab.transform.GetComponent<Image>().DOFade(1f, 1.25f);
                 hoverSFX.Play();
                 if (Input.GetKeyDown(KeyCode.F))
                 tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.FIVESTONES);
                 break;
             case NPC_TYPE.CHAPTEH:
-                interactPrefab.transform.GetComponent<SpriteRenderer>().DOFade(1f, 1.25f);
+                interactPrefab.transform.GetComponent<Image>().DOFade(1f, 1.25f);
                 hoverSFX.Play();
                 if (Input.GetKeyDown(KeyCode.F))
                 tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.CHAPTEH);
                 break;
             case NPC_TYPE.CUSTOMIZER:
-                interactPrefab.transform.GetComponent<SpriteRenderer>().DOFade(1f, 1.25f);
+                interactPrefab.transform.GetComponent<Image>().DOFade(1f, 1.25f);
                 hoverSFX.Play();
                 if (Input.GetKeyDown(KeyCode.F))
                 SceneManager.LoadScene("CustomizeScene");
                 break;
             case NPC_TYPE.LEADERBOARD:
                 // Recode this later on
-                interactPrefab.transform.GetComponent<SpriteRenderer>().DOFade(1f, 1.25f);
+                interactPrefab.transform.GetComponent<Image>().DOFade(1f, 1.25f);
                 hoverSFX.Play();
                 if (Input.GetKeyDown(KeyCode.F))
                 Resources.FindObjectsOfTypeAll<LeaderboardManager>()[0].gameObject.SetActive(true);
@@ -94,8 +93,6 @@ public class InteractNPC : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        GameObject.Find("MainCharacter").GetComponent<PlayerKeyboardMovement>().SetRollbackPosition(new Vector2(transform.position.x, transform.position.y));
-
         switch (type)
         {
             case NPC_TYPE.SPS:
@@ -147,19 +144,19 @@ public class InteractNPC : MonoBehaviour
         switch (type)
         {
             case NPC_TYPE.SPS:
-                interactPrefab.transform.GetComponent<SpriteRenderer>().DOFade(0f, .75f);
+                interactPrefab.transform.GetComponent<Image>().DOFade(0f, .75f);
                 break;
             case NPC_TYPE.FIVE_STONES:
-                interactPrefab.transform.GetComponent<SpriteRenderer>().DOFade(0f, .75f);
+                interactPrefab.transform.GetComponent<Image>().DOFade(0f, .75f);
                 break;
             case NPC_TYPE.CHAPTEH:
-                interactPrefab.transform.GetComponent<SpriteRenderer>().DOFade(0f, .75f);
+                interactPrefab.transform.GetComponent<Image>().DOFade(0f, .75f);
                 break;
             case NPC_TYPE.CUSTOMIZER:
-                interactPrefab.transform.GetComponent<SpriteRenderer>().DOFade(0f, .75f);
+                interactPrefab.transform.GetComponent<Image>().DOFade(0f, .75f);
                 break;
             case NPC_TYPE.LEADERBOARD:
-                interactPrefab.transform.GetComponent<SpriteRenderer>().DOFade(0f, .75f);
+                interactPrefab.transform.GetComponent<Image>().DOFade(0f, .75f);
                 break;
         }
     }

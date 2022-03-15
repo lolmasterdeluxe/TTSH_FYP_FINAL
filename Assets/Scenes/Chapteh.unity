@@ -491,7 +491,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91760436}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.07000191, y: 4.2799993, z: -9.85}
+  m_LocalPosition: {x: 0.06999809, y: 4.2799993, z: -9.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1819576642}
@@ -13870,7 +13870,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!225 &1779048811
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -15085,6 +15085,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1959430492}
   - component: {fileID: 1959430491}
+  - component: {fileID: 1959430493}
   m_Layer: 0
   m_Name: Rings Spawner
   m_TagString: Untagged
@@ -15127,6 +15128,28 @@ Transform:
   m_Father: {fileID: 124484281}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1959430493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959430490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef74029ed217d5542a5aa3c86a50039f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemToPool:
+  - amountToPool: 15
+    objectToPool: {fileID: 5908752026035912882, guid: 320d1ecd6ec434f4983103691ecb724a, type: 3}
+    shouldExpand: 0
+  - amountToPool: 15
+    objectToPool: {fileID: 4782968837972072770, guid: 344ec652e47d61244b63d0a1202df8e5, type: 3}
+    shouldExpand: 0
+  - amountToPool: 15
+    objectToPool: {fileID: 7029903732878969310, guid: e462322c91fe12146851a56f6f8bdd05, type: 3}
+    shouldExpand: 0
 --- !u!1 &1961622178
 GameObject:
   m_ObjectHideFlags: 0

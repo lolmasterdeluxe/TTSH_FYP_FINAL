@@ -8,7 +8,7 @@ public class PlayerDpadMovement : MonoBehaviour
 
     #region Variables
 
-    private Rigidbody2D rb;
+    private Rigidbody2D rb; 
 
     [Tooltip("Reference to the Tutorial Screen Manager script")]
     [SerializeField] private TutorialScreenManager tutorialScreenmanagerInstance;
@@ -31,7 +31,6 @@ public class PlayerDpadMovement : MonoBehaviour
     {
         //get references HERE
         rb = GetComponent<Rigidbody2D>();
-
 
         //set values HERE
         playerSpeed = 5f;
@@ -87,7 +86,6 @@ public class PlayerDpadMovement : MonoBehaviour
             Down.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
         }
     }
-
     public void OnPointerDown(string dir)
     {
         PlayerMovementFunction(dir);

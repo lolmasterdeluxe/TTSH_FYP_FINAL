@@ -9,8 +9,7 @@ public class PlayerTouchMovement : MonoBehaviour
 
     #region Variables
 
-    Rigidbody2D playerRB;
-    Animator playerAC;
+    private Rigidbody2D playerRB;
 
     [Tooltip("Reference to the Tutorial Screen Manager script")]
     [SerializeField] private TutorialScreenManager tutorialScreenmanagerInstance;
@@ -19,13 +18,16 @@ public class PlayerTouchMovement : MonoBehaviour
 
     //for mobile touch
     [Tooltip("Touch Position of Finger")]
-    public Vector3 touchPosition, whereToMove;
-    private Touch touch;
+    public Vector3 touchPosition, whereToMove, location;
     [HideInInspector] public bool isMoving = false;
+    public bool CanTouch = true;
 
     float previousDistanceToTouchPos, currentDistanceToTouchPos;
 
     public bool b_playerisRight = true;
+
+    //AudioSource variables
+    [SerializeField] private AudioSource footstepsSFX;
 
     #endregion
 
@@ -35,7 +37,6 @@ public class PlayerTouchMovement : MonoBehaviour
     {
         //get references HERE
         playerRB = GetComponent<Rigidbody2D>();
-        playerAC = GetComponent<Animator>();
 
         //set values HERE
         playerSpeed = 5f;
@@ -43,12 +44,11 @@ public class PlayerTouchMovement : MonoBehaviour
     
     private void Update()
     {
-        if (tutorialScreenmanagerInstance.b_tutorialScreenOpen == true)
+        if (tutorialScreenmanagerInstance.b_tutorialScreenOpen)
             return;
 
         //PlayerMovementFunction();
         TouchAndGo();
-        PlayerAnimationFunction();
     }
 
     private void FixedUpdate()
@@ -62,44 +62,33 @@ public class PlayerTouchMovement : MonoBehaviour
 
     #region Functions
 
-
-    public void PlayerAnimationFunction()
+    public void SetTouch(bool move)
     {
-        //add whatever animation-based code HERE
-        playerAC.SetFloat("PlayerSpeed", playerRB.velocity.sqrMagnitude);
+        CanTouch = move;
     }
 
     //these functions for mobile
     private void TouchAndGo()
     {
+        touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        touchPosition.z = 1;
+        touchPosition.y += 1.5f;
+        if ((touchPosition.x < -19.2 || touchPosition.x > 19 || touchPosition.y > -1.6 || touchPosition.y < -4 || !CanTouch) && !isMoving)
+            return;
+
         if (isMoving)
-            currentDistanceToTouchPos = (touchPosition - transform.position).magnitude;
-
-       /* if (Input.touchCount > 0)
         {
-            touch = Input.GetTouch(0);
-
-            if (touch.phase == TouchPhase.Began)
-            {
-                previousDistanceToTouchPos = 0;
-                currentDistanceToTouchPos = 0;
-                isMoving = true;
-                touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                touchPosition.z = 0;
-                whereToMove = (touchPosition - transform.position).normalized;
-                playerRB.velocity = new Vector2(whereToMove.x * playerSpeed, whereToMove.y * playerSpeed);
-            }
-        }*/
+            currentDistanceToTouchPos = (location - transform.position).magnitude;
+            footstepsSFX.volume = 0.75f;
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
             previousDistanceToTouchPos = 0;
             currentDistanceToTouchPos = 0;
             isMoving = true;
-            touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            touchPosition.z = 1;
-            touchPosition.y += 1.5f;
             whereToMove = (touchPosition - transform.position).normalized;
+            location = touchPosition;
             if (touchPosition.x > transform.position.x)
                 b_playerisRight = true;
             else
@@ -110,10 +99,11 @@ public class PlayerTouchMovement : MonoBehaviour
         {
             isMoving = false;
             playerRB.velocity = Vector2.zero;
+            footstepsSFX.volume = 0.0f;
         }
 
         if (isMoving)
-            previousDistanceToTouchPos = (touchPosition - transform.position).magnitude;
+            previousDistanceToTouchPos = (location - transform.position).magnitude;
     }
     #endregion
 }

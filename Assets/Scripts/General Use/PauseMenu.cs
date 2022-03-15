@@ -53,9 +53,12 @@ public class PauseMenu : MonoBehaviour
         // Pause sound
         pauseMenuSound[1].Play();
 
-        FiveStonesGameManager.Instance.audioSources[0].Pause();
-        ChaptehGameManager.Instance.audioSources[0].Pause();
-        SPS_UIManager.Instance.bgmSource.Pause();
+        if (SceneManager.GetActiveScene().name != "MainMenuGameScene")
+        {
+            FiveStonesGameManager.Instance.audioSources[0].Pause();
+            ChaptehGameManager.Instance.audioSources[0].Pause();
+            SPS_UIManager.Instance.bgmSource.Pause();
+        }   
     }
 
     public void ResumeGame()
@@ -69,9 +72,12 @@ public class PauseMenu : MonoBehaviour
         // Button Press sound
         pauseMenuSound[0].Play();
 
-        FiveStonesGameManager.Instance.audioSources[0].UnPause();
-        ChaptehGameManager.Instance.audioSources[0].UnPause();
-        SPS_UIManager.Instance.bgmSource.UnPause();
+        if (SceneManager.GetActiveScene().name != "MainMenuGameScene")
+        {
+            FiveStonesGameManager.Instance.audioSources[0].UnPause();
+            ChaptehGameManager.Instance.audioSources[0].UnPause();
+            SPS_UIManager.Instance.bgmSource.UnPause();
+        }
     }
 
     public void LoadMainMenu()
