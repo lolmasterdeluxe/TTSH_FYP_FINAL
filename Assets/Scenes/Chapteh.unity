@@ -11715,6 +11715,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1809922008}
     m_Modifications:
+    - target: {fileID: 3980006151225649210, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3980006151225649210, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1996898939}
+    - target: {fileID: 3980006151225649210, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PauseGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 3980006151225649210, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PauseMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3980006151225649210, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3980006151387492472, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -12625,6 +12645,7 @@ MonoBehaviour:
   playerMove: {fileID: 6789692}
   chargeBar: {fileID: 736962035}
   dPad: {fileID: 1530680373}
+  PauseManager: {fileID: 1996898939}
   force: {x: 0, y: 0}
   audioSources:
   - {fileID: 1505541062}
