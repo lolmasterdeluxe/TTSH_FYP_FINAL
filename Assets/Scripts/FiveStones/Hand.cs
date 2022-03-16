@@ -90,7 +90,7 @@ public class Hand : MonoBehaviour
     {
         isCatching = false;
         handSpriteRenderer.sprite = openedHand;
-        Destroy(currentHandTrail);
+        //Destroy(currentHandTrail);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
