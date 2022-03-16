@@ -40,13 +40,13 @@ public class SPS_PlayerManager : MonoBehaviour
     //variables involving player jumping
     BoxCollider2D collider_player;
     Vector2 v_originalcolliderOffset;
-    bool b_playerJumped;
+    bool b_playerJumped, b_playerFall;
     float f_playerJumpLifetime;
     Vector3 v_finalJumpPosition;
     Vector3 v_playerOriginalPosition;
 
     //variables involving player attacking
-    bool b_playerAttacked, b_playerAttacking;
+    bool b_playerAttacked, b_playerMakesChoice;
     float f_playerAttackLifetime;
 
     //variables involving player stunned
@@ -78,7 +78,8 @@ public class SPS_PlayerManager : MonoBehaviour
 
         //set boolean flags to be FALSE on start
         b_playerJumped = false;
-        b_playerAttacking = false;
+        b_playerFall = false;
+        b_playerMakesChoice = false;
 
         //set collider box reference HERE
         collider_player = GetComponent<BoxCollider2D>();
@@ -139,31 +140,42 @@ public class SPS_PlayerManager : MonoBehaviour
         }
 
         //for jumping
-        if (b_playerJumped == true)
+        if (b_playerJumped)
         {
             f_playerJumpLifetime += Time.deltaTime;
 
             //set the player's position higher
-            this.gameObject.transform.DOMove(v_finalJumpPosition, 0.25f);
+            gameObject.transform.DOMove(v_finalJumpPosition, 0.25f);
 
-            if (f_playerJumpLifetime >= 0.5f)
+            if (f_playerJumpLifetime >= 0.75f)
             {
-                //reset the player's position back to the original
-                this.gameObject.transform.DOMove(v_playerOriginalPosition, 0.25f);
+                //reset the boolean flag
+                b_playerJumped = false;
+                b_playerFall = true;
+                f_playerJumpLifetime = 0;
+                Debug.Log("Is player jumping: " + b_playerJumped);
+            }
 
+        }
+        else if (b_playerFall)
+        {
+            f_playerJumpLifetime += Time.deltaTime;
+            //reset the player's position back to the original
+            gameObject.transform.DOMove(v_playerOriginalPosition, 0.25f);
+
+            if (f_playerJumpLifetime >= 0.25f)
+            {
                 //reset the animations
                 ResetAnimationsAndChoice();
 
                 //reset collider position
                 MoveBoxCollider();
 
-                //reset the boolean flag
-                b_playerJumped = false;
-
                 //reset the jump timer lifetime
                 f_playerJumpLifetime = 0;
-            }
 
+                b_playerFall = false;
+            }
         }
 
         //for stunned
@@ -216,7 +228,7 @@ public class SPS_PlayerManager : MonoBehaviour
         MoveBoxCollider();
         //play sounds HERE
         scissorsAtkSFX.Play();
-        b_playerAttacking = true;
+        b_playerMakesChoice = true;
     }
 
     public void PlayerChoosesPaper()
@@ -231,7 +243,7 @@ public class SPS_PlayerManager : MonoBehaviour
         MoveBoxCollider();
         //play sounds HERE
         paperAtkSFX.Play();
-        b_playerAttacking = true;
+        b_playerMakesChoice = true;
     }
 
     public void PlayerChoosesStone()
@@ -246,7 +258,7 @@ public class SPS_PlayerManager : MonoBehaviour
         MoveBoxCollider();
         //play sounds HERE
         stoneAtkSFX.Play();
-        b_playerAttacking = true;
+        b_playerMakesChoice = true;
     }
 
     public void PlayerJumps()
@@ -256,7 +268,7 @@ public class SPS_PlayerManager : MonoBehaviour
         MoveBoxCollider();
         //play sounds HERE
         jumpSFX.Play();
-        b_playerAttacking = true;
+        b_playerMakesChoice = true;
     }
 
     public void MoveBoxCollider()
@@ -271,7 +283,7 @@ public class SPS_PlayerManager : MonoBehaviour
             b_playerAttacked = true;
         }
 
-        if (player_choice == PlayerChoice.PLAYER_JUMP)
+        if (player_choice == PlayerChoice.PLAYER_JUMP && !b_playerFall)
         {
             //we want to shift the collider box UP
             collider_player.offset = collider_player.offset = new Vector2(0f, 1f);
@@ -312,9 +324,8 @@ public class SPS_PlayerManager : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        //Debug.Log("Ah lim mee pok");
         //player is attacking HERE
-        if (b_playerAttacking)
+        if (b_playerMakesChoice)
         {
             if (other.gameObject.tag == "EnemyTag")
             {
@@ -483,7 +494,7 @@ public class SPS_PlayerManager : MonoBehaviour
 
                 }
             }
-            b_playerAttacking = false;
+            b_playerMakesChoice = false;
         }
         //player is hit/stunned/collecting powerups HERE
         else
