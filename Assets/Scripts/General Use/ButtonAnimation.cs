@@ -8,9 +8,9 @@ public class ButtonAnimation : MonoBehaviour
     {
         RectTransform button = GetComponent<RectTransform>();
         if (animate)
-            button.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+            button.localScale += new Vector3(0.25f, 0.25f, 0.25f);
         else
-            button.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
+            button.localScale -= new Vector3(0.25f, 0.25f, 0.25f);
         Debug.Log("Animate bool: " + animate);
     }
 
