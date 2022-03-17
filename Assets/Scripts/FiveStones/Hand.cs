@@ -5,7 +5,7 @@ using UnityEngine;
 public class Hand : MonoBehaviour
 {
     public GameObject handTrailPrefab;
-    public GameObject currentHandTrail;
+    private GameObject currentHandTrail;
 
     Rigidbody2D rigidBody;
     CircleCollider2D circleCollider;
@@ -17,7 +17,7 @@ public class Hand : MonoBehaviour
 
     public Sprite closedHand;
     public Sprite openedHand;
-    public SpriteRenderer handSpriteRenderer; 
+    private SpriteRenderer handSpriteRenderer; 
 
     bool isCatching = false;
 

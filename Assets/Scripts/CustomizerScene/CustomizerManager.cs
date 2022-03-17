@@ -32,7 +32,6 @@ public class CustomizerManager : MonoBehaviour
     [SerializeField]
     public List<Customizable> m_colorPool = new List<Customizable>();
 
-    private string m_name = string.Empty;
     public int m_hatId = 0;
     public int m_faceId = 0;
     public int m_colorId = 0;
@@ -41,12 +40,6 @@ public class CustomizerManager : MonoBehaviour
     public SpriteRenderer m_eyeSprite;
     public SpriteRenderer m_colorSprite;
 
-    public Button hatPreviousButton;
-    public Button hatNextButton;
-    public Button facePreviousButton;
-    public Button faceNextButton;
-    public Button colorPreviousButton;
-    public Button colorNextButton;
     public Button nextSceneButton;
     public TMP_InputField inputNameField;
 
@@ -75,12 +68,12 @@ public class CustomizerManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (SceneManager.GetActiveScene().name == "MainMenuGameScene" || SceneManager.GetActiveScene().name == "CustomizeScene")
         {
@@ -139,7 +132,7 @@ public class CustomizerManager : MonoBehaviour
         }
     }
 
-    void UpdateCharacterName()
+    public void UpdateCharacterName()
     {
         if (inputNameField.text == "")
         {
@@ -175,7 +168,7 @@ public class CustomizerManager : MonoBehaviour
         ScoreManager.Instance.m_currentUsername = inputNameField.text;
     }
 
-    void UpdateCosmetics()
+    private void UpdateCosmetics()
     {
         Customizable hatCustomizable = m_hatPool.ElementAtOrDefault(m_hatId);
         Customizable faceCustomizable = m_facePool.ElementAtOrDefault(m_faceId);
@@ -199,56 +192,14 @@ public class CustomizerManager : MonoBehaviour
 
         if (colorCustomizable != null && colorCustomizable.m_itemType == ItemType.COLOR)
         {
-            GameObject.Find("MainCharacter").GetComponent<SpriteRenderer>().color = colorCustomizable.m_color;
+            m_colorSprite.color = colorCustomizable.m_color;
             m_colorSprite.sortingOrder = 3;
         }
 
     }
 
-    void UpdateButtonReferences()
+    private void UpdateButtonReferences()
     {
-        if (hatPreviousButton == null)
-            hatPreviousButton = GameObject.Find("HatPrevious").GetComponent<Button>();
-
-        if (hatNextButton == null)
-            hatNextButton = GameObject.Find("HatNext").GetComponent<Button>();
-
-        if (facePreviousButton == null)
-            facePreviousButton = GameObject.Find("FacePrevious").GetComponent<Button>();
-
-        if (faceNextButton == null)
-            faceNextButton = GameObject.Find("FaceNext").GetComponent<Button>();
-
-        if (colorPreviousButton == null)
-            colorPreviousButton = GameObject.Find("ColourPrevious").GetComponent<Button>();
-
-        if (colorNextButton == null)
-            colorNextButton = GameObject.Find("ColourNext").GetComponent<Button>();
-
-        if (nextSceneButton == null)
-            nextSceneButton = GameObject.Find("MainGameButton").GetComponent<Button>();
-
-        if (inputNameField == null)
-            inputNameField = GameObject.Find("NameInput").GetComponent<TMP_InputField>();
-
-        hatPreviousButton.onClick.RemoveAllListeners();
-        hatPreviousButton.onClick.AddListener(delegate { ScrollHat(false); });
-
-        hatNextButton.onClick.RemoveAllListeners();
-        hatNextButton.onClick.AddListener(delegate { ScrollHat(true); });
-
-        facePreviousButton.onClick.RemoveAllListeners();
-        facePreviousButton.onClick.AddListener(delegate { ScrollFace(false); });
-
-        faceNextButton.onClick.RemoveAllListeners();
-        faceNextButton.onClick.AddListener(delegate { ScrollFace(true); });
-
-        colorPreviousButton.onClick.RemoveAllListeners();
-        colorPreviousButton.onClick.AddListener(delegate { ScrollColor(false); });
-
-        colorNextButton.onClick.RemoveAllListeners();
-        colorNextButton.onClick.AddListener(delegate { ScrollColor(true); });
-
         nextSceneButton.onClick.RemoveAllListeners();
         nextSceneButton.onClick.AddListener(delegate { EnterMainScene(); });
 
@@ -257,7 +208,7 @@ public class CustomizerManager : MonoBehaviour
     }
 
     // Find another way to re-reference when changing scenes, but this works for now
-    void UpdateSpriteReferences()
+    private void UpdateSpriteReferences()
     {
         if (m_hatSprite == null)
             m_hatSprite = GameObject.Find("HatSprite").GetComponent<SpriteRenderer>();
