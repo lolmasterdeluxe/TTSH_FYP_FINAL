@@ -96,7 +96,7 @@ public class Hand : MonoBehaviour
 
     private IEnumerator DestroyTrial()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         Destroy(currentHandTrail);
     }
 
