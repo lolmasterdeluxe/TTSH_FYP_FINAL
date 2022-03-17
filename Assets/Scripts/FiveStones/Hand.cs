@@ -84,13 +84,20 @@ public class Hand : MonoBehaviour
         currentHandTrail = Instantiate(handTrailPrefab, transform);
         currentHandTrail.GetComponent<TrailRenderer>().Clear();
         handSpriteRenderer.sprite = closedHand;
+        
     }
 
     void StopCatching()
     {
         isCatching = false;
         handSpriteRenderer.sprite = openedHand;
-        //Destroy(currentHandTrail);
+        StartCoroutine(DestroyTrial());
+    }
+
+    private IEnumerator DestroyTrial()
+    {
+        yield return new WaitForSeconds(1);
+        Destroy(currentHandTrail);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
