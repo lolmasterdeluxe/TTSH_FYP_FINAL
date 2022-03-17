@@ -20,7 +20,7 @@ public class PlayerTouchMovement : MonoBehaviour
     [Tooltip("Touch Position of Finger")]
     public Vector3 touchPosition, whereToMove, location;
     [HideInInspector] public bool isMoving = false;
-    public bool CanTouch = true;
+    private bool CanTouch = true, isEnabled = true;
 
     float previousDistanceToTouchPos, currentDistanceToTouchPos;
 
@@ -66,6 +66,10 @@ public class PlayerTouchMovement : MonoBehaviour
     {
         CanTouch = move;
     }
+    public void SetEnabled(bool isTrue)
+    {
+        isEnabled = isTrue;
+    }
 
     //these functions for mobile
     private void TouchAndGo()
@@ -73,7 +77,7 @@ public class PlayerTouchMovement : MonoBehaviour
         touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         touchPosition.z = 1;
         touchPosition.y += 1.5f;
-        if ((touchPosition.x < -19.2 || touchPosition.x > 19 || touchPosition.y > -1.6 || touchPosition.y < -4 || !CanTouch) && !isMoving)
+        if ((touchPosition.x < -19.2 || touchPosition.x > 19 || touchPosition.y > -1.6 || touchPosition.y < -4 || !CanTouch || !isEnabled) && !isMoving)
             return;
 
         if (isMoving)
