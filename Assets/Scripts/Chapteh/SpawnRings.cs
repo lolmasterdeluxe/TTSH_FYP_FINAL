@@ -71,6 +71,7 @@ public class SpawnRings : MonoBehaviour
                         temp = ObjectPooling.SharedInstance.GetPooledObject("RedRing");
                         temp.transform.position = spawnPos;
                         temp.transform.rotation = Quaternion.identity;
+                        temp.GetComponent<Collider2D>().enabled = true;
                         temp.SetActive(true);
                         gameObjectRings = temp;
                         spawnedRings.Add(temp);
@@ -80,6 +81,7 @@ public class SpawnRings : MonoBehaviour
                         temp = ObjectPooling.SharedInstance.GetPooledObject("YellowRing");
                         temp.transform.position = spawnPos;
                         temp.transform.rotation = Quaternion.identity;
+                        temp.GetComponent<Collider2D>().enabled = true;
                         temp.SetActive(true);
                         gameObjectRings = temp;
                         spawnedRings.Add(temp);
@@ -89,6 +91,7 @@ public class SpawnRings : MonoBehaviour
                         temp = ObjectPooling.SharedInstance.GetPooledObject("GreenRing");
                         temp.transform.position = spawnPos;
                         temp.transform.rotation = Quaternion.identity;
+                        temp.GetComponent<Collider2D>().enabled = true;
                         temp.SetActive(true);
                         gameObjectRings = temp;
                         spawnedRings.Add(temp);
@@ -144,6 +147,7 @@ public class SpawnRings : MonoBehaviour
                             temp = ObjectPooling.SharedInstance.GetPooledObject("RedRing");
                             temp.transform.position = spawnPos;
                             temp.transform.rotation = Quaternion.identity;
+                            temp.GetComponent<Collider2D>().enabled = true;
                             temp.SetActive(true);
                             gameObjectRings = temp;
                             spawnedRings.Add(temp);
@@ -153,6 +157,7 @@ public class SpawnRings : MonoBehaviour
                             temp = ObjectPooling.SharedInstance.GetPooledObject("YellowRing");
                             temp.transform.position = spawnPos;
                             temp.transform.rotation = Quaternion.identity;
+                            temp.GetComponent<Collider2D>().enabled = true;
                             temp.SetActive(true);
                             gameObjectRings = temp;
                             spawnedRings.Add(temp);
@@ -162,6 +167,7 @@ public class SpawnRings : MonoBehaviour
                             temp = ObjectPooling.SharedInstance.GetPooledObject("GreenRing");
                             temp.transform.position = spawnPos;
                             temp.transform.rotation = Quaternion.identity;
+                            temp.GetComponent<Collider2D>().enabled = true;
                             temp.SetActive(true);
                             gameObjectRings = temp;
                             spawnedRings.Add(temp);
