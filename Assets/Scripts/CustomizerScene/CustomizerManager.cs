@@ -67,11 +67,6 @@ public class CustomizerManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-    }
-
     // Update is called once per frame
     private void Update()
     {

@@ -3711,8 +3711,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 300
-  m_fontSizeBase: 300
+  m_fontSize: 400
+  m_fontSizeBase: 400
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -12646,6 +12646,7 @@ MonoBehaviour:
   chargeBar: {fileID: 736962035}
   dPad: {fileID: 1530680373}
   PauseManager: {fileID: 1996898939}
+  playerAnim: {fileID: 6789691}
   force: {x: 0, y: 0}
   audioSources:
   - {fileID: 1505541062}

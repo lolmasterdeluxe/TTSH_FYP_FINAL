@@ -68,6 +68,8 @@ public class PlayerButtonMove : MonoBehaviour
     #region Functions
     public void PlayerMovementFunction(string dir)
     {
+        if (ChaptehGameManager.Instance.m_gameEnded)
+            return;
         //add whatever movement-based code HERE
         if (dir == "Left")
         {
@@ -142,7 +144,6 @@ public class PlayerButtonMove : MonoBehaviour
             if (Input.GetMouseButtonUp(0) && kickTime < 0)
             {
                 playerAnim.SetBool("PlayerRun", false);
-                playerAnim.SetTrigger("PlayerKick");
                 kickTime = 0.25f;
             }
         }
