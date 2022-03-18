@@ -15,6 +15,7 @@ public class PlayerTouchMovement : MonoBehaviour
     [SerializeField] private TutorialScreenManager tutorialScreenmanagerInstance;
 
     [SerializeField] private float playerSpeed;
+    [SerializeField] private Transform touchFeedback;
 
     //for mobile touch
     [Tooltip("Touch Position of Finger")]
@@ -88,11 +89,15 @@ public class PlayerTouchMovement : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            touchFeedback.gameObject.GetComponent<SpriteRenderer>().DORestart(false);
+            touchFeedback.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
             previousDistanceToTouchPos = 0;
             currentDistanceToTouchPos = 0;
             isMoving = true;
             whereToMove = (touchPosition - transform.position).normalized;
             location = touchPosition;
+            touchFeedback.position = new Vector3(touchPosition.x, touchPosition.y - 1.5f, touchPosition.z);
+            touchFeedback.gameObject.GetComponent<SpriteRenderer>().DOFade(0, 1.5f);
             if (touchPosition.x > transform.position.x)
                 b_playerisRight = true;
             else
