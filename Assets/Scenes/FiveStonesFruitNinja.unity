@@ -2527,10 +2527,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1639388495}
     m_Modifications:
-    - target: {fileID: 2913985091809142618, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
-      propertyPath: leaderboardPage
-      value: 
-      objectReference: {fileID: 1686607493}
     - target: {fileID: 2913985091809142621, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2618,34 +2614,6 @@ PrefabInstance:
     - target: {fileID: 2913985091809142622, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_Name
       value: Leaderboard
-      objectReference: {fileID: 0}
-    - target: {fileID: 2913985091809142622, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2913985092860399602, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2913985092860399602, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.304
-      objectReference: {fileID: 0}
-    - target: {fileID: 2913985092860399602, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.304
-      objectReference: {fileID: 0}
-    - target: {fileID: 2913985093047236487, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2913985093047236487, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7515607142861987860, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
@@ -6877,11 +6845,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfddaa604d44d164995c5d2ff0d1c180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1686607493 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7515607142861987860, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
-  m_PrefabInstance: {fileID: 687660439}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1691111987
 GameObject:
   m_ObjectHideFlags: 0
@@ -8347,7 +8310,7 @@ PrefabInstance:
       objectReference: {fileID: 277105197}
     - target: {fileID: 7399625304873426539, guid: ce8630f55e7d3c34a955d49684032f00, type: 3}
       propertyPath: FiveStoneTimer
-      value: 2
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 7399625304873426539, guid: ce8630f55e7d3c34a955d49684032f00, type: 3}
       propertyPath: panelCanvasGroup
