@@ -5,7 +5,7 @@ using UnityEngine;
 public class Hand : MonoBehaviour
 {
     public GameObject handTrailPrefab;
-    public GameObject currentHandTrail;
+    private GameObject currentHandTrail;
 
     Rigidbody2D rigidBody;
     CircleCollider2D circleCollider;
@@ -17,7 +17,7 @@ public class Hand : MonoBehaviour
 
     public Sprite closedHand;
     public Sprite openedHand;
-    public SpriteRenderer handSpriteRenderer; 
+    private SpriteRenderer handSpriteRenderer; 
 
     bool isCatching = false;
 
@@ -35,6 +35,9 @@ public class Hand : MonoBehaviour
 
         if (handSpriteRenderer == null)
             handSpriteRenderer = GetComponent<SpriteRenderer>();
+
+        currentHandTrail = Instantiate(handTrailPrefab, transform);
+        currentHandTrail.GetComponent<TrailRenderer>().Clear();
     }
 
     // Update is called once per frame
@@ -43,9 +46,15 @@ public class Hand : MonoBehaviour
         UpdateMouseMovement();
 
         if (Input.GetMouseButtonDown(0))
+        {
             StartCatching();
+        }   
         else if (Input.GetMouseButtonUp(0))
-            StopCatching();       
+        {
+            StopCatching();
+            
+        }
+               
     }
 
     void UpdateMouseMovement()
@@ -81,16 +90,22 @@ public class Hand : MonoBehaviour
     {
         FiveStonesGameManager.Instance.audioSources[3].Play();
         isCatching = true;
-        currentHandTrail = Instantiate(handTrailPrefab, transform);
-        currentHandTrail.GetComponent<TrailRenderer>().Clear();
+        
         handSpriteRenderer.sprite = closedHand;
+        //StopCoroutine(DestroyTrial());
     }
 
     void StopCatching()
     {
         isCatching = false;
         handSpriteRenderer.sprite = openedHand;
-        //Destroy(currentHandTrail);
+    }
+
+    private IEnumerator DestroyTrial()
+    {
+        yield return new WaitForSeconds(0.2f);
+        Destroy(currentHandTrail);
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

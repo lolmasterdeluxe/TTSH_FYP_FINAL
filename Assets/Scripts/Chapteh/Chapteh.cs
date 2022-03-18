@@ -180,7 +180,7 @@ public class Chapteh : MonoBehaviour
             if (Normal.x == -1.0f)
                 m_dir.x = Random.Range(-1f, -0.5f);
             else if (Normal.x == 1.0f)
-                m_dir.x = Random.Range(-1f, -0.5f);
+                m_dir.x = Random.Range(1f, 0.5f);
             m_dir.y = 0.5f;
             rbChapteh.velocity = force / 3 * m_dir;
             //Debug.Log("Normal: " + other.contacts[0].normal);

@@ -13,13 +13,6 @@ public class SplashScreen : MonoBehaviour
         ScoreManager.Instance.ResetUser();
         StartCoroutine(WaitFade());
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void Fade()
     {
         TweenManager.Instance.AnimateFade(_splashScreenGroup.GetComponent<CanvasGroup>(), 0f, 2f);
@@ -29,5 +22,6 @@ public class SplashScreen : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         Fade();
+        GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 }

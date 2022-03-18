@@ -12,6 +12,8 @@ public class DragNShoot : MonoBehaviour
     [SerializeField] private PlayerButtonMove playerMove;
     [SerializeField] private ChargeBar chargeBar;
     [SerializeField] private GameObject dPad;
+    [SerializeField] private PauseMenu PauseManager;
+    [SerializeField] private Animator playerAnim;
 
     [HideInInspector] public Vector2 force;
     public AudioSource[] audioSources;
@@ -29,7 +31,7 @@ public class DragNShoot : MonoBehaviour
 
     private void Update()
     {
-        if (!playerMove.isRunning && !chapteh.inPlay)
+        if (!playerMove.isRunning && !chapteh.inPlay && !PauseManager.isPaused)
             kickBuffer -= Time.deltaTime;
         else
             kickBuffer = 0.1f;
@@ -66,14 +68,23 @@ public class DragNShoot : MonoBehaviour
                 endPoint.z = 15;
 
                 InitStartPoint = true;
-                Debug.Log("Input offset" + inputOffset);
+                //Debug.Log("Input offset" + inputOffset);
+                playerAnim.SetTrigger("PlayerKick");
                 force = inputOffset * power;
-                Debug.Log("force " + force);
+                //Debug.Log("force " + force);
                 force.Set(Mathf.Clamp(force.x, minPower.x, maxPower.x), Mathf.Clamp(force.y, minPower.y, maxPower.y));
                 chapteh.Kick(-force);
                 audioSources[1].Play();
                 TrajectoryLine.EndLine();
             }
+        }
+        else if (!chapteh.inPlay)
+        {
+            dPad.SetActive(true);
+            force.Set(0, 0);
+            chargeBar.SetFillBar(4);
+            InitStartPoint = true;
+            TrajectoryLine.EndLine();
         }
     }
 }

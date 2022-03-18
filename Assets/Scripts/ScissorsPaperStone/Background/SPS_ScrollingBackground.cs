@@ -26,24 +26,29 @@ public class SPS_ScrollingBackground : MonoBehaviour
         parallexbackgroundmanagerInstance.componentContainer[0].GetComponent<Renderer>().material.mainTextureOffset
         += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * Time.deltaTime;
 
+        //ground 2
+        parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(0.08f, 0f));
+        parallexbackgroundmanagerInstance.componentContainer[1].GetComponent<Renderer>().material.mainTextureOffset
+        += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * Time.deltaTime;
+
         //clouds
         parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(0.02f, 0f));
-        parallexbackgroundmanagerInstance.componentContainer[1].GetComponent<Renderer>().material.mainTextureOffset
+        parallexbackgroundmanagerInstance.componentContainer[2].GetComponent<Renderer>().material.mainTextureOffset
         += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * Time.deltaTime;
 
         //fog
         parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(0.035f, 0f));
-        parallexbackgroundmanagerInstance.componentContainer[2].GetComponent<Renderer>().material.mainTextureOffset
+        parallexbackgroundmanagerInstance.componentContainer[3].GetComponent<Renderer>().material.mainTextureOffset
         += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * Time.deltaTime;
 
         //building
         parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(0.035f, 0f));
-        parallexbackgroundmanagerInstance.componentContainer[3].GetComponent<Renderer>().material.mainTextureOffset
+        parallexbackgroundmanagerInstance.componentContainer[4].GetComponent<Renderer>().material.mainTextureOffset
         += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * Time.deltaTime;
 
         //playground
         parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(0.035f, 0f));
-        parallexbackgroundmanagerInstance.componentContainer[4].GetComponent<Renderer>().material.mainTextureOffset
+        parallexbackgroundmanagerInstance.componentContainer[5].GetComponent<Renderer>().material.mainTextureOffset
         += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * Time.deltaTime;
 
     }
