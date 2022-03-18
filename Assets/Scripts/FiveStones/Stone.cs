@@ -19,6 +19,13 @@ public class Stone : MonoBehaviour
         if (type == FiveStonesGameManager.Objective.DEFAULT)
             type = FiveStonesGameManager.GetRandomColouredObjective();
 
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         switch (type)
         {
             case FiveStonesGameManager.Objective.CATCH_RED_STONES:
@@ -37,12 +44,6 @@ public class Stone : MonoBehaviour
                 GetComponent<Animator>().runtimeAnimatorController = bomb_animator_controller;
                 break;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
     }
 
 }
