@@ -4249,7 +4249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemToPool:
-  - amountToPool: 4
+  - amountToPool: 3
     objectToPool: {fileID: 7913923793753976924, guid: 7514f718276a5bc4e951412ac2955379, type: 3}
     shouldExpand: 0
 --- !u!1 &995156009
