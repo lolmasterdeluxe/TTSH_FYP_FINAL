@@ -13,75 +13,63 @@ public class LeaderboardManager : MonoBehaviour
     List<ScoreManager.Score> sortedScoreList;
     ScoreManager.Score currentScore;
 
-    public GameObject rankOneSlot;
-    public GameObject rankTwoSlot;
-    public GameObject rankThreeSlot;
-    public GameObject currentRankSlot;
+    [SerializeField] private GameObject rankOneSlot;
+    [SerializeField] private GameObject rankTwoSlot;
+    [SerializeField] private GameObject rankThreeSlot;
+    [SerializeField] private GameObject currentRankSlot;
 
-    public TMP_Text highestScorebarText;
-    public TMP_Text currentScorebarText;
-    public Slider scoreBarSlider;
+    [SerializeField] private TMP_Text highestScorebarText;
+    [SerializeField] private TMP_Text currentScorebarText;
+    [SerializeField] private Slider scoreBarSlider;
 
-    public TMP_Text scorebarText;
+    [SerializeField] private TMP_Text scorebarText;
 
-    public Image background;
-    public Sprite chaptehBg;
-    public Sprite fiveStonesBg;
-    public Sprite spsBg;
-    public Sprite totalBg;
+    [SerializeField] private Image background;
+    [SerializeField] private Sprite chaptehBg;
+    [SerializeField] private Sprite fiveStonesBg;
+    [SerializeField] private Sprite spsBg;
+    [SerializeField] private Sprite totalBg;
 
-    public CanvasGroup leaderboardCanvasGroup;
-    public CanvasGroup endScreenCanvasGroup;
+    [SerializeField] private CanvasGroup leaderboardCanvasGroup;
+    [SerializeField] private CanvasGroup endScreenCanvasGroup;
 
-    public GameObject fiveStonesGroup;
-    public TMP_Text fiveStonesTotalCaughtText;
-    public TMP_Text rainbowCaughtText;
+    [SerializeField] private GameObject fiveStonesGroup;
+    [SerializeField] private TMP_Text fiveStonesTotalCaughtText;
+    [SerializeField] private TMP_Text rainbowCaughtText;
 
-    public GameObject chaptehGroup;
-    public TMP_Text redHoopsHit;
-    public TMP_Text greenHoopsHit;
-    public TMP_Text yellowHoopsHit;
+    [SerializeField] private GameObject chaptehGroup;
+    [SerializeField] private TMP_Text redHoopsHit;
+    [SerializeField] private TMP_Text greenHoopsHit;
+    [SerializeField] private TMP_Text yellowHoopsHit;
 
-    public GameObject scissorsPaperStoneGroup;
-    public TMP_Text powerUpsPicked;
-    public TMP_Text enemiesKilled;
+    [SerializeField] private GameObject scissorsPaperStoneGroup;
+    [SerializeField] private TMP_Text powerUpsPicked;
+    [SerializeField] private TMP_Text enemiesKilled;
 
-    public GameObject overallGroup;
-    public TMP_Text totalChaptehScore;
-    public TMP_Text totalScissorsPaperStoneScore;
-    public TMP_Text totalFiveStonesScore;
+    [SerializeField] private GameObject overallGroup;
+    [SerializeField] private TMP_Text totalChaptehScore;
+    [SerializeField] private TMP_Text totalScissorsPaperStoneScore;
+    [SerializeField] private TMP_Text totalFiveStonesScore;
 
-    public TMP_Text overallScoreText;
-    public TMP_Text standardGameScoreText;
+    [SerializeField] private TMP_Text overallScoreText;
+    [SerializeField] private TMP_Text standardGameScoreText;
 
-    public GameObject exitButton;
-    public GameObject leaderButton;
+    [SerializeField] private GameObject exitButton;
+    [SerializeField] private GameObject leaderboardPage;
 
-    public GameObject splashScreenButton;
-    public CanvasGroup thanksScreenCanvasGroup;
-    public CanvasGroup goodJobScreenCanvasGroup;
-    public CanvasGroup creditsScreenCanvasGroup;
-    public CanvasGroup musicCreditsCanvasGroup;
+    [SerializeField] private GameObject splashScreenButton;
+    [SerializeField] private CanvasGroup thanksScreenCanvasGroup;
+    [SerializeField] private CanvasGroup goodJobScreenCanvasGroup;
+    [SerializeField] private CanvasGroup creditsScreenCanvasGroup;
+    [SerializeField] private CanvasGroup musicCreditsCanvasGroup;
 
-    public GameObject Animations;
+    [SerializeField] private GameObject Animations;
 
-    public bool m_isFinalGame;
-
-    // Start is called before the first frame update
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
+    [SerializeField] private bool m_isFinalGame;
 
     public void ShowLeaderBoard()
     {
-        print("AIUWHDSAIODWJd");
+        leaderboardPage.SetActive(true);
         TweenManager.Instance.AnimateFade(endScreenCanvasGroup, 0, 1);
         TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 1, 1);
 
@@ -96,7 +84,6 @@ public class LeaderboardManager : MonoBehaviour
         TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 1, 1);
 
         //StartCoroutine(ShowFinalGameAnimation());
-        print("Enter liao");
     }
 
     private void OnEnable()
@@ -137,7 +124,6 @@ public class LeaderboardManager : MonoBehaviour
 
     public void UpdateEndScreen()
     {
-
         switch (leaderboardType)
         {
             case ScoreManager.Gamemode.CHAPTEH:
@@ -204,6 +190,7 @@ public class LeaderboardManager : MonoBehaviour
 
         overallScoreText.text = currentScore.m_score.ToString();
         standardGameScoreText.text = currentScore.m_score.ToString();
+        
     }
 
     public IEnumerator ShowLeaderboard()
@@ -310,6 +297,12 @@ public class LeaderboardManager : MonoBehaviour
         for (int i = 1; i < avatar.transform.childCount; i++)
             avatar.transform.GetChild(i).GetComponent<Image>().enabled = false;
 
+
+        if (colorCustomizable != null && score.m_colourId != 0)
+        {
+            avatar.transform.GetChild(0).GetComponent<Image>().color = colorCustomizable.m_color;
+        }
+
         if (hatCustomizable != null && score.m_hatId != 0)
         {
             avatar.transform.GetChild(1).GetComponent<Image>().enabled = true;
@@ -339,14 +332,14 @@ public class LeaderboardManager : MonoBehaviour
     {
         Debug.Log("exit leaderboard");
         if (SceneManager.GetActiveScene().name == "MainMenuGameScene")
-        {
-            //GameObject.Find("MainCharacter").GetComponent<PlayerKeyboardMovement>().Start();
             gameObject.SetActive(false);
-        }
         else
-        {
             SceneManager.LoadScene("MainMenuGameScene");
-        }
+    }
+
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     

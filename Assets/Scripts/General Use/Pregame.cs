@@ -13,22 +13,26 @@ public class Pregame : MonoBehaviour
     }
 
     // Background sprite
-    public SpriteRenderer backgroundSpriteRenderer;
+    [SerializeField] private SpriteRenderer backgroundSpriteRenderer;
 
     // Panel Canvas for the black background
-    public CanvasGroup panelCanvasGroup;
+    [SerializeField] private CanvasGroup panelCanvasGroup;
 
     // Main UI Canvas
-    public CanvasGroup mainUICanvasGroup;
+    [SerializeField] private CanvasGroup mainUICanvasGroup;
 
     // TMP of count down text
-    public TMP_Text countdownText;
+    [SerializeField] private TMP_Text countdownText;
 
-    public GameMode currentGamemode;
+    [SerializeField] private GameMode currentGamemode;
 
     public bool m_countdownOver = false;
 
-    public AudioSource[] countdownSource;
+    [SerializeField] private AudioSource[] countdownSource;
+
+    [SerializeField] private float SPSTimer = 60, FiveStoneTimer = 60, ChaptehTimer = 60;
+
+    [SerializeField] private int SPSDifficulty = 1, FiveStoneDifficulty = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -100,7 +104,7 @@ public class Pregame : MonoBehaviour
                 TweenManager.Instance.AnimateFade(mainUICanvasGroup, 1f, 1f);
                 TweenManager.Instance.AnimateFade(panelCanvasGroup, 0f, 0f);
                 countdownText.gameObject.SetActive(false);
-                SPS_UIManager.Instance.StartGame(60, 1);
+                SPS_UIManager.Instance.StartGame(SPSTimer, SPSDifficulty);
                 break;
             case GameMode.FIVE_STONES:
                 m_countdownOver = false;
@@ -108,14 +112,14 @@ public class Pregame : MonoBehaviour
                 TweenManager.Instance.AnimateFade(mainUICanvasGroup, 1f, 0.5f);
                 TweenManager.Instance.AnimateFade(panelCanvasGroup, 1f, 0.5f);
                 countdownText.gameObject.SetActive(false);
-                FiveStonesGameManager.Instance.StartGame(60, 1);
+                FiveStonesGameManager.Instance.StartGame(FiveStoneTimer, FiveStoneDifficulty);
                 break;
             case GameMode.CHAPTEH:
                 m_countdownOver = false;
                 TweenManager.Instance.AnimateFade(mainUICanvasGroup, 1f, 1f);
                 TweenManager.Instance.AnimateFade(panelCanvasGroup, 0f, 0f);
                 countdownText.gameObject.SetActive(false);
-                ChaptehGameManager.Instance.StartGame(60);
+                ChaptehGameManager.Instance.StartGame(ChaptehTimer);
                 break;
         }
     }
