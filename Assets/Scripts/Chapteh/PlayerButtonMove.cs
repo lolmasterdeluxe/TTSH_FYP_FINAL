@@ -18,6 +18,7 @@ public class PlayerButtonMove : MonoBehaviour
     [SerializeField] private GameObject Left, Right;
     [HideInInspector] public Vector2 movement;
     [HideInInspector] public bool b_playerisRight = true;
+    public Vector2 Position;
 
     [SerializeField] private SpriteRenderer playerSprite;
     [SerializeField] private ParticleSystem sandDust;
@@ -39,10 +40,12 @@ public class PlayerButtonMove : MonoBehaviour
         //set values HERE
         kickTime = 0;
         playerAnim = GetComponent<Animator>();
+
     }
 
     private void Update()
     {
+        Position = rb.position;
         if (!ChaptehGameManager.Instance.m_gameStarted)
             return;
         else if (ChaptehGameManager.Instance.m_gameEnded)

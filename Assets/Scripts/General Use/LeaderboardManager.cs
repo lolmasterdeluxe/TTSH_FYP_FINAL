@@ -91,13 +91,13 @@ public class LeaderboardManager : MonoBehaviour
         m_isFinalGame = false;
         splashScreenButton.SetActive(false);
 
-        if (ScoreManager.Instance.GetCurrentSavedScoreCount() >= 4 || m_isFinalGame)
+        /*if (ScoreManager.Instance.GetCurrentSavedScoreCount() >= 4 || m_isFinalGame)
         {
             ScoreManager.Instance.ConcludeGameScore();
             exitButton.SetActive(false);
             splashScreenButton.SetActive(true);
             m_isFinalGame = true;
-        }
+        }*/
 
         UpdateAllLeaderboardUIData();
         TweenManager.Instance.AnimateFade(endScreenCanvasGroup, 1, 1);
