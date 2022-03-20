@@ -32,33 +32,28 @@ public class FiveStonesGameManager : MonoBehaviour
         TOTAL,
     }
 
-    public GameObject g_scoreText;
-    public GameObject g_comboGroup;
-    public GameObject g_popupTextGroup;
-    public GameObject g_popupImageGroup;
-    public GameObject g_gameTimeUp;
-    public GameObject g_comboText;
-    public GameObject g_popupText;
-    public GameObject g_popupImage;
-    public GameObject g_comboExpiryBar;
-    public GameObject g_PopupExpiry;
-    public GameObject g_popupImageExpiry;
-    public GameObject g_timerText;
-    public GameObject g_objectiveText;
-    public Objective m_currentObjective;
-    public Animator TextAnim;
+    [SerializeField] private GameObject g_scoreText;
+    [SerializeField] private GameObject g_comboGroup;
+    [SerializeField] private GameObject g_popupTextGroup;
+    [SerializeField] private GameObject g_popupImageGroup;
+    [SerializeField] private GameObject g_gameTimeUp;
+    [SerializeField] private GameObject g_comboText;
+    [SerializeField] private GameObject g_popupText;
+    [SerializeField] private GameObject g_comboExpiryBar;
+    [SerializeField] private GameObject g_PopupExpiry;
+    [SerializeField] private GameObject g_timerText;
+    [SerializeField] private GameObject g_objectiveText;
+    [SerializeField] private Objective m_currentObjective;
 
-    private bool isAnim = false;
+    private float difficultyMultiplier;
+    private int baseScore = 1;
+    private float minObjectiveReset;
+    private float maxObjectiveReset;
+    private bool m_gameStarted;
+    private bool m_gameEnded = false;
 
-    public float difficultyMultiplier;
-    public int baseScore = 1;
-    public float minObjectiveReset;
-    public float maxObjectiveReset;
-    public bool m_gameStarted;
-    public bool m_gameEnded = false;
-
-    public int m_totalCaught = 0;
-    public int m_totalRainbowCaught = 0;
+    [HideInInspector] public int m_totalCaught = 0;
+    [HideInInspector] public int m_totalRainbowCaught = 0;
 
     public AudioSource[] audioSources;
 
@@ -162,10 +157,9 @@ public class FiveStonesGameManager : MonoBehaviour
     public void changePopups()
     {
         int currcom = ComboManager.Instance.GetCurrentCombo();
-        if (currcom == 1 && !isAnim)
+        if (currcom == 1)
         {
             g_popupText.GetComponent<TMP_Text>().text = "Nice";
-   
         }
         else if (currcom == 2)
         {
@@ -184,13 +178,6 @@ public class FiveStonesGameManager : MonoBehaviour
             g_popupText.GetComponent<TMP_Text>().text = "Amazing!";
 
         }
-        else
-        {
-            isAnim = false;
-            Debug.Log("False");
-        }
-        
-        
         
     }
 
