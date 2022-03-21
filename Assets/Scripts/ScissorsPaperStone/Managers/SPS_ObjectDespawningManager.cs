@@ -61,7 +61,7 @@ public class SPS_ObjectDespawningManager : MonoBehaviour
                 Destroy(other.gameObject.GetComponent<Rigidbody2D>());
             }
         }
-        else if(other.CompareTag("EnemyTag"))
+        else if (other.CompareTag("EnemyTag"))
         {
             //Debug.Log("Falsed");
             other.gameObject.transform.DOKill(true);

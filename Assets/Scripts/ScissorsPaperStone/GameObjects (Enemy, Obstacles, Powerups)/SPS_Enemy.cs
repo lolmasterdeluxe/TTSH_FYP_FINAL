@@ -17,7 +17,7 @@ public class SPS_Enemy : MonoBehaviour
     public Animator enemyAC;
     public EnemyType enemy_type;
 
-    SPS_ObjectManager objectmanagerInstance;
+    private SPS_ObjectManager objectmanagerInstance;
 
     public RuntimeAnimatorController scissorsController, paperController, stoneController;
 
@@ -25,23 +25,14 @@ public class SPS_Enemy : MonoBehaviour
 
     #region Unity Callbacks
 
-    private void Start()
-    {
-        //get components HERE
-        enemyAC = GetComponent<Animator>();
-
-        //get references HERE
-        objectmanagerInstance = FindObjectOfType<SPS_ObjectManager>();
-
-        DetermineEnemyType();
-    }
-
     #endregion  
 
     #region Helper Functions
 
     public void DetermineEnemyType()
     {
+        enemyAC = GetComponent<Animator>();
+        objectmanagerInstance = FindObjectOfType<SPS_ObjectManager>();
         if (objectmanagerInstance.current_waveFormat == SPS_ObjectManager.WaveFormat.WAVE_MULTIPLE_RANDOM
             || objectmanagerInstance.current_waveFormat == SPS_ObjectManager.WaveFormat.WAVE_SINGLE_RANDOM)
             EnemyTypeIsRandom();
@@ -82,6 +73,8 @@ public class SPS_Enemy : MonoBehaviour
                 enemy_type = EnemyType.ENEMY_STONE;
                 enemyAC.runtimeAnimatorController = stoneController;
                 Debug.Log("STone Made");
+                break;
+            default:
                 break;
         }
     }

@@ -212,6 +212,7 @@ public class SPS_ObjectManager : MonoBehaviour
             g_objectInstance.transform.position = objectStartPosition.transform.position;
             g_objectInstance.transform.rotation = objectStartPosition.transform.rotation;
             g_objectInstance.SetActive(true);
+            g_objectInstance.GetComponent<SPS_Enemy>().DetermineEnemyType();
             g_objectInstance.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
             //new Vector3(objectStartPosition.transform.position.x, objectStartPosition.transform.position.y, objectStartPosition.transform.position.z);
         }
@@ -247,8 +248,8 @@ public class SPS_ObjectManager : MonoBehaviour
                 Debug.Log("help");
                 g_objectInstance.transform.position = new Vector3(objectStartPosition.transform.position.x + val * 4.5f, objectStartPosition.transform.position.y, objectStartPosition.transform.position.z);
                 g_objectInstance.transform.rotation = objectStartPosition.transform.rotation;
-                g_objectInstance.SetActive(true);
                 g_objectInstance.GetComponent<SPS_Enemy>().DetermineEnemyType();
+                g_objectInstance.SetActive(true);
                 g_objectInstance.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
             }
             g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, (f_objectTravelSpeed * f_objectTravelSpeed));
