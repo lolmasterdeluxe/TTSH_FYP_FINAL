@@ -3861,6 +3861,7 @@ GameObject:
   - component: {fileID: 875873049}
   - component: {fileID: 875873052}
   - component: {fileID: 875873051}
+  - component: {fileID: 875873050}
   - component: {fileID: 875873053}
   m_Layer: 5
   m_Name: Scissors
@@ -3888,6 +3889,18 @@ RectTransform:
   m_AnchoredPosition: {x: 210, y: 190}
   m_SizeDelta: {x: 195, y: 260}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &875873050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875873048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfddaa604d44d164995c5d2ff0d1c180, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &875873051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3943,13 +3956,13 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1845332425}
-          m_TargetAssemblyTypeName: SPS_UIManager, Assembly-CSharp
-          m_MethodName: ResetButtonSIze
-          m_Mode: 2
+        - m_Target: {fileID: 875873050}
+          m_TargetAssemblyTypeName: ButtonAnimation, Assembly-CSharp
+          m_MethodName: AnimateButton
+          m_Mode: 6
           m_Arguments:
-            m_ObjectArgument: {fileID: 875873048}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -3971,17 +3984,17 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1845332425}
-          m_TargetAssemblyTypeName: SPS_UIManager, Assembly-CSharp
-          m_MethodName: IncreaseButtonSize
-          m_Mode: 2
+        - m_Target: {fileID: 875873050}
+          m_TargetAssemblyTypeName: ButtonAnimation, Assembly-CSharp
+          m_MethodName: AnimateButton
+          m_Mode: 6
           m_Arguments:
-            m_ObjectArgument: {fileID: 875873048}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
-            m_BoolArgument: 0
+            m_BoolArgument: 1
           m_CallState: 2
 --- !u!1 &879068270
 GameObject:
@@ -4251,6 +4264,7 @@ GameObject:
   - component: {fileID: 982583647}
   - component: {fileID: 982583650}
   - component: {fileID: 982583649}
+  - component: {fileID: 982583651}
   - component: {fileID: 982583648}
   m_Layer: 5
   m_Name: Stone
@@ -4295,13 +4309,13 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1845332425}
-          m_TargetAssemblyTypeName: SPS_UIManager, Assembly-CSharp
-          m_MethodName: ResetButtonSIze
-          m_Mode: 2
+        - m_Target: {fileID: 982583651}
+          m_TargetAssemblyTypeName: ButtonAnimation, Assembly-CSharp
+          m_MethodName: AnimateButton
+          m_Mode: 6
           m_Arguments:
-            m_ObjectArgument: {fileID: 982583646}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -4323,17 +4337,17 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1845332425}
-          m_TargetAssemblyTypeName: SPS_UIManager, Assembly-CSharp
-          m_MethodName: IncreaseButtonSize
-          m_Mode: 2
+        - m_Target: {fileID: 982583651}
+          m_TargetAssemblyTypeName: ButtonAnimation, Assembly-CSharp
+          m_MethodName: AnimateButton
+          m_Mode: 6
           m_Arguments:
-            m_ObjectArgument: {fileID: 982583646}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
-            m_BoolArgument: 0
+            m_BoolArgument: 1
           m_CallState: 2
 --- !u!114 &982583649
 MonoBehaviour:
@@ -4373,6 +4387,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 982583646}
   m_CullTransparentMesh: 0
+--- !u!114 &982583651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982583646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfddaa604d44d164995c5d2ff0d1c180, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &991564695
 GameObject:
   m_ObjectHideFlags: 0
@@ -6139,6 +6165,7 @@ GameObject:
   - component: {fileID: 1423607592}
   - component: {fileID: 1423607595}
   - component: {fileID: 1423607594}
+  - component: {fileID: 1423607596}
   - component: {fileID: 1423607593}
   m_Layer: 5
   m_Name: Jump
@@ -6183,13 +6210,13 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1845332425}
-          m_TargetAssemblyTypeName: SPS_UIManager, Assembly-CSharp
-          m_MethodName: ResetButtonSIze
-          m_Mode: 2
+        - m_Target: {fileID: 1423607596}
+          m_TargetAssemblyTypeName: ButtonAnimation, Assembly-CSharp
+          m_MethodName: AnimateButton
+          m_Mode: 6
           m_Arguments:
-            m_ObjectArgument: {fileID: 1423607591}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -6211,17 +6238,17 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1845332425}
-          m_TargetAssemblyTypeName: SPS_UIManager, Assembly-CSharp
-          m_MethodName: IncreaseButtonSize
-          m_Mode: 2
+        - m_Target: {fileID: 1423607596}
+          m_TargetAssemblyTypeName: ButtonAnimation, Assembly-CSharp
+          m_MethodName: AnimateButton
+          m_Mode: 6
           m_Arguments:
-            m_ObjectArgument: {fileID: 1423607591}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
-            m_BoolArgument: 0
+            m_BoolArgument: 1
           m_CallState: 2
 --- !u!114 &1423607594
 MonoBehaviour:
@@ -6261,6 +6288,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1423607591}
   m_CullTransparentMesh: 0
+--- !u!114 &1423607596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423607591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfddaa604d44d164995c5d2ff0d1c180, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1430588775
 GameObject:
   m_ObjectHideFlags: 0
@@ -8197,6 +8236,7 @@ GameObject:
   - component: {fileID: 1795758269}
   - component: {fileID: 1795758272}
   - component: {fileID: 1795758271}
+  - component: {fileID: 1795758273}
   - component: {fileID: 1795758270}
   m_Layer: 5
   m_Name: Paper
@@ -8241,13 +8281,13 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1845332425}
-          m_TargetAssemblyTypeName: SPS_UIManager, Assembly-CSharp
-          m_MethodName: ResetButtonSIze
-          m_Mode: 2
+        - m_Target: {fileID: 1795758273}
+          m_TargetAssemblyTypeName: ButtonAnimation, Assembly-CSharp
+          m_MethodName: AnimateButton
+          m_Mode: 6
           m_Arguments:
-            m_ObjectArgument: {fileID: 1795758268}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -8269,17 +8309,17 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1845332425}
-          m_TargetAssemblyTypeName: SPS_UIManager, Assembly-CSharp
-          m_MethodName: IncreaseButtonSize
-          m_Mode: 2
+        - m_Target: {fileID: 1795758273}
+          m_TargetAssemblyTypeName: ButtonAnimation, Assembly-CSharp
+          m_MethodName: AnimateButton
+          m_Mode: 6
           m_Arguments:
-            m_ObjectArgument: {fileID: 1795758268}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
-            m_BoolArgument: 0
+            m_BoolArgument: 1
           m_CallState: 2
 --- !u!114 &1795758271
 MonoBehaviour:
@@ -8319,6 +8359,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1795758268}
   m_CullTransparentMesh: 0
+--- !u!114 &1795758273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795758268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfddaa604d44d164995c5d2ff0d1c180, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1831235113
 GameObject:
   m_ObjectHideFlags: 0
