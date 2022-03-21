@@ -2746,6 +2746,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Leaderboard
       objectReference: {fileID: 0}
+    - target: {fileID: 2913985091809142622, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
 --- !u!1 &703434821
@@ -3767,20 +3771,11 @@ MonoBehaviour:
   g_gameTimeUp: {fileID: 1241384285}
   g_comboText: {fileID: 1060396511}
   g_popupText: {fileID: 555495406}
-  g_popupImage: {fileID: 319154860}
   g_comboExpiryBar: {fileID: 1335432978}
   g_PopupExpiry: {fileID: 725327644}
-  g_popupImageExpiry: {fileID: 2110591841}
   g_timerText: {fileID: 1920644013}
   g_objectiveText: {fileID: 1278334163}
   m_currentObjective: 0
-  TextAnim: {fileID: 555495410}
-  difficultyMultiplier: 0
-  baseScore: 1
-  minObjectiveReset: 0
-  maxObjectiveReset: 0
-  m_gameStarted: 0
-  m_gameEnded: 0
   m_totalCaught: 0
   m_totalRainbowCaught: 0
   audioSources:
