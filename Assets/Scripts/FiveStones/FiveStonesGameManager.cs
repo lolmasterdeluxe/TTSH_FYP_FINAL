@@ -255,6 +255,7 @@ public class FiveStonesGameManager : MonoBehaviour
     public void OnPopUpImage()
     {
         TweenManager.Instance.AnimateFade(g_popupImageGroup.GetComponent<CanvasGroup>(), 1f, 0.25f);
+        TweenManager.Instance.AnimateShake(g_comboText.transform, 2, 1f);
     }
 
     public void OnComboBreak()
