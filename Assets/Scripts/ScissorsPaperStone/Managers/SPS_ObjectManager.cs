@@ -211,8 +211,6 @@ public class SPS_ObjectManager : MonoBehaviour
             g_objectInstance.transform.position = objectStartPosition.transform.position;
             g_objectInstance.transform.rotation = objectStartPosition.transform.rotation;
             g_objectInstance.GetComponent<SPS_Enemy>().DetermineEnemyType();
-            g_objectInstance.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
-            g_objectInstance.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0);
             g_objectInstance.SetActive(true);
         }
         //do the movement HERE
@@ -243,17 +241,14 @@ public class SPS_ObjectManager : MonoBehaviour
             g_objectInstance = ObjectPooling.SharedInstance.GetPooledObject("EnemyTag");
             if (!g_objectInstance.activeSelf)
             {
-                Debug.Log("help");
+                //Debug.Log("help");
                 g_objectInstance.transform.position = new Vector3(objectStartPosition.transform.position.x + val * 4.5f, objectStartPosition.transform.position.y, objectStartPosition.transform.position.z);
                 g_objectInstance.transform.rotation = objectStartPosition.transform.rotation;
                 g_objectInstance.GetComponent<SPS_Enemy>().DetermineEnemyType();
-                g_objectInstance.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
-                g_objectInstance.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0);
                 g_objectInstance.SetActive(true);
             }
-            g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, (f_objectTravelSpeed * f_objecttravelspeedMultiplier * 5f));
-
             //do the movement HERE
+            g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, (f_objectTravelSpeed * f_objecttravelspeedMultiplier * 5f));
 
             //g_objectInstance.GetComponent<Rigidbody2D>().DOMoveX(enemyEndPosition.transform.position.x, (f_objectTravelSpeed * f_objectTravelSpeed));
 

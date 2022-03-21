@@ -28,11 +28,17 @@ public class SPS_Enemy : MonoBehaviour
     #endregion  
 
     #region Helper Functions
-
-    public void DetermineEnemyType()
+    public void Init()
     {
         enemyAC = GetComponent<Animator>();
         objectmanagerInstance = FindObjectOfType<SPS_ObjectManager>();
+        GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
+        transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0);
+    }
+
+    public void DetermineEnemyType()
+    {
+        Init();
         if (objectmanagerInstance.current_waveFormat == SPS_ObjectManager.WaveFormat.WAVE_MULTIPLE_RANDOM
             || objectmanagerInstance.current_waveFormat == SPS_ObjectManager.WaveFormat.WAVE_SINGLE_RANDOM)
             EnemyTypeIsRandom();
