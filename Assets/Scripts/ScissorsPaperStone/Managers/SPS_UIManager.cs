@@ -15,7 +15,8 @@ public class SPS_UIManager : MonoBehaviour
     #region Variables
 
     //reference to other scripts
-    SPS_ObjectManager objectmanagerInstance;
+    [SerializeField]
+    private SPS_ObjectManager objectmanagerInstance;
 
     //for score
 
@@ -23,16 +24,16 @@ public class SPS_UIManager : MonoBehaviour
     int i_baseScore;
     
     [SerializeField]
-    GameObject g_scoreText;
+    private GameObject g_scoreText;
 
     //for timer
 
     [SerializeField]
-    GameObject g_timerText;
+    private GameObject g_timerText;
 
     //for combo
-
-    public GameObject g_comboGroup, g_comboText, g_comboText_finalPos;
+    [SerializeField]
+    private GameObject g_comboGroup, g_comboText, g_comboText_finalPos;
 
     //for objective (formely powerups)
 
@@ -40,28 +41,23 @@ public class SPS_UIManager : MonoBehaviour
     int i_objectiveValue;
 
     [SerializeField]
-    GameObject g_objectiveText;
+    private GameObject g_objectiveText;
 
     //for UI buttons
 
     [Tooltip("Reference to the UI buttons")]
     public GameObject g_scissorsButton, g_paperButton, g_stoneButton;
 
-    [Tooltip("Original Button Size")]
-    Vector3 v_originalbuttonSize;
-
-    [Tooltip("Increased Button Size")]
-    Vector3 v_increasedbuttonSize;
-
     // for game start and end
+    [SerializeField]
+    private GameObject g_gameTimeUp;
 
-    public GameObject g_gameTimeUp;
-    public bool b_gameStart;
-    public bool b_gameEnded;
+    [HideInInspector] 
+    public bool b_gameStart, b_gameEnded;
 
     //variables for data HERE
-    public int enemyCount;
-    public int sweetCount;
+    [HideInInspector]
+    public int enemyCount, sweetCount;
 
     //for audio source
     public AudioSource bgmSource;
@@ -81,12 +77,6 @@ public class SPS_UIManager : MonoBehaviour
 
     private void Start()
     {
-        objectmanagerInstance = FindObjectOfType<SPS_ObjectManager>();
-
-        //set button sizes HERE
-        v_originalbuttonSize = new Vector3(1f, 1f, 1f);
-        v_increasedbuttonSize = new Vector3(1.15f, 1.15f, 1.15f);
-
         //pause audio here: for countdown
         bgmSource.Stop();
     }
@@ -131,7 +121,6 @@ public class SPS_UIManager : MonoBehaviour
 
         UpdatePlayerScore();
         UpdateTimerText();
-        UpdateButtonBehaviour();
         UpdatePlayerObjectiveValue();
 
         StartCoroutine(OnLeaderboardLoad());
@@ -221,48 +210,6 @@ public class SPS_UIManager : MonoBehaviour
 
     #endregion
 
-    #region Button Behaviour Functions
-    public void IncreaseButtonSize(GameObject targetButton)
-    {
-        targetButton.transform.localScale = v_increasedbuttonSize;
-    }
-
-    public void ResetButtonSIze(GameObject targetButton)
-    {
-        targetButton.transform.localScale = v_originalbuttonSize;
-    }
-
-    public void UpdateButtonBehaviour()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            IncreaseButtonSize(g_scissorsButton);
-        }
-        if (Input.GetKeyUp(KeyCode.A))
-        {
-            ResetButtonSIze(g_scissorsButton);
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            IncreaseButtonSize(g_paperButton);
-        }
-        if (Input.GetKeyUp(KeyCode.S))
-        {
-            ResetButtonSIze(g_paperButton);
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            IncreaseButtonSize(g_stoneButton);
-        }
-        if (Input.GetKeyUp(KeyCode.D))
-        {
-            ResetButtonSIze(g_stoneButton);
-        }
-    }
-
-
-    #endregion
-
     #region LeaderBoard Functions
 
     public IEnumerator OnLeaderboardLoad()
@@ -270,7 +217,7 @@ public class SPS_UIManager : MonoBehaviour
         if (b_gameEnded)
         {
             yield return new WaitForSeconds(3);
-
+            bgmSource.Stop();
             Resources.FindObjectsOfTypeAll<LeaderboardManager>()[0].gameObject.SetActive(true);
         }
     }
