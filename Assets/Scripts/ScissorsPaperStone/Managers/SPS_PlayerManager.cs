@@ -344,10 +344,10 @@ public class SPS_PlayerManager : MonoBehaviour
 
                     //Destroy(other.gameObject);
                     //Destroy(other.gameObject.GetComponent<Rigidbody2D>());
-                    other.transform.position = objectManagerInstance.objectStartPosition.transform.position;
                     other.gameObject.transform.DOKill(true);
                     other.gameObject.SetActive(false);
                     Debug.Log("Paper Beaten");
+
                     #region Unused
 
                     //////call the coroutine HERE
@@ -369,7 +369,6 @@ public class SPS_PlayerManager : MonoBehaviour
                     //}
 
                     #endregion
-
                 }
                 else if (player_choice == PlayerChoice.PLAYER_PAPER
                     && other.gameObject.GetComponent<SPS_Enemy>().enemy_type == SPS_Enemy.EnemyType.ENEMY_STONE)
@@ -386,7 +385,6 @@ public class SPS_PlayerManager : MonoBehaviour
 
                     //Destroy(other.gameObject);
                     //Destroy(other.gameObject.GetComponent<Rigidbody2D>());
-                    other.transform.position = objectManagerInstance.objectStartPosition.transform.position;
                     other.gameObject.transform.DOKill(true);
                     other.gameObject.SetActive(false);
                     Debug.Log("Rock Beaten");
@@ -426,10 +424,10 @@ public class SPS_PlayerManager : MonoBehaviour
 
                     //Destroy(other.gameObject);
                     //Destroy(other.gameObject.GetComponent<Rigidbody2D>());
-                    other.transform.position = objectManagerInstance.objectStartPosition.transform.position;
                     other.gameObject.transform.DOKill(true);
                     other.gameObject.SetActive(false);
                     Debug.Log("Scissors Beaten");
+
                     #region Unused
 
                     ////call the coroutine HERE
@@ -484,14 +482,10 @@ public class SPS_PlayerManager : MonoBehaviour
 
                     //fade out the enemy so that it looks natural
                     other.gameObject.GetComponent<SpriteRenderer>().DOFade(0, 1f);
-                    GameObject sprite_attackIndicator = 
-                        other.gameObject.transform.Find("AttackIndicatorSprite").gameObject;
-                    sprite_attackIndicator.GetComponent<SpriteRenderer>().DOFade(0, 1f);
+                    other.transform.GetChild(0).GetComponent<SpriteRenderer>().DOFade(0, 1f);
 
                     //play sounds HERE
                     stunnedSFX.Play();
-
-
                 }
             }
             b_playerMakesChoice = false;
@@ -509,9 +503,7 @@ public class SPS_PlayerManager : MonoBehaviour
 
                 //fade out the enemy so that it looks natural
                 other.gameObject.GetComponent<SpriteRenderer>().DOFade(0, 1f);
-                GameObject sprite_attackIndicator = 
-                    other.gameObject.transform.Find("AttackIndicatorSprite").gameObject;
-                sprite_attackIndicator.GetComponent<SpriteRenderer>().DOFade(0, 1f);
+                other.transform.GetChild(0).GetComponent<SpriteRenderer>().DOFade(0, 1f);
 
                 //play sounds HERE
                 stunnedSFX.Play();

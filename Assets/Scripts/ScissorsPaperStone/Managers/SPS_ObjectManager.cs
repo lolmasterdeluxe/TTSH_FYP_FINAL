@@ -42,7 +42,7 @@ public class SPS_ObjectManager : MonoBehaviour
     //spawning speed variables
     [Tooltip("Uptime for each object spawn")]
     float f_objectspawnLifetime;
-    [Tooltip("Multiplier for the speed of each object spawn")]
+    [Tooltip("Multiplier for the time for each object spawn")]
     float f_objectLifetimeMultiplier;
     [Tooltip("Object's travel speed")]
     [SerializeField]
@@ -208,17 +208,15 @@ public class SPS_ObjectManager : MonoBehaviour
         g_objectInstance = ObjectPooling.SharedInstance.GetPooledObject("EnemyTag");
         if (!g_objectInstance.activeSelf)
         {
-            Debug.Log("not running");
             g_objectInstance.transform.position = objectStartPosition.transform.position;
             g_objectInstance.transform.rotation = objectStartPosition.transform.rotation;
-            g_objectInstance.SetActive(true);
             g_objectInstance.GetComponent<SPS_Enemy>().DetermineEnemyType();
             g_objectInstance.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
-            //new Vector3(objectStartPosition.transform.position.x, objectStartPosition.transform.position.y, objectStartPosition.transform.position.z);
+            g_objectInstance.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0);
+            g_objectInstance.SetActive(true);
         }
         //do the movement HERE
-        enemymovementTween = g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, f_objectTravelSpeed * f_objectTravelSpeed);
-        Debug.Log("Im moving");
+        g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 5f);
 
         //enemymovementTween = g_objectInstance.GetComponent<Rigidbody2D>().DOMoveX(enemyEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 3f);
 
@@ -249,10 +247,11 @@ public class SPS_ObjectManager : MonoBehaviour
                 g_objectInstance.transform.position = new Vector3(objectStartPosition.transform.position.x + val * 4.5f, objectStartPosition.transform.position.y, objectStartPosition.transform.position.z);
                 g_objectInstance.transform.rotation = objectStartPosition.transform.rotation;
                 g_objectInstance.GetComponent<SPS_Enemy>().DetermineEnemyType();
-                g_objectInstance.SetActive(true);
                 g_objectInstance.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
+                g_objectInstance.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0);
+                g_objectInstance.SetActive(true);
             }
-            g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, (f_objectTravelSpeed * f_objectTravelSpeed));
+            g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, (f_objectTravelSpeed * f_objecttravelspeedMultiplier * 5f));
 
             //do the movement HERE
 

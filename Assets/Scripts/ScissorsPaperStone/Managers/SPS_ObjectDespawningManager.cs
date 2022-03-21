@@ -63,7 +63,6 @@ public class SPS_ObjectDespawningManager : MonoBehaviour
         }
         else if (other.CompareTag("EnemyTag"))
         {
-            //Debug.Log("Falsed");
             other.gameObject.transform.DOKill(true);
             other.transform.position = objectspawningInstance.objectStartPosition.transform.position;
             objectspawningInstance.objectWaveList.Remove(other.gameObject);
