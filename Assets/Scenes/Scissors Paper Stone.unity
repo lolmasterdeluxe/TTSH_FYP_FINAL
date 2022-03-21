@@ -8571,6 +8571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e06cdeb744ebc34685bb88ca43f369c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectmanagerInstance: {fileID: 991564696}
   g_scoreText: {fileID: 1213803317}
   g_timerText: {fileID: 2036119647}
   g_comboGroup: {fileID: 1409894688}
