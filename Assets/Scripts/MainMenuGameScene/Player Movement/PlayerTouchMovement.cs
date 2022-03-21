@@ -78,7 +78,7 @@ public class PlayerTouchMovement : MonoBehaviour
         touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         touchPosition.z = 1;
         touchPosition.y += 1.5f;
-        if ((touchPosition.x < -19.2 || touchPosition.x > 19 || touchPosition.y > -1.6 || touchPosition.y < -4 || !CanTouch || !isEnabled) && !isMoving)
+        if ((touchPosition.x < -19.2 || touchPosition.x > 19 || touchPosition.y > 0.15 || touchPosition.y < -4 || !CanTouch || !isEnabled) && !isMoving)
             return;
 
         if (isMoving)

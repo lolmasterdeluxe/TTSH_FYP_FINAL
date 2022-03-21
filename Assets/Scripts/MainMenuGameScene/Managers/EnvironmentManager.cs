@@ -77,14 +77,6 @@ public class EnvironmentManager : MonoBehaviour
 
     public void DOBackgroundScrolling()
     {
-        #region Background
-
-        //for sky background
-        parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(0f, -0.025f));
-        parallexbackgroundmanagerInstance.componentContainer[0].GetComponent<MeshRenderer>().material.mainTextureOffset
-        += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * Time.deltaTime;
-
-        #endregion
 
         #region Clouds
 
@@ -102,6 +94,25 @@ public class EnvironmentManager : MonoBehaviour
         parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(0.01f, 0f));
         parallexbackgroundmanagerInstance.componentContainer[3].GetComponent<MeshRenderer>().material.mainTextureOffset
         += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * Time.deltaTime;
+
+        parallexbackgroundmanagerInstance.componentContainer[4].transform.position = new Vector3(parallexbackgroundmanagerInstance.componentContainer[4].transform.position.x - Time.deltaTime, parallexbackgroundmanagerInstance.componentContainer[4].transform.position.y, parallexbackgroundmanagerInstance.componentContainer[4].transform.position.z);
+
+        parallexbackgroundmanagerInstance.componentContainer[5].transform.position = new Vector3(parallexbackgroundmanagerInstance.componentContainer[5].transform.position.x - Time.deltaTime, parallexbackgroundmanagerInstance.componentContainer[5].transform.position.y, parallexbackgroundmanagerInstance.componentContainer[5].transform.position.z);
+
+        parallexbackgroundmanagerInstance.componentContainer[6].transform.position = new Vector3(parallexbackgroundmanagerInstance.componentContainer[6].transform.position.x - Time.deltaTime, parallexbackgroundmanagerInstance.componentContainer[6].transform.position.y, parallexbackgroundmanagerInstance.componentContainer[6].transform.position.z);
+
+        if (parallexbackgroundmanagerInstance.componentContainer[4].transform.position.x < -25)
+        {
+            parallexbackgroundmanagerInstance.componentContainer[4].transform.position.Set(25, parallexbackgroundmanagerInstance.componentContainer[4].transform.position.y, parallexbackgroundmanagerInstance.componentContainer[4].transform.position.z);
+        }
+        if (parallexbackgroundmanagerInstance.componentContainer[5].transform.position.x < -23)
+        {
+            parallexbackgroundmanagerInstance.componentContainer[5].transform.position.Set(23, parallexbackgroundmanagerInstance.componentContainer[5].transform.position.y, parallexbackgroundmanagerInstance.componentContainer[5].transform.position.z);
+        }
+        if (parallexbackgroundmanagerInstance.componentContainer[6].transform.position.x < -24)
+        {
+            parallexbackgroundmanagerInstance.componentContainer[6].transform.position.Set(24, parallexbackgroundmanagerInstance.componentContainer[6].transform.position.y, parallexbackgroundmanagerInstance.componentContainer[6].transform.position.z);
+        }
 
         #endregion
 

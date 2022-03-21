@@ -9,13 +9,14 @@ public class SpriteScalingScript : MonoBehaviour
     #region Variables 
 
     [Tooltip("Smallest Scale that the player can be in the scene")]
-    Vector3 smallestPlayerScale = new Vector3(1.25f, 1.25f, 1.25f);
+    Vector3 smallestPlayerScale = new Vector3(1.4f, 1.4f, 1.4f);
     [Tooltip("Largest Scale that the player can be in the scene")]
     Vector3 originalPlayerScale;
 
     [Tooltip("Reference to the Animator attached to the Player")]
     private Animator playerAnim;
-    private Rigidbody2D rb;
+    [SerializeField] private SpriteRenderer HatSprite;
+    [SerializeField] private SpriteRenderer FaceSprite;
 
     [Tooltip("Float values that hold the player scale value")]
     float f_originalPlayerScale, f_smallestPlayerScale;
@@ -23,10 +24,12 @@ public class SpriteScalingScript : MonoBehaviour
     [Tooltip("GameObject positions that determine the highest and lowest position a player can be")]
     public GameObject furthestPosition, frontPosition;
 
+    private GameObject NPC;
+
     [Tooltip("To find normalised distance")]
     float _currentY;
 
-    [HideInInspector] public bool playerCollides;
+    private bool playerCollidesWithEnvironment, playerCollidesWithNPC;
 
     PlayerKeyboardMovement playerMovement;
     PlayerJoystickMovement playerMovement2;
@@ -41,7 +44,6 @@ public class SpriteScalingScript : MonoBehaviour
     {
         originalPlayerScale = transform.localScale;
         playerAnim = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
@@ -87,8 +89,52 @@ public class SpriteScalingScript : MonoBehaviour
             if ((playerMovement4.b_playerisRight && newScale.x < 0) || (!playerMovement4.b_playerisRight && newScale.x > 0))
                 newScale.x *= -1;
         }
-
         transform.localScale = newScale;
+        SortOrderZ();
+
+    }
+
+    private void SortOrderZ()
+    {
+        if (playerCollidesWithEnvironment)
+        {
+            GetComponent<SpriteRenderer>().sortingLayerName = "Environment";
+            GetComponent<SpriteRenderer>().sortingOrder = 3;
+            HatSprite.sortingLayerName = "Environment";
+            HatSprite.sortingOrder = 4;
+            FaceSprite.sortingLayerName = "Environment";
+            FaceSprite.sortingOrder = 4;
+        }
+        else if (playerCollidesWithNPC)
+        {
+            if (transform.position.y > NPC.transform.position.y)
+            {
+                GetComponent<SpriteRenderer>().sortingLayerName = "NPC";
+                GetComponent<SpriteRenderer>().sortingOrder = 1;
+                HatSprite.sortingLayerName = "NPC";
+                HatSprite.sortingOrder = 2;
+                FaceSprite.sortingLayerName = "NPC";
+                FaceSprite.sortingOrder = 2;
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().sortingLayerName = "Player";
+                GetComponent<SpriteRenderer>().sortingOrder = 3;
+                HatSprite.sortingLayerName = "Player";
+                HatSprite.sortingOrder = 4;
+                FaceSprite.sortingLayerName = "Player";
+                FaceSprite.sortingOrder = 4;
+            }
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().sortingLayerName = "Player";
+            GetComponent<SpriteRenderer>().sortingOrder = 3;
+            HatSprite.sortingLayerName = "Player";
+            HatSprite.sortingOrder = 4;
+            FaceSprite.sortingLayerName = "Player";
+            FaceSprite.sortingOrder = 4;
+        }
     }
 
     public void PlayerAnimationFunction()
@@ -102,14 +148,21 @@ public class SpriteScalingScript : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         //firstly, we check the tag of the collided gameObject
-        if (other.gameObject.tag == "Boundary" || other.gameObject.tag == "EnvironmentObjects")
-            playerCollides = true;
+        if (other.gameObject.tag == "EnvironmentObjects")
+            playerCollidesWithEnvironment = true;
+        else if (other.gameObject.tag == "NPC")
+        {
+            playerCollidesWithNPC = true;
+            NPC = other.gameObject;
+        }
     }
 
     public void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Boundary" || other.gameObject.tag == "EnvironmentObjects")
-            playerCollides = false;
+        if (other.gameObject.tag == "EnvironmentObjects")
+            playerCollidesWithEnvironment = false;
+        else if (other.gameObject.tag == "NPC")
+            playerCollidesWithNPC = false;
     }
     #endregion
 }
