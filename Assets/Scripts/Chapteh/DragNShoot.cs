@@ -38,7 +38,7 @@ public class DragNShoot : MonoBehaviour
 
         if (kickBuffer <= 0)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButton(0))
             {
                 dPad.SetActive(false);
                 startPoint = new Vector3(kickPoint.position.x, kickPoint.position.y, 15);
@@ -47,10 +47,6 @@ public class DragNShoot : MonoBehaviour
                     inputStartPoint = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y + 1, Input.mousePosition.z));
                     InitStartPoint = false;
                 }
-            }
-
-            if (Input.GetMouseButton(0))
-            {
                 inputEndPoint = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y + 1, Input.mousePosition.z));
                 inputOffset = inputEndPoint - inputStartPoint;
                 inputOffset = Vector3.ClampMagnitude(inputOffset, 4.0f);

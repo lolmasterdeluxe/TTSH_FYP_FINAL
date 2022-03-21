@@ -76,6 +76,7 @@ public class CustomizerManager : MonoBehaviour
                 UpdateButtonReferences();
             UpdateSpriteReferences();
             UpdateCosmetics();
+            UpdateCharacterName();
         }
     }
 
@@ -197,9 +198,6 @@ public class CustomizerManager : MonoBehaviour
     {
         nextSceneButton.onClick.RemoveAllListeners();
         nextSceneButton.onClick.AddListener(delegate { EnterMainScene(); });
-
-        inputNameField.onValueChanged.RemoveAllListeners();
-        inputNameField.onValueChanged.AddListener(delegate { UpdateCharacterName(); });
     }
 
     // Find another way to re-reference when changing scenes, but this works for now

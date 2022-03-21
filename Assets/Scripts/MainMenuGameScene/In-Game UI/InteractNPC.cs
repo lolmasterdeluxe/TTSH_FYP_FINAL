@@ -32,6 +32,7 @@ public class InteractNPC : MonoBehaviour
     {
         tutorialscreenmanagerInstance = TutorialScreenManager.instance;
         interactPrefab.transform.GetComponent<Image>().DOFade(0f, 0f);
+        interactPrefab.transform.GetChild(0).GetComponent<Image>().DOFade(0f, 0f);
     }
 
     // Update is called once per frame
@@ -58,34 +59,37 @@ public class InteractNPC : MonoBehaviour
         {
             case NPC_TYPE.SPS:
                 interactPrefab.transform.GetComponent<Image>().DOFade(1f, 1.25f);
+                interactPrefab.transform.GetChild(0).GetComponent<Image>().DOFade(1f, 1.25f);
                 hoverSFX.Play();
                 if (Input.GetKeyDown(KeyCode.F))
                     tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.SPS);
                 break;
             case NPC_TYPE.FIVE_STONES:
                 interactPrefab.transform.GetComponent<Image>().DOFade(1f, 1.25f);
+                interactPrefab.transform.GetChild(0).GetComponent<Image>().DOFade(1f, 1.25f);
                 hoverSFX.Play();
                 if (Input.GetKeyDown(KeyCode.F))
-                tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.FIVESTONES);
+                    tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.FIVESTONES);
                 break;
             case NPC_TYPE.CHAPTEH:
                 interactPrefab.transform.GetComponent<Image>().DOFade(1f, 1.25f);
+                interactPrefab.transform.GetChild(0).GetComponent<Image>().DOFade(1f, 1.25f);
                 hoverSFX.Play();
                 if (Input.GetKeyDown(KeyCode.F))
-                tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.CHAPTEH);
+                    tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.CHAPTEH);
                 break;
             case NPC_TYPE.CUSTOMIZER:
                 interactPrefab.transform.GetComponent<Image>().DOFade(1f, 1.25f);
                 hoverSFX.Play();
                 if (Input.GetKeyDown(KeyCode.F))
-                SceneManager.LoadScene("CustomizeScene");
+                    SceneManager.LoadScene("CustomizeScene");
                 break;
             case NPC_TYPE.LEADERBOARD:
                 // Recode this later on
                 interactPrefab.transform.GetComponent<Image>().DOFade(1f, 1.25f);
                 hoverSFX.Play();
                 if (Input.GetKeyDown(KeyCode.F))
-                Resources.FindObjectsOfTypeAll<LeaderboardManager>()[0].gameObject.SetActive(true);
+                    Resources.FindObjectsOfTypeAll<LeaderboardManager>()[0].gameObject.SetActive(true);
                 break;
         }
     }
@@ -145,12 +149,15 @@ public class InteractNPC : MonoBehaviour
         {
             case NPC_TYPE.SPS:
                 interactPrefab.transform.GetComponent<Image>().DOFade(0f, .75f);
+                interactPrefab.transform.GetChild(0).GetComponent<Image>().DOFade(0f, .75f);
                 break;
             case NPC_TYPE.FIVE_STONES:
                 interactPrefab.transform.GetComponent<Image>().DOFade(0f, .75f);
+                interactPrefab.transform.GetChild(0).GetComponent<Image>().DOFade(0f, .75f);
                 break;
             case NPC_TYPE.CHAPTEH:
                 interactPrefab.transform.GetComponent<Image>().DOFade(0f, .75f);
+                interactPrefab.transform.GetChild(0).GetComponent<Image>().DOFade(0f, .75f);
                 break;
             case NPC_TYPE.CUSTOMIZER:
                 interactPrefab.transform.GetComponent<Image>().DOFade(0f, .75f);

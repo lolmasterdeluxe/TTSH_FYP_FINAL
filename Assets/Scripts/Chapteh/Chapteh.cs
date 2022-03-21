@@ -167,7 +167,11 @@ public class Chapteh : MonoBehaviour
             m_dir.x = Random.Range(-5f, 5f);
             m_dir.y = 0.5f;
             //Debug.Log("Force * m_dir: " + (force * m_dir));
-            force.Set(chargeBar.GetFillAmt() * power, chargeBar.GetFillAmt() * power);
+            // Check if player power is 0
+            if (force.x == 0 && force.y == 0)
+                force.Set(10, 10);
+            else
+                force.Set(chargeBar.GetFillAmt() * power, chargeBar.GetFillAmt() * power);
             finalVelocity = force * m_dir;
             finalVelocity.Set(Mathf.Clamp(finalVelocity.x, -7.5f, 7.5f), finalVelocity.y);
             rbChapteh.velocity = finalVelocity;
@@ -176,13 +180,16 @@ public class Chapteh : MonoBehaviour
         if (inPlay && (other.gameObject.CompareTag("Boundary")))
         {
             Vector2 Normal = other.contacts[0].normal;
-            Vector3 m_dir = Vector2.Reflect(rbChapteh.velocity, Normal).normalized;
-            if (Normal.x == -1.0f)
-                m_dir.x = Random.Range(-1f, -0.5f);
-            else if (Normal.x == 1.0f)
-                m_dir.x = Random.Range(1f, 0.5f);
-            m_dir.y = 0.5f;
-            rbChapteh.velocity = force / 3 * m_dir;
+            if (Normal.y == 0)
+            {
+                Vector3 m_dir = Vector2.Reflect(rbChapteh.velocity, Normal).normalized;
+                if (Normal.x == -1.0f)
+                    m_dir.x = Random.Range(-1f, -0.5f);
+                else if (Normal.x == 1.0f)
+                    m_dir.x = Random.Range(1f, 0.5f);
+                m_dir.y = 0.5f;
+                rbChapteh.velocity = force / 3 * m_dir;
+            }
             //Debug.Log("Normal: " + other.contacts[0].normal);
         }
         //Debug.Log("Collided object: " + other.gameObject.name);

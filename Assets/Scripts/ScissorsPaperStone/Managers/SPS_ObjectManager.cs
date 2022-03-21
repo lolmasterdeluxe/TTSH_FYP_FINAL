@@ -206,21 +206,21 @@ public class SPS_ObjectManager : MonoBehaviour
         // objectStartPosition.transform.position.y,
         // objectStartPosition.transform.position.z), objectStartPosition.transform.rotation);
         g_objectInstance = ObjectPooling.SharedInstance.GetPooledObject("EnemyTag");
-        if (g_objectInstance != null)
+        if (!g_objectInstance.activeSelf)
         {
-            //Debug.Log("not running");
+            Debug.Log("not running");
+            g_objectInstance.transform.position = objectStartPosition.transform.position;
+            g_objectInstance.transform.rotation = objectStartPosition.transform.rotation;
             g_objectInstance.SetActive(true);
             g_objectInstance.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
-            g_objectInstance.transform.position = objectStartPosition.transform.position; 
-            g_objectInstance.transform.rotation = objectStartPosition.transform.rotation;
             //new Vector3(objectStartPosition.transform.position.x, objectStartPosition.transform.position.y, objectStartPosition.transform.position.z);
         }
-
-
         //do the movement HERE
-        enemymovementTween = g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 3f);
+        enemymovementTween = g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, f_objectTravelSpeed * f_objectTravelSpeed);
+        Debug.Log("Im moving");
+
         //enemymovementTween = g_objectInstance.GetComponent<Rigidbody2D>().DOMoveX(enemyEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 3f);
-        
+
         //add this object to the list of objects spawned
         objectWaveList.Add(g_objectInstance);
 
@@ -242,19 +242,20 @@ public class SPS_ObjectManager : MonoBehaviour
             //objectStartPosition.transform.position.y, 
             //objectStartPosition.transform.position.z), objectStartPosition.transform.rotation);
             g_objectInstance = ObjectPooling.SharedInstance.GetPooledObject("EnemyTag");
-            if (g_objectInstance != null)
+            if (!g_objectInstance.activeSelf)
             {
-                //Debug.Log("help");
+                Debug.Log("help");
+                g_objectInstance.transform.position = new Vector3(objectStartPosition.transform.position.x + val * 4.5f, objectStartPosition.transform.position.y, objectStartPosition.transform.position.z);
+                g_objectInstance.transform.rotation = objectStartPosition.transform.rotation;
                 g_objectInstance.SetActive(true);
                 g_objectInstance.GetComponent<SPS_Enemy>().DetermineEnemyType();
                 g_objectInstance.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
-                g_objectInstance.transform.position = new Vector3(objectStartPosition.transform.position.x + val * 4.5f, objectStartPosition.transform.position.y, objectStartPosition.transform.position.z);
-                g_objectInstance.transform.rotation = objectStartPosition.transform.rotation;
             }
+            g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, (f_objectTravelSpeed * f_objectTravelSpeed));
 
             //do the movement HERE
-            g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, (f_objectTravelSpeed * f_objectTravelSpeed));
-           //g_objectInstance.GetComponent<Rigidbody2D>().DOMoveX(enemyEndPosition.transform.position.x, (f_objectTravelSpeed * f_objectTravelSpeed));
+
+            //g_objectInstance.GetComponent<Rigidbody2D>().DOMoveX(enemyEndPosition.transform.position.x, (f_objectTravelSpeed * f_objectTravelSpeed));
 
             //add objects to the list of objects spawned
             objectWaveList.Add(g_objectInstance);
