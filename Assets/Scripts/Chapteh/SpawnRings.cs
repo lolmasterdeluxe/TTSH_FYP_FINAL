@@ -172,6 +172,8 @@ public class SpawnRings : MonoBehaviour
                             gameObjectRings = temp;
                             spawnedRings.Add(temp);
                             break;
+                        default:
+                            break;
                     }
 
                     spawnedPositions.RemoveAt(spawnedPositions.Count - 1);

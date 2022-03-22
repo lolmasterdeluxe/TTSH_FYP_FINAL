@@ -76,11 +76,13 @@ public class PlayerButtonMove : MonoBehaviour
         //add whatever movement-based code HERE
         if (dir == "Left")
         {
+            footstepsSFX.Play();
             movement.x = -1;
             Left.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
         }
         if (dir == "Right")
         {
+            footstepsSFX.Play();
             movement.x = 1;
             Right.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
         }
@@ -102,24 +104,28 @@ public class PlayerButtonMove : MonoBehaviour
         if (!pauseMenu.isPaused)
         {
             if (movement.x > 0)
+            {
                 // Sets the sprite to original position
-                playerSprite.flipX = false;
+                transform.eulerAngles = new Vector3(0, 0, 0);
+            }
             else
+            {
                 // Flips the sprite to be inverted
-                playerSprite.flipX = true;
+                transform.eulerAngles = new Vector3(0, 180, 0);
+            }
         }
     }
 
     private void PlayerSpriteAnimation()
     {
-        if (movement.magnitude == 0) // If mouse input is not detected
+        if (movement.magnitude == 0) // If input is not detected
         {
             playerAnim.SetBool("PlayerRun", false);
 
             isRunning = false;
             DisppearSandDust();
 
-            //runningSource.Stop();
+            footstepsSFX.Stop();
         }
         else
         {
@@ -164,7 +170,7 @@ public class PlayerButtonMove : MonoBehaviour
 
     private void FlipSandDust()
     {
-        if (playerSprite.flipX == true)
+        if (transform.eulerAngles == new Vector3(0, 180, 0))
         {
             sandDust.transform.rotation = Quaternion.Euler(0f, 5f, 0f);
             CreateSandDust();

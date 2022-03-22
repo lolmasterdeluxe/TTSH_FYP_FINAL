@@ -332,7 +332,10 @@ public class LeaderboardManager : MonoBehaviour
     {
         Debug.Log("exit leaderboard");
         if (SceneManager.GetActiveScene().name == "MainMenuGameScene")
+        {
             gameObject.SetActive(false);
+            leaderboardPage.SetActive(false);
+        }
         else
             SceneManager.LoadScene("MainMenuGameScene");
     }

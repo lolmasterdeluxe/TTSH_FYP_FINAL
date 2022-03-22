@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SplashScreen : MonoBehaviour
 {
-    public GameObject _splashScreenGroup;
+    [SerializeField] private GameObject _splashScreenGroup;
+    [SerializeField] private float WaitTime = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -15,12 +16,12 @@ public class SplashScreen : MonoBehaviour
     }
     private void Fade()
     {
-        TweenManager.Instance.AnimateFade(_splashScreenGroup.GetComponent<CanvasGroup>(), 0f, 2f);
+        TweenManager.Instance.AnimateFade(_splashScreenGroup.GetComponent<CanvasGroup>(), 0f, WaitTime);
     }
 
     IEnumerator WaitFade()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(WaitTime);
         Fade();
         GetComponent<CanvasGroup>().blocksRaycasts = false;
     }

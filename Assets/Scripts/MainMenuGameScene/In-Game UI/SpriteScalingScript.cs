@@ -89,6 +89,8 @@ public class SpriteScalingScript : MonoBehaviour
             if ((playerMovement4.b_playerisRight && newScale.x < 0) || (!playerMovement4.b_playerisRight && newScale.x > 0))
                 newScale.x *= -1;
         }
+        else
+            playerMovement4.isMoving = false;
         transform.localScale = newScale;
         SortOrderZ();
 

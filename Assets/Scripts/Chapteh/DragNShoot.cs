@@ -40,6 +40,8 @@ public class DragNShoot : MonoBehaviour
         {
             if (Input.GetMouseButton(0))
             {
+                if (dPad.activeSelf)
+                    audioSources[1].Play();
                 dPad.SetActive(false);
                 startPoint = new Vector3(kickPoint.position.x, kickPoint.position.y, 15);
                 if (InitStartPoint)
@@ -52,13 +54,13 @@ public class DragNShoot : MonoBehaviour
                 inputOffset = Vector3.ClampMagnitude(inputOffset, 4.0f);
                 Vector3 currentPoint = (startPoint - inputOffset);
                 currentPoint.z = 15;
-                audioSources[0].Play();
                 chargeBar.SetFillBar(inputOffset.magnitude);
                 TrajectoryLine.RenderLine(startPoint, currentPoint);
             }
 
             if (Input.GetMouseButtonUp(0))
             {
+                audioSources[0].Play();
                 dPad.SetActive(true);
                 endPoint = cam.ScreenToWorldPoint(Input.mousePosition);
                 endPoint.z = 15;

@@ -21,6 +21,7 @@ public class Chapteh : MonoBehaviour
 
     private float glowDuration = 1f;
     public AudioSource onRingHitSource;
+    [SerializeField] private AudioSource kickSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -176,6 +177,7 @@ public class Chapteh : MonoBehaviour
             finalVelocity.Set(Mathf.Clamp(finalVelocity.x, -7.5f, 7.5f), finalVelocity.y);
             rbChapteh.velocity = finalVelocity;
             playerAnim.SetTrigger("PlayerKick");
+            kickSFX.Play();
         }
         if (inPlay && (other.gameObject.CompareTag("Boundary")))
         {
