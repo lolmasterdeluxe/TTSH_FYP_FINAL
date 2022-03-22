@@ -461,14 +461,16 @@ public class SPS_PlayerManager : MonoBehaviour
 
                     //add the value HERE
                     uiManagerInstance.AddObjectiveValue();
-
+                    
                     //destroy it since it has been collected
                     //Destroy(other.gameObject);
                     //Destroy(other.gameObject.GetComponent<Rigidbody2D>());
                     other.gameObject.SetActive(false);
+                    
                     Debug.Log("Powerup Falsed");
                     //play sounds HERE
                     powerupSFX.Play();
+                    
 
                 }
                 //we take damage if we hit with the wrong typing
@@ -528,15 +530,20 @@ public class SPS_PlayerManager : MonoBehaviour
 
             else if (other.gameObject.tag == "Powerup")
             {
+                print("enter");
                 //add to the objective value
                 uiManagerInstance.AddObjectiveValue();
 
                 //remove the object from the list
                 objectManagerInstance.objectWaveList.Remove(other.gameObject);
 
+
                 //destroy it since it has been collected
-                Destroy(other.gameObject);
-                Destroy(other.gameObject.GetComponent<Rigidbody2D>());
+                //Destroy(other.gameObject);
+                //Destroy(other.gameObject.GetComponent<Rigidbody2D>());
+                other.gameObject.SetActive(false);
+                transform.GetChild(1).GetComponent<ParticleSystem>().time = 0;
+                transform.GetChild(1).GetComponent<ParticleSystem>().Play();
 
                 //play sounds HERE
                 powerupSFX.Play();
@@ -544,6 +551,20 @@ public class SPS_PlayerManager : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Powerup")
+        {
+            Destroy(other.gameObject);
+            //transform.GetChild(1).GetComponent<ParticleSystem>().Simulate(0,false,true);;
+            transform.GetChild(1).GetComponent<ParticleSystem>().Stop();
+            Debug.Log("I am the Elden Lord");
+        }
+            
+    }
+
     #endregion
+
+
 
 }
