@@ -14,7 +14,11 @@ public class SPS_ObjectDespawningManager : MonoBehaviour
     [Tooltip("Reference to UI Manager Script")]
     [SerializeField] private SPS_UIManager uimanagerInstance;
 
+   
+
     #endregion
+
+    
 
     #region Unity Callbacks
     private void Update()
@@ -48,18 +52,23 @@ public class SPS_ObjectDespawningManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("EnemyTag"))
+        if (!other.CompareTag("EnemyTag")&&!other.CompareTag("Powerup"))
         {
             //remove the gameobject instance from the list
+
             objectspawningInstance.objectWaveList.Remove(other.gameObject);
 
             //we now destroy it
+
             Destroy(other.gameObject);
             //if it has a rigidbody2d, we destroy it as well
+
             if (other.gameObject.GetComponent<Rigidbody2D>() != null)
             {
                 Destroy(other.gameObject.GetComponent<Rigidbody2D>());
             }
+
+
         }
         else if (other.CompareTag("EnemyTag"))
         {
@@ -67,8 +76,10 @@ public class SPS_ObjectDespawningManager : MonoBehaviour
             other.transform.position = objectspawningInstance.objectStartPosition.transform.position;
             objectspawningInstance.objectWaveList.Remove(other.gameObject);
             other.gameObject.SetActive(false);
+
         }
         //Debug.Log("An object has been destroyed");
+        
     }
 
     #endregion
