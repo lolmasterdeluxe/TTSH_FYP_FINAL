@@ -3770,7 +3770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _splashScreenGroup: {fileID: 1627667596}
-  WaitTime: 1
+  WaitTime: 8
 --- !u!225 &1627667599
 CanvasGroup:
   m_ObjectHideFlags: 0
