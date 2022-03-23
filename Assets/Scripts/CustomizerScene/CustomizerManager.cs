@@ -73,10 +73,13 @@ public class CustomizerManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "MainMenuGameScene" || SceneManager.GetActiveScene().name == "CustomizeScene" || SceneManager.GetActiveScene().name == "Chapteh" || SceneManager.GetActiveScene().name == "Scissors Paper Stone")
         {
             if (SceneManager.GetActiveScene().name == "CustomizeScene")
+            {
                 UpdateButtonReferences();
+                UpdateCharacterName();
+            }
+
             UpdateSpriteReferences();
-            UpdateCosmetics();
-            UpdateCharacterName();
+            UpdateCosmetics();          
         }
     }
 
@@ -169,9 +172,9 @@ public class CustomizerManager : MonoBehaviour
         Customizable faceCustomizable = m_facePool.ElementAtOrDefault(m_faceId);
         Customizable colorCustomizable = m_colorPool.ElementAtOrDefault(m_colorId);
 
-        m_hatSprite.sprite = null;
+        /*m_hatSprite.sprite = null;
         m_eyeSprite.sprite = null;
-        m_colorSprite.sprite = null;
+        m_colorSprite.sprite = null;*/
 
         if (hatCustomizable != null && hatCustomizable.m_itemType == ItemType.HAT)
         {

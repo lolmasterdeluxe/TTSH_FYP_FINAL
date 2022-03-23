@@ -44,6 +44,7 @@ public class FiveStonesGameManager : MonoBehaviour
     [SerializeField] private GameObject g_timerText;
     [SerializeField] private GameObject g_objectiveText;
     [SerializeField] private Objective m_currentObjective;
+    [SerializeField] private GameObject AudioObject;
 
     private float difficultyMultiplier;
     private int baseScore = 1;
@@ -63,11 +64,6 @@ public class FiveStonesGameManager : MonoBehaviour
             Destroy(this.gameObject);
         else
             _instance = this;
-    }
-
-    // Start is called before the first frame update
-    void Start()        
-    {
     }
 
     // Difficulty can be any numnber from 0 - 4f
@@ -278,7 +274,7 @@ public class FiveStonesGameManager : MonoBehaviour
         if (m_gameEnded)
         {
             yield return new WaitForSeconds(3);
-
+            AudioObject.SetActive(false);
             Resources.FindObjectsOfTypeAll<LeaderboardManager>()[0].gameObject.SetActive(true);
         }
     }

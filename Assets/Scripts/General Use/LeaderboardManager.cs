@@ -67,6 +67,8 @@ public class LeaderboardManager : MonoBehaviour
 
     [SerializeField] private bool m_isFinalGame;
 
+    [SerializeField] private AudioSource LeaderboardBGM;
+
     public void ShowLeaderBoard()
     {
         leaderboardPage.SetActive(true);
@@ -90,7 +92,7 @@ public class LeaderboardManager : MonoBehaviour
     {
         m_isFinalGame = false;
         splashScreenButton.SetActive(false);
-
+        LeaderboardBGM.Play();
         /*if (ScoreManager.Instance.GetCurrentSavedScoreCount() >= 4 || m_isFinalGame)
         {
             ScoreManager.Instance.ConcludeGameScore();

@@ -18,16 +18,17 @@ public class ChaptehGameManager : MonoBehaviour
         TOTAL,
     }
 
-    public GameObject g_timerText;
-    public GameObject g_comboGroup;
-    public GameObject g_scoreText;
-    public GameObject g_comboText;
-    public GameObject g_comboExpiryBar;
-    public GameObject g_objectiveText;
-    public GameObject g_gameTimeUp;
-    public Objective m_currentObjective;
+    [SerializeField] private GameObject g_timerText;
+    [SerializeField] private GameObject g_comboGroup;
+    [SerializeField] private GameObject g_scoreText;
+    [SerializeField] private GameObject g_comboText;
+    [SerializeField] private GameObject g_comboExpiryBar;
+    [SerializeField] private GameObject g_objectiveText;
+    [SerializeField] private GameObject g_gameTimeUp;
+    [SerializeField] private Objective m_currentObjective;
+    [SerializeField] private GameObject AudioObject;
 
-    public int m_score;
+    [SerializeField] private int m_score;
     private int redbaseScore = 1;
     private int yellowbaseScore = 3;
     private int greenbaseScore = 5;
@@ -47,11 +48,6 @@ public class ChaptehGameManager : MonoBehaviour
             Destroy(this.gameObject);
         else
             _instance = this;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
     }
 
     public void StartGame(float time)
@@ -198,7 +194,8 @@ public class ChaptehGameManager : MonoBehaviour
         if (m_gameEnded)
         {
             yield return new WaitForSeconds(3);
-
+            AudioObject.SetActive(false);
+            audioSources[0].Play();
             Resources.FindObjectsOfTypeAll<LeaderboardManager>()[0].gameObject.SetActive(true);
         }
     }
