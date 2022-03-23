@@ -42,7 +42,6 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -126,11 +125,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 396
-        width: 197
-        height: 197
+        y: 1004
+        width: 496
+        height: 496
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -146,12 +145,12 @@ TextureImporter:
       name: enemydie_ss_1
       rect:
         serializedVersion: 2
-        x: 197
-        y: 396
-        width: 197
-        height: 197
+        x: 503
+        y: 1004
+        width: 496
+        height: 496
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,11 +167,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 199
-        width: 197
-        height: 197
+        y: 504
+        width: 496
+        height: 502
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -188,12 +187,12 @@ TextureImporter:
       name: enemydie_ss_3
       rect:
         serializedVersion: 2
-        x: 197
-        y: 199
-        width: 197
-        height: 197
+        x: 503
+        y: 498
+        width: 496
+        height: 505
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -211,10 +210,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 2
-        width: 197
-        height: 197
+        width: 496
+        height: 496
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -230,12 +229,12 @@ TextureImporter:
       name: enemydie_ss_5
       rect:
         serializedVersion: 2
-        x: 197
-        y: 2
-        width: 197
-        height: 197
+        x: 497
+        y: 0
+        width: 502
+        height: 496
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -257,13 +256,6 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      enemydie_ss_3: 4037911294704307877
-      enemydie_ss_5: 4930821893573192013
-      enemydie_ss_1: 6683267137831296478
-      enemydie_ss_4: 3269353350246621161
-      enemydie_ss_2: 214861700809121655
-      enemydie_ss_0: -2868118859674946830
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

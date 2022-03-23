@@ -15,6 +15,7 @@ public class SPS_AttackRangeManager : MonoBehaviour
         {
             //we now set the attack indicator of the enemy to be true
             other.transform.GetChild(0).GetComponent<SpriteRenderer>().DOFade(1, 0.5f);
+
         }
     }
 
