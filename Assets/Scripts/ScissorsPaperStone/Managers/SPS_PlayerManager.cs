@@ -340,8 +340,12 @@ public class SPS_PlayerManager : MonoBehaviour
 
                     //Destroy(other.gameObject);
                     //Destroy(other.gameObject.GetComponent<Rigidbody2D>());
-                    other.gameObject.transform.DOKill(true);
-                    other.gameObject.SetActive(false);
+
+                    //other.gameObject.SetActive(false);
+                    StartCoroutine(objectManagerInstance.EndsEnemy(other.GetComponent<Animator>(),other.gameObject));
+                    
+                   
+                    
                     Debug.Log("Paper Beaten");
 
                     #region Unused
@@ -381,10 +385,10 @@ public class SPS_PlayerManager : MonoBehaviour
 
                     //Destroy(other.gameObject);
                     //Destroy(other.gameObject.GetComponent<Rigidbody2D>());
-                    other.gameObject.transform.DOKill(true);
-                    other.gameObject.SetActive(false);
-                    Debug.Log("Rock Beaten");
-
+                    
+                    
+                    StartCoroutine(objectManagerInstance.EndsEnemy(other.GetComponent<Animator>(), other.gameObject));
+                    Debug.Log("stone Beaten");
                     #region Unused
                     ////call the coroutine HERE
                     //StartCoroutine(objectManagerInstance.EndsEnemy(other.GetComponent<Animator>(), other.gameObject));
@@ -420,8 +424,7 @@ public class SPS_PlayerManager : MonoBehaviour
 
                     //Destroy(other.gameObject);
                     //Destroy(other.gameObject.GetComponent<Rigidbody2D>());
-                    other.gameObject.transform.DOKill(true);
-                    other.gameObject.SetActive(false);
+                    StartCoroutine(objectManagerInstance.EndsEnemy(other.GetComponent<Animator>(), other.gameObject));
                     Debug.Log("Scissors Beaten");
 
                     #region Unused

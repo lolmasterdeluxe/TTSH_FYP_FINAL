@@ -28,7 +28,7 @@ public class SPS_Enemy : MonoBehaviour
     private void Update()
     {
         // Checks if alpha is below 1
-        if (GetComponent<SpriteRenderer>().color.a < 1)
+        if (GetComponent<SpriteRenderer>().color.a < 1 && !GetComponent<Animator>().GetBool("e_died"))
             GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
     }
 
@@ -41,6 +41,7 @@ public class SPS_Enemy : MonoBehaviour
         objectmanagerInstance = FindObjectOfType<SPS_ObjectManager>();
         //GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
         transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0);
+        GetComponent<Collider2D>().enabled = true;
     }
 
     public void DetermineEnemyType()

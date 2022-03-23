@@ -36,9 +36,6 @@ public class SPS_ObjectManager : MonoBehaviour
     //these pre-determined positions are to be used with DOTween
     public GameObject objectStartPosition, enemyEndPosition, obstacleEndPosition;
 
-    //tween references HERE
-    public Tween enemymovementTween;
-
     //spawning speed variables
     [Tooltip("Uptime for each object spawn")]
     float f_objectspawnLifetime;
@@ -345,19 +342,20 @@ public class SPS_ObjectManager : MonoBehaviour
 
     public IEnumerator EndsEnemy(Animator enemyAnimator, GameObject targetedEnemy)
     {
-        //end the movement
-        DOTween.Kill(enemymovementTween);
-
         //change the animation
         enemyAnimator.SetBool("e_died", true);
-
+        targetedEnemy.GetComponent<Collider2D>().enabled = false;
         //fade out the animation
-        targetedEnemy.transform.GetComponent<SpriteRenderer>().DOFade(0f, 0.5f);
-        yield return enemymovementTween.WaitForCompletion();
+        targetedEnemy.transform.GetComponent<SpriteRenderer>().DOFade(0f, 5f);
+        targetedEnemy.transform.GetChild(0).GetComponent<SpriteRenderer>().DOFade(0, 5f);
+        yield return new WaitForSeconds(5f);
+        targetedEnemy.transform.DOKill(true);
+        enemyAnimator.SetBool("e_died", false);
         //destroy the gameObject and its rigidbody
         //Destroy(targetedEnemy);
         //Destroy(targetedEnemy.GetComponent<Rigidbody2D>());
         targetedEnemy.SetActive(false);
+
         Debug.Log("Completed deletion");
     }
 
