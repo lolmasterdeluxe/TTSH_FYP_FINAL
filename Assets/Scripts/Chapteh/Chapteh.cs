@@ -20,6 +20,7 @@ public class Chapteh : MonoBehaviour
     private Animator playerAnim;
 
     private float glowDuration = 1f;
+    private bool OnGround;
     public AudioSource onRingHitSource;
     [SerializeField] private AudioSource kickSFX;
 
@@ -126,8 +127,10 @@ public class Chapteh : MonoBehaviour
             // Rotates the Chapteh to fall according to gravity
             Vector2 dir = rbChapteh.velocity;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            //rbChapteh.rotation += rbChapteh.gravityScale;
+            if (!OnGround)
+                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            else
+                rbChapteh.rotation = rbChapteh.gravityScale;
         }
     }
 
@@ -136,9 +139,14 @@ public class Chapteh : MonoBehaviour
         // Chapteh lands on the ground and breaks the combo
         if (other.CompareTag("Ground"))
         {
-            inPlay = false;
+            OnGround = true;
             chargeBar.SetHandleActive(false);
             ComboManager.Instance.BreakCombo();
+        }
+        if (OnGround && other.CompareTag("Player"))
+        {
+            inPlay = false;
+            OnGround = false;
         }
 
         // Chapteh hits the respective ring

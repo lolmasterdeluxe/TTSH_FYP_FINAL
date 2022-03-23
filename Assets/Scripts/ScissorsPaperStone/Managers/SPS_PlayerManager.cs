@@ -55,9 +55,6 @@ public class SPS_PlayerManager : MonoBehaviour
     //variables for combo
     public GameObject g_comboGroup, g_comboText, g_comboText_finalPos;
 
-    //variables for player idle character (endgame)
-    public GameObject current_player_sprite, end_player_sprite;
-
     //Audio Source: for player-related Sounds
     public AudioSource jumpSFX, stunnedSFX, scissorsAtkSFX, paperAtkSFX, stoneAtkSFX, powerupSFX;
 
@@ -104,11 +101,10 @@ public class SPS_PlayerManager : MonoBehaviour
     private void Update()
     {
 
-        if (uiManagerInstance.b_gameEnded == true)
+        if (uiManagerInstance.b_gameEnded)
         {
             ResetAnimationsAndChoice();
-            current_player_sprite.SetActive(false);
-            end_player_sprite.SetActive(true);
+            playerAC.SetBool("PlayerIdle", true);
         }
 
         if (!uiManagerInstance.b_gameStart || uiManagerInstance.b_gameEnded)

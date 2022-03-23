@@ -25,6 +25,13 @@ public class SPS_Enemy : MonoBehaviour
 
     #region Unity Callbacks
 
+    private void Update()
+    {
+        // Checks if alpha is below 1
+        if (GetComponent<SpriteRenderer>().color.a < 1)
+            GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+    }
+
     #endregion  
 
     #region Helper Functions
@@ -32,7 +39,7 @@ public class SPS_Enemy : MonoBehaviour
     {
         enemyAC = GetComponent<Animator>();
         objectmanagerInstance = FindObjectOfType<SPS_ObjectManager>();
-        GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
+        //GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
         transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0);
     }
 
