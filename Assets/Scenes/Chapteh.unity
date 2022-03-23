@@ -310,7 +310,6 @@ MonoBehaviour:
   movement: {x: 0, y: 0}
   b_playerisRight: 1
   Position: {x: 0, y: 0}
-  playerSprite: {fileID: 6789689}
   sandDust: {fileID: 895626414}
   pauseMenu: {fileID: 1996898939}
   chapteh: {fileID: 5556708298840527362}
@@ -1931,6 +1930,7 @@ MonoBehaviour:
   g_gameTimeUp: {fileID: 2127709132}
   m_currentObjective: 0
   AudioObject: {fileID: 1067763110532333576}
+  playerAnim: {fileID: 6789691}
   m_score: 0
   redCount: 0
   yellowCount: 0
@@ -1940,7 +1940,6 @@ MonoBehaviour:
   audioSources:
   - {fileID: 1294000857}
   - {fileID: 169792962}
-  - {fileID: 1067763110532333575}
 --- !u!1 &401037516
 GameObject:
   m_ObjectHideFlags: 0
@@ -16784,7 +16783,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 6
   m_Positions: []
   m_Parameters:
     serializedVersion: 3
@@ -16889,7 +16888,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: b559c598f607f0c478cc5c496e2135d4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

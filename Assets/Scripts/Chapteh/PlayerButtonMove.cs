@@ -20,7 +20,6 @@ public class PlayerButtonMove : MonoBehaviour
     [HideInInspector] public bool b_playerisRight = true;
     public Vector2 Position;
 
-    [SerializeField] private SpriteRenderer playerSprite;
     [SerializeField] private ParticleSystem sandDust;
     [SerializeField] private PauseMenu pauseMenu;
     [SerializeField] private Chapteh chapteh;
@@ -51,6 +50,9 @@ public class PlayerButtonMove : MonoBehaviour
         else if (ChaptehGameManager.Instance.m_gameEnded)
         {
             // Stops the animation and particle effects when game ends
+            Left.transform.localScale = new Vector3(1, 1, 1);
+            Right.transform.localScale = new Vector3(1, 1, 1);
+            movement.x = 0;
             playerAnim.enabled = false;
             DisppearSandDust();
             return;
@@ -71,8 +73,6 @@ public class PlayerButtonMove : MonoBehaviour
     #region Functions
     public void PlayerMovementFunction(string dir)
     {
-        if (ChaptehGameManager.Instance.m_gameEnded)
-            return;
         //add whatever movement-based code HERE
         if (dir == "Left")
         {

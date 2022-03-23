@@ -27,6 +27,7 @@ public class ChaptehGameManager : MonoBehaviour
     [SerializeField] private GameObject g_gameTimeUp;
     [SerializeField] private Objective m_currentObjective;
     [SerializeField] private GameObject AudioObject;
+    [SerializeField] private Animator playerAnim;
 
     [SerializeField] private int m_score;
     private int redbaseScore = 1;
@@ -186,6 +187,10 @@ public class ChaptehGameManager : MonoBehaviour
         // Plays time's up audio
         audioSources[1].Play();
 
+        // Return player to idle state
+        playerAnim.SetBool("PlayerRun", false);
+        playerAnim.SetBool("PlayerIdle", true);
+
         ScoreManager.Instance.EndCurrentGameScore();
     }
 
@@ -195,7 +200,6 @@ public class ChaptehGameManager : MonoBehaviour
         {
             yield return new WaitForSeconds(3);
             AudioObject.SetActive(false);
-            audioSources[0].Play();
             Resources.FindObjectsOfTypeAll<LeaderboardManager>()[0].gameObject.SetActive(true);
         }
     }
