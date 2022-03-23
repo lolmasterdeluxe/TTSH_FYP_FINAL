@@ -340,15 +340,10 @@ public class SPS_PlayerManager : MonoBehaviour
 
                     //Destroy(other.gameObject);
                     //Destroy(other.gameObject.GetComponent<Rigidbody2D>());
-                   
+
                     //other.gameObject.SetActive(false);
-                    other.GetComponent<SpriteRenderer>().DOFade(0, 1f);
-                    other.GetComponent<Animator>().SetBool("e_died", true);
-                    if (other.GetComponent<SpriteRenderer>().color.a<=0)
-                    {
-                        other.gameObject.transform.DOKill(true);
-                        other.gameObject.SetActive(false);
-                    }
+                    StartCoroutine(objectManagerInstance.EndsEnemy(other.GetComponent<Animator>(),other.gameObject));
+                    
                    
                     
                     Debug.Log("Paper Beaten");
@@ -390,15 +385,10 @@ public class SPS_PlayerManager : MonoBehaviour
 
                     //Destroy(other.gameObject);
                     //Destroy(other.gameObject.GetComponent<Rigidbody2D>());
-                    other.GetComponent<SpriteRenderer>().DOFade(0, 1f);
-                    other.GetComponent<Animator>().SetBool("e_died", true);
-                    if (other.GetComponent<SpriteRenderer>().color.a <= 0)
-                    {
-                        other.gameObject.transform.DOKill(true);
-                        other.gameObject.SetActive(false);
-                    }
-                    Debug.Log("Rock Beaten");
-
+                    
+                    
+                    StartCoroutine(objectManagerInstance.EndsEnemy(other.GetComponent<Animator>(), other.gameObject));
+                    Debug.Log("stone Beaten");
                     #region Unused
                     ////call the coroutine HERE
                     //StartCoroutine(objectManagerInstance.EndsEnemy(other.GetComponent<Animator>(), other.gameObject));
@@ -434,13 +424,7 @@ public class SPS_PlayerManager : MonoBehaviour
 
                     //Destroy(other.gameObject);
                     //Destroy(other.gameObject.GetComponent<Rigidbody2D>());
-                    other.GetComponent<SpriteRenderer>().DOFade(0, 1f);
-                    other.GetComponent<Animator>().SetBool("e_died", true);
-                    if (other.GetComponent<SpriteRenderer>().color.a <= 0)
-                    {
-                        other.gameObject.transform.DOKill(true);
-                        other.gameObject.SetActive(false);
-                    }
+                    StartCoroutine(objectManagerInstance.EndsEnemy(other.GetComponent<Animator>(), other.gameObject));
                     Debug.Log("Scissors Beaten");
 
                     #region Unused
