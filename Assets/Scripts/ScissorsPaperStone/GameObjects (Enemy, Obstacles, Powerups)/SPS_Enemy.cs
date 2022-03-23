@@ -39,14 +39,12 @@ public class SPS_Enemy : MonoBehaviour
     {
         enemyAC = GetComponent<Animator>();
         objectmanagerInstance = FindObjectOfType<SPS_ObjectManager>();
-        //GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
         transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0);
         GetComponent<Collider2D>().enabled = true;
     }
 
     public void DetermineEnemyType()
     {
-        Init();
         if (objectmanagerInstance.current_waveFormat == SPS_ObjectManager.WaveFormat.WAVE_MULTIPLE_RANDOM
             || objectmanagerInstance.current_waveFormat == SPS_ObjectManager.WaveFormat.WAVE_SINGLE_RANDOM)
             EnemyTypeIsRandom();

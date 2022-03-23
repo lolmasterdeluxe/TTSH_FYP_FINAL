@@ -112,34 +112,7 @@ public class SPS_ObjectManager : MonoBehaviour
                     if (i_currentwaveCount <= 3)
                     {
                         SpawnSingleRandomEnemy();
-
-                        //current_waveFormat = (WaveFormat)Random.Range(1, (int)WaveFormat.WAVE_MULTIPLE_STONE);
-
-                        //switch (current_waveFormat)
-                        //{
-                        //    case WaveFormat.WAVE_SINGLE_RANDOM:
-                        //        SpawnSingleRandomEnemy();
-                        //        break;
-
-                        //    case WaveFormat.WAVE_MULTIPLE_RANDOM:
-                        //        SpawnMultipleRandomEnemies();
-                        //        break;
-
-                        //    case WaveFormat.WAVE_MULTIPLE_SCISSORS:
-                        //        SpawnMultipleRandomEnemies();
-                        //        break;
-
-                        //    case WaveFormat.WAVE_MULTIPLE_PAPER:
-                        //        SpawnMultipleRandomEnemies();
-                        //        break;
-
-                        //    case WaveFormat.WAVE_MULTIPLE_STONE:
-                        //        SpawnMultipleRandomEnemies();
-                        //        break;
-                        //}
-
                         f_objectspawnLifetime = 0f;
-
                     }
 
                     else
@@ -176,11 +149,6 @@ public class SPS_ObjectManager : MonoBehaviour
                             case WaveFormat.WAVE_POWERUP:
                                 SpawnPowerupObject();
                                 break;
-
-                            //case WaveFormat.WAVE_POWERUP_AND_OBSTACLE:
-                            //    SpawnPowerupAndObstacleObject();
-                            //    break;
-
                         }
 
                         f_objectspawnLifetime = 0f;
@@ -207,13 +175,12 @@ public class SPS_ObjectManager : MonoBehaviour
         {
             g_objectInstance.transform.position = objectStartPosition.transform.position;
             g_objectInstance.transform.rotation = objectStartPosition.transform.rotation;
+            g_objectInstance.GetComponent<SPS_Enemy>().Init();
             g_objectInstance.GetComponent<SPS_Enemy>().DetermineEnemyType();
             g_objectInstance.SetActive(true);
         }
         //do the movement HERE
         g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 5f);
-
-        //enemymovementTween = g_objectInstance.GetComponent<Rigidbody2D>().DOMoveX(enemyEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 3f);
 
         //add this object to the list of objects spawned
         objectWaveList.Add(g_objectInstance);
@@ -241,13 +208,12 @@ public class SPS_ObjectManager : MonoBehaviour
                 //Debug.Log("help");
                 g_objectInstance.transform.position = new Vector3(objectStartPosition.transform.position.x + val * 4.5f, objectStartPosition.transform.position.y, objectStartPosition.transform.position.z);
                 g_objectInstance.transform.rotation = objectStartPosition.transform.rotation;
+                g_objectInstance.GetComponent<SPS_Enemy>().Init();
                 g_objectInstance.GetComponent<SPS_Enemy>().DetermineEnemyType();
                 g_objectInstance.SetActive(true);
             }
             //do the movement HERE
             g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, (f_objectTravelSpeed * f_objecttravelspeedMultiplier * 5f));
-
-            //g_objectInstance.GetComponent<Rigidbody2D>().DOMoveX(enemyEndPosition.transform.position.x, (f_objectTravelSpeed * f_objectTravelSpeed));
 
             //add objects to the list of objects spawned
             objectWaveList.Add(g_objectInstance);
@@ -347,13 +313,10 @@ public class SPS_ObjectManager : MonoBehaviour
         targetedEnemy.GetComponent<Collider2D>().enabled = false;
         //fade out the animation
         targetedEnemy.transform.GetComponent<SpriteRenderer>().DOFade(0f, 5f);
-        targetedEnemy.transform.GetChild(0).GetComponent<SpriteRenderer>().DOFade(0, 5f);
+        targetedEnemy.transform.GetChild(0).GetComponent<SpriteRenderer>().DOFade(0, 0f);
         yield return new WaitForSeconds(5f);
         targetedEnemy.transform.DOKill(true);
         enemyAnimator.SetBool("e_died", false);
-        //destroy the gameObject and its rigidbody
-        //Destroy(targetedEnemy);
-        //Destroy(targetedEnemy.GetComponent<Rigidbody2D>());
         targetedEnemy.SetActive(false);
 
         Debug.Log("Completed deletion");

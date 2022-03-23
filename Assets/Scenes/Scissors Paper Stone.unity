@@ -2352,7 +2352,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1443686472}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &477337549
 Animator:
@@ -4268,7 +4268,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1443686472}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!199 &916727065
 ParticleSystemRenderer:
@@ -9550,7 +9550,7 @@ Transform:
   m_Children:
   - {fileID: 623444590}
   m_Father: {fileID: 1443686472}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -13.17}
 --- !u!1 &1043734573
 GameObject:
@@ -11435,10 +11435,10 @@ Transform:
   m_LocalPosition: {x: -5.76, y: -0.7, z: -1}
   m_LocalScale: {x: 1.1, y: 1.1, z: 1}
   m_Children:
-  - {fileID: 2015889990}
-  - {fileID: 1019615889}
   - {fileID: 477337548}
   - {fileID: 916727064}
+  - {fileID: 2015889990}
+  - {fileID: 1019615889}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14053,7 +14053,7 @@ Transform:
   m_Children:
   - {fileID: 1117306706}
   m_Father: {fileID: 1443686472}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &2034324044 stripped
 AudioSource:
