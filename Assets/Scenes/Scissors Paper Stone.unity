@@ -9290,6 +9290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_waveFormat: 0
   b_allowObjectSpawning: 0
+  uimanagerInstance: {fileID: 1845332425}
   objectWaveList: []
   enemyPrefab: {fileID: 7913923793753976924, guid: 7514f718276a5bc4e951412ac2955379, type: 3}
   obstaclePrefab: {fileID: 3224440641658934178, guid: 79067783102791042a0c7dd939c8eab8, type: 3}

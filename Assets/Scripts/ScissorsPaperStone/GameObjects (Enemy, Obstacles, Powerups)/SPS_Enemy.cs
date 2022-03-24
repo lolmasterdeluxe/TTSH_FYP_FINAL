@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Animations;
+using DG.Tweening;
 
 public class SPS_Enemy : MonoBehaviour
 {
@@ -24,7 +24,10 @@ public class SPS_Enemy : MonoBehaviour
     #endregion
 
     #region Unity Callbacks
-
+    private void Awake()
+    {
+        GetComponent<SpriteRenderer>().DOFade(1, 1);
+    }
     private void Update()
     {
         // Checks if alpha is below 1
@@ -37,6 +40,7 @@ public class SPS_Enemy : MonoBehaviour
     #region Helper Functions
     public void Init()
     {
+        GetComponent<SpriteRenderer>().DOKill(true);
         enemyAC = GetComponent<Animator>();
         objectmanagerInstance = FindObjectOfType<SPS_ObjectManager>();
         transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0);
@@ -57,7 +61,7 @@ public class SPS_Enemy : MonoBehaviour
         if (objectmanagerInstance.current_waveFormat == SPS_ObjectManager.WaveFormat.WAVE_MULTIPLE_PAPER)
         {
             EnemyTypeIsPaper();
-            Debug.Log("paper");
+            Debug.Log("Paper");
         }
         if (objectmanagerInstance.current_waveFormat == SPS_ObjectManager.WaveFormat.WAVE_MULTIPLE_STONE)
         {

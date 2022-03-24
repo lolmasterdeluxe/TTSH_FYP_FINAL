@@ -24,7 +24,7 @@ public class SPS_ObjectManager : MonoBehaviour
     public bool b_allowObjectSpawning = false;
 
     //references to object scripts
-    SPS_UIManager uimanagerInstance;
+    [SerializeField] private SPS_UIManager uimanagerInstance;
 
     [Tooltip("This stores the objects in each wave")]
     public List<GameObject> objectWaveList;
@@ -70,9 +70,6 @@ public class SPS_ObjectManager : MonoBehaviour
         f_objectTravelSpeed = 5f;
         f_objecttravelspeedMultiplier = 1f;
 
-        //reference scripts hERE
-        uimanagerInstance = FindObjectOfType<SPS_UIManager>();
-
     }
 
     private void Update()
@@ -104,7 +101,6 @@ public class SPS_ObjectManager : MonoBehaviour
                     }
 
                     f_objectspawnLifetime = 0f;
-
                 }
                 else
                 {
@@ -166,10 +162,6 @@ public class SPS_ObjectManager : MonoBehaviour
     public void SpawnSingleRandomEnemy()
     {
         //instantiate an enemy HERE
-        //g_objectInstance = Instantiate(enemyPrefab,
-        // new Vector3(objectStartPosition.transform.position.x, 
-        // objectStartPosition.transform.position.y,
-        // objectStartPosition.transform.position.z), objectStartPosition.transform.rotation);
         g_objectInstance = ObjectPooling.SharedInstance.GetPooledObject("EnemyTag");
         if (!g_objectInstance.activeSelf)
         {
@@ -198,10 +190,6 @@ public class SPS_ObjectManager : MonoBehaviour
 
         for (int val = 1; val <= waveSize; val++)
         {
-            // g_objectInstance = Instantiate(enemyPrefab,
-            //new Vector3(objectStartPosition.transform.position.x + val * 4.5f, 
-            //objectStartPosition.transform.position.y, 
-            //objectStartPosition.transform.position.z), objectStartPosition.transform.rotation);
             g_objectInstance = ObjectPooling.SharedInstance.GetPooledObject("EnemyTag");
             if (!g_objectInstance.activeSelf)
             {
@@ -312,10 +300,11 @@ public class SPS_ObjectManager : MonoBehaviour
         enemyAnimator.SetBool("e_died", true);
         targetedEnemy.GetComponent<Collider2D>().enabled = false;
         //fade out the animation
-        targetedEnemy.transform.GetComponent<SpriteRenderer>().DOFade(0f, 5f);
-        targetedEnemy.transform.GetChild(0).GetComponent<SpriteRenderer>().DOFade(0, 0f);
+        targetedEnemy.transform.GetComponent<SpriteRenderer>().DOFade(0f, 10f);
+        targetedEnemy.transform.GetChild(0).GetComponent<SpriteRenderer>().DOFade(0, 1f);
         yield return new WaitForSeconds(5f);
         targetedEnemy.transform.DOKill(true);
+        targetedEnemy.GetComponent<SpriteRenderer>().DOKill(true);
         enemyAnimator.SetBool("e_died", false);
         targetedEnemy.SetActive(false);
 

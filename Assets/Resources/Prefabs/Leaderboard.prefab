@@ -2975,6 +2975,7 @@ MonoBehaviour:
   musicCreditsCanvasGroup: {fileID: 599942481525070336}
   Animations: {fileID: 562361116597605296}
   m_isFinalGame: 0
+  LeaderboardBGM: {fileID: 0}
 --- !u!1 &2913985091876297747
 GameObject:
   m_ObjectHideFlags: 0
@@ -3602,7 +3603,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3a182e4e461bbd04d87e741e2aa09753, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bff3f07f977f0354bb49120eefa0aa88, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5397,8 +5398,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -120, y: -90}
-  m_SizeDelta: {x: 126, y: 127}
+  m_AnchoredPosition: {x: -135, y: -90}
+  m_SizeDelta: {x: 130.7, y: 127}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2271410585776227054
 CanvasRenderer:
@@ -5428,7 +5429,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fca74b7d85687934eb1a435b17115145, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d8f7cb2d0f01f714c9981d23aca73ab7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7672,14 +7673,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.49019608}
+  m_Color: {r: 0.5411765, g: 0.27450982, b: 0.60784316, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9fd81fd6038f7bb44ab675c198558be8, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1

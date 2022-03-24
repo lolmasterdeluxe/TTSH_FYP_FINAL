@@ -103,17 +103,17 @@ public class EnvironmentManager : MonoBehaviour
 
         if (parallexbackgroundmanagerInstance.componentContainer[4].transform.position.x < -25)
         {
-            parallexbackgroundmanagerInstance.componentContainer[4].transform.position.Set(25, parallexbackgroundmanagerInstance.componentContainer[4].transform.position.y, parallexbackgroundmanagerInstance.componentContainer[4].transform.position.z);
+            parallexbackgroundmanagerInstance.componentContainer[4].transform.position = new Vector3(25, parallexbackgroundmanagerInstance.componentContainer[4].transform.position.y, parallexbackgroundmanagerInstance.componentContainer[4].transform.position.z);
+            Debug.Log("Resetting Pos");
         }
-        if (parallexbackgroundmanagerInstance.componentContainer[5].transform.position.x < -23)
+        if (parallexbackgroundmanagerInstance.componentContainer[5].transform.position.x < -25)
         {
-            parallexbackgroundmanagerInstance.componentContainer[5].transform.position.Set(23, parallexbackgroundmanagerInstance.componentContainer[5].transform.position.y, parallexbackgroundmanagerInstance.componentContainer[5].transform.position.z);
+            parallexbackgroundmanagerInstance.componentContainer[5].transform.position = new Vector3(23, parallexbackgroundmanagerInstance.componentContainer[5].transform.position.y, parallexbackgroundmanagerInstance.componentContainer[5].transform.position.z);
         }
-        if (parallexbackgroundmanagerInstance.componentContainer[6].transform.position.x < -24)
+        if (parallexbackgroundmanagerInstance.componentContainer[6].transform.position.x < -25)
         {
-            parallexbackgroundmanagerInstance.componentContainer[6].transform.position.Set(24, parallexbackgroundmanagerInstance.componentContainer[6].transform.position.y, parallexbackgroundmanagerInstance.componentContainer[6].transform.position.z);
+            parallexbackgroundmanagerInstance.componentContainer[6].transform.position = new Vector3(24, parallexbackgroundmanagerInstance.componentContainer[6].transform.position.y, parallexbackgroundmanagerInstance.componentContainer[6].transform.position.z);
         }
-
         #endregion
 
     }
