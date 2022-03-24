@@ -4211,7 +4211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648f5c57d8c12024ba26b54b08b95c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentGamemode: 0
+  currentGamemode: 1
   masterVolSlider: {fileID: 1573076074}
   masterVolText: {fileID: 247544504}
   musicVolSlider: {fileID: 169716540}
@@ -11362,6 +11362,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_choice: 0
+  objectManagerInstance: {fileID: 991564696}
+  uiManagerInstance: {fileID: 1845332425}
   playerAC: {fileID: 1443686469}
   playeractionAC: {fileID: 477337549}
   g_PlayerActionSprite: {fileID: 477337547}

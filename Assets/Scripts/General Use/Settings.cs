@@ -29,18 +29,12 @@ public class Settings : MonoBehaviour
     public Slider sfxVolSlider;
     public TMP_Text sfxVolText;
 
-    private Chapteh chapteh;
-    private KickChapteh kickChapteh;
-
     // Start is called before the first frame update
     void Start()
     {
         masterVolText.text = "100";
         musicVolText.text = "100";
         sfxVolText.text = "100";
-
-        //chapteh = GameObject.Find("Chapteh").GetComponent<Chapteh>();
-        //kickChapteh = GameObject.Find("Chapteh Manager").GetComponent<KickChapteh>();
     }
 
     // Adjusts all volumes in the scene
@@ -49,10 +43,15 @@ public class Settings : MonoBehaviour
         switch (currentGamemode)
         {
             case GameMode.MAINMENU:
-                GameObject.Find("BGM").GetComponent<AudioSource>().volume = masterVolSlider.value;
-                GameObject.Find("FootstepsSFX").GetComponent<AudioSource>().volume = masterVolSlider.value;
-                GameObject.Find("InteractSFX").GetComponent<AudioSource>().volume = masterVolSlider.value;
-                GameObject.Find("HoverSFX").GetComponent<AudioSource>().volume = masterVolSlider.value;
+                GameObject MainMenu = GameObject.Find("Main Menu");
+                // BGM volume adjuster
+                MainMenu.transform.GetChild(0).GetComponent<AudioSource>().volume = masterVolSlider.value;
+                // Footsteps volume adjuster
+                MainMenu.transform.GetChild(1).GetComponent<AudioSource>().volume = masterVolSlider.value;
+                // Interact volume adjuster
+                MainMenu.transform.GetChild(2).GetComponent<AudioSource>().volume = masterVolSlider.value;
+                // Hover volume adjuster
+                MainMenu.transform.GetChild(3).GetComponent<AudioSource>().volume = masterVolSlider.value;
                 masterVolText.text = Mathf.RoundToInt(masterVolSlider.value * 100).ToString();
                 break;
             case GameMode.SPS:
@@ -75,13 +74,11 @@ public class Settings : MonoBehaviour
             case GameMode.CHAPTEH:
                 // BGM volume adjuster
                 ChaptehGameManager.Instance.audioSources[0].volume = masterVolSlider.value;
-                // On Ring Hit audio volume adjuster
-                chapteh.GetComponent<Chapteh>().onRingHitSource.volume = masterVolSlider.value;
-                // Kick Chapteh audio volume adjuster
-                kickChapteh.GetComponent<KickChapteh>().audioSources[0].volume = masterVolSlider.value;
-                // Charge Bar audio volume adjuster 
-                kickChapteh.audioSources[1].volume = masterVolSlider.value;
-                masterVolText.text = Mathf.RoundToInt(masterVolSlider.value * 100).ToString();
+                for (int i = 0; i < 6; i++)
+                {
+                    ChaptehGameManager.Instance.audioSources[i].volume = masterVolSlider.value;
+                    masterVolText.text = Mathf.RoundToInt(masterVolSlider.value * 100).ToString();
+                }
                 break;
             case GameMode.FIVE_STONES:
                 for(int i = 0; i < 6; i++)
@@ -99,7 +96,8 @@ public class Settings : MonoBehaviour
         {
             case GameMode.MAINMENU:
                 // BGM volume adjuster
-                GameObject.Find("BGM").GetComponent<AudioSource>().volume = musicVolSlider.value;
+                GameObject MainMenu = GameObject.Find("Main Menu");
+                MainMenu.transform.GetChild(0).GetComponent<AudioSource>().volume = musicVolSlider.value;
                 musicVolText.text = Mathf.RoundToInt(musicVolSlider.value * 100).ToString();
                 break;
             case GameMode.SPS:
@@ -125,10 +123,13 @@ public class Settings : MonoBehaviour
         switch (currentGamemode)
         {
             case GameMode.MAINMENU:
-                // BGM volume adjuster
-                GameObject.Find("FootstepsSFX").GetComponent<AudioSource>().volume = sfxVolSlider.value;
-                GameObject.Find("InteractSFX").GetComponent<AudioSource>().volume = sfxVolSlider.value;
-                GameObject.Find("HoverSFX").GetComponent<AudioSource>().volume = sfxVolSlider.value;
+                GameObject MainMenu = GameObject.Find("Main Menu");
+                // Footsteps audio volume adjuster
+                MainMenu.transform.GetChild(1).GetComponent<AudioSource>().volume = sfxVolSlider.value;
+                // Interact audio volume adjuster
+                MainMenu.transform.GetChild(2).GetComponent<AudioSource>().volume = sfxVolSlider.value;
+                // Hover audio volume adjuster
+                MainMenu.transform.GetChild(3).GetComponent<AudioSource>().volume = sfxVolSlider.value;
                 sfxVolText.text = Mathf.RoundToInt(sfxVolSlider.value * 100).ToString();
                 break;
             case GameMode.SPS:
@@ -147,13 +148,11 @@ public class Settings : MonoBehaviour
                 sfxVolText.text = Mathf.RoundToInt(sfxVolSlider.value * 100).ToString();
                 break;
             case GameMode.CHAPTEH:
-                // On Ring Hit audio volume adjuster
-                chapteh.onRingHitSource.volume = sfxVolSlider.value;
-                // Kick Chapteh audio volume adjuster
-                kickChapteh.audioSources[0].volume = sfxVolSlider.value;
-                // Charge Bar audio volume adjuster 
-                kickChapteh.audioSources[1].volume = sfxVolSlider.value;
-                sfxVolText.text = Mathf.RoundToInt(sfxVolSlider.value * 100).ToString();
+                for (int i = 1; i < 6; i++)
+                {
+                    ChaptehGameManager.Instance.audioSources[i].volume = sfxVolSlider.value;
+                    sfxVolText.text = Mathf.RoundToInt(sfxVolSlider.value * 100).ToString();
+                }
                 break;
             case GameMode.FIVE_STONES:
                 for (int i = 1; i < 6; i++)

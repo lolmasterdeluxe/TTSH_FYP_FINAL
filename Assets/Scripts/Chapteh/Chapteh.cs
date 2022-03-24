@@ -127,7 +127,7 @@ public class Chapteh : MonoBehaviour
             // Rotates the Chapteh to fall according to gravity
             Vector2 dir = rbChapteh.velocity;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            Debug.Log("Dir.x: " + dir.x);
+            //Debug.Log("Dir.x: " + dir.x);
             if (!OnGround)
                 transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             else

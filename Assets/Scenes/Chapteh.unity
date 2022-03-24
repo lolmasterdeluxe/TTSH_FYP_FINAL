@@ -1940,6 +1940,10 @@ MonoBehaviour:
   audioSources:
   - {fileID: 1294000857}
   - {fileID: 169792962}
+  - {fileID: 1855703411}
+  - {fileID: 1253767109}
+  - {fileID: 1278776722}
+  - {fileID: 2023638334}
 --- !u!1 &401037516
 GameObject:
   m_ObjectHideFlags: 0

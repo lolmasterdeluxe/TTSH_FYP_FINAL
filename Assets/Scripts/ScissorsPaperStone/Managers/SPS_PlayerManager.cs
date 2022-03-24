@@ -25,17 +25,17 @@ public class SPS_PlayerManager : MonoBehaviour
     #region Variables
 
     [Tooltip("Reference to the ObjectManager")]
-    SPS_ObjectManager objectManagerInstance;
+    [SerializeField] private SPS_ObjectManager objectManagerInstance;
 
     [Tooltip("Reference to the UIManager")]
-    SPS_UIManager uiManagerInstance;
+    [SerializeField] private SPS_UIManager uiManagerInstance;
 
     [Tooltip("References to Animators")]
     public Animator playerAC, playeractionAC;
 
     [Tooltip("Reference to the PlayerActionSprite GameObject")]
     [SerializeField]
-    GameObject g_PlayerActionSprite;
+    private GameObject g_PlayerActionSprite;
 
     //variables involving player jumping
     BoxCollider2D collider_player;
@@ -62,14 +62,16 @@ public class SPS_PlayerManager : MonoBehaviour
     #endregion
 
     #region Unity Callbacks
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+            Destroy(this.gameObject);
+        else
+            _instance = this;
+    }
 
     private void Start()
     {
-
-        //set reference to scripts HERE
-        objectManagerInstance = FindObjectOfType<SPS_ObjectManager>();
-        uiManagerInstance = FindObjectOfType<SPS_UIManager>();
-
         //set player choice to be NONE
         player_choice = PlayerChoice.PLAYER_NONE;
 

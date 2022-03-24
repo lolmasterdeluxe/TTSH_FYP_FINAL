@@ -170,7 +170,7 @@ public class PlayerButtonMove : MonoBehaviour
 
     private void FlipSandDust()
     {
-        if (transform.eulerAngles == new Vector3(0, 180, 0))
+        if (transform.rotation == Quaternion.Euler(0, 180, 0))
         {
             sandDust.transform.rotation = Quaternion.Euler(0f, 5f, 0f);
             CreateSandDust();
