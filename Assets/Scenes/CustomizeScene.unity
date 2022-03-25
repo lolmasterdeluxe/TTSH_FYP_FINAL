@@ -3426,6 +3426,10 @@ MonoBehaviour:
     m_itemType: 2
     m_sprite: {fileID: 0}
     m_color: {r: 1, g: 0.0042738914, b: 1, a: 1}
+  - m_name: Dark Skin
+    m_itemType: 2
+    m_sprite: {fileID: 0}
+    m_color: {r: 0.60784316, g: 0.5137255, b: 0.43137258, a: 1}
   m_hatId: 0
   m_faceId: 0
   m_colorId: 0

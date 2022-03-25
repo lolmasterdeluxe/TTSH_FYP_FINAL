@@ -80,6 +80,7 @@ public class InteractNPC : MonoBehaviour
                 break;
             case NPC_TYPE.CUSTOMIZER:
                 interactPrefab.transform.GetComponent<Image>().DOFade(1f, 1.25f);
+                interactPrefab.transform.GetChild(0).GetComponent<Image>().DOFade(1f, 1.25f);
                 hoverSFX.Play();
                 if (Input.GetKeyDown(KeyCode.F))
                     SceneManager.LoadScene("CustomizeScene");
@@ -87,6 +88,7 @@ public class InteractNPC : MonoBehaviour
             case NPC_TYPE.LEADERBOARD:
                 // Recode this later on
                 interactPrefab.transform.GetComponent<Image>().DOFade(1f, 1.25f);
+                interactPrefab.transform.GetChild(0).GetComponent<Image>().DOFade(1f, 1.25f);
                 hoverSFX.Play();
                 if (Input.GetKeyDown(KeyCode.F))
                     Resources.FindObjectsOfTypeAll<LeaderboardManager>()[0].gameObject.SetActive(true);
@@ -161,9 +163,11 @@ public class InteractNPC : MonoBehaviour
                 break;
             case NPC_TYPE.CUSTOMIZER:
                 interactPrefab.transform.GetComponent<Image>().DOFade(0f, .75f);
+                interactPrefab.transform.GetChild(0).GetComponent<Image>().DOFade(0f, .75f);
                 break;
             case NPC_TYPE.LEADERBOARD:
                 interactPrefab.transform.GetComponent<Image>().DOFade(0f, .75f);
+                interactPrefab.transform.GetChild(0).GetComponent<Image>().DOFade(0f, .75f);
                 break;
         }
     }
