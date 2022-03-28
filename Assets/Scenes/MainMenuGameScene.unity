@@ -9637,9 +9637,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 70be6ed517143e34f9de84f6b8550c8e, type: 3}
   chapteh_tutorialContainer:
   - {fileID: 21300000, guid: 52e422d23939c2540b5621c1879f9fb0, type: 3}
-  - {fileID: 21300000, guid: 193aae6fc28a6524fa0b3b53dea7cd01, type: 3}
+  - {fileID: 21300000, guid: e4cb72f48de175843924537ee11f9956, type: 3}
   - {fileID: 21300000, guid: 002e266dccb9bac46992edcc5b5ca88c, type: 3}
-  - {fileID: 21300000, guid: 4e870d41dcaeed44e93d3e482f67f9ce, type: 3}
+  - {fileID: 21300000, guid: 0e068c65a77f6434fbc9443d744b0d4e, type: 3}
   - {fileID: 21300000, guid: 9795e09398061bc4dae8b103bc8a950a, type: 3}
   sps_tutorialBase: {fileID: 432762314}
   fivestones_tutorialBase: {fileID: 1050758000}
@@ -9649,10 +9649,10 @@ MonoBehaviour:
   gametype_referenceNumber: 0
   fivestones_Image: {fileID: 1050758000}
   fivestones_Page2:
-  - {fileID: 21300000, guid: 6ce90446c2321664396094daa77ea0fb, type: 3}
-  - {fileID: 21300000, guid: 133145b3bf35f004bb0734c48426b5c6, type: 3}
-  - {fileID: 21300000, guid: 375482d28807aa74b901707f92af0144, type: 3}
-  - {fileID: 21300000, guid: e8debeb66f7285644aa21f23839fcf8d, type: 3}
+  - {fileID: 21300000, guid: 0fc5d4886be6ee54781551819adc547e, type: 3}
+  - {fileID: 21300000, guid: fb99e2f0d9f2515459695f9e205522b4, type: 3}
+  - {fileID: 21300000, guid: be9570256d4499b4ebadd599a981adbb, type: 3}
+  - {fileID: 21300000, guid: 2d48b92954efc6e4e807ad69a9a7c57e, type: 3}
   fivestones_Page5:
   - {fileID: 21300000, guid: 0e0f1816dd703c14b813e1e98fd61d4b, type: 3}
   - {fileID: 21300000, guid: 5ff82e2fb69249949ae78648b23ff522, type: 3}
@@ -9670,8 +9670,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8cc242e6a7bea3945b58feb64e2ae678, type: 3}
   - {fileID: 21300000, guid: c57b6394c0f41d6409258f830d40656b, type: 3}
   sps_Page4:
-  - {fileID: 21300000, guid: 55d10668b368728478e6da35a378afc7, type: 3}
-  - {fileID: 21300000, guid: ded2ef5a2987f4147b40b9a901bde4e4, type: 3}
+  - {fileID: 21300000, guid: 9d9062c570d8be24481b2e086f51f21c, type: 3}
+  - {fileID: 21300000, guid: 76da7a44e0795de44bdf697aa161e247, type: 3}
   sps_Page5:
   - {fileID: 21300000, guid: 5d720682dd04da44f850891518f6a4d9, type: 3}
   - {fileID: 21300000, guid: cfbd6ece6cfc595459f3de362009eedc, type: 3}
@@ -9688,11 +9688,10 @@ MonoBehaviour:
   - {fileID: 7028917789916505640, guid: 6bc2cdd355ed14842a0ad7339ac565ce, type: 3}
   chapteh_Page2: []
   chapteh_Page3:
-  - {fileID: 21300000, guid: 28845ce6cbf0d124d912277ceb80b822, type: 3}
-  - {fileID: 21300000, guid: cef69453debb63344b68bff730f7261e, type: 3}
-  - {fileID: 21300000, guid: ea6e4cad0fce45d43af3bbde44a497fe, type: 3}
-  - {fileID: 21300000, guid: c8670520ca065fc4bbe21ca8ad6dd933, type: 3}
-  - {fileID: 21300000, guid: 72b9e97464075f44eb12ea974d2236a3, type: 3}
+  - {fileID: 21300000, guid: 4a9804093c9ef8a45ad4ad0d6581bd2d, type: 3}
+  - {fileID: 21300000, guid: 27d058e1d71033242aacb78b34232765, type: 3}
+  - {fileID: 21300000, guid: 413ced45f8cf86942a420c77bdba672c, type: 3}
+  - {fileID: 21300000, guid: 13e24bc6995c26648a04d7a0ddab10e2, type: 3}
 --- !u!1 &894970627
 GameObject:
   m_ObjectHideFlags: 0
