@@ -82,8 +82,8 @@ public class InteractNPC : MonoBehaviour
                 interactPrefab.transform.GetComponent<Image>().DOFade(1f, 1.25f);
                 interactPrefab.transform.GetChild(0).GetComponent<Image>().DOFade(1f, 1.25f);
                 hoverSFX.Play();
-                if (Input.GetKeyDown(KeyCode.F))
-                    SceneManager.LoadScene("CustomizeScene");
+                /*if (Input.GetKeyDown(KeyCode.F))
+                    SceneManager.LoadScene("CustomizeScene");*/
                 break;
             case NPC_TYPE.LEADERBOARD:
                 // Recode this later on

@@ -7,16 +7,11 @@ public class CustomiseBackgroundScroll : MonoBehaviour
     #region Variables
 
     [Tooltip("Reference to Parallex Background Manager Script")]
-    ParallexBackgroundManager parallexbackgroundmanagerInstance;
+    [SerializeField] private ParallexBackgroundManager parallexbackgroundmanagerInstance;
 
     #endregion
 
     #region Unity Callbacks
-
-    private void Start()
-    {
-        parallexbackgroundmanagerInstance = FindObjectOfType<ParallexBackgroundManager>();
-    }
 
     private void Update()
     {
