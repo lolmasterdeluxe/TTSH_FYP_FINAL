@@ -13,6 +13,8 @@ public class Settings : MonoBehaviour
         SPS,
         FIVE_STONES,
         CHAPTEH,
+        FLAPPY,
+        COUNTRY_ERASERS,
     }
 
     public GameMode currentGamemode;

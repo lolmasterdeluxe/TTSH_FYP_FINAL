@@ -21,6 +21,8 @@ public class SpawnPipes : MonoBehaviour
 
     private void spawnPipes()
     {
+        if (!FlappyGameManager.Instance.m_gameStarted || FlappyGameManager.Instance.m_gameEnded)
+            return;
         GameObject pipes = Instantiate(prefab, transform.position, Quaternion.identity);
         pipes.transform.position += Vector3.up * Random.Range(minheight, maxheight);
     }

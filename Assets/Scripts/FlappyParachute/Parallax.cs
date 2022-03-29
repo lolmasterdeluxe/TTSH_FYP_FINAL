@@ -5,7 +5,7 @@ using UnityEngine;
 public class Parallax : MonoBehaviour
 {
     private MeshRenderer meshRenderer;
-    public float bganimspeed = 1f;
+    public float backgroundAnimSpeed = 1f;
 
     private void Awake()
     {
@@ -14,6 +14,8 @@ public class Parallax : MonoBehaviour
 
     private void Update()
     {
-        meshRenderer.material.mainTextureOffset += new Vector2(bganimspeed * Time.deltaTime, 0);
+        if (!FlappyGameManager.Instance.m_gameStarted || FlappyGameManager.Instance.m_gameEnded)
+            return;
+        meshRenderer.material.mainTextureOffset += new Vector2(backgroundAnimSpeed * Time.deltaTime, 0);
     }
 }

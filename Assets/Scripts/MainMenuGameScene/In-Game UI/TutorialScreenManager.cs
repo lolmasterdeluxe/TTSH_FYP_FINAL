@@ -200,6 +200,10 @@ public class TutorialScreenManager : MonoBehaviour
                 Destroy(chapteh_npc.GetComponent<CapsuleCollider2D>());
                 SceneManager.LoadScene("Chapteh");
                 break;
+            case 3:
+                Destroy(chapteh_npc.GetComponent<CapsuleCollider2D>());
+                SceneManager.LoadScene("FlappyParachute");
+                break;
         }
 
     }

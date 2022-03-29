@@ -9,15 +9,16 @@ public class Pipes : MonoBehaviour
 
     private void Start()
     {
-        leftEdgeofscreen = Camera.main.ScreenToWorldPoint(Vector3.zero).x-5f;
-
+        leftEdgeofscreen = Camera.main.ScreenToWorldPoint(Vector3.zero).x - 5f;
     }
 
     private void Update()
     {
+        if (!FlappyGameManager.Instance.m_gameStarted || FlappyGameManager.Instance.m_gameEnded)
+            return;
         transform.position += Vector3.left * speed * Time.deltaTime;
 
-        if(transform.position.x<leftEdgeofscreen)
+        if(transform.position.x < leftEdgeofscreen)
         {
             Destroy(gameObject);
         }

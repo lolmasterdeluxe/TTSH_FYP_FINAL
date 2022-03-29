@@ -24,18 +24,24 @@ public class FlappyGameManager : MonoBehaviour
 
     }
 
-    public FlappyPlayer player;
-    
+    [SerializeField]
+    private FlappyPlayer player;
+
     public TMP_Text scoretext;
 
     private int score;
 
-    private bool m_gameStarted;
-    private bool m_gameEnded = false;
+    public bool m_gameStarted;
+    public bool m_gameEnded = false;
+
+    [SerializeField] 
+    private GameObject g_gameTimeUp;
+
+
+    public AudioSource[] audioSources;
 
     private void Awake()
     {
-
         if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
@@ -45,57 +51,53 @@ public class FlappyGameManager : MonoBehaviour
             _instance = this;
         }
             
-
-
         Application.targetFrameRate = 60;
-        //Pause();
+    }
+
+    public void StartGame()
+    {
+        m_gameStarted = true;
+        // Setup managers
+        ScoreManager.Instance.LoadNewGamemode(ScoreManager.Gamemode.FLAPPY);
+
+        // Plays background music after countdown
+        audioSources[0].Play();
+
+        score = 0;
+        scoretext.text = score.ToString();
+        player.enabled = true;
+
+        Pipes[] pipes = FindObjectsOfType<Pipes>();
+
+        for (int i = 0; i < pipes.Length; i++)
+        {
+            Destroy(pipes[i].gameObject);
+        }
+
     }
 
     void Update()
     {
         if (!m_gameStarted)
             return;
-
-       
-        //UpdateUI();
-    }
-
-    public void Play(float time)
-    {
-        m_gameStarted = true;
-        ScoreManager.Instance.LoadNewGamemode(ScoreManager.Gamemode.FLAPPY);
-        score = 0;
-        scoretext.text = score.ToString();
-        Time.timeScale = 1f;
-        player.enabled = true;
-        TimerManager.Instance.StartCountdown(time);
-
-
-        Pipes[] pipes = FindObjectsOfType<Pipes>();
-
-        for (int i=0; i <pipes.Length;i++)
-        {
-            Destroy(pipes[i].gameObject);
-        }
-
-        TimerManager.Instance.e_TimerFinished.AddListener(GameOver);
-    }
-
-    public void Pause()
-    {
-        Time.timeScale = 0f;
-        player.enabled = false;
     }
 
     public void GameOver()
     {
         Debug.Log("Player is dead, game over ");
         m_gameEnded = true;
-        StartCoroutine(OnLeaderboardLoad());
+        TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.25f);
 
-        Pause();
+        // Stops playing bgm audio
+        audioSources[0].Stop();
+
+        // Plays time's up audio
+        audioSources[1].Play();
+
+        ScoreManager.Instance.EndCurrentGameScore();
+        StartCoroutine(OnLeaderboardLoad());
     }
-    public void inscreaseScore()
+    public void increaseScore()
     {
         score++;
         scoretext.text = score.ToString();

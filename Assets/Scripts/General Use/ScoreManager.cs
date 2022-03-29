@@ -20,6 +20,7 @@ public class ScoreManager : MonoBehaviour
         FIVESTONES,
         CHAPTEH,
         FLAPPY,
+        COUNTRY_ERASERS,
         TOTAL,
     }
 
