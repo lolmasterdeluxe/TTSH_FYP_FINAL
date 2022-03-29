@@ -43,6 +43,7 @@ public class CustomizeLinker : MonoBehaviour
             CloneChar.GetComponent<SpriteRenderer>().color = customizer.m_colorSprite.color;
             CloneChar.transform.GetChild(0).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = customizer.m_hatSprite.sprite;
             CloneChar.transform.GetChild(1).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = customizer.m_eyeSprite.sprite;
+            CloneChar.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, Camera.main.nearClipPlane));
         }
         else return;
     }
