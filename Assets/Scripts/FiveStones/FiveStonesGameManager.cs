@@ -32,6 +32,9 @@ public class FiveStonesGameManager : MonoBehaviour
         TOTAL,
     }
 
+    [SerializeField] private GameObject backgroundSpriteRenderer;
+    [SerializeField] private GameObject backgroundBlurRenderer;
+    [SerializeField] private GameObject Hand;
     [SerializeField] private GameObject g_scoreText;
     [SerializeField] private GameObject g_comboGroup;
     [SerializeField] private GameObject g_popupTextGroup;
@@ -64,6 +67,8 @@ public class FiveStonesGameManager : MonoBehaviour
             Destroy(this.gameObject);
         else
             _instance = this;
+
+        Hand.SetActive(false);
     }
 
     // Difficulty can be any numnber from 0 - 4f
@@ -72,6 +77,7 @@ public class FiveStonesGameManager : MonoBehaviour
     {
         // Setup managers
         m_gameStarted = true;
+        Hand.SetActive(true);
         TimerManager.Instance.StartCountdown(time);
         ComboManager.Instance.SetComboExpiry(4f - difficultyMultiplier);
         ScoreManager.Instance.LoadNewGamemode(ScoreManager.Gamemode.FIVESTONES);
@@ -84,6 +90,14 @@ public class FiveStonesGameManager : MonoBehaviour
         TweenManager.Instance.AnimateFade(g_popupTextGroup.GetComponent<CanvasGroup>(), 0f, 0f);
         TweenManager.Instance.AnimateFade(g_popupImageGroup.GetComponent<CanvasGroup>(), 0f, 0f);
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 0f, 0f);
+
+        // Background related stuff
+        TweenManager.Instance.AnimateSpriteFade(backgroundSpriteRenderer.GetComponent<SpriteRenderer>(), 0f, 0.5f);
+        TweenManager.Instance.AnimateScale(backgroundSpriteRenderer.transform, 1.5f, 1f);
+        TweenManager.Instance.AnimateFloat(backgroundSpriteRenderer.transform, 1f, new Vector3(-0.03f, 3.5f, 2));
+        TweenManager.Instance.AnimateScale(backgroundBlurRenderer.transform, 1.5f, 1f);
+        TweenManager.Instance.AnimateFloat(backgroundBlurRenderer.transform, 1f, new Vector3(-0.03f, 3.5f, 2));
+
         GetComponent<StoneSpawner>().Configure(3, 5, 4, 6, 10, 15);
         StartCoroutine(GetComponent<StoneSpawner>().SpawnStoneLoop());
         RandomizeObjective();
@@ -160,18 +174,22 @@ public class FiveStonesGameManager : MonoBehaviour
         else if (currcom == 2)
         {
             g_popupText.GetComponent<TMP_Text>().text = "Good";
+            TweenManager.Instance.AnimateShake(g_popupText.transform, 1f, 1f);
         }
         else if (currcom == 3)
         {
             g_popupText.GetComponent<TMP_Text>().text = "Cool";
+            TweenManager.Instance.AnimateShake(g_popupText.transform, 2f, 1f);
         }
         else if (currcom == 4)
         {
             g_popupText.GetComponent<TMP_Text>().text = "Awesome";
+            TweenManager.Instance.AnimateShake(g_popupText.transform, 3f, 1f);
         }
         else if (currcom >= 5)
         {
             g_popupText.GetComponent<TMP_Text>().text = "Amazing!";
+            TweenManager.Instance.AnimateShake(g_popupText.transform, 4f, 1f);
 
         }
         
@@ -181,7 +199,7 @@ public class FiveStonesGameManager : MonoBehaviour
     {
         int currcom = ComboManager.Instance.GetCurrentCombo();
 
-        if(currcom >=5)
+        if (currcom >= 5)
         {
             OnPopUpImage();
         }
@@ -240,6 +258,7 @@ public class FiveStonesGameManager : MonoBehaviour
     {
         TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 1f, 0.25f);
         TweenManager.Instance.AnimateEnlargeText(g_comboText.transform, 1f, 0.25f);
+        TweenManager.Instance.AnimateShake(g_comboText.transform, 2f, 1f);
     }
 
     public void OnPopUp()
@@ -251,15 +270,15 @@ public class FiveStonesGameManager : MonoBehaviour
     public void OnPopUpImage()
     {
         TweenManager.Instance.AnimateFade(g_popupImageGroup.GetComponent<CanvasGroup>(), 1f, 0.25f);
-        TweenManager.Instance.AnimateShake(g_comboText.transform, 2, 1f);
+        TweenManager.Instance.AnimateShake(g_popupImageGroup.transform, 5, 1f);
     }
 
     public void OnComboBreak()
     {
         TweenManager.Instance.AnimateShake(g_comboText.transform, 2, 1f);
-        TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 0f, 0.5f);
-        TweenManager.Instance.AnimateFade(g_popupTextGroup.GetComponent<CanvasGroup>(), 0, 0.5f);
-        TweenManager.Instance.AnimateFade(g_popupImageGroup.GetComponent<CanvasGroup>(), 0, 0.5f);
+        TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 0f, 1f);
+        TweenManager.Instance.AnimateFade(g_popupTextGroup.GetComponent<CanvasGroup>(), 0f, 1f);
+        TweenManager.Instance.AnimateFade(g_popupImageGroup.GetComponent<CanvasGroup>(), 0f, 1f);
     }
 
     

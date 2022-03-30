@@ -8,8 +8,10 @@ using UnityEngine.UI;
 public class CustomizeLinker : MonoBehaviour
 {
     private CustomizerManager customizer;
-    [SerializeField] 
+    [SerializeField]
     private GameObject CloneChar;
+    [SerializeField] 
+    private GameObject CustomizeScreenContainer;
     [SerializeField]
     private GameObject CosmeticNPC;
     [SerializeField] 
@@ -44,6 +46,7 @@ public class CustomizeLinker : MonoBehaviour
             CloneChar.transform.GetChild(0).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = customizer.m_hatSprite.sprite;
             CloneChar.transform.GetChild(1).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = customizer.m_eyeSprite.sprite;
             CloneChar.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, Camera.main.nearClipPlane));
+            CustomizeScreenContainer.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, Camera.main.nearClipPlane));
         }
         else return;
     }

@@ -18,6 +18,8 @@ public class ChaptehGameManager : MonoBehaviour
         TOTAL,
     }
 
+    [SerializeField] private GameObject UI_Canvas;
+    [SerializeField] private GameObject ChaptehManager;
     [SerializeField] private GameObject g_timerText;
     [SerializeField] private GameObject g_comboGroup;
     [SerializeField] private GameObject g_scoreText;
@@ -49,6 +51,9 @@ public class ChaptehGameManager : MonoBehaviour
             Destroy(this.gameObject);
         else
             _instance = this;
+
+        UI_Canvas.SetActive(false);
+        ChaptehManager.SetActive(false);
     }
 
     public void StartGame(float time)
@@ -58,6 +63,8 @@ public class ChaptehGameManager : MonoBehaviour
         TimerManager.Instance.StartCountdown(time);
         ComboManager.Instance.SetComboExpiry(8f);
         ScoreManager.Instance.LoadNewGamemode(ScoreManager.Gamemode.CHAPTEH);
+        UI_Canvas.SetActive(true);
+        ChaptehManager.SetActive(true);
 
         // Setup game logic
         TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 0f, 0f);

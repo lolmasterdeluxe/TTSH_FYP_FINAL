@@ -1921,6 +1921,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19fb4ee48811d57489682a3ec8375e1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UI_Canvas: {fileID: 1809922004}
+  ChaptehManager: {fileID: 1480815031}
   g_timerText: {fileID: 151131317}
   g_comboGroup: {fileID: 1523888777}
   g_scoreText: {fileID: 1838308173}
@@ -3806,7 +3808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 2
+  - eventID: 0
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -3822,7 +3824,7 @@ MonoBehaviour:
             m_StringArgument: Right
             m_BoolArgument: 0
           m_CallState: 2
-  - eventID: 3
+  - eventID: 1
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -12363,6 +12365,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1809922008}
     m_Modifications:
+    - target: {fileID: 136141040839269542, guid: bdc51bf03760cf94abf620cc63a31ff0, type: 3}
+      propertyPath: m_text
+      value: TIME'S UP
+      objectReference: {fileID: 0}
     - target: {fileID: 136141042091432762, guid: bdc51bf03760cf94abf620cc63a31ff0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -15386,7 +15392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 2
+  - eventID: 0
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -15402,7 +15408,7 @@ MonoBehaviour:
             m_StringArgument: Left
             m_BoolArgument: 0
           m_CallState: 2
-  - eventID: 3
+  - eventID: 1
     callback:
       m_PersistentCalls:
         m_Calls:

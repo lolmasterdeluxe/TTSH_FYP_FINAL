@@ -67,9 +67,19 @@ public class TweenManager : MonoBehaviour
         goTransform.DOMoveY(finalPos.y, timeTaken);
     }
 
+    public void AnimateSpriteFade(SpriteRenderer goSprite, float alpha, float duration)
+    {
+        goSprite.DOFade(alpha, duration);
+    }
+
     public void KillTween(GameObject gameObject)
     {
-        
+        gameObject.transform.DOKill(true);
+    }
+
+    public void KillCanvasGroupTween(CanvasGroup gameObject)
+    {
+        gameObject.DOKill(true);
     }
 
     // Remove this if you want the TweenManager instance to be the same throughout the whole program
