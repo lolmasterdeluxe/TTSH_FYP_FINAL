@@ -3872,7 +3872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: -20
-  strength: 8
+  strength: 7
 --- !u!58 &1218247948
 CircleCollider2D:
   m_ObjectHideFlags: 0

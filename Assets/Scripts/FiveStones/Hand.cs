@@ -6,6 +6,10 @@ public class Hand : MonoBehaviour
 {
     public GameObject handTrailPrefab;
     private GameObject currentHandTrail;
+    public GameObject particlePrefab;
+    //public GameObject particle;
+    public ParticleSystem particleSystem_;
+    private GameObject instantiatedParticle;
 
     Rigidbody2D rigidBody;
     CircleCollider2D circleCollider;
@@ -22,6 +26,7 @@ public class Hand : MonoBehaviour
     bool isCatching = false;
 
     // Start is called before the first frame update
+    [System.Obsolete]
     void Start()
     {
         if (rigidBody == null)
@@ -38,6 +43,7 @@ public class Hand : MonoBehaviour
 
         currentHandTrail = Instantiate(handTrailPrefab, transform);
         currentHandTrail.GetComponent<TrailRenderer>().Clear();
+        particleSystem_.playOnAwake = true;
     }
 
     // Update is called once per frame
@@ -116,8 +122,22 @@ public class Hand : MonoBehaviour
             collision.gameObject.SetActive(false);
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
             collision.gameObject.GetComponent<Rigidbody2D>().angularVelocity = 0;
+            
+            //Instantiate(particlePrefab, collision.gameObject.transform, collision.gameObject.transform);
+            Instantiate(particleSystem_, transform.position,transform.rotation);
+            Destroy(particleSystem_,2.0f);
 
-           // Destroy(collision.gameObject);
+            // Destroy(collision.gameObject);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "Stone")
+        {
+            //transform.GetChild(0).GetComponent<ParticleSystem>().Stop();
+            
+            Debug.Log("Stone particle spawn");
         }
     }
 
