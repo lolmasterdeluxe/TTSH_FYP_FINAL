@@ -5106,6 +5106,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handTrailPrefab: {fileID: 7785552333619283571, guid: e8fdab3d0ad48934f9e0f29999b67d2d, type: 3}
+  particlePrefab: {fileID: 516576322328752466, guid: 4b8002f57f8930548a2cafa64eb9c780, type: 3}
+  particleSystem_: {fileID: 824849858213691201, guid: f78160e634116df41a19946bb26548d4, type: 3}
   velocity: 0
   cuttingVelocityThreshold: 0.0001
   prevPosition: {x: 0, y: 0}
