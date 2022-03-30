@@ -10,7 +10,8 @@ public class EnvironmentManager : MonoBehaviour
     #region Variables
 
     [Tooltip("Reference to the Parallex Background Manager")]
-    ParallexBackgroundManager parallexbackgroundmanagerInstance;
+    [SerializeField]
+    private ParallexBackgroundManager parallexbackgroundmanagerInstance;
 
     //for time system
     [Tooltip("Float time: for day night cycle shift")]
@@ -48,7 +49,7 @@ public class EnvironmentManager : MonoBehaviour
 
     private void Start()
     {
-        parallexbackgroundmanagerInstance = FindObjectOfType<ParallexBackgroundManager>();
+        //parallexbackgroundmanagerInstance = FindObjectOfType<ParallexBackgroundManager>();
         f_currentTime = 8f;
         //set everthing to morning FIRST
         OnStartRun();

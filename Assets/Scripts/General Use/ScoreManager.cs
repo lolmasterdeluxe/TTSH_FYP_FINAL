@@ -19,6 +19,8 @@ public class ScoreManager : MonoBehaviour
         SPS,
         FIVESTONES,
         CHAPTEH,
+        FLAPPY,
+        COUNTRY_ERASERS,
         TOTAL,
     }
 

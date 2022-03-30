@@ -163,7 +163,7 @@ public class SPS_ObjectManager : MonoBehaviour
     {
         //instantiate an enemy HERE
         g_objectInstance = ObjectPooling.SharedInstance.GetPooledObject("EnemyTag");
-        if (!g_objectInstance.activeSelf)
+        if (g_objectInstance != null && !g_objectInstance.activeSelf)
         {
             g_objectInstance.transform.position = objectStartPosition.transform.position;
             g_objectInstance.transform.rotation = objectStartPosition.transform.rotation;
@@ -171,6 +171,7 @@ public class SPS_ObjectManager : MonoBehaviour
             g_objectInstance.GetComponent<SPS_Enemy>().DetermineEnemyType();
             g_objectInstance.SetActive(true);
         }
+        else return;
         //do the movement HERE
         g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 5f);
 
@@ -191,7 +192,7 @@ public class SPS_ObjectManager : MonoBehaviour
         for (int val = 1; val <= waveSize; val++)
         {
             g_objectInstance = ObjectPooling.SharedInstance.GetPooledObject("EnemyTag");
-            if (!g_objectInstance.activeSelf)
+            if (g_objectInstance != null && !g_objectInstance.activeSelf)
             {
                 //Debug.Log("help");
                 g_objectInstance.transform.position = new Vector3(objectStartPosition.transform.position.x + val * 4.5f, objectStartPosition.transform.position.y, objectStartPosition.transform.position.z);
@@ -200,6 +201,7 @@ public class SPS_ObjectManager : MonoBehaviour
                 g_objectInstance.GetComponent<SPS_Enemy>().DetermineEnemyType();
                 g_objectInstance.SetActive(true);
             }
+            else return;
             //do the movement HERE
             g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, (f_objectTravelSpeed * f_objecttravelspeedMultiplier * 5f));
 

@@ -116,7 +116,7 @@ public class TutorialScreenManager : MonoBehaviour
                 chapteh_Page1Idle.gameObject.SetActive(false);
 
             // Page 2
-            if(screenNumber == 1)
+        /*    if(screenNumber == 1)
             {
                 chapteh_Page2Mouse.gameObject.SetActive(true);
                 chapteh_Page2Run.gameObject.SetActive(true);
@@ -131,7 +131,7 @@ public class TutorialScreenManager : MonoBehaviour
 
                 chapteh_Page2RightArrow.gameObject.SetActive(false);
                 chapteh_Page2LeftArrow.gameObject.SetActive(false);
-            }
+            }*/
 
             // Page 3
             if (screenNumber == 2)
@@ -199,6 +199,10 @@ public class TutorialScreenManager : MonoBehaviour
             case 2:
                 Destroy(chapteh_npc.GetComponent<CapsuleCollider2D>());
                 SceneManager.LoadScene("Chapteh");
+                break;
+            case 3:
+                Destroy(chapteh_npc.GetComponent<CapsuleCollider2D>());
+                SceneManager.LoadScene("FlappyParachute");
                 break;
         }
 

@@ -20,6 +20,7 @@ TagManager:
   - NPC
   - Boundary
   - ChaptehLaunch
+  - Scoring
   layers:
   - Default
   - TransparentFX

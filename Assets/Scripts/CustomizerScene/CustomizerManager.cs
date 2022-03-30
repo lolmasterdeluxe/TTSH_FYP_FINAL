@@ -73,10 +73,7 @@ public class CustomizerManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "MainMenuGameScene" || SceneManager.GetActiveScene().name == "CustomizeScene" || SceneManager.GetActiveScene().name == "Chapteh" || SceneManager.GetActiveScene().name == "Scissors Paper Stone")
         {
             if (SceneManager.GetActiveScene().name == "CustomizeScene")
-            {
-                UpdateButtonReferences();
                 UpdateCharacterName();
-            }
 
             UpdateSpriteReferences();
             UpdateCosmetics();          
@@ -196,12 +193,6 @@ public class CustomizerManager : MonoBehaviour
 
     }
 
-    private void UpdateButtonReferences()
-    {
-        nextSceneButton.onClick.RemoveAllListeners();
-        nextSceneButton.onClick.AddListener(delegate { EnterMainScene(); });
-    }
-
     // Find another way to re-reference when changing scenes, but this works for now
     private void UpdateSpriteReferences()
     {
@@ -220,4 +211,5 @@ public class CustomizerManager : MonoBehaviour
         ScoreManager.Instance.UpdateCurrentUserTotalScore();
         SceneManager.LoadScene("MainMenuGameScene");
     }
+
 }
