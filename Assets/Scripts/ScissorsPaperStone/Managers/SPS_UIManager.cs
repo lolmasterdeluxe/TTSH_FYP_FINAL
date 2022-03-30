@@ -165,7 +165,7 @@ public class SPS_UIManager : MonoBehaviour
     public void EndGame()
     {
         b_gameEnded = true;
-        TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.25f);
+        TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.5f);
         ScoreManager.Instance.EndCurrentGameScore();
     }
 

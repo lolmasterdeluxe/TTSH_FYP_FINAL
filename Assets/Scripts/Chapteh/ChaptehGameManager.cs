@@ -179,7 +179,7 @@ public class ChaptehGameManager : MonoBehaviour
     public void OnGameEnd()
     {
         m_gameEnded = true;
-        TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.25f);
+        TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.5f);
         
         // Stops playing bgm audio
         audioSources[0].Stop();
