@@ -74,12 +74,12 @@ public class TweenManager : MonoBehaviour
 
     public void KillTween(GameObject gameObject)
     {
-        gameObject.transform.DOKill(true);
+        gameObject.transform.DOKill(false);
     }
 
     public void KillCanvasGroupTween(CanvasGroup gameObject)
     {
-        gameObject.DOKill(true);
+        gameObject.DOKill(false);
     }
 
     // Remove this if you want the TweenManager instance to be the same throughout the whole program

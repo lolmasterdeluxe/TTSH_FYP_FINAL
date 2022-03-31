@@ -123,9 +123,16 @@ public class Hand : MonoBehaviour
             collision.gameObject.SetActive(false);
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
             collision.gameObject.GetComponent<Rigidbody2D>().angularVelocity = 0;
+
             
             //Instantiate(particlePrefab, collision.gameObject.transform, collision.gameObject.transform);
             
+
+
+            ParticleSystem particleEffect = new ParticleSystem();
+            particleEffect = Instantiate(particleSystem_, transform.position, transform.rotation);
+            Destroy(particleEffect, 2.0f);
+
 
             // Destroy(collision.gameObject);
         }
