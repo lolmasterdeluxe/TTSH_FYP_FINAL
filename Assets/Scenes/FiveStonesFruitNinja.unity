@@ -5108,6 +5108,7 @@ MonoBehaviour:
   handTrailPrefab: {fileID: 7785552333619283571, guid: e8fdab3d0ad48934f9e0f29999b67d2d, type: 3}
   particlePrefab: {fileID: 0}
   particleSystem_: {fileID: 824849858213691201, guid: f78160e634116df41a19946bb26548d4, type: 3}
+  type: 0
   velocity: 0
   cuttingVelocityThreshold: 0.0001
   prevPosition: {x: 0, y: 0}
@@ -6249,7 +6250,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -2
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: b9f054b97078caf47820f668e18b6b88, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
