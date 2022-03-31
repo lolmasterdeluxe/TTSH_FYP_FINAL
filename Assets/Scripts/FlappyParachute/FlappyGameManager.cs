@@ -35,8 +35,7 @@ public class FlappyGameManager : MonoBehaviour
     public bool m_gameEnded = false;
 
     [SerializeField] 
-    private GameObject g_gameTimeUp;
-
+    private GameObject g_gameTimeUp, leaderboard;
 
     public AudioSource[] audioSources;
 
@@ -59,6 +58,7 @@ public class FlappyGameManager : MonoBehaviour
         m_gameStarted = true;
         // Setup managers
         ScoreManager.Instance.LoadNewGamemode(ScoreManager.Gamemode.FLAPPY);
+        TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 0f, 0f);
 
         // Plays background music after countdown
         audioSources[0].Play();
@@ -86,7 +86,7 @@ public class FlappyGameManager : MonoBehaviour
     {
         Debug.Log("Player is dead, game over ");
         m_gameEnded = true;
-        TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.25f);
+        TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 1f);
 
         // Stops playing bgm audio
         audioSources[0].Stop();
@@ -107,9 +107,11 @@ public class FlappyGameManager : MonoBehaviour
     {
         if (m_gameEnded)
         {
+            Debug.Log("Currently in a hiatus");
             yield return new WaitForSeconds(3);
+            Debug.Log("Currently in a hiatus 2");
             //AudioObject.SetActive(false);
-            Resources.FindObjectsOfTypeAll<LeaderboardManager>()[0].gameObject.SetActive(true);
+            leaderboard.SetActive(true);
         }
     }
 
