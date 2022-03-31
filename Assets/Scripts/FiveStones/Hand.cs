@@ -10,6 +10,7 @@ public class Hand : MonoBehaviour
     //public GameObject particle;
     public ParticleSystem particleSystem_;
     private GameObject instantiatedParticle;
+    public FiveStonesGameManager.Objective type;
 
     Rigidbody2D rigidBody;
     CircleCollider2D circleCollider;
@@ -116,7 +117,7 @@ public class Hand : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Stone")
+        if (collision.gameObject.tag == "Stone" )
         {
             FiveStonesGameManager.Instance.OnStoneCaught(collision.gameObject);
             collision.gameObject.SetActive(false);
@@ -124,10 +125,15 @@ public class Hand : MonoBehaviour
             collision.gameObject.GetComponent<Rigidbody2D>().angularVelocity = 0;
             
             //Instantiate(particlePrefab, collision.gameObject.transform, collision.gameObject.transform);
-            Instantiate(particleSystem_, transform.position,transform.rotation);
-            Destroy(particleSystem_,2.0f);
+            
 
             // Destroy(collision.gameObject);
+        }
+
+        if(collision.gameObject.tag == "Stone" && collision.GetComponent<Stone>().type != FiveStonesGameManager.Objective.BOMB_STONES)
+        {
+            Instantiate(particleSystem_, transform.position, transform.rotation);
+            Destroy(particleSystem_, 2.0f);
         }
     }
 
