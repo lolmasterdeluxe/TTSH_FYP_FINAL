@@ -36,8 +36,8 @@ public class MainEraser : MonoBehaviour
     public void Cover()
     {
         //cardBack.SetActive(true);
-        GetComponent<Animator>().SetTrigger("onClick");
-        Invoke("OnIdle",1.3f);
+        GetComponent<Animator>().SetTrigger("onCover");
+        Invoke("OnIdle",1.5f);
     }
 
     public void ChangeLayer()
