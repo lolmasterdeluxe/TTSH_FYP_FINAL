@@ -123,25 +123,30 @@ public class Hand : MonoBehaviour
             collision.gameObject.SetActive(false);
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
             collision.gameObject.GetComponent<Rigidbody2D>().angularVelocity = 0;
-
             
+            collision.gameObject.transform.rotation = Quaternion.identity;
+            collision.gameObject.GetComponent<Animator>().runtimeAnimatorController = null;
+
             //Instantiate(particlePrefab, collision.gameObject.transform, collision.gameObject.transform);
-            
+            if(collision.GetComponent<Stone>().type != FiveStonesGameManager.Objective.BOMB_STONES)
+            {
+                Debug.Log("sparkle");
+                ParticleSystem particleEffect = new ParticleSystem();
+                particleEffect = Instantiate(particleSystem_, transform.position, transform.rotation);
+                Destroy(particleEffect, 2.0f);
+            }
 
 
-            ParticleSystem particleEffect = new ParticleSystem();
-            particleEffect = Instantiate(particleSystem_, transform.position, transform.rotation);
-            Destroy(particleEffect, 2.0f);
 
 
             // Destroy(collision.gameObject);
         }
-
-        if(collision.gameObject.tag == "Stone" && collision.GetComponent<Stone>().type != FiveStonesGameManager.Objective.BOMB_STONES)
-        {
-            Instantiate(particleSystem_, transform.position, transform.rotation);
-            Destroy(particleSystem_, 2.0f);
-        }
+        else
+            collision.gameObject.GetComponent<Stone>().type = FiveStonesGameManager.Objective.DEFAULT;
+        //if(collision.gameObject.tag == "Stone" && collision.GetComponent<Stone>().type != FiveStonesGameManager.Objective.BOMB_STONES)
+        //{
+        //    
+        //}
     }
 
     private void OnTriggerExit2D(Collider2D other)
