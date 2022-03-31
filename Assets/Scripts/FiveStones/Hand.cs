@@ -10,6 +10,7 @@ public class Hand : MonoBehaviour
     //public GameObject particle;
     public ParticleSystem particleSystem_;
     private GameObject instantiatedParticle;
+    public FiveStonesGameManager.Objective type;
 
     Rigidbody2D rigidBody;
     CircleCollider2D circleCollider;
@@ -116,19 +117,36 @@ public class Hand : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Stone")
+        if (collision.gameObject.tag == "Stone" )
         {
             FiveStonesGameManager.Instance.OnStoneCaught(collision.gameObject);
             collision.gameObject.SetActive(false);
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
             collision.gameObject.GetComponent<Rigidbody2D>().angularVelocity = 0;
+            
+            collision.gameObject.transform.rotation = Quaternion.identity;
+            collision.gameObject.GetComponent<Animator>().runtimeAnimatorController = null;
 
-            ParticleSystem particleEffect = new ParticleSystem();
-            particleEffect = Instantiate(particleSystem_, transform.position, transform.rotation);
-            Destroy(particleEffect, 2.0f);
+            //Instantiate(particlePrefab, collision.gameObject.transform, collision.gameObject.transform);
+            if(collision.GetComponent<Stone>().type != FiveStonesGameManager.Objective.BOMB_STONES)
+            {
+                Debug.Log("sparkle");
+                ParticleSystem particleEffect = new ParticleSystem();
+                particleEffect = Instantiate(particleSystem_, transform.position, transform.rotation);
+                Destroy(particleEffect, 2.0f);
+            }
+
+
+
 
             // Destroy(collision.gameObject);
         }
+        else
+            collision.gameObject.GetComponent<Stone>().type = FiveStonesGameManager.Objective.DEFAULT;
+        //if(collision.gameObject.tag == "Stone" && collision.GetComponent<Stone>().type != FiveStonesGameManager.Objective.BOMB_STONES)
+        //{
+        //    
+        //}
     }
 
     private void OnTriggerExit2D(Collider2D other)

@@ -5,17 +5,17 @@ using UnityEngine.UI;
 public class SceneController : MonoBehaviour
 {
     public const int gridRows = 2;
-    public const int gridCol = 4;
+    public const int gridCol = 2;
     public const float offSetX = 4f;
     public const float offSetY = 5f;
 
     [SerializeField] private MainEraser originalEraser;
-    [SerializeField] private Sprite[] images;
+    [SerializeField] private Material[] material;
 
     private void Start()
     {
         Vector3 startPos = originalEraser.transform.position;
-        int[] numbers = { 0, 0, 1, 1, 2, 2, 3, 3 };
+        int[] numbers = { 0, 0, 1, 1 };
         numbers = ShuffleArray(numbers);
 
         for (int i  = 0; i < gridCol; i++)
@@ -32,9 +32,9 @@ public class SceneController : MonoBehaviour
                     eraser = Instantiate(originalEraser) as MainEraser;
                 int index = j * gridCol + i;
                 int id = numbers[index];
-                eraser.ChangeSprite(id, images[id]);
+                eraser.ChangeSprite(id, material[id]);
 
-                float posX = (offSetX * i) + startPos.x;
+                float posX = (offSetX * i) + startPos.x;    
                 float posY = (offSetY * j) + startPos.y;
 
                 eraser.transform.position = new Vector3(posX, posY, startPos.z);
@@ -91,7 +91,7 @@ public class SceneController : MonoBehaviour
         }
         else
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1.3f);
             print("wrong");
             _firstRevealed.Cover();
             _secondRevealed.Cover();
