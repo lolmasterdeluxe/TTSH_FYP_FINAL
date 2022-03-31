@@ -55,6 +55,8 @@ public class FiveStonesGameManager : MonoBehaviour
     private float maxObjectiveReset;
     private bool m_gameStarted;
     private bool m_gameEnded = false;
+    private bool comboStarted = false;
+    private bool comboBroken = false;
 
     [HideInInspector] public int m_totalCaught = 0;
     [HideInInspector] public int m_totalRainbowCaught = 0;
@@ -106,10 +108,10 @@ public class FiveStonesGameManager : MonoBehaviour
         audioSources[0].Play();
         // Attach events
         TimerManager.Instance.e_TimerFinished.AddListener(OnGameEnd);
-        ComboManager.Instance.e_comboAdded.AddListener(OnComboAdd);
-        ComboManager.Instance.e_comboBreak.AddListener(OnComboBreak);
-        ComboManager.Instance.e_comboAdded.AddListener(OnPopUp);
-        //ComboManager.Instance.e_comboAdded.AddListener(OnPopUpImage);
+        //ComboManager.Instance.e_comboAdded.AddListener(OnComboAdd);
+        ComboManager.Instance.e_comboBreak.AddListener(OnKillTween);
+       /* ComboManager.Instance.e_comboAdded.AddListener(OnPopUp);
+        ComboManager.Instance.e_comboAdded.AddListener(OnPopUpImage);*/
     }
 
     // Update is called once per frame
@@ -117,6 +119,16 @@ public class FiveStonesGameManager : MonoBehaviour
     {
         if (!m_gameStarted)
             return;
+
+        if (comboBroken)
+        {
+            OnComboBreak();
+        }
+        if (comboStarted)
+        {
+            OnComboAdd();
+            OnPopUp();
+        }
 
         DifficultyProgression();
         UpdateUI();
@@ -190,7 +202,6 @@ public class FiveStonesGameManager : MonoBehaviour
         {
             g_popupText.GetComponent<TMP_Text>().text = "Amazing!";
             TweenManager.Instance.AnimateShake(g_popupText.transform, 4f, 1f);
-
         }
         
     }
@@ -221,25 +232,33 @@ public class FiveStonesGameManager : MonoBehaviour
 
         if (gameObject.GetComponent<Stone>().type == Objective.BOMB_STONES)
         {
+            ComboManager.Instance.BreakCombo();
+            comboBroken = true;
+            comboStarted = false;
             audioSources[1].Play();
             ScoreManager.Instance.ReduceCurrentGameScore(baseScore * ComboManager.Instance.GetCurrentCombo());
-            ComboManager.Instance.BreakCombo();
         }
         else if (gameObject.GetComponent<Stone>().type == Objective.CATCH_ANY_STONES)
         {
+            ComboManager.Instance.AddCombo();
+            comboStarted = true;
+            comboBroken = false;
             audioSources[4].Play();
             m_totalRainbowCaught++;
-            ComboManager.Instance.AddCombo();
             ScoreManager.Instance.AddCurrentGameScore(baseScore * ComboManager.Instance.GetCurrentCombo() * 2);
         }
         else if (gameObject.GetComponent<Stone>().type == m_currentObjective || m_currentObjective == Objective.CATCH_ANY_STONES)
         {
-            audioSources[5].Play();
             ComboManager.Instance.AddCombo();
+            comboStarted = true;
+            comboBroken = false;
+            audioSources[5].Play();
             ScoreManager.Instance.AddCurrentGameScore(baseScore * ComboManager.Instance.GetCurrentCombo());
         }
-        else
-        {
+        else if (!comboBroken)
+        { 
+            comboBroken = true;
+            comboStarted = false;
             audioSources[5].Play();
             ComboManager.Instance.BreakCombo();
             ScoreManager.Instance.AddCurrentGameScore(baseScore);
@@ -257,14 +276,12 @@ public class FiveStonesGameManager : MonoBehaviour
     public void OnComboAdd()
     {
         TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 1f, 0.25f);
-        TweenManager.Instance.AnimateEnlargeText(g_comboText.transform, 1f, 0.25f);
         TweenManager.Instance.AnimateShake(g_comboText.transform, 2f, 1f);
     }
 
     public void OnPopUp()
     {
         TweenManager.Instance.AnimateFade(g_popupTextGroup.GetComponent<CanvasGroup>(), 1f, 0.25f);
-        //TweenManager.Instance.AnimateEnlargeText(g_popupText.transform,1f,0.25f);
     }
 
     public void OnPopUpImage()
@@ -276,11 +293,17 @@ public class FiveStonesGameManager : MonoBehaviour
     public void OnComboBreak()
     {
         TweenManager.Instance.AnimateShake(g_comboText.transform, 2, 1f);
-        TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 0f, 1f);
-        TweenManager.Instance.AnimateFade(g_popupTextGroup.GetComponent<CanvasGroup>(), 0f, 1f);
-        TweenManager.Instance.AnimateFade(g_popupImageGroup.GetComponent<CanvasGroup>(), 0f, 1f);
+        TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 0f, 5f);
+        TweenManager.Instance.AnimateFade(g_popupTextGroup.GetComponent<CanvasGroup>(), 0f, 5f);
+        TweenManager.Instance.AnimateFade(g_popupImageGroup.GetComponent<CanvasGroup>(), 0f, 5f);
     }
 
+    private void OnKillTween()
+    {
+        TweenManager.Instance.KillCanvasGroupTween(g_comboGroup.GetComponent<CanvasGroup>());
+        TweenManager.Instance.KillCanvasGroupTween(g_popupTextGroup.GetComponent<CanvasGroup>());
+        TweenManager.Instance.KillCanvasGroupTween(g_popupImageGroup.GetComponent<CanvasGroup>());
+    }
     
 
     public static Objective GetRandomColouredObjective()

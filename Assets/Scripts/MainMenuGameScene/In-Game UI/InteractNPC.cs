@@ -43,9 +43,9 @@ public class InteractNPC : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             //close all the screens
-            tutorialscreenmanagerInstance.TutorialScreenClosed(TutorialScreenManager.TutorialScreenType.SPS);
-            tutorialscreenmanagerInstance.TutorialScreenClosed(TutorialScreenManager.TutorialScreenType.FIVESTONES);
-            tutorialscreenmanagerInstance.TutorialScreenClosed(TutorialScreenManager.TutorialScreenType.CHAPTEH);
+            tutorialscreenmanagerInstance.TutorialScreenClosed("SPS");
+            tutorialscreenmanagerInstance.TutorialScreenClosed("FIVESTONES");
+            tutorialscreenmanagerInstance.TutorialScreenClosed("CHAPTEH");
 
             //reset the screen number to be 0
             tutorialscreenmanagerInstance.screenNumber = 0;
@@ -64,35 +64,35 @@ public class InteractNPC : MonoBehaviour
                 interactPrefab.transform.GetChild(0).GetComponent<Image>().DOFade(1f, 1.25f);
                 hoverSFX.Play();
                 if (Input.GetKeyDown(KeyCode.F))
-                    tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.SPS);
+                    tutorialscreenmanagerInstance.TutorialScreenOpen("SPS");
                 break;
             case NPC_TYPE.FIVE_STONES:
                 interactPrefab.transform.GetComponent<Image>().DOFade(1f, 1.25f);
                 interactPrefab.transform.GetChild(0).GetComponent<Image>().DOFade(1f, 1.25f);
                 hoverSFX.Play();
                 if (Input.GetKeyDown(KeyCode.F))
-                    tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.FIVESTONES);
+                    tutorialscreenmanagerInstance.TutorialScreenOpen("FIVESTONES");
                 break;
             case NPC_TYPE.CHAPTEH:
                 interactPrefab.transform.GetComponent<Image>().DOFade(1f, 1.25f);
                 interactPrefab.transform.GetChild(0).GetComponent<Image>().DOFade(1f, 1.25f);
                 hoverSFX.Play();
                 if (Input.GetKeyDown(KeyCode.F))
-                    tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.CHAPTEH);
+                    tutorialscreenmanagerInstance.TutorialScreenOpen("CHAPTEH");
                 break;
             case NPC_TYPE.FLAPPY:
                 interactPrefab.transform.GetComponent<Image>().DOFade(1f, 1.25f);
                 interactPrefab.transform.GetChild(0).GetComponent<Image>().DOFade(1f, 1.25f);
                 hoverSFX.Play();
                 if (Input.GetKeyDown(KeyCode.F))
-                    tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.CHAPTEH);
+                    tutorialscreenmanagerInstance.TutorialScreenOpen("CHAPTEH");
                 break;
             case NPC_TYPE.COUNTRY_ERASERS:
                 interactPrefab.transform.GetComponent<Image>().DOFade(1f, 1.25f);
                 interactPrefab.transform.GetChild(0).GetComponent<Image>().DOFade(1f, 1.25f);
                 hoverSFX.Play();
                 if (Input.GetKeyDown(KeyCode.F))
-                    tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.CHAPTEH);
+                    tutorialscreenmanagerInstance.TutorialScreenOpen("CHAPTEH");
                 break;
             case NPC_TYPE.CUSTOMIZER:
                 interactPrefab.transform.GetComponent<Image>().DOFade(1f, 1.25f);
@@ -122,7 +122,7 @@ public class InteractNPC : MonoBehaviour
                 {
                     interactSFX.Play();
                     BGM.volume = 0.05f;
-                    tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.SPS);
+                    tutorialscreenmanagerInstance.TutorialScreenOpen("SPS");
                 }
                 break;
             case NPC_TYPE.FIVE_STONES:
@@ -130,7 +130,7 @@ public class InteractNPC : MonoBehaviour
                 {
                     interactSFX.Play();
                     BGM.volume = 0.05f;
-                    tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.FIVESTONES);
+                    tutorialscreenmanagerInstance.TutorialScreenOpen("FIVESTONES");
                 }
                 break;
             case NPC_TYPE.CHAPTEH:
@@ -138,7 +138,7 @@ public class InteractNPC : MonoBehaviour
                 {
                     interactSFX.Play();
                     BGM.volume = 0.05f;
-                    tutorialscreenmanagerInstance.TutorialScreenOpen(TutorialScreenManager.TutorialScreenType.CHAPTEH);
+                    tutorialscreenmanagerInstance.TutorialScreenOpen("CHAPTEH");
                 }   
                 break;
             case NPC_TYPE.FLAPPY:

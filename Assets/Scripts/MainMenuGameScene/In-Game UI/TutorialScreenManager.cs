@@ -13,7 +13,7 @@ public class TutorialScreenManager : MonoBehaviour
     //reference to the screen gameObjects HERE
     public enum TutorialScreenType
     { 
-        SPS, CHAPTEH, FIVESTONES
+        SPS, CHAPTEH, FIVESTONES, FLAPPY, ERASER
     };
 
     [Tooltip("Reference to Tutorial Screen Manager script")]
@@ -143,9 +143,22 @@ public class TutorialScreenManager : MonoBehaviour
 
     #region Helper Functions
 
-    public void TutorialScreenOpen(TutorialScreenType selectedScreen)
+    public void TutorialScreenOpen(string selectedScreen)
     {
-        switch (selectedScreen)
+        TutorialScreenType screenType = 0;
+
+        if (selectedScreen == "SPS")
+            screenType = TutorialScreenType.SPS;
+        else if (selectedScreen == "FIVESTONES")
+            screenType = TutorialScreenType.FIVESTONES;
+        else if (selectedScreen == "CHAPTEH")
+            screenType = TutorialScreenType.CHAPTEH;
+        else if (selectedScreen == "FLAPPY")
+            screenType = TutorialScreenType.FLAPPY;
+        else if (selectedScreen == "ERASER")
+            screenType = TutorialScreenType.ERASER;
+
+        switch (screenType)
         {
             case TutorialScreenType.SPS:
                 sps_tutorialScreen.SetActive(true);
@@ -162,12 +175,27 @@ public class TutorialScreenManager : MonoBehaviour
                 chapteh_tutorialBase.sprite = chapteh_tutorialContainer[0];
                 b_tutorialScreenOpen = true;
                 break;
+            default:
+                break;
         }
     }
 
-    public void TutorialScreenClosed(TutorialScreenType selectedScreen)
+    public void TutorialScreenClosed(string selectedScreen)
     {
-        switch (selectedScreen)
+        TutorialScreenType screenType = 0;
+
+        if (selectedScreen == "SPS")
+            screenType = TutorialScreenType.SPS;
+        else if (selectedScreen == "FIVESTONES")
+            screenType = TutorialScreenType.FIVESTONES;
+        else if (selectedScreen == "CHAPTEH")
+            screenType = TutorialScreenType.CHAPTEH;
+        else if (selectedScreen == "FLAPPY")
+            screenType = TutorialScreenType.FLAPPY;
+        else if (selectedScreen == "ERASER")
+            screenType = TutorialScreenType.ERASER;
+
+        switch (screenType)
         {
             case TutorialScreenType.SPS:
                 sps_tutorialScreen.SetActive(false);
@@ -180,6 +208,8 @@ public class TutorialScreenManager : MonoBehaviour
             case TutorialScreenType.CHAPTEH:
                 chapteh_tutorialScreen.SetActive(false);
                 b_tutorialScreenOpen = false;
+                break;
+            default:
                 break;
         }
     }
@@ -204,6 +234,10 @@ public class TutorialScreenManager : MonoBehaviour
                 Destroy(chapteh_npc.GetComponent<CapsuleCollider2D>());
                 SceneManager.LoadScene("FlappyParachute");
                 break;
+            case 4:
+                Destroy(chapteh_npc.GetComponent<CapsuleCollider2D>());
+                SceneManager.LoadScene("CountryErasers");
+                break;
         }
 
     }
@@ -218,12 +252,6 @@ public class TutorialScreenManager : MonoBehaviour
     public void ButtonHoverReset(GameObject selectedButton)
     {
         selectedButton.transform.localScale = new Vector3(1f, 1f, 1f);
-    }
-
-    //attached to the exit button
-    public void ButtonCloseScreen(GameObject selectedScreen)
-    {
-        selectedScreen.SetActive(false);
     }
 
     //scroll between tutorial screens
