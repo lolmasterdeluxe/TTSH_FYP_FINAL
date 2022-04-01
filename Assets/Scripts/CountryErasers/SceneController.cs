@@ -8,12 +8,17 @@ public class SceneController : MonoBehaviour
     public const int gridCol = 2;
     public const float offSetX = 4f;
     public const float offSetY = 5f;
+    public float openTimer = 3f;
+    public Text openTimerText;
 
     [SerializeField] private MainEraser originalEraser;
     [SerializeField] private Material[] material;
-
+    [SerializeField] private Text gameTimerText;
+    public bool gameEnded;
+    public float gameTimer = 10f;
     private void Start()
     {
+        gameTimerText.gameObject.SetActive(false);
         Vector3 startPos = originalEraser.transform.position;
         int[] numbers = { 0, 0, 1, 1 };
         numbers = ShuffleArray(numbers);
@@ -40,6 +45,24 @@ public class SceneController : MonoBehaviour
                 eraser.transform.position = new Vector3(posX, posY, startPos.z);
             }
         }
+    }
+    private void Update()
+    {
+        openTimer -= Time.deltaTime;
+        openTimerText.text = "Covering in" + openTimer.ToString("F2");
+        if (openTimer <= 0)
+        {
+            gameTimerText.text = "Time left:" + gameTimer.ToString("F2");
+            openTimerText.gameObject.SetActive(false);
+            gameTimerText.gameObject.SetActive(true);
+            gameTimer -= Time.deltaTime;
+            if (gameTimer <=0)
+            {
+                gameEnded = true;
+                gameTimerText.gameObject.SetActive(false);
+            }
+        }
+        
     }
     private int[] ShuffleArray(int[] numbers)
     {
