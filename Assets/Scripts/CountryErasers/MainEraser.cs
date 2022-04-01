@@ -12,10 +12,10 @@ public class MainEraser : MonoBehaviour
         get { return _id; }
     }
 
-   //private void Awake()
-   //{
-   //    cardBack = transform.GetChild(0).gameObject;
-   //}
+    private void Awake()
+    {
+        Invoke("Cover", 3f);
+    }
     private void OnMouseDown()
     {
         if (cardBack.activeSelf && controller.canReveal)
@@ -51,4 +51,5 @@ public class MainEraser : MonoBehaviour
     {
         GetComponent<Animator>().SetTrigger("onIdle");
     }
+
 }
