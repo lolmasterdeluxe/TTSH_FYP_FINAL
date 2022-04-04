@@ -1,33 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 public class MainEraser : MonoBehaviour
 {
     [SerializeField] private GameObject cardBack;
     [SerializeField] private GameObject cardFront;
     [SerializeField] private SceneController controller;
+    
     private int _id;
+    
     public int id
     {
         get { return _id; }
     }
 
-   //private void Awake()
-   //{
-   //    cardBack = transform.GetChild(0).gameObject;
-   //}
+    private void Awake()
+    {
+        Invoke("Cover", controller.openTimer);
+    }
+
     private void OnMouseDown()
     {
-        if (cardBack.activeSelf && controller.canReveal)
+        if (!controller.gameEnded)
         {
-            //cardBack.SetActive(!cardBack.activeSelf);
-            GetComponent<Animator>().SetTrigger("onClick");
-            controller.EraserRevealed(this);
-            print("revealing");
+            if (cardBack.activeSelf && controller.canReveal)
+            {
+                //cardBack.SetActive(!cardBack.activeSelf);
+                GetComponent<Animator>().SetTrigger("onClick");
+                controller.EraserRevealed(this);
+                print("revealing");
+            }
         }
     }
 
-    public void ChangeSprite(int id, Material material)
+    public void ChangeMaterial(int id, Material material)
     {
         _id = id;
         transform.GetChild(1).GetComponent<MeshRenderer>().material = material  ;
@@ -51,4 +58,5 @@ public class MainEraser : MonoBehaviour
     {
         GetComponent<Animator>().SetTrigger("onIdle");
     }
+
 }
