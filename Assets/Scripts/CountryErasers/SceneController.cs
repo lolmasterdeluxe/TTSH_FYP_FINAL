@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class SceneController : MonoBehaviour
 {
-    public const int gridRows = 2;
-    public const int gridCol = 2;
+    public int gridRows = 2;
+    public int gridCol = 2;
     public const float offSetX = 4f;
     public const float offSetY = 5f;
     public float openTimer = 3f;
@@ -13,6 +13,7 @@ public class SceneController : MonoBehaviour
 
     [SerializeField] private MainEraser originalEraser;
     [SerializeField] private Material[] material;
+    //public List<Material> mats;
     [SerializeField] private Text gameTimerText;
     public bool gameEnded;
     public float gameTimer = 10f;
@@ -20,9 +21,9 @@ public class SceneController : MonoBehaviour
     {
         gameTimerText.gameObject.SetActive(false);
         Vector3 startPos = originalEraser.transform.position;
-        int[] numbers = { 0, 0, 1, 1 };
+        int[] numbers = { 0, 0, 1, 1, 2, 2, 3, 3};
         numbers = ShuffleArray(numbers);
-
+        Material[] materials = ShuffleMaterials(material);
         for (int i  = 0; i < gridCol; i++)
         {
             for (int j = 0;j<gridRows; j++)
@@ -37,7 +38,7 @@ public class SceneController : MonoBehaviour
                     eraser = Instantiate(originalEraser) as MainEraser;
                 int index = j * gridCol + i;
                 int id = numbers[index];
-                eraser.ChangeMaterial(id, material[id]);
+                eraser.ChangeMaterial(id, materials[id]);
 
                 float posX = (offSetX * i) + startPos.x;    
                 float posY = (offSetY * j) + startPos.y;
@@ -76,7 +77,19 @@ public class SceneController : MonoBehaviour
         }
         return newArray;
     }
+    private Material[] ShuffleMaterials(Material[] materials)
+    {
 
+        Material[] newMatArray = materials.Clone() as Material[];
+        for (int i = 0; i < newMatArray.Length; i++)
+        {
+            Material tmp = newMatArray[i];
+            int r = Random.Range(i, newMatArray.Length);
+            newMatArray[i] = newMatArray[r];
+            newMatArray[r] = tmp;
+        }
+        return newMatArray;
+    }
     private MainEraser _firstRevealed;
     private MainEraser _secondRevealed;
 
