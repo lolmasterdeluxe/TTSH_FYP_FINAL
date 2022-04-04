@@ -34,7 +34,7 @@ public class MainEraser : MonoBehaviour
         }
     }
 
-    public void ChangeSprite(int id, Material material)
+    public void ChangeMaterial(int id, Material material)
     {
         _id = id;
         transform.GetChild(1).GetComponent<MeshRenderer>().material = material  ;

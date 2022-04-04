@@ -37,7 +37,7 @@ public class SceneController : MonoBehaviour
                     eraser = Instantiate(originalEraser) as MainEraser;
                 int index = j * gridCol + i;
                 int id = numbers[index];
-                eraser.ChangeSprite(id, material[id]);
+                eraser.ChangeMaterial(id, material[id]);
 
                 float posX = (offSetX * i) + startPos.x;    
                 float posY = (offSetY * j) + startPos.y;
@@ -95,12 +95,20 @@ public class SceneController : MonoBehaviour
             _firstRevealed = eraser;
             print("Reavealed 1");
         }
-        else
+        else if (_firstRevealed != null && _secondRevealed == null)
         {
             _secondRevealed = eraser;
-            print("revealed 2");
-            StartCoroutine("CheckMatch");
+            if (_secondRevealed == _firstRevealed)
+            {
+                _secondRevealed = null;
+            }
+            else
+            {
+                print("revealed 2");
+                StartCoroutine("CheckMatch");
+            }
         }
+        
     }
 
     private IEnumerator CheckMatch()

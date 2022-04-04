@@ -590,7 +590,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 8a4a2aa0d77792c4688dc5d7c8e5ad0b, type: 2}
   gameTimerText: {fileID: 355171693}
   gameEnded: 0
-  gameTimer: 10
+  gameTimer: 20
   scoreLabel: {fileID: 1461029047}
 --- !u!4 &796376573
 Transform:
