@@ -59,6 +59,7 @@ public class FlappyGameManager : MonoBehaviour
         // Setup managers
         ScoreManager.Instance.LoadNewGamemode(ScoreManager.Gamemode.FLAPPY);
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 0f, 0f);
+        player.gameObject.GetComponent<Animator>().SetBool("IsFlying", true);
 
         // Plays background music after countdown
         audioSources[0].Play();
@@ -67,11 +68,11 @@ public class FlappyGameManager : MonoBehaviour
         scoretext.text = score.ToString();
         player.enabled = true;
 
-        Pipes[] pipes = FindObjectsOfType<Pipes>();
+        MoveObstacle[] obstacles = FindObjectsOfType<MoveObstacle>();
 
-        for (int i = 0; i < pipes.Length; i++)
+        for (int i = 0; i < obstacles.Length; i++)
         {
-            Destroy(pipes[i].gameObject);
+            Destroy(obstacles[i].gameObject);
         }
 
     }
@@ -87,6 +88,8 @@ public class FlappyGameManager : MonoBehaviour
         Debug.Log("Player is dead, game over ");
         m_gameEnded = true;
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 1f);
+        player.gameObject.GetComponent<Animator>().SetBool("IsFlying", false);
+
 
         // Stops playing bgm audio
         audioSources[0].Stop();
@@ -100,6 +103,12 @@ public class FlappyGameManager : MonoBehaviour
     public void increaseScore()
     {
         score++;
+        scoretext.text = score.ToString();
+    }
+
+    public void balloonScore()
+    {
+        score += 2;
         scoretext.text = score.ToString();
     }
 
