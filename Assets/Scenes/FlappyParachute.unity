@@ -5409,10 +5409,10 @@ MonoBehaviour:
   treeMaxSpawnRate: 3
   mynahMinheight: 2.5
   mynahMaxheight: 6
-  balloonMinSpawnRate: 1
-  balloonMaxSpawnRate: 2
-  balloonminHeight: 1
-  balloonMaxHeight: 4
+  balloonMinSpawnRate: 5
+  balloonMaxSpawnRate: 8
+  balloonminHeight: 0
+  balloonMaxHeight: 6
 --- !u!4 &1712175843
 Transform:
   m_ObjectHideFlags: 0
