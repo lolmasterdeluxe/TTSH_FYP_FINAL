@@ -2316,7 +2316,11 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 0acddcdc83dd9b04d9fc79ee5b427d67, type: 3}
     - target: {fileID: 2291096294466694074, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348246919974079151, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2550036247225187247, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_SizeDelta.x
@@ -2436,11 +2440,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2913985092264067590, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2913985092498103509, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2913985092655380877, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_IsActive
@@ -2468,7 +2472,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2913985093370657911, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3269353034715130635, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -2477,6 +2481,10 @@ PrefabInstance:
     - target: {fileID: 3269353034715130635, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544403701843289592, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6074680635612955243, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_CullTransparentMesh
@@ -2501,6 +2509,18 @@ PrefabInstance:
     - target: {fileID: 8022182395005793213, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329819504224517717, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329819504224517717, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329819504224517717, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8470209759508657617, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -3958,7 +3978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 4
-  interactPrefab: {fileID: 1878935914}
+  interactPrefab: {fileID: 1100482929}
   interactSFX: {fileID: 1883059764}
   hoverSFX: {fileID: 76700683}
   BGM: {fileID: 518592540}
@@ -19343,12 +19363,12 @@ GameObject:
   - component: {fileID: 1524986463}
   - component: {fileID: 1524986462}
   m_Layer: 0
-  m_Name: SPSLogo
+  m_Name: FlappyLogo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1524986461
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19388,7 +19408,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 85f92192ce98c754d9b4ee9e43f55c04, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 80e498147c896a945aed109c2d750041, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -23637,12 +23657,12 @@ GameObject:
   - component: {fileID: 1865547313}
   - component: {fileID: 1865547312}
   m_Layer: 0
-  m_Name: SPSLogo
+  m_Name: EraserLogo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1865547311
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23682,7 +23702,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 85f92192ce98c754d9b4ee9e43f55c04, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9ed026f09b4c41d47a0ace8be0e5a42c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

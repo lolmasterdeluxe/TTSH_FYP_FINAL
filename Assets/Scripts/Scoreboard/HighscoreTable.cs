@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using TMPro;
+using UnityEngine.UI;
 
 public class HighscoreTable : MonoBehaviour
 {
@@ -11,11 +12,16 @@ public class HighscoreTable : MonoBehaviour
     private List<HighscoreEntry> highscoreEntryList;
     private List<Transform> highscoreEntryTransformList;
     // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
         entryTemplate.gameObject.SetActive(false);
-
+        DisplayScores();
+    }
+    private void DisplayScores()
+    {
+        Debug.Log(PlayerPrefs.HasKey("highscoreTable"));
         string jsonString = PlayerPrefs.GetString("highscoreTable");
+        
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
         highscoreEntryList = highscores.highscoreEntryList;
         for (int i = 0; i < highscoreEntryList.Count; ++i)
@@ -75,16 +81,16 @@ public class HighscoreTable : MonoBehaviour
         CustomizerManager.Customizable faceCustomizable = CustomizerManager.Instance.m_facePool.ElementAtOrDefault(highscoreEntry.FaceId);
         CustomizerManager.Customizable colorCustomizable = CustomizerManager.Instance.m_colorPool.ElementAtOrDefault(highscoreEntry.ColorId);
 
-        entryTransform.Find("Avatar").transform.GetChild(0).GetComponent<SpriteRenderer>().color = colorCustomizable.m_color;
+        entryTransform.Find("Avatar").transform.GetChild(0).GetComponent<Image>().color = colorCustomizable.m_color;
 
-        entryTransform.Find("Avatar").transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = hatCustomizable.m_sprite;
+        entryTransform.Find("Avatar").transform.GetChild(1).GetComponent<Image>().sprite = hatCustomizable.m_sprite;
 
-        entryTransform.Find("Avatar").transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = faceCustomizable.m_sprite;
+        entryTransform.Find("Avatar").transform.GetChild(2).GetComponent<Image>().sprite = faceCustomizable.m_sprite;
 
         transformList.Add(entryTransform);
     }
 
-    private void AddHighscoreEntry(int score, string name, int ColorId, int HatId, int FaceId)
+    public void AddHighscoreEntry(int score, string name, int ColorId, int HatId, int FaceId)
     {
         // Create HighscoreEntry
         HighscoreEntry highscoreEntry = new HighscoreEntry { score = score, name = name, ColorId = ColorId, HatId = HatId, FaceId = FaceId};
