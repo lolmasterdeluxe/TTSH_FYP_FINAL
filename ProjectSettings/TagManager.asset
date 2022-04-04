@@ -21,6 +21,7 @@ TagManager:
   - Boundary
   - ChaptehLaunch
   - Scoring
+  - Balloon
   layers:
   - Default
   - TransparentFX

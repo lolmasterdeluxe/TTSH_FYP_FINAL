@@ -5402,12 +5402,17 @@ MonoBehaviour:
   Tree: {fileID: 6073402568063059946, guid: 3560767894c388d4a9b74603326ac680, type: 3}
   Mynah: {fileID: 4052972847635703251, guid: 87243b8f7455767478835d98a46df32a, type: 3}
   Pipes: {fileID: 5887702756659530634, guid: 564165cbdb0167243aa9998f7b30fcae, type: 3}
+  Balloon: {fileID: 3628273070359550756, guid: 44782834d1e0f274a8784e02710e8333, type: 3}
   mynahMinSpawnRate: 1
   mynahMaxSpawnRate: 3
   treeMinSpawnRate: 1
   treeMaxSpawnRate: 3
   mynahMinheight: 2.5
   mynahMaxheight: 6
+  balloonMinSpawnRate: 1
+  balloonMaxSpawnRate: 2
+  balloonminHeight: 1
+  balloonMaxHeight: 4
 --- !u!4 &1712175843
 Transform:
   m_ObjectHideFlags: 0

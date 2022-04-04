@@ -55,6 +55,12 @@ public class FlappyPlayer : MonoBehaviour
             FlappyGameManager.Instance.increaseScore();
             FlappyGameManager.Instance.audioSources[2].Play();
         }
+        else if(other.gameObject.tag == "Balloon")
+        {
+            FlappyGameManager.Instance.balloonScore();
+            FlappyGameManager.Instance.audioSources[2].Play();
+            Destroy(other.gameObject);
+        }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
