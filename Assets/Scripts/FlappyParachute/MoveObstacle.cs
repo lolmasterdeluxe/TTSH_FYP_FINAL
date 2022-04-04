@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pipes : MonoBehaviour
+public class MoveObstacle : MonoBehaviour
 {
     [SerializeField]
     private float speed = 5f;
