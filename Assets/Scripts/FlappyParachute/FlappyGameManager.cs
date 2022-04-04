@@ -106,6 +106,12 @@ public class FlappyGameManager : MonoBehaviour
         scoretext.text = score.ToString();
     }
 
+    public void balloonScore()
+    {
+        score += 2;
+        scoretext.text = score.ToString();
+    }
+
     public IEnumerator OnLeaderboardLoad()
     {
         if (m_gameEnded)

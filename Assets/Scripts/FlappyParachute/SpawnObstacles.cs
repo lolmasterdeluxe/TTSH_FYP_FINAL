@@ -5,11 +5,13 @@ using UnityEngine;
 public class SpawnObstacles : MonoBehaviour
 {
     [SerializeField]
-    private GameObject Tree, Mynah, Pipes;
-    private bool mynahSpawned = false, treeSpawned = false;
-    private float mynahSpawnRate, treeSpawnRate, pipeSpawnRate = 1.2f;
+    private GameObject Tree, Mynah, Pipes, Balloon;
+    private bool mynahSpawned = false, treeSpawned = false, balloonSpawned = false;
+    private float mynahSpawnRate, treeSpawnRate, pipeSpawnRate = 1.2f,balloonSpawnRate;
     [SerializeField]
     private float mynahMinSpawnRate = 1f, mynahMaxSpawnRate = 3f, treeMinSpawnRate = 1f, treeMaxSpawnRate = 5f, mynahMinheight = 2f, mynahMaxheight = 4f;
+    [SerializeField]
+    private float balloonMinSpawnRate=1f, balloonMaxSpawnRate=2f,balloonminHeight = 1f,balloonMaxHeight = 4f;
 /*
     private void OnEnable()
     {
@@ -25,6 +27,7 @@ public class SpawnObstacles : MonoBehaviour
     {
         mynahSpawnRate -= Time.deltaTime;
         treeSpawnRate -= Time.deltaTime;
+        balloonSpawnRate -= Time.deltaTime;
         if (mynahSpawned)
         {
             mynahSpawnRate = Random.Range(mynahMinSpawnRate, mynahMaxSpawnRate);
@@ -35,11 +38,18 @@ public class SpawnObstacles : MonoBehaviour
             treeSpawnRate = Random.Range(treeMinSpawnRate, treeMaxSpawnRate);
             treeSpawned = false;
         }
+        if(balloonSpawned)
+        {
+            balloonSpawnRate = Random.Range(balloonMinSpawnRate, balloonMaxSpawnRate);
+            balloonSpawned = false;
+        }
 
         if (mynahSpawnRate <= 0f)
             spawnMynah();
         if (treeSpawnRate <= 0f)
             spawnTree();
+        if (balloonSpawnRate <= 0f)
+            spawnBalloon();
     }
 
     private void spawnMynah()
@@ -60,6 +70,15 @@ public class SpawnObstacles : MonoBehaviour
         tree.transform.localScale = new Vector3(tree_scale, tree_scale, tree_scale);
         tree.transform.position = new Vector3(transform.position.x, transform.position.y - 4, transform.position.z);
         treeSpawned = true;
+    }
+
+    private void spawnBalloon()
+    {
+        if (!FlappyGameManager.Instance.m_gameStarted || FlappyGameManager.Instance.m_gameEnded)
+            return;
+        GameObject balloon = Instantiate(Balloon, transform.position, Quaternion.identity);
+        balloon.transform.position += Vector3.up * Random.Range(balloonminHeight, balloonMaxHeight);
+        balloonSpawned = true;
     }
 
    /* private void spawnPipes()

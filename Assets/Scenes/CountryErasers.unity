@@ -582,12 +582,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a45c7862e8f4244aa62d82b3b16f115, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridRows: 2
+  gridCol: 4
   openTimer: 3
   openTimerText: {fileID: 396567393}
   originalEraser: {fileID: 800802032}
   material:
   - {fileID: 2100000, guid: f87f4a0ba294d62469d3133b9edaaa39, type: 2}
   - {fileID: 2100000, guid: 8a4a2aa0d77792c4688dc5d7c8e5ad0b, type: 2}
+  - {fileID: 2100000, guid: 968656ef5aeefab4ca33148826f70aa2, type: 2}
+  - {fileID: 2100000, guid: 2d5f182f2d80ef444a7b3bef46b9e485, type: 2}
+  - {fileID: 2100000, guid: 058e29a081f8dd24e9698e2d0ce0e41e, type: 2}
+  - {fileID: 2100000, guid: 3c09e0b95854f41438ffa51a77a50c8f, type: 2}
+  - {fileID: 2100000, guid: 89648f2d0d51af244bbfb95f26ef2949, type: 2}
+  - {fileID: 2100000, guid: 371c3d5c8c401fb499a778a0140a1433, type: 2}
+  - {fileID: 2100000, guid: 218693d611fc9e84fb9542edd69af25b, type: 2}
+  - {fileID: 2100000, guid: 2ee630787856cc04c8d4fac922563418, type: 2}
+  - {fileID: 2100000, guid: e7ef1e0d70dc2124795dc947d94e2b0e, type: 2}
+  - {fileID: 2100000, guid: 2876958f67868de48b3365a0d73fdc84, type: 2}
+  - {fileID: 2100000, guid: f39c9084b7cd4c9408536a8f11332952, type: 2}
+  - {fileID: 2100000, guid: 11a1202f0ba305443aee45f424dbb0cc, type: 2}
+  - {fileID: 2100000, guid: 6ba9fbbf1a1bc7e49ad70e7564ad0b5a, type: 2}
   gameTimerText: {fileID: 355171693}
   gameEnded: 0
   gameTimer: 20
