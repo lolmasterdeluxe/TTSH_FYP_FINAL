@@ -11,9 +11,12 @@ public class FlappyPlayer : MonoBehaviour
     private float strength = 5f;
     private float initialStength = 0;
 
+    public ParticleSystem particleSystem_;
+
     private void Start()
     {
         initialStength = strength;
+        particleSystem_.playOnAwake = true;
     }
 
     private void Update()
@@ -23,6 +26,7 @@ public class FlappyPlayer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             direction = Vector3.up * strength;
+            FlappyGameManager.Instance.audioSources[3].Play();
         }
 
         direction.y += gravity * Time.deltaTime;
@@ -49,6 +53,12 @@ public class FlappyPlayer : MonoBehaviour
             FlappyGameManager.Instance.balloonScore();
             FlappyGameManager.Instance.audioSources[2].Play();
             Destroy(other.gameObject);
+            Debug.Log("particle spawn");
+            ParticleSystem particleEffect = new ParticleSystem();
+            particleEffect = Instantiate(particleSystem_, other.transform.position, other.transform.rotation);
+            Destroy(particleEffect, 2.0f);
+            
+            
         }
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -57,5 +67,7 @@ public class FlappyPlayer : MonoBehaviour
         {
             strength = initialStength;
         }
+
+      
     }
 }
