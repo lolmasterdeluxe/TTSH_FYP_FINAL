@@ -468,6 +468,7 @@ MonoBehaviour:
   scoretext: {fileID: 1695216137}
   m_gameStarted: 0
   m_gameEnded: 0
+  SpeedMultiplier: 0
   g_gameTimeUp: {fileID: 1187869721}
   leaderboard: {fileID: 599904695}
   audioSources:

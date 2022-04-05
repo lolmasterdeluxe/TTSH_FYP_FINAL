@@ -28,8 +28,9 @@ public class FlappyGameManager : MonoBehaviour
 
     public TMP_Text scoretext;
 
-    public bool m_gameStarted;
-    public bool m_gameEnded = false;
+    public bool m_gameStarted, m_gameEnded = false;
+
+    public float SpeedMultiplier;
 
     [SerializeField] 
     private GameObject g_gameTimeUp, leaderboard;
@@ -80,6 +81,7 @@ public class FlappyGameManager : MonoBehaviour
             return;
 
         scoretext.text = ScoreManager.Instance.GetCurrentGameScore().ToString();
+        ScaleDifficulty();
     }
 
     public void GameOver()
@@ -119,6 +121,14 @@ public class FlappyGameManager : MonoBehaviour
             //AudioObject.SetActive(false);
             leaderboard.SetActive(true);
         }
+    }
+
+    private void ScaleDifficulty()
+    {
+        if (ScoreManager.Instance.GetCurrentGameScore() > 0 && ScoreManager.Instance.GetCurrentGameScore() % 10 == 0)
+            SpeedMultiplier = (float)ScoreManager.Instance.GetCurrentGameScore() / 20;
+        if (SpeedMultiplier > 4)
+            SpeedMultiplier = 4;
     }
 
     private void OnDestroy()

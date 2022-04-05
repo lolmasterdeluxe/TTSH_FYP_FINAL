@@ -25,19 +25,8 @@ public class FlappyPlayer : MonoBehaviour
             direction = Vector3.up * strength;
         }
 
-/*        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-
-            if (touch.phase == TouchPhase.Began)
-            {
-                direction = Vector3.up * strength;
-            }
-        }
-*/
         direction.y += gravity * Time.deltaTime;
-        transform.position += direction*Time.deltaTime;
-
+        transform.position += direction * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -55,7 +44,7 @@ public class FlappyPlayer : MonoBehaviour
             FlappyGameManager.Instance.increaseScore();
             FlappyGameManager.Instance.audioSources[2].Play();
         }
-        else if(other.gameObject.tag == "Balloon")
+        else if (other.gameObject.tag == "Balloon")
         {
             FlappyGameManager.Instance.balloonScore();
             FlappyGameManager.Instance.audioSources[2].Play();
