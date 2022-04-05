@@ -7,8 +7,8 @@ public class EraserGameManager : MonoBehaviour
 {
     public int gridRows = 2;
     public int gridCol = 2;
-    public const float offSetX = 4f;
-    public const float offSetY = 5f;
+    public const float offSetX = 3.5f;
+    public const float offSetY = 3f;
     public float openTimer = 3f;
 
     [SerializeField] private MainEraser originalEraser;
@@ -78,7 +78,7 @@ public class EraserGameManager : MonoBehaviour
     private void Start()
     {
         Vector3 startPos = originalEraser.transform.position;
-        int[] numbers = { 0, 0, 1, 1, 2, 2, 3, 3};
+        int[] numbers = { 0, 0, 1, 1, 2, 2, 3, 3 ,4,4,5,5,6,6};
         numbers = ShuffleArray(numbers);
         Material[] materials = ShuffleMaterials(material);
         for (int i  = 0; i < gridCol; i++)
