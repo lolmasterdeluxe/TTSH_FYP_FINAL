@@ -16,14 +16,16 @@ public class MainEraser : MonoBehaviour
 
     private void Start()
     {
-        Invoke("Cover", EraserGameManager.Instance.openTimer);
+        Invoke("OpenEraser", 3);
+        Invoke("Cover", EraserGameManager.Instance.openTimer +3);
+        Invoke("CanStartRevealing", EraserGameManager.Instance.openTimer + 5);
     }
 
     private void OnMouseDown()
     {
         if (!EraserGameManager.Instance.m_gameEnded)
         {
-            if (cardBack.activeSelf && EraserGameManager.Instance.canReveal)
+            if (cardBack.activeSelf && EraserGameManager.Instance.canReveal && EraserGameManager.Instance.startRevealing)
             {
                 //cardBack.SetActive(!cardBack.activeSelf);
                 GetComponent<Animator>().SetTrigger("onClick");
@@ -57,5 +59,13 @@ public class MainEraser : MonoBehaviour
     {
         GetComponent<Animator>().SetTrigger("onIdle");
     }
+    private void OpenEraser()
+    {
+        GetComponent<Animator>().SetTrigger("onClick");
+    }
 
+    public void CanStartRevealing()
+    {
+        EraserGameManager.Instance.startRevealing = true;
+    }
 }

@@ -7,13 +7,13 @@ public class SpawnObstacles : MonoBehaviour
     [SerializeField]
     private GameObject Tree, Mynah, Pipes, Balloon;
     private bool mynahSpawned = false, treeSpawned = false, balloonSpawned = false;
-    private float mynahSpawnRate, treeSpawnRate, pipeSpawnRate = 1.2f,balloonSpawnRate;
+    private float mynahSpawnRate, treeSpawnRate, pipeSpawnRate = 1.2f, balloonSpawnRate;
     [SerializeField]
     private float mynahMinSpawnRate = 1f, mynahMaxSpawnRate = 3f, treeMinSpawnRate = 1f, treeMaxSpawnRate = 5f, mynahMinheight = 2f, mynahMaxheight = 4f;
     [SerializeField]
-    private float balloonMinSpawnRate=1f, balloonMaxSpawnRate = 2f, balloonMinHeight = 1f,balloonMaxHeight = 4f;
-/*
-    private void OnEnable()
+    private float balloonMinSpawnRate = 1f, balloonMaxSpawnRate = 2f, balloonMinHeight = 1f,balloonMaxHeight = 4f;
+
+    /*private void OnEnable()
     {
         InvokeRepeating(nameof(spawnPipes), pipeSpawnRate, pipeSpawnRate);
     }
@@ -21,13 +21,14 @@ public class SpawnObstacles : MonoBehaviour
     private void OnDisable()
     {
         CancelInvoke(nameof(spawnPipes));
-    }
-*/
+    }*/
+
     private void Update()
     {
-        mynahSpawnRate -= Time.deltaTime;
-        treeSpawnRate -= Time.deltaTime;
-        balloonSpawnRate -= Time.deltaTime;
+        mynahSpawnRate -= Time.deltaTime * FlappyGameManager.Instance.SpawnMultiplier;
+        treeSpawnRate -= Time.deltaTime * FlappyGameManager.Instance.SpawnMultiplier;
+        balloonSpawnRate -= Time.deltaTime * FlappyGameManager.Instance.SpawnMultiplier;
+
         if (mynahSpawned)
         {
             mynahSpawnRate = Random.Range(mynahMinSpawnRate, mynahMaxSpawnRate);

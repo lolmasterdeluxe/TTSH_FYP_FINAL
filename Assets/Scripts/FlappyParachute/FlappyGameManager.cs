@@ -28,8 +28,9 @@ public class FlappyGameManager : MonoBehaviour
 
     public TMP_Text scoretext;
 
-    public bool m_gameStarted;
-    public bool m_gameEnded = false;
+    public bool m_gameStarted, m_gameEnded = false;
+
+    public float SpeedMultiplier, SpawnMultiplier;
 
     [SerializeField] 
     private GameObject g_gameTimeUp, leaderboard;
@@ -80,6 +81,12 @@ public class FlappyGameManager : MonoBehaviour
             return;
 
         scoretext.text = ScoreManager.Instance.GetCurrentGameScore().ToString();
+        ScaleDifficulty();
+
+        if (player.transform.position.y > 4.5f)
+            scoretext.transform.parent.GetComponent<CanvasGroup>().alpha = 0.5f;
+        else
+            scoretext.transform.parent.GetComponent<CanvasGroup>().alpha = 1f;
     }
 
     public void GameOver()
@@ -119,6 +126,18 @@ public class FlappyGameManager : MonoBehaviour
             //AudioObject.SetActive(false);
             leaderboard.SetActive(true);
         }
+    }
+
+    private void ScaleDifficulty()
+    {
+        if (ScoreManager.Instance.GetCurrentGameScore() > 0 && ScoreManager.Instance.GetCurrentGameScore() % 10 == 0)
+            SpeedMultiplier = (float)ScoreManager.Instance.GetCurrentGameScore() / 20;
+        if (SpeedMultiplier > 4)
+            SpeedMultiplier = 4;
+        if (SpeedMultiplier < 1)
+            SpawnMultiplier = 1;
+        else
+            SpawnMultiplier = SpeedMultiplier;
     }
 
     private void OnDestroy()

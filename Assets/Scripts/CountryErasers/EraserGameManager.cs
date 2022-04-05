@@ -21,6 +21,11 @@ public class EraserGameManager : MonoBehaviour
 
     public bool m_gameStarted = false;
     public bool m_gameEnded = false;
+    public bool startRevealing = false;
+    public bool canReveal
+    { 
+        get { return _secondRevealed == null; }
+    }
 
     public AudioSource[] audioSources;
 
@@ -142,11 +147,7 @@ public class EraserGameManager : MonoBehaviour
     private MainEraser _firstRevealed;
     private MainEraser _secondRevealed;
 
-    public bool canReveal
-    { 
-        get { return _secondRevealed == null; }
-    }
-
+    
     public void EraserRevealed(MainEraser eraser)
     {
         if (_firstRevealed == null)
