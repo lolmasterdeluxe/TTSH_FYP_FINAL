@@ -83,10 +83,10 @@ public class FlappyGameManager : MonoBehaviour
         scoretext.text = ScoreManager.Instance.GetCurrentGameScore().ToString();
         ScaleDifficulty();
 
-        if (player.transform.position.y > 4.5f)
+/*        if (player.transform.position.y > 4.5f)
             scoretext.transform.parent.GetComponent<CanvasGroup>().alpha = 0.5f;
         else
-            scoretext.transform.parent.GetComponent<CanvasGroup>().alpha = 1f;
+            scoretext.transform.parent.GetComponent<CanvasGroup>().alpha = 1f;*/
     }
 
     public void GameOver()
