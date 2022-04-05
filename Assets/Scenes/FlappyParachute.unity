@@ -6342,6 +6342,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2122696717}
+  - component: {fileID: 2122696718}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -6370,6 +6371,18 @@ RectTransform:
   m_AnchoredPosition: {x: 40, y: -104}
   m_SizeDelta: {x: 500, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &2122696718
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122696716}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2135846272
 GameObject:
   m_ObjectHideFlags: 0
