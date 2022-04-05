@@ -5411,7 +5411,7 @@ MonoBehaviour:
   mynahMaxheight: 6
   balloonMinSpawnRate: 5
   balloonMaxSpawnRate: 8
-  balloonminHeight: 0
+  balloonMinHeight: 1
   balloonMaxHeight: 6
 --- !u!4 &1712175843
 Transform:

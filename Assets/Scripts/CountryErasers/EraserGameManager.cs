@@ -2,31 +2,83 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class SceneController : MonoBehaviour
+using TMPro;
+public class EraserGameManager : MonoBehaviour
 {
     public int gridRows = 2;
     public int gridCol = 2;
     public const float offSetX = 4f;
     public const float offSetY = 5f;
     public float openTimer = 3f;
-    public Text openTimerText;
 
     [SerializeField] private MainEraser originalEraser;
     [SerializeField] private Material[] material;
-    //public List<Material> mats;
-    [SerializeField] private Text gameTimerText;
-    public bool gameEnded;
-    public float gameTimer = 10f;
+
+    [SerializeField] private GameObject g_timerText;
+    [SerializeField] private GameObject g_comboGroup;
+    [SerializeField] private GameObject g_scoreText;
+    [SerializeField] private GameObject g_gameTimeUp;
+
+    public bool m_gameStarted = false;
+    public bool m_gameEnded = false;
+
+    public AudioSource[] audioSources;
+
+    private static EraserGameManager _instance;
+
+    public static EraserGameManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                GameObject instance = new GameObject("GameManager");
+                instance.AddComponent<EraserGameManager>();
+            }
+
+            return _instance;
+        }
+    }
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+    public void StartGame(float time)
+    {
+        m_gameStarted = true;
+        // Setup managers
+        TimerManager.Instance.StartCountdown(time);
+        ComboManager.Instance.SetComboExpiry(8f);
+        ScoreManager.Instance.LoadNewGamemode(ScoreManager.Gamemode.COUNTRY_ERASERS);
+
+        // Setup game logic
+        TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 0f, 0f);
+        TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 0f, 0f);
+
+        // Plays background music after countdown
+        //audioSources[0].Play();
+
+        // Attach events
+        TimerManager.Instance.e_TimerFinished.AddListener(OnGameEnd);
+    }
+
     private void Start()
     {
-        gameTimerText.gameObject.SetActive(false);
         Vector3 startPos = originalEraser.transform.position;
         int[] numbers = { 0, 0, 1, 1, 2, 2, 3, 3};
         numbers = ShuffleArray(numbers);
         Material[] materials = ShuffleMaterials(material);
         for (int i  = 0; i < gridCol; i++)
         {
-            for (int j = 0;j<gridRows; j++)
+            for (int j = 0; j < gridRows; j++)
             {
                 MainEraser eraser;
                 if (i == 0 && j == 0)
@@ -49,26 +101,23 @@ public class SceneController : MonoBehaviour
     }
     private void Update()
     {
+        if (!m_gameStarted)
+            return;
         openTimer -= Time.deltaTime;
-        openTimerText.text = "Covering in" + openTimer.ToString("F2");
-        if (openTimer <= 0)
-        {
-            gameTimerText.text = "Time left:" + gameTimer.ToString("F2");
-            openTimerText.gameObject.SetActive(false);
-            gameTimerText.gameObject.SetActive(true);
-            gameTimer -= Time.deltaTime;
-            if (gameTimer <=0)
-            {
-                gameEnded = true;
-                gameTimerText.gameObject.SetActive(false);
-            }
-        }
-        
+        StartCoroutine(OnLeaderboardLoad());
+        UpdateUI();
     }
+
+    void UpdateUI()
+    {
+        g_scoreText.GetComponent<TMP_Text>().text = ScoreManager.Instance.GetCurrentGameScore().ToString();
+        g_timerText.GetComponent<TMP_Text>().text = TimerManager.Instance.GetFormattedRemainingTime();
+    }
+
     private int[] ShuffleArray(int[] numbers)
     {
         int[] newArray = numbers.Clone() as int[];
-        for(int i=0;i<newArray.Length; i++)
+        for(int i = 0;i < newArray.Length; i++)
         {
             int tmp = newArray[i];
             int r = Random.Range(i, newArray.Length);
@@ -92,9 +141,6 @@ public class SceneController : MonoBehaviour
     }
     private MainEraser _firstRevealed;
     private MainEraser _secondRevealed;
-
-    private int _score = 0;
-    [SerializeField] private Text scoreLabel;
 
     public bool canReveal
     { 
@@ -129,9 +175,7 @@ public class SceneController : MonoBehaviour
         Debug.Log("Checking");
         if (_firstRevealed.id == _secondRevealed.id)
         {
-            _score++;
-            print(_score);
-            scoreLabel.text = "Score: " + _score;
+            ScoreManager.Instance.AddCurrentGameScore(1);
         }
         else
         {
@@ -143,5 +187,36 @@ public class SceneController : MonoBehaviour
         _firstRevealed = null;
         _secondRevealed = null;
         print("Done");
+    }
+
+    public IEnumerator OnLeaderboardLoad()
+    {
+        if (m_gameEnded)
+        {
+            yield return new WaitForSeconds(3);
+            //AudioObject.SetActive(false);
+            Resources.FindObjectsOfTypeAll<LeaderboardManager>()[0].gameObject.SetActive(true);
+        }
+    }
+
+    public void OnGameEnd()
+    {
+        m_gameEnded = true;
+        TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.5f);
+
+        // Stops playing bgm audio
+        //audioSources[0].Stop();
+
+        // Plays time's up audio
+        //audioSources[1].Play();
+
+        ScoreManager.Instance.EndCurrentGameScore();
+    }
+
+
+    private void OnDestroy()
+    {
+        if (this == _instance)
+            _instance = null;
     }
 }

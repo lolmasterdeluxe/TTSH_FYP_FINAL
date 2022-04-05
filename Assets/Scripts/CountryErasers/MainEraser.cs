@@ -6,7 +6,6 @@ public class MainEraser : MonoBehaviour
 {
     [SerializeField] private GameObject cardBack;
     [SerializeField] private GameObject cardFront;
-    [SerializeField] private SceneController controller;
     
     private int _id;
     
@@ -15,20 +14,20 @@ public class MainEraser : MonoBehaviour
         get { return _id; }
     }
 
-    private void Awake()
+    private void Start()
     {
-        Invoke("Cover", controller.openTimer);
+        Invoke("Cover", EraserGameManager.Instance.openTimer);
     }
 
     private void OnMouseDown()
     {
-        if (!controller.gameEnded)
+        if (!EraserGameManager.Instance.m_gameEnded)
         {
-            if (cardBack.activeSelf && controller.canReveal)
+            if (cardBack.activeSelf && EraserGameManager.Instance.canReveal)
             {
                 //cardBack.SetActive(!cardBack.activeSelf);
                 GetComponent<Animator>().SetTrigger("onClick");
-                controller.EraserRevealed(this);
+                EraserGameManager.Instance.EraserRevealed(this);
                 print("revealing");
             }
         }

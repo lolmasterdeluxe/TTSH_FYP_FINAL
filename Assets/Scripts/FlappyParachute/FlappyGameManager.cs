@@ -10,7 +10,6 @@ public class FlappyGameManager : MonoBehaviour
 
     public static FlappyGameManager Instance
     {
-
         get
         {
             if (_instance == null)
@@ -28,8 +27,6 @@ public class FlappyGameManager : MonoBehaviour
     private FlappyPlayer player;
 
     public TMP_Text scoretext;
-
-    private int score;
 
     public bool m_gameStarted;
     public bool m_gameEnded = false;
@@ -64,7 +61,7 @@ public class FlappyGameManager : MonoBehaviour
         // Plays background music after countdown
         audioSources[0].Play();
 
-        score = 0;
+        int score = 0;
         scoretext.text = score.ToString();
         player.enabled = true;
 
@@ -81,6 +78,8 @@ public class FlappyGameManager : MonoBehaviour
     {
         if (!m_gameStarted)
             return;
+
+        scoretext.text = ScoreManager.Instance.GetCurrentGameScore().ToString();
     }
 
     public void GameOver()
@@ -102,14 +101,12 @@ public class FlappyGameManager : MonoBehaviour
     }
     public void increaseScore()
     {
-        score++;
-        scoretext.text = score.ToString();
+        ScoreManager.Instance.AddCurrentGameScore(1);
     }
 
     public void balloonScore()
     {
-        score += 2;
-        scoretext.text = score.ToString();
+        ScoreManager.Instance.AddCurrentGameScore(2);
     }
 
     public IEnumerator OnLeaderboardLoad()

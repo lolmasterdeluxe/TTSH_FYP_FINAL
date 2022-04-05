@@ -11,7 +11,7 @@ public class SpawnObstacles : MonoBehaviour
     [SerializeField]
     private float mynahMinSpawnRate = 1f, mynahMaxSpawnRate = 3f, treeMinSpawnRate = 1f, treeMaxSpawnRate = 5f, mynahMinheight = 2f, mynahMaxheight = 4f;
     [SerializeField]
-    private float balloonMinSpawnRate=1f, balloonMaxSpawnRate=2f,balloonminHeight = 1f,balloonMaxHeight = 4f;
+    private float balloonMinSpawnRate=1f, balloonMaxSpawnRate = 2f, balloonMinHeight = 1f,balloonMaxHeight = 4f;
 /*
     private void OnEnable()
     {
@@ -77,7 +77,7 @@ public class SpawnObstacles : MonoBehaviour
         if (!FlappyGameManager.Instance.m_gameStarted || FlappyGameManager.Instance.m_gameEnded)
             return;
         GameObject balloon = Instantiate(Balloon, transform.position, Quaternion.identity);
-        balloon.transform.position += Vector3.up * Random.Range(balloonminHeight, balloonMaxHeight);
+        balloon.transform.position += Vector3.up * Random.Range(balloonMinHeight, balloonMaxHeight);
         balloonSpawned = true;
     }
 

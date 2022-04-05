@@ -143,6 +143,13 @@ public class Pregame : MonoBehaviour
                 countdownText.gameObject.SetActive(false);
                 FlappyGameManager.Instance.StartGame();
                 break;
+            case GameMode.COUNTRY_ERASERS:
+                m_countdownOver = false;
+                TweenManager.Instance.AnimateFade(mainUICanvasGroup, 1f, 1f);
+                TweenManager.Instance.AnimateFade(panelCanvasGroup, 0f, 0f);
+                countdownText.gameObject.SetActive(false);
+                EraserGameManager.Instance.StartGame(CountryEraserTimer);
+                break;
             default:
                 break;
         }
