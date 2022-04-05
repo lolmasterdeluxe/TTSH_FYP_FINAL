@@ -6297,6 +6297,7 @@ MonoBehaviour:
   g_gameTimeUp: {fileID: 136894474}
   m_gameStarted: 0
   m_gameEnded: 0
+  startRevealing: 0
   audioSources:
   - {fileID: 757270596}
 --- !u!1 &1710819975
