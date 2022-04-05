@@ -206,7 +206,7 @@ public class EraserGameManager : MonoBehaviour
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.5f);
 
         // Stops playing bgm audio
-        //audioSources[0].Stop();
+        audioSources[0].Stop();
 
         // Plays time's up audio
         //audioSources[1].Play();

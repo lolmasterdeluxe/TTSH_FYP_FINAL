@@ -4222,6 +4222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravity: -9.8
   strength: 5
+  particleSystem_: {fileID: 34471429524696824, guid: b8085f99147ca1c47a99713e60a1d7ea, type: 3}
 --- !u!58 &1218247948
 CircleCollider2D:
   m_ObjectHideFlags: 0
