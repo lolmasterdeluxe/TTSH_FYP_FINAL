@@ -70,7 +70,7 @@ public class CustomizerManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (SceneManager.GetActiveScene().name == "MainMenuGameScene" || SceneManager.GetActiveScene().name == "CustomizeScene" || SceneManager.GetActiveScene().name == "Chapteh" || SceneManager.GetActiveScene().name == "Scissors Paper Stone")
+        if (SceneManager.GetActiveScene().name == "MainMenuGameScene" || SceneManager.GetActiveScene().name == "CustomizeScene" || SceneManager.GetActiveScene().name == "Chapteh" || SceneManager.GetActiveScene().name == "Scissors Paper Stone" || SceneManager.GetActiveScene().name == "FlappyParachute")
         {
             if (SceneManager.GetActiveScene().name == "CustomizeScene")
                 UpdateCharacterName();

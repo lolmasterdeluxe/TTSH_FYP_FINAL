@@ -7,7 +7,7 @@ public class SpawnObstacles : MonoBehaviour
     [SerializeField]
     private GameObject Tree, Mynah, Pipes, Balloon;
     private bool mynahSpawned = false, treeSpawned = false, balloonSpawned = false;
-    private float mynahSpawnRate, treeSpawnRate, pipeSpawnRate = 1.2f, balloonSpawnRate, spawn_speed = 1f;
+    private float mynahSpawnRate, treeSpawnRate, pipeSpawnRate = 1.2f, balloonSpawnRate;
     [SerializeField]
     private float mynahMinSpawnRate = 1f, mynahMaxSpawnRate = 3f, treeMinSpawnRate = 1f, treeMaxSpawnRate = 5f, mynahMinheight = 2f, mynahMaxheight = 4f;
     [SerializeField]
@@ -25,11 +25,9 @@ public class SpawnObstacles : MonoBehaviour
 
     private void Update()
     {
-        if (FlappyGameManager.Instance.SpeedMultiplier >= 1)
-            spawn_speed = FlappyGameManager.Instance.SpeedMultiplier;
-        mynahSpawnRate -= Time.deltaTime * spawn_speed;
-        treeSpawnRate -= Time.deltaTime * spawn_speed;
-        balloonSpawnRate -= Time.deltaTime * spawn_speed;
+        mynahSpawnRate -= Time.deltaTime * FlappyGameManager.Instance.SpawnMultiplier;
+        treeSpawnRate -= Time.deltaTime * FlappyGameManager.Instance.SpawnMultiplier;
+        balloonSpawnRate -= Time.deltaTime * FlappyGameManager.Instance.SpawnMultiplier;
 
         if (mynahSpawned)
         {

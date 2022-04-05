@@ -30,7 +30,7 @@ public class FlappyGameManager : MonoBehaviour
 
     public bool m_gameStarted, m_gameEnded = false;
 
-    public float SpeedMultiplier;
+    public float SpeedMultiplier, SpawnMultiplier;
 
     [SerializeField] 
     private GameObject g_gameTimeUp, leaderboard;
@@ -129,6 +129,10 @@ public class FlappyGameManager : MonoBehaviour
             SpeedMultiplier = (float)ScoreManager.Instance.GetCurrentGameScore() / 20;
         if (SpeedMultiplier > 4)
             SpeedMultiplier = 4;
+        if (SpeedMultiplier < 1)
+            SpawnMultiplier = 1;
+        else
+            SpawnMultiplier = SpeedMultiplier;
     }
 
     private void OnDestroy()
