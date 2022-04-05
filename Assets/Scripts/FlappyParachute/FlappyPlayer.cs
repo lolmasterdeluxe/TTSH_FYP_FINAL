@@ -23,6 +23,7 @@ public class FlappyPlayer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             direction = Vector3.up * strength;
+            FlappyGameManager.Instance.audioSources[3].Play();
         }
 
         direction.y += gravity * Time.deltaTime;

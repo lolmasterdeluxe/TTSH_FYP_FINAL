@@ -69,7 +69,7 @@ public class EraserGameManager : MonoBehaviour
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 0f, 0f);
 
         // Plays background music after countdown
-        //audioSources[0].Play();
+        audioSources[0].Play();
 
         // Attach events
         TimerManager.Instance.e_TimerFinished.AddListener(OnGameEnd);
