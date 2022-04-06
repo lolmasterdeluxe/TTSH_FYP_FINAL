@@ -18,13 +18,16 @@ public class EraserGameManager : MonoBehaviour
     [SerializeField] private GameObject g_comboGroup;
     [SerializeField] private GameObject g_scoreText;
     [SerializeField] private GameObject g_gameTimeUp;
-
+    private MainEraser _firstRevealed;
+    private MainEraser _secondRevealed;
     public bool m_gameStarted = false;
     public bool m_gameEnded = false;
     public bool startRevealing = false;
     public bool canReveal
     { 
-        get { return _secondRevealed == null; }
+        get { /*if (_secondRevealed == null || )*/
+            return _secondRevealed == null; 
+        }
     }
 
     public AudioSource[] audioSources;
@@ -78,7 +81,7 @@ public class EraserGameManager : MonoBehaviour
     private void Start()
     {
         Vector3 startPos = originalEraser.transform.position;
-        int[] numbers = { 0, 0, 1, 1, 2, 2, 3, 3 ,4,4,5,5,6,6};
+        int[] numbers = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5};
         numbers = ShuffleArray(numbers);
         Material[] materials = ShuffleMaterials(material);
         for (int i  = 0; i < gridCol; i++)
@@ -144,8 +147,7 @@ public class EraserGameManager : MonoBehaviour
         }
         return newMatArray;
     }
-    private MainEraser _firstRevealed;
-    private MainEraser _secondRevealed;
+
 
     
     public void EraserRevealed(MainEraser eraser)
@@ -173,14 +175,17 @@ public class EraserGameManager : MonoBehaviour
 
     private IEnumerator CheckMatch()
     {
+        startRevealing = false;
         Debug.Log("Checking");
         if (_firstRevealed.id == _secondRevealed.id)
         {
             ScoreManager.Instance.AddCurrentGameScore(1);
+            yield return new WaitForSeconds(0.5f);
+            startRevealing = true;
         }
         else
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(0.5f);
             print("wrong");
             _firstRevealed.Cover();
             _secondRevealed.Cover();
