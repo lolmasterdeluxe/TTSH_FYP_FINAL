@@ -134,5 +134,6 @@ public class PauseMenu : MonoBehaviour
 #else
          Application.Quit();
 #endif
+        ScoreManager.Instance.EndSessionConcludeScore();
     }
 }

@@ -1,5 +1,5 @@
-Id,Name,Mode,Score
-0,John,CHAPTEH,10
-1,Tom,FIVESTONES,30
-2,Jerry,SPS,40
-3,Faith,FIVESTONES,50
+Id,Name,Mode,Score,HatId,FaceId,ColourId
+0,donavan lim,TOTAL,456,12,7,4
+1,donavan lim,SPS,36,12,7,4
+2,donavan lim,FIVESTONES,257,12,7,4
+3,donavan lim,CHAPTEH,163,12,7,4

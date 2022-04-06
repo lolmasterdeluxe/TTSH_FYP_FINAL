@@ -26,6 +26,7 @@ public class ScoreManager : MonoBehaviour
 
     public class Score
     {
+        public int m_userId;
         public int m_scoreId;
         public string m_username;
         public string m_gamemode;
@@ -33,14 +34,15 @@ public class ScoreManager : MonoBehaviour
         public int m_hatId;
         public int m_faceId;
         public int m_colourId;
-        public Score(string username, string gamemode, int score)
+        public Score(int userId, string username, string gamemode, int score, int hatId, int faceId, int colourId)
         {
+            m_userId = userId;
             m_username = username;
             m_gamemode = gamemode;
             m_score = score;
-            m_hatId = CustomizerManager.Instance.m_hatId;
-            m_faceId = CustomizerManager.Instance.m_faceId;
-            m_colourId = CustomizerManager.Instance.m_colorId;
+            m_hatId = hatId;
+            m_faceId = faceId;
+            m_colourId = colourId;
         }
     }
 
@@ -208,7 +210,7 @@ public class ScoreManager : MonoBehaviour
 
         if (totalScore == null)
         {
-            totalScore = new Score(m_currentUsername, Gamemode.TOTAL.ToString(), 0);
+            totalScore = new Score(GenerateNewUserId(), m_currentUsername, Gamemode.TOTAL.ToString(), 0, CustomizerManager.Instance.m_hatId, CustomizerManager.Instance.m_faceId, CustomizerManager.Instance.m_colorId);
             m_allScoreList.Add(totalScore);
         }
 
@@ -222,7 +224,7 @@ public class ScoreManager : MonoBehaviour
 
         if (score == null)
         {
-            score = new Score(m_currentUsername, m_currentGamemode.ToString(), m_currentScore);
+            score = new Score(GenerateNewUserId(), m_currentUsername, m_currentGamemode.ToString(), m_currentScore, CustomizerManager.Instance.m_hatId, CustomizerManager.Instance.m_faceId, CustomizerManager.Instance.m_colorId);
             m_allScoreList.Add(score);
         }
         else
@@ -282,9 +284,9 @@ public class ScoreManager : MonoBehaviour
             if (!int.TryParse(scoreData[0], out int i))
                 continue;
 
-            m_allScoreList.Add(new Score(scoreData[1], scoreData[2], int.Parse(scoreData[3])));
+            m_allScoreList.Add(new Score(int.Parse(scoreData[0]), scoreData[1], scoreData[2], int.Parse(scoreData[3]), int.Parse(scoreData[4]), int.Parse(scoreData[5]), int.Parse(scoreData[6])));
 
-            Debug.Log(scoreData[0] + scoreData[1] + scoreData[2] + scoreData[3]);
+            Debug.Log(scoreData[0] + " " + scoreData[1] + " " + scoreData[2]);
         }
 
         streamReader.Close();
@@ -293,10 +295,10 @@ public class ScoreManager : MonoBehaviour
     {
         for (int i = 0; i < m_maxUser; i++)
         {
-            //Score score = m_allScoreList.Where(x => x.m_userId == i).FirstOrDefault();
+            Score score = m_allScoreList.Where(x => x.m_userId == i).FirstOrDefault();
 
-      /*      if (score == null)
-                return i;*/
+            if (score == null)
+                return i;
         }
 
         return -1;
@@ -310,10 +312,14 @@ public class ScoreManager : MonoBehaviour
         foreach (Score score in m_allScoreList)
         {
             stringBuilder.Append('\n')
-                //.Append(score.m_userId.ToString()).Append(',')
+                .Append(score.m_userId.ToString()).Append(',')
                 .Append(score.m_username).Append(',')
                 .Append(score.m_gamemode).Append(',')
-                .Append(score.m_score.ToString());
+                .Append(score.m_score.ToString()).Append(',')
+                .Append(score.m_hatId.ToString()).Append(',')
+                .Append(score.m_faceId.ToString()).Append(',')
+                .Append(score.m_colourId.ToString());
+                
         }
 
         SaveCSV(GetFilePath(), stringBuilder.ToString());

@@ -2548,13 +2548,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 458760093561556194, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+    - {fileID: 3645125399903312939, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
 --- !u!224 &190214504 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2913985091809142621, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
   m_PrefabInstance: {fileID: 190214503}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &190214508 stripped
+--- !u!1 &190214505 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2913985091809142622, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
   m_PrefabInstance: {fileID: 190214503}
@@ -26527,7 +26528,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 190214508}
+        - m_Target: {fileID: 190214505}
           m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_MethodName: SetActive
           m_Mode: 6
