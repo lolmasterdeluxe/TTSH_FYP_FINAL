@@ -25,12 +25,16 @@ public class MainEraser : MonoBehaviour
     {
         if (!EraserGameManager.Instance.m_gameEnded)
         {
-            if (cardBack.activeSelf && EraserGameManager.Instance.canReveal && EraserGameManager.Instance.startRevealing)
+            if (GetComponent<Animator>().GetBool("onIdle") == true)
             {
-                //cardBack.SetActive(!cardBack.activeSelf);
-                GetComponent<Animator>().SetTrigger("onClick");
-                EraserGameManager.Instance.EraserRevealed(this);
-                print("revealing");
+                if (cardBack.activeSelf && EraserGameManager.Instance.canReveal && EraserGameManager.Instance.startRevealing)
+                {
+                    //cardBack.SetActive(!cardBack.activeSelf);
+                    OpenEraser();
+
+                    EraserGameManager.Instance.EraserRevealed(this);
+                    print("revealing");
+                }
             }
         }
     }
@@ -44,8 +48,9 @@ public class MainEraser : MonoBehaviour
     public void Cover()
     {
         //cardBack.SetActive(true);
-        GetComponent<Animator>().SetTrigger("onCover");
-        Invoke("OnIdle",1.5f);
+        GetComponent<Animator>().SetBool("onCover",true);
+        Invoke("OnIdle",0.5f);
+        Invoke("CanStartRevealing", 0.5f);
     }
 
     public void ChangeLayer()
@@ -57,11 +62,13 @@ public class MainEraser : MonoBehaviour
 
     private void OnIdle()
     {
-        GetComponent<Animator>().SetTrigger("onIdle");
+        GetComponent<Animator>().SetBool("onIdle",true);
+        GetComponent<Animator>().SetBool("onCover",false);
+
     }
     private void OpenEraser()
     {
-        GetComponent<Animator>().SetTrigger("onClick");
+        GetComponent<Animator>().SetBool("onIdle",false);
     }
 
     public void CanStartRevealing()
