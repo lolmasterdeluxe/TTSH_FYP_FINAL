@@ -18,11 +18,13 @@ public class CustomizeLinker : MonoBehaviour
     private TMP_InputField inputNameField;
     [SerializeField]
     private Button exitButton;
+    private ScoreManager.Score score;
 
     private void Start()
     {
         inputNameField.text = ScoreManager.Instance.m_currentUsername;
         customizer = FindObjectOfType<CustomizerManager>();
+        score = ScoreManager.Instance.m_allScoreList.Where(x => x.m_username == ScoreManager.Instance.m_currentUsername).FirstOrDefault();
         if (customizer == null)
         {
             CosmeticNPC.SetActive(false);
@@ -53,7 +55,7 @@ public class CustomizeLinker : MonoBehaviour
 
     public void ChangeCharacterName()
     {
-        ScoreManager.Score score = ScoreManager.Instance.m_allScoreList.Where(x => x.m_username == ScoreManager.Instance.m_currentUsername).FirstOrDefault();
+        score = ScoreManager.Instance.m_allScoreList.Where(x => x.m_username == ScoreManager.Instance.m_currentUsername).FirstOrDefault();
         if (inputNameField.text == "")
         {
             exitButton.interactable = false;
@@ -78,15 +80,18 @@ public class CustomizeLinker : MonoBehaviour
     public void ScrollHat(bool forward)
     {
         customizer.ScrollHat(forward);
+        score.m_hatId = CustomizerManager.Instance.m_hatId;
     }
 
     public void ScrollFace(bool forward)
     {
         customizer.ScrollFace(forward);
+        score.m_faceId = CustomizerManager.Instance.m_faceId;
     }
 
     public void ScrollColor(bool forward)
     {
         customizer.ScrollColor(forward);
+        score.m_colourId = CustomizerManager.Instance.m_colorId;
     }
 }
