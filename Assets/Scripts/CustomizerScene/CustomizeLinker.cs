@@ -53,8 +53,8 @@ public class CustomizeLinker : MonoBehaviour
 
     public void ChangeCharacterName()
     {
-        ScoreManager.Score score = ScoreManager.Instance.m_allScoreList.Where(x => x.m_username.ToLower() == inputNameField.text).FirstOrDefault();
-        if (inputNameField.text == "" || (score != null && ScoreManager.Instance.m_currentUsername != score.m_username))
+        ScoreManager.Score score = ScoreManager.Instance.m_allScoreList.Where(x => x.m_username == ScoreManager.Instance.m_currentUsername).FirstOrDefault();
+        if (inputNameField.text == "")
         {
             exitButton.interactable = false;
             ColorBlock colorBlock = inputNameField.colors;
@@ -71,7 +71,7 @@ public class CustomizeLinker : MonoBehaviour
             colorBlock.selectedColor = new Color32(222, 255, 201, 255);
             inputNameField.colors = colorBlock;
         }
-
+        score.m_username = inputNameField.text;
         ScoreManager.Instance.m_currentUsername = inputNameField.text;
     }
 
