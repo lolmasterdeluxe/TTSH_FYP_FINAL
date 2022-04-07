@@ -18,6 +18,8 @@ public class EraserGameManager : MonoBehaviour
     [SerializeField] private GameObject g_comboGroup;
     [SerializeField] private GameObject g_scoreText;
     [SerializeField] private GameObject g_gameTimeUp;
+
+    [SerializeField] private List<MainEraser> erasers;
     private MainEraser _firstRevealed;
     private MainEraser _secondRevealed;
     public bool m_gameStarted = false;
@@ -104,16 +106,32 @@ public class EraserGameManager : MonoBehaviour
                 float posY = (offSetY * j) + startPos.y;
 
                 eraser.transform.position = new Vector3(posX, posY, startPos.z);
+                erasers.Add(eraser);
             }
         }
     }
+  
     private void Update()
     {
+        
         if (!m_gameStarted)
             return;
         openTimer -= Time.deltaTime;
         StartCoroutine(OnLeaderboardLoad());
         UpdateUI();
+        if (erasers.Count <= 2)
+        {
+            print("openup"); 
+            for (int i = 0; i< erasers.Count; i++)
+            {
+                erasers[i].OpenEraser();
+                if (erasers.Count != 1)
+                {
+                    ScoreManager.Instance.AddCurrentGameScore(1);
+                    erasers.Remove(erasers[i]);
+                }
+            }
+        }
     }
 
     void UpdateUI()
@@ -144,6 +162,7 @@ public class EraserGameManager : MonoBehaviour
             int r = Random.Range(i, newMatArray.Length);
             newMatArray[i] = newMatArray[r];
             newMatArray[r] = tmp;
+
         }
         return newMatArray;
     }
@@ -180,7 +199,10 @@ public class EraserGameManager : MonoBehaviour
         if (_firstRevealed.id == _secondRevealed.id)
         {
             ScoreManager.Instance.AddCurrentGameScore(1);
+
             yield return new WaitForSeconds(0.5f);
+            erasers.Remove(_firstRevealed);
+            erasers.Remove(_secondRevealed);
             startRevealing = true;
         }
         else

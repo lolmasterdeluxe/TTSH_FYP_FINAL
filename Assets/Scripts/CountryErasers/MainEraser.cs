@@ -66,7 +66,7 @@ public class MainEraser : MonoBehaviour
         GetComponent<Animator>().SetBool("onCover",false);
 
     }
-    private void OpenEraser()
+    public void OpenEraser()
     {
         GetComponent<Animator>().SetBool("onIdle",false);
     }
