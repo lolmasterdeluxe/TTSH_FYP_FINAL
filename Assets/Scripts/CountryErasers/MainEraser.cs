@@ -17,8 +17,8 @@ public class MainEraser : MonoBehaviour
     private void Start()
     {
         Invoke("OpenEraser", 3);
-        Invoke("Cover", EraserGameManager.Instance.openTimer +3);
-        Invoke("CanStartRevealing", EraserGameManager.Instance.openTimer + 5);
+        Invoke("Cover", 6);
+        Invoke("CanStartRevealing", 8);
     }
 
     private void OnMouseDown()

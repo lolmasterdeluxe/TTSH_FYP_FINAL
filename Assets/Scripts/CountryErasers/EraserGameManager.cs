@@ -10,6 +10,7 @@ public class EraserGameManager : MonoBehaviour
     public const float offSetX = 3.5f;
     public const float offSetY = 3f;
     public float openTimer = 3f;
+    private int[] numbers = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5 };
 
     [SerializeField] private MainEraser originalEraser;
     [SerializeField] private Material[] material;
@@ -19,7 +20,9 @@ public class EraserGameManager : MonoBehaviour
     [SerializeField] private GameObject g_scoreText;
     [SerializeField] private GameObject g_gameTimeUp;
 
-    [SerializeField] private List<MainEraser> erasers;
+    [SerializeField] private List<MainEraser> erasersCount;
+    [SerializeField] private List<MainEraser> erasersList;
+
     private MainEraser _firstRevealed;
     private MainEraser _secondRevealed;
     public bool m_gameStarted = false;
@@ -82,33 +85,7 @@ public class EraserGameManager : MonoBehaviour
 
     private void Start()
     {
-        Vector3 startPos = originalEraser.transform.position;
-        int[] numbers = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5};
-        numbers = ShuffleArray(numbers);
-        Material[] materials = ShuffleMaterials(material);
-        for (int i  = 0; i < gridCol; i++)
-        {
-            for (int j = 0; j < gridRows; j++)
-            {
-                MainEraser eraser;
-                if (i == 0 && j == 0)
-                {
-                    eraser = originalEraser;
-
-                }
-                else
-                    eraser = Instantiate(originalEraser) as MainEraser;
-                int index = j * gridCol + i;
-                int id = numbers[index];
-                eraser.ChangeMaterial(id, materials[id]);
-
-                float posX = (offSetX * i) + startPos.x;    
-                float posY = (offSetY * j) + startPos.y;
-
-                eraser.transform.position = new Vector3(posX, posY, startPos.z);
-                erasers.Add(eraser);
-            }
-        }
+        MakeErasers();
     }
   
     private void Update()
@@ -119,17 +96,23 @@ public class EraserGameManager : MonoBehaviour
         openTimer -= Time.deltaTime;
         StartCoroutine(OnLeaderboardLoad());
         UpdateUI();
-        if (erasers.Count <= 2)
+        if (erasersCount.Count <= 2)
         {
+            ScoreManager.Instance.AddCurrentGameScore(1);
             print("openup"); 
-            for (int i = 0; i< erasers.Count; i++)
+            for (int i = 0; i< erasersCount.Count; i++)
             {
-                erasers[i].OpenEraser();
-                if (erasers.Count != 1)
-                {
-                    ScoreManager.Instance.AddCurrentGameScore(1);
-                    erasers.Remove(erasers[i]);
-                }
+                erasersCount[i].OpenEraser();
+                erasersCount.Remove(erasersCount[i]);
+                //erasersCount.Remove(erasersCount[i]);
+            }
+        }
+        if (erasersCount.Count == 0)
+        {
+            LoopGame();
+            for(int i = 0;i<erasersList.Count;i++)
+            {
+                erasersList[i].Invoke("Cover", 3f);
             }
         }
     }
@@ -201,8 +184,8 @@ public class EraserGameManager : MonoBehaviour
             ScoreManager.Instance.AddCurrentGameScore(1);
 
             yield return new WaitForSeconds(0.5f);
-            erasers.Remove(_firstRevealed);
-            erasers.Remove(_secondRevealed);
+            erasersCount.Remove(_firstRevealed);
+            erasersCount.Remove(_secondRevealed);
             startRevealing = true;
         }
         else
@@ -240,11 +223,70 @@ public class EraserGameManager : MonoBehaviour
 
         ScoreManager.Instance.EndCurrentGameScore();
     }
+    private void LoopGame()
+    {
+        numbers = ShuffleArray(numbers);
+        Material[] materials = ShuffleMaterials(material);
+        int iterator = 0;
+        for (int j = 0; j < gridCol; j++)
+        {
+            for (int k = 0; k < gridRows; k++)
+            {
+                int index = k * gridCol + j;
+                int id = numbers[index];
+                
+                //MainEraser eraser;
+                //if (i == 0 && j == 0)
+                //{
+                //    eraser = originalEraser;
+                //}
+                //else
+                //{
+                //    eraser = Instantiate(originalEraser) as MainEraser;
+                //}
+                print(id);
+                erasersCount.Add(erasersList[iterator]);
+                erasersList[iterator].ChangeMaterial(id, materials[id]);
+                iterator++;
+                print(iterator);
+            }
+        }
+    }
+    private void MakeErasers()
+    {
+        Vector3 startPos = originalEraser.transform.position;
+        numbers = ShuffleArray(numbers);
+        Material[] materials = ShuffleMaterials(material);
+        for (int i = 0; i < gridCol; i++)
+        {
+            for (int j = 0; j < gridRows; j++)
+            {
+                MainEraser eraser;
+                if (i == 0 && j == 0)
+                {
+                    eraser = originalEraser;
+                }
+                else
+                {
+                    eraser = Instantiate(originalEraser) as MainEraser;
+                }
+                int index = j * gridCol + i;
+                int id = numbers[index];
+                eraser.ChangeMaterial(id, materials[id]);
 
+                float posX = (offSetX * i) + startPos.x;
+                float posY = (offSetY * j) + startPos.y;
 
+                eraser.transform.position = new Vector3(posX, posY, startPos.z);
+                erasersCount.Add(eraser);
+                erasersList.Add(eraser);
+            }
+        }
+    }
     private void OnDestroy()
     {
         if (this == _instance)
             _instance = null;
     }
+
 }
