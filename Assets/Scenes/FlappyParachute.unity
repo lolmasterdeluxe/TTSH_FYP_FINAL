@@ -1387,7 +1387,7 @@ PrefabInstance:
       objectReference: {fileID: 469109331}
     - target: {fileID: 2913985091809142618, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: leaderboardType
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2913985091809142621, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_Pivot.x

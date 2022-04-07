@@ -23,6 +23,8 @@ public class EraserGameManager : MonoBehaviour
     public bool m_gameStarted = false;
     public bool m_gameEnded = false;
     public bool startRevealing = false;
+    [HideInInspector]
+    public int ErasersMatched = 0;
     public bool canReveal
     { 
         get { /*if (_secondRevealed == null || )*/
@@ -180,6 +182,7 @@ public class EraserGameManager : MonoBehaviour
         if (_firstRevealed.id == _secondRevealed.id)
         {
             ScoreManager.Instance.AddCurrentGameScore(1);
+            ErasersMatched++;
             yield return new WaitForSeconds(0.5f);
             startRevealing = true;
         }

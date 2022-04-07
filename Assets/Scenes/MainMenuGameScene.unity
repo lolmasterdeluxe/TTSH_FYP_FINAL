@@ -2310,10 +2310,22 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 418016710235033305, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 562361116597605296, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1318959919861817726, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 0acddcdc83dd9b04d9fc79ee5b427d67, type: 3}
+    - target: {fileID: 2168258037213172486, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2291096294466694074, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2339,13 +2351,37 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2913985091809142618, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+      propertyPath: parachuteBg
+      value: 
+      objectReference: {fileID: 21300000, guid: 5e1938a8f00bc0d449040cf17371a796, type: 3}
+    - target: {fileID: 2913985091809142618, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+      propertyPath: totalMatches
+      value: 
+      objectReference: {fileID: 190214506}
+    - target: {fileID: 2913985091809142618, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: LeaderboardBGM
       value: 
       objectReference: {fileID: 518592540}
     - target: {fileID: 2913985091809142618, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+      propertyPath: parachuteGroup
+      value: 
+      objectReference: {fileID: 190214510}
+    - target: {fileID: 2913985091809142618, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: leaderboardType
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2913985091809142618, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+      propertyPath: obstaclesDodged
+      value: 
+      objectReference: {fileID: 190214508}
+    - target: {fileID: 2913985091809142618, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+      propertyPath: balloonsCollected
+      value: 
+      objectReference: {fileID: 190214509}
+    - target: {fileID: 2913985091809142618, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+      propertyPath: countryErasersGroup
+      value: 
+      objectReference: {fileID: 190214507}
     - target: {fileID: 2913985091809142621, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2474,6 +2510,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3028328163826045556, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3269353034715130635, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -2482,8 +2522,20 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: Play
       objectReference: {fileID: 0}
+    - target: {fileID: 4138150744010556893, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4197726832006313718, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4544403701843289592, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5315871187744347670, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6074680635612955243, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
@@ -2530,6 +2582,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: Play
       objectReference: {fileID: 0}
+    - target: {fileID: 8831217915002684697, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8958697368593314605, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -2558,6 +2614,49 @@ RectTransform:
 --- !u!1 &190214505 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2913985091809142622, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+  m_PrefabInstance: {fileID: 190214503}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &190214506 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7625026512202065906, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+  m_PrefabInstance: {fileID: 190214503}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &190214507 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4138150744010556893, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+  m_PrefabInstance: {fileID: 190214503}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &190214508 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4362568952480582511, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+  m_PrefabInstance: {fileID: 190214503}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &190214509 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7514437909140782772, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
+  m_PrefabInstance: {fileID: 190214503}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &190214510 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3028328163826045556, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
   m_PrefabInstance: {fileID: 190214503}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &194247891
@@ -11496,38 +11595,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 558953935}
-          m_TargetAssemblyTypeName: PlayerDpadMovement, Assembly-CSharp
-          m_MethodName: OnPointerDown
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Down
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 3
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 558953935}
-          m_TargetAssemblyTypeName: PlayerDpadMovement, Assembly-CSharp
-          m_MethodName: OnPointerUp
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Up
-            m_BoolArgument: 0
-          m_CallState: 2
   - eventID: 0
     callback:
       m_PersistentCalls:
@@ -16447,38 +16514,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 558953935}
-          m_TargetAssemblyTypeName: PlayerDpadMovement, Assembly-CSharp
-          m_MethodName: OnPointerDown
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Up
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 3
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 558953935}
-          m_TargetAssemblyTypeName: PlayerDpadMovement, Assembly-CSharp
-          m_MethodName: OnPointerUp
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Up
-            m_BoolArgument: 0
-          m_CallState: 2
   - eventID: 0
     callback:
       m_PersistentCalls:
@@ -17095,38 +17130,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 558953935}
-          m_TargetAssemblyTypeName: PlayerDpadMovement, Assembly-CSharp
-          m_MethodName: OnPointerDown
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Right
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 3
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 558953935}
-          m_TargetAssemblyTypeName: PlayerDpadMovement, Assembly-CSharp
-          m_MethodName: OnPointerUp
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Up
-            m_BoolArgument: 0
-          m_CallState: 2
   - eventID: 0
     callback:
       m_PersistentCalls:
@@ -24422,38 +24425,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 558953935}
-          m_TargetAssemblyTypeName: PlayerDpadMovement, Assembly-CSharp
-          m_MethodName: OnPointerDown
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Left
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 3
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 558953935}
-          m_TargetAssemblyTypeName: PlayerDpadMovement, Assembly-CSharp
-          m_MethodName: OnPointerUp
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Up
-            m_BoolArgument: 0
-          m_CallState: 2
   - eventID: 0
     callback:
       m_PersistentCalls:

@@ -3455,7 +3455,7 @@ PrefabInstance:
       objectReference: {fileID: 1681893973}
     - target: {fileID: 2913985091809142618, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: leaderboardType
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2913985091809142621, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_Pivot.x
@@ -6298,6 +6298,7 @@ MonoBehaviour:
   m_gameStarted: 0
   m_gameEnded: 0
   startRevealing: 0
+  ErasersMatched: 0
   audioSources:
   - {fileID: 757270596}
 --- !u!1 &1710819975

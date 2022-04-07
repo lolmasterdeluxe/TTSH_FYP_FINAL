@@ -68,22 +68,22 @@ public class PlayerDpadMovement : MonoBehaviour
         if (dir == "Left")
         {
             movement.x = -1;
-            Left.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+            Left.transform.localScale += new Vector3(0.2f, 0.2f, 0.2f);
         }
         if (dir == "Right")
         {
             movement.x = 1;
-            Right.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+            Right.transform.localScale += new Vector3(0.2f, 0.2f, 0.2f);
         }
         if (dir == "Up")
         {
             movement.y = 1;
-            Up.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+            Up.transform.localScale += new Vector3(0.2f, 0.2f, 0.2f);
         }
         if (dir == "Down")
         {
             movement.y = -1;
-            Down.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+            Down.transform.localScale += new Vector3(0.2f, 0.2f, 0.2f);
         }
     }
     public void OnPointerDown(string dir)
