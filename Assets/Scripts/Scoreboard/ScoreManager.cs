@@ -65,7 +65,7 @@ public class ScoreManager : MonoBehaviour
     private int m_maxUser = 1000;
 
     public string m_currentUsername;
-
+    private int m_currentUserID;
     private int m_currentScore;
     public Gamemode m_currentGamemode;
 
@@ -211,6 +211,7 @@ public class ScoreManager : MonoBehaviour
         if (totalScore == null)
         {
             totalScore = new Score(GenerateNewUserId(), m_currentUsername, Gamemode.TOTAL.ToString(), 0, CustomizerManager.Instance.m_hatId, CustomizerManager.Instance.m_faceId, CustomizerManager.Instance.m_colorId);
+            m_currentUserID = totalScore.m_userId;
             m_allScoreList.Add(totalScore);
         }
 
@@ -224,7 +225,7 @@ public class ScoreManager : MonoBehaviour
 
         if (score == null)
         {
-            score = new Score(GenerateNewUserId(), m_currentUsername, m_currentGamemode.ToString(), m_currentScore, CustomizerManager.Instance.m_hatId, CustomizerManager.Instance.m_faceId, CustomizerManager.Instance.m_colorId);
+            score = new Score(m_currentUserID, m_currentUsername, m_currentGamemode.ToString(), m_currentScore, CustomizerManager.Instance.m_hatId, CustomizerManager.Instance.m_faceId, CustomizerManager.Instance.m_colorId);
             m_allScoreList.Add(score);
         }
         else
@@ -251,12 +252,15 @@ public class ScoreManager : MonoBehaviour
 #if UNITY_EDITOR
         return Application.dataPath + "/CSV/" + "score.csv";
 #elif UNITY_ANDROID
-        return Application.persistentDataPath+"Saved_data.csv";
+        return Application.persistentDataPath + "/CSV/" + "score.csv";
 #elif UNITY_IPHONE
-        return Application.persistentDataPath+"/"+"Saved_data.csv";
+        return Application.persistentDataPath + "/CSV/" + "score.csv";
 #else
-        return Application.dataPath +"/"+"Saved_data.csv";
+        return Application.dataPath +"/"+"score.csv";
 #endif
+        /*TextAsset myTextAsset = Resources.Load<TextAsset>("score"); // omit file extension
+        string csvText = myTextAsset.text;
+        return csvText;*/
     }
     public void LoadAllScoreList()
     {

@@ -26,7 +26,8 @@ public class FlappyGameManager : MonoBehaviour
     [SerializeField]
     private FlappyPlayer player;
 
-    public TMP_Text scoretext;
+    [SerializeField]
+    private TMP_Text scoretext;
 
     public bool m_gameStarted, m_gameEnded = false;
 
@@ -34,6 +35,9 @@ public class FlappyGameManager : MonoBehaviour
 
     [SerializeField] 
     private GameObject g_gameTimeUp, leaderboard;
+
+    [HideInInspector]
+    public float ObstaclesPassed, BalloonsCollected;
 
     public AudioSource[] audioSources;
 
@@ -109,11 +113,13 @@ public class FlappyGameManager : MonoBehaviour
     public void increaseScore()
     {
         ScoreManager.Instance.AddCurrentGameScore(1);
+        ObstaclesPassed++;
     }
 
     public void balloonScore()
     {
         ScoreManager.Instance.AddCurrentGameScore(2);
+        BalloonsCollected++;
     }
 
     public IEnumerator OnLeaderboardLoad()
@@ -132,8 +138,8 @@ public class FlappyGameManager : MonoBehaviour
     {
         if (ScoreManager.Instance.GetCurrentGameScore() > 0 && ScoreManager.Instance.GetCurrentGameScore() % 10 == 0)
             SpeedMultiplier = (float)ScoreManager.Instance.GetCurrentGameScore() / 20;
-        if (SpeedMultiplier > 4)
-            SpeedMultiplier = 4;
+        if (SpeedMultiplier > 2)
+            SpeedMultiplier = 2;
         if (SpeedMultiplier < 1)
             SpawnMultiplier = 1;
         else

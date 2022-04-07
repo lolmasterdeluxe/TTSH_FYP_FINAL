@@ -28,6 +28,7 @@ public class LeaderboardManager : MonoBehaviour
     [SerializeField] private Sprite chaptehBg;
     [SerializeField] private Sprite fiveStonesBg;
     [SerializeField] private Sprite spsBg;
+    [SerializeField] private Sprite parachuteBg;
     [SerializeField] private Sprite totalBg;
 
     [SerializeField] private CanvasGroup leaderboardCanvasGroup;
@@ -46,10 +47,19 @@ public class LeaderboardManager : MonoBehaviour
     [SerializeField] private TMP_Text powerUpsPicked;
     [SerializeField] private TMP_Text enemiesKilled;
 
+    [SerializeField] private GameObject parachuteGroup;
+    [SerializeField] private TMP_Text balloonsCollected;
+    [SerializeField] private TMP_Text obstaclesDodged;
+
+    [SerializeField] private GameObject countryErasersGroup;
+    [SerializeField] private TMP_Text totalMatches;
+
     [SerializeField] private GameObject overallGroup;
     [SerializeField] private TMP_Text totalChaptehScore;
     [SerializeField] private TMP_Text totalScissorsPaperStoneScore;
     [SerializeField] private TMP_Text totalFiveStonesScore;
+    [SerializeField] private TMP_Text totalParachuteScore;
+    [SerializeField] private TMP_Text totalMatchesScore;
 
     [SerializeField] private TMP_Text overallScoreText;
     [SerializeField] private TMP_Text standardGameScoreText;
@@ -129,44 +139,37 @@ public class LeaderboardManager : MonoBehaviour
         switch (leaderboardType)
         {
             case ScoreManager.Gamemode.CHAPTEH:
-                Animations.SetActive(true);
                 chaptehGroup.SetActive(true);
-                scissorsPaperStoneGroup.SetActive(false);
-                fiveStonesGroup.SetActive(false);
-                overallGroup.SetActive(false);
-                standardGameScoreText.transform.parent.transform.parent.gameObject.SetActive(true);
 
                 redHoopsHit.text = ChaptehGameManager.Instance.redCount.ToString();
                 greenHoopsHit.text = ChaptehGameManager.Instance.greenCount.ToString();
                 yellowHoopsHit.text = ChaptehGameManager.Instance.yellowCount.ToString();
                 break;
             case ScoreManager.Gamemode.FIVESTONES:
-                Animations.SetActive(true);
-                chaptehGroup.SetActive(false);
-                scissorsPaperStoneGroup.SetActive(false);
                 fiveStonesGroup.SetActive(true);
-                overallGroup.SetActive(false);
-                standardGameScoreText.transform.parent.transform.parent.gameObject.SetActive(true);
 
                 fiveStonesTotalCaughtText.text = FiveStonesGameManager.Instance.m_totalCaught.ToString();
                 rainbowCaughtText.text = FiveStonesGameManager.Instance.m_totalRainbowCaught.ToString();
                 break;
             case ScoreManager.Gamemode.SPS:
-                Animations.SetActive(true);
-                chaptehGroup.SetActive(false);
                 scissorsPaperStoneGroup.SetActive(true);
-                fiveStonesGroup.SetActive(false);
-                overallGroup.SetActive(false);
-                standardGameScoreText.transform.parent.transform.parent.gameObject.SetActive(true);
 
                 powerUpsPicked.text = SPS_UIManager.Instance.sweetCount.ToString();
                 enemiesKilled.text = SPS_UIManager.Instance.enemyCount.ToString();
                 break;
+            case ScoreManager.Gamemode.FLAPPY:
+                parachuteGroup.SetActive(true);
+
+                obstaclesDodged.text = FlappyGameManager.Instance.ObstaclesPassed.ToString();
+                balloonsCollected.text = FlappyGameManager.Instance.BalloonsCollected.ToString();
+                break;
+            case ScoreManager.Gamemode.COUNTRY_ERASERS:
+                countryErasersGroup.SetActive(true);
+
+                totalMatches.text = EraserGameManager.Instance.ErasersMatched.ToString();
+                break;
             case ScoreManager.Gamemode.TOTAL:
                 Animations.SetActive(false);
-                chaptehGroup.SetActive(false);
-                scissorsPaperStoneGroup.SetActive(false);
-                fiveStonesGroup.SetActive(false);
                 overallGroup.SetActive(true);
                 standardGameScoreText.transform.parent.transform.parent.gameObject.SetActive(false);
 
@@ -187,12 +190,21 @@ public class LeaderboardManager : MonoBehaviour
                 if (score != null)
                     totalScissorsPaperStoneScore.text = score.m_score.ToString();
 
+                score = scoreList.Where(x => x.m_gamemode == ScoreManager.Gamemode.FLAPPY.ToString()).FirstOrDefault();
+
+                if (score != null)
+                    totalParachuteScore.text = score.m_score.ToString();
+
+                score = scoreList.Where(x => x.m_gamemode == ScoreManager.Gamemode.COUNTRY_ERASERS.ToString()).FirstOrDefault();
+
+                if (score != null)
+                    totalMatchesScore.text = score.m_score.ToString();
+
                 break;
         }
 
         overallScoreText.text = currentScore.m_score.ToString();
         standardGameScoreText.text = currentScore.m_score.ToString();
-        
     }
 
     public IEnumerator ShowLeaderboard()
@@ -254,6 +266,12 @@ public class LeaderboardManager : MonoBehaviour
                 break;
             case ScoreManager.Gamemode.SPS:
                 background.sprite = spsBg;
+                break;
+            case ScoreManager.Gamemode.FLAPPY:
+                background.sprite = parachuteBg;
+                break;
+            case ScoreManager.Gamemode.COUNTRY_ERASERS:
+                background.sprite = totalBg;
                 break;
             case ScoreManager.Gamemode.TOTAL:
                 background.sprite = totalBg;
