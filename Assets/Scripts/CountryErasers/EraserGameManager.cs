@@ -101,13 +101,15 @@ public class EraserGameManager : MonoBehaviour
         UpdateUI();
         if (erasersCount.Count <= 2)
         {
-            ScoreManager.Instance.AddCurrentGameScore(1);
-            print("openup"); 
+            if (erasersCount.Count > 1)
+            {
+                ScoreManager.Instance.AddCurrentGameScore(1);
+                print("openup");
+            }
             for (int i = 0; i< erasersCount.Count; i++)
             {
                 erasersCount[i].OpenEraser();
                 erasersCount.Remove(erasersCount[i]);
-                //erasersCount.Remove(erasersCount[i]);
             }
         }
         if (erasersCount.Count == 0 && looping == false)
