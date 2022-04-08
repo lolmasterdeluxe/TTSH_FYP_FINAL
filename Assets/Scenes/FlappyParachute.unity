@@ -472,6 +472,8 @@ MonoBehaviour:
   SpawnMultiplier: 0
   g_gameTimeUp: {fileID: 1187869721}
   leaderboard: {fileID: 599904695}
+  ObstaclesPassed: 0
+  BalloonsCollected: 0
   audioSources:
   - {fileID: 779026911}
   - {fileID: 1300747061}
@@ -5858,12 +5860,18 @@ MonoBehaviour:
   Mynah: {fileID: 4052972847635703251, guid: 87243b8f7455767478835d98a46df32a, type: 3}
   Pipes: {fileID: 5887702756659530634, guid: 564165cbdb0167243aa9998f7b30fcae, type: 3}
   Balloon: {fileID: 3628273070359550756, guid: 44782834d1e0f274a8784e02710e8333, type: 3}
+  PasirTree: {fileID: 4704117347454900073, guid: 4de000bad1e97554584334e4472a6621, type: 3}
+  TrumpetTree: {fileID: 918341857923464323, guid: f0d68aaa99405ca41b45e917cdf9e611, type: 3}
   mynahMinSpawnRate: 1
   mynahMaxSpawnRate: 3
   treeMinSpawnRate: 1
   treeMaxSpawnRate: 3
   mynahMinheight: 2.5
   mynahMaxheight: 6
+  PasirTreeMinSpawnRate: 4
+  PasirTreeMaxSpawnRate: 7
+  TrumpetTreeMinSpawnRate: 8
+  TrumpetTreeMaxSpawnRate: 11
   balloonMinSpawnRate: 5
   balloonMaxSpawnRate: 8
   balloonMinHeight: 1
