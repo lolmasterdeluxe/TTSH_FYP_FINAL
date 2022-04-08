@@ -7,7 +7,6 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject quitPromptMenu;
-    [SerializeField] private GameObject settingsMenu;
 
     public bool isPaused = false;
 
@@ -19,7 +18,6 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         pauseMenu.SetActive(false);
-        settingsMenu.SetActive(false);
         quitPromptMenu.SetActive(false);
 
         if (SceneManager.GetActiveScene().name != "MainMenuGameScene")
@@ -67,7 +65,6 @@ public class PauseMenu : MonoBehaviour
     public void ResumeGame()
     {
         pauseMenu.SetActive(false);
-        settingsMenu.SetActive(false);
         quitPromptMenu.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
@@ -93,22 +90,6 @@ public class PauseMenu : MonoBehaviour
 
         // Button Press sound
         pauseMenuSound[0].Play();
-    }
-
-    public void LoadSettings()
-    {
-        settingsMenu.SetActive(true);
-
-        // Button Press sound
-        pauseMenuSound[0].Play();
-    }
-
-    public void ExitSettings()
-    {
-        settingsMenu.SetActive(false);
-
-        // Back button sound
-        pauseMenuSound[2].Play();
     }
 
     public void LoadQuitPrompt()
