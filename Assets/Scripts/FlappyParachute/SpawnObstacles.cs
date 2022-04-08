@@ -89,6 +89,7 @@ public class SpawnObstacles : MonoBehaviour
         tree.transform.localScale = new Vector3(tree_scale, tree_scale, tree_scale);
         tree.transform.position = new Vector3(transform.position.x, transform.position.y - 4, transform.position.z);
         treeSpawned = true;
+        Debug.Log("Spawning Regular Tree");
     }
 
     private void spawnPasirTree()
@@ -100,6 +101,7 @@ public class SpawnObstacles : MonoBehaviour
         PasirrTree.transform.localScale = new Vector3(PasirTreeScale, PasirTreeScale, PasirTreeScale);
         PasirrTree.transform.position = new Vector3(transform.position.x, transform.position.y -2, transform.position.z);
         PasirTreespawned = true;
+        Debug.Log("Spawning Pasir Tree");
     }
 
     private void spawnTrumpetTree()
@@ -111,6 +113,7 @@ public class SpawnObstacles : MonoBehaviour
         Trumpettree.transform.localScale = new Vector3(Trumpettree_scale, Trumpettree_scale, Trumpettree_scale);
         Trumpettree.transform.position = new Vector3(transform.position.x, transform.position.y -2, transform.position.z);
         TrumpetTreeSpawned = true;
+        Debug.Log("Spawning Trumpet Tree");
     }
 
     private void spawnBalloon()

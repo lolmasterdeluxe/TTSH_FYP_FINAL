@@ -28,6 +28,7 @@ public class EraserGameManager : MonoBehaviour
     public bool m_gameStarted = false;
     public bool m_gameEnded = false;
     public bool startRevealing = false;
+    private bool looping = false;
     [HideInInspector]
     public int ErasersMatched = 0;
     public bool canReveal
@@ -109,9 +110,17 @@ public class EraserGameManager : MonoBehaviour
                 //erasersCount.Remove(erasersCount[i]);
             }
         }
-        if (erasersCount.Count == 0)
+        if (erasersCount.Count == 0 && looping == false)
         {
-            LoopGame();
+
+            //if looping is false
+            //    invoke invoke;
+            //    LoopGame true
+            looping = true;
+            //looping = false;
+            Invoke("LoopGame", 1f);
+            //StartCoroutine(LoopGame());
+            //LoopGame();
             for(int i = 0;i<erasersList.Count;i++)
             {
                 erasersList[i].Invoke("Cover", 3f);
@@ -227,9 +236,11 @@ public class EraserGameManager : MonoBehaviour
     }
     private void LoopGame()
     {
+        //yield return new WaitForSeconds(0.5f);
         numbers = ShuffleArray(numbers);
         Material[] materials = ShuffleMaterials(material);
         int iterator = 0;
+        //looping = false;
         for (int j = 0; j < gridCol; j++)
         {
             for (int k = 0; k < gridRows; k++)
@@ -253,6 +264,7 @@ public class EraserGameManager : MonoBehaviour
                 print(iterator);
             }
         }
+        looping = false;
     }
     private void MakeErasers()
     {
