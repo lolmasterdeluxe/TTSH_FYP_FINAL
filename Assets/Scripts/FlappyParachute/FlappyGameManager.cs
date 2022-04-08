@@ -7,6 +7,7 @@ using TMPro;
 public class FlappyGameManager : MonoBehaviour
 {
     private static FlappyGameManager _instance;
+    private SpawnObstacles.balloonTYPE balloonstype;
 
     public static FlappyGameManager Instance
     {
@@ -118,8 +119,22 @@ public class FlappyGameManager : MonoBehaviour
 
     public void balloonScore()
     {
-        ScoreManager.Instance.AddCurrentGameScore(2);
-        BalloonsCollected++;
+      
+        if(balloonstype == SpawnObstacles.balloonTYPE.DEFAULT)
+        {
+            ScoreManager.Instance.AddCurrentGameScore(2);
+            BalloonsCollected++;
+        }
+        else if(balloonstype == SpawnObstacles.balloonTYPE.YELLOW)
+        {
+            ScoreManager.Instance.AddCurrentGameScore(10);
+            BalloonsCollected++;
+        }
+        else if (balloonstype == SpawnObstacles.balloonTYPE.BLUE)
+        {
+            ScoreManager.Instance.AddCurrentGameScore(20);
+            BalloonsCollected++;
+        }
     }
 
     public IEnumerator OnLeaderboardLoad()
