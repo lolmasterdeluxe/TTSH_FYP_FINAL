@@ -89,12 +89,23 @@ public class Settings : MonoBehaviour
                     masterVolText.text = Mathf.RoundToInt(masterVolSlider.value * 100).ToString();
                 }
                 break;
+            case GameMode.FLAPPY:
+                for (int i = 0; i < 4; i++)
+                {
+                    FlappyGameManager.Instance.audioSources[i].volume = masterVolSlider.value;
+                    masterVolText.text = Mathf.RoundToInt(masterVolSlider.value * 100).ToString();
+                }
+                break;
+            case GameMode.COUNTRY_ERASERS:
+                EraserGameManager.Instance.audioSources[0].volume = masterVolSlider.value;
+                masterVolText.text = Mathf.RoundToInt(masterVolSlider.value * 100).ToString();
+                break;
         }
     }
 
     public void MusicVolume()
     {
-        switch(currentGamemode)
+        switch (currentGamemode)
         {
             case GameMode.MAINMENU:
                 // BGM volume adjuster
@@ -115,6 +126,14 @@ public class Settings : MonoBehaviour
             case GameMode.FIVE_STONES:
                 // BGM volume adjuster
                 FiveStonesGameManager.Instance.audioSources[0].volume = musicVolSlider.value;
+                musicVolText.text = Mathf.RoundToInt(musicVolSlider.value * 100).ToString();
+                break;
+            case GameMode.FLAPPY:
+                FlappyGameManager.Instance.audioSources[0].volume = musicVolSlider.value;
+                musicVolText.text = Mathf.RoundToInt(musicVolSlider.value * 100).ToString();
+                break;
+            case GameMode.COUNTRY_ERASERS:
+                EraserGameManager.Instance.audioSources[0].volume = musicVolSlider.value;
                 musicVolText.text = Mathf.RoundToInt(musicVolSlider.value * 100).ToString();
                 break;
         }
@@ -162,6 +181,17 @@ public class Settings : MonoBehaviour
                     FiveStonesGameManager.Instance.audioSources[i].volume = sfxVolSlider.value;
                     sfxVolText.text = Mathf.RoundToInt(sfxVolSlider.value * 100).ToString();
                 }
+                break;
+            case GameMode.FLAPPY:
+                for (int i = 2; i < 4; i++)
+                {
+                    FlappyGameManager.Instance.audioSources[i].volume = sfxVolSlider.value;
+                    sfxVolText.text = Mathf.RoundToInt(sfxVolSlider.value * 100).ToString();
+                }
+                break;
+            case GameMode.COUNTRY_ERASERS:
+                EraserGameManager.Instance.audioSources[0].volume = sfxVolSlider.value;
+                sfxVolText.text = Mathf.RoundToInt(sfxVolSlider.value * 100).ToString();
                 break;
         }
         
