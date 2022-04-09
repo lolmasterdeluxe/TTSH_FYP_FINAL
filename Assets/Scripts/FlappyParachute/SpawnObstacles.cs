@@ -2,8 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class SpawnObstacles : MonoBehaviour
 {
+
+    public enum balloonTYPE
+    {
+        DEFAULT,
+        YELLOW,
+        BLUE,
+        TOTAL,
+    }
+
+
     [SerializeField]
     private GameObject Tree, Mynah, Pipes, Balloon;
     [SerializeField]
@@ -14,6 +26,8 @@ public class SpawnObstacles : MonoBehaviour
     private float mynahMinSpawnRate = 1f, mynahMaxSpawnRate = 3f, treeMinSpawnRate = 1f, treeMaxSpawnRate = 5f, mynahMinheight = 2f, mynahMaxheight = 4f;
     [SerializeField]
     private float balloonMinSpawnRate = 1f, balloonMaxSpawnRate = 2f, balloonMinHeight = 1f,balloonMaxHeight = 4f;
+
+    
 
     /*private void OnEnable()
     {
@@ -87,6 +101,30 @@ public class SpawnObstacles : MonoBehaviour
         if (!FlappyGameManager.Instance.m_gameStarted || FlappyGameManager.Instance.m_gameEnded)
             return;
         GameObject balloon = Instantiate(Balloon, transform.position, Quaternion.identity);
+
+        //System.Array balloonvalue = System.Enum.GetValues(typeof(balloonTYPE));
+        //balloonTYPE balloontyperand = (balloonTYPE)balloonvalue.GetValue(UnityEngine.Random.Range(0, balloonvalue.Length));
+
+        balloonTYPE balloontyperand = (balloonTYPE)Random.Range(0, 3);
+        Debug.Log(balloontyperand);
+
+        switch (balloontyperand)
+        {
+
+            case balloonTYPE.DEFAULT:
+                balloon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.white;
+                break;
+
+            case balloonTYPE.YELLOW:
+                balloon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(1,1,0,1);
+                break;
+
+            case balloonTYPE.BLUE:
+                balloon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.blue;
+                break;
+
+        }
+
         balloon.transform.position += Vector3.up * Random.Range(balloonMinHeight, balloonMaxHeight);
         balloonSpawned = true;
     }

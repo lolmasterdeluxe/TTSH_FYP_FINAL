@@ -50,7 +50,7 @@ public class FlappyPlayer : MonoBehaviour
         }
         else if (other.gameObject.tag == "Balloon")
         {
-            FlappyGameManager.Instance.balloonScore();
+            FlappyGameManager.Instance.balloonScore(other.GetComponent<SpriteRenderer>());
             FlappyGameManager.Instance.audioSources[2].Play();
             Destroy(other.gameObject);
             Debug.Log("particle spawn");
