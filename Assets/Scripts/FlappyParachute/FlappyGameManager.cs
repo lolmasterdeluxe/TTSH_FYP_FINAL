@@ -117,22 +117,22 @@ public class FlappyGameManager : MonoBehaviour
         ObstaclesPassed++;
     }
 
-    public void balloonScore()
+    public void balloonScore(SpriteRenderer ballooncolor)
     {
       
-        if(balloonstype == SpawnObstacles.balloonTYPE.DEFAULT)
+        if(ballooncolor.color == Color.white)
         {
             ScoreManager.Instance.AddCurrentGameScore(2);
             BalloonsCollected++;
         }
-        else if(balloonstype == SpawnObstacles.balloonTYPE.YELLOW)
+        else if(ballooncolor.color ==  new Color(1,1,0,1))
         {
-            ScoreManager.Instance.AddCurrentGameScore(10);
+            ScoreManager.Instance.AddCurrentGameScore(100);
             BalloonsCollected++;
         }
-        else if (balloonstype == SpawnObstacles.balloonTYPE.BLUE)
+        else if (ballooncolor.color == Color.blue)
         {
-            ScoreManager.Instance.AddCurrentGameScore(20);
+            ScoreManager.Instance.AddCurrentGameScore(202);
             BalloonsCollected++;
         }
     }

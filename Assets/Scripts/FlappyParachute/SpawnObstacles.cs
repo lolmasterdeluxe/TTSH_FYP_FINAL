@@ -112,11 +112,11 @@ public class SpawnObstacles : MonoBehaviour
         {
 
             case balloonTYPE.DEFAULT:
-                balloon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+                balloon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.white;
                 break;
 
             case balloonTYPE.YELLOW:
-                balloon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.red;
+                balloon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(1,1,0,1);
                 break;
 
             case balloonTYPE.BLUE:
