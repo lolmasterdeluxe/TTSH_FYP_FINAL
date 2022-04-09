@@ -58,7 +58,6 @@ public class FlappyPlayer : MonoBehaviour
             particleEffect = Instantiate(particleSystem_, other.transform.position, other.transform.rotation);
             Destroy(particleEffect, 2.0f);
             
-            
         }
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -67,7 +66,5 @@ public class FlappyPlayer : MonoBehaviour
         {
             strength = initialStength;
         }
-
-      
     }
 }

@@ -6,16 +6,6 @@ using UnityEngine;
 
 public class SpawnObstacles : MonoBehaviour
 {
-
-    public enum balloonTYPE
-    {
-        DEFAULT,
-        YELLOW,
-        BLUE,
-        TOTAL,
-    }
-
-
     [SerializeField]
     private GameObject Tree, Mynah, Pipes, Balloon;
     [SerializeField]
@@ -102,28 +92,14 @@ public class SpawnObstacles : MonoBehaviour
             return;
         GameObject balloon = Instantiate(Balloon, transform.position, Quaternion.identity);
 
-        //System.Array balloonvalue = System.Enum.GetValues(typeof(balloonTYPE));
-        //balloonTYPE balloontyperand = (balloonTYPE)balloonvalue.GetValue(UnityEngine.Random.Range(0, balloonvalue.Length));
+        int balloonTypeRand = Random.Range(0, 6);
 
-        balloonTYPE balloontyperand = (balloonTYPE)Random.Range(0, 3);
-        Debug.Log(balloontyperand);
-
-        switch (balloontyperand)
-        {
-
-            case balloonTYPE.DEFAULT:
-                balloon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.white;
-                break;
-
-            case balloonTYPE.YELLOW:
-                balloon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(1,1,0,1);
-                break;
-
-            case balloonTYPE.BLUE:
-                balloon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.blue;
-                break;
-
-        }
+        if (balloonTypeRand >= 0 && balloonTypeRand <= 2)
+            balloon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.white;
+        else if (balloonTypeRand >= 3 && balloonTypeRand <= 4)
+            balloon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.yellow;
+        else if (balloonTypeRand == 5)
+            balloon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.blue;
 
         balloon.transform.position += Vector3.up * Random.Range(balloonMinHeight, balloonMaxHeight);
         balloonSpawned = true;
