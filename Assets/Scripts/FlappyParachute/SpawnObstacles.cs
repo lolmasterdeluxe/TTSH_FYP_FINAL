@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class SpawnObstacles : MonoBehaviour
 {
     [SerializeField]
@@ -14,6 +16,8 @@ public class SpawnObstacles : MonoBehaviour
     private float mynahMinSpawnRate = 1f, mynahMaxSpawnRate = 3f, treeMinSpawnRate = 1f, treeMaxSpawnRate = 5f, mynahMinheight = 2f, mynahMaxheight = 4f;
     [SerializeField]
     private float balloonMinSpawnRate = 1f, balloonMaxSpawnRate = 2f, balloonMinHeight = 1f,balloonMaxHeight = 4f;
+
+    
 
     /*private void OnEnable()
     {
@@ -87,6 +91,16 @@ public class SpawnObstacles : MonoBehaviour
         if (!FlappyGameManager.Instance.m_gameStarted || FlappyGameManager.Instance.m_gameEnded)
             return;
         GameObject balloon = Instantiate(Balloon, transform.position, Quaternion.identity);
+
+        int balloonTypeRand = Random.Range(0, 6);
+
+        if (balloonTypeRand >= 0 && balloonTypeRand <= 2)
+            balloon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.white;
+        else if (balloonTypeRand >= 3 && balloonTypeRand <= 4)
+            balloon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.yellow;
+        else if (balloonTypeRand == 5)
+            balloon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.blue;
+
         balloon.transform.position += Vector3.up * Random.Range(balloonMinHeight, balloonMaxHeight);
         balloonSpawned = true;
     }

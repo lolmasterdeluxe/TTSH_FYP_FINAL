@@ -116,10 +116,23 @@ public class FlappyGameManager : MonoBehaviour
         ObstaclesPassed++;
     }
 
-    public void balloonScore()
+    public void balloonScore(SpriteRenderer balloonColor)
     {
-        ScoreManager.Instance.AddCurrentGameScore(2);
-        BalloonsCollected++;
+        if (balloonColor.color == Color.white)
+        {
+            ScoreManager.Instance.AddCurrentGameScore(2);
+            BalloonsCollected++;
+        }
+        else if (balloonColor.color == Color.yellow)
+        {
+            ScoreManager.Instance.AddCurrentGameScore(4);
+            BalloonsCollected++;
+        }
+        else if (balloonColor.color == Color.blue)
+        {
+            ScoreManager.Instance.AddCurrentGameScore(8);
+            BalloonsCollected++;
+        }
     }
 
     public IEnumerator OnLeaderboardLoad()

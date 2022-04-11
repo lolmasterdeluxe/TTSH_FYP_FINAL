@@ -50,14 +50,13 @@ public class FlappyPlayer : MonoBehaviour
         }
         else if (other.gameObject.tag == "Balloon")
         {
-            FlappyGameManager.Instance.balloonScore();
+            FlappyGameManager.Instance.balloonScore(other.GetComponent<SpriteRenderer>());
             FlappyGameManager.Instance.audioSources[2].Play();
             Destroy(other.gameObject);
             Debug.Log("particle spawn");
             ParticleSystem particleEffect = new ParticleSystem();
             particleEffect = Instantiate(particleSystem_, other.transform.position, other.transform.rotation);
             Destroy(particleEffect, 2.0f);
-            
             
         }
     }
@@ -67,7 +66,5 @@ public class FlappyPlayer : MonoBehaviour
         {
             strength = initialStength;
         }
-
-      
     }
 }

@@ -252,11 +252,13 @@ public class ScoreManager : MonoBehaviour
 #if UNITY_EDITOR
         return Application.dataPath + "/CSV/" + "score.csv";
 #elif UNITY_ANDROID
-        return Application.persistentDataPath + "/CSV/" + "score.csv";
+        TextAsset myTextAsset = Resources.Load<TextAsset>("score"); // omit file extension
+        return myTextAsset.text;
 #elif UNITY_IPHONE
-        return Application.persistentDataPath + "/CSV/" + "score.csv";
+        TextAsset myTextAsset = Resources.Load<TextAsset>("score"); // omit file extension
+        return myTextAsset.text;
 #else
-        return Application.dataPath +"/"+"score.csv";
+        return Application.dataPath +"/CSV/" + "score.csv";
 #endif
         /*TextAsset myTextAsset = Resources.Load<TextAsset>("score"); // omit file extension
         string csvText = myTextAsset.text;
