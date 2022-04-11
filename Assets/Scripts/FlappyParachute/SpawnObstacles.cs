@@ -63,17 +63,30 @@ public class SpawnObstacles : MonoBehaviour
     {
         if (!FlappyGameManager.Instance.m_gameStarted || FlappyGameManager.Instance.m_gameEnded)
             return;
-        GameObject mynah = Instantiate(Mynah, transform.position, Quaternion.identity);
-        mynah.transform.position += Vector3.up * Random.Range(mynahMinheight, mynahMaxheight);
-        mynahSpawned = true;
+        GameObject mynah = ObjectPooling.SharedInstance.GetPooledObject("Mynah");
+        if (mynah != null)
+        {
+            mynah.transform.position = transform.position;
+            mynah.transform.rotation = Quaternion.identity;
+            mynah.transform.position += Vector3.up * Random.Range(mynahMinheight, mynahMaxheight);
+            mynah.SetActive(true);
+            mynahSpawned = true;
+        }
+        //GameObject mynah = Instantiate(Mynah, transform.position, Quaternion.identity);
+        //mynah.transform.position += Vector3.up * Random.Range(mynahMinheight, mynahMaxheight);
+        //mynahSpawned = true;
     }
 
     private void spawnTree()
     {
         if (!FlappyGameManager.Instance.m_gameStarted || FlappyGameManager.Instance.m_gameEnded)
             return;
-        GameObject tree = Instantiate(Tree, transform.position, Quaternion.identity);
-
+       // GameObject tree = Instantiate(Tree, transform.position, Quaternion.identity);
+        GameObject tree = ObjectPooling.SharedInstance.GetPooledObject("Trees");
+        if (tree != null)
+        {
+            tree.SetActive(true);
+        }
         int tree_type = Random.Range(0, 3);
         if (tree_type == 1)
             tree.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = PasirTree;

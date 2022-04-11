@@ -26,7 +26,8 @@ public class MoveObstacle : MonoBehaviour
 
         if (transform.position.x < leftEdgeofscreen)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
