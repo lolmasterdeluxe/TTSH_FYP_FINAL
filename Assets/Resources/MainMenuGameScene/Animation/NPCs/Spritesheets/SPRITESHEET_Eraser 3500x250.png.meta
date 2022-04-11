@@ -1,49 +1,49 @@
 fileFormatVersion: 2
-guid: 0db1fd190775413419094240c66f0eea
+guid: b218da8e6760aec458620c325bef8281
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1562313555949652736
-    second: SPRITESHEET_Eraser 3500x250_0
+      213: -1767177675495369070
+    second: Eraser_NPC_SpriteSheet_0
   - first:
-      213: 851277061518752210
-    second: SPRITESHEET_Eraser 3500x250_1
+      213: -4883467197417781357
+    second: Eraser_NPC_SpriteSheet_1
   - first:
-      213: -8882755841372575496
-    second: SPRITESHEET_Eraser 3500x250_2
+      213: 409865083708880240
+    second: Eraser_NPC_SpriteSheet_2
   - first:
-      213: 5171264852452954948
-    second: SPRITESHEET_Eraser 3500x250_3
+      213: 4736664519762649878
+    second: Eraser_NPC_SpriteSheet_3
   - first:
-      213: 8009417008910897433
-    second: SPRITESHEET_Eraser 3500x250_4
+      213: 195486861019016357
+    second: Eraser_NPC_SpriteSheet_4
   - first:
-      213: 1759640703568717748
-    second: SPRITESHEET_Eraser 3500x250_5
+      213: 2652646005236344778
+    second: Eraser_NPC_SpriteSheet_5
   - first:
-      213: 5993521887426357895
-    second: SPRITESHEET_Eraser 3500x250_6
+      213: 1416611446101150420
+    second: Eraser_NPC_SpriteSheet_6
   - first:
-      213: 2174116358645540789
-    second: SPRITESHEET_Eraser 3500x250_7
+      213: -2735018640706048070
+    second: Eraser_NPC_SpriteSheet_7
   - first:
-      213: 3922092704620284576
-    second: SPRITESHEET_Eraser 3500x250_8
+      213: -4676910968773623020
+    second: Eraser_NPC_SpriteSheet_8
   - first:
-      213: -443497621608744569
-    second: SPRITESHEET_Eraser 3500x250_9
+      213: 6095904295441036418
+    second: Eraser_NPC_SpriteSheet_9
   - first:
-      213: 1962459726758551538
-    second: SPRITESHEET_Eraser 3500x250_10
+      213: 8848296229256161003
+    second: Eraser_NPC_SpriteSheet_10
   - first:
-      213: -8044511461586483116
-    second: SPRITESHEET_Eraser 3500x250_11
+      213: -9138110596107195842
+    second: Eraser_NPC_SpriteSheet_11
   - first:
-      213: 446735120028221466
-    second: SPRITESHEET_Eraser 3500x250_12
+      213: -1894394723833657724
+    second: Eraser_NPC_SpriteSheet_12
   - first:
-      213: 3408050542377388356
-    second: SPRITESHEET_Eraser 3500x250_13
+      213: 7208121484030705436
+    second: Eraser_NPC_SpriteSheet_13
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -169,7 +169,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SPRITESHEET_Eraser 3500x250_0
+      name: Eraser_NPC_SpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -183,14 +183,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 00b0822d6e37ea510800000000000000
-      internalID: 1562313555949652736
+      spriteID: 296191d5449b977e0800000000000000
+      internalID: -1767177675495369070
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPRITESHEET_Eraser 3500x250_1
+      name: Eraser_NPC_SpriteSheet_1
       rect:
         serializedVersion: 2
         x: 250
@@ -204,14 +204,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d973492af750db00800000000000000
-      internalID: 851277061518752210
+      spriteID: 39704a925707a3cb0800000000000000
+      internalID: -4883467197417781357
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPRITESHEET_Eraser 3500x250_2
+      name: Eraser_NPC_SpriteSheet_2
       rect:
         serializedVersion: 2
         x: 500
@@ -225,14 +225,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f8267800ac1ab480800000000000000
-      internalID: -8882755841372575496
+      spriteID: 075bd404f1220b500800000000000000
+      internalID: 409865083708880240
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPRITESHEET_Eraser 3500x250_3
+      name: Eraser_NPC_SpriteSheet_3
       rect:
         serializedVersion: 2
         x: 750
@@ -246,14 +246,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 443dbe91cf504c740800000000000000
-      internalID: 5171264852452954948
+      spriteID: 61326a8e8430cb140800000000000000
+      internalID: 4736664519762649878
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPRITESHEET_Eraser 3500x250_4
+      name: Eraser_NPC_SpriteSheet_4
       rect:
         serializedVersion: 2
         x: 1000
@@ -267,14 +267,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9111b1a755a272f60800000000000000
-      internalID: 8009417008910897433
+      spriteID: 5ac6b4da34286b200800000000000000
+      internalID: 195486861019016357
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPRITESHEET_Eraser 3500x250_5
+      name: Eraser_NPC_SpriteSheet_5
       rect:
         serializedVersion: 2
         x: 1250
@@ -288,14 +288,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b7288c95ef7b6810800000000000000
-      internalID: 1759640703568717748
+      spriteID: ac7a8f8cc7710d420800000000000000
+      internalID: 2652646005236344778
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPRITESHEET_Eraser 3500x250_6
+      name: Eraser_NPC_SpriteSheet_6
       rect:
         serializedVersion: 2
         x: 1500
@@ -309,14 +309,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 78aa39dc6644d2350800000000000000
-      internalID: 5993521887426357895
+      spriteID: 4da8c9dca90d8a310800000000000000
+      internalID: 1416611446101150420
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPRITESHEET_Eraser 3500x250_7
+      name: Eraser_NPC_SpriteSheet_7
       rect:
         serializedVersion: 2
         x: 1750
@@ -330,14 +330,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b7ee692f430c2e10800000000000000
-      internalID: 2174116358645540789
+      spriteID: abfe4aa79034b0ad0800000000000000
+      internalID: -2735018640706048070
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPRITESHEET_Eraser 3500x250_8
+      name: Eraser_NPC_SpriteSheet_8
       rect:
         serializedVersion: 2
         x: 2000
@@ -351,14 +351,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0aa0b03e8821e6630800000000000000
-      internalID: 3922092704620284576
+      spriteID: 413ce14d046481fb0800000000000000
+      internalID: -4676910968773623020
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPRITESHEET_Eraser 3500x250_9
+      name: Eraser_NPC_SpriteSheet_9
       rect:
         serializedVersion: 2
         x: 2250
@@ -372,14 +372,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 789b74d434168d9f0800000000000000
-      internalID: -443497621608744569
+      spriteID: 2847a82c8a0099450800000000000000
+      internalID: 6095904295441036418
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPRITESHEET_Eraser 3500x250_10
+      name: Eraser_NPC_SpriteSheet_10
       rect:
         serializedVersion: 2
         x: 2500
@@ -393,14 +393,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ff147359be0c3b10800000000000000
-      internalID: 1962459726758551538
+      spriteID: be6ed3c4a867bca70800000000000000
+      internalID: 8848296229256161003
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPRITESHEET_Eraser 3500x250_11
+      name: Eraser_NPC_SpriteSheet_11
       rect:
         serializedVersion: 2
         x: 2750
@@ -414,14 +414,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 458449482772c5090800000000000000
-      internalID: -8044511461586483116
+      spriteID: e3a2cc024d8ee2180800000000000000
+      internalID: -9138110596107195842
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPRITESHEET_Eraser 3500x250_12
+      name: Eraser_NPC_SpriteSheet_12
       rect:
         serializedVersion: 2
         x: 3000
@@ -435,14 +435,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1049f9893f133600800000000000000
-      internalID: 446735120028221466
+      spriteID: 486458d1902c5b5e0800000000000000
+      internalID: -1894394723833657724
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPRITESHEET_Eraser 3500x250_13
+      name: Eraser_NPC_SpriteSheet_13
       rect:
         serializedVersion: 2
         x: 3250
@@ -456,8 +456,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4494bf269e3db4f20800000000000000
-      internalID: 3408050542377388356
+      spriteID: c1ff289ac44680460800000000000000
+      internalID: 7208121484030705436
       vertices: []
       indices: 
       edges: []
@@ -465,7 +465,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 326e33f119cc5084a8fb097e26609d84
     internalID: 0
     vertices: []
     indices: 

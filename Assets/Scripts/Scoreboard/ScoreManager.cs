@@ -252,13 +252,11 @@ public class ScoreManager : MonoBehaviour
 #if UNITY_EDITOR
         return Application.dataPath + "/CSV/" + "score.csv";
 #elif UNITY_ANDROID
-        TextAsset myTextAsset = Resources.Load<TextAsset>("score"); // omit file extension
-        return myTextAsset.text;
+        return Application.persistentDataPath + "score.csv";
 #elif UNITY_IPHONE
-        TextAsset myTextAsset = Resources.Load<TextAsset>("score"); // omit file extension
-        return myTextAsset.text;
+        return Application.persistentDataPath + "score.csv";
 #else
-        return Application.dataPath +"/CSV/" + "score.csv";
+        return Application.dataPath +"/CSV/"+"score.csv";
 #endif
         /*TextAsset myTextAsset = Resources.Load<TextAsset>("score"); // omit file extension
         string csvText = myTextAsset.text;
@@ -273,8 +271,9 @@ public class ScoreManager : MonoBehaviour
         if (streamReader == null)
         {
             Debug.Log("Score list file not found");
+            Debug.Log("Creating new CSV");
             streamReader.Close();
-            return;
+            EndSessionConcludeScore();
         }
 
         while (true)
@@ -314,7 +313,7 @@ public class ScoreManager : MonoBehaviour
     {
         //m_allScoreList.AddRange(m_currentScoreList);
 
-        var stringBuilder = new StringBuilder("Id,Name,Mode,Score");
+        var stringBuilder = new StringBuilder("Id,Name,Mode,Score,HatId,FaceId,ColourId");
         foreach (Score score in m_allScoreList)
         {
             stringBuilder.Append('\n')
