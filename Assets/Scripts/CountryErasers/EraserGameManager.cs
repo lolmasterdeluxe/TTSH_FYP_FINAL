@@ -114,15 +114,8 @@ public class EraserGameManager : MonoBehaviour
         }
         if (erasersCount.Count == 0 && looping == false)
         {
-
-            //if looping is false
-            //    invoke invoke;
-            //    LoopGame true
             looping = true;
-            //looping = false;
             Invoke("LoopGame", 1f);
-            //StartCoroutine(LoopGame());
-            //LoopGame();
             for(int i = 0;i<erasersList.Count;i++)
             {
                 erasersList[i].Invoke("Cover", 3f);
@@ -167,6 +160,7 @@ public class EraserGameManager : MonoBehaviour
     
     public void EraserRevealed(MainEraser eraser)
     {
+        audioSources[1].Play();
         if (_firstRevealed == null)
         {
             _firstRevealed = eraser;
@@ -199,6 +193,7 @@ public class EraserGameManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             erasersCount.Remove(_firstRevealed);
             erasersCount.Remove(_secondRevealed);
+            audioSources[2].Play();
             startRevealing = true;
         }
         else
@@ -207,6 +202,7 @@ public class EraserGameManager : MonoBehaviour
             print("wrong");
             _firstRevealed.Cover();
             _secondRevealed.Cover();
+            audioSources[3].Play();
         }
         _firstRevealed = null;
         _secondRevealed = null;
