@@ -17,8 +17,10 @@ public class EraserGameManager : MonoBehaviour
 
     [SerializeField] private GameObject g_timerText;
     [SerializeField] private GameObject g_comboGroup;
+    [SerializeField] private GameObject g_comboText;
     [SerializeField] private GameObject g_scoreText;
     [SerializeField] private GameObject g_gameTimeUp;
+    [SerializeField] private Transform EraserContainer, Background, BackgroundBlur;
 
     [SerializeField] private List<MainEraser> erasersCount;
     [SerializeField] private List<MainEraser> erasersList;
@@ -72,18 +74,25 @@ public class EraserGameManager : MonoBehaviour
         m_gameStarted = true;
         // Setup managers
         TimerManager.Instance.StartCountdown(time);
-        ComboManager.Instance.SetComboExpiry(8f);
+        ComboManager.Instance.SetComboExpiry(10f);
         ScoreManager.Instance.LoadNewGamemode(ScoreManager.Gamemode.COUNTRY_ERASERS);
 
         // Setup game logic
         TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 0f, 0f);
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 0f, 0f);
 
+        TweenManager.Instance.AnimateSpriteFade(Background.GetComponent<SpriteRenderer>(), 0f, 0.5f);
+        TweenManager.Instance.AnimateScale(Background, 1.2f, 1f);
+        TweenManager.Instance.AnimateScale(BackgroundBlur, 1.2f, 1f);
+
         // Plays background music after countdown
         audioSources[0].Play();
 
         // Attach events
         TimerManager.Instance.e_TimerFinished.AddListener(OnGameEnd);
+        ComboManager.Instance.e_comboAdded.AddListener(OnComboAdd);
+        ComboManager.Instance.e_comboBreak.AddListener(OnComboBreak);
+        ComboManager.Instance.e_comboExpired.AddListener(OnComboBreak);
     }
 
     private void Start()
@@ -106,7 +115,7 @@ public class EraserGameManager : MonoBehaviour
                 ScoreManager.Instance.AddCurrentGameScore(1);
                 print("openup");
             }
-            for (int i = 0; i< erasersCount.Count; i++)
+            for (int i = 0; i < erasersCount.Count; i++)
             {
                 erasersCount[i].OpenEraser();
                 erasersCount.Remove(erasersCount[i]);
@@ -115,10 +124,11 @@ public class EraserGameManager : MonoBehaviour
         if (erasersCount.Count == 0 && looping == false)
         {
             looping = true;
-            Invoke("LoopGame", 1f);
-            for(int i = 0;i<erasersList.Count;i++)
+            Invoke("SwapBoard", 1f);
+            Invoke("LoopGame", 2.5f);
+            for (int i = 0; i < erasersList.Count;i++)
             {
-                erasersList[i].Invoke("Cover", 3f);
+                erasersList[i].Invoke("Cover", 5.5f);
             }
         }
     }
@@ -127,6 +137,7 @@ public class EraserGameManager : MonoBehaviour
     {
         g_scoreText.GetComponent<TMP_Text>().text = ScoreManager.Instance.GetCurrentGameScore().ToString();
         g_timerText.GetComponent<TMP_Text>().text = TimerManager.Instance.GetFormattedRemainingTime();
+        g_comboText.GetComponent<TMP_Text>().text = "Combo " + ComboManager.Instance.GetCurrentCombo() + "x";
     }
 
     private int[] ShuffleArray(int[] numbers)
@@ -188,13 +199,14 @@ public class EraserGameManager : MonoBehaviour
         Debug.Log("Checking");
         if (_firstRevealed.id == _secondRevealed.id)
         {
-            ScoreManager.Instance.AddCurrentGameScore(1);
             ErasersMatched++;
             yield return new WaitForSeconds(0.5f);
             erasersCount.Remove(_firstRevealed);
             erasersCount.Remove(_secondRevealed);
             audioSources[2].Play();
             startRevealing = true;
+            ScoreManager.Instance.AddCurrentGameScore(10 * ComboManager.Instance.GetCurrentCombo());
+            ComboManager.Instance.AddCombo(1);
         }
         else
         {
@@ -203,6 +215,7 @@ public class EraserGameManager : MonoBehaviour
             _firstRevealed.Cover();
             _secondRevealed.Cover();
             audioSources[3].Play();
+            ComboManager.Instance.BreakCombo();
         }
         _firstRevealed = null;
         _secondRevealed = null;
@@ -280,7 +293,7 @@ public class EraserGameManager : MonoBehaviour
                 }
                 else
                 {
-                    eraser = Instantiate(originalEraser) as MainEraser;
+                    eraser = Instantiate(originalEraser, EraserContainer) as MainEraser;
                 }
                 int index = j * gridCol + i;
                 int id = numbers[index];
@@ -295,6 +308,30 @@ public class EraserGameManager : MonoBehaviour
             }
         }
     }
+
+    private void SwapBoard()
+    {
+        EraserContainer.GetComponent<Animator>().SetTrigger("Swap");
+        ScoreManager.Instance.AddCurrentGameScore(20);
+    }
+
+    private void OnComboAdd()
+    {
+        TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 1f, 0.25f);
+        TweenManager.Instance.AnimateEnlargeText(g_comboText.transform, 1, 0.25f);
+    }
+
+    public void OnComboBreak()
+    {
+        TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 0f, 1f);
+    }
+
+    private void OnKillTween()
+    {
+        TweenManager.Instance.KillCanvasGroupTween(g_comboGroup.GetComponent<CanvasGroup>());
+        TweenManager.Instance.KillTween(g_comboText);
+    }
+
     private void OnDestroy()
     {
         if (this == _instance)

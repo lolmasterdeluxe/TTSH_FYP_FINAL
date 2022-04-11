@@ -49,7 +49,7 @@ public class MainEraser : MonoBehaviour
     {
         //cardBack.SetActive(true);
         GetComponent<Animator>().SetBool("onCover",true);
-        Invoke("OnIdle",0.5f);
+        Invoke("OnIdle", 0.5f);
         Invoke("CanStartRevealing", 0.5f);
     }
 
@@ -64,7 +64,6 @@ public class MainEraser : MonoBehaviour
     {
         GetComponent<Animator>().SetBool("onIdle",true);
         GetComponent<Animator>().SetBool("onCover",false);
-
     }
     public void OpenEraser()
     {

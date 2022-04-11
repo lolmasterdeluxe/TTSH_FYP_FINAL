@@ -186,22 +186,21 @@ public class FiveStonesGameManager : MonoBehaviour
         else if (currcom == 2)
         {
             g_popupText.GetComponent<TMP_Text>().text = "Good";
-            TweenManager.Instance.AnimateShake(g_popupText.transform, 1f, 1f);
         }
         else if (currcom == 3)
         {
             g_popupText.GetComponent<TMP_Text>().text = "Cool";
-            TweenManager.Instance.AnimateShake(g_popupText.transform, 2f, 1f);
+            TweenManager.Instance.AnimateShake(g_popupText.transform, 1f, 1f);
         }
         else if (currcom == 4)
         {
             g_popupText.GetComponent<TMP_Text>().text = "Awesome";
-            TweenManager.Instance.AnimateShake(g_popupText.transform, 3f, 1f);
+            TweenManager.Instance.AnimateShake(g_popupText.transform, 2f, 1f);
         }
         else if (currcom >= 5)
         {
             g_popupText.GetComponent<TMP_Text>().text = "Amazing!";
-            TweenManager.Instance.AnimateShake(g_popupText.transform, 4f, 1f);
+            TweenManager.Instance.AnimateShake(g_popupText.transform, 3f, 1f);
         }
         
     }
@@ -276,7 +275,7 @@ public class FiveStonesGameManager : MonoBehaviour
     public void OnComboAdd()
     {
         TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 1f, 0.25f);
-        TweenManager.Instance.AnimateShake(g_comboText.transform, 2f, 1f);
+        TweenManager.Instance.AnimateShake(g_comboText.transform, 0.5f, 1f);
     }
 
     public void OnPopUp()
@@ -292,7 +291,6 @@ public class FiveStonesGameManager : MonoBehaviour
 
     public void OnComboBreak()
     {
-        TweenManager.Instance.AnimateShake(g_comboText.transform, 2, 1f);
         TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 0f, 5f);
         TweenManager.Instance.AnimateFade(g_popupTextGroup.GetComponent<CanvasGroup>(), 0f, 5f);
         TweenManager.Instance.AnimateFade(g_popupImageGroup.GetComponent<CanvasGroup>(), 0f, 5f);
