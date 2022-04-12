@@ -208,7 +208,9 @@ public class CustomizerManager : MonoBehaviour
 
     public void EnterMainScene()
     {
+#if UNITY_EDITOR
         ScoreManager.Instance.LoadAllScoreList();
+#endif
         ScoreManager.Instance.UpdateCurrentUserTotalScore();
         SceneManager.LoadScene("MainMenuGameScene");
     }

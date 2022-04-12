@@ -2753,7 +2753,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 400}
+  m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &198035587
 MonoBehaviour:
@@ -3591,9 +3591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec5b617358f0afe4891c1720bcce6295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  interactPrefab: {fileID: 6704896912015821187}
-  interactSFX: {fileID: 1883059764}
+  interactButton: {fileID: 6704896912015821187}
   hoverSFX: {fileID: 76700683}
   BGM: {fileID: 518592540}
 --- !u!212 &264564769
@@ -3922,9 +3920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec5b617358f0afe4891c1720bcce6295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 2
-  interactPrefab: {fileID: 4580619492569134017}
-  interactSFX: {fileID: 1883059764}
+  interactButton: {fileID: 4580619492569134017}
   hoverSFX: {fileID: 76700683}
   BGM: {fileID: 518592540}
 --- !u!95 &279406326
@@ -4063,7 +4059,7 @@ Transform:
   m_LocalScale: {x: 1.1, y: 1.1, z: 1}
   m_Children: []
   m_Father: {fileID: 1724900842}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &285418421
 MonoBehaviour:
@@ -4077,9 +4073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec5b617358f0afe4891c1720bcce6295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 4
-  interactPrefab: {fileID: 1100482929}
-  interactSFX: {fileID: 1883059764}
+  interactButton: {fileID: 1100482929}
   hoverSFX: {fileID: 76700683}
   BGM: {fileID: 518592540}
 --- !u!61 &285418422
@@ -7070,8 +7064,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1078111449}
   - {fileID: 1264908043}
+  - {fileID: 1078111449}
   - {fileID: 929763450}
   - {fileID: 190214504}
   - {fileID: 1311582087}
@@ -7079,8 +7073,8 @@ RectTransform:
   - {fileID: 417116384}
   - {fileID: 1929765272}
   - {fileID: 1212924679}
-  - {fileID: 1190055246}
   - {fileID: 1347088442}
+  - {fileID: 1190055246}
   - {fileID: 1101703923}
   - {fileID: 1342255218}
   - {fileID: 544743720}
@@ -9462,7 +9456,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 4580619492569134017}
+        - m_Target: {fileID: 279406322}
           m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_MethodName: SetActive
           m_Mode: 6
@@ -9485,6 +9479,18 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 4580619492569134017}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
           m_CallState: 2
 --- !u!114 &659170633
 MonoBehaviour:
@@ -11007,7 +11013,7 @@ Transform:
   - {fileID: 901892749}
   - {fileID: 449492353}
   m_Father: {fileID: 1724900842}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &827395000
 BoxCollider2D:
@@ -11047,9 +11053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec5b617358f0afe4891c1720bcce6295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
-  interactPrefab: {fileID: 1402113168}
-  interactSFX: {fileID: 1883059764}
+  interactButton: {fileID: 1402113168}
   hoverSFX: {fileID: 76700683}
   BGM: {fileID: 518592540}
 --- !u!1 &862802080
@@ -11409,8 +11413,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -110}
-  m_SizeDelta: {x: 130, y: 130}
+  m_AnchoredPosition: {x: 0, y: -130}
+  m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &894970629
 MonoBehaviour:
@@ -11878,8 +11882,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 300, y: 249.93}
-  m_SizeDelta: {x: 600, y: 500}
+  m_AnchoredPosition: {x: 360, y: 300}
+  m_SizeDelta: {x: 720, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &933027766
 GameObject:
@@ -13592,7 +13596,7 @@ Transform:
   m_LocalScale: {x: 1.55, y: 1.55, z: 1}
   m_Children: []
   m_Father: {fileID: 1724900842}
-  m_RootOrder: 2
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1044125017
 Animator:
@@ -13676,9 +13680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec5b617358f0afe4891c1720bcce6295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 5
-  interactPrefab: {fileID: 659170630}
-  interactSFX: {fileID: 1883059764}
+  interactButton: {fileID: 659170630}
   hoverSFX: {fileID: 76700683}
   BGM: {fileID: 518592540}
 --- !u!61 &1044125020
@@ -14260,12 +14262,12 @@ RectTransform:
   - {fileID: 198035586}
   - {fileID: 1913322862}
   m_Father: {fileID: 525123530}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 300.12, y: 249.93}
-  m_SizeDelta: {x: 600, y: 500}
+  m_AnchoredPosition: {x: 360, y: 300}
+  m_SizeDelta: {x: 720, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1078111450
 MonoBehaviour:
@@ -15962,7 +15964,7 @@ RectTransform:
   - {fileID: 1033274763}
   - {fileID: 1244249512}
   m_Father: {fileID: 525123530}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16151,7 +16153,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4580619492569134017}
+      - m_Target: {fileID: 279406322}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -16166,6 +16168,18 @@ MonoBehaviour:
       - m_Target: {fileID: 558953936}
         m_TargetAssemblyTypeName: PlayerTouchMovement, Assembly-CSharp
         m_MethodName: SetEnabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 4580619492569134017}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16706,8 +16720,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 110}
-  m_SizeDelta: {x: 130, y: 130}
+  m_AnchoredPosition: {x: 0, y: 130}
+  m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1247760068
 MonoBehaviour:
@@ -17321,8 +17335,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 110, y: 0}
-  m_SizeDelta: {x: 130, y: 130}
+  m_AnchoredPosition: {x: 130, y: 0}
+  m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1327119952
 MonoBehaviour:
@@ -17869,7 +17883,7 @@ RectTransform:
   - {fileID: 546565593}
   - {fileID: 288406970}
   m_Father: {fileID: 525123530}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -21332,7 +21346,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 400}
+  m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1637426012
 MonoBehaviour:
@@ -22846,11 +22860,11 @@ Transform:
   m_Children:
   - {fileID: 279406323}
   - {fileID: 264564767}
-  - {fileID: 1044125016}
   - {fileID: 827394999}
-  - {fileID: 1926783017}
   - {fileID: 2054063898}
   - {fileID: 285418420}
+  - {fileID: 1926783017}
+  - {fileID: 1044125016}
   m_Father: {fileID: 550682014}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -24874,7 +24888,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 120, y: 120}
+  m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1913322863
 MonoBehaviour:
@@ -24949,8 +24963,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -110, y: 0}
-  m_SizeDelta: {x: 130, y: 130}
+  m_AnchoredPosition: {x: -130, y: 0}
+  m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1925921780
 MonoBehaviour:
@@ -25067,7 +25081,7 @@ Transform:
   m_LocalScale: {x: 1.4, y: 1.4, z: 1}
   m_Children: []
   m_Father: {fileID: 1724900842}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1926783018
 Animator:
@@ -26263,7 +26277,7 @@ Transform:
   m_LocalScale: {x: 1.1, y: 1.1, z: 1}
   m_Children: []
   m_Father: {fileID: 1724900842}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2054063899
 MonoBehaviour:
@@ -26277,9 +26291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec5b617358f0afe4891c1720bcce6295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 3
-  interactPrefab: {fileID: 1878935914}
-  interactSFX: {fileID: 1883059764}
+  interactButton: {fileID: 1878935914}
   hoverSFX: {fileID: 76700683}
   BGM: {fileID: 518592540}
 --- !u!61 &2054063900
@@ -27247,9 +27259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec5b617358f0afe4891c1720bcce6295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 4
-  interactPrefab: {fileID: 3655759204658082657}
-  interactSFX: {fileID: 1883059764}
+  interactButton: {fileID: 3655759204658082657}
   hoverSFX: {fileID: 76700683}
   BGM: {fileID: 518592540}
 --- !u!1 &3655759204658082657
@@ -27536,7 +27546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3980006151387492472, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3980006151387492472, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
       propertyPath: m_AnchorMax.x
