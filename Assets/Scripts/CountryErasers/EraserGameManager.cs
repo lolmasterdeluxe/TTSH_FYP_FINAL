@@ -171,7 +171,7 @@ public class EraserGameManager : MonoBehaviour
     
     public void EraserRevealed(MainEraser eraser)
     {
-        audioSources[1].Play();
+        //audioSources[1].Play();
         if (_firstRevealed == null)
         {
             _firstRevealed = eraser;
