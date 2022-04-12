@@ -35,8 +35,13 @@ public class FlappyPlayer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Obstacle")
+        if (other.gameObject.tag == "Mynah" )
         {
+            FlappyGameManager.Instance.GameOver();
+        }
+        else if(other.gameObject.tag == "Trees")
+        {
+            Debug.Log("Trees");
             FlappyGameManager.Instance.GameOver();
         }
         else if (other.gameObject.tag == "SafeObstacle")

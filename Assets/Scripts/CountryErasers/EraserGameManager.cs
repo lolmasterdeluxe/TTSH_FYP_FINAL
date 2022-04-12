@@ -110,6 +110,11 @@ public class EraserGameManager : MonoBehaviour
         UpdateUI();
         if (erasersCount.Count <= 2)
         {
+            if (erasersCount.Count > 1)
+            {
+                ScoreManager.Instance.AddCurrentGameScore(1);
+                print("openup");
+            }
             for (int i = 0; i < erasersCount.Count; i++)
             {
                 erasersCount[i].OpenEraser();
@@ -166,7 +171,7 @@ public class EraserGameManager : MonoBehaviour
     
     public void EraserRevealed(MainEraser eraser)
     {
-        audioSources[1].Play();
+        //audioSources[1].Play();
         if (_firstRevealed == null)
         {
             _firstRevealed = eraser;
@@ -200,7 +205,7 @@ public class EraserGameManager : MonoBehaviour
             erasersCount.Remove(_secondRevealed);
             audioSources[2].Play();
             startRevealing = true;
-            ScoreManager.Instance.AddCurrentGameScore(1 * ComboManager.Instance.GetCurrentCombo());
+            ScoreManager.Instance.AddCurrentGameScore(10 * ComboManager.Instance.GetCurrentCombo());
             ComboManager.Instance.AddCombo(1);
         }
         else
@@ -307,7 +312,7 @@ public class EraserGameManager : MonoBehaviour
     private void SwapBoard()
     {
         EraserContainer.GetComponent<Animator>().SetTrigger("Swap");
-        ScoreManager.Instance.AddCurrentGameScore(10);
+        ScoreManager.Instance.AddCurrentGameScore(20);
     }
 
     private void OnComboAdd()
