@@ -9,8 +9,8 @@ public class EraserGameManager : MonoBehaviour
     public int gridCol = 2;
     public const float offSetX = 3.5f;
     public const float offSetY = 3f;
-    public float openTimer = 3f;
     private int[] numbers = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5 };
+    private float swapDuration = 0, closeTimer = 0;
 
     [SerializeField] private MainEraser originalEraser;
     [SerializeField] private Material[] material;
@@ -30,7 +30,7 @@ public class EraserGameManager : MonoBehaviour
     public bool m_gameStarted = false;
     public bool m_gameEnded = false;
     public bool startRevealing = false;
-    private bool looping = false;
+    private bool startCovering = false;
     [HideInInspector]
     public int ErasersMatched = 0;
     public bool canReveal
@@ -99,36 +99,47 @@ public class EraserGameManager : MonoBehaviour
     {
         MakeErasers();
     }
-  
+
     private void Update()
     {
-        
+
         if (!m_gameStarted)
             return;
-        openTimer -= Time.deltaTime;
+        closeTimer += Time.deltaTime;
         StartCoroutine(OnLeaderboardLoad());
         UpdateUI();
         if (erasersCount.Count <= 2)
         {
             if (erasersCount.Count > 1)
-            {
-                ScoreManager.Instance.AddCurrentGameScore(1);
-                print("openup");
-            }
+                swapDuration = 0;
+            else
+                swapDuration += Time.deltaTime;
+
             for (int i = 0; i < erasersCount.Count; i++)
             {
                 erasersCount[i].OpenEraser();
                 erasersCount.Remove(erasersCount[i]);
             }
         }
-        if (erasersCount.Count == 0 && looping == false)
+        if (erasersCount.Count == 0)
         {
-            looping = true;
-            Invoke("SwapBoard", 1f);
-            Invoke("LoopGame", 2.5f);
-            for (int i = 0; i < erasersList.Count;i++)
+            if (swapDuration > 1 && swapDuration < (1 + Time.deltaTime))
+                SwapBoard();
+            else if (swapDuration > 2.5f)
             {
-                erasersList[i].Invoke("Cover", 5.5f);
+                LoopGame();
+                closeTimer = 0;
+                swapDuration = 0;
+                startCovering = true;
+            }
+        }
+        if (closeTimer > 3f && startCovering)
+        {
+            for (int i = 0; i < erasersList.Count; i++)
+            {
+                erasersList[i].Cover();
+                if (i == 11)
+                    startCovering = false;
             }
         }
     }
@@ -227,7 +238,6 @@ public class EraserGameManager : MonoBehaviour
         if (m_gameEnded)
         {
             yield return new WaitForSeconds(3);
-            //AudioObject.SetActive(false);
             Resources.FindObjectsOfTypeAll<LeaderboardManager>()[0].gameObject.SetActive(true);
         }
     }
@@ -247,7 +257,6 @@ public class EraserGameManager : MonoBehaviour
     }
     private void LoopGame()
     {
-        //yield return new WaitForSeconds(0.5f);
         numbers = ShuffleArray(numbers);
         Material[] materials = ShuffleMaterials(material);
         int iterator = 0;
@@ -259,15 +268,6 @@ public class EraserGameManager : MonoBehaviour
                 int index = k * gridCol + j;
                 int id = numbers[index];
                 
-                //MainEraser eraser;
-                //if (i == 0 && j == 0)
-                //{
-                //    eraser = originalEraser;
-                //}
-                //else
-                //{
-                //    eraser = Instantiate(originalEraser) as MainEraser;
-                //}
                 print(id);
                 erasersCount.Add(erasersList[iterator]);
                 erasersList[iterator].ChangeMaterial(id, materials[id]);
@@ -275,7 +275,6 @@ public class EraserGameManager : MonoBehaviour
                 print(iterator);
             }
         }
-        looping = false;
     }
     private void MakeErasers()
     {

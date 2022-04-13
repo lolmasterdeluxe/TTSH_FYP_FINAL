@@ -51,6 +51,7 @@ public class MainEraser : MonoBehaviour
         GetComponent<Animator>().SetBool("onCover",true);
         Invoke("OnIdle", 0.5f);
         Invoke("CanStartRevealing", 0.5f);
+        Debug.Log("Ipompei");
     }
 
     public void ChangeLayer()
