@@ -251,11 +251,13 @@ public class ScoreManager : MonoBehaviour
     private string GetFilePath()
     {
 #if UNITY_EDITOR
+        if (!File.Exists(Application.dataPath + "/CSV/" + "score.csv"))
+            SaveCSV(Application.dataPath + "/CSV/" + "score.csv");
         return Application.dataPath + "/CSV/" + "score.csv";
-#elif UNITY_ANDROID
-        return Application.persistentDataPath + "score.csv";
-#elif UNITY_IPHONE
-        return Application.persistentDataPath + "score.csv";
+#elif UNITY_ANDROID || UNITY_IPHONE
+        if (!File.Exists(Application.persistentDataPath + "/score.csv"))
+            SaveCSV(Application.persistentDataPath + "/score.csv");
+        return Application.persistentDataPath + "/score.csv";
 #else
         return Application.dataPath +"/CSV/"+"score.csv";
 #endif
@@ -272,9 +274,8 @@ public class ScoreManager : MonoBehaviour
         if (streamReader == null)
         {
             Debug.Log("Score list file not found");
-            Debug.Log("Creating new CSV");
             streamReader.Close();
-            EndSessionConcludeScore();
+            return;
         }
 
         while (true)
@@ -325,15 +326,20 @@ public class ScoreManager : MonoBehaviour
                 .Append(score.m_hatId.ToString()).Append(',')
                 .Append(score.m_faceId.ToString()).Append(',')
                 .Append(score.m_colourId.ToString());
-                
         }
 
         SaveCSV(GetFilePath(), stringBuilder.ToString());
     }
 
-    public void SaveCSV(string filePath, string data)
+    private void SaveCSV(string filePath)
     {
-        StreamWriter outStream = System.IO.File.CreateText(filePath);
+        StreamWriter outStream = File.CreateText(filePath);
+        outStream.Close();
+    }
+
+    private void SaveCSV(string filePath, string data)
+    {
+        StreamWriter outStream = File.CreateText(filePath);
         outStream.WriteLine(data);
         outStream.Close();
     }
