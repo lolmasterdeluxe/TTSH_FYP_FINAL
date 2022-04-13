@@ -3414,7 +3414,7 @@ MonoBehaviour:
   - m_name: Default Colour
     m_itemType: 2
     m_sprite: {fileID: 0}
-    m_color: {r: 0, g: 0, b: 0, a: 0}
+    m_color: {r: 1, g: 1, b: 1, a: 1}
   - m_name: Red
     m_itemType: 2
     m_sprite: {fileID: 0}
