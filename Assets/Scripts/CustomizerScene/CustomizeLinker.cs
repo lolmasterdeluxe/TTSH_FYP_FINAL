@@ -18,18 +18,20 @@ public class CustomizeLinker : MonoBehaviour
     private TMP_InputField inputNameField;
     [SerializeField]
     private Button exitButton;
-    private ScoreManager.Score score;
+    private ScoreManager.Score[] score;
 
     private void Start()
     {
         inputNameField.text = ScoreManager.Instance.m_currentUsername;
         customizer = FindObjectOfType<CustomizerManager>();
-        score = ScoreManager.Instance.m_allScoreList.Where(x => x.m_username == ScoreManager.Instance.m_currentUsername).FirstOrDefault();
+        DeclareScoreArray();
+
         if (customizer == null)
         {
             CosmeticNPC.SetActive(false);
             gameObject.SetActive(false);
         }
+        Debug.Log(score);
     }
 
     private void Update()
@@ -38,6 +40,17 @@ public class CustomizeLinker : MonoBehaviour
         ChangeCharacterName();
         customizer.nextSceneButton = exitButton;
         customizer.inputNameField = inputNameField;
+    }
+
+    private void DeclareScoreArray()
+    {
+        score = new ScoreManager.Score[6];
+        score[0] = ScoreManager.Instance.m_allScoreList.Where(x => x.m_userId == ScoreManager.Instance.m_currentUserID && x.m_gamemode == ScoreManager.Gamemode.TOTAL.ToString()).FirstOrDefault();
+        score[1] = ScoreManager.Instance.m_allScoreList.Where(x => x.m_userId == ScoreManager.Instance.m_currentUserID && x.m_gamemode == ScoreManager.Gamemode.SPS.ToString()).FirstOrDefault();
+        score[2] = ScoreManager.Instance.m_allScoreList.Where(x => x.m_userId == ScoreManager.Instance.m_currentUserID && x.m_gamemode == ScoreManager.Gamemode.FIVESTONES.ToString()).FirstOrDefault();
+        score[3] = ScoreManager.Instance.m_allScoreList.Where(x => x.m_userId == ScoreManager.Instance.m_currentUserID && x.m_gamemode == ScoreManager.Gamemode.CHAPTEH.ToString()).FirstOrDefault();
+        score[4] = ScoreManager.Instance.m_allScoreList.Where(x => x.m_userId == ScoreManager.Instance.m_currentUserID && x.m_gamemode == ScoreManager.Gamemode.FLAPPY.ToString()).FirstOrDefault();
+        score[5] = ScoreManager.Instance.m_allScoreList.Where(x => x.m_userId == ScoreManager.Instance.m_currentUserID && x.m_gamemode == ScoreManager.Gamemode.COUNTRY_ERASERS.ToString()).FirstOrDefault();
     }
 
     private void SetCloneCosmetics()
@@ -55,7 +68,7 @@ public class CustomizeLinker : MonoBehaviour
 
     public void ChangeCharacterName()
     {
-        score = ScoreManager.Instance.m_allScoreList.Where(x => x.m_username == ScoreManager.Instance.m_currentUsername).FirstOrDefault();
+        DeclareScoreArray();
         if (inputNameField.text == "")
         {
             exitButton.interactable = false;
@@ -73,25 +86,39 @@ public class CustomizeLinker : MonoBehaviour
             colorBlock.selectedColor = new Color32(222, 255, 201, 255);
             inputNameField.colors = colorBlock;
         }
-        score.m_username = inputNameField.text;
-        ScoreManager.Instance.m_currentUsername = inputNameField.text;
+        UpdatePlayer();
     }
 
     public void ScrollHat(bool forward)
     {
         customizer.ScrollHat(forward);
-        score.m_hatId = CustomizerManager.Instance.m_hatId;
+        UpdatePlayer();
     }
 
     public void ScrollFace(bool forward)
     {
         customizer.ScrollFace(forward);
-        score.m_faceId = CustomizerManager.Instance.m_faceId;
+        UpdatePlayer();
     }
 
     public void ScrollColor(bool forward)
     {
         customizer.ScrollColor(forward);
-        score.m_colourId = CustomizerManager.Instance.m_colorId;
+        UpdatePlayer();
+    }
+
+    private void UpdatePlayer()
+    {
+        for (int i = 0; i < 6; ++i)
+        {
+            if (score[i] != null)
+            {
+                score[i].m_username = inputNameField.text;
+                score[i].m_hatId = CustomizerManager.Instance.m_hatId;
+                score[i].m_faceId = CustomizerManager.Instance.m_faceId;
+                score[i].m_colourId = CustomizerManager.Instance.m_colorId;
+            }
+        }
+        ScoreManager.Instance.m_currentUsername = inputNameField.text;
     }
 }
