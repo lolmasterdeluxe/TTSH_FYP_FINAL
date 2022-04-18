@@ -33,6 +33,8 @@ public class EraserGameManager : MonoBehaviour
     private bool looping = false;
     [HideInInspector]
     public int ErasersMatched = 0;
+
+    public ParticleSystem particleSystem_;
     public bool canReveal
     { 
         get { /*if (_secondRevealed == null || )*/
@@ -200,6 +202,8 @@ public class EraserGameManager : MonoBehaviour
         if (_firstRevealed.id == _secondRevealed.id)
         {
             ErasersMatched++;
+
+            Invoke("ParticleCorrect", 0.5f);
             yield return new WaitForSeconds(0.5f);
             erasersCount.Remove(_firstRevealed);
             erasersCount.Remove(_secondRevealed);
@@ -331,7 +335,16 @@ public class EraserGameManager : MonoBehaviour
         TweenManager.Instance.KillCanvasGroupTween(g_comboGroup.GetComponent<CanvasGroup>());
         TweenManager.Instance.KillTween(g_comboText);
     }
+    private void ParticleCorrect()
+    {
+        ParticleSystem particleEffect1 = new ParticleSystem();
+        ParticleSystem particleEffect2 = new ParticleSystem();
+        particleEffect1 = Instantiate(particleSystem_, _firstRevealed.transform.position, _firstRevealed.transform.rotation);
+        particleEffect2 = Instantiate(particleSystem_, _secondRevealed.transform.position, _secondRevealed.transform.rotation);
+        Destroy(particleEffect1, 2.0f);
+        Destroy(particleEffect2, 2.0f);
 
+    }
     private void OnDestroy()
     {
         if (this == _instance)
