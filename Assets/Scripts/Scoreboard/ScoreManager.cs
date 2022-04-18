@@ -65,7 +65,7 @@ public class ScoreManager : MonoBehaviour
     private int m_maxUser = 1000;
 
     public string m_currentUsername;
-    private int m_currentUserID;
+    public int m_currentUserID;
     private int m_currentScore;
     public Gamemode m_currentGamemode;
 
@@ -153,6 +153,7 @@ public class ScoreManager : MonoBehaviour
     {
         m_currentUsername = "";
         m_currentScore = 0;
+        m_currentUserID = m_maxUser;
         CustomizerManager.Instance.m_hatId = 0;
         CustomizerManager.Instance.m_colorId = 0;
         CustomizerManager.Instance.m_faceId = 0;
@@ -206,7 +207,7 @@ public class ScoreManager : MonoBehaviour
 
     public void UpdateCurrentUserTotalScore()
     {
-        Score totalScore = m_allScoreList.Where(x => x.m_username == m_currentUsername && x.m_gamemode == Gamemode.TOTAL.ToString()).FirstOrDefault();
+        Score totalScore = m_allScoreList.Where(x => x.m_userId == m_currentUserID && x.m_gamemode == Gamemode.TOTAL.ToString()).FirstOrDefault();
 
         if (totalScore == null)
         {
@@ -215,13 +216,13 @@ public class ScoreManager : MonoBehaviour
             m_allScoreList.Add(totalScore);
         }
 
-        List<int> scoreList = m_allScoreList.Where(x => x.m_username == m_currentUsername && x.m_gamemode != Gamemode.TOTAL.ToString()).Select(x=> x.m_score).ToList();
+        List<int> scoreList = m_allScoreList.Where(x => x.m_userId == m_currentUserID && x.m_gamemode != Gamemode.TOTAL.ToString()).Select(x => x.m_score).ToList();
         totalScore.m_score = scoreList.Sum();
     }
 
     public void EndCurrentGameScore()
     {
-        Score score = m_allScoreList.Where(x => x.m_username == m_currentUsername && x.m_gamemode == m_currentGamemode.ToString()).FirstOrDefault();
+        Score score = m_allScoreList.Where(x => x.m_userId == m_currentUserID && x.m_gamemode == m_currentGamemode.ToString()).FirstOrDefault();
 
         if (score == null)
         {
@@ -250,11 +251,13 @@ public class ScoreManager : MonoBehaviour
     private string GetFilePath()
     {
 #if UNITY_EDITOR
+        if (!File.Exists(Application.dataPath + "/CSV/" + "score.csv"))
+            SaveCSV(Application.dataPath + "/CSV/" + "score.csv");
         return Application.dataPath + "/CSV/" + "score.csv";
-#elif UNITY_ANDROID
-        return Application.persistentDataPath + "score.csv";
-#elif UNITY_IPHONE
-        return Application.persistentDataPath + "score.csv";
+#elif UNITY_ANDROID || UNITY_IPHONE
+        if (!File.Exists(Application.persistentDataPath + "/score.csv"))
+            SaveCSV(Application.persistentDataPath + "/score.csv");
+        return Application.persistentDataPath + "/score.csv";
 #else
         return Application.dataPath +"/CSV/"+"score.csv";
 #endif
@@ -271,9 +274,8 @@ public class ScoreManager : MonoBehaviour
         if (streamReader == null)
         {
             Debug.Log("Score list file not found");
-            Debug.Log("Creating new CSV");
             streamReader.Close();
-            EndSessionConcludeScore();
+            return;
         }
 
         while (true)
@@ -324,15 +326,20 @@ public class ScoreManager : MonoBehaviour
                 .Append(score.m_hatId.ToString()).Append(',')
                 .Append(score.m_faceId.ToString()).Append(',')
                 .Append(score.m_colourId.ToString());
-                
         }
 
         SaveCSV(GetFilePath(), stringBuilder.ToString());
     }
 
-    public void SaveCSV(string filePath, string data)
+    private void SaveCSV(string filePath)
     {
-        StreamWriter outStream = System.IO.File.CreateText(filePath);
+        StreamWriter outStream = File.CreateText(filePath);
+        outStream.Close();
+    }
+
+    private void SaveCSV(string filePath, string data)
+    {
+        StreamWriter outStream = File.CreateText(filePath);
         outStream.WriteLine(data);
         outStream.Close();
     }

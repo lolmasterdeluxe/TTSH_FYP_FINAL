@@ -1,4 +1,4 @@
-Id,Name,Mode,Score
+Id,Name,Mode,Score,HatId,FaceId,ColourId
 0,donavan lim,TOTAL,456,12,7,4
 0,donavan lim,SPS,36,12,7,4
 0,donavan lim,FIVESTONES,257,12,7,4
@@ -17,3 +17,10 @@ Id,Name,Mode,Score
 4,jack neo,TOTAL,368,6,2,2
 4,jack neo,SPS,19,6,2,2
 4,jack neo,FIVESTONES,349,6,2,2
+5,Prince Horace,TOTAL,693,8,2,4
+5,Prince Horace,COUNTRY_ERASERS,654,8,2,4
+5,Prince Horace,FLAPPY,39,8,2,4
+6,Neji,TOTAL,486,0,10,6
+6,Neji,CHAPTEH,306,0,10,6
+6,Neji,SPS,26,0,10,6
+6,Neji,FIVESTONES,154,0,10,6
