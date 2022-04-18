@@ -31,10 +31,10 @@ public class SpriteScalingScript : MonoBehaviour
 
     private bool playerCollidesWithEnvironment, playerCollidesWithNPC;
 
-    PlayerKeyboardMovement playerMovement;
-    PlayerJoystickMovement playerMovement2;
-    PlayerDpadMovement playerMovement3;
-    PlayerTouchMovement playerMovement4;
+    private PlayerKeyboardMovement playerMovement;
+    private PlayerJoystickMovement playerMovement2;
+    private PlayerDpadMovement playerMovement3;
+    private PlayerTouchMovement playerMovement4;
 
     #endregion
 
@@ -109,14 +109,14 @@ public class SpriteScalingScript : MonoBehaviour
         }
         else if (playerCollidesWithNPC)
         {
-            if (transform.position.y > NPC.transform.position.y)
+            if (transform.position.y > NPC.transform.position.y + NPC.GetComponent<InteractNPC>().Offset)
             {
                 GetComponent<SpriteRenderer>().sortingLayerName = "NPC";
                 GetComponent<SpriteRenderer>().sortingOrder = 1;
                 HatSprite.sortingLayerName = "NPC";
                 HatSprite.sortingOrder = 2;
                 FaceSprite.sortingLayerName = "NPC";
-                FaceSprite.sortingOrder = 2;
+                FaceSprite.sortingOrder = 3;
             }
             else
             {
@@ -125,7 +125,7 @@ public class SpriteScalingScript : MonoBehaviour
                 HatSprite.sortingLayerName = "Player";
                 HatSprite.sortingOrder = 4;
                 FaceSprite.sortingLayerName = "Player";
-                FaceSprite.sortingOrder = 4;
+                FaceSprite.sortingOrder = 5;
             }
         }
         else
@@ -135,7 +135,7 @@ public class SpriteScalingScript : MonoBehaviour
             HatSprite.sortingLayerName = "Player";
             HatSprite.sortingOrder = 4;
             FaceSprite.sortingLayerName = "Player";
-            FaceSprite.sortingOrder = 4;
+            FaceSprite.sortingOrder = 5;
         }
     }
 
@@ -152,10 +152,10 @@ public class SpriteScalingScript : MonoBehaviour
         //firstly, we check the tag of the collided gameObject
         if (other.gameObject.tag == "EnvironmentObjects")
             playerCollidesWithEnvironment = true;
-        else if (other.gameObject.tag == "NPC")
+        else if (other.gameObject.tag == "NPC Sprite")
         {
             playerCollidesWithNPC = true;
-            NPC = other.gameObject;
+            NPC = other.transform.parent.gameObject;
         }
     }
 
@@ -163,7 +163,7 @@ public class SpriteScalingScript : MonoBehaviour
     {
         if (other.gameObject.tag == "EnvironmentObjects")
             playerCollidesWithEnvironment = false;
-        else if (other.gameObject.tag == "NPC")
+        else if (other.gameObject.tag == "NPC Sprite")
             playerCollidesWithNPC = false;
     }
     #endregion

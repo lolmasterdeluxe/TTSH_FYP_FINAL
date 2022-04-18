@@ -885,7 +885,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 574e8a78dc3bab74cbcaff7d39f24bbb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3365,6 +3365,38 @@ MonoBehaviour:
     m_itemType: 0
     m_sprite: {fileID: 21300000, guid: 99903bbc7f5c7ff44bf984fd7c76639c, type: 3}
     m_color: {r: 0, g: 0, b: 0, a: 0}
+  - m_name: Banana
+    m_itemType: 0
+    m_sprite: {fileID: 21300000, guid: 98f0ae1f0d271a24fa1fa49259212f39, type: 3}
+    m_color: {r: 0, g: 0, b: 0, a: 0}
+  - m_name: Baseball Cap
+    m_itemType: 0
+    m_sprite: {fileID: 21300000, guid: fa44d7742402f504abc355b82cc648f7, type: 3}
+    m_color: {r: 0, g: 0, b: 0, a: 0}
+  - m_name: Jester Hat
+    m_itemType: 0
+    m_sprite: {fileID: 21300000, guid: defe6902cf9544046bb500e9e081a0f5, type: 3}
+    m_color: {r: 0, g: 0, b: 0, a: 0}
+  - m_name: Ribbon
+    m_itemType: 0
+    m_sprite: {fileID: 21300000, guid: 036eea25861d7954cad84f2c1b54d698, type: 3}
+    m_color: {r: 0, g: 0, b: 0, a: 0}
+  - m_name: Sailor Hat
+    m_itemType: 0
+    m_sprite: {fileID: 21300000, guid: b9120e0b7eb34b741a33744fa4034bed, type: 3}
+    m_color: {r: 0, g: 0, b: 0, a: 0}
+  - m_name: Spinner Hat
+    m_itemType: 0
+    m_sprite: {fileID: 21300000, guid: a66c6467415a81f478371d14159bd1af, type: 3}
+    m_color: {r: 0, g: 0, b: 0, a: 0}
+  - m_name: Sun Hat
+    m_itemType: 0
+    m_sprite: {fileID: 21300000, guid: b94d6bde8664b934fbbbace4da320211, type: 3}
+    m_color: {r: 0, g: 0, b: 0, a: 0}
+  - m_name: Top Hat
+    m_itemType: 0
+    m_sprite: {fileID: 21300000, guid: acb92bea4cbfb1944a72c2595c3903ee, type: 3}
+    m_color: {r: 0, g: 0, b: 0, a: 0}
   m_facePool:
   - m_name: Default Face
     m_itemType: 1
@@ -3409,6 +3441,34 @@ MonoBehaviour:
   - m_name: Chinese Headband
     m_itemType: 1
     m_sprite: {fileID: 21300000, guid: 6c52eb1c09806084cacd363cf466c63d, type: 3}
+    m_color: {r: 0, g: 0, b: 0, a: 0}
+  - m_name: Dog Mask
+    m_itemType: 1
+    m_sprite: {fileID: 21300000, guid: 7edfca8efb9d9124d9a5b0c35bddb239, type: 3}
+    m_color: {r: 0, g: 0, b: 0, a: 0}
+  - m_name: Duck Mask
+    m_itemType: 1
+    m_sprite: {fileID: 21300000, guid: 137951124b993c54ab7ee88e5a4b296b, type: 3}
+    m_color: {r: 0, g: 0, b: 0, a: 0}
+  - m_name: Happy Theatre Mask
+    m_itemType: 1
+    m_sprite: {fileID: 21300000, guid: 2159f81279b94224dace7c0ede23681c, type: 3}
+    m_color: {r: 0, g: 0, b: 0, a: 0}
+  - m_name: Sad Theatre Mask
+    m_itemType: 1
+    m_sprite: {fileID: 21300000, guid: d82042aea00b6f245b194ba6859effc0, type: 3}
+    m_color: {r: 0, g: 0, b: 0, a: 0}
+  - m_name: Lazy Eye Patch
+    m_itemType: 1
+    m_sprite: {fileID: 21300000, guid: 8c2a1f24ab4c9f9449e693f6ca5149ef, type: 3}
+    m_color: {r: 0, g: 0, b: 0, a: 0}
+  - m_name: Plague Doc Mask
+    m_itemType: 1
+    m_sprite: {fileID: 21300000, guid: c7c5d6a34f743974796af28ef2f4d396, type: 3}
+    m_color: {r: 0, g: 0, b: 0, a: 0}
+  - m_name: Owl Mask
+    m_itemType: 1
+    m_sprite: {fileID: 21300000, guid: d26366fe2b96b434fbb1c014758b877b, type: 3}
     m_color: {r: 0, g: 0, b: 0, a: 0}
   m_colorPool:
   - m_name: Default Colour

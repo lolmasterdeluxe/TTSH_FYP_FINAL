@@ -174,22 +174,13 @@ public class CustomizerManager : MonoBehaviour
         m_colorSprite.sprite = null;*/
 
         if (hatCustomizable != null && hatCustomizable.m_itemType == ItemType.HAT)
-        {
             m_hatSprite.sprite = hatCustomizable.m_sprite;
-            m_hatSprite.sortingOrder = 4;
-        }
 
         if (faceCustomizable != null && faceCustomizable.m_itemType == ItemType.FACE)
-        {
             m_eyeSprite.sprite = faceCustomizable.m_sprite;
-            m_eyeSprite.sortingOrder = 4;
-        }
 
         if (colorCustomizable != null && colorCustomizable.m_itemType == ItemType.COLOR)
-        {
             m_colorSprite.color = colorCustomizable.m_color;
-            m_colorSprite.sortingOrder = 3;
-        }
 
     }
 

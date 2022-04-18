@@ -17,6 +17,7 @@ public class InteractNPC : MonoBehaviour
     public AudioSource BGM;
 
     private bool InRange = false;
+    public float Offset;
 
     void Start()
     {

@@ -73,7 +73,7 @@ public class LeaderboardManager : MonoBehaviour
     [SerializeField] private CanvasGroup creditsScreenCanvasGroup;
     [SerializeField] private CanvasGroup musicCreditsCanvasGroup;
 
-    [SerializeField] private GameObject Animations;
+    [SerializeField] private GameObject Animations, RankPanel, RankTemplate;
 
     [SerializeField] private bool m_isFinalGame;
 
@@ -303,6 +303,24 @@ public class LeaderboardManager : MonoBehaviour
             rankThreeSlot.transform.GetChild(2).GetComponent<TMP_Text>().text = sortedScoreList[2].m_score.ToString();
         }
 
+        if (sortedScoreList.ElementAtOrDefault(3) != null)
+        {
+            RankTemplate.SetActive(true);
+            RankTemplate.transform.GetChild(0).GetComponent<TMP_Text>().text = (sortedScoreList.IndexOf(sortedScoreList[3]) + 1).ToString();
+            UpdateAvatar(RankTemplate.transform.GetChild(1).gameObject, sortedScoreList[3]);
+            RankTemplate.transform.GetChild(2).GetComponent<TMP_Text>().text = sortedScoreList[3].m_username;
+            RankTemplate.transform.GetChild(3).GetComponent<TMP_Text>().text = sortedScoreList[3].m_score.ToString();
+        }
+
+        for (int i = 4; i < sortedScoreList.Count; ++i)
+        {
+            GameObject rankSlot = Instantiate(RankTemplate, RankPanel.transform);
+            rankSlot.transform.GetChild(0).GetComponent<TMP_Text>().text = (sortedScoreList.IndexOf(sortedScoreList[i]) + 1).ToString();
+            UpdateAvatar(rankSlot.transform.GetChild(1).gameObject, sortedScoreList[i]);
+            rankSlot.transform.GetChild(2).GetComponent<TMP_Text>().text = sortedScoreList[i].m_username;
+            rankSlot.transform.GetChild(3).GetComponent<TMP_Text>().text = sortedScoreList[i].m_score.ToString();
+        }
+
         UpdateAvatar(currentRankSlot.transform.GetChild(1).gameObject, currentScore);
         currentRankSlot.transform.GetChild(0).GetComponent<TMP_Text>().text = (sortedScoreList.IndexOf(currentScore) + 1).ToString();
         currentRankSlot.transform.GetChild(3).GetComponent<TMP_Text>().text = currentScore.m_score.ToString();
@@ -355,6 +373,8 @@ public class LeaderboardManager : MonoBehaviour
         {
             gameObject.SetActive(false);
             leaderboardPage.SetActive(false);
+            for (int i = 4; i < sortedScoreList.Count; ++i)
+                Destroy(RankPanel.transform.GetChild(i).gameObject);
         }
         else
             SceneManager.LoadScene("MainMenuGameScene");

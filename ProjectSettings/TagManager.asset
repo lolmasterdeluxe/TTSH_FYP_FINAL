@@ -25,6 +25,7 @@ TagManager:
   - RedHoop
   - Trees
   - Mynah
+  - NPC Sprite
   layers:
   - Default
   - TransparentFX
