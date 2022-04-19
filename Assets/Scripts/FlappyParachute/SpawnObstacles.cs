@@ -11,13 +11,11 @@ public class SpawnObstacles : MonoBehaviour
     [SerializeField]
     private Sprite PasirTree, TrumpetTree;
     private bool mynahSpawned = false, treeSpawned = false, balloonSpawned = false;
-    private float mynahSpawnRate, treeSpawnRate, pipeSpawnRate = 1.2f, balloonSpawnRate;
+    private float mynahSpawnRate, treeSpawnRate, pipeSpawnRate = 1.2f, balloonSpawnRate, mynahSpawnPattern;
     [SerializeField]
     private float mynahMinSpawnRate = 1f, mynahMaxSpawnRate = 3f, treeMinSpawnRate = 1f, treeMaxSpawnRate = 5f, mynahMinheight = 2f, mynahMaxheight = 4f;
     [SerializeField]
     private float balloonMinSpawnRate = 1f, balloonMaxSpawnRate = 2f, balloonMinHeight = 1f,balloonMaxHeight = 4f;
-
-    
 
     /*private void OnEnable()
     {
@@ -66,27 +64,43 @@ public class SpawnObstacles : MonoBehaviour
         GameObject mynah = ObjectPooling.SharedInstance.GetPooledObject("Mynah");
         if (mynah != null)
         {
+            mynahSpawnPattern = Random.Range(0, 3);
             mynah.transform.position = transform.position;
             mynah.transform.rotation = Quaternion.identity;
             mynah.transform.position += Vector3.up * Random.Range(mynahMinheight, mynahMaxheight);
+
+            if (mynahSpawnPattern == 1 && ScoreManager.Instance.GetCurrentGameScore() > 20)
+                mynah.GetComponent<MynahPatrol>().enabled = true;
+            else if (mynahSpawnPattern == 2 && ScoreManager.Instance.GetCurrentGameScore() > 40)
+            {
+                mynah.GetComponent<MynahPatrol>().enabled = false;
+                GameObject[] mynahFlock = new GameObject[3];
+                for (int i = 0; i < 3; ++i)
+                {
+                    mynahFlock[i] = ObjectPooling.SharedInstance.GetPooledObject("Mynah");
+                    mynahFlock[i].GetComponent<MynahPatrol>().enabled = false;
+                    mynahFlock[i].SetActive(true);
+                }
+                mynahFlock[1].transform.position = new Vector2(mynah.transform.position.x + 1, mynah.transform.position.y - 1);
+                mynahFlock[2].transform.position = new Vector2(mynah.transform.position.x + 1, mynah.transform.position.y + 1);
+            }
+            else
+                mynah.GetComponent<MynahPatrol>().enabled = false;
+
             mynah.SetActive(true);
             mynahSpawned = true;
         }
-        //GameObject mynah = Instantiate(Mynah, transform.position, Quaternion.identity);
-        //mynah.transform.position += Vector3.up * Random.Range(mynahMinheight, mynahMaxheight);
-        //mynahSpawned = true;
     }
 
     private void spawnTree()
     {
         if (!FlappyGameManager.Instance.m_gameStarted || FlappyGameManager.Instance.m_gameEnded)
             return;
-       // GameObject tree = Instantiate(Tree, transform.position, Quaternion.identity);
+
         GameObject tree = ObjectPooling.SharedInstance.GetPooledObject("Trees");
         if (tree != null)
-        {
             tree.SetActive(true);
-        }
+
         int tree_type = Random.Range(0, 3);
         if (tree_type == 1)
             tree.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = PasirTree;

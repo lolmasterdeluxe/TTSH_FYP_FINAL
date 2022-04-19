@@ -25,10 +25,7 @@ public class MoveObstacle : MonoBehaviour
         transform.position += Vector3.left * speed * Time.deltaTime;
 
         if (transform.position.x < leftEdgeofscreen)
-        {
-            //Destroy(gameObject);
             gameObject.SetActive(false);
-        }
     }
 
     private void PointsScale()

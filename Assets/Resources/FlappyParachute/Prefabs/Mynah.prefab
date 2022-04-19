@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4052972847635703252}
-  - component: {fileID: 4052972847635703272}
-  - component: {fileID: 4052972847635703255}
-  - component: {fileID: 446584122743424191}
-  - component: {fileID: 4052972847635703253}
+  - component: {fileID: 1787693876585230013}
+  - component: {fileID: 7450987281507007464}
+  - component: {fileID: 515884954954956895}
+  - component: {fileID: 4553835147400375766}
+  - component: {fileID: 5647419471760423685}
   m_Layer: 0
   m_Name: Mynah
   m_TagString: Mynah
@@ -35,7 +36,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4052972847635703272
+--- !u!212 &1787693876585230013
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4052972847635703255
+--- !u!114 &7450987281507007464
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,7 +100,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
---- !u!58 &446584122743424191
+--- !u!114 &515884954954956895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4052972847635703251}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a21958a9d5cd447b1a59ca402d8d10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSpeed: 1
+  maxSpeed: 3
+  minHeightRand: -3
+  maxHeightRand: 3
+--- !u!58 &4553835147400375766
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,7 +132,7 @@ CircleCollider2D:
   m_Offset: {x: 0.05, y: 0.27}
   serializedVersion: 2
   m_Radius: 0.75
---- !u!95 &4052972847635703253
+--- !u!95 &5647419471760423685
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -158,8 +175,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4952283841072164265}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.93, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4052972847635703252}
