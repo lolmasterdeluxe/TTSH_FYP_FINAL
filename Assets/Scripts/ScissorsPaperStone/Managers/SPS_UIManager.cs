@@ -181,6 +181,7 @@ public class SPS_UIManager : MonoBehaviour
     public void AddObjectiveValue()
     {
         i_objectiveValue += 1;
+        ScoreManager.Instance.AddCurrentGameScore(10);
         sweetCount++;
     }
 

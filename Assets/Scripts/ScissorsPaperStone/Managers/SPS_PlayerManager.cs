@@ -384,11 +384,6 @@ public class SPS_PlayerManager : MonoBehaviour
                     //add combo here
                     ComboManager.Instance.AddCombo();
 
-
-                    //Destroy(other.gameObject);
-                    //Destroy(other.gameObject.GetComponent<Rigidbody2D>());
-                    
-                    
                     StartCoroutine(objectManagerInstance.EndsEnemy(other.GetComponent<Animator>(), other.gameObject));
                     Debug.Log("stone Beaten");
                     #region Unused
@@ -424,8 +419,6 @@ public class SPS_PlayerManager : MonoBehaviour
                     //add combo here
                     ComboManager.Instance.AddCombo();
 
-                    //Destroy(other.gameObject);
-                    //Destroy(other.gameObject.GetComponent<Rigidbody2D>());
                     StartCoroutine(objectManagerInstance.EndsEnemy(other.GetComponent<Animator>(), other.gameObject));
                     Debug.Log("Scissors Beaten");
 
@@ -463,11 +456,8 @@ public class SPS_PlayerManager : MonoBehaviour
                     //add the value HERE
                     uiManagerInstance.AddObjectiveValue();
                     
-                    //destroy it since it has been collected
-                    //Destroy(other.gameObject);
-                    //Destroy(other.gameObject.GetComponent<Rigidbody2D>());
                     other.gameObject.SetActive(false);
-                    
+
                     Debug.Log("Powerup Falsed");
                     //play sounds HERE
                     powerupSFX.Play();
@@ -538,10 +528,6 @@ public class SPS_PlayerManager : MonoBehaviour
                 //remove the object from the list
                 objectManagerInstance.objectWaveList.Remove(other.gameObject);
 
-
-                //destroy it since it has been collected
-                //Destroy(other.gameObject);
-                //Destroy(other.gameObject.GetComponent<Rigidbody2D>());
                 other.gameObject.SetActive(false);
                 transform.GetChild(1).GetComponent<ParticleSystem>().time = 0;
                 transform.GetChild(1).GetComponent<ParticleSystem>().Play();
@@ -557,9 +543,7 @@ public class SPS_PlayerManager : MonoBehaviour
         if (other.gameObject.tag == "Powerup")
         {
             Destroy(other.gameObject);
-            //transform.GetChild(1).GetComponent<ParticleSystem>().Simulate(0,false,true);;
             transform.GetChild(1).GetComponent<ParticleSystem>().Stop();
-            Debug.Log("I am the Elden Lord");
         }
             
     }
