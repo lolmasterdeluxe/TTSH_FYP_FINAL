@@ -64,14 +64,15 @@ public class LeaderboardManager : MonoBehaviour
     [SerializeField] private TMP_Text overallScoreText;
     [SerializeField] private TMP_Text standardGameScoreText;
 
-    [SerializeField] private GameObject exitButton;
     [SerializeField] private GameObject leaderboardPage;
 
-    [SerializeField] private GameObject splashScreenButton;
-    [SerializeField] private CanvasGroup thanksScreenCanvasGroup;
-    [SerializeField] private CanvasGroup goodJobScreenCanvasGroup;
-    [SerializeField] private CanvasGroup creditsScreenCanvasGroup;
-    [SerializeField] private CanvasGroup musicCreditsCanvasGroup;
+    [SerializeField] private GameObject exitButton;
+    [SerializeField] private GameObject exitCreditsButton;
+    [SerializeField] private CanvasGroup artistThanksScreen;
+    [SerializeField] private CanvasGroup programmerThanksScreen;
+    [SerializeField] private CanvasGroup musicCreditsScreen;
+    [SerializeField] private CanvasGroup specialThanksScreen;
+    [SerializeField] private CanvasGroup thankYouScreen;
 
     [SerializeField] private GameObject Animations, RankPanel, RankTemplate;
 
@@ -84,47 +85,44 @@ public class LeaderboardManager : MonoBehaviour
         leaderboardPage.SetActive(true);
         TweenManager.Instance.AnimateFade(endScreenCanvasGroup, 0, 1);
         TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 1, 1);
-
-        if (m_isFinalGame)
-            StartCoroutine(ShowFinalGameAnimation());
     }
 
-    private IEnumerator ITransitionToLeaderBoard()
+    public void ShowCredits()
     {
-        yield return new WaitForSeconds(0);
-        TweenManager.Instance.AnimateFade(endScreenCanvasGroup, 0, 1);
-        TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 1, 1);
-
-        //StartCoroutine(ShowFinalGameAnimation());
+        TweenManager.Instance.AnimateFade(artistThanksScreen, 0, 0);
+        TweenManager.Instance.AnimateFade(programmerThanksScreen, 0, 0);
+        TweenManager.Instance.AnimateFade(musicCreditsScreen, 0, 0);
+        TweenManager.Instance.AnimateFade(specialThanksScreen, 0, 0);
+        TweenManager.Instance.AnimateFade(thankYouScreen, 0, 0);
+        exitCreditsButton.SetActive(true);
+        m_isFinalGame = true;
+        Time.timeScale = 1f;
     }
 
     private void OnEnable()
     {
-        m_isFinalGame = false;
-        splashScreenButton.SetActive(false);
         LeaderboardBGM.Play();
-        /*if (ScoreManager.Instance.GetCurrentSavedScoreCount() >= 4 || m_isFinalGame)
+        if (!m_isFinalGame)
         {
-            ScoreManager.Instance.ConcludeGameScore();
-            exitButton.SetActive(false);
-            splashScreenButton.SetActive(true);
-            m_isFinalGame = true;
-        }*/
-
-        UpdateAllLeaderboardUIData();
-        TweenManager.Instance.AnimateFade(endScreenCanvasGroup, 1, 1);
-        //StartCoroutine(ShowLeaderboard());
+            Debug.Log("Leaderboard enabled");
+            UpdateAllLeaderboardUIData();
+            TweenManager.Instance.AnimateFade(endScreenCanvasGroup, 1, 1);
+            TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 0, 0);
+            endScreenCanvasGroup.gameObject.SetActive(true);
+        }
+        else
+            StartCoroutine(ShowFinalGameAnimation());
     }
 
     public void UpdateAllLeaderboardUIData()
     {
         TweenManager.Instance.AnimateFade(endScreenCanvasGroup, 0, 0);
         TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 0, 0);
-        TweenManager.Instance.AnimateFade(goodJobScreenCanvasGroup, 0, 0);
-        TweenManager.Instance.AnimateFade(thanksScreenCanvasGroup, 0, 0);
-        TweenManager.Instance.AnimateFade(musicCreditsCanvasGroup, 0, 0);
-        TweenManager.Instance.AnimateFade(creditsScreenCanvasGroup, 0, 0);
-        thanksScreenCanvasGroup.gameObject.SetActive(false);
+        TweenManager.Instance.AnimateFade(artistThanksScreen, 0, 0);
+        TweenManager.Instance.AnimateFade(programmerThanksScreen, 0, 0);
+        TweenManager.Instance.AnimateFade(musicCreditsScreen, 0, 0);
+        TweenManager.Instance.AnimateFade(specialThanksScreen, 0, 0);
+        TweenManager.Instance.AnimateFade(thankYouScreen, 0, 0);
 
         sortedScoreList = ScoreManager.Instance.m_allScoreList.Where(x => x.m_gamemode == leaderboardType.ToString()).OrderByDescending(x => x.m_score).ToList();
         currentScore = sortedScoreList.Where(x => x.m_username == ScoreManager.Instance.m_currentUsername).FirstOrDefault();
@@ -207,46 +205,48 @@ public class LeaderboardManager : MonoBehaviour
         standardGameScoreText.text = currentScore.m_score.ToString();
     }
 
-    public IEnumerator ShowLeaderboard()
-    {
-        yield return new WaitForSeconds(3);
-        TweenManager.Instance.AnimateFade(endScreenCanvasGroup, 0, 1);
-        TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 1, 1);
-        
-        if (m_isFinalGame)
-            StartCoroutine(ShowFinalGameAnimation());
-    }
-
     public IEnumerator ShowFinalGameAnimation()
     {
+        Debug.Log("Runned");
         // Display goodjob
-        yield return new WaitForSeconds(3);
-        TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 0, 1);
-        TweenManager.Instance.AnimateFade(goodJobScreenCanvasGroup, 1, 1);
+        endScreenCanvasGroup.gameObject.SetActive(false);
+        TweenManager.Instance.AnimateFade(artistThanksScreen, 1, 1);
 
         // Display overall leaderboard
-        ScoreManager.Instance.m_currentGamemode = ScoreManager.Gamemode.TOTAL;
-        UpdateAllLeaderboardUIData();
         yield return new WaitForSeconds(3);
-        TweenManager.Instance.AnimateFade(goodJobScreenCanvasGroup, 0, 1);
-        TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 1, 1);
+        TweenManager.Instance.AnimateFade(artistThanksScreen, 0, 1);
+        TweenManager.Instance.AnimateFade(programmerThanksScreen, 1, 1);
 
         // Display credits screen
         yield return new WaitForSeconds(3);
-        TweenManager.Instance.AnimateFade(leaderboardCanvasGroup, 0, 1);
-        TweenManager.Instance.AnimateFade(creditsScreenCanvasGroup, 1, 1);
+        TweenManager.Instance.AnimateFade(programmerThanksScreen, 0, 1);
+        TweenManager.Instance.AnimateFade(musicCreditsScreen, 1, 1);
 
         // Display music credits screen
         yield return new WaitForSeconds(3);
-        TweenManager.Instance.AnimateFade(creditsScreenCanvasGroup, 0, 1);
-        TweenManager.Instance.AnimateFade(musicCreditsCanvasGroup, 1, 1);
+        TweenManager.Instance.AnimateFade(musicCreditsScreen, 0, 1);
+        TweenManager.Instance.AnimateFade(specialThanksScreen, 1, 1);
 
         // Display thanks for playing screen
         yield return new WaitForSeconds(3);
-        thanksScreenCanvasGroup.gameObject.SetActive(true);
-        leaderboardCanvasGroup.gameObject.SetActive(false);
-        TweenManager.Instance.AnimateFade(musicCreditsCanvasGroup, 0, 1);
-        TweenManager.Instance.AnimateFade(thanksScreenCanvasGroup, 1, 1);
+        TweenManager.Instance.AnimateFade(musicCreditsScreen, 0, 1);
+        TweenManager.Instance.AnimateFade(thankYouScreen, 1, 1);
+
+        yield return new WaitForSeconds(3);
+        TweenManager.Instance.AnimateFade(thankYouScreen, 0, 0);
+        exitCreditsButton.SetActive(false);
+        ExitLeaderboard();
+    }
+
+    public void StopCredits()
+    {
+        TweenManager.Instance.KillCanvasGroupTween(artistThanksScreen);
+        TweenManager.Instance.KillCanvasGroupTween(programmerThanksScreen);
+        TweenManager.Instance.KillCanvasGroupTween(musicCreditsScreen);
+        TweenManager.Instance.KillCanvasGroupTween(specialThanksScreen);
+        TweenManager.Instance.KillCanvasGroupTween(thankYouScreen);
+        exitCreditsButton.SetActive(false);
+        ExitLeaderboard();
     }
 
     public void UpdateLeaderboard()
@@ -371,10 +371,16 @@ public class LeaderboardManager : MonoBehaviour
         Debug.Log("exit leaderboard");
         if (SceneManager.GetActiveScene().name == "MainMenuGameScene")
         {
+            if (m_isFinalGame)
+                Time.timeScale = 0f;
+            else
+                for (int i = 4; i < sortedScoreList.Count; ++i)
+                    Destroy(RankPanel.transform.GetChild(i).gameObject);
+
+            m_isFinalGame = false;
             gameObject.SetActive(false);
             leaderboardPage.SetActive(false);
-            for (int i = 4; i < sortedScoreList.Count; ++i)
-                Destroy(RankPanel.transform.GetChild(i).gameObject);
+            Debug.Log("Leaderboard closed");
         }
         else
             SceneManager.LoadScene("MainMenuGameScene");

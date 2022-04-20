@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TweenManager : MonoBehaviour
 {
@@ -31,13 +32,14 @@ public class TweenManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        DOTween.defaultAutoPlay = AutoPlay.All;
+        DOTween.Init();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        DOTween.PlayAll();
     }
 
     public void AnimateEnlargeText(Transform goTransform, float strength, float duration)
@@ -61,7 +63,6 @@ public class TweenManager : MonoBehaviour
         goTransform.DOScale(new Vector3(strength, strength, strength), duration);
     }
 
-
     public void AnimateFloat(Transform goTransform, float timeTaken, Vector3 finalPos)
     {
         goTransform.DOMoveY(finalPos.y, timeTaken);
@@ -70,6 +71,11 @@ public class TweenManager : MonoBehaviour
     public void AnimateSpriteFade(SpriteRenderer goSprite, float alpha, float duration)
     {
         goSprite.DOFade(alpha, duration);
+    }
+
+    public void AnimateImageFade(Image goImage, float alpha, float duration)
+    {
+        goImage.DOFade(alpha, duration);
     }
 
     public void KillTween(GameObject gameObject)
