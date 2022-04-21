@@ -336,7 +336,7 @@ public class LeaderboardManager : MonoBehaviour
             avatar.transform.GetChild(i).GetComponent<Image>().enabled = false;
 
 
-        if (colorCustomizable != null && score.m_colourId != 0)
+        if (colorCustomizable != null)
         {
             avatar.transform.GetChild(0).GetComponent<Image>().color = colorCustomizable.m_color;
         }

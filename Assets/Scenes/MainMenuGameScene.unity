@@ -25416,6 +25416,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseButtonPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 3980006151387492473, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
 --- !u!1 &4580619492569134017
