@@ -69,6 +69,13 @@ public class CustomizeLinker : MonoBehaviour
     public void ChangeCharacterName()
     {
         DeclareScoreArray();
+        if (inputNameField.text == "Reset Leaderboard")
+        {
+            ScoreManager.Instance.DeleteCSV();
+            inputNameField.text = "";
+            return;
+        }
+
         if (inputNameField.text == "")
         {
             exitButton.interactable = false;

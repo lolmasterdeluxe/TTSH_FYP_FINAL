@@ -252,11 +252,11 @@ public class ScoreManager : MonoBehaviour
     {
 #if UNITY_EDITOR
         if (!File.Exists(Application.dataPath + "/CSV/" + "score.csv"))
-            SaveCSV(Application.dataPath + "/CSV/" + "score.csv");
+            CreateCSV(Application.dataPath + "/CSV/" + "score.csv");
         return Application.dataPath + "/CSV/" + "score.csv";
 #elif UNITY_ANDROID || UNITY_IPHONE
         if (!File.Exists(Application.persistentDataPath + "/score.csv"))
-            SaveCSV(Application.persistentDataPath + "/score.csv");
+            CreateCSV(Application.persistentDataPath + "/score.csv");
         return Application.persistentDataPath + "/score.csv";
 #else
         return Application.dataPath +"/CSV/"+"score.csv";
@@ -331,7 +331,7 @@ public class ScoreManager : MonoBehaviour
         SaveCSV(GetFilePath(), stringBuilder.ToString());
     }
 
-    private void SaveCSV(string filePath)
+    private void CreateCSV(string filePath)
     {
         StreamWriter outStream = File.CreateText(filePath);
         outStream.Close();
@@ -342,6 +342,17 @@ public class ScoreManager : MonoBehaviour
         StreamWriter outStream = File.CreateText(filePath);
         outStream.WriteLine(data);
         outStream.Close();
+    }
+
+    public void DeleteCSV()
+    {
+#if UNITY_EDITOR
+        File.Delete(Application.dataPath + "/CSV/" + "score.csv");
+#elif UNITY_ANDROID || UNITY_IPHONE
+        File.Delete(Application.persistentDataPath + "/score.csv");
+#else
+        File.Delete(Application.dataPath + "/CSV/" + "score.csv");
+#endif
     }
 
 
