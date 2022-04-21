@@ -3190,7 +3190,7 @@ GameObject:
   - component: {fileID: 777765597}
   - component: {fileID: 777765601}
   m_Layer: 5
-  m_Name: GameCanvas
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11248,6 +11248,10 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 7399625304873426539, guid: ce8630f55e7d3c34a955d49684032f00, type: 3}
+      propertyPath: PauseButton
+      value: 
+      objectReference: {fileID: 1568698729}
+    - target: {fileID: 7399625304873426539, guid: ce8630f55e7d3c34a955d49684032f00, type: 3}
       propertyPath: countdownText
       value: 
       objectReference: {fileID: 351875671}
@@ -11390,6 +11394,11 @@ PrefabInstance:
 --- !u!224 &1568698728 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3980006151387492472, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
+  m_PrefabInstance: {fileID: 1568698727}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1568698729 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3980006151387492473, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
   m_PrefabInstance: {fileID: 1568698727}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1576317556

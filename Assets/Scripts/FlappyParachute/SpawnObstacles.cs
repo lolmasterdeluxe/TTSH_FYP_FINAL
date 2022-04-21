@@ -69,9 +69,9 @@ public class SpawnObstacles : MonoBehaviour
             mynah.transform.rotation = Quaternion.identity;
             mynah.transform.position += Vector3.up * Random.Range(mynahMinheight, mynahMaxheight);
 
-            if (mynahSpawnPattern == 1 && ScoreManager.Instance.GetCurrentGameScore() > 20)
+            if (mynahSpawnPattern == 1 && ScoreManager.Instance.GetCurrentGameScore() > 40)
                 mynah.GetComponent<MynahPatrol>().enabled = true;
-            else if (mynahSpawnPattern == 2 && ScoreManager.Instance.GetCurrentGameScore() > 40)
+            else if (mynahSpawnPattern == 2 && ScoreManager.Instance.GetCurrentGameScore() > 80)
             {
                 mynah.GetComponent<MynahPatrol>().enabled = false;
                 GameObject[] mynahFlock = new GameObject[3];
@@ -121,9 +121,9 @@ public class SpawnObstacles : MonoBehaviour
 
         int balloonTypeRand = Random.Range(0, 6);
 
-        if (balloonTypeRand >= 0 && balloonTypeRand <= 2)
+        if (balloonTypeRand <= 2)
             balloon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.white;
-        else if (balloonTypeRand >= 3 && balloonTypeRand <= 4)
+        else if (balloonTypeRand <= 4)
             balloon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.yellow;
         else if (balloonTypeRand == 5)
             balloon.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.blue;

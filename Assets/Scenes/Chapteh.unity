@@ -1659,6 +1659,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7399625304873426539, guid: ce8630f55e7d3c34a955d49684032f00, type: 3}
+      propertyPath: PauseButton
+      value: 
+      objectReference: {fileID: 1323654765}
+    - target: {fileID: 7399625304873426539, guid: ce8630f55e7d3c34a955d49684032f00, type: 3}
       propertyPath: ChaptehTimer
       value: 60
       objectReference: {fileID: 0}
@@ -11802,6 +11806,11 @@ PrefabInstance:
 --- !u!224 &1323654764 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3980006151387492472, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
+  m_PrefabInstance: {fileID: 1323654763}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1323654765 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3980006151387492473, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
   m_PrefabInstance: {fileID: 1323654763}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1343504311

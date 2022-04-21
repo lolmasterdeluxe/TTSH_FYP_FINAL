@@ -3301,6 +3301,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7399625304873426539, guid: ce8630f55e7d3c34a955d49684032f00, type: 3}
+      propertyPath: PauseButton
+      value: 
+      objectReference: {fileID: 1556188442}
+    - target: {fileID: 7399625304873426539, guid: ce8630f55e7d3c34a955d49684032f00, type: 3}
       propertyPath: countdownText
       value: 
       objectReference: {fileID: 1020574504}
@@ -5076,6 +5080,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1551772255}
   m_CullTransparentMesh: 0
+--- !u!1 &1556188442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3980006151387492473, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
+  m_PrefabInstance: {fileID: 1759891365}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1578488516
 GameObject:
   m_ObjectHideFlags: 0

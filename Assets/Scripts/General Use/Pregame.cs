@@ -34,6 +34,8 @@ public class Pregame : MonoBehaviour
 
     [SerializeField] private int SPSDifficulty = 1, FiveStoneDifficulty = 1;
 
+    [SerializeField] private GameObject PauseButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -120,6 +122,7 @@ public class Pregame : MonoBehaviour
                 TweenManager.Instance.AnimateFade(mainUICanvasGroup, 1f, 1f);
                 TweenManager.Instance.AnimateFade(panelCanvasGroup, 0f, 0f);
                 countdownText.gameObject.SetActive(false);
+                PauseButton.SetActive(true);
                 SPS_UIManager.Instance.StartGame(SPSTimer, SPSDifficulty);
                 break;
             case GameMode.FIVE_STONES:
@@ -127,6 +130,7 @@ public class Pregame : MonoBehaviour
                 TweenManager.Instance.AnimateFade(mainUICanvasGroup, 1f, 0.5f);
                 TweenManager.Instance.AnimateFade(panelCanvasGroup, 1f, 0.5f);
                 countdownText.gameObject.SetActive(false);
+                PauseButton.SetActive(true);
                 FiveStonesGameManager.Instance.StartGame(FiveStoneTimer, FiveStoneDifficulty);
                 break;
             case GameMode.CHAPTEH:
@@ -134,6 +138,7 @@ public class Pregame : MonoBehaviour
                 TweenManager.Instance.AnimateFade(mainUICanvasGroup, 1f, 1f);
                 TweenManager.Instance.AnimateFade(panelCanvasGroup, 0f, 0f);
                 countdownText.gameObject.SetActive(false);
+                PauseButton.SetActive(true);
                 ChaptehGameManager.Instance.StartGame(ChaptehTimer);
                 break;
             case GameMode.FLAPPY_BIRD:
@@ -141,6 +146,7 @@ public class Pregame : MonoBehaviour
                 TweenManager.Instance.AnimateFade(mainUICanvasGroup, 1f, 1f);
                 TweenManager.Instance.AnimateFade(panelCanvasGroup, 0f, 0f);
                 countdownText.gameObject.SetActive(false);
+                PauseButton.SetActive(true);
                 FlappyGameManager.Instance.StartGame();
                 break;
             case GameMode.COUNTRY_ERASERS:
@@ -148,6 +154,7 @@ public class Pregame : MonoBehaviour
                 TweenManager.Instance.AnimateFade(mainUICanvasGroup, 1f, 1f);
                 TweenManager.Instance.AnimateFade(panelCanvasGroup, 0f, 0f);
                 countdownText.gameObject.SetActive(false);
+                PauseButton.SetActive(true);
                 EraserGameManager.Instance.StartGame(CountryEraserTimer);
                 break;
             default:

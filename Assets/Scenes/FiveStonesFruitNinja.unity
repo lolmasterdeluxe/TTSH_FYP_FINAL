@@ -1451,6 +1451,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
+--- !u!1 &464898106 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3980006151387492473, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
+  m_PrefabInstance: {fileID: 464898105}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &466906146
 GameObject:
   m_ObjectHideFlags: 0
@@ -8675,6 +8680,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7399625304873426539, guid: ce8630f55e7d3c34a955d49684032f00, type: 3}
+      propertyPath: PauseButton
+      value: 
+      objectReference: {fileID: 464898106}
     - target: {fileID: 7399625304873426539, guid: ce8630f55e7d3c34a955d49684032f00, type: 3}
       propertyPath: countdownText
       value: 

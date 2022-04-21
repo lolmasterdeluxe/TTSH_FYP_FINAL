@@ -7,7 +7,7 @@ public class MynahPatrol : MonoBehaviour
     [SerializeField]
     private float minSpeed, maxSpeed, minHeightRand, maxHeightRand;
     private float speed, initialSpeed, minHeight, maxHeight;
-    private bool AddSpeed = false, rise = false;
+    private bool rise = false;
 
     private void Start()
     {
@@ -35,16 +35,5 @@ public class MynahPatrol : MonoBehaviour
             transform.position += Vector3.up * speed * Time.deltaTime;
         else
             transform.position -= Vector3.up * speed * Time.deltaTime;
-    }
-
-    private void PointsScale()
-    {
-        if (ScoreManager.Instance.GetCurrentGameScore() % 10 == 0 && AddSpeed)
-        {
-            speed += ScoreManager.Instance.GetCurrentGameScore() / 10;
-            AddSpeed = false;
-        }
-        else if (ScoreManager.Instance.GetCurrentGameScore() % 10 != 0)
-            AddSpeed = true;
     }
 }

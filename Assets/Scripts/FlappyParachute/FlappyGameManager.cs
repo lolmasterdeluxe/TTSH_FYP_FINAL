@@ -112,7 +112,7 @@ public class FlappyGameManager : MonoBehaviour
     }
     public void increaseScore()
     {
-        ScoreManager.Instance.AddCurrentGameScore(1);
+        ScoreManager.Instance.AddCurrentGameScore(2);
         ObstaclesPassed++;
     }
 
@@ -120,17 +120,17 @@ public class FlappyGameManager : MonoBehaviour
     {
         if (balloonColor.color == Color.white)
         {
-            ScoreManager.Instance.AddCurrentGameScore(2);
+            ScoreManager.Instance.AddCurrentGameScore(5);
             BalloonsCollected++;
         }
         else if (balloonColor.color == Color.yellow)
         {
-            ScoreManager.Instance.AddCurrentGameScore(4);
+            ScoreManager.Instance.AddCurrentGameScore(10);
             BalloonsCollected++;
         }
         else if (balloonColor.color == Color.blue)
         {
-            ScoreManager.Instance.AddCurrentGameScore(8);
+            ScoreManager.Instance.AddCurrentGameScore(20);
             BalloonsCollected++;
         }
     }
@@ -149,8 +149,8 @@ public class FlappyGameManager : MonoBehaviour
 
     private void ScaleDifficulty()
     {
-        if (ScoreManager.Instance.GetCurrentGameScore() > 0 && ScoreManager.Instance.GetCurrentGameScore() % 10 == 0)
-            SpeedMultiplier = (float)ScoreManager.Instance.GetCurrentGameScore() / 20;
+        if (ScoreManager.Instance.GetCurrentGameScore() > 0)
+            SpeedMultiplier = (float)ScoreManager.Instance.GetCurrentGameScore() / 40;
         if (SpeedMultiplier > 2)
             SpeedMultiplier = 2;
         if (SpeedMultiplier < 1)
