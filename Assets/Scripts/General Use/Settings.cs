@@ -97,8 +97,11 @@ public class Settings : MonoBehaviour
                 }
                 break;
             case GameMode.COUNTRY_ERASERS:
-                EraserGameManager.Instance.audioSources[0].volume = masterVolSlider.value;
-                masterVolText.text = Mathf.RoundToInt(masterVolSlider.value * 100).ToString();
+                for (int i = 0; i < 4; i++)
+                {
+                    EraserGameManager.Instance.audioSources[i].volume = masterVolSlider.value;
+                    masterVolText.text = Mathf.RoundToInt(masterVolSlider.value * 100).ToString();
+                }
                 break;
         }
     }
@@ -190,8 +193,11 @@ public class Settings : MonoBehaviour
                 }
                 break;
             case GameMode.COUNTRY_ERASERS:
-                EraserGameManager.Instance.audioSources[0].volume = sfxVolSlider.value;
-                sfxVolText.text = Mathf.RoundToInt(sfxVolSlider.value * 100).ToString();
+                for (int i = 1; i < 4; i++)
+                {
+                    EraserGameManager.Instance.audioSources[i].volume = sfxVolSlider.value;
+                    sfxVolText.text = Mathf.RoundToInt(sfxVolSlider.value * 100).ToString();
+                }
                 break;
         }
         
