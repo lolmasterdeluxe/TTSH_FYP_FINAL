@@ -12,6 +12,7 @@ public class Pregame : MonoBehaviour
         CHAPTEH,
         FLAPPY_BIRD,
         COUNTRY_ERASERS,
+        HANGMAN,
         GAMEMODE_TOTAL
     }
 
@@ -30,7 +31,7 @@ public class Pregame : MonoBehaviour
 
     [SerializeField] private AudioSource[] countdownSource;
 
-    [SerializeField] private float SPSTimer = 60, FiveStoneTimer = 60, ChaptehTimer = 60, CountryEraserTimer = 60;
+    [SerializeField] private float SPSTimer = 60, FiveStoneTimer = 60, ChaptehTimer = 60, CountryEraserTimer = 60, HangmanTimer = 60;
 
     [SerializeField] private int SPSDifficulty = 1, FiveStoneDifficulty = 1;
 
@@ -70,6 +71,13 @@ public class Pregame : MonoBehaviour
                 TimerManager.Instance.e_TimerTick.AddListener(CountdownTick);
                 break;
             case GameMode.COUNTRY_ERASERS:
+                m_countdownOver = true;
+                TweenManager.Instance.AnimateFade(mainUICanvasGroup, 0f, 0f);
+                TweenManager.Instance.AnimateFade(panelCanvasGroup, 1f, 0f);
+                TimerManager.Instance.StartCountdown(4);
+                TimerManager.Instance.e_TimerTick.AddListener(CountdownTick);
+                break;
+            case GameMode.HANGMAN:
                 m_countdownOver = true;
                 TweenManager.Instance.AnimateFade(mainUICanvasGroup, 0f, 0f);
                 TweenManager.Instance.AnimateFade(panelCanvasGroup, 1f, 0f);
@@ -156,6 +164,14 @@ public class Pregame : MonoBehaviour
                 countdownText.gameObject.SetActive(false);
                 PauseButton.SetActive(true);
                 EraserGameManager.Instance.StartGame(CountryEraserTimer);
+                break;
+            case GameMode.HANGMAN:
+                m_countdownOver = false;
+                TweenManager.Instance.AnimateFade(mainUICanvasGroup, 1f, 1f);
+                TweenManager.Instance.AnimateFade(panelCanvasGroup, 0f, 0f);
+                countdownText.gameObject.SetActive(false);
+                PauseButton.SetActive(true);
+                HangmanGameManager.Instance.StartGame(HangmanTimer);
                 break;
             default:
                 break;

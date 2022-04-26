@@ -21,6 +21,7 @@ public class ScoreManager : MonoBehaviour
         CHAPTEH,
         FLAPPY,
         COUNTRY_ERASERS,
+        HANGMAN,
         TOTAL,
     }
 
