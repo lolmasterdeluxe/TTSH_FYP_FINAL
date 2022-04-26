@@ -41,7 +41,7 @@ public class HangmanGameManager : MonoBehaviour
     }
 
     [SerializeField]
-    private TMP_Text scoreText;
+    private TMP_Text scoreText, timerText;
 
     public bool m_gameStarted, m_gameEnded = false;
 
@@ -49,7 +49,7 @@ public class HangmanGameManager : MonoBehaviour
     private GameObject g_gameTimeUp, leaderboard;
 
     [SerializeField]
-    private GameObject WordContainer, WordFormat, LetterFormat;
+    private GameObject WordContainer, WordFormat, LetterFormat, ThemeDisplay, BoxGuy;
 
     [HideInInspector]
     public float WordsSolved;
@@ -57,6 +57,8 @@ public class HangmanGameManager : MonoBehaviour
     public AudioSource[] audioSources;
 
     public List<Word> m_allWordList = new List<Word>();
+
+    private Word randomWord;
 
     private void Awake()
     {
@@ -94,22 +96,58 @@ public class HangmanGameManager : MonoBehaviour
         if (!m_gameStarted)
             return;
 
+        timerText.text = TimerManager.Instance.GetFormattedRemainingTime();
         scoreText.text = ScoreManager.Instance.GetCurrentGameScore().ToString();
     }
 
     private void RandomizeWord()
     {
         int randomIndex = Random.Range(0, m_allWordList.Count);
-        Word randomWord = m_allWordList.Where(x => x.m_index == randomIndex).FirstOrDefault();
+        randomWord = m_allWordList.Where(x => x.m_index == randomIndex).FirstOrDefault();
+        ThemeDisplay.GetComponent<TextMeshProUGUI>().text = randomWord.m_theme;
         GameObject LetterContainer = Instantiate(WordFormat, WordContainer.transform);
+        LetterContainer.name = randomWord.m_word;
         LetterContainer.SetActive(true);
         for (int i = 0; i < randomWord.m_word.Length; ++i)
         {
             GameObject Letter = Instantiate(LetterFormat, LetterContainer.transform);
             Letter.SetActive(true);
+            Letter.transform.GetChild(0).gameObject.SetActive(false);
             Letter.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = randomWord.m_word.Substring(i, 1);
             if (randomWord.m_word.Substring(i, 1) == " ")
-                Letter.SetActive(false);
+                Letter.GetComponent<TextMeshProUGUI>().text = " ";
+            Letter.name = randomWord.m_word.Substring(i, 1) + "(" + i.ToString() + ")";
+        }
+    }
+
+    public void ReturnLetter(string letter)
+    {
+        bool correctLetter = false;
+        for (int i = 0; i < randomWord.m_word.Length; ++i)
+        {
+            GameObject LetterToSolveGO = GameObject.Find(randomWord.m_word.Substring(i, 1) + "(" + i.ToString() + ")").transform.GetChild(0).gameObject;
+            if (letter == randomWord.m_word.Substring(i, 1).ToUpper() && !LetterToSolveGO.activeSelf)
+            {
+                LetterToSolveGO.SetActive(true);
+                GameObject LetterGO = GameObject.Find(letter);
+                LetterGO.GetComponent<Button>().interactable = false;
+                LetterGO.GetComponent<ButtonAnimation>().isEnabled = false;
+                ScoreManager.Instance.AddCurrentGameScore(1);
+                correctLetter = true;
+            }
+            else if (i == (randomWord.m_word.Length - 1) && !correctLetter)
+            {
+                for (int k = 0; k < 7; ++k)
+                {
+                    if (!BoxGuy.transform.GetChild(k).gameObject.activeSelf)
+                    {
+                        BoxGuy.transform.GetChild(k).gameObject.SetActive(true);
+                        break;
+                    }
+                }
+                if (BoxGuy.transform.GetChild(6).gameObject.activeSelf)
+                    GameOver();
+            }
         }
     }
 
@@ -160,17 +198,17 @@ public class HangmanGameManager : MonoBehaviour
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 1f);
 
         // Stops playing bgm audio
-        audioSources[0].Stop();
+        // audioSources[0].Stop();
 
         // Plays time's up audio
-        audioSources[1].Play();
+        // audioSources[1].Play();
 
         ScoreManager.Instance.EndCurrentGameScore();
         StartCoroutine(OnLeaderboardLoad());
     }
     public void increaseScore()
     {
-        ScoreManager.Instance.AddCurrentGameScore(2);
+        ScoreManager.Instance.AddCurrentGameScore(1);
         WordsSolved++;
     }
 
