@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 5886877}
   - component: {fileID: 5886876}
   - component: {fileID: 5886875}
-  - component: {fileID: 5886874}
   m_Layer: 0
   m_Name: Sky (2)
   m_TagString: Untagged
@@ -157,19 +156,6 @@ Transform:
   m_Father: {fileID: 1085679552}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5886874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5886872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24eb5ca0dd41fb444adfc98fc269047b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parallexbackgroundmanagerInstance: {fileID: 1305979953}
 --- !u!64 &5886875
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -580,6 +566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfddaa604d44d164995c5d2ff0d1c180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
 --- !u!1 &80355207
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,6 +714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfddaa604d44d164995c5d2ff0d1c180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
 --- !u!224 &115421913 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2913985091809142621, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
@@ -1501,6 +1489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfddaa604d44d164995c5d2ff0d1c180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
 --- !u!114 &245391805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1593,7 +1582,6 @@ GameObject:
   - component: {fileID: 314590397}
   - component: {fileID: 314590396}
   - component: {fileID: 314590395}
-  - component: {fileID: 314590394}
   m_Layer: 0
   m_Name: Playground
   m_TagString: Untagged
@@ -1615,19 +1603,6 @@ Transform:
   m_Father: {fileID: 1085679552}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &314590394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 314590392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24eb5ca0dd41fb444adfc98fc269047b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parallexbackgroundmanagerInstance: {fileID: 1305979953}
 --- !u!64 &314590395
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1920,7 +1895,6 @@ GameObject:
   - component: {fileID: 393114282}
   - component: {fileID: 393114281}
   - component: {fileID: 393114280}
-  - component: {fileID: 393114279}
   m_Layer: 0
   m_Name: Grass (2)
   m_TagString: Untagged
@@ -1942,19 +1916,6 @@ Transform:
   m_Father: {fileID: 1085679552}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &393114279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393114277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24eb5ca0dd41fb444adfc98fc269047b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parallexbackgroundmanagerInstance: {fileID: 1305979953}
 --- !u!64 &393114280
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2341,6 +2302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfddaa604d44d164995c5d2ff0d1c180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
 --- !u!114 &505543196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2860,6 +2822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfddaa604d44d164995c5d2ff0d1c180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
 --- !u!114 &679977435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3574,6 +3537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfddaa604d44d164995c5d2ff0d1c180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
 --- !u!114 &875873051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3681,7 +3645,6 @@ GameObject:
   - component: {fileID: 893697294}
   - component: {fileID: 893697293}
   - component: {fileID: 893697292}
-  - component: {fileID: 893697295}
   m_Layer: 0
   m_Name: Grass
   m_TagString: Untagged
@@ -3766,19 +3729,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 893697290}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &893697295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 893697290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24eb5ca0dd41fb444adfc98fc269047b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parallexbackgroundmanagerInstance: {fileID: 1305979953}
 --- !u!1 &916548320
 GameObject:
   m_ObjectHideFlags: 0
@@ -8869,6 +8819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfddaa604d44d164995c5d2ff0d1c180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
 --- !u!1 &991564695
 GameObject:
   m_ObjectHideFlags: 0
@@ -9130,6 +9081,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1085679552}
+  - component: {fileID: 1085679553}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -9161,6 +9113,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1085679553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085679551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24eb5ca0dd41fb444adfc98fc269047b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parallexbackgroundmanagerInstance: {fileID: 1305979953}
+  groundSpeed: 0.4
+  cloudSpeed: 0.2
+  fogSpeed: 0.125
+  buildingSpeed: 0.125
+  playgroundSpeed: 0.125
 --- !u!1 &1117306705
 GameObject:
   m_ObjectHideFlags: 0
@@ -9528,7 +9498,6 @@ GameObject:
   - component: {fileID: 1225567938}
   - component: {fileID: 1225567937}
   - component: {fileID: 1225567936}
-  - component: {fileID: 1225567935}
   m_Layer: 0
   m_Name: Building
   m_TagString: Untagged
@@ -9550,19 +9519,6 @@ Transform:
   m_Father: {fileID: 1085679552}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1225567935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1225567933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24eb5ca0dd41fb444adfc98fc269047b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parallexbackgroundmanagerInstance: {fileID: 1305979953}
 --- !u!64 &1225567936
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9638,7 +9594,6 @@ GameObject:
   - component: {fileID: 1237095466}
   - component: {fileID: 1237095465}
   - component: {fileID: 1237095464}
-  - component: {fileID: 1237095463}
   m_Layer: 0
   m_Name: Sky (1)
   m_TagString: Untagged
@@ -9660,19 +9615,6 @@ Transform:
   m_Father: {fileID: 1085679552}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1237095463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1237095461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24eb5ca0dd41fb444adfc98fc269047b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parallexbackgroundmanagerInstance: {fileID: 1305979953}
 --- !u!64 &1237095464
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10071,7 +10013,6 @@ GameObject:
   - component: {fileID: 1308825831}
   - component: {fileID: 1308825830}
   - component: {fileID: 1308825829}
-  - component: {fileID: 1308825828}
   m_Layer: 0
   m_Name: Grass (1)
   m_TagString: Untagged
@@ -10093,19 +10034,6 @@ Transform:
   m_Father: {fileID: 1085679552}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1308825828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1308825826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24eb5ca0dd41fb444adfc98fc269047b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parallexbackgroundmanagerInstance: {fileID: 1305979953}
 --- !u!64 &1308825829
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10637,6 +10565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfddaa604d44d164995c5d2ff0d1c180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
 --- !u!1 &1431155727
 GameObject:
   m_ObjectHideFlags: 0
@@ -10907,7 +10836,6 @@ GameObject:
   - component: {fileID: 1445279443}
   - component: {fileID: 1445279442}
   - component: {fileID: 1445279441}
-  - component: {fileID: 1445279444}
   m_Layer: 0
   m_Name: Sky
   m_TagString: Untagged
@@ -10992,19 +10920,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1445279439}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1445279444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1445279439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24eb5ca0dd41fb444adfc98fc269047b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parallexbackgroundmanagerInstance: {fileID: 1305979953}
 --- !u!1 &1486306100
 GameObject:
   m_ObjectHideFlags: 0
@@ -12543,7 +12458,6 @@ GameObject:
   - component: {fileID: 1754237303}
   - component: {fileID: 1754237302}
   - component: {fileID: 1754237301}
-  - component: {fileID: 1754237300}
   m_Layer: 0
   m_Name: Fog
   m_TagString: Untagged
@@ -12565,19 +12479,6 @@ Transform:
   m_Father: {fileID: 1085679552}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1754237300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1754237298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24eb5ca0dd41fb444adfc98fc269047b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parallexbackgroundmanagerInstance: {fileID: 1305979953}
 --- !u!64 &1754237301
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12867,6 +12768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfddaa604d44d164995c5d2ff0d1c180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
 --- !u!1 &1801731144
 GameObject:
   m_ObjectHideFlags: 0
@@ -13087,6 +12989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfddaa604d44d164995c5d2ff0d1c180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnabled: 1
 --- !u!114 &1830772299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13335,7 +13238,6 @@ GameObject:
   - component: {fileID: 1945734124}
   - component: {fileID: 1945734123}
   - component: {fileID: 1945734122}
-  - component: {fileID: 1945734121}
   m_Layer: 0
   m_Name: Clouds
   m_TagString: Untagged
@@ -13357,19 +13259,6 @@ Transform:
   m_Father: {fileID: 1085679552}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1945734121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1945734119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24eb5ca0dd41fb444adfc98fc269047b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parallexbackgroundmanagerInstance: {fileID: 1305979953}
 --- !u!64 &1945734122
 MeshCollider:
   m_ObjectHideFlags: 0

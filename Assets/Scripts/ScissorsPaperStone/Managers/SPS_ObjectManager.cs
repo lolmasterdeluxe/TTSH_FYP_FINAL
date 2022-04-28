@@ -38,15 +38,14 @@ public class SPS_ObjectManager : MonoBehaviour
 
     //spawning speed variables
     [Tooltip("Uptime for each object spawn")]
-    float f_objectspawnLifetime;
+    private float f_objectspawnLifetime;
     [Tooltip("Multiplier for the time for each object spawn")]
-    float f_objectLifetimeMultiplier;
+    private float f_objectLifetimeMultiplier;
     [Tooltip("Object's travel speed")]
     [SerializeField]
-    float f_objectTravelSpeed;
+    private float f_objectTravelSpeed;
     [Tooltip("Object's travel speed multiplier")]
-    [SerializeField]
-    float f_objecttravelspeedMultiplier;
+    public float f_objectTravelspeedMultiplier;
 
     //powerup counter vairables
     [Tooltip("Powerup Counter: ensures the player can get powerup at least ONCE per game session")]
@@ -68,8 +67,8 @@ public class SPS_ObjectManager : MonoBehaviour
         i_currentwaveCount = 0;
         i_powerupCount = 0;
         f_objectTravelSpeed = 5f;
-        f_objecttravelspeedMultiplier = 1f;
-
+        f_objectTravelspeedMultiplier = 1f;
+        InvokeRepeating("SpeedIncrease", 10, 10);
     }
 
     private void Update()
@@ -173,7 +172,7 @@ public class SPS_ObjectManager : MonoBehaviour
         }
         else return;
         //do the movement HERE
-        g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 5f);
+        g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, f_objectTravelSpeed / f_objectTravelspeedMultiplier * 3f);
 
         //add this object to the list of objects spawned
         objectWaveList.Add(g_objectInstance);
@@ -203,7 +202,7 @@ public class SPS_ObjectManager : MonoBehaviour
             }
             else return;
             //do the movement HERE
-            g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, (f_objectTravelSpeed * f_objecttravelspeedMultiplier * 5f));
+            g_objectInstance.transform.DOMoveX(enemyEndPosition.transform.position.x, f_objectTravelSpeed / f_objectTravelspeedMultiplier * 3f);
 
             //add objects to the list of objects spawned
             objectWaveList.Add(g_objectInstance);
@@ -223,8 +222,8 @@ public class SPS_ObjectManager : MonoBehaviour
             -1.1f, objectStartPosition.transform.position.z), objectStartPosition.transform.rotation);
 
         //do the movement HERE
-        g_objectInstance.transform.DOMoveX(obstacleEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 3f);
-        g_objectInstance.GetComponent<Rigidbody2D>().DOMoveX(obstacleEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 3f);
+        g_objectInstance.transform.DOMoveX(obstacleEndPosition.transform.position.x, f_objectTravelSpeed / f_objectTravelspeedMultiplier * 3f);
+        g_objectInstance.GetComponent<Rigidbody2D>().DOMoveX(obstacleEndPosition.transform.position.x, f_objectTravelSpeed * f_objectTravelspeedMultiplier * 3f);
 
         objectWaveList.Add(g_objectInstance);
         b_waveCompleted = true;
@@ -240,8 +239,8 @@ public class SPS_ObjectManager : MonoBehaviour
             -1.25f, objectStartPosition.transform.position.z), objectStartPosition.transform.rotation);
 
         //do the movement HERE
-        g_objectInstance.transform.DOMoveX(obstacleEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 3f);
-        g_objectInstance.GetComponent<Rigidbody2D>().DOMoveX(obstacleEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 3f);
+        g_objectInstance.transform.DOMoveX(obstacleEndPosition.transform.position.x, f_objectTravelSpeed / f_objectTravelspeedMultiplier * 3f);
+        g_objectInstance.GetComponent<Rigidbody2D>().DOMoveX(obstacleEndPosition.transform.position.x, f_objectTravelSpeed * f_objectTravelspeedMultiplier * 3f);
 
         objectWaveList.Add(g_objectInstance);
         b_waveCompleted = true;
@@ -261,8 +260,8 @@ public class SPS_ObjectManager : MonoBehaviour
             1f, objectStartPosition.transform.position.z), objectStartPosition.transform.rotation);
 
         //do the movement HERE
-        g_objectInstance.transform.DOMoveX(obstacleEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 3f);
-        g_objectInstance.GetComponent<Rigidbody2D>().DOMoveX(obstacleEndPosition.transform.position.x, f_objectTravelSpeed * f_objecttravelspeedMultiplier * 3f);
+        g_objectInstance.transform.DOMoveX(obstacleEndPosition.transform.position.x, f_objectTravelSpeed / f_objectTravelspeedMultiplier * 3f);
+        g_objectInstance.GetComponent<Rigidbody2D>().DOMoveX(obstacleEndPosition.transform.position.x, f_objectTravelSpeed * f_objectTravelspeedMultiplier * 3f);
 
         objectWaveList.Add(g_objectInstance);
         b_waveCompleted = true;
@@ -290,6 +289,11 @@ public class SPS_ObjectManager : MonoBehaviour
     public void WaveIncrease()
     {
         i_currentwaveCount += 1;
+    }
+
+    private void SpeedIncrease()
+    {
+        f_objectTravelspeedMultiplier += 0.05f;
     }
 
     #endregion
