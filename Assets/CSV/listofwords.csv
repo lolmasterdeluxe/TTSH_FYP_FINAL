@@ -1,6 +1,5 @@
 Category,Word
 Domestic animals,Alpaca
-Domestic animals,Billy Goat
 Domestic animals,Bull
 Domestic animals,Canary
 Domestic animals,Cat
@@ -18,11 +17,11 @@ Domestic animals,Foal
 Domestic animals,Goat
 Domestic animals,Goldfish
 Domestic animals,Goose
-Domestic animals,Guinepig
+Domestic animals,Guinea pig
 Domestic animals,Hamster
 Domestic animals,Hen
 Domestic animals,Horse
-Domestic animals,Lama
+Domestic animals,Llama
 Domestic animals,Lamb
 Domestic animals,Lizard
 Domestic animals,Mare
@@ -63,7 +62,6 @@ Zoo animals,Chimpanzee
 Zoo animals,Coyote
 Zoo animals,Crocodile
 Zoo animals,Deer
-Zoo animals,Dromedary
 Zoo animals,Fox
 Zoo animals,Giraffe
 Zoo animals,Wildebeest
@@ -78,21 +76,19 @@ Zoo animals,Koala
 Zoo animals,Leopard
 Zoo animals,Lion
 Zoo animals,Lizard
-Zoo animals,Marmot
 Zoo animals,Mongoose
 Zoo animals,Monkey
 Zoo animals,Panda
 Zoo animals,Panther
 Zoo animals,Parrot
 Zoo animals,Penguin
-Zoo animals,Pink Flamingo
+Zoo animals,Flamingo
 Zoo animals,Polar Bear
 Zoo animals,Porcupine
 Zoo animals,Possum
 Zoo animals,Racoon
 Zoo animals,Reindeer
 Zoo animals,Rhinoceros
-Zoo animals,Roebuck
 Zoo animals,Salamander
 Zoo animals,Sea Lion
 Zoo animals,Seahorse
@@ -125,7 +121,6 @@ Insects,Butterfly
 Insects,Caterpillar
 Insects,Cicada
 Insects,Clothes Moth
-Insects,Cockchafer
 Insects,Cockroach
 Insects,Cocoon
 Insects,Cricket
@@ -196,7 +191,6 @@ Aquatic animals,Seahorse
 Aquatic animals,Seal
 Aquatic animals,Shark
 Aquatic animals,Shrimp
-Aquatic animals,Sperm Whale
 Aquatic animals,Sponge
 Aquatic animals,Squid
 Aquatic animals,Starfish
@@ -253,7 +247,6 @@ Nature,Pond
 Nature,Quicksand
 Nature,Rainbow
 Nature,Raindrop
-Nature,Redwood
 Nature,River
 Nature,Rock
 Nature,Root
@@ -276,7 +269,6 @@ Nature,Wave
 Nature,Wood
 Nature,Acorn
 Nature,Earthquake
-Nature,Estuary
 Nature,Earth
 Nature,Flora And Fauna
 Nature,Polar
@@ -313,8 +305,6 @@ Nature,Stars
 Nature,Sun
 Nature,Weather
 Nature,Wind
-Feelings and Emotions,Downcast
-Feelings and Emotions,Dispirited
 Feelings and Emotions,Fright
 Feelings and Emotions,Joke
 Feelings and Emotions,Pessimist
@@ -330,10 +320,10 @@ Feelings and Emotions,Dumbfounded
 Feelings and Emotions,Excited
 Feelings and Emotions,Exciting
 Feelings and Emotions,Fear
-Feelings and Emotions,?Abbergasted
+Feelings and Emotions,Flabbergasted
 Feelings and Emotions,Formidable
 Feelings and Emotions,Frightening
-Feelings and Emotions,Scarry
+Feelings and Emotions,Scary
 Feelings and Emotions,Fearful
 Feelings and Emotions,Glee
 Feelings and Emotions,Gloomy
@@ -367,14 +357,12 @@ Clothes,Cardigan
 Clothes,Vest
 Clothes,Chain
 Clothes,Coat
-Clothes,Dinner Jacket
 Clothes,Dress
 Clothes,Handkerchief
 Clothes,Hat
 Clothes,Hook
 Clothes,Jacket
 Clothes,Jersey
-Clothes,Jogging Suit
 Clothes,Necklace
 Clothes,Needle
 Clothes,Nightdress
@@ -383,19 +371,15 @@ Clothes,Sweater
 Clothes,Jumper
 Clothes,Raincoat
 Clothes,Scarf
-Clothes,Shawl
 Clothes,Shirt
-Clothes,Ski Jacket
 Clothes,Skirt
 Clothes,Sleeve
 Clothes,Suit
-Clothes,Suspended Belt
 Clothes,Sweatshirt
 Clothes,T-Shirt
 Clothes,Tie
 Clothes,Top
 Clothes,Tuxedo
-Clothes,Diner Jacket
 Clothes,Uniform
 Clothes,Watch
 Clothes,Wedding Ring
@@ -404,21 +388,15 @@ Clothes,Apron
 Clothes,Blouse
 Clothes,Boots
 Clothes,Bow Tie
-Clothes,Bowler Hat
-Clothes,Boxer Shorts
+Clothes,Boxers
 Clothes,Braces
 Clothes,Briefs
 Clothes,Casual Dress
 Clothes,Clothing
 Clothes,Cufflinks
-Clothes,Cultured Pearls
-Clothes,Discreet
-Clothes,Dressing-Gown
 Clothes,Bath Robe
 Clothes,Earrings
-Clothes,Faded Jeans
 Clothes,Formal Dress
-Clothes,Gaudy
 Clothes,Genuine
 Clothes,Gloves
 Clothes,Jeans
@@ -431,7 +409,6 @@ Clothes,Miniskirt
 Clothes,Nightgown
 Clothes,Nightdress
 Clothes,Overalls
-Clothes,Boiler-Suit
 Clothes,Overcoat
 Clothes,Pajamas
 Clothes,Panties
@@ -445,11 +422,9 @@ Clothes,Pleated Skirt
 Clothes,Pyjamas
 Clothes,Shorts
 Clothes,Slippers
-Clothes,Sober
 Clothes,Socks
 Clothes,Stockings
 Clothes,Straight Skirt
-Clothes,Suitable
 Clothes,Swimming Cap
 Clothes,Swimming Trunks
 Clothes,Bathing Suit
@@ -466,10 +441,9 @@ Human body,Lobe Of Ear
 Human body,Nostril
 Human body,Tooth
 Human body,An Ear
-Human body,An Eye
-Human body,An Eyebrow
-Human body,An Eyelid
-Human body,An Ocular Sphere
+Human body,Eyes
+Human body,Eyebrows
+Human body,Eyelids
 Human body,Eyebrows
 Human body,Gum
 Human body,Nose
@@ -497,13 +471,11 @@ Human body,Nail
 Human body,Triceps
 Human body,An Arm
 Human body,Elbow
-Human body,Front Armlever
 Human body,Index Finger
 Human body,Palm
 Human body,Shoulder
 Human body,Wrist
 Human body,Fingers
-Human body,Phalanges
 Human body,Belly
 Human body,Nipples
 Human body,Back
@@ -530,7 +502,6 @@ Human body,Body
 Human body,Ligament
 Human body,Tendon
 Human body,Vein
-Human body,Amygdalae
 Human body,An Artery
 Human body,Bronchi
 Human body,Genitals
@@ -560,23 +531,22 @@ Human body,Pulmonary Vein
 Human body,Rectum
 Human body,Sternum
 Human body,Stomach
-Human body,Thyroid One
 Human body,Trachea
 Human body,Urethra
 Human body,Uterus
 Human body,Vagina
 Astrological Sign,Aquarius
-Astrological Sign,Balance
-Astrological Sign,Bull
+Astrological Sign,Libra 
+Astrological Sign,Taurus
 Astrological Sign,Cancer
 Astrological Sign,Capricorn
-Astrological Sign,Fish
+Astrological Sign,Pisces
 Astrological Sign,Gemini
-Astrological Sign,Lion
-Astrological Sign,Ram
+Astrological Sign,Leo
+Astrological Sign,Aries
 Astrological Sign,Sagittarius
-Astrological Sign,Scorpion
-Astrological Sign,Virgin
+Astrological Sign,Scorpio
+Astrological Sign,Virgo
 Chinese Zodiac,Cock
 Chinese Zodiac,Dog
 Chinese Zodiac,Dragon
@@ -599,9 +569,7 @@ Fruits And Vegetables,Date
 Fruits And Vegetables,Grapefruit
 Fruits And Vegetables,Guava
 Fruits And Vegetables,Jackfruit
-Fruits And Vegetables,Kaki
 Fruits And Vegetables,Kiwifruit
-Fruits And Vegetables,Kumquat
 Fruits And Vegetables,Lemon
 Fruits And Vegetables,Lime
 Fruits And Vegetables,Lychee
@@ -619,19 +587,18 @@ Fruits And Vegetables,Raspberry
 Fruits And Vegetables,Strawberry
 Fruits And Vegetables,Tangerine
 Fruits And Vegetables,Watermelon
-Fruits And Vegetables,An Apple
-Fruits And Vegetables,An Avocado
-Fruits And Vegetables,An Orange
+Fruits And Vegetables,Apple
+Fruits And Vegetables,Avocado
+Fruits And Vegetables,Orange
 Fruits And Vegetables,Blackberry
 Fruits And Vegetables,Blackcurrant
 Fruits And Vegetables,Cherry
 Fruits And Vegetables,Grape
 Fruits And Vegetables,Raisin
-Fruits And Vegetables,Redcurrent
+Fruits And Vegetables,Redcurrant
 Fruits And Vegetables,Tomato
 Fruits And Vegetables,Goji Berries
 Qualities (Good/Bad),Dexterous
-Qualities (Good/Bad),Address
 Qualities (Good/Bad),Adventurous
 Qualities (Good/Bad),Aggressive
 Qualities (Good/Bad),Agitated
@@ -640,10 +607,8 @@ Qualities (Good/Bad),Ambitious
 Qualities (Good/Bad),Amiable
 Qualities (Good/Bad),Annoying
 Qualities (Good/Bad),Applied
-Qualities (Good/Bad),Apt
 Qualities (Good/Bad),Arrogance
 Qualities (Good/Bad),Arrogant
-Qualities (Good/Bad),Assiduous
 Qualities (Good/Bad),Attentive
 Qualities (Good/Bad),Attractive
 Qualities (Good/Bad),Authoritarian
@@ -660,7 +625,6 @@ Qualities (Good/Bad),Calm
 Qualities (Good/Bad),Care
 Qualities (Good/Bad),Carefree
 Qualities (Good/Bad),Careful
-Qualities (Good/Bad),Careful
 Qualities (Good/Bad),Charitable
 Qualities (Good/Bad),Charmer
 Qualities (Good/Bad),Cheater
@@ -671,7 +635,6 @@ Qualities (Good/Bad),Compassion
 Qualities (Good/Bad),Competent
 Qualities (Good/Bad),Compulsive
 Qualities (Good/Bad),Concentrated
-Qualities (Good/Bad),Confident
 Qualities (Good/Bad),Confident
 Qualities (Good/Bad),Conscientious
 Qualities (Good/Bad),Contempt
@@ -698,7 +661,6 @@ Qualities (Good/Bad),Dreamer
 Qualities (Good/Bad),Dumb
 Qualities (Good/Bad),Effective
 Qualities (Good/Bad),Effectiveness
-Qualities (Good/Bad),Egocentric
 Qualities (Good/Bad),Elegant
 Qualities (Good/Bad),Emotional
 Qualities (Good/Bad),Energetic
@@ -719,7 +681,6 @@ Qualities (Good/Bad),Fearful
 Qualities (Good/Bad),Franc
 Qualities (Good/Bad),Friendly
 Qualities (Good/Bad),Funny
-Qualities (Good/Bad),Gallant
 Qualities (Good/Bad),Generosity
 Qualities (Good/Bad),Generous
 Qualities (Good/Bad),Gifted
@@ -743,7 +704,6 @@ Qualities (Good/Bad),Hypocritical
 Qualities (Good/Bad),Idealistic
 Qualities (Good/Bad),Imagination
 Qualities (Good/Bad),Imaginative
-Qualities (Good/Bad),Impassive
 Qualities (Good/Bad),Impatient
 Qualities (Good/Bad),Impulsive
 Qualities (Good/Bad),Independent
@@ -754,7 +714,6 @@ Qualities (Good/Bad),Innocence
 Qualities (Good/Bad),Innocent
 Qualities (Good/Bad),Insensitive
 Qualities (Good/Bad),Insolent
-Qualities (Good/Bad),Intrepid
 Qualities (Good/Bad),Intuitive
 Qualities (Good/Bad),Inventive
 Qualities (Good/Bad),Irritable
@@ -765,7 +724,7 @@ Qualities (Good/Bad),Loose
 Qualities (Good/Bad),Loyal
 Qualities (Good/Bad),Manipulator
 Qualities (Good/Bad),Materialist
-Qualities (Good/Bad),Miser
+Qualities (Good/Bad),Miserable
 Qualities (Good/Bad),Mistrustful
 Qualities (Good/Bad),Modest
 Qualities (Good/Bad),Modesty
@@ -774,15 +733,12 @@ Qualities (Good/Bad),Negligent
 Qualities (Good/Bad),Nervous
 Qualities (Good/Bad),Nice
 Qualities (Good/Bad),Noisy
-Qualities (Good/Bad),Obstinate
 Qualities (Good/Bad),Optimistic
-Qualities (Good/Bad),Ordered
 Qualities (Good/Bad),Original
 Qualities (Good/Bad),Passionate
 Qualities (Good/Bad),Patience
 Qualities (Good/Bad),Patient
 Qualities (Good/Bad),Patronizing
-Qualities (Good/Bad),Pernickety
 Qualities (Good/Bad),Persevering
 Qualities (Good/Bad),Persuasive
 Qualities (Good/Bad),Pessimistic
@@ -798,8 +754,6 @@ Qualities (Good/Bad),Proud
 Qualities (Good/Bad),Prudence
 Qualities (Good/Bad),Punctual
 Qualities (Good/Bad),Punctuality
-Qualities (Good/Bad),Rancorous
-Qualities (Good/Bad),Rascally
 Qualities (Good/Bad),Reasonable
 Qualities (Good/Bad),Recklessness
 Qualities (Good/Bad),Reliable
@@ -828,13 +782,11 @@ Qualities (Good/Bad),Stubbornly
 Qualities (Good/Bad),Stupid
 Qualities (Good/Bad),Superficial
 Qualities (Good/Bad),Susceptibility
-Qualities (Good/Bad),Taciturn
 Qualities (Good/Bad),Talented
 Qualities (Good/Bad),Talkative
 Qualities (Good/Bad),Tenacious
 Qualities (Good/Bad),Tenacity
 Qualities (Good/Bad),Tightfisted
-Qualities (Good/Bad),To Hate
 Qualities (Good/Bad),Tolerance
 Qualities (Good/Bad),Tolerant
 Qualities (Good/Bad),Trustworthy
@@ -867,7 +819,6 @@ Hobbies,Create Website
 Hobbies,Dancing
 Hobbies,Drawing
 Hobbies,Dressmaking
-Hobbies,Embroidery
 Hobbies,Fishing
 Hobbies,Fishing
 Hobbies,Gardening
@@ -876,14 +827,14 @@ Hobbies,Horse Riding
 Hobbies,Hunting
 Hobbies,Interesting
 Hobbies,Knitting
-Hobbies,Listening Music
+Hobbies,Music
 Hobbies,Magazine
 Hobbies,Painting
 Hobbies,Pastime
-Hobbies,Playing Board Games
-Hobbies,Playing Football
-Hobbies,Playing Tennis
-Hobbies,Playing Videogames
+Hobbies,Board Games
+Hobbies,Football
+Hobbies,Tennis
+Hobbies,Videogames
 Hobbies,Poetry
 Hobbies,Pottery
 Hobbies,Reading
@@ -891,7 +842,7 @@ Hobbies,Reading
 Hobbies,Recipe
 Hobbies,Running
 Hobbies,Sailing
-Hobbies,Scrapbook
+Hobbies,Scrapbooking
 Hobbies,Scuba Diving
 Hobbies,Sculpture
 Hobbies,Sewing
@@ -987,14 +938,13 @@ Fish and Seafood,Fish
 Fish and Seafood,Fish Fingers
 Fish and Seafood,Fish Sticks
 Fish and Seafood,Haddock
-Fish and Seafood,Herring
 Fish and Seafood,Lobster
 Fish and Seafood,Mackerel
 Fish and Seafood,Mussels
 Fish and Seafood,Octopus
 Fish and Seafood,Oysters
 Fish and Seafood,Prawn
-Fish and Seafood,Shrim
+Fish and Seafood,Shrimp
 Fish and Seafood,Salmon
 Fish and Seafood,Sardine
 Fish and Seafood,Crawfish
@@ -1009,16 +959,13 @@ Dairy products,Cheese
 Dairy products,Cream
 Dairy products,Milk
 Dairy products,Yogurt
-Drinks ,Alcohol
 Drinks ,Coke
 Drinks ,Beer
 Drinks ,Apple Juice
 Drinks ,Beer
 Drinks ,Blackcoffee
-Drinks ,Brandy
 Drinks ,Champagne
 Drinks ,Cider
-Drinks ,Cocktail
 Drinks ,Coffee
 Drinks ,Fruit Juice
 Drinks ,Gin
@@ -1030,14 +977,11 @@ Drinks ,Hot Chocolate
 Drinks ,Ice Cube
 Drinks ,Juice
 Drinks ,Lemonade
-Drinks ,Liqueur
 Drinks ,Milk
 Drinks ,Mineral Water
 Drinks ,Plain Water
 Drinks ,Orange Juice
 Drinks ,Orange Squash
-Drinks ,Rum
-Drinks ,Sherry
 Drinks ,Soft Drink
 Drinks ,Sparkling Water
 Drinks ,Sparkling Wine
@@ -1095,7 +1039,6 @@ Jobs,Artist
 Jobs,Baker
 Jobs,Bartender
 Jobs,Beekeeper
-Jobs,Apiarist
 Jobs,Bookseller
 Jobs,Builder
 Jobs,Bricklayer
@@ -1145,21 +1088,17 @@ Jobs,Flight Attendant
 Jobs,Florist
 Jobs,Furniture Mover
 Jobs,Gardener
-Jobs,Greengrocer
 Jobs,Hairdresser
-Jobs,Industrial Designer
 Jobs,Jeweller
 Jobs,Job
 Jobs,Journalist
 Jobs,Judge
-Jobs,Kitchenhand
 Jobs,Lawyer
 Jobs,Librarian
 Jobs,Lifeguard
 Jobs,Locksmith
-Jobs,Lorry Driver
+Jobs,Chauffeur 
 Jobs,Lumberjack
-Jobs,Male Nurse
 Jobs,Manager
 Jobs,Mayor
 Jobs,Mechanic
@@ -1168,7 +1107,6 @@ Jobs,Miner
 Jobs,Musician
 Jobs,Notary
 Jobs,Nurse
-Jobs,Ophtalmologist
 Jobs,Optician
 Jobs,Paedetrician
 Jobs,Painter
@@ -1214,7 +1152,6 @@ Jobs,Tiler
 Jobs,Translator
 Jobs,Travel Agent
 Jobs,Truck Driver
-Jobs,Typist
 Jobs,Veterinary Surgeon
 Jobs,Vet
 Jobs,Waiter
