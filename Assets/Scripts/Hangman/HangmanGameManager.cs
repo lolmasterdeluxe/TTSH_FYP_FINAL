@@ -41,7 +41,7 @@ public class HangmanGameManager : MonoBehaviour
     }
 
     [SerializeField]
-    private TMP_Text scoreText, timerText;
+    private TMP_Text scoreText, timerText, WordToSolveText;
 
     public bool m_gameStarted, m_gameEnded = false;
 
@@ -104,6 +104,7 @@ public class HangmanGameManager : MonoBehaviour
         if (!m_gameStarted)
             return;
 
+        // Update UI for timer and score
         timerText.text = TimerManager.Instance.GetFormattedRemainingTime();
         scoreText.text = ScoreManager.Instance.GetCurrentGameScore().ToString();
 
@@ -113,6 +114,8 @@ public class HangmanGameManager : MonoBehaviour
         // If word is solved, move on to next word
         if (CheckWordSolved())
             LoadNextWord();
+
+        LetterColor();
     }
 
     private void RandomizeWord()
@@ -155,6 +158,7 @@ public class HangmanGameManager : MonoBehaviour
                 Letter.GetComponent<TextMeshProUGUI>().text = " ";
                 Letter.transform.GetChild(0).gameObject.SetActive(true);
             }
+            // Set letter gameobject to name of word for easier readability
             Letter.name = randomWord.m_word.Substring(i, 1) + "(" + i.ToString() + ")";
         }
     }
@@ -168,13 +172,15 @@ public class HangmanGameManager : MonoBehaviour
         for (int i = 0; i < randomWord.m_word.Length; ++i)
         {
             GameObject LetterToSolveGO = GameObject.Find(randomWord.m_word.Substring(i, 1) + "(" + i.ToString() + ")").transform.GetChild(0).gameObject;
+            GameObject LetterGO = GameObject.Find(letter);
+            Button LetterButton = LetterGO.GetComponent<Button>();
+
             // If the letter picked matches a letter in the word
             if (letter == randomWord.m_word.Substring(i, 1).ToUpper() && !LetterToSolveGO.activeSelf)
             {
                 // Set the GO to active and disable the picked letter in the keyboard
+                LetterButton.interactable = false;
                 LetterToSolveGO.SetActive(true);
-                GameObject LetterGO = GameObject.Find(letter);
-                LetterGO.GetComponent<Button>().interactable = false;
                 LetterGO.GetComponent<ButtonAnimation>().isEnabled = false;
                 ScoreManager.Instance.AddCurrentGameScore(1);
                 correctLetter = true;
@@ -192,6 +198,35 @@ public class HangmanGameManager : MonoBehaviour
                 }
                 if (BoxGuy.transform.GetChild(6).gameObject.activeSelf)
                     GameOver();
+            }
+        }
+    }
+
+    private void LetterColor()
+    {
+        // Create boolean to check validate each letter in the word
+        bool[] correctColor = new bool[Keyboard.transform.childCount];
+        for (int j = 0; j < Keyboard.transform.childCount; ++j)
+        {
+            for (int i = 0; i < randomWord.m_word.Length; ++i)
+            {
+                GameObject LetterGO = Keyboard.transform.GetChild(j).gameObject;
+                Button LetterButton = LetterGO.GetComponent<Button>();
+                ColorBlock ButtonColor = LetterButton.colors;
+
+                // If the letter picked matches a letter in the word, color when letter pressed is green
+                if (Keyboard.transform.GetChild(j).name == randomWord.m_word.Substring(i, 1).ToUpper())
+                {
+                    ButtonColor.pressedColor = Color.green;
+                    LetterButton.colors = ButtonColor;
+                    correctColor[j] = true;
+                }
+                // If not correct, color when letter pressed is red
+                else if (i == (randomWord.m_word.Length - 1) && !correctColor[j])
+                {
+                    ButtonColor.pressedColor = Color.red;
+                    LetterButton.colors = ButtonColor;
+                }
             }
         }
     }
@@ -287,9 +322,11 @@ public class HangmanGameManager : MonoBehaviour
         // Stops playing bgm audio
         audioSources[0].Stop();
 
+        WordToSolveText.text = "The word was " + randomWord.m_word;
+
         // Plays time's up audio
         // audioSources[1].Play();
-
+        
         ScoreManager.Instance.EndCurrentGameScore();
         StartCoroutine(OnLeaderboardLoad());
     }
