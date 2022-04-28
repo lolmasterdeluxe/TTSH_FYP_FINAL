@@ -13,7 +13,7 @@ public class TutorialScreenManager : MonoBehaviour
     //reference to the screen gameObjects HERE
     public enum TutorialScreenType
     { 
-        SPS, CHAPTEH, FIVESTONES, FLAPPY, ERASER
+        SPS, CHAPTEH, FIVESTONES, FLAPPY, ERASER, HANGMAN
     };
 
     [Tooltip("Reference to Tutorial Screen Manager script")]
@@ -94,6 +94,8 @@ public class TutorialScreenManager : MonoBehaviour
             screenType = TutorialScreenType.FLAPPY;
         else if (selectedScreen == "ERASER")
             screenType = TutorialScreenType.ERASER;
+        else if (selectedScreen == "HANGMAN")
+            screenType = TutorialScreenType.HANGMAN;
 
         switch (screenType)
         {
@@ -122,6 +124,10 @@ public class TutorialScreenManager : MonoBehaviour
                 erasers_tutorialBase.sprite = erasers_tutorialContainer[0];
                 b_tutorialScreenOpen = true;
                 break;
+            case TutorialScreenType.HANGMAN:
+                SceneManager.LoadScene("Hangman");
+                b_tutorialScreenOpen = true;
+                break;
             default:
                 break;
         }
@@ -141,6 +147,8 @@ public class TutorialScreenManager : MonoBehaviour
             screenType = TutorialScreenType.FLAPPY;
         else if (selectedScreen == "ERASER")
             screenType = TutorialScreenType.ERASER;
+        else if (selectedScreen == "HANGMAN")
+            screenType = TutorialScreenType.HANGMAN;
 
         switch (screenType)
         {
