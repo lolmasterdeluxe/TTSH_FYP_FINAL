@@ -8861,7 +8861,7 @@ MonoBehaviour:
   enemyEndPosition: {fileID: 850567187}
   obstacleEndPosition: {fileID: 850567187}
   f_objectTravelSpeed: 5
-  f_objecttravelspeedMultiplier: 1
+  f_objectTravelspeedMultiplier: 0
   b_waveCompleted: 0
 --- !u!4 &991564697
 Transform:
@@ -9126,6 +9126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallexbackgroundmanagerInstance: {fileID: 1305979953}
+  ObjectManager: {fileID: 991564696}
   groundSpeed: 0.4
   cloudSpeed: 0.2
   fogSpeed: 0.125
