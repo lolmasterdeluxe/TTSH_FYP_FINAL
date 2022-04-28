@@ -49,10 +49,17 @@ public class HangmanGameManager : MonoBehaviour
     private GameObject g_gameTimeUp, leaderboard;
 
     [SerializeField]
-    private GameObject WordContainer, WordFormat, LetterFormat, ThemeDisplay, BoxGuy;
+    private GameObject WordContainer, WordFormat, LetterFormat, ThemeDisplay, BoxGuy, Keyboard;
+
+    [SerializeField]
+    private CanvasGroup NextWordPanel;
 
     [HideInInspector]
     public float WordsSolved;
+
+    private bool WordCompleted = false;
+
+    private GameObject LetterContainer;
 
     public AudioSource[] audioSources;
 
@@ -84,11 +91,12 @@ public class HangmanGameManager : MonoBehaviour
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 0f, 0f);
 
         // Plays background music after countdown
-        //audioSources[0].Play();
+        audioSources[0].Play();
 
         int score = 0;
         scoreText.text = score.ToString();
         RandomizeWord();
+        ResetGame();
     }
 
     void Update()
@@ -98,36 +106,72 @@ public class HangmanGameManager : MonoBehaviour
 
         timerText.text = TimerManager.Instance.GetFormattedRemainingTime();
         scoreText.text = ScoreManager.Instance.GetCurrentGameScore().ToString();
+
+        if (TimerManager.Instance.GetRemainingTime() <= 0)
+            GameOver();
+
+        // If word is solved, move on to next word
+        if (CheckWordSolved())
+            LoadNextWord();
     }
 
     private void RandomizeWord()
     {
+        // Check if existing letter is active
+        if (LetterContainer != null)
+            Destroy(LetterContainer);
+
+        // Add points if a word is completed by multiplying ten to the amt of letters in the word
+        if (WordCompleted)
+        {
+            ScoreManager.Instance.AddCurrentGameScore(10 * LetterContainer.transform.childCount);
+            WordCompleted = false;
+        }
+
+        // Randomize Word index
         int randomIndex = Random.Range(0, m_allWordList.Count);
+
+        // Derive word from list using randomized index
         randomWord = m_allWordList.Where(x => x.m_index == randomIndex).FirstOrDefault();
+
+        // Display the word theme
         ThemeDisplay.GetComponent<TextMeshProUGUI>().text = randomWord.m_theme;
-        GameObject LetterContainer = Instantiate(WordFormat, WordContainer.transform);
+
+        // Instantiate the appropriate container for the word to be solved
+        LetterContainer = Instantiate(WordFormat, WordContainer.transform);
         LetterContainer.name = randomWord.m_word;
         LetterContainer.SetActive(true);
+        
+        // Instantiate each letter in the word as a gameobject by substringing the letters from the word
         for (int i = 0; i < randomWord.m_word.Length; ++i)
         {
             GameObject Letter = Instantiate(LetterFormat, LetterContainer.transform);
             Letter.SetActive(true);
             Letter.transform.GetChild(0).gameObject.SetActive(false);
             Letter.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = randomWord.m_word.Substring(i, 1);
+            // Check if letter is a space, if yes then solve it by default and create empty space
             if (randomWord.m_word.Substring(i, 1) == " ")
+            {
                 Letter.GetComponent<TextMeshProUGUI>().text = " ";
+                Letter.transform.GetChild(0).gameObject.SetActive(true);
+            }
             Letter.name = randomWord.m_word.Substring(i, 1) + "(" + i.ToString() + ")";
         }
     }
 
     public void ReturnLetter(string letter)
     {
+        // Boolean to check if the letter picked is correct (To prevent boxman from building)
         bool correctLetter = false;
+
+        // Compare the letter picked to letters in the word
         for (int i = 0; i < randomWord.m_word.Length; ++i)
         {
             GameObject LetterToSolveGO = GameObject.Find(randomWord.m_word.Substring(i, 1) + "(" + i.ToString() + ")").transform.GetChild(0).gameObject;
+            // If the letter picked matches a letter in the word
             if (letter == randomWord.m_word.Substring(i, 1).ToUpper() && !LetterToSolveGO.activeSelf)
             {
+                // Set the GO to active and disable the picked letter in the keyboard
                 LetterToSolveGO.SetActive(true);
                 GameObject LetterGO = GameObject.Find(letter);
                 LetterGO.GetComponent<Button>().interactable = false;
@@ -135,6 +179,7 @@ public class HangmanGameManager : MonoBehaviour
                 ScoreManager.Instance.AddCurrentGameScore(1);
                 correctLetter = true;
             }
+            // If not correct, build up the boxman
             else if (i == (randomWord.m_word.Length - 1) && !correctLetter)
             {
                 for (int k = 0; k < 7; ++k)
@@ -150,6 +195,48 @@ public class HangmanGameManager : MonoBehaviour
             }
         }
     }
+
+    private bool CheckWordSolved()
+    {
+        for (int i = 1; i < LetterContainer.transform.childCount; i++)
+        {
+            if (!LetterContainer.transform.GetChild(i).transform.GetChild(0).gameObject.activeInHierarchy)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void LoadNextWord()
+    {
+        TweenManager.Instance.AnimateFade(NextWordPanel, 1, 1);
+        Invoke("RandomizeWord", 1);
+        Invoke("ResetGame", 3);
+    }
+
+    private void ResetGame()
+    {
+        // Reset keyboard and boxman
+        TweenManager.Instance.AnimateFade(NextWordPanel, 0, 1);
+        WordCompleted = true;
+        for (int i = 0; i < Keyboard.transform.childCount; i++)
+        {
+            if (!Keyboard.transform.GetChild(i).GetComponent<Button>().interactable)
+            {
+                Keyboard.transform.GetChild(i).GetComponent<Button>().interactable = true;
+                Keyboard.transform.GetChild(i).GetComponent<ButtonAnimation>().isEnabled = true;
+            }
+        }
+        for (int k = 1; k < 7; ++k)
+        {
+            if (BoxGuy.transform.GetChild(k).gameObject.activeSelf)
+            {
+                BoxGuy.transform.GetChild(k).gameObject.SetActive(false);
+            }
+        }
+    }
+
 
     private string GetFilePath()
     {
@@ -198,7 +285,7 @@ public class HangmanGameManager : MonoBehaviour
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 1f);
 
         // Stops playing bgm audio
-        // audioSources[0].Stop();
+        audioSources[0].Stop();
 
         // Plays time's up audio
         // audioSources[1].Play();
