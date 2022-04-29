@@ -188,8 +188,13 @@ public class HangmanGameManager : MonoBehaviour
             // If not correct, build up the boxman
             else if (i == (randomWord.m_word.Length - 1) && !correctLetter)
             {
-                for (int k = 0; k < 7; ++k)
+                for (int k = 0; k < BoxGuy.transform.childCount; ++k)
                 {
+                    if (!BoxGuy.transform.GetChild(2).gameObject.activeSelf)
+                    {
+                        BoxGuy.transform.GetChild(2).gameObject.SetActive(true);
+                        break;
+                    }
                     if (!BoxGuy.transform.GetChild(k).gameObject.activeSelf)
                     {
                         BoxGuy.transform.GetChild(k).gameObject.SetActive(true);
@@ -263,7 +268,7 @@ public class HangmanGameManager : MonoBehaviour
                 Keyboard.transform.GetChild(i).GetComponent<ButtonAnimation>().isEnabled = true;
             }
         }
-        for (int k = 1; k < 7; ++k)
+        for (int k = 0; k < BoxGuy.transform.childCount; ++k)
         {
             if (BoxGuy.transform.GetChild(k).gameObject.activeSelf)
             {
@@ -275,12 +280,18 @@ public class HangmanGameManager : MonoBehaviour
 
     private string GetFilePath()
     {
+        TextAsset myTextAsset = Resources.Load<TextAsset>("CSV/listofwords"); // omit file extension
+        string csvText = myTextAsset.text;
 #if UNITY_EDITOR
+        if (!File.Exists(Application.dataPath + "/CSV/" + "listofwords.csv"))
+            SaveCSV(Application.dataPath + "/CSV/" + "listofwords.csv", csvText);
         return Application.dataPath + "/CSV/" + "listofwords.csv";
 #elif UNITY_ANDROID || UNITY_IPHONE
-        return Application.persistentDataPath + "/listofwords.csv";
+        if (!File.Exists(Application.persistentDataPath + "/CSV/" + "listofwords.csv"))
+            SaveCSV(Application.persistentDataPath + "/CSV/" + "listofwords.csv", csvText);
+        return Application.persistentDataPath + "/CSV/" + "listofwords.csv";
 #else
-        return Application.dataPath +"/CSV/"+"listofwords.csv";
+        return Application.dataPath +"/CSV/"+"score.csv";
 #endif
     }
 
@@ -346,6 +357,13 @@ public class HangmanGameManager : MonoBehaviour
             //AudioObject.SetActive(false);
             leaderboard.SetActive(true);
         }
+    }
+
+    private void SaveCSV(string filePath, string data)
+    {
+        StreamWriter outStream = File.CreateText(filePath);
+        outStream.WriteLine(data);
+        outStream.Close();
     }
 
     private void OnDestroy()
