@@ -1,46 +1,49 @@
 fileFormatVersion: 2
-guid: 0fd6ba7216707e14190ac67c36d230b8
+guid: be2ad34d533b149449b7cbae65113629
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8182207697768857569
-    second: SPRITESHEET_chapteh 3250x250_0
+      213: -6779478461347191719
+    second: SPRITESHEET_BoxMan_3500x250_0
   - first:
-      213: -7590863089390075637
-    second: SPRITESHEET_chapteh 3250x250_1
+      213: 4068706952669897539
+    second: SPRITESHEET_BoxMan_3500x250_1
   - first:
-      213: 1734128914247364678
-    second: SPRITESHEET_chapteh 3250x250_2
+      213: 8699853786646862487
+    second: SPRITESHEET_BoxMan_3500x250_2
   - first:
-      213: 1655392451043553033
-    second: SPRITESHEET_chapteh 3250x250_3
+      213: -7213421623581594315
+    second: SPRITESHEET_BoxMan_3500x250_3
   - first:
-      213: 4302421313057927758
-    second: SPRITESHEET_chapteh 3250x250_4
+      213: 3086220283131197339
+    second: SPRITESHEET_BoxMan_3500x250_4
   - first:
-      213: -3371005350958744911
-    second: SPRITESHEET_chapteh 3250x250_5
+      213: -5301109679910526144
+    second: SPRITESHEET_BoxMan_3500x250_5
   - first:
-      213: -6874530362936398292
-    second: SPRITESHEET_chapteh 3250x250_6
+      213: 5245283305724079830
+    second: SPRITESHEET_BoxMan_3500x250_6
   - first:
-      213: 4247546526513827847
-    second: SPRITESHEET_chapteh 3250x250_7
+      213: 2392847074017845381
+    second: SPRITESHEET_BoxMan_3500x250_7
   - first:
-      213: 8854080626100207490
-    second: SPRITESHEET_chapteh 3250x250_8
+      213: -8451864237038110872
+    second: SPRITESHEET_BoxMan_3500x250_8
   - first:
-      213: 5909733284025699656
-    second: SPRITESHEET_chapteh 3250x250_9
+      213: -1226626288539650596
+    second: SPRITESHEET_BoxMan_3500x250_9
   - first:
-      213: 3296227452719297757
-    second: SPRITESHEET_chapteh 3250x250_10
+      213: 3259077083574026206
+    second: SPRITESHEET_BoxMan_3500x250_10
   - first:
-      213: -597320782922590666
-    second: SPRITESHEET_chapteh 3250x250_11
+      213: -8895652568406512068
+    second: SPRITESHEET_BoxMan_3500x250_11
   - first:
-      213: 5628947376823188560
-    second: SPRITESHEET_chapteh 3250x250_12
+      213: 4326857689973697189
+    second: SPRITESHEET_BoxMan_3500x250_12
+  - first:
+      213: -5118618932587654279
+    second: SPRITESHEET_BoxMan_3500x250_13
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,7 +130,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
+    buildTarget: iPhone
     maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
@@ -151,7 +154,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
+    buildTarget: Android
     maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
@@ -166,7 +169,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SPRITESHEET_chapteh 3250x250_0
+      name: SPRITESHEET_BoxMan_3500x250_0
       rect:
         serializedVersion: 2
         x: 0
@@ -180,14 +183,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1efbaf7cc8a0d8170800000000000000
-      internalID: 8182207697768857569
+      spriteID: 9542df432447ae1a0800000000000000
+      internalID: -6779478461347191719
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPRITESHEET_chapteh 3250x250_1
+      name: SPRITESHEET_BoxMan_3500x250_1
       rect:
         serializedVersion: 2
         x: 250
@@ -201,14 +204,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b01c7420d36d7a690800000000000000
-      internalID: -7590863089390075637
+      spriteID: 3432d01aa63f67830800000000000000
+      internalID: 4068706952669897539
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPRITESHEET_chapteh 3250x250_2
+      name: SPRITESHEET_BoxMan_3500x250_2
       rect:
         serializedVersion: 2
         x: 500
@@ -222,14 +225,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 640b2784f0dd01810800000000000000
-      internalID: 1734128914247364678
+      spriteID: 79a5ce6dce61cb870800000000000000
+      internalID: 8699853786646862487
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPRITESHEET_chapteh 3250x250_3
+      name: SPRITESHEET_BoxMan_3500x250_3
       rect:
         serializedVersion: 2
         x: 750
@@ -243,14 +246,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 90f6050e9a229f610800000000000000
-      internalID: 1655392451043553033
+      spriteID: 53d2c4f6047c4eb90800000000000000
+      internalID: -7213421623581594315
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPRITESHEET_chapteh 3250x250_4
+      name: SPRITESHEET_BoxMan_3500x250_4
       rect:
         serializedVersion: 2
         x: 1000
@@ -264,14 +267,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4233e6936545bb30800000000000000
-      internalID: 4302421313057927758
+      spriteID: b97f3aafef474da20800000000000000
+      internalID: 3086220283131197339
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPRITESHEET_chapteh 3250x250_5
+      name: SPRITESHEET_BoxMan_3500x250_5
       rect:
         serializedVersion: 2
         x: 1250
@@ -285,14 +288,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1bab9206e78c731d0800000000000000
-      internalID: -3371005350958744911
+      spriteID: 0436c8525dcae66b0800000000000000
+      internalID: -5301109679910526144
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPRITESHEET_chapteh 3250x250_6
+      name: SPRITESHEET_BoxMan_3500x250_6
       rect:
         serializedVersion: 2
         x: 1500
@@ -306,14 +309,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2ee987ce03c890a0800000000000000
-      internalID: -6874530362936398292
+      spriteID: 6de68f7306dfac840800000000000000
+      internalID: 5245283305724079830
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPRITESHEET_chapteh 3250x250_7
+      name: SPRITESHEET_BoxMan_3500x250_7
       rect:
         serializedVersion: 2
         x: 1750
@@ -327,14 +330,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7001dc7bf0152fa30800000000000000
-      internalID: 4247546526513827847
+      spriteID: 580aaa86cb9153120800000000000000
+      internalID: 2392847074017845381
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPRITESHEET_chapteh 3250x250_8
+      name: SPRITESHEET_BoxMan_3500x250_8
       rect:
         serializedVersion: 2
         x: 2000
@@ -348,14 +351,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28ffe532b6300ea70800000000000000
-      internalID: 8854080626100207490
+      spriteID: 867f38d9142f4ba80800000000000000
+      internalID: -8451864237038110872
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPRITESHEET_chapteh 3250x250_9
+      name: SPRITESHEET_BoxMan_3500x250_9
       rect:
         serializedVersion: 2
         x: 2250
@@ -369,14 +372,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84d87a75c17930250800000000000000
-      internalID: 5909733284025699656
+      spriteID: cd53077b3e52afee0800000000000000
+      internalID: -1226626288539650596
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPRITESHEET_chapteh 3250x250_10
+      name: SPRITESHEET_BoxMan_3500x250_10
       rect:
         serializedVersion: 2
         x: 2500
@@ -390,14 +393,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd47932776d8ebd20800000000000000
-      internalID: 3296227452719297757
+      spriteID: edfbb0617519a3d20800000000000000
+      internalID: 3259077083574026206
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPRITESHEET_chapteh 3250x250_11
+      name: SPRITESHEET_BoxMan_3500x250_11
       rect:
         serializedVersion: 2
         x: 2750
@@ -411,14 +414,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 636d0f4a9e3e5b7f0800000000000000
-      internalID: -597320782922590666
+      spriteID: c3ea6d6ce1b4c8480800000000000000
+      internalID: -8895652568406512068
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPRITESHEET_chapteh 3250x250_12
+      name: SPRITESHEET_BoxMan_3500x250_12
       rect:
         serializedVersion: 2
         x: 3000
@@ -432,8 +435,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05cb9e6d0d90e1e40800000000000000
-      internalID: 5628947376823188560
+      spriteID: 5aaac84f4261c0c30800000000000000
+      internalID: 4326857689973697189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPRITESHEET_BoxMan_3500x250_13
+      rect:
+        serializedVersion: 2
+        x: 3250
+        y: 0
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 973168e433307f8b0800000000000000
+      internalID: -5118618932587654279
       vertices: []
       indices: 
       edges: []
@@ -441,7 +465,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 8bb1c1c0ae59cb3458232fc892203753
+    spriteID: 103278584939b98429e1f65d41594f65
     internalID: 0
     vertices: []
     indices: 

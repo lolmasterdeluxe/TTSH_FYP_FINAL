@@ -105,7 +105,6 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -150,7 +149,7 @@ TextureImporter:
     maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -162,7 +161,7 @@ TextureImporter:
     maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -174,7 +173,7 @@ TextureImporter:
     maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -186,7 +185,19 @@ TextureImporter:
     maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -773,34 +784,6 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      SPRITESHEET_5stones 2250x750_4: 3934733292970738231
-      SPRITESHEET_5stones 2250x750_10: -4535393870165382057
-      SPRITESHEET_5stones 2250x750_9: 8970145392865682618
-      SPRITESHEET_5stones 2250x750_18: -5575671183528368064
-      SPRITESHEET_5stones 2250x750_24: 6404587379882043501
-      SPRITESHEET_5stones 2250x750_16: 7651458109489250903
-      SPRITESHEET_5stones 2250x750_17: -3057211516310732479
-      SPRITESHEET_5stones 2250x750_6: 1152941030156541229
-      SPRITESHEET_5stones 2250x750_3: -4576246411037212606
-      SPRITESHEET_5stones 2250x750_15: 2593379091614642872
-      SPRITESHEET_5stones 2250x750_5: 4555312498889848572
-      SPRITESHEET_5stones 2250x750_0: -450989355297323635
-      SPRITESHEET_5stones 2250x750_13: 4217162545626146589
-      SPRITESHEET_5stones 2250x750_19: 9155757392706329130
-      SPRITESHEET_5stones 2250x750_25: -1735647240507340542
-      SPRITESHEET_5stones 2250x750_1: -1903720193470995653
-      SPRITESHEET_5stones 2250x750_7: 424353615293864231
-      SPRITESHEET_5stones 2250x750_20: -329864003597786962
-      SPRITESHEET_5stones 2250x750_14: 2861863410349195932
-      SPRITESHEET_5stones 2250x750_21: -932499913937275494
-      SPRITESHEET_5stones 2250x750_26: -8124140855701560418
-      SPRITESHEET_5stones 2250x750_8: 3351853413828189892
-      SPRITESHEET_5stones 2250x750_2: 6109001998116022524
-      SPRITESHEET_5stones 2250x750_12: -1262429177308261052
-      SPRITESHEET_5stones 2250x750_23: -2397392282486566710
-      SPRITESHEET_5stones 2250x750_11: 4663959830013359614
-      SPRITESHEET_5stones 2250x750_22: 3033619006782303003
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

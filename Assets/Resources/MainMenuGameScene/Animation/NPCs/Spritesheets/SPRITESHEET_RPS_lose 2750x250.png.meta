@@ -57,7 +57,6 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -102,7 +101,7 @@ TextureImporter:
     maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -114,7 +113,7 @@ TextureImporter:
     maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -126,7 +125,7 @@ TextureImporter:
     maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -138,7 +137,19 @@ TextureImporter:
     maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -389,18 +400,6 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      SPRITESHEET_RPS_lose 2750x250_5: -3356759521887051550
-      SPRITESHEET_RPS_lose 2750x250_8: -6199077558693094184
-      SPRITESHEET_RPS_lose 2750x250_0: -6260553692372114757
-      SPRITESHEET_RPS_lose 2750x250_7: 3541546253224445912
-      SPRITESHEET_RPS_lose 2750x250_6: 4863229238941886528
-      SPRITESHEET_RPS_lose 2750x250_1: -5069669760135341203
-      SPRITESHEET_RPS_lose 2750x250_2: -3096337484022499730
-      SPRITESHEET_RPS_lose 2750x250_9: 62972528323797106
-      SPRITESHEET_RPS_lose 2750x250_10: 4520063373703007085
-      SPRITESHEET_RPS_lose 2750x250_4: 4538917964963236240
-      SPRITESHEET_RPS_lose 2750x250_3: -7808995994531910538
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
