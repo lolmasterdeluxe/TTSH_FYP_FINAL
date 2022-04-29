@@ -4438,7 +4438,7 @@ MonoBehaviour:
   interactButton: {fileID: 2098003835}
   hoverSFX: {fileID: 76700683}
   BGM: {fileID: 518592540}
-  Offset: 0
+  Offset: 0.5
 --- !u!61 &317505955
 BoxCollider2D:
   m_ObjectHideFlags: 0
