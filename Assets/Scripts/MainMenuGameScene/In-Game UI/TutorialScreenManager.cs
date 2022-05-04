@@ -20,16 +20,13 @@ public class TutorialScreenManager : MonoBehaviour
     public static TutorialScreenManager instance;
 
     [Tooltip("GameObject that stores the tutorial screens for each game")]
-    public GameObject sps_tutorialScreen, fivestones_tutorialScreen, chapteh_tutorialScreen, flappy_tutorialScreen, erasers_tutorialScreen;
-
-    [Tooltip("NPC GameObjects")]
-    public GameObject sps_npc, fivestones_npc, chapteh_npc;
+    public GameObject sps_tutorialScreen, fivestones_tutorialScreen, chapteh_tutorialScreen, flappy_tutorialScreen, erasers_tutorialScreen, hangman_tutorialScreen;
 
     [Tooltip("Sprite Containers for each game tutorial")]
-    public List<Sprite> sps_tutorialContainer, fivestones_tutorialContainer, chapteh_tutorialContainer, flappy_tutorialContainer, erasers_tutorialContainer;
+    public List<Sprite> sps_tutorialContainer, fivestones_tutorialContainer, chapteh_tutorialContainer, flappy_tutorialContainer, erasers_tutorialContainer, hangman_tutorialContainer;
 
     [Tooltip("Tutorial Base Image for the games")]
-    public Image sps_tutorialBase, fivestones_tutorialBase, chapteh_tutorialBase, flappy_tutorialBase, erasers_tutorialBase;
+    public Image sps_tutorialBase, fivestones_tutorialBase, chapteh_tutorialBase, flappy_tutorialBase, erasers_tutorialBase, hangman_tutorialBase;
 
     [Tooltip("Int value: to keep track of which page of the tutorial is on")]
     public int screenNumber = 0;
@@ -53,6 +50,9 @@ public class TutorialScreenManager : MonoBehaviour
 
     [Tooltip("Sprite List for each pages of Country Erasers tutorial")]
     public Sprite[] erasers_Page4;
+
+    [Tooltip("Sprite List for each pages of Country Erasers tutorial")]
+    public Sprite[] hangman_Page3, hangman_Page4;
 
     #endregion
 
@@ -125,7 +125,8 @@ public class TutorialScreenManager : MonoBehaviour
                 b_tutorialScreenOpen = true;
                 break;
             case TutorialScreenType.HANGMAN:
-                SceneManager.LoadScene("Hangman");
+                hangman_tutorialScreen.SetActive(true);
+                hangman_tutorialBase.sprite = hangman_tutorialContainer[0];
                 b_tutorialScreenOpen = true;
                 break;
             default:
@@ -172,6 +173,10 @@ public class TutorialScreenManager : MonoBehaviour
                 erasers_tutorialScreen.SetActive(false);
                 b_tutorialScreenOpen = false;
                 break;
+            case TutorialScreenType.HANGMAN:
+                hangman_tutorialScreen.SetActive(false);
+                b_tutorialScreenOpen = false;
+                break;
             default:
                 break;
         }
@@ -195,6 +200,9 @@ public class TutorialScreenManager : MonoBehaviour
                 break;
             case 4:
                 SceneManager.LoadScene("CountryErasers");
+                break;
+            case 5:
+                SceneManager.LoadScene("Hangman");
                 break;
         }
 
@@ -324,7 +332,7 @@ public class TutorialScreenManager : MonoBehaviour
                         break;
                 }
                 break;
-            case 4: //chapteh
+            case 4: //country erasers
                 switch (screenNumber)
                 {
                     case 0:
@@ -341,6 +349,26 @@ public class TutorialScreenManager : MonoBehaviour
                         break;
                     case 4:
                         erasers_tutorialBase.sprite = erasers_tutorialContainer[4];
+                        break;
+                }
+                break;
+            case 5: //Hangman
+                switch (screenNumber)
+                {
+                    case 0:
+                        hangman_tutorialBase.sprite = hangman_tutorialContainer[0];
+                        break;
+                    case 1:
+                        hangman_tutorialBase.sprite = hangman_tutorialContainer[1];
+                        break;
+                    case 2:
+                        hangman_tutorialBase.sprite = hangman_tutorialContainer[2];
+                        break;
+                    case 3:
+                        hangman_tutorialBase.sprite = hangman_tutorialContainer[3];
+                        break;
+                    case 4:
+                        hangman_tutorialBase.sprite = hangman_tutorialContainer[4];
                         break;
                 }
                 break;
@@ -403,6 +431,19 @@ public class TutorialScreenManager : MonoBehaviour
             if (screenNumber == 3)
             {
                 erasers_tutorialBase.sprite = erasers_Page4[(int)(Time.time) % erasers_Page4.Length];
+            }
+        }
+        else if (gametype_referenceNumber == 5) // Hangman
+        {
+            // Page 3
+            if (screenNumber == 2)
+            {
+                hangman_tutorialBase.sprite = hangman_Page3[(int)(Time.time) % hangman_Page3.Length];
+            }
+            // Page 4
+            if (screenNumber == 3)
+            {
+                hangman_tutorialBase.sprite = hangman_Page4[(int)(Time.time) % hangman_Page4.Length];
             }
         }
     }

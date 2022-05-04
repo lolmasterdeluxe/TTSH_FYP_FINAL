@@ -54,12 +54,16 @@ public class LeaderboardManager : MonoBehaviour
     [SerializeField] private GameObject countryErasersGroup;
     [SerializeField] private TMP_Text totalMatches;
 
+    [SerializeField] private GameObject hangmanGroup;
+    [SerializeField] private TMP_Text totalWordsGuessed;
+
     [SerializeField] private GameObject overallGroup;
     [SerializeField] private TMP_Text totalChaptehScore;
     [SerializeField] private TMP_Text totalScissorsPaperStoneScore;
     [SerializeField] private TMP_Text totalFiveStonesScore;
     [SerializeField] private TMP_Text totalParachuteScore;
     [SerializeField] private TMP_Text totalMatchesScore;
+    [SerializeField] private TMP_Text totalHangmanScore;
 
     [SerializeField] private TMP_Text overallScoreText;
     [SerializeField] private TMP_Text standardGameScoreText;
@@ -166,6 +170,11 @@ public class LeaderboardManager : MonoBehaviour
 
                 totalMatches.text = EraserGameManager.Instance.ErasersMatched.ToString();
                 break;
+            case ScoreManager.Gamemode.HANGMAN:
+                hangmanGroup.SetActive(true);
+
+                totalWordsGuessed.text = HangmanGameManager.Instance.WordsSolved.ToString();
+                break;
             case ScoreManager.Gamemode.TOTAL:
                 Animations.SetActive(false);
                 overallGroup.SetActive(true);
@@ -198,6 +207,11 @@ public class LeaderboardManager : MonoBehaviour
                 if (score != null)
                     totalMatchesScore.text = score.m_score.ToString();
 
+                score = scoreList.Where(x => x.m_gamemode == ScoreManager.Gamemode.HANGMAN.ToString()).FirstOrDefault();
+
+                if (score != null)
+                    totalWordsGuessed.text = score.m_score.ToString();
+
                 break;
         }
 
@@ -207,7 +221,6 @@ public class LeaderboardManager : MonoBehaviour
 
     public IEnumerator ShowFinalGameAnimation()
     {
-        Debug.Log("Runned");
         // Display goodjob
         endScreenCanvasGroup.gameObject.SetActive(false);
         TweenManager.Instance.AnimateFade(artistThanksScreen, 1, 1);
@@ -271,6 +284,9 @@ public class LeaderboardManager : MonoBehaviour
                 background.sprite = parachuteBg;
                 break;
             case ScoreManager.Gamemode.COUNTRY_ERASERS:
+                background.sprite = totalBg;
+                break;
+            case ScoreManager.Gamemode.HANGMAN:
                 background.sprite = totalBg;
                 break;
             case ScoreManager.Gamemode.TOTAL:

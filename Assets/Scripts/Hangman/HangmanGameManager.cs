@@ -41,7 +41,7 @@ public class HangmanGameManager : MonoBehaviour
     }
 
     [SerializeField]
-    private TMP_Text scoreText, timerText, WordToSolveText;
+    private TMP_Text scoreText, timerText, WordToSolveText, MovesLeftText;
 
     public bool m_gameStarted, m_gameEnded = false;
 
@@ -58,6 +58,8 @@ public class HangmanGameManager : MonoBehaviour
     public float WordsSolved;
 
     private bool WordCompleted = false;
+
+    private int MovesLeft = 6;
 
     private GameObject LetterContainer;
 
@@ -116,6 +118,8 @@ public class HangmanGameManager : MonoBehaviour
             LoadNextWord();
 
         LetterColor();
+        MovesLeftText.text = "Moves Left:" + MovesLeft.ToString();
+
     }
 
     private void RandomizeWord()
@@ -128,6 +132,7 @@ public class HangmanGameManager : MonoBehaviour
         if (WordCompleted)
         {
             ScoreManager.Instance.AddCurrentGameScore(10 * LetterContainer.transform.childCount);
+            WordsSolved++;
             WordCompleted = false;
         }
 
@@ -203,6 +208,10 @@ public class HangmanGameManager : MonoBehaviour
                 }
                 if (BoxGuy.transform.GetChild(6).gameObject.activeSelf)
                     GameOver();
+                if (MovesLeft <= 0)
+                    MovesLeft = 0;
+                else 
+                    MovesLeft--;
             }
         }
     }
@@ -260,6 +269,7 @@ public class HangmanGameManager : MonoBehaviour
         // Reset keyboard and boxman
         TweenManager.Instance.AnimateFade(NextWordPanel, 0, 1);
         WordCompleted = true;
+        MovesLeft = 6;
         for (int i = 0; i < Keyboard.transform.childCount; i++)
         {
             if (!Keyboard.transform.GetChild(i).GetComponent<Button>().interactable)
@@ -287,9 +297,9 @@ public class HangmanGameManager : MonoBehaviour
             SaveCSV(Application.dataPath + "/CSV/" + "listofwords.csv", csvText);
         return Application.dataPath + "/CSV/" + "listofwords.csv";
 #elif UNITY_ANDROID || UNITY_IPHONE
-        if (!File.Exists(Application.persistentDataPath + "/CSV/" + "listofwords.csv"))
-            SaveCSV(Application.persistentDataPath + "/CSV/" + "listofwords.csv", csvText);
-        return Application.persistentDataPath + "/CSV/" + "listofwords.csv";
+        if (!File.Exists(Application.persistentDataPath + "/listofwords.csv"))
+            SaveCSV(Application.persistentDataPath + "/listofwords.csv", csvText);
+        return Application.persistentDataPath + "/listofwords.csv";
 #else
         return Application.dataPath +"/CSV/"+"score.csv";
 #endif
@@ -341,11 +351,6 @@ public class HangmanGameManager : MonoBehaviour
         ScoreManager.Instance.EndCurrentGameScore();
         StartCoroutine(OnLeaderboardLoad());
     }
-    public void increaseScore()
-    {
-        ScoreManager.Instance.AddCurrentGameScore(1);
-        WordsSolved++;
-    }
 
     public IEnumerator OnLeaderboardLoad()
     {
@@ -362,7 +367,7 @@ public class HangmanGameManager : MonoBehaviour
     private void SaveCSV(string filePath, string data)
     {
         StreamWriter outStream = File.CreateText(filePath);
-        outStream.WriteLine(data);
+        outStream.Write(data);
         outStream.Close();
     }
 
