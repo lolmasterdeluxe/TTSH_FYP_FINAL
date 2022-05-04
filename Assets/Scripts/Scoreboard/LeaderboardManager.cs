@@ -210,7 +210,7 @@ public class LeaderboardManager : MonoBehaviour
                 score = scoreList.Where(x => x.m_gamemode == ScoreManager.Gamemode.HANGMAN.ToString()).FirstOrDefault();
 
                 if (score != null)
-                    totalWordsGuessed.text = score.m_score.ToString();
+                    totalHangmanScore.text = score.m_score.ToString();
 
                 break;
         }
