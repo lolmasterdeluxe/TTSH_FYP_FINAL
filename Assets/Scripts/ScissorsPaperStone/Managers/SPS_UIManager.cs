@@ -50,7 +50,7 @@ public class SPS_UIManager : MonoBehaviour
 
     // for game start and end
     [SerializeField]
-    private GameObject g_gameTimeUp;
+    private GameObject g_gameTimeUp, g_PauseButton;
 
     [HideInInspector] 
     public bool b_gameStart, b_gameEnded;
@@ -165,6 +165,10 @@ public class SPS_UIManager : MonoBehaviour
     public void EndGame()
     {
         b_gameEnded = true;
+
+        // Pause button set to false when game ends
+        g_PauseButton.SetActive(false);
+
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.5f);
         ScoreManager.Instance.EndCurrentGameScore();
     }

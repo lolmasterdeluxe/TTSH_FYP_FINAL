@@ -46,7 +46,7 @@ public class HangmanGameManager : MonoBehaviour
     public bool m_gameStarted, m_gameEnded = false;
 
     [SerializeField]
-    private GameObject g_gameTimeUp, leaderboard;
+    private GameObject g_gameTimeUp, leaderboard, g_PauseButton;
 
     [SerializeField]
     private GameObject WordContainer, WordFormat, LetterFormat, ThemeDisplay, BoxGuy, Keyboard;
@@ -339,6 +339,9 @@ public class HangmanGameManager : MonoBehaviour
     {
         m_gameEnded = true;
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 1f);
+
+        // Disable pause button when game over
+        g_PauseButton.SetActive(false);
 
         // Stops playing bgm audio
         audioSources[0].Stop();

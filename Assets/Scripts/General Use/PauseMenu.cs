@@ -33,13 +33,13 @@ public class PauseMenu : MonoBehaviour
                 return;
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape))
+        /*if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
                 ResumeGame();
             else
                 PauseGame();
-        }
+        }*/
     }
 
     public void PauseGame()

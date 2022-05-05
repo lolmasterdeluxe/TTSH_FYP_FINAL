@@ -1938,6 +1938,7 @@ MonoBehaviour:
   g_comboExpiryBar: {fileID: 665346610}
   g_objectiveText: {fileID: 236959703}
   g_gameTimeUp: {fileID: 1049360011}
+  g_PauseButton: {fileID: 1323654765}
   m_currentObjective: 0
   AudioObject: {fileID: 1067763110532333576}
   playerAnim: {fileID: 6789691}
@@ -14194,6 +14195,7 @@ GameObject:
   - component: {fileID: 1809922006}
   - component: {fileID: 1809922005}
   - component: {fileID: 1809922009}
+  - component: {fileID: 1809922010}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -14307,6 +14309,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1809922010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809922004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 697c9da8581e5764d8abdc0e6b71041b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1819576641
 GameObject:
   m_ObjectHideFlags: 0

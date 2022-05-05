@@ -5230,6 +5230,7 @@ GameObject:
   - component: {fileID: 1282568165}
   - component: {fileID: 1282568164}
   - component: {fileID: 1282568167}
+  - component: {fileID: 1282568168}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5338,6 +5339,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1282568168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282568162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 697c9da8581e5764d8abdc0e6b71041b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1297630059
 GameObject:
   m_ObjectHideFlags: 0
@@ -7036,6 +7049,7 @@ MonoBehaviour:
   g_comboText: {fileID: 410385417}
   g_scoreText: {fileID: 364514964}
   g_gameTimeUp: {fileID: 136894474}
+  g_PauseButton: {fileID: 1488863979}
   EraserContainer: {fileID: 27170786}
   Background: {fileID: 1877930}
   BackgroundBlur: {fileID: 230250454}

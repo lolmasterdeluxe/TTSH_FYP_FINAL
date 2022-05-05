@@ -7727,6 +7727,7 @@ MonoBehaviour:
   m_gameEnded: 0
   g_gameTimeUp: {fileID: 1241418665}
   leaderboard: {fileID: 687660440}
+  g_PauseButton: {fileID: 464898106}
   WordContainer: {fileID: 1159277122}
   WordFormat: {fileID: 1922707514}
   LetterFormat: {fileID: 144106796}
@@ -12084,6 +12085,7 @@ GameObject:
   - component: {fileID: 1639388493}
   - component: {fileID: 1639388492}
   - component: {fileID: 1639388496}
+  - component: {fileID: 1639388497}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -12197,6 +12199,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1639388497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639388491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 697c9da8581e5764d8abdc0e6b71041b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1663785573
 GameObject:
   m_ObjectHideFlags: 0

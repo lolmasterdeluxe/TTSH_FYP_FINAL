@@ -13,7 +13,7 @@ public class CustomizeLinker : MonoBehaviour
     [SerializeField] 
     private GameObject CustomizeScreenContainer;
     [SerializeField]
-    private GameObject CosmeticNPC;
+    private GameObject CosmeticNPC, Player, JoystickPanel, DpadPanel;
     [SerializeField] 
     private TMP_InputField inputNameField;
     [SerializeField]
@@ -127,5 +127,18 @@ public class CustomizeLinker : MonoBehaviour
             }
         }
         ScoreManager.Instance.m_currentUsername = inputNameField.text;
+    }
+
+    public void checkDpadJoystick()
+    {
+        if (Player.GetComponent<PlayerJoystickMovement>().enabled)
+        {
+            JoystickPanel.SetActive(true);
+        }
+
+        if (Player.GetComponent<PlayerDpadMovement>().enabled)
+        {
+            DpadPanel.SetActive(true);
+        }
     }
 }

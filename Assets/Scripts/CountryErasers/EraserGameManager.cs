@@ -20,6 +20,7 @@ public class EraserGameManager : MonoBehaviour
     [SerializeField] private GameObject g_comboText;
     [SerializeField] private GameObject g_scoreText;
     [SerializeField] private GameObject g_gameTimeUp;
+    [SerializeField] private GameObject g_PauseButton;
     [SerializeField] private Transform EraserContainer, Background, BackgroundBlur;
 
     [SerializeField] private List<MainEraser> erasersCount;
@@ -253,6 +254,9 @@ public class EraserGameManager : MonoBehaviour
 
         // Stops playing bgm audio
         audioSources[0].Stop();
+
+        // Pause button set to false when game ends
+        g_PauseButton.SetActive(false);
 
         // Plays time's up audio
         //audioSources[1].Play();

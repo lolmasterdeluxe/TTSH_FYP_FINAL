@@ -34,7 +34,7 @@ public class FlappyGameManager : MonoBehaviour
     public float SpeedMultiplier, SpawnMultiplier;
 
     [SerializeField] 
-    private GameObject g_gameTimeUp, leaderboard;
+    private GameObject g_gameTimeUp, g_PauseButton, leaderboard;
 
     [HideInInspector]
     public float ObstaclesPassed, BalloonsCollected;
@@ -100,6 +100,8 @@ public class FlappyGameManager : MonoBehaviour
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 1f);
         player.gameObject.GetComponent<Animator>().SetBool("IsFlying", false);
 
+        // Disable pause button when game over
+        g_PauseButton.SetActive(false);
 
         // Stops playing bgm audio
         audioSources[0].Stop();

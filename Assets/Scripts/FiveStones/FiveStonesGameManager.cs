@@ -46,6 +46,8 @@ public class FiveStonesGameManager : MonoBehaviour
     [SerializeField] private GameObject g_PopupExpiry;
     [SerializeField] private GameObject g_timerText;
     [SerializeField] private GameObject g_objectiveText;
+    [SerializeField] private GameObject g_PauseButton;
+
     [SerializeField] private Objective m_currentObjective;
     [SerializeField] private GameObject AudioObject;
 
@@ -267,6 +269,10 @@ public class FiveStonesGameManager : MonoBehaviour
     public void OnGameEnd()
     {
         m_gameEnded = true;
+
+        // Disable pause button when game over
+        g_PauseButton.SetActive(false);
+
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 0.25f);
         ScoreManager.Instance.EndCurrentGameScore();
         StartCoroutine(OnLeaderboardLoad());

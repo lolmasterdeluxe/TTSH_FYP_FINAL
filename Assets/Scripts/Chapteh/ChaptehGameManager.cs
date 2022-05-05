@@ -27,6 +27,7 @@ public class ChaptehGameManager : MonoBehaviour
     [SerializeField] private GameObject g_comboExpiryBar;
     [SerializeField] private GameObject g_objectiveText;
     [SerializeField] private GameObject g_gameTimeUp;
+    [SerializeField] private GameObject g_PauseButton;
     [SerializeField] private Objective m_currentObjective;
     [SerializeField] private GameObject AudioObject;
     [SerializeField] private Animator playerAnim;
@@ -190,6 +191,9 @@ public class ChaptehGameManager : MonoBehaviour
         
         // Stops playing bgm audio
         audioSources[0].Stop();
+
+        // Pause button set to false when game ends
+        g_PauseButton.SetActive(false);
 
         // Plays time's up audio
         audioSources[1].Play();
