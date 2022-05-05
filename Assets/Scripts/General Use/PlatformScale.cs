@@ -16,7 +16,7 @@ public class PlatformScale : MonoBehaviour
     void Update()
     {
 #if UNITY_EDITOR
-        canvas.matchWidthOrHeight = 0;
+        canvas.matchWidthOrHeight = 1;
 #elif UNITY_ANDROID
         canvas.matchWidthOrHeight = 1;
 #elif UNITY_IPHONE
