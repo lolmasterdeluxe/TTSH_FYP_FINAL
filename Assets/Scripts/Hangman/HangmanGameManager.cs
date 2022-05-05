@@ -115,8 +115,10 @@ public class HangmanGameManager : MonoBehaviour
 
         // If word is solved, move on to next word
         if (CheckWordSolved())
+        {
+            audioSources[2].Play();
             LoadNextWord();
-
+        }
         LetterColor();
         MovesLeftText.text = "Moves Left:" + MovesLeft.ToString();
 
@@ -184,6 +186,7 @@ public class HangmanGameManager : MonoBehaviour
             if (letter == randomWord.m_word.Substring(i, 1).ToUpper() && !LetterToSolveGO.activeSelf)
             {
                 // Set the GO to active and disable the picked letter in the keyboard
+                audioSources[1].Play(); //Correct letter
                 LetterButton.interactable = false;
                 LetterToSolveGO.SetActive(true);
                 LetterGO.GetComponent<ButtonAnimation>().isEnabled = false;
@@ -193,6 +196,9 @@ public class HangmanGameManager : MonoBehaviour
             // If not correct, build up the boxman
             else if (i == (randomWord.m_word.Length - 1) && !correctLetter)
             {
+                audioSources[3].Play(); //Wrong letter
+                LetterButton.interactable = false;
+                LetterGO.GetComponent<ButtonAnimation>().isEnabled = false;
                 for (int k = 0; k < BoxGuy.transform.childCount; ++k)
                 {
                     if (!BoxGuy.transform.GetChild(2).gameObject.activeSelf)
@@ -337,6 +343,7 @@ public class HangmanGameManager : MonoBehaviour
 
     public void GameOver()
     {
+        audioSources[4].Play();
         m_gameEnded = true;
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 1f);
 
