@@ -31,7 +31,7 @@ public class CustomizeLinker : MonoBehaviour
             CosmeticNPC.SetActive(false);
             gameObject.SetActive(false);
         }
-        Debug.Log(score);
+        Debug.Log(score.Length);
     }
 
     private void Update()
@@ -44,13 +44,14 @@ public class CustomizeLinker : MonoBehaviour
 
     private void DeclareScoreArray()
     {
-        score = new ScoreManager.Score[6];
+        score = new ScoreManager.Score[7];
         score[0] = ScoreManager.Instance.m_allScoreList.Where(x => x.m_userId == ScoreManager.Instance.m_currentUserID && x.m_gamemode == ScoreManager.Gamemode.TOTAL.ToString()).FirstOrDefault();
         score[1] = ScoreManager.Instance.m_allScoreList.Where(x => x.m_userId == ScoreManager.Instance.m_currentUserID && x.m_gamemode == ScoreManager.Gamemode.SPS.ToString()).FirstOrDefault();
         score[2] = ScoreManager.Instance.m_allScoreList.Where(x => x.m_userId == ScoreManager.Instance.m_currentUserID && x.m_gamemode == ScoreManager.Gamemode.FIVESTONES.ToString()).FirstOrDefault();
         score[3] = ScoreManager.Instance.m_allScoreList.Where(x => x.m_userId == ScoreManager.Instance.m_currentUserID && x.m_gamemode == ScoreManager.Gamemode.CHAPTEH.ToString()).FirstOrDefault();
         score[4] = ScoreManager.Instance.m_allScoreList.Where(x => x.m_userId == ScoreManager.Instance.m_currentUserID && x.m_gamemode == ScoreManager.Gamemode.FLAPPY.ToString()).FirstOrDefault();
         score[5] = ScoreManager.Instance.m_allScoreList.Where(x => x.m_userId == ScoreManager.Instance.m_currentUserID && x.m_gamemode == ScoreManager.Gamemode.COUNTRY_ERASERS.ToString()).FirstOrDefault();
+        score[6] = ScoreManager.Instance.m_allScoreList.Where(x => x.m_userId == ScoreManager.Instance.m_currentUserID && x.m_gamemode == ScoreManager.Gamemode.HANGMAN.ToString()).FirstOrDefault();
     }
 
     private void SetCloneCosmetics()
@@ -116,7 +117,7 @@ public class CustomizeLinker : MonoBehaviour
 
     private void UpdatePlayer()
     {
-        for (int i = 0; i < 6; ++i)
+        for (int i = 0; i < score.Length; ++i)
         {
             if (score[i] != null)
             {

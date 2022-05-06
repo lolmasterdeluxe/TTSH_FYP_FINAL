@@ -26,7 +26,7 @@ public class StoneSpawner : MonoBehaviour
     public float maxForce;
 
     public GameObject spawnPointHolder;
-    public List<Transform> spawnPointList = new List<Transform>();
+    private List<Transform> spawnPointList = new List<Transform>();
 
     private GameObject spawnedStone;
     // Start is called before the first frame update
@@ -40,9 +40,16 @@ public class StoneSpawner : MonoBehaviour
 
         // Load spawnPointList
         for (int i = 0; i < spawnPointHolder.transform.childCount; i++)
+        {
+            if (Screen.height > 1080)
+            {
+                spawnPointHolder.transform.GetChild(i).position = new Vector3(spawnPointHolder.transform.GetChild(i).position.x, (spawnPointHolder.transform.GetChild(i).position.y / 1080 * Screen.height), spawnPointHolder.transform.GetChild(i).position.z);
+            }
+            
             spawnPointList.Add(spawnPointHolder.transform.GetChild(i));
+        }
 
-        if (spawnPointList == null || spawnPointList.Count == 0)
+            if (spawnPointList == null || spawnPointList.Count == 0)
         {
             Debug.LogError("spawnPointList is null or empty, make sure to initialized some points");
             return;

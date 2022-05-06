@@ -98,9 +98,9 @@ public class FiveStonesGameManager : MonoBehaviour
         // Background related stuff
         TweenManager.Instance.AnimateSpriteFade(backgroundSpriteRenderer.GetComponent<SpriteRenderer>(), 0f, 0.5f);
         TweenManager.Instance.AnimateScale(backgroundSpriteRenderer.transform, 1.5f, 1f);
-        TweenManager.Instance.AnimateFloat(backgroundSpriteRenderer.transform, 1f, new Vector3(-0.03f, 3.5f, 2));
+        //TweenManager.Instance.AnimateFloat(backgroundSpriteRenderer.transform, 1f, new Vector3(-0.03f, 3.5f, 2));
         TweenManager.Instance.AnimateScale(backgroundBlurRenderer.transform, 1.5f, 1f);
-        TweenManager.Instance.AnimateFloat(backgroundBlurRenderer.transform, 1f, new Vector3(-0.03f, 3.5f, 2));
+        //TweenManager.Instance.AnimateFloat(backgroundBlurRenderer.transform, 1f, new Vector3(-0.03f, 3.5f, 2));
 
         GetComponent<StoneSpawner>().Configure(3, 5, 4, 6, 10, 15);
         StartCoroutine(GetComponent<StoneSpawner>().SpawnStoneLoop());

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class FS_Despawner : MonoBehaviour
 {
+    private void Start()
+    {
+        if (Screen.height > 1080)
+            gameObject.transform.position = new Vector3(transform.position.x, ((transform.position.y / 1080) * Screen.height), transform.position.z);
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         other.gameObject.SetActive(false);
