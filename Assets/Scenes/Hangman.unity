@@ -3888,7 +3888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1102701286159138821, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
       propertyPath: m_Volume
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1102701286159138821, guid: adabd7ea2b96c954a95aa9442d894262, type: 3}
       propertyPath: m_audioClip
@@ -4801,7 +4801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648f5c57d8c12024ba26b54b08b95c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentGamemode: 2
+  currentGamemode: 6
   masterVolSlider: {fileID: 1381247981}
   masterVolText: {fileID: 511897930}
   musicVolSlider: {fileID: 1692787875}

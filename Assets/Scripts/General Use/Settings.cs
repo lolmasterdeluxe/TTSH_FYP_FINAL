@@ -15,6 +15,7 @@ public class Settings : MonoBehaviour
         CHAPTEH,
         FLAPPY,
         COUNTRY_ERASERS,
+        HANGMAN
     }
 
     public GameMode currentGamemode;
@@ -103,6 +104,13 @@ public class Settings : MonoBehaviour
                     masterVolText.text = Mathf.RoundToInt(masterVolSlider.value * 100).ToString();
                 }
                 break;
+            case GameMode.HANGMAN:
+                for (int i = 0; i < 5; i++)
+                {
+                    HangmanGameManager.Instance.audioSources[i].volume = masterVolSlider.value;
+                    masterVolText.text = Mathf.RoundToInt(masterVolSlider.value * 100).ToString();
+                }
+                break;
         }
     }
 
@@ -137,6 +145,10 @@ public class Settings : MonoBehaviour
                 break;
             case GameMode.COUNTRY_ERASERS:
                 EraserGameManager.Instance.audioSources[0].volume = musicVolSlider.value;
+                musicVolText.text = Mathf.RoundToInt(musicVolSlider.value * 100).ToString();
+                break;
+            case GameMode.HANGMAN:
+                HangmanGameManager.Instance.audioSources[0].volume = musicVolSlider.value;
                 musicVolText.text = Mathf.RoundToInt(musicVolSlider.value * 100).ToString();
                 break;
         }
@@ -196,6 +208,13 @@ public class Settings : MonoBehaviour
                 for (int i = 1; i < 4; i++)
                 {
                     EraserGameManager.Instance.audioSources[i].volume = sfxVolSlider.value;
+                    sfxVolText.text = Mathf.RoundToInt(sfxVolSlider.value * 100).ToString();
+                }
+                break;
+            case GameMode.HANGMAN:
+                for (int i = 1; i < 5; i++)
+                {
+                    HangmanGameManager.Instance.audioSources[i].volume = sfxVolSlider.value;
                     sfxVolText.text = Mathf.RoundToInt(sfxVolSlider.value * 100).ToString();
                 }
                 break;
