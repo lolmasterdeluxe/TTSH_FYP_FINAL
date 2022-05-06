@@ -4922,6 +4922,7 @@ MonoBehaviour:
   handTrailPrefab: {fileID: 7785552333619283571, guid: e8fdab3d0ad48934f9e0f29999b67d2d, type: 3}
   particlePrefab: {fileID: 0}
   particleSystem_: {fileID: 824849858213691201, guid: f78160e634116df41a19946bb26548d4, type: 3}
+  bombparticle_: {fileID: 71105907003970749, guid: 9e829601e2d26964392f36f895da4878, type: 3}
   type: 0
   velocity: 0
   cuttingVelocityThreshold: 0.0001

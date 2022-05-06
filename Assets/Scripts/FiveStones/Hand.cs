@@ -9,6 +9,7 @@ public class Hand : MonoBehaviour
     public GameObject particlePrefab;
     //public GameObject particle;
     public ParticleSystem particleSystem_;
+    public ParticleSystem bombparticle_;
     private GameObject instantiatedParticle;
     public FiveStonesGameManager.Objective type;
 
@@ -136,7 +137,13 @@ public class Hand : MonoBehaviour
                 Destroy(particleEffect, 2.0f);
             }
 
-
+            if(collision.GetComponent<Stone>().type == FiveStonesGameManager.Objective.BOMB_STONES)
+            {
+                Debug.Log("sparkle");
+                ParticleSystem particleEffect = new ParticleSystem();
+                particleEffect = Instantiate(bombparticle_, transform.position, transform.rotation);
+                Destroy(particleEffect, 2.0f);
+            }
 
 
             // Destroy(collision.gameObject);
