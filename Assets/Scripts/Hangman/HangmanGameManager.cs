@@ -345,6 +345,8 @@ public class HangmanGameManager : MonoBehaviour
     {
         audioSources[4].Play();
         m_gameEnded = true;
+
+        g_gameTimeUp.SetActive(true);
         TweenManager.Instance.AnimateFade(g_gameTimeUp.GetComponent<CanvasGroup>(), 1f, 1f);
 
         // Disable pause button when game over

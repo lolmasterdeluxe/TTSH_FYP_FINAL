@@ -31,28 +31,38 @@ public class SPS_ScrollingBackground : MonoBehaviour
         += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * ObjectManager.f_objectTravelspeedMultiplier * Time.deltaTime ;
 
         //ground 2
-        parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(groundSpeed, 0f));
+        parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(-groundSpeed, 0f));
         parallexbackgroundmanagerInstance.componentContainer[1].GetComponent<Renderer>().material.mainTextureOffset
+        += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * ObjectManager.f_objectTravelspeedMultiplier * Time.deltaTime;
+
+        //ground 3
+        parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(groundSpeed, 0f));
+        parallexbackgroundmanagerInstance.componentContainer[2].GetComponent<Renderer>().material.mainTextureOffset
+        += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * ObjectManager.f_objectTravelspeedMultiplier * Time.deltaTime;
+
+        //ground 4
+        parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(-groundSpeed, 0f));
+        parallexbackgroundmanagerInstance.componentContainer[3].GetComponent<Renderer>().material.mainTextureOffset
         += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * ObjectManager.f_objectTravelspeedMultiplier * Time.deltaTime;
 
         //clouds
         parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(cloudSpeed, 0f));
-        parallexbackgroundmanagerInstance.componentContainer[2].GetComponent<Renderer>().material.mainTextureOffset
+        parallexbackgroundmanagerInstance.componentContainer[4].GetComponent<Renderer>().material.mainTextureOffset
         += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * ObjectManager.f_objectTravelspeedMultiplier * Time.deltaTime;
 
         //fog
         parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(fogSpeed, 0f));
-        parallexbackgroundmanagerInstance.componentContainer[3].GetComponent<Renderer>().material.mainTextureOffset
+        parallexbackgroundmanagerInstance.componentContainer[5].GetComponent<Renderer>().material.mainTextureOffset
         += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * ObjectManager.f_objectTravelspeedMultiplier * Time.deltaTime;
 
         //building
         parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(buildingSpeed, 0f));
-        parallexbackgroundmanagerInstance.componentContainer[4].GetComponent<Renderer>().material.mainTextureOffset
+        parallexbackgroundmanagerInstance.componentContainer[6].GetComponent<Renderer>().material.mainTextureOffset
         += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * ObjectManager.f_objectTravelspeedMultiplier * Time.deltaTime;
 
         //playground
         parallexbackgroundmanagerInstance.SetBackgroundOffsetVector(new Vector2(playgroundSpeed, 0f));
-        parallexbackgroundmanagerInstance.componentContainer[5].GetComponent<Renderer>().material.mainTextureOffset
+        parallexbackgroundmanagerInstance.componentContainer[7].GetComponent<Renderer>().material.mainTextureOffset
         += parallexbackgroundmanagerInstance.GetBackgroundOffsetVector() * ObjectManager.f_objectTravelspeedMultiplier * Time.deltaTime;
 
     }

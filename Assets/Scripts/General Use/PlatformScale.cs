@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlatformScale : MonoBehaviour
 {
     private CanvasScaler canvas;
+    [SerializeField] private int UnityEditorCanvasMatchValue = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,7 @@ public class PlatformScale : MonoBehaviour
     void Update()
     {
 #if UNITY_EDITOR
-        canvas.matchWidthOrHeight = 1;
+        canvas.matchWidthOrHeight = UnityEditorCanvasMatchValue;
 #elif UNITY_ANDROID
         canvas.matchWidthOrHeight = 1;
 #elif UNITY_IPHONE
