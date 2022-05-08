@@ -67,11 +67,11 @@ public class StoneSpawner : MonoBehaviour
         if (Screen.height > 1080)
         {
             this.minForce = (minForce / 1080) * Screen.height;
-            this.maxForce = (maxForce / 1080) * Screen.height;
+            this.maxForce = this.minForce + 2;
         }
     }
 
-    public void RandomizeRotation(Transform transform)
+        public void RandomizeRotation(Transform transform)
     {
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, Random.Range(-180, 180));
     }
