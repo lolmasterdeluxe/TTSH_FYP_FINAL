@@ -35,6 +35,7 @@ public class CustomizerManager : MonoBehaviour
     public int m_hatId = 0;
     public int m_faceId = 0;
     public int m_colorId = 0;
+    public int ControlPreference = 0;
 
     public SpriteRenderer m_hatSprite;
     public SpriteRenderer m_eyeSprite;
@@ -203,5 +204,4 @@ public class CustomizerManager : MonoBehaviour
         ScoreManager.Instance.UpdateCurrentUserTotalScore();
         SceneManager.LoadScene("MainMenuGameScene");
     }
-
 }

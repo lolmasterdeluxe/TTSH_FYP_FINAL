@@ -19,6 +19,7 @@ public class CustomizeLinker : MonoBehaviour
     [SerializeField]
     private Button exitButton;
     private ScoreManager.Score[] score;
+    private bool UpdateControls = true;
 
     private void Start()
     {
@@ -38,6 +39,8 @@ public class CustomizeLinker : MonoBehaviour
     {
         SetCloneCosmetics();
         ChangeCharacterName();
+        if (UpdateControls)
+            UpdateControlPreferences();
         customizer.nextSceneButton = exitButton;
         customizer.inputNameField = inputNameField;
     }
@@ -129,6 +132,45 @@ public class CustomizeLinker : MonoBehaviour
         }
         ScoreManager.Instance.m_currentUsername = inputNameField.text;
     }
+
+    private void UpdateControlPreferences()
+    {
+        if (customizer.ControlPreference == 0)
+        {
+            JoystickPanel.SetActive(false);
+            DpadPanel.SetActive(false);
+            Player.GetComponent<PlayerJoystickMovement>().enabled = false;
+            Player.GetComponent<PlayerDpadMovement>().enabled = false;
+            Player.GetComponent<PlayerTouchMovement>().enabled = true;
+        }
+        else if (customizer.ControlPreference == 1)
+        {
+            JoystickPanel.SetActive(false);
+            DpadPanel.SetActive(true);
+            Player.GetComponent<PlayerJoystickMovement>().enabled = false;
+            Player.GetComponent<PlayerDpadMovement>().enabled = true;
+            Player.GetComponent<PlayerTouchMovement>().enabled = false;
+        }
+        else if (customizer.ControlPreference == 2)
+        {
+            JoystickPanel.SetActive(true);
+            DpadPanel.SetActive(false);
+            Player.GetComponent<PlayerJoystickMovement>().enabled = true;
+            Player.GetComponent<PlayerDpadMovement>().enabled = false;
+            Player.GetComponent<PlayerTouchMovement>().enabled = false;
+        }
+    }
+
+    public void SetControlPreference(int Preference)
+    {
+        customizer.ControlPreference = Preference;
+    }
+
+    public void SetUpdateControls(bool toUpdate)
+    {
+        UpdateControls = toUpdate;
+    }
+
 
     public void checkDpadJoystick()
     {
