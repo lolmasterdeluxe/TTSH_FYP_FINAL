@@ -6,19 +6,12 @@ using UnityEngine.UI;
 public class DetectUI : MonoBehaviour
 {
     //[SerializeField] private GameObject ButtonBase, ChargeBarCanvas;
-    [SerializeField] private Image ButtonBase, ButtonLeft, ButtonRight, ChargeBarCanvas, ChargeBarBorder, ChargeBarHandle;
-    private Color ButtonBaseOriginal, ButtonLeftOriginal, ButtonRightOriginal, ChargeBarCanvasOriginal, ChargeBarBorderOriginal, ChargeBarHandleOriginal;
+    [SerializeField] private CanvasGroup dPadPanel, ChargeBarCanvas, JoystickPanel;
     private Transform player;
 
     void Start()
     {
         player = GetComponent<Transform>();
-        ButtonBaseOriginal = ButtonBase.color;
-        ButtonLeftOriginal = ButtonLeft.color;
-        ButtonRightOriginal = ButtonRight.color;
-        ChargeBarCanvasOriginal = ChargeBarCanvas.color;
-        ChargeBarBorderOriginal = ChargeBarBorder.color;
-        ChargeBarHandleOriginal = ChargeBarHandle.color;
     }
 
     // Update is called once per frame
@@ -26,28 +19,22 @@ public class DetectUI : MonoBehaviour
     {
         if (player.transform.position.x <= -23)
         {
-            ButtonBase.color = new Color(255, 255, 255, 0.5f);
-            ButtonLeft.color = new Color(255, 255, 255, 0.5f);
-            ButtonRight.color = new Color(255, 255, 255, 0.5f);
+            dPadPanel.alpha = 0.5f;
+            JoystickPanel.alpha = 0.5f;
         }
         else
         {
-            ButtonBase.color = ButtonBaseOriginal;
-            ButtonLeft.color = ButtonLeftOriginal;
-            ButtonRight.color = ButtonRightOriginal;
+            dPadPanel.alpha = 1f;
+            JoystickPanel.alpha = 1f;
         }
 
         if (player.transform.position.x >= 27)
         {
-            ChargeBarCanvas.color = new Color(255, 255, 255, 0.5f);
-            ChargeBarBorder.color = new Color(ChargeBarBorderOriginal.r, ChargeBarBorderOriginal.g, ChargeBarBorderOriginal.b, 0.5f);
-            ChargeBarHandle.color = new Color(255, 255, 255, 0.5f);
+            ChargeBarCanvas.alpha = 0.5f;
         }
         else
         {
-            ChargeBarCanvas.color = ChargeBarCanvasOriginal;
-            ChargeBarBorder.color = ChargeBarBorderOriginal;
-            ChargeBarHandle.color = ChargeBarHandleOriginal;
+            ChargeBarCanvas.alpha = 1f;
         }
     }
 }

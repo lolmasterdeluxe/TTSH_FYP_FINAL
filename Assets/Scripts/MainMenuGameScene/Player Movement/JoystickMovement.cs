@@ -7,6 +7,8 @@ public class JoystickMovement : MonoBehaviour
 {
     [SerializeField]
     private GameObject joystick, joystickBG;
+    [SerializeField]
+    private bool LockYAxis = false;
     public Vector2 joystickVec;
 
     private Vector2 joystickTouchPos;
@@ -38,11 +40,13 @@ public class JoystickMovement : MonoBehaviour
 
         float joystickDist = Vector2.Distance(dragPos, joystickTouchPos);
 
+        if (LockYAxis)
+            joystickVec.y = 0;
+
         if (joystickDist < joystickRadius)
         {
             joystick.transform.position = joystickTouchPos + joystickVec * joystickDist;
         }
-
         else
         {
             joystick.transform.position = joystickTouchPos + joystickVec * joystickRadius;

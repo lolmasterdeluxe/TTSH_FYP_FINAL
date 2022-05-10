@@ -11,7 +11,10 @@ public class DragNShoot : MonoBehaviour
     [SerializeField] private Trajectory TrajectoryLine;
     [SerializeField] private PlayerButtonMove playerMove;
     [SerializeField] private ChargeBar chargeBar;
+
     [SerializeField] private GameObject dPad;
+    [SerializeField] private GameObject Joystick;
+
     [SerializeField] private PauseMenu PauseManager;
     [SerializeField] private Animator playerAnim;
 
@@ -22,11 +25,18 @@ public class DragNShoot : MonoBehaviour
     private Vector3 startPoint, endPoint, inputStartPoint, inputEndPoint, inputOffset;
     private bool InitStartPoint = true;
     private float kickBuffer;
+    private GameObject InputButton;
 
 
     private void Start()
     {
         cam = Camera.main;
+
+        InputButton = dPad;
+        if (dPad.activeInHierarchy)
+            InputButton = dPad;
+        else if (Joystick.activeInHierarchy)
+            InputButton = Joystick;
     }
 
     private void Update()
@@ -40,9 +50,9 @@ public class DragNShoot : MonoBehaviour
         {
             if (Input.GetMouseButton(0))
             {
-                if (dPad.activeSelf)
+                if (InputButton.activeSelf)
                     audioSources[1].Play();
-                dPad.SetActive(false);
+                InputButton.SetActive(false);
                 startPoint = new Vector3(kickPoint.position.x, kickPoint.position.y, 15);
                 if (InitStartPoint)
                 {
@@ -61,7 +71,7 @@ public class DragNShoot : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 audioSources[0].Play();
-                dPad.SetActive(true);
+                InputButton.SetActive(true);
                 endPoint = cam.ScreenToWorldPoint(Input.mousePosition);
                 endPoint.z = 15;
 
@@ -78,7 +88,7 @@ public class DragNShoot : MonoBehaviour
         }
         else if (!chapteh.inPlay)
         {
-            dPad.SetActive(true);
+            InputButton.SetActive(true);
             force.Set(0, 0);
             chargeBar.SetFillBar(4);
             InitStartPoint = true;

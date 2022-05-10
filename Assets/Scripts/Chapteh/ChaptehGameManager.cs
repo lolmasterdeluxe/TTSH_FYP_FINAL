@@ -175,7 +175,8 @@ public class ChaptehGameManager : MonoBehaviour
     public void OnComboAdd()
     {
         TweenManager.Instance.AnimateFade(g_comboGroup.GetComponent<CanvasGroup>(), 1f, 0.25f);
-        TweenManager.Instance.AnimateEnlargeText(g_comboText.transform, 1f, 0.25f);
+        TweenManager.Instance.AnimateEnlargeText(g_comboText.transform,
+            1f + (0.5f * ComboManager.Instance.GetCurrentCombo()), 0.25f);
     }
 
     public void OnComboBreak()

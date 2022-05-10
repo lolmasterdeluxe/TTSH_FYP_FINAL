@@ -15,7 +15,7 @@ public class PlayerButtonMove : MonoBehaviour
 
     [SerializeField] private float playerSpeed = 5;
     [Tooltip("Reference to the Dpad buttons")]
-    [SerializeField] private GameObject Left, Right;
+    [SerializeField] private GameObject dPad, Joystick, Left, Right;
     [HideInInspector] public Vector2 movement;
     [HideInInspector] public bool b_playerisRight = true;
     public Vector2 Position;
@@ -24,10 +24,13 @@ public class PlayerButtonMove : MonoBehaviour
     [SerializeField] private PauseMenu pauseMenu;
     [SerializeField] private Chapteh chapteh;
 
+    private CustomizerManager customizer;
     private Animator playerAnim;
     private float kickTime = 0;
 
     public bool isRunning = false;
+
+    public JoystickMovement movementJoystick;
     #endregion
 
     #region Unity Callbacks
@@ -39,7 +42,23 @@ public class PlayerButtonMove : MonoBehaviour
         //set values HERE
         kickTime = 0;
         playerAnim = GetComponent<Animator>();
+        customizer = FindObjectOfType<CustomizerManager>();
 
+        if (customizer.ControlPreference == 0)
+        {
+            dPad.SetActive(false);
+            Joystick.SetActive(false);
+        }
+        else if (customizer.ControlPreference == 1)
+        {
+            dPad.SetActive(true);
+            Joystick.SetActive(false);
+        }
+        else if (customizer.ControlPreference == 2)
+        {
+            dPad.SetActive(false);
+            Joystick.SetActive(true);
+        }
     }
 
     private void Update()
@@ -64,7 +83,21 @@ public class PlayerButtonMove : MonoBehaviour
     private void FixedUpdate()
     {
         //we do the movement of the player HERE
-        rb.MovePosition(rb.position + movement * playerSpeed * Time.fixedDeltaTime);
+        if (dPad.activeInHierarchy)
+            rb.MovePosition(rb.position + movement * playerSpeed * Time.fixedDeltaTime);
+        else if (Joystick.activeInHierarchy)
+        {
+            if (movementJoystick.joystickVec.x != 0)
+            {
+                rb.velocity = new Vector2(movementJoystick.joystickVec.x * playerSpeed, 0);
+                footstepsSFX.Play();
+            }
+            else
+            {
+                rb.velocity = Vector2.zero;
+                footstepsSFX.Stop();
+            }
+        }
     }
 
 
@@ -78,13 +111,13 @@ public class PlayerButtonMove : MonoBehaviour
         {
             footstepsSFX.Play();
             movement.x = -1;
-            Left.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+            Left.transform.localScale += new Vector3(0.2f, 0.2f, 0.2f);
         }
         if (dir == "Right")
         {
             footstepsSFX.Play();
             movement.x = 1;
-            Right.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+            Right.transform.localScale += new Vector3(0.2f, 0.2f, 0.2f);
         }
     }
 
@@ -103,7 +136,7 @@ public class PlayerButtonMove : MonoBehaviour
     {
         if (!pauseMenu.isPaused)
         {
-            if (movement.x > 0)
+            if (movement.x > 0 || rb.velocity.x > 0)
             {
                 // Sets the sprite to original position
                 transform.eulerAngles = new Vector3(0, 0, 0);
@@ -118,7 +151,7 @@ public class PlayerButtonMove : MonoBehaviour
 
     private void PlayerSpriteAnimation()
     {
-        if (movement.magnitude == 0) // If input is not detected
+        if (movement.magnitude == 0 && rb.velocity.x == 0) // If input is not detected
         {
             playerAnim.SetBool("PlayerRun", false);
 
@@ -181,6 +214,7 @@ public class PlayerButtonMove : MonoBehaviour
             CreateSandDust();
         }
     }
+
 
 
     #endregion
