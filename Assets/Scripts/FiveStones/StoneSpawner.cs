@@ -56,12 +56,6 @@ public class StoneSpawner : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Configure(float minSpawnDelay, float maxSpawnDelay, int minStone, int maxStone, float minForce, float maxForce)
     {
         this.minSpawnDelay = minSpawnDelay;
@@ -70,9 +64,14 @@ public class StoneSpawner : MonoBehaviour
         this.maxStone = maxStone;
         this.minForce = minForce;
         this.maxForce = maxForce;
+        if (Screen.height > 1080)
+        {
+            this.minForce = (minForce / 1080) * Screen.height;
+            this.maxForce = this.minForce + 2;
+        }
     }
 
-    public void RandomizeRotation(Transform transform)
+        public void RandomizeRotation(Transform transform)
     {
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, Random.Range(-180, 180));
     }

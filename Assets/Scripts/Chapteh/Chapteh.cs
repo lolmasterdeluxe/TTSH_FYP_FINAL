@@ -156,7 +156,7 @@ public class Chapteh : MonoBehaviour
         }
 
         // Chapteh hits the respective ring
-        if (other.CompareTag("RedRing") || other.CompareTag("YellowRing") || other.CompareTag("GreenRing"))
+        if ((other.CompareTag("RedRing") || other.CompareTag("YellowRing") || other.CompareTag("GreenRing")) && !other.GetComponent<Rings>().isTriggered)
         {
             // Adds the score to respective ring color
             ChaptehGameManager.Instance.OnChaptehHit(other.gameObject);

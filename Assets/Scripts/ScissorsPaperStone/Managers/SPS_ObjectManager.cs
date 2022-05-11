@@ -160,6 +160,7 @@ public class SPS_ObjectManager : MonoBehaviour
 
     public void SpawnSingleRandomEnemy()
     {
+       // Debug.Log("SINGLE ENEMY");
         //instantiate an enemy HERE
         g_objectInstance = ObjectPooling.SharedInstance.GetPooledObject("EnemyTag");
         if (g_objectInstance != null && !g_objectInstance.activeSelf)
@@ -186,6 +187,7 @@ public class SPS_ObjectManager : MonoBehaviour
 
     public void SpawnMultipleRandomEnemies()
     {
+        Debug.Log("MULTIPLE ENEMIES");
         int waveSize = Random.Range(2, 4);
 
         for (int val = 1; val <= waveSize; val++)
@@ -314,7 +316,7 @@ public class SPS_ObjectManager : MonoBehaviour
         enemyAnimator.SetBool("e_died", false);
         targetedEnemy.SetActive(false);
 
-        Debug.Log("Completed deletion");
+        //Debug.Log("Completed deletion");
     }
 
 

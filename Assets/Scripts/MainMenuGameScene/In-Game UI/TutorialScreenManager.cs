@@ -54,6 +54,8 @@ public class TutorialScreenManager : MonoBehaviour
     [Tooltip("Sprite List for each pages of Country Erasers tutorial")]
     public Sprite[] hangman_Page3, hangman_Page4;
 
+    private CustomizerManager PlayerPreference;
+
     #endregion
 
     #region Unity Callbacks
@@ -64,6 +66,7 @@ public class TutorialScreenManager : MonoBehaviour
         chapteh_Page2Run.gameObject.SetActive(false);
         chapteh_Page2RightArrow.gameObject.SetActive(false);
         chapteh_Page2LeftArrow.gameObject.SetActive(false);
+        PlayerPreference = FindObjectOfType<CustomizerManager>();
     }
 
     private void Awake()
@@ -299,20 +302,23 @@ public class TutorialScreenManager : MonoBehaviour
                         chapteh_tutorialBase.sprite = chapteh_tutorialContainer[0];
                         break;
                     case 1:
-                        chapteh_tutorialBase.sprite = chapteh_tutorialContainer[1];
+                        if (PlayerPreference.ControlPreference == 2)
+                            chapteh_tutorialBase.sprite = chapteh_tutorialContainer[2];
+                        else
+                            chapteh_tutorialBase.sprite = chapteh_tutorialContainer[1];
                         break;
                     case 2:
-                        chapteh_tutorialBase.sprite = chapteh_tutorialContainer[2];
-                        break;
-                    case 3:
                         chapteh_tutorialBase.sprite = chapteh_tutorialContainer[3];
                         break;
-                    case 4:
+                    case 3:
                         chapteh_tutorialBase.sprite = chapteh_tutorialContainer[4];
+                        break;
+                    case 4:
+                        chapteh_tutorialBase.sprite = chapteh_tutorialContainer[5];
                         break;
                 }
                 break;
-            case 3: //chapteh
+            case 3: //flappy parachute
                 switch (screenNumber)
                 {
                     case 0:
