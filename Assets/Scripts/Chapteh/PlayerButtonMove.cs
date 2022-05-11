@@ -15,7 +15,7 @@ public class PlayerButtonMove : MonoBehaviour
 
     [SerializeField] private float playerSpeed = 5;
     [Tooltip("Reference to the Dpad buttons")]
-    [SerializeField] private GameObject TouchScreen, dPad, Joystick, Left, Right;
+    [SerializeField] private GameObject dPad, Joystick, Left, Right;
     [HideInInspector] public Vector2 movement;
     [HideInInspector] public bool b_playerisRight = true;
     public Vector2 Position;
@@ -46,19 +46,16 @@ public class PlayerButtonMove : MonoBehaviour
 
         if (customizer.ControlPreference == 0)
         {
-            TouchScreen.SetActive(true);
-            dPad.SetActive(false);
+            dPad.SetActive(true);
             Joystick.SetActive(false);
         }
         else if (customizer.ControlPreference == 1)
         {
-            TouchScreen.SetActive(false);
             dPad.SetActive(true);
             Joystick.SetActive(false);
         }
         else if (customizer.ControlPreference == 2)
         {
-            TouchScreen.SetActive(false);
             dPad.SetActive(false);
             Joystick.SetActive(true);
         }
@@ -75,6 +72,7 @@ public class PlayerButtonMove : MonoBehaviour
             Left.transform.localScale = new Vector3(1, 1, 1);
             Right.transform.localScale = new Vector3(1, 1, 1);
             movement.x = 0;
+            Joystick.SetActive(false);
             playerAnim.enabled = false;
             DisppearSandDust();
             return;
