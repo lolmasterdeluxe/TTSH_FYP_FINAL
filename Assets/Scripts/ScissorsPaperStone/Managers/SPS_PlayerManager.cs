@@ -449,20 +449,20 @@ public class SPS_PlayerManager : MonoBehaviour
                 {
                     //add to the objective value
                     uiManagerInstance.UpdatePlayerObjectiveValue();
-
+                
                     //remove the object from the list
                     objectManagerInstance.objectWaveList.Remove(other.gameObject);
-
+                
                     //add the value HERE
                     uiManagerInstance.AddObjectiveValue();
                     
                     other.gameObject.SetActive(false);
-
+                
                     Debug.Log("Powerup Falsed");
                     //play sounds HERE
                     powerupSFX.Play();
                     
-
+                
                 }
                 //we take damage if we hit with the wrong typing
                 else
@@ -521,7 +521,7 @@ public class SPS_PlayerManager : MonoBehaviour
 
             else if (other.gameObject.tag == "Powerup")
             {
-                print("enter");
+                print("Powerup goes inside of player");
                 //add to the objective value
                 uiManagerInstance.AddObjectiveValue();
 
@@ -542,7 +542,9 @@ public class SPS_PlayerManager : MonoBehaviour
     {
         if (other.gameObject.tag == "Powerup")
         {
+            Debug.Log("Exited");
             Destroy(other.gameObject);
+            objectManagerInstance.objectWaveList.Remove(other.gameObject);
             transform.GetChild(1).GetComponent<ParticleSystem>().Stop();
         }
             

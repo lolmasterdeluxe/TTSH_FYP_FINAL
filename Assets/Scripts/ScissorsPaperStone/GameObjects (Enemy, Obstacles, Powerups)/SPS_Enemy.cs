@@ -78,17 +78,17 @@ public class SPS_Enemy : MonoBehaviour
             case 0:
                 enemy_type = EnemyType.ENEMY_SCISSORS;
                 enemyAC.runtimeAnimatorController = scissorsController;
-                Debug.Log("Scissors Made");
+                //Debug.Log("Scissors Made");
                 break;
             case 1:
                 enemy_type = EnemyType.ENEMY_PAPER;
                 enemyAC.runtimeAnimatorController = paperController;
-                Debug.Log("Paper Made");
+                //Debug.Log("Paper Made");
                 break;
             case 2:
                 enemy_type = EnemyType.ENEMY_STONE;
                 enemyAC.runtimeAnimatorController = stoneController;
-                Debug.Log("STone Made");
+                //Debug.Log("STone Made");
                 break;
             default:
                 break;
