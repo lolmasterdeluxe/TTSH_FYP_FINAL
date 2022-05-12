@@ -1784,7 +1784,7 @@ GameObject:
   - component: {fileID: 563794805}
   - component: {fileID: 563794804}
   m_Layer: 5
-  m_Name: Splash BG
+  m_Name: Loading BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3423,6 +3423,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 39b26b504e099f44db9d4de0d3622265, type: 3}
   - {fileID: 21300000, guid: b7c4490631f75f940b0dd8f85e646408, type: 3}
   - {fileID: 21300000, guid: e3603f5ba7af22643a0f124f1cdc4704, type: 3}
+  loadingDuration: 3
 --- !u!225 &1383239740
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3447,7 +3448,7 @@ GameObject:
   - component: {fileID: 1387501719}
   - component: {fileID: 1387501718}
   m_Layer: 5
-  m_Name: Splash Image
+  m_Name: Loading Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3492,7 +3493,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2164a03bf3eed404b875a0af9002908e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3603f5ba7af22643a0f124f1cdc4704, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

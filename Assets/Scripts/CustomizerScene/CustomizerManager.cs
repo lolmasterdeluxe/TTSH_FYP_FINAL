@@ -202,6 +202,6 @@ public class CustomizerManager : MonoBehaviour
     {
         ScoreManager.Instance.LoadAllScoreList();
         ScoreManager.Instance.UpdateCurrentUserTotalScore();
-        SceneManager.LoadSceneAsync("MainMenuGameScene");
+        //SceneManager.LoadScene("MainMenuGameScene");
     }
 }
