@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Data;
-using UnityEditor;
 using UnityEngine;
-using System;
-using System.Reflection;
 using Newtonsoft.Json;
 using UnityEngine.Networking;
+using UnityGoogleDrive;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -74,6 +71,11 @@ public class ScoreManager : MonoBehaviour
     private const string api_allScore = "/scoreboard.php?all=";
     private const string api_addScore = "/scoreboard.php";
 
+    private GoogleDriveFiles.DownloadRequest driveRequest;
+    private string driveResult;
+    private const string fileId = "1joby-qdIKkc0Phwkw5RGbktujGaiz3Ix";
+    /*private const string UploadFilePath = "My Drive"*/
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -87,15 +89,12 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Get scoreboard.csv from Gdrive
+        GetGdriveFile();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    // (Currenlty unused)
+    #region mySQL Database
     IEnumerator RequestAllScore(int count=1000)
     {
         UnityWebRequest unityWebRequest = UnityWebRequest.Get(url + api_allScore + count);
@@ -149,6 +148,39 @@ public class ScoreManager : MonoBehaviour
             Debug.Log("Response: " + unityWebRequest.downloadHandler.text);
         }
     }
+
+    public void ConcludeGameScore()
+    {
+        List<Score> m_currentScoreList = m_allScoreList.Where(x => x.m_username == m_currentUsername).ToList();
+        // Super awful way of doing, might lose data too need to test
+        foreach (Score score in m_currentScoreList)
+            StartCoroutine(SaveScoreData(score));
+    }
+
+    #endregion
+
+    #region Google Drive Upload/Download
+    private void GetGdriveFile()
+    {
+        driveRequest = GoogleDriveFiles.Download(fileId);
+        driveRequest.Fields = new List<string> { };
+        driveRequest.Send().OnDone += BuildScoreboardString;
+    }
+
+    private void BuildScoreboardString(UnityGoogleDrive.Data.File file)
+    {
+        driveResult = Encoding.UTF8.GetString(file.Content);
+        Debug.Log(driveResult);
+    }
+
+    private void UploadNewScoreboard(string rawFileData)
+    {
+        // Uploading a file.
+        var file = new UnityGoogleDrive.Data.File { Name = "score.csv", Content = Encoding.UTF8.GetBytes(rawFileData) };
+        GoogleDriveFiles.Update(fileId, file).Send();
+    }
+
+    #endregion
 
     public void ResetUser()
     {
@@ -238,33 +270,21 @@ public class ScoreManager : MonoBehaviour
         UpdateCurrentUserTotalScore();
     }
 
-    public void ConcludeGameScore()
-    {
-        List<Score> m_currentScoreList = m_allScoreList.Where(x => x.m_username == m_currentUsername).ToList();
-        // Super awful way of doing, might lose data too need to test
-        foreach (Score score in m_currentScoreList)
-            StartCoroutine(SaveScoreData(score));
-    }
-
-    // Not in use currently
     #region Local CSV Saving
 
     private string GetFilePath()
     {
+        // Always update current scoreboard.csv with latest drive data
 #if UNITY_EDITOR
-        if (!File.Exists(Application.dataPath + "/CSV/" + "score.csv"))
-            CreateCSV(Application.dataPath + "/CSV/" + "score.csv");
+        SaveCSV(Application.dataPath + "/CSV/" + "score.csv", driveResult);
         return Application.dataPath + "/CSV/" + "score.csv";
 #elif UNITY_ANDROID || UNITY_IPHONE
-        if (!File.Exists(Application.persistentDataPath + "/score.csv"))
-            CreateCSV(Application.persistentDataPath + "/score.csv");
+        SaveCSV(Application.persistentDataPath + "/score.csv", driveResult);
         return Application.persistentDataPath + "/score.csv";
 #else
+        SaveCSV(Application.dataPath + "/CSV/" + "score.csv", driveResult);
         return Application.dataPath +"/CSV/"+"score.csv";
 #endif
-        /*TextAsset myTextAsset = Resources.Load<TextAsset>("score"); // omit file extension
-        string csvText = myTextAsset.text;
-        return csvText;*/
     }
     public void LoadAllScoreList()
     {
@@ -314,8 +334,6 @@ public class ScoreManager : MonoBehaviour
 
     public void EndSessionConcludeScore()
     {
-        //m_allScoreList.AddRange(m_currentScoreList);
-
         var stringBuilder = new StringBuilder("Id,Name,Mode,Score,HatId,FaceId,ColourId");
         foreach (Score score in m_allScoreList)
         {
@@ -330,6 +348,7 @@ public class ScoreManager : MonoBehaviour
         }
 
         SaveCSV(GetFilePath(), stringBuilder.ToString());
+        UploadNewScoreboard(stringBuilder.ToString());
     }
 
     private void CreateCSV(string filePath)
@@ -341,7 +360,7 @@ public class ScoreManager : MonoBehaviour
     private void SaveCSV(string filePath, string data)
     {
         StreamWriter outStream = File.CreateText(filePath);
-        outStream.WriteLine(data);
+        outStream.Write(data);
         outStream.Close();
     }
 
