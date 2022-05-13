@@ -159,8 +159,8 @@ public class HangmanGameManager : MonoBehaviour
             Letter.SetActive(true);
             Letter.transform.GetChild(0).gameObject.SetActive(false);
             Letter.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = randomWord.m_word.Substring(i, 1);
-            // Check if letter is a space, if yes then solve it by default and create empty space
-            if (randomWord.m_word.Substring(i, 1) == " ")
+            // Check if letter is a space or hyphen, if yes then solve it by default and create empty space
+            if (randomWord.m_word.Substring(i, 1) == " " || randomWord.m_word.Substring(i, 1) == "-")
             {
                 Letter.GetComponent<TextMeshProUGUI>().text = " ";
                 Letter.transform.GetChild(0).gameObject.SetActive(true);
@@ -299,12 +299,10 @@ public class HangmanGameManager : MonoBehaviour
         TextAsset myTextAsset = Resources.Load<TextAsset>("CSV/listofwords"); // omit file extension
         string csvText = myTextAsset.text;
 #if UNITY_EDITOR
-        if (!File.Exists(Application.dataPath + "/CSV/" + "listofwords.csv"))
-            SaveCSV(Application.dataPath + "/CSV/" + "listofwords.csv", csvText);
+        SaveCSV(Application.dataPath + "/CSV/" + "listofwords.csv", csvText);
         return Application.dataPath + "/CSV/" + "listofwords.csv";
 #elif UNITY_ANDROID || UNITY_IPHONE
-        if (!File.Exists(Application.persistentDataPath + "/listofwords.csv"))
-            SaveCSV(Application.persistentDataPath + "/listofwords.csv", csvText);
+        SaveCSV(Application.persistentDataPath + "/listofwords.csv", csvText);
         return Application.persistentDataPath + "/listofwords.csv";
 #else
         return Application.dataPath +"/CSV/"+"score.csv";
