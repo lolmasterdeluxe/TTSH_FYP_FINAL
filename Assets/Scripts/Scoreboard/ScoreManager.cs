@@ -93,7 +93,7 @@ public class ScoreManager : MonoBehaviour
         GetGdriveFile();
     }
 
-    // (Currenlty unused)
+    // (Currently unused)
     #region mySQL Database
     IEnumerator RequestAllScore(int count=1000)
     {
