@@ -289,7 +289,11 @@ public class SPS_PlayerManager : MonoBehaviour
             //set boolean HERE
             b_playerJumped = true;
         }
-
+        if (b_playerJumped && (player_choice == PlayerChoice.PLAYER_SCISSOR || player_choice == PlayerChoice.PLAYER_PAPER ||player_choice == PlayerChoice.PLAYER_STONE))
+        {
+            Debug.Log("Jumping and attacking");
+            collider_player.offset = collider_player.offset = new Vector2(2.75f, -1f);
+        }
         if (player_choice == PlayerChoice.PLAYER_NONE)
         {
             //we want to shift the collider back to the original position
