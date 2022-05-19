@@ -43,3 +43,10 @@ Id,Name,Mode,Score,HatId,FaceId,ColourId
 9,The Joker,CHAPTEH,120,18,13,4
 10,Haytham Kenway,TOTAL,610,20,17,3
 10,Haytham Kenway,COUNTRY_ERASERS,610,20,17,3
+11,Thomas Shelby,TOTAL,1997,23,4,7
+11,Thomas Shelby,FLAPPY,110,23,4,7
+11,Thomas Shelby,CHAPTEH,84,23,4,7
+11,Thomas Shelby,SPS,413,23,4,7
+11,Thomas Shelby,COUNTRY_ERASERS,1390,23,4,7
+12,JJ Lin,TOTAL,852,17,2,0
+12,JJ Lin,HANGMAN,852,17,2,0

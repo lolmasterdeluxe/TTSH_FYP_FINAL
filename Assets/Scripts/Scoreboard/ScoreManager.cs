@@ -274,8 +274,8 @@ public class ScoreManager : MonoBehaviour
 
     private void LoadUpdatedScoreList()
     {
-        GetGdriveFile();
         m_allScoreListTemp.Clear();
+        GetGdriveFile();
 
         StreamReader streamReader = new StreamReader(GetFilePath());
 
@@ -310,17 +310,21 @@ public class ScoreManager : MonoBehaviour
         Score TempPlayer = m_allScoreListTemp.Where(x => x.m_userId == m_currentUserID).FirstOrDefault();
 
         // Update current scoreboard to newer one if have
-        if (CurrPlayer.m_username != TempPlayer.m_username)
+        if (TempPlayer != null)
         {
-            UpdateTotalScoreUserID();
-            UpdateCurrentScoreUserID(Gamemode.SPS);
-            UpdateCurrentScoreUserID(Gamemode.CHAPTEH);
-            UpdateCurrentScoreUserID(Gamemode.COUNTRY_ERASERS);
-            UpdateCurrentScoreUserID(Gamemode.FIVESTONES);
-            UpdateCurrentScoreUserID(Gamemode.FLAPPY);
-            UpdateCurrentScoreUserID(Gamemode.HANGMAN);
-            m_currentUserID++;
-            m_allScoreList = m_allScoreListTemp;
+            if (CurrPlayer.m_username != TempPlayer.m_username)
+            {
+                UpdateTotalScoreUserID();
+                UpdateCurrentScoreUserID(Gamemode.SPS);
+                UpdateCurrentScoreUserID(Gamemode.CHAPTEH);
+                UpdateCurrentScoreUserID(Gamemode.COUNTRY_ERASERS);
+                UpdateCurrentScoreUserID(Gamemode.FIVESTONES);
+                UpdateCurrentScoreUserID(Gamemode.FLAPPY);
+                UpdateCurrentScoreUserID(Gamemode.HANGMAN);
+                m_currentUserID++;
+                m_allScoreList = m_allScoreListTemp;
+                Debug.Log("Scorelist updated");
+            }
         }
     }
 
