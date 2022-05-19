@@ -60,6 +60,8 @@ public class ScoreManager : MonoBehaviour
     }
 
     public List<Score> m_allScoreList = new List<Score>();
+    public List<Score> m_allScoreListTemp = new List<Score>();
+    private ScoreManager.Score[] score;
     private int m_maxUser = 1000;
 
     public string m_currentUsername;
@@ -270,6 +272,80 @@ public class ScoreManager : MonoBehaviour
         UpdateCurrentUserTotalScore();
     }
 
+    private void LoadUpdatedScoreList()
+    {
+        GetGdriveFile();
+        m_allScoreListTemp.Clear();
+
+        StreamReader streamReader = new StreamReader(GetFilePath());
+
+        if (streamReader == null)
+        {
+            Debug.Log("Score list file not found");
+            streamReader.Close();
+            return;
+        }
+
+        while (true)
+        {
+            string data = streamReader.ReadLine();
+
+            if (data == null)
+                break;
+
+            var scoreData = data.Split(',');
+
+            // ass hardcode change it!!
+            if (!int.TryParse(scoreData[0], out int i))
+                continue;
+
+            m_allScoreListTemp.Add(new Score(int.Parse(scoreData[0]), scoreData[1], scoreData[2], int.Parse(scoreData[3]), int.Parse(scoreData[4]), int.Parse(scoreData[5]), int.Parse(scoreData[6])));
+
+            Debug.Log(scoreData[0] + " " + scoreData[1] + " " + scoreData[2]);
+        }
+
+        streamReader.Close();
+
+        Score CurrPlayer = m_allScoreList.Where(x => x.m_userId == m_currentUserID).FirstOrDefault();
+        Score TempPlayer = m_allScoreListTemp.Where(x => x.m_userId == m_currentUserID).FirstOrDefault();
+
+        // Update current scoreboard to newer one if have
+        if (CurrPlayer.m_username != TempPlayer.m_username)
+        {
+            UpdateTotalScoreUserID();
+            UpdateCurrentScoreUserID(Gamemode.SPS);
+            UpdateCurrentScoreUserID(Gamemode.CHAPTEH);
+            UpdateCurrentScoreUserID(Gamemode.COUNTRY_ERASERS);
+            UpdateCurrentScoreUserID(Gamemode.FIVESTONES);
+            UpdateCurrentScoreUserID(Gamemode.FLAPPY);
+            UpdateCurrentScoreUserID(Gamemode.HANGMAN);
+            m_currentUserID++;
+            m_allScoreList = m_allScoreListTemp;
+        }
+    }
+
+    private void UpdateCurrentScoreUserID(Gamemode gamemode)
+    {
+        Score score = m_allScoreList.Where(x => x.m_userId == m_currentUserID && x.m_gamemode == gamemode.ToString()).FirstOrDefault();
+
+        if (score != null)
+        {
+            score.m_userId++;
+            m_allScoreListTemp.Add(score);
+        }
+    }
+
+    private void UpdateTotalScoreUserID()
+    {
+        Score totalScore = m_allScoreList.Where(x => x.m_userId == m_currentUserID && x.m_gamemode == Gamemode.TOTAL.ToString()).FirstOrDefault();
+
+        if (totalScore != null)
+        {
+            totalScore.m_userId++;
+            m_allScoreListTemp.Add(totalScore);
+        }
+    }
+
     #region Local CSV Saving
 
     private string GetFilePath()
@@ -279,11 +355,13 @@ public class ScoreManager : MonoBehaviour
         SaveCSV(Application.dataPath + "/CSV/" + "score.csv", driveResult);
         return Application.dataPath + "/CSV/" + "score.csv";
 #elif UNITY_ANDROID || UNITY_IPHONE
+        if (!File.Exists(Application.persistentDataPath + "/score.csv"))
+            CreateCSV(Application.persistentDataPath + "/score.csv");
+        //SaveCSV(Application.persistentDataPath + "/score.csv", driveResult);
+        return Application.persistentDataPath + "/score.csv";
+#elif UNITY_WEBGL
         SaveCSV(Application.persistentDataPath + "/score.csv", driveResult);
         return Application.persistentDataPath + "/score.csv";
-#else
-        SaveCSV(Application.dataPath + "/CSV/" + "score.csv", driveResult);
-        return Application.dataPath +"/CSV/"+"score.csv";
 #endif
     }
     public void LoadAllScoreList()
@@ -334,6 +412,9 @@ public class ScoreManager : MonoBehaviour
 
     public void EndSessionConcludeScore()
     {
+        //Load new score list from Gdrive
+        LoadUpdatedScoreList();
+
         var stringBuilder = new StringBuilder("Id,Name,Mode,Score,HatId,FaceId,ColourId");
         foreach (Score score in m_allScoreList)
         {
