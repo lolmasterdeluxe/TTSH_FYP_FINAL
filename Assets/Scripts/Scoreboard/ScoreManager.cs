@@ -359,9 +359,9 @@ public class ScoreManager : MonoBehaviour
         SaveCSV(Application.dataPath + "/CSV/" + "score.csv", driveResult);
         return Application.dataPath + "/CSV/" + "score.csv";
 #elif UNITY_ANDROID || UNITY_IPHONE
-        if (!File.Exists(Application.persistentDataPath + "/score.csv"))
-            CreateCSV(Application.persistentDataPath + "/score.csv");
-        //SaveCSV(Application.persistentDataPath + "/score.csv", driveResult);
+        /*if (!File.Exists(Application.persistentDataPath + "/score.csv"))
+            CreateCSV(Application.persistentDataPath + "/score.csv");*/
+        SaveCSV(Application.persistentDataPath + "/score.csv", driveResult);
         return Application.persistentDataPath + "/score.csv";
 #elif UNITY_WEBGL
         SaveCSV(Application.persistentDataPath + "/score.csv", driveResult);
