@@ -302,6 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   footstepsSFX: {fileID: 1855703411}
   playerSpeed: 8
+  Keyboard: {fileID: 0}
   dPad: {fileID: 1530680373}
   Joystick: {fileID: 628759852}
   Left: {fileID: 1979913397}
@@ -509,7 +510,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91760436}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.06999714, y: 4.2799993, z: -9.85}
+  m_LocalPosition: {x: 0.07000191, y: 4.2799993, z: -9.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1819576642}
@@ -1080,7 +1081,7 @@ RectTransform:
   - {fileID: 374099361}
   - {fileID: 981315628}
   m_Father: {fileID: 1809922008}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2257,7 +2258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2913985091809142621, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2913985091809142621, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3059,7 +3060,7 @@ RectTransform:
   m_Children:
   - {fileID: 736962033}
   m_Father: {fileID: 1809922008}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -3172,7 +3173,7 @@ RectTransform:
   - {fileID: 791670756}
   - {fileID: 1596182979}
   m_Father: {fileID: 1809922008}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -11970,7 +11971,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3980006151387492472, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3980006151387492472, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
       propertyPath: m_AnchorMax.x
@@ -12661,7 +12662,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 136141042091432762, guid: bdc51bf03760cf94abf620cc63a31ff0, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 136141042091432762, guid: bdc51bf03760cf94abf620cc63a31ff0, type: 3}
       propertyPath: m_AnchorMax.x
@@ -13270,7 +13271,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1530680374
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13284,7 +13285,7 @@ RectTransform:
   m_Children:
   - {fileID: 1977518197}
   m_Father: {fileID: 1809922008}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -13303,6 +13304,41 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &1532236770
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1532236771}
+  m_Layer: 5
+  m_Name: KeyboardPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1532236771
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532236770}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1809922008}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 350, y: 225}
+  m_SizeDelta: {x: 700, y: 450}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1533102301
 GameObject:
   m_ObjectHideFlags: 0
@@ -13375,7 +13411,7 @@ RectTransform:
   - {fileID: 1166298201}
   - {fileID: 844508068}
   m_Father: {fileID: 1809922008}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -14611,6 +14647,7 @@ RectTransform:
   - {fileID: 402566019}
   - {fileID: 1523888778}
   - {fileID: 780275377}
+  - {fileID: 1532236771}
   - {fileID: 628759853}
   - {fileID: 1530680374}
   - {fileID: 614313274}
@@ -15938,7 +15975,7 @@ RectTransform:
   - {fileID: 1388064034}
   - {fileID: 1356162571}
   m_Father: {fileID: 1809922008}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

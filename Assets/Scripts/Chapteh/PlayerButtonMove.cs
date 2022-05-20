@@ -15,7 +15,7 @@ public class PlayerButtonMove : MonoBehaviour
 
     [SerializeField] private float playerSpeed = 5;
     [Tooltip("Reference to the Dpad buttons")]
-    [SerializeField] private GameObject dPad, Joystick, Left, Right;
+    [SerializeField] private GameObject Keyboard, dPad, Joystick, Left, Right;
     [HideInInspector] public Vector2 movement;
     [HideInInspector] public bool b_playerisRight = true;
     public Vector2 Position;
@@ -46,16 +46,19 @@ public class PlayerButtonMove : MonoBehaviour
 
         if (customizer.ControlPreference == 0)
         {
-            dPad.SetActive(true);
+            Keyboard.SetActive(true);
+            dPad.SetActive(false);
             Joystick.SetActive(false);
         }
         else if (customizer.ControlPreference == 1)
         {
+            Keyboard.SetActive(false);
             dPad.SetActive(true);
             Joystick.SetActive(false);
         }
         else if (customizer.ControlPreference == 2)
         {
+            Keyboard.SetActive(false);
             dPad.SetActive(false);
             Joystick.SetActive(true);
         }
@@ -64,6 +67,9 @@ public class PlayerButtonMove : MonoBehaviour
     private void Update()
     {
         Position = rb.position;
+        if (Keyboard.activeInHierarchy)
+            movement.x = Input.GetAxisRaw("Horizontal");
+
         if (!ChaptehGameManager.Instance.m_gameStarted)
             return;
         else if (ChaptehGameManager.Instance.m_gameEnded)
@@ -99,6 +105,8 @@ public class PlayerButtonMove : MonoBehaviour
                 footstepsSFX.Stop();
             }
         }
+        else if (Keyboard.activeInHierarchy)
+            rb.MovePosition(rb.position + (movement * playerSpeed * Time.fixedDeltaTime));
     }
 
 

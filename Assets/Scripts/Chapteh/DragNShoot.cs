@@ -12,8 +12,7 @@ public class DragNShoot : MonoBehaviour
     [SerializeField] private PlayerButtonMove playerMove;
     [SerializeField] private ChargeBar chargeBar;
 
-    [SerializeField] private GameObject dPad;
-    [SerializeField] private GameObject Joystick;
+    [SerializeField] private GameObject dPad, Joystick, Keyboard;
 
     [SerializeField] private PauseMenu PauseManager;
     [SerializeField] private Animator playerAnim;
@@ -32,11 +31,12 @@ public class DragNShoot : MonoBehaviour
     {
         cam = Camera.main;
 
-        InputButton = dPad;
         if (dPad.activeInHierarchy)
             InputButton = dPad;
         else if (Joystick.activeInHierarchy)
             InputButton = Joystick;
+        else if (Keyboard.activeInHierarchy)
+            InputButton = Keyboard;
     }
 
     private void Update()
