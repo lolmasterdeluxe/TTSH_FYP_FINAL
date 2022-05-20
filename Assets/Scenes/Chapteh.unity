@@ -302,7 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   footstepsSFX: {fileID: 1855703411}
   playerSpeed: 8
-  Keyboard: {fileID: 0}
+  Keyboard: {fileID: 1532236770}
   dPad: {fileID: 1530680373}
   Joystick: {fileID: 628759852}
   Left: {fileID: 1979913397}
@@ -12975,6 +12975,7 @@ MonoBehaviour:
   chargeBar: {fileID: 736962035}
   dPad: {fileID: 1530680373}
   Joystick: {fileID: 628759852}
+  Keyboard: {fileID: 1532236770}
   PauseManager: {fileID: 1996898939}
   playerAnim: {fileID: 6789691}
   force: {x: 0, y: 0}
@@ -13271,7 +13272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1530680374
 RectTransform:
   m_ObjectHideFlags: 0
