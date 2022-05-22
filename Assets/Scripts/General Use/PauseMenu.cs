@@ -53,11 +53,7 @@ public class PauseMenu : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name != "MainMenuGameScene")
         {
-            if (SceneManager.GetActiveScene().name == "FiveStonesFruitNinja")
-                FiveStonesGameManager.Instance.audioSources[0].Pause();
-            else if (SceneManager.GetActiveScene().name == "Chapteh")
-                ChaptehGameManager.Instance.audioSources[0].Pause();
-            else if (SceneManager.GetActiveScene().name == "Scissors Paper Stone")
+            if (SceneManager.GetActiveScene().name == "Scissors Paper Stone")
                 SPS_UIManager.Instance.bgmSource.Pause();
         }   
     }
@@ -74,11 +70,7 @@ public class PauseMenu : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name != "MainMenuGameScene")
         {
-            if (SceneManager.GetActiveScene().name == "FiveStonesFruitNinja")
-                FiveStonesGameManager.Instance.audioSources[0].UnPause();
-            else if (SceneManager.GetActiveScene().name == "Chapteh")
-                ChaptehGameManager.Instance.audioSources[0].UnPause();
-            else if (SceneManager.GetActiveScene().name == "Scissors Paper Stone")
+            if (SceneManager.GetActiveScene().name == "Scissors Paper Stone")
                 SPS_UIManager.Instance.bgmSource.UnPause();
         }
     }

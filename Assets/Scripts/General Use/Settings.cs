@@ -11,11 +11,8 @@ public class Settings : MonoBehaviour
     {
         MAINMENU,
         SPS,
-        FIVE_STONES,
-        CHAPTEH,
         FLAPPY,
         COUNTRY_ERASERS,
-        HANGMAN
     }
 
     public GameMode currentGamemode;
@@ -74,22 +71,6 @@ public class Settings : MonoBehaviour
                 SPS_PlayerManager.Instance.powerupSFX.volume = masterVolSlider.value;
                 masterVolText.text = Mathf.RoundToInt(masterVolSlider.value * 100).ToString();
                 break;
-            case GameMode.CHAPTEH:
-                // BGM volume adjuster
-                ChaptehGameManager.Instance.audioSources[0].volume = masterVolSlider.value;
-                for (int i = 0; i < 6; i++)
-                {
-                    ChaptehGameManager.Instance.audioSources[i].volume = masterVolSlider.value;
-                    masterVolText.text = Mathf.RoundToInt(masterVolSlider.value * 100).ToString();
-                }
-                break;
-            case GameMode.FIVE_STONES:
-                for(int i = 0; i < 6; i++)
-                {
-                    FiveStonesGameManager.Instance.audioSources[i].volume = masterVolSlider.value;
-                    masterVolText.text = Mathf.RoundToInt(masterVolSlider.value * 100).ToString();
-                }
-                break;
             case GameMode.FLAPPY:
                 for (int i = 0; i < 4; i++)
                 {
@@ -101,13 +82,6 @@ public class Settings : MonoBehaviour
                 for (int i = 0; i < 4; i++)
                 {
                     EraserGameManager.Instance.audioSources[i].volume = masterVolSlider.value;
-                    masterVolText.text = Mathf.RoundToInt(masterVolSlider.value * 100).ToString();
-                }
-                break;
-            case GameMode.HANGMAN:
-                for (int i = 0; i < 5; i++)
-                {
-                    HangmanGameManager.Instance.audioSources[i].volume = masterVolSlider.value;
                     masterVolText.text = Mathf.RoundToInt(masterVolSlider.value * 100).ToString();
                 }
                 break;
@@ -129,26 +103,12 @@ public class Settings : MonoBehaviour
                 SPS_UIManager.Instance.bgmSource.volume = musicVolSlider.value;
                 musicVolText.text = Mathf.RoundToInt(musicVolSlider.value * 100).ToString();
                 break;
-            case GameMode.CHAPTEH:
-                // BGM volume adjuster
-                ChaptehGameManager.Instance.audioSources[0].volume = musicVolSlider.value;
-                musicVolText.text = Mathf.RoundToInt(musicVolSlider.value * 100).ToString();
-                break;
-            case GameMode.FIVE_STONES:
-                // BGM volume adjuster
-                FiveStonesGameManager.Instance.audioSources[0].volume = musicVolSlider.value;
-                musicVolText.text = Mathf.RoundToInt(musicVolSlider.value * 100).ToString();
-                break;
             case GameMode.FLAPPY:
                 FlappyGameManager.Instance.audioSources[0].volume = musicVolSlider.value;
                 musicVolText.text = Mathf.RoundToInt(musicVolSlider.value * 100).ToString();
                 break;
             case GameMode.COUNTRY_ERASERS:
                 EraserGameManager.Instance.audioSources[0].volume = musicVolSlider.value;
-                musicVolText.text = Mathf.RoundToInt(musicVolSlider.value * 100).ToString();
-                break;
-            case GameMode.HANGMAN:
-                HangmanGameManager.Instance.audioSources[0].volume = musicVolSlider.value;
                 musicVolText.text = Mathf.RoundToInt(musicVolSlider.value * 100).ToString();
                 break;
         }
@@ -183,20 +143,6 @@ public class Settings : MonoBehaviour
                 SPS_PlayerManager.Instance.powerupSFX.volume = sfxVolSlider.value;
                 sfxVolText.text = Mathf.RoundToInt(sfxVolSlider.value * 100).ToString();
                 break;
-            case GameMode.CHAPTEH:
-                for (int i = 1; i < 6; i++)
-                {
-                    ChaptehGameManager.Instance.audioSources[i].volume = sfxVolSlider.value;
-                    sfxVolText.text = Mathf.RoundToInt(sfxVolSlider.value * 100).ToString();
-                }
-                break;
-            case GameMode.FIVE_STONES:
-                for (int i = 1; i < 6; i++)
-                {
-                    FiveStonesGameManager.Instance.audioSources[i].volume = sfxVolSlider.value;
-                    sfxVolText.text = Mathf.RoundToInt(sfxVolSlider.value * 100).ToString();
-                }
-                break;
             case GameMode.FLAPPY:
                 for (int i = 2; i < 4; i++)
                 {
@@ -208,13 +154,6 @@ public class Settings : MonoBehaviour
                 for (int i = 1; i < 4; i++)
                 {
                     EraserGameManager.Instance.audioSources[i].volume = sfxVolSlider.value;
-                    sfxVolText.text = Mathf.RoundToInt(sfxVolSlider.value * 100).ToString();
-                }
-                break;
-            case GameMode.HANGMAN:
-                for (int i = 1; i < 5; i++)
-                {
-                    HangmanGameManager.Instance.audioSources[i].volume = sfxVolSlider.value;
                     sfxVolText.text = Mathf.RoundToInt(sfxVolSlider.value * 100).ToString();
                 }
                 break;

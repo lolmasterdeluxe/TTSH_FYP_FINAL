@@ -34,15 +34,6 @@ public class LeaderboardManager : MonoBehaviour
     [SerializeField] private CanvasGroup leaderboardCanvasGroup;
     [SerializeField] private CanvasGroup endScreenCanvasGroup;
 
-    [SerializeField] private GameObject fiveStonesGroup;
-    [SerializeField] private TMP_Text fiveStonesTotalCaughtText;
-    [SerializeField] private TMP_Text rainbowCaughtText;
-
-    [SerializeField] private GameObject chaptehGroup;
-    [SerializeField] private TMP_Text redHoopsHit;
-    [SerializeField] private TMP_Text greenHoopsHit;
-    [SerializeField] private TMP_Text yellowHoopsHit;
-
     [SerializeField] private GameObject scissorsPaperStoneGroup;
     [SerializeField] private TMP_Text powerUpsPicked;
     [SerializeField] private TMP_Text enemiesKilled;
@@ -54,16 +45,10 @@ public class LeaderboardManager : MonoBehaviour
     [SerializeField] private GameObject countryErasersGroup;
     [SerializeField] private TMP_Text totalMatches;
 
-    [SerializeField] private GameObject hangmanGroup;
-    [SerializeField] private TMP_Text totalWordsGuessed;
-
     [SerializeField] private GameObject overallGroup;
-    [SerializeField] private TMP_Text totalChaptehScore;
     [SerializeField] private TMP_Text totalScissorsPaperStoneScore;
-    [SerializeField] private TMP_Text totalFiveStonesScore;
     [SerializeField] private TMP_Text totalParachuteScore;
     [SerializeField] private TMP_Text totalMatchesScore;
-    [SerializeField] private TMP_Text totalHangmanScore;
 
     [SerializeField] private TMP_Text overallScoreText;
     [SerializeField] private TMP_Text standardGameScoreText;
@@ -140,19 +125,6 @@ public class LeaderboardManager : MonoBehaviour
     {
         switch (leaderboardType)
         {
-            case ScoreManager.Gamemode.CHAPTEH:
-                chaptehGroup.SetActive(true);
-
-                redHoopsHit.text = ChaptehGameManager.Instance.redCount.ToString();
-                greenHoopsHit.text = ChaptehGameManager.Instance.greenCount.ToString();
-                yellowHoopsHit.text = ChaptehGameManager.Instance.yellowCount.ToString();
-                break;
-            case ScoreManager.Gamemode.FIVESTONES:
-                fiveStonesGroup.SetActive(true);
-
-                fiveStonesTotalCaughtText.text = FiveStonesGameManager.Instance.m_totalCaught.ToString();
-                rainbowCaughtText.text = FiveStonesGameManager.Instance.m_totalRainbowCaught.ToString();
-                break;
             case ScoreManager.Gamemode.SPS:
                 scissorsPaperStoneGroup.SetActive(true);
 
@@ -170,11 +142,6 @@ public class LeaderboardManager : MonoBehaviour
 
                 totalMatches.text = EraserGameManager.Instance.ErasersMatched.ToString();
                 break;
-            case ScoreManager.Gamemode.HANGMAN:
-                hangmanGroup.SetActive(true);
-
-                totalWordsGuessed.text = HangmanGameManager.Instance.WordsSolved.ToString();
-                break;
             case ScoreManager.Gamemode.TOTAL:
                 Animations.SetActive(false);
                 overallGroup.SetActive(true);
@@ -182,17 +149,7 @@ public class LeaderboardManager : MonoBehaviour
 
                 List<ScoreManager.Score> scoreList = ScoreManager.Instance.m_allScoreList.Where(x => x.m_username == ScoreManager.Instance.m_currentUsername).ToList();
 
-                ScoreManager.Score score = scoreList.Where(x => x.m_gamemode == ScoreManager.Gamemode.CHAPTEH.ToString()).FirstOrDefault();
-
-                if (score != null)
-                    totalChaptehScore.text = score.m_score.ToString();
-
-                score = scoreList.Where(x => x.m_gamemode == ScoreManager.Gamemode.FIVESTONES.ToString()).FirstOrDefault();
-
-                if (score != null)
-                    totalFiveStonesScore.text = score.m_score.ToString();
-
-                score = scoreList.Where(x => x.m_gamemode == ScoreManager.Gamemode.SPS.ToString()).FirstOrDefault();
+                ScoreManager.Score score = scoreList.Where(x => x.m_gamemode == ScoreManager.Gamemode.SPS.ToString()).FirstOrDefault();
 
                 if (score != null)
                     totalScissorsPaperStoneScore.text = score.m_score.ToString();
@@ -206,11 +163,6 @@ public class LeaderboardManager : MonoBehaviour
 
                 if (score != null)
                     totalMatchesScore.text = score.m_score.ToString();
-
-                score = scoreList.Where(x => x.m_gamemode == ScoreManager.Gamemode.HANGMAN.ToString()).FirstOrDefault();
-
-                if (score != null)
-                    totalHangmanScore.text = score.m_score.ToString();
 
                 break;
         }
@@ -271,12 +223,6 @@ public class LeaderboardManager : MonoBehaviour
     {
         switch (leaderboardType)
         {
-            case ScoreManager.Gamemode.CHAPTEH:
-                background.sprite = chaptehBg;
-                break;
-            case ScoreManager.Gamemode.FIVESTONES:
-                background.sprite = fiveStonesBg;
-                break;
             case ScoreManager.Gamemode.SPS:
                 background.sprite = spsBg;
                 break;
@@ -284,9 +230,6 @@ public class LeaderboardManager : MonoBehaviour
                 background.sprite = parachuteBg;
                 break;
             case ScoreManager.Gamemode.COUNTRY_ERASERS:
-                background.sprite = totalBg;
-                break;
-            case ScoreManager.Gamemode.HANGMAN:
                 background.sprite = totalBg;
                 break;
             case ScoreManager.Gamemode.TOTAL:

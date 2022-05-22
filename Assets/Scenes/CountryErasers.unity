@@ -3436,7 +3436,7 @@ PrefabInstance:
       objectReference: {fileID: 1681893973}
     - target: {fileID: 2913985091809142618, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: leaderboardType
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2913985091809142621, guid: 8ac176980bc71044a916239c4a3d665a, type: 3}
       propertyPath: m_Pivot.x
@@ -6358,7 +6358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7399625304873426539, guid: ce8630f55e7d3c34a955d49684032f00, type: 3}
       propertyPath: currentGamemode
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7399625304873426539, guid: ce8630f55e7d3c34a955d49684032f00, type: 3}
       propertyPath: panelCanvasGroup
@@ -7535,7 +7535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648f5c57d8c12024ba26b54b08b95c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentGamemode: 5
+  currentGamemode: 3
   masterVolSlider: {fileID: 957593480}
   masterVolText: {fileID: 434444729}
   musicVolSlider: {fileID: 288186113}

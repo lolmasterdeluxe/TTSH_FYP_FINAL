@@ -14,11 +14,8 @@ public class ScoreManager : MonoBehaviour
     { 
         DEFAULT,
         SPS,
-        FIVESTONES,
-        CHAPTEH,
         FLAPPY,
         COUNTRY_ERASERS,
-        HANGMAN,
         TOTAL,
     }
 
@@ -316,11 +313,8 @@ public class ScoreManager : MonoBehaviour
             {
                 UpdateTotalScoreUserID();
                 UpdateCurrentScoreUserID(Gamemode.SPS);
-                UpdateCurrentScoreUserID(Gamemode.CHAPTEH);
                 UpdateCurrentScoreUserID(Gamemode.COUNTRY_ERASERS);
-                UpdateCurrentScoreUserID(Gamemode.FIVESTONES);
                 UpdateCurrentScoreUserID(Gamemode.FLAPPY);
-                UpdateCurrentScoreUserID(Gamemode.HANGMAN);
                 m_currentUserID++;
                 m_allScoreList = m_allScoreListTemp;
                 Debug.Log("Scorelist updated");
