@@ -89,7 +89,7 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         // Get scoreboard.csv from Gdrive
-        GetGdriveFile();
+        // GetGdriveFile();
     }
 
     // (Currently unused)
@@ -411,7 +411,7 @@ public class ScoreManager : MonoBehaviour
     public void EndSessionConcludeScore()
     {
         //Load new score list from Gdrive
-        LoadUpdatedScoreList();
+        //LoadUpdatedScoreList();
 
         var stringBuilder = new StringBuilder("Id,Name,Mode,Score,HatId,FaceId,ColourId");
         foreach (Score score in m_allScoreList)
@@ -427,7 +427,7 @@ public class ScoreManager : MonoBehaviour
         }
 
         SaveCSV(GetFilePath(), stringBuilder.ToString());
-        UploadNewScoreboard(stringBuilder.ToString());
+        //UploadNewScoreboard(stringBuilder.ToString());
     }
 
     private void CreateCSV(string filePath)

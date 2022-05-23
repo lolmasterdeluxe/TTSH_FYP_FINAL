@@ -25,7 +25,7 @@
     <setting name="packageDir" value="Assets/Plugins/Android" />
     <setting name="patchAndroidManifest" value="False" />
     <setting name="patchMainTemplateGradle" value="False" />
-    <setting name="projectExportEnabled" value="True" />
+    <setting name="projectExportEnabled" value="False" />
     <setting name="useJetifier" value="False" />
   </settings>
 </dependencies>

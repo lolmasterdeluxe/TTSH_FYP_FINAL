@@ -12,12 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenuGameScene.unity
     guid: 0c143cf35988eb044a4e97802eb710bc
   - enabled: 1
-    path: Assets/Scenes/Chapteh.unity
-    guid: 6ff55b2dae7477044ae00c8e54a6e10d
-  - enabled: 1
-    path: Assets/Scenes/FiveStonesFruitNinja.unity
-    guid: c73bb0a257dbd1a4ab3594d11503edb3
-  - enabled: 1
     path: Assets/Scenes/Scissors Paper Stone.unity
     guid: da364c7046705ea458e03746bb9bb131
   - enabled: 1
@@ -26,7 +20,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CountryErasers.unity
     guid: fdccd0848b0a91643bd3944a3122092c
-  - enabled: 1
-    path: Assets/Scenes/Hangman.unity
-    guid: ed0244e64b8a9704d92c50dbb63fb385
   m_configObjects: {}
