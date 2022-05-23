@@ -162,7 +162,7 @@ public class ScoreManager : MonoBehaviour
     #endregion
 
     #region Google Drive Upload/Download
-    private void GetGdriveFile()
+    public void GetGdriveFile()
     {
         driveRequest = GoogleDriveFiles.Download(fileId);
         driveRequest.Fields = new List<string> { };
@@ -275,8 +275,6 @@ public class ScoreManager : MonoBehaviour
     private void LoadUpdatedScoreList()
     {
         m_allScoreListTemp.Clear();
-        GetGdriveFile();
-
         StreamReader streamReader = new StreamReader(GetFilePath());
 
         if (streamReader == null)
@@ -321,11 +319,12 @@ public class ScoreManager : MonoBehaviour
                 UpdateCurrentScoreUserID(Gamemode.FIVESTONES);
                 UpdateCurrentScoreUserID(Gamemode.FLAPPY);
                 UpdateCurrentScoreUserID(Gamemode.HANGMAN);
-                m_currentUserID++;
+                m_currentUserID = m_allScoreListTemp.Count;
                 m_allScoreList = m_allScoreListTemp;
                 Debug.Log("Scorelist updated");
             }
         }
+        
     }
 
     private void UpdateCurrentScoreUserID(Gamemode gamemode)
@@ -334,7 +333,7 @@ public class ScoreManager : MonoBehaviour
 
         if (score != null)
         {
-            score.m_userId++;
+            score.m_userId = m_allScoreListTemp.Count;
             m_allScoreListTemp.Add(score);
         }
     }
@@ -345,7 +344,7 @@ public class ScoreManager : MonoBehaviour
 
         if (totalScore != null)
         {
-            totalScore.m_userId++;
+            totalScore.m_userId = m_allScoreListTemp.Count;
             m_allScoreListTemp.Add(totalScore);
         }
     }

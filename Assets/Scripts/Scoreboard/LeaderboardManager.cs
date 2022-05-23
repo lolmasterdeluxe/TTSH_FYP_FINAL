@@ -116,6 +116,7 @@ public class LeaderboardManager : MonoBehaviour
         }
         else
             StartCoroutine(ShowFinalGameAnimation());
+        ScoreManager.Instance.GetGdriveFile();
     }
 
     public void UpdateAllLeaderboardUIData()

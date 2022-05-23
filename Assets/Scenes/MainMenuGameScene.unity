@@ -26711,7 +26711,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3980006151225649210, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3980006151225649210, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -26720,6 +26720,10 @@ PrefabInstance:
     - target: {fileID: 3980006151225649210, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3980006151225649210, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3980006151225649210, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -26734,11 +26738,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 558953936}
     - target: {fileID: 3980006151225649210, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1723534331}
+    - target: {fileID: 3980006151225649210, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3980006151225649210, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3980006151225649210, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3980006151225649210, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
@@ -26750,11 +26762,19 @@ PrefabInstance:
       value: SetEnabled
       objectReference: {fileID: 0}
     - target: {fileID: 3980006151225649210, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3980006151225649210, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: UnityEngine.AudioSource, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3980006151225649210, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: PlayerTouchMovement, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3980006151225649210, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
       value: PlayerTouchMovement, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3980006151225649210, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
@@ -26768,6 +26788,10 @@ PrefabInstance:
     - target: {fileID: 3980006151225649210, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3980006151225649210, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3980006151387492472, guid: 880ee921d08f4a349b6bb4bcd6a1b9c6, type: 3}
       propertyPath: m_Pivot.x

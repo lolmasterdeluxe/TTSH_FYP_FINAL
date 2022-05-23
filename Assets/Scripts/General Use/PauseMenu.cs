@@ -48,6 +48,9 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         isPaused = true;
 
+        // Update local version of stored scoreboard when game is paused
+        ScoreManager.Instance.GetGdriveFile();
+
         // Pause sound
         pauseMenuSound[1].Play();
 
