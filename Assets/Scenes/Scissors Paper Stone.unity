@@ -3583,7 +3583,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.6125355
+  orthographic size: 5.625
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -3765,7 +3765,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e64b7de0e93159d4e8cbe31a7dc1db3c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eb626a259382b9a4492e5454c64f8eec, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8997,7 +8997,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 25ff9bbc5c514404fb91e737720a639a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d30253803d0d3c7439466fc4ad12c574, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10940,7 +10940,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 79e943d9e6b5f474aa53888d4785c204, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 94abd2fcfdc716e428cf4c8085fa4911, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11104,6 +11104,10 @@ MonoBehaviour:
   playerAC: {fileID: 1443686469}
   playeractionAC: {fileID: 477337549}
   g_PlayerActionSprite: {fileID: 477337547}
+  ScissorsButton: {fileID: 875873050}
+  PaperButton: {fileID: 1795758273}
+  StoneButton: {fileID: 982583651}
+  JumpButton: {fileID: 1423607596}
   g_comboGroup: {fileID: 1409894688}
   g_comboText: {fileID: 2105826764}
   g_comboText_finalPos: {fileID: 655529308}
@@ -13240,7 +13244,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b5ef4adda31801f41ae834a6ef948afc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 71ce70de46a4a3243b5d0c6ecc0dff40, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

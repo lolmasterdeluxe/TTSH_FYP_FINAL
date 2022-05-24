@@ -304,8 +304,9 @@ public class HangmanGameManager : MonoBehaviour
 #elif UNITY_ANDROID || UNITY_IPHONE
         SaveCSV(Application.persistentDataPath + "/listofwords.csv", csvText);
         return Application.persistentDataPath + "/listofwords.csv";
-#else
-        return Application.dataPath +"/CSV/"+"score.csv";
+#elif UNITY_WEBGL
+        SaveCSV(Application.persistentDataPath + "/listofwords.csv", csvText);
+        return Application.persistentDataPath + "/listofwords.csv";
 #endif
     }
 

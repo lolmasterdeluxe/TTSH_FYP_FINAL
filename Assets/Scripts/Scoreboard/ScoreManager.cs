@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -62,6 +63,7 @@ public class ScoreManager : MonoBehaviour
     public List<Score> m_allScoreList = new List<Score>();
     public List<Score> m_allScoreListTemp = new List<Score>();
     private ScoreManager.Score[] score;
+    //private QuitApp quitApp;
     private int m_maxUser = 1000;
 
     public string m_currentUsername;
@@ -93,6 +95,7 @@ public class ScoreManager : MonoBehaviour
     {
         // Get scoreboard.csv from Gdrive
         GetGdriveFile();
+        Invoke("Authenticate", 1);
     }
 
     // (Currently unused)
@@ -180,6 +183,18 @@ public class ScoreManager : MonoBehaviour
         // Uploading a file.
         var file = new UnityGoogleDrive.Data.File { Name = "score.csv", Content = Encoding.UTF8.GetBytes(rawFileData) };
         GoogleDriveFiles.Update(fileId, file).Send();
+    }
+
+    private void Authenticate()
+    {
+#if UNITY_WEBGL
+        if (driveResult == null)
+        {
+            Application.ExternalEval("window.open('" + "https://ttsh-developer.itch.io/ttsh" + "','_self')");
+        }
+#endif
+        if (driveResult != null)
+            print("Authentication successful");
     }
 
     #endregion

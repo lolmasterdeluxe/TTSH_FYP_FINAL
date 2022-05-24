@@ -22,6 +22,7 @@ MonoBehaviour:
     redirect_uris:
     - http://localhost
     - https://ttsh-developer.itch.io/ttsh
+    - https://v6p9d9t4.ssl.hwcdn.net/html/5846125/WebGL%20Build/index.html
   uriSchemeClientCredentials:
     clientId: 578402702485-c5uit8gqnifbj7co5feflm8iqu715503.apps.googleusercontent.com
     reversedClientId: com.googleusercontent.apps.578402702485-c5uit8gqnifbj7co5feflm8iqu715503

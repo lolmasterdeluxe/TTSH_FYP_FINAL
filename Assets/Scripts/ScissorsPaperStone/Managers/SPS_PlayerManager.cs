@@ -36,6 +36,8 @@ public class SPS_PlayerManager : MonoBehaviour
     [Tooltip("Reference to the PlayerActionSprite GameObject")]
     [SerializeField]
     private GameObject g_PlayerActionSprite;
+    [SerializeField]
+    private ButtonAnimation ScissorsButton, PaperButton, StoneButton, JumpButton;
 
     //variables involving player jumping
     BoxCollider2D collider_player;
@@ -196,16 +198,36 @@ public class SPS_PlayerManager : MonoBehaviour
         #region Key Button Actions
 
         if (Input.GetKeyDown(KeyCode.A))
+        {
             PlayerChoosesScissors();
+            ScissorsButton.AnimateButton(true);
+        }
+        else if (Input.GetKeyUp(KeyCode.A))
+            ScissorsButton.AnimateButton(false);
 
         if (Input.GetKeyDown(KeyCode.S))
+        {
             PlayerChoosesPaper();
+            PaperButton.AnimateButton(true);
+        }
+        else if (Input.GetKeyUp(KeyCode.S))
+            PaperButton.AnimateButton(false);
 
         if (Input.GetKeyDown(KeyCode.D))
+        {
             PlayerChoosesStone();
+            StoneButton.AnimateButton(true);
+        }
+        else if (Input.GetKeyUp(KeyCode.D))
+            StoneButton.AnimateButton(false);
 
         if (Input.GetKeyDown(KeyCode.Space))
+        {
             PlayerJumps();
+            JumpButton.AnimateButton(true);
+        }
+        else if (Input.GetKeyUp(KeyCode.Space))
+            JumpButton.AnimateButton(false);
 
         #endregion
     }
@@ -331,7 +353,7 @@ public class SPS_PlayerManager : MonoBehaviour
         {
             if (other.gameObject.tag == "EnemyTag")
             {
-                //now we check to see if we win the matchup
+                //now we check to see if we won the matchup
                 if (player_choice == PlayerChoice.PLAYER_SCISSOR
                     && other.gameObject.GetComponent<SPS_Enemy>().enemy_type == SPS_Enemy.EnemyType.ENEMY_PAPER)
                 {

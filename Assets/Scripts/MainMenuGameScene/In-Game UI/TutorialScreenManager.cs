@@ -302,11 +302,16 @@ public class TutorialScreenManager : MonoBehaviour
                         chapteh_tutorialBase.sprite = chapteh_tutorialContainer[0];
                         break;
                     case 1:
+#if UNITY_EDITOR || UNITY_WEBGL
+                        chapteh_tutorialBase.sprite = chapteh_tutorialContainer[6];
+                        break;
+#else
                         if (PlayerPreference.ControlPreference == 2)
                             chapteh_tutorialBase.sprite = chapteh_tutorialContainer[2];
                         else
                             chapteh_tutorialBase.sprite = chapteh_tutorialContainer[1];
                         break;
+#endif
                     case 2:
                         chapteh_tutorialBase.sprite = chapteh_tutorialContainer[3];
                         break;
@@ -316,6 +321,7 @@ public class TutorialScreenManager : MonoBehaviour
                     case 4:
                         chapteh_tutorialBase.sprite = chapteh_tutorialContainer[5];
                         break;
+
                 }
                 break;
             case 3: //flappy parachute
@@ -461,6 +467,6 @@ public class TutorialScreenManager : MonoBehaviour
     }
 
 
-    #endregion
+#endregion
 
 }

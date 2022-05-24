@@ -135,6 +135,14 @@ public class CustomizeLinker : MonoBehaviour
 
     private void UpdateControlPreferences()
     {
+#if UNITY_EDITOR || UNITY_WEBGL
+        JoystickPanel.SetActive(false);
+        DpadPanel.SetActive(false);
+        Player.GetComponent<PlayerJoystickMovement>().enabled = false;
+        Player.GetComponent<PlayerDpadMovement>().enabled = false;
+        Player.GetComponent<PlayerTouchMovement>().enabled = false;
+        Player.GetComponent<PlayerKeyboardMovement>().enabled = true;
+#elif UNITY_ANDROID || UNITY_IPHONE
         if (customizer.ControlPreference == 0)
         {
             JoystickPanel.SetActive(false);
@@ -159,6 +167,7 @@ public class CustomizeLinker : MonoBehaviour
             Player.GetComponent<PlayerDpadMovement>().enabled = false;
             Player.GetComponent<PlayerTouchMovement>().enabled = false;
         }
+#endif
     }
 
     public void SetControlPreference(int Preference)

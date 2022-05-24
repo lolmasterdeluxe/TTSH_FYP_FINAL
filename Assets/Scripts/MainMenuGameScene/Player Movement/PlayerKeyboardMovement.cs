@@ -56,7 +56,7 @@ public class PlayerKeyboardMovement : MonoBehaviour
 
     private void Update()
     {
-        if (tutorialScreenmanagerInstance.b_tutorialScreenOpen == true)
+        if (tutorialScreenmanagerInstance.b_tutorialScreenOpen)
             return;
 
         //call functions HERE
