@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject quitPromptMenu;
 
     public bool isPaused = false;
+    private bool WebGL_Quit = false;
 
     [SerializeField] private AudioSource[] pauseMenuSound;
 
@@ -33,13 +34,20 @@ public class PauseMenu : MonoBehaviour
                 return;
         }
 
-        /*if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
                 ResumeGame();
             else
                 PauseGame();
-        }*/
+        }
+
+        if (WebGL_Quit && ScoreManager.Instance.driveUpdate != null && ScoreManager.Instance.driveUpdate.IsDone)
+        {
+            Application.ExternalEval("window.open('" + "https://ttshnursesday.com" + "','_self')");
+            Debug.Log("Website open successful");
+        }
+        
     }
 
     public void PauseGame()
@@ -116,8 +124,7 @@ public class PauseMenu : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #elif UNITY_WEBGL
-         if (ScoreManager.Instance.driveUpdate.Progress >= 1)
-            Application.ExternalEval("window.open('" + "https://ttshnursesday.com/" + "','_self')");
+        WebGL_Quit = true;
 #else
          Application.Quit();
 #endif

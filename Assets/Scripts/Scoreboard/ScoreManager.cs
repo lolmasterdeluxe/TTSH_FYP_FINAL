@@ -63,7 +63,6 @@ public class ScoreManager : MonoBehaviour
     public List<Score> m_allScoreList = new List<Score>();
     public List<Score> m_allScoreListTemp = new List<Score>();
     private ScoreManager.Score[] score;
-    //private QuitApp quitApp;
     private int m_maxUser = 1000;
 
     public string m_currentUsername;
@@ -81,7 +80,6 @@ public class ScoreManager : MonoBehaviour
     [HideInInspector]
     public string driveResult;
     private const string fileId = "1joby-qdIKkc0Phwkw5RGbktujGaiz3Ix";
-    /*private const string UploadFilePath = "My Drive"*/
 
     private void Awake()
     {
@@ -193,7 +191,7 @@ public class ScoreManager : MonoBehaviour
     {
 #if UNITY_WEBGL
         if (driveResult == null)
-            Application.ExternalEval("window.open('" + "https://ttsh-developer.itch.io/ttsh" + "','_self')");
+            Application.ExternalEval("window.open('" + "https://ttsh-developer.itch.io" + "','_self')");
 #endif
         if (driveResult != null)
             print("Authentication successful");
