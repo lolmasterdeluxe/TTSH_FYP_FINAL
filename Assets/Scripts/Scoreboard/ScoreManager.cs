@@ -77,6 +77,8 @@ public class ScoreManager : MonoBehaviour
 
     private GoogleDriveFiles.DownloadRequest driveRequest;
     [HideInInspector]
+    public GoogleDriveFiles.UpdateRequest driveUpdate;
+    [HideInInspector]
     public string driveResult;
     private const string fileId = "1joby-qdIKkc0Phwkw5RGbktujGaiz3Ix";
     /*private const string UploadFilePath = "My Drive"*/
@@ -183,16 +185,15 @@ public class ScoreManager : MonoBehaviour
     {
         // Uploading a file.
         var file = new UnityGoogleDrive.Data.File { Name = "score.csv", Content = Encoding.UTF8.GetBytes(rawFileData) };
-        GoogleDriveFiles.Update(fileId, file).Send();
+        driveUpdate = GoogleDriveFiles.Update(fileId, file);
+        driveUpdate.Send();
     }
 
     private void Authenticate()
     {
 #if UNITY_WEBGL
         if (driveResult == null)
-        {
             Application.ExternalEval("window.open('" + "https://ttsh-developer.itch.io/ttsh" + "','_self')");
-        }
 #endif
         if (driveResult != null)
             print("Authentication successful");

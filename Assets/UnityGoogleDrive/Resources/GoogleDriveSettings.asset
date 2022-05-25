@@ -20,7 +20,6 @@ MonoBehaviour:
     auth_provider_x509_cert_url: https://www.googleapis.com/oauth2/v1/certs
     client_secret: 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
     redirect_uris:
-    - http://localhost
     - https://ttsh-developer.itch.io/ttsh
     - https://v6p9d9t4.ssl.hwcdn.net/html/5846125/WebGL%20Build/index.html
   uriSchemeClientCredentials:

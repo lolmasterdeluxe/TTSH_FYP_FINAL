@@ -116,7 +116,8 @@ public class PauseMenu : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #elif UNITY_WEBGL
-         ResumeGame();
+         if (ScoreManager.Instance.driveUpdate.Progress >= 1)
+            Application.ExternalEval("window.open('" + "https://ttshnursesday.com/" + "','_self')");
 #else
          Application.Quit();
 #endif
