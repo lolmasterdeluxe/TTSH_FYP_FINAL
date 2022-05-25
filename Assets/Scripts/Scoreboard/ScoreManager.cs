@@ -76,7 +76,8 @@ public class ScoreManager : MonoBehaviour
     private const string api_addScore = "/scoreboard.php";
 
     private GoogleDriveFiles.DownloadRequest driveRequest;
-    private string driveResult;
+    [HideInInspector]
+    public string driveResult;
     private const string fileId = "1joby-qdIKkc0Phwkw5RGbktujGaiz3Ix";
     /*private const string UploadFilePath = "My Drive"*/
 
@@ -95,8 +96,7 @@ public class ScoreManager : MonoBehaviour
     {
         // Get scoreboard.csv from Gdrive
         GetGdriveFile();
-        //Invoke("Authenticate", 3);
-        Authenticate();
+        Invoke("Authenticate", 3);
     }
 
     // (Currently unused)
@@ -189,12 +189,12 @@ public class ScoreManager : MonoBehaviour
     private void Authenticate()
     {
 #if UNITY_WEBGL
-        if (driveRequest.IsError)
+        if (driveResult == null)
         {
             Application.ExternalEval("window.open('" + "https://ttsh-developer.itch.io/ttsh" + "','_self')");
         }
 #endif
-        if (driveRequest.IsDone)
+        if (driveResult != null)
             print("Authentication successful");
     }
 

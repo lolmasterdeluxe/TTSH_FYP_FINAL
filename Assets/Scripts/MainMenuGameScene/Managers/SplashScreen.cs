@@ -6,13 +6,21 @@ public class SplashScreen : MonoBehaviour
 {
     [SerializeField] private GameObject _splashScreenGroup;
     [SerializeField] private float WaitTime = 2;
+    [SerializeField] private AudioSource BGM;
+    private bool Init = false;
 
     // Start is called before the first frame update
-    void Start()
+    void Update()
     {
-        //ScoreManager.Instance.LoadWebScoreList();
-        ScoreManager.Instance.ResetUser();
-        StartCoroutine(WaitFade());
+        if (ScoreManager.Instance.driveResult == null)
+            return;
+        else if (!Init)
+        {
+            BGM.Play();
+            ScoreManager.Instance.ResetUser();
+            StartCoroutine(WaitFade());
+            Init = true;
+        }
     }
     private void Fade()
     {
