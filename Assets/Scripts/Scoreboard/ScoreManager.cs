@@ -95,7 +95,8 @@ public class ScoreManager : MonoBehaviour
     {
         // Get scoreboard.csv from Gdrive
         GetGdriveFile();
-        Invoke("Authenticate", 1);
+        //Invoke("Authenticate", 3);
+        Authenticate();
     }
 
     // (Currently unused)
@@ -188,12 +189,12 @@ public class ScoreManager : MonoBehaviour
     private void Authenticate()
     {
 #if UNITY_WEBGL
-        if (driveResult == null)
+        if (driveRequest.IsError)
         {
             Application.ExternalEval("window.open('" + "https://ttsh-developer.itch.io/ttsh" + "','_self')");
         }
 #endif
-        if (driveResult != null)
+        if (driveRequest.IsDone)
             print("Authentication successful");
     }
 

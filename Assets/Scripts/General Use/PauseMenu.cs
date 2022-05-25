@@ -115,6 +115,8 @@ public class PauseMenu : MonoBehaviour
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_WEBGL
+         ResumeGame();
 #else
          Application.Quit();
 #endif
