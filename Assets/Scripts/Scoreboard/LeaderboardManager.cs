@@ -116,6 +116,7 @@ public class LeaderboardManager : MonoBehaviour
         }
         else
             StartCoroutine(ShowFinalGameAnimation());
+
         ScoreManager.Instance.GetGdriveFile();
     }
 
@@ -400,13 +401,8 @@ public class LeaderboardManager : MonoBehaviour
             Debug.Log("Leaderboard closed");
         }
         else
+        {
             SceneManager.LoadScene("MainMenuGameScene");
+        }
     }
-
-    public void RestartScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    
 }

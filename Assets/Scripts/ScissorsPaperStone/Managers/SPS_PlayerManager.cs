@@ -372,8 +372,6 @@ public class SPS_PlayerManager : MonoBehaviour
                     //other.gameObject.SetActive(false);
                     StartCoroutine(objectManagerInstance.EndsEnemy(other.GetComponent<Animator>(),other.gameObject));
                     
-                   
-                    
                     Debug.Log("Paper Beaten");
 
                     #region Unused

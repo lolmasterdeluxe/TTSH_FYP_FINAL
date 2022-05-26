@@ -25,6 +25,7 @@ public class CustomizeLinker : MonoBehaviour
     {
         inputNameField.text = ScoreManager.Instance.m_currentUsername;
         customizer = FindObjectOfType<CustomizerManager>();
+        ScoreManager.Instance.EndSessionConcludeScore();
         DeclareScoreArray();
 
         if (customizer == null)

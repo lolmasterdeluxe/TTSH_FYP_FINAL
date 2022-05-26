@@ -74,7 +74,8 @@ public class ScoreManager : MonoBehaviour
     private const string api_allScore = "/scoreboard.php?all=";
     private const string api_addScore = "/scoreboard.php";
 
-    private GoogleDriveFiles.DownloadRequest driveRequest;
+    [HideInInspector]
+    public GoogleDriveFiles.DownloadRequest driveRequest;
     [HideInInspector]
     public GoogleDriveFiles.UpdateRequest driveUpdate;
     [HideInInspector]
@@ -195,6 +196,7 @@ public class ScoreManager : MonoBehaviour
 #endif
         if (driveResult != null)
             print("Authentication successful");
+
     }
 
     #endregion
