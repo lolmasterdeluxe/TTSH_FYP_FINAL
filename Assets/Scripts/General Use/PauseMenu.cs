@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject quitPromptMenu;
+    [SerializeField] private GameObject WebGLQuitPanel;
+    private string[] WebGLQuitText;
 
     public bool isPaused = false;
     private bool WebGL_Quit = false;
@@ -20,6 +24,12 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         quitPromptMenu.SetActive(false);
+
+        WebGLQuitText = new string[4];
+        WebGLQuitText[0] = "Qutting Game";
+        WebGLQuitText[1] = "Qutting Game.";
+        WebGLQuitText[2] = "Qutting Game..";
+        WebGLQuitText[3] = "Qutting Game...";
 
         if (SceneManager.GetActiveScene().name != "MainMenuGameScene")
             preGame = GameObject.Find("Pregame").GetComponent<Pregame>();
@@ -42,6 +52,13 @@ public class PauseMenu : MonoBehaviour
                 PauseGame();
         }
 
+        if (WebGL_Quit)
+        {
+            Time.timeScale = 1;
+            WebGLQuitPanel.SetActive(true);
+            TweenManager.Instance.AnimateFade(WebGLQuitPanel.GetComponent<CanvasGroup>(), 1, 1);
+            WebGLQuitPanel.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = WebGLQuitText[(int)(Time.time * 2) % WebGLQuitText.Length];
+        }
         if (WebGL_Quit && ScoreManager.Instance.driveUpdate != null && ScoreManager.Instance.driveUpdate.IsDone)
         {
             Application.ExternalEval("window.open('" + "https://ttshnursesday.com" + "','_self')");
@@ -122,7 +139,8 @@ public class PauseMenu : MonoBehaviour
     public void QuitGame()
     {
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
+        WebGL_Quit = true;
 #elif UNITY_WEBGL
         WebGL_Quit = true;
 #else

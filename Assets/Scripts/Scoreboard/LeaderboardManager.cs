@@ -405,4 +405,9 @@ public class LeaderboardManager : MonoBehaviour
             SceneManager.LoadScene("MainMenuGameScene");
         }
     }
+
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
